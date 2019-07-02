@@ -1,7 +1,16 @@
 \documentclass{beamer}
-\beamerdefaultoverlayspecification{<+->}
+\usepackage{tcolorbox}
+
+%\beamerdefaultoverlayspecification{<+->}
+\newcommand{\data}{\mathcal{D}}
+\newcommand\Item[1][]{%
+	\ifx\relax#1\relax  \item \else \item[#1] \fi
+	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+
 
 \usetheme{metropolis}           % Use metropolis theme
+
+
 \title{Bayesian Linear Regression}
 \date{\today}
 \author{Nipun Batra}
@@ -44,8 +53,9 @@
 		\item $\frac{P(\text{+}\mid\text{User}) P(\text{User})}{P(\text{+}\mid\text{User}) P(\text{User}) + P(\text{+}\mid\overline{User}) P(\overline{User})} = \frac{0.99\times 0.005}{0.99\times 0.005 + 0.01\times0.995} \approx .332$ 
 	
 \end{itemize}
-	
+\end{frame}
 
+\begin{frame}{Another example on Bayes rule}
 \end{frame}
 
 
@@ -70,5 +80,92 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Likelihood}
+\begin{itemize}
+	\item Likelihood is a function of $\theta$
+	\item Given a coin flip and 5 H and 1 T, what is more likely: P(H) = 0.5 or P(H) = 1
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bayesian Learning is well suited for online settings}
+content...
+\end{frame}
+
+\begin{frame}{Coin flipping}
+\begin{itemize}
+	\item Assume we do a coin flip multiple times and we get the following observation: \{H, H, H, H, H, H, T, T, T, T\}: 6 Heads and 4 Tails
+	\item  What is $P(Head)$?
+	\item Is your answer: 6/10. Why?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Coin flipping: Maximum Likelihood Estimate (MLE)}
+\begin{itemize}
+	\item We have $\mathcal{D} = \{D_1, D_2, ...D_{N}\}$ for $N$ observations where each $\mathcal{D}_i \in \{H, T\}$
+	\item Assume we have $n_H$ heads and $n_T$ tails, $n_H + n_T = N$
+	\item Let us have $P(H) = \theta, P(T) = 1-\theta$
+	\item We have Likelihood, $L(\theta) = P(\mathcal{D}|\theta) = P(\data_1, \data_2, ..., \data_N|\theta)$
+	\item Since observations are i.i.d., $L(\theta) = P(\data_1|\theta).P(\data_2|\theta) ... P(\data_N|\theta)$
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Coin flipping: Maximum Likelihood Estimate (MLE)}
+\begin{itemize}
+	\item  
+\begin{align*}  
+P(\data_i|\theta) =  \left
+\{\begin{array}{lr} \theta, & \text{for~} \data_i =H \\
+1-\theta, & \text{for~} \data_i = T
+\end{array}\right.\
+\end{align*}  
+\item Thus, $L(\theta) = \theta^{n_H}\times (1-\theta)^{n_T}$
+\item Log-Likelihood, $LL(\theta) = n_Hlog\theta + (n_T)(log(1-\theta))$
+\item $\frac{\partial LL(\theta)}{\partial \theta} = \frac{n_H}{\theta} + \frac{n_T}{1-\theta}$
+\item  For maxima, set derivative of LL to zero
+
+\item 	$\frac{n_H}{\theta} + \frac{n_T}{1-\theta} = 0 $
+\end{itemize}
+\begin{tcolorbox}
+	 $\theta = \frac{n_H}{n_H + n_T}$
+\end{tcolorbox}
+
+\end{frame}
+
+\begin{frame}{Maximum A Posteriori estimate (MAP)}
+\begin{itemize}
+
+
+\item \textbf{MLE does not handle prior knowledge}: What if we know that our coin is biased towards head?
+\item \textbf{MLE can overfit}: What is the probability of heads when we have observed 6 heads and 0 tails?
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Maximum A Posteriori estimate (MAP)}
+Goal: Maximize the Posterior
+\begin{tcolorbox}
+$\hat{\theta}_{MAP} = \underset{\theta}{\mathrm{argmin~}}
+P(\theta|\data)$\\
+$\hat{\theta}_{MAP}= \underset{\theta}{\mathrm{argmin~}}
+P(\data|\theta)P(\theta)$
+\end{tcolorbox}
+
+\end{frame}
+
+\begin{frame}{Prior distributions}
+\end{frame}
+
+\begin{frame}{Beta Distribution}
+\end{frame}
+
+\begin{frame}{Beta Distribution}
+\end{frame}
+
+\begin{frame}{Coin toss: MAP estimate}
+\end{frame}
 
 \end{document}
