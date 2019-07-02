@@ -1,0 +1,74 @@
+\documentclass{beamer}
+\beamerdefaultoverlayspecification{<+->}
+
+\usetheme{metropolis}           % Use metropolis theme
+\title{Bayesian Linear Regression}
+\date{\today}
+\author{Nipun Batra}
+\institute{IIT Gandhinagar}
+\begin{document}
+  \maketitle
+  
+  
+  
+\section{MLE, MAP, Bayesian}
+
+\begin{frame}{Bayes Rule - 1}
+\begin{itemize}
+	
+	
+	\item $P(A|B)P(B) = P(B|A)P(A)$
+	\item Let us consider an example from Wikipedia:
+	\begin{itemize}
+		\item A particular drug is 99\% sensitive and 99\% specific
+		\item i.e. test will produce 99\% true positive results for drug users and 99\% true negative results for non-drug users
+		\item 0.5\% of people are users of the drug
+		\item Question: What is the probability that a randomly selected individual with a positive test is a drug user?
+	\end{itemize}
+	
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bayes Rule - 2}
+\begin{itemize}
+	
+\item Test will produce 99\% true positive results for drug users and 99\% true negative results for non-drug users $\implies$
+\begin{itemize}
+	\item $P(Test=+|User=Drug) = 0.99$, or, $P(+|User) = 0.99$
+	\item and $P(-|\overline{User}) =0.99$ 
+\end{itemize}  
+		\item 0.5\% of people are users of the drug $\implies P(User) = 0.005$
+		\item Question: What is the probability that a randomly selected individual with a positive test is a drug user? $\implies P(User|+) = ?$
+		\item 
+				$P(User|+) = \frac{P(+|User)P(User)}{P(+)} = $
+		\item $\frac{P(\text{+}\mid\text{User}) P(\text{User})}{P(\text{+}\mid\text{User}) P(\text{User}) + P(\text{+}\mid\overline{User}) P(\overline{User})} = \frac{0.99\times 0.005}{0.99\times 0.005 + 0.01\times0.995} \approx .332$ 
+	
+\end{itemize}
+	
+
+\end{frame}
+
+
+\begin{frame}{Bayes Rule for Machine Learning}
+\begin{itemize}
+
+
+    \item $P(A|B)P(B) = P(B|A)P(A)$
+    \item Let us consider for a machine learning problem:
+    \begin{itemize}
+    	\item A = Parameters ($\theta$)
+    	\item B = Data ($\mathcal{D}$)
+    \end{itemize}
+\item We can rewrite the Bayes rule as:
+\begin{itemize}
+	\item $P(\theta|\mathcal{D}) = \frac{P(\mathcal{D}|\theta)P(\theta)}{P(\mathcal{D})}$
+	\item Posterior: 
+	\item Prior:
+	\item Likelihood
+	\item 
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\end{document}
