@@ -3,6 +3,9 @@
 
 %\beamerdefaultoverlayspecification{<+->}
 \newcommand{\data}{\mathcal{D}}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
 \newcommand\Item[1][]{%
 	\ifx\relax#1\relax  \item \else \item[#1] \fi
 	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
@@ -123,15 +126,26 @@ P(\data_i|\theta) =  \left
 \end{align*}  
 \item Thus, $L(\theta) = \theta^{n_H}\times (1-\theta)^{n_T}$
 \item Log-Likelihood, $LL(\theta) = n_Hlog\theta + (n_T)(log(1-\theta))$
-\item $\frac{\partial LL(\theta)}{\partial \theta} = \frac{n_H}{\theta} + \frac{n_T}{1-\theta}$
+\item $\frac{\partial LL(\theta)}{\partial \theta} = \frac{n_H}{\theta} - \frac{n_T}{1-\theta}$
 \item  For maxima, set derivative of LL to zero
 
-\item 	$\frac{n_H}{\theta} + \frac{n_T}{1-\theta} = 0 $
+\item 	$\frac{n_H}{\theta} - \frac{n_T}{1-\theta} = 0 $
 \end{itemize}
 \begin{tcolorbox}
-	 $\theta = \frac{n_H}{n_H + n_T}$
-\end{tcolorbox}
+	\begin{align*}
+	 \theta = \frac{n_H}{n_H + n_T}
+	\end{align*}
 
+\end{tcolorbox}
+Question: Is this maxima or minima?
+
+\end{frame}
+
+\begin{frame}{}
+\begin{align*}
+\frac{\partial^2 LL(\theta)}{\partial \theta^2} = \frac{-n_H}{\theta^2} + \frac{-n_T}{(1-\theta)^2} \in \mathbb R_-
+\end{align*}
+Thus, the solution is a maxima
 \end{frame}
 
 \begin{frame}{Maximum A Posteriori estimate (MAP)}
@@ -148,10 +162,10 @@ P(\data_i|\theta) =  \left
 \begin{frame}{Maximum A Posteriori estimate (MAP)}
 Goal: Maximize the Posterior
 \begin{tcolorbox}
-$\hat{\theta}_{MAP} = \underset{\theta}{\mathrm{argmin~}}
-P(\theta|\data)$\\
-$\hat{\theta}_{MAP}= \underset{\theta}{\mathrm{argmin~}}
-P(\data|\theta)P(\theta)$
+	\begin{align}
+\hat{\theta}_{MAP} = \argmin_\theta P(\theta|\data)\\
+\hat{\theta}_{MAP}= \argmin_\theta P(\data|\theta)P(\theta)
+\end{align}
 \end{tcolorbox}
 
 \end{frame}
@@ -169,6 +183,14 @@ P(\data|\theta)P(\theta)$
 \end{frame}
 
 \begin{frame}{Linear Regression: MLE}
+We previously saw 
+\begin{tcolorbox}
+\begin{align*}
+\hat{\theta}_{least-square} = \argmin_\theta \epsilon^T\epsilon = \argmin_\theta (y-X\theta)^T(y-X\theta)
+\end{align*}
+\end{tcolorbox}
+
+
 \end{frame}
 
 \end{document}
