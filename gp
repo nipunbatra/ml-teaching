@@ -1,0 +1,1 @@
+/home/apoorv/Desktop/github/nipunbatra.github.io/blog/2019/images/
