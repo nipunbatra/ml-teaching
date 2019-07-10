@@ -1,6 +1,7 @@
 \documentclass{beamer}
 \usepackage{notation}
 \usepackage{forloop}
+\usepackage{hyperref}
 
 \usetheme{metropolis}           % Use metropolis theme
 \title{Gaussian Processes}
@@ -125,12 +126,12 @@ and the conditional variance is: $\operatorname{var}(X_2 \mid X_1 = x_1) = 1-\rh
 	\end{frame}
 }
 
-\section{5D Multi-variate}
+\section{5D Multivariate}
 
 % for cov
 \forloop{iter}{1}{\value{iter} < 6}%
 {%
-	\begin{frame}{Multi-variate Gaussian Sample | Random State - \theiter}
+	\begin{frame}{Multivariate Gaussian Sample | Random State - \theiter}
 		\begin{center}
 			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/5d/\theiter}
 		\end{center}
@@ -139,6 +140,84 @@ and the conditional variance is: $\operatorname{var}(X_2 \mid X_1 = x_1) = 1-\rh
 			\item Since $X_1$ and $X_2$ are highly correlated, they move up and down together
 			\item but, $X_1$ and $X_5$ have low correlation, thus, they can seem to wiggle almost independently of each other.
 		\end{itemize}
+	\end{frame}
+}
+
+\section{Conditional Multivariate Distribution}
+
+\urldef\urlwik\url{https://en.wikipedia.org/wiki/Multivariate\_normal\_distribution#Conditional\_distributions}
+
+\begin{frame}{Conditional Multivariate Distribution Definition\footnote{\urlwik}}
+	If $N$-dimensional $\vecMat{x}$ is partitioned as follows
+	$$\mathbf{x}
+	=
+	\begin{bmatrix}
+	\mathbf{x}_A \\
+	\mathbf{x}_B
+	\end{bmatrix}
+	\text{ with sizes }\begin{bmatrix} q \times 1 \\ (N-q) \times 1 \end{bmatrix}$$
+	and accordingly $\vecMat{\mu}$ and $\vecMat{\Sigma}$ are partitioned as follows
+	$$\boldsymbol\mu
+	=
+	\begin{bmatrix}
+		\boldsymbol\mu_A \\
+		\boldsymbol\mu_B
+	\end{bmatrix}
+	\text{ with sizes }\begin{bmatrix} q \times 1 \\ (N-q) \times 1 \end{bmatrix}$$
+	$$\boldsymbol\Sigma
+	=
+	\begin{bmatrix}
+	\boldsymbol\Sigma_{AA} & \boldsymbol\Sigma_{AB} \\
+	\boldsymbol\Sigma_{BA} & \boldsymbol\Sigma_{BB}
+	\end{bmatrix}
+	\text{ with sizes }\begin{bmatrix} q \times q & q \times (N-q) \\ (N-q) \times q & (N-q) \times (N-q) \end{bmatrix}$$	
+\end{frame}
+
+\begin{frame}
+	then the distribution of $\mathbf{x}_A$ conditional on $\mathbf{x}_B = \vecMat{b}$ is multivariate normal $(\vecMat{x}_A|\vecMat{x}_B=b)\sim \mathcal{N}(\bar{\vecMat{\mu}}, \bar{\vecMat{\Sigma}})$
+	$$\bar{\boldsymbol\mu}
+	=
+	\boldsymbol\mu_A + \boldsymbol\Sigma_{AB} \boldsymbol\Sigma_{BB}^{-1}
+	\left(
+	\mathbf{B} - \boldsymbol\mu_B
+	\right)$$
+	and covariance matrix
+	$$\overline{\boldsymbol\Sigma}
+	=
+	\boldsymbol\Sigma_{AA} - \boldsymbol\Sigma_{AB} \boldsymbol\Sigma_{BB}^{-1} \boldsymbol\Sigma_{BA}.$$
+	
+\end{frame}
+
+% for cov
+\forloop{iter}{1}{\value{iter} < 6}%
+{%
+	\begin{frame}{Conditional Multivariate Distribution | Random State - \theiter}
+		\begin{center}
+			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/5d/conditional/1/\theiter}
+		\end{center}
+		From the visualisation above we can see that:
+		\begin{itemize}
+			\item Since $X_4$ and $X_5$ are highly correlated, $X_4$ moves such that it's value is similar to the fixed value of $X_5$.
+			\item but, $X_1$ and $X_5$ have low correlation, thus, there seems low relation between the values of these points.
+		\end{itemize}
+	\end{frame}
+}
+
+\begin{frame}{20 Dimensional Multivariate}
+	\begin{center}
+		\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/20d}\\
+	\end{center}	
+	The above heatmap confirms that there is correlation between nearby points, but close to zero or zero correlation otherwise.
+\end{frame}
+
+% for cov
+\forloop{iter}{1}{\value{iter} < 6}%
+{%
+	\begin{frame}{Multivariate (20D) Distribution Samples | Random State - \theiter}
+		\begin{center}
+			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/20d/\theiter}
+		\end{center}
+		From the animation above, we can see different family of functions of mean zero across these 20 points. We're really getting close now!
 	\end{frame}
 }
 
