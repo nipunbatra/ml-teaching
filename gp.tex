@@ -147,6 +147,7 @@ and the conditional variance is: $\operatorname{var}(X_2 \mid X_1 = x_1) = 1-\rh
 
 \urldef\urlwik\url{https://en.wikipedia.org/wiki/Multivariate\_normal\_distribution#Conditional\_distributions}
 
+\label{sec:condMul}
 \begin{frame}{Conditional Multivariate Distribution Definition\footnote{\urlwik}}
 	If $N$-dimensional $\vecMat{x}$ is partitioned as follows
 	$$\mathbf{x}
@@ -207,7 +208,7 @@ and the conditional variance is: $\operatorname{var}(X_2 \mid X_1 = x_1) = 1-\rh
 	\begin{center}
 		\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/20d}\\
 	\end{center}	
-	The above heatmap confirms that there is correlation between nearby points, but close to zero or zero correlation otherwise.
+	The above heatmap shows that there is correlation between nearby points, but close to zero or zero correlation otherwise.
 \end{frame}
 
 % for cov
@@ -217,9 +218,40 @@ and the conditional variance is: $\operatorname{var}(X_2 \mid X_1 = x_1) = 1-\rh
 		\begin{center}
 			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/20d/\theiter}
 		\end{center}
-		From the animation above, we can see different family of functions of mean zero across these 20 points. We're really getting close now!
+		From the animation above, we can see different family of functions of mean zero across 20 points. Notice that nearby points are more correlated (making the curve smooth) than the points farther away.
 	\end{frame}
 }
+
+\begin{frame}{Adding new Data Points}
+	Now we want to update the model with new data. We find the functional value at the points $X_1, X_2, X_6, X_11$.
+	
+	We will be using the equations at the start of \hyperref[sec:condMul]{section} Conditional multivariate distribution, to update or Guassian Process, in the wake of new data points.
+\end{frame}
+
+\begin{frame}{Updated Covariance Matrix}
+	\begin{center}
+		\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/post20d}
+	\end{center}
+	Notice that the variance of the points near the newly added data points seem to have reduced.
+\end{frame}
+
+% for cov
+\forloop{iter}{1}{\value{iter} < 6}%
+{%
+	\begin{frame}{Conditional Multivariate (20D) Distribution Samples | Random State - \theiter}
+		\begin{center}
+			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/20d/conditional/\theiter}
+		\end{center}
+		From the animation above, we can see points near the added data points (red) seem to have a much lower variance compared to points far off.
+	\end{frame}
+}
+
+\begin{frame}{Multivariate (20D) Posterior}
+	\begin{center}
+		\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/20dcov} \\
+	\end{center}
+	We can easily see the reduced variance in this plot.
+\end{frame}
 
 \begin{frame}{Cholesky Decompostion I}
 \begin{align*}
@@ -227,13 +259,44 @@ and the conditional variance is: $\operatorname{var}(X_2 \mid X_1 = x_1) = 1-\rh
 \end{align*}
 where $\vecMat{L}$ is a real lower triangular matrix.
 
-
 We can thus re-write the posterior mean and covariance as:
 
 \begin{align*}
 p(\vecMat{y_*}|\vecMat{X_*}, \vecMat{X}, \vecMat{y}) \sim \distrib{N}{\mu'}{\Sigma'} \\
 \vecMat{K} = \vecMat{LL}^T \\
 \end{align*}
+\end{frame}
+
+\urldef\urlsek\url{http://evelinag.com/Ariadne/covarianceFunctions.html}
+\section{Kernels!}
+\begin{frame}{Defining Squared Exponential Kernel}
+	We will now a bit into kernels. These are functions that are used to generate the covariance matrix.
+	
+	Below we have defined, what is known as the Squared Exponential Kernel\footnote{\urlsek}. \\
+	
+	We have 2 parameters the define this kernel.
+	\begin{itemize}
+		\item $\sigma$ is the scale of variance.
+		\item $l$ is the influence of the point to the neighbouring points
+	\end{itemize}
+
+	$$
+	k(x_1, x_2) = \sigma^2 \exp\left(-\frac{(x_i - x_j)^2}{2l^2}\right)
+	$$
+\end{frame}
+
+\begin{frame}{Varying $l$ with $\sigma = 1$}
+	\begin{center}
+		\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/vary_l}
+	\end{center}
+	
+\end{frame}
+
+\begin{frame}{Varying $\sigma$ with $l = 0.1$}
+	\begin{center}
+		\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/vary_s}
+	\end{center}
+	
 \end{frame}
 
 \begin{frame}{Cholesky Decomposition II}
