@@ -285,20 +285,5 @@ and the conditional variance is: $\operatorname{var}(X_2 \mid X_1 = x_1) = 1-\rh
 	
 \end{frame}
 
-\begin{frame}{Cholesky Decompostion I}
-\begin{align*}\end{align*}
-\vecMat{A} = \vecMat{L}\vecMat{L}^T\begin{frame}{Cholesky Decomposition II}
-\end{align*}\begin{align*}
-where $\vecMat{L}$ is a real lower triangular matrix.\vecMat{\alpha} = \vecMat{K}^{-1}(\vecMat{x}-\vecMat{\mu}) \\
-or, \vecMat{\alpha} = {\vecMat{LL}^T}^{-1}(\vecMat{x}-\vecMat{\mu}) \\
-We can thus re-write the posterior mean and covariance as:or, \vecMat{\alpha} = \vecMat{L}^{-T}\vecMat{L}^{-1}(\vecMat{x}-\vecMat{\mu}) \\
-Let, \vecMat{K}^{-1}(\vecMat{x}-\vecMat{\mu}) = \vecMat{\beta} \\
-\begin{align*}\end{align*}Thus, \vecMat{L}^{-T}\vecMat{L}^{-1}(\vecMat{x}-\vecMat{\mu}) = \vecMat{\beta} \\
-p(\vecMat{y_*}|\vecMat{X_*}, \vecMat{X}, \vecMat{y}) \sim \distrib{N}{\mu'}{\Sigma'} \\Let, \vecMat{L}^{-1}(\vecMat{x}-\vecMat{\mu}) = \vecMat{\gamma}\\
-\vecMat{K} = \vecMat{LL}^T \\Thus, \vecMat{L}\vecMat{\gamma} = \vecMat{x}-\vecMat{\mu} \\
-\end{align*}Thus, \vecMat{\gamma} = \vecMat{L} \setminus (\vecMat{x}-\vecMat{\mu})\\\
-\end{frame}Thus, \vecMat{\alpha} = \vecMat{L}^{T} \setminus (\vecMat{L} \setminus (\vecMat{x}-\vecMat{\mu}))
-\end{align*}
 
-\end{frame}
 \end{document}

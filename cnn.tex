@@ -1,5 +1,6 @@
 \documentclass{beamer}
 \usepackage{tcolorbox}
+\newcommand{\red}[1]{{\color{red}\small \textbf{Apoorv Task:} #1}}
 
 
 \usepackage{tikz}
@@ -68,10 +69,11 @@
 \section{Computer Vision}
 
 \begin{frame}{Imagenet Challenge}
-Add story about Imagenet from Quartz page
+\red{Add story about Imagenet from Quartz page}
 \end{frame}
 
 \begin{frame}{Some Computer Vision related problems}
+\red{Add an image for each of the following - but we should generate it on our own using notebooks and then provide students with the notebook}
 Object recognition
 Object detection
 Style transfer
@@ -82,24 +84,33 @@ Visual QA
 \begin{itemize}
 	\item Imagine an image of MNIST size and 1 hidden layer with 100 units, what is \# parameters?
 	\item Imagine an image of modern phones (12 Megapixel) and 1 hidden layer with 100 units, what is the \#parameters?
+	\red{add the final numbers}
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\red{From D2.AI book get the main intuitions - invariance leading to parameter sharing}
+\end{frame}
+
 \begin{frame}{Edge Detection}
-Apoorv to show vertical and horizontal edge detection on some real image -- write Python code
+\red{Apoorv to show vertical and horizontal edge detection on some real image -- write Python code - maybe pick some campus photo}
 
 \end{frame}
 %C4W1L02
 \begin{frame}{Edge Detection}
 Apoorv to show vertical edge detection -- write Python code on a subset of above image say 8 X 8 image (this is made via a seaborn heatmap with annotation ) 
-Draw with: https://tex.stackexchange.com/questions/437007/drawing-a-convolution-with-tikz
+Draw with: https://tex.stackexchange.com/questions/437007/drawing-a-convolution-with-tikz or equivalent in Python
 
-show multiple images walking through the convlution process
+
+\end{frame}
+
+\begin{frame}
+\red{Show images (generated in Python) to illustrate how convolutions works}
 \end{frame}
 
 %C4W1L03
 \begin{frame}
-Show Sobel, Scharr filter,...
+\red{Show Sobel, Scharr filter,...}
 \begin{tikzpicture}
 \draw[step=1cm,gray,very thin] (0, 0) grid (4,4);
 \fill[blue!40!white] (0,0) rectangle (2,2);
@@ -110,6 +121,7 @@ Show Sobel, Scharr filter,...
 
 %L04
 \begin{frame}
+\red{adding the following}
 Padding -  makes use of boundary pixels also, the image size does not reduce very quickly
 
 Formula for padding
@@ -202,7 +214,7 @@ f^{[l]}: \text{filter size}
 \end{frame}
 
 \begin{frame}{Pooling Layers}
-max pooling illustration using images
+\red{max pooling illustration using images}
 \end{frame}
 
 \begin{frame}{Why Convolutions work?}
@@ -216,12 +228,102 @@ Translation invariant
 \includegraphics[scale=0.7]{cnn/lenet.pdf}
 \end{frame}
 
+\begin{frame}{LeNet-5 on MNIST}
+\ref{add content from notebook}
+\end{frame}
+
 \begin{frame}{AlexNet}
+\red{add diagram}
 \end{frame}
 
 \begin{frame}{VGG}
+\red{add diagram}
 \end{frame}
 
+
+\begin{frame}{Edge detection}
+
+
+\begin{figure}
+	\includegraphics[width=0.475\textwidth]{cnn/mnist-4}
+	\hfill
+	\includegraphics[width=0.475\textwidth]{cnn/vertical-edge-linear}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Edge detection}
+
+
+\begin{figure}
+	\includegraphics[width=0.475\textwidth]{cnn/mnist-4}
+	\hfill
+	\includegraphics[width=0.475\textwidth]{cnn/4-vertical-edge-relu}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Edge detection}
+
+
+\begin{figure}
+	\includegraphics[width=0.475\textwidth]{cnn/mnist-4}
+	\hfill
+	\includegraphics[width=0.475\textwidth]{cnn/4-horizontal-edge-relu}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}{Edge detection}
+
+
+\begin{figure}
+	\includegraphics[width=0.475\textwidth]{cnn/mnist-5}
+	\hfill
+	\includegraphics[width=0.475\textwidth]{cnn/5-horizontal-edge-relu}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}{Edge detection}
+
+
+\begin{figure}
+	\includegraphics[width=0.3\textwidth]{cnn/mnist-2}
+	\hfill
+	\includegraphics[width=0.3\textwidth]{cnn/2-horizontal-edge-relu}
+	\hfill
+		\includegraphics[width=0.3\textwidth]{cnn/2-vertical-edge-relu}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Edge detection}
+
+
+\begin{figure}
+	\includegraphics[width=0.3\textwidth]{cnn/mnist-1}
+	\hfill
+	\includegraphics[width=0.3\textwidth]{cnn/1-horizontal-edge-relu}
+	\hfill
+	\includegraphics[width=0.3\textwidth]{cnn/1-vertical-edge-relu}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{figure}
+	\includegraphics[width=0.3\textwidth]{cnn/cifar-10-car-red}
+	\hfill
+	\includegraphics[width=0.3\textwidth]{cnn/cifar-10-car-green}
+	\hfill
+	\includegraphics[width=0.3\textwidth]{cnn/cifar-10-car-blue}
+\end{figure}
+
+\end{frame}
 
 
 

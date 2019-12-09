@@ -1,0 +1,62 @@
+\documentclass{beamer}
+\usepackage{tcolorbox}
+\newcommand{\red}[1]{{\color{red}\small \textbf{Apoorv Task:} #1}}
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,backgrounds,quotes,arrows.meta, shapes.geometric}
+\usepgflibrary{shapes.multipart}
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+%\beamerdefaultoverlayspecification{<+->}
+\newcommand{\data}{\mathcal{D}}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand\Item[1][]{%
+	\ifx\relax#1\relax  \item \else \item[#1] \fi
+	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+
+
+\usetheme{metropolis}           % Use metropolis theme
+\tikzstyle{nodecircle} = [circle, draw=black, fill=green, text centered, radius=2cm]
+
+\title{Hidden Markov Model (HMM)}
+\date{\today}
+\author{Nipun Batra}
+\institute{IIT Gandhinagar}
+
+
+
+
+\begin{document}
+	\maketitle
+	
+	\begin{frame}{Markov Chains}
+	\begin{itemize}
+		\item Let us use a random variable $X_t$ to denote the observation of weather at day $t$
+		\item Let us assume that there are only three types of weather - hot (H), cold (C), and warm (W)
+		\item Let us draw a sequence of observations: $X_{1:T}$
+	
+		\item Markov Assumption: that weather tomorrow depends only on weather today
+		\item $p(X_t|X_1, X_2, \cdots, X_{t-1}) = p(X_t|X_{t-1})$
+		\item Given the present, the past and the future are independent
+	\end{itemize}
+	
+	
+	\end{frame}
+	
+	\begin{frame}{Markov Chains}
+	\begin{tikzpicture}[node distance=2cm]
+	\node (X1) (nodecircle) {$X_1$};
+	\end{tikzpicture}
+
+	\end{frame}
+
+	%\item How will be the weather tomorrow if it was cold today, i.e. $P(X_{t+1}=Warm|X_{t}=Warm)$?
+
+\end{document}
