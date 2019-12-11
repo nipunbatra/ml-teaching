@@ -1,0 +1,305 @@
+\documentclass{beamer}
+\usepackage{tcolorbox}
+\usepackage{forloop}
+\usepackage{bm}
+
+
+%\beamerdefaultoverlayspecification{<+->}
+\newcommand{\data}{\mathcal{D}}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand\Item[1][]{%
+	\ifx\relax#1\relax  \item \else \item[#1] \fi
+	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+
+\usetheme{metropolis}           % Use metropolis theme
+
+
+\title{Multivariate Normal Distribution}
+\date{\today}
+\author{Nipun Batra}
+\institute{IIT Gandhinagar}
+\begin{document}
+  \maketitle
+  
+  
+
+
+\begin{frame}{Univariate Normal Distribution}
+
+The probability density of univariate Gaussian is given as: $$f(x) = \frac{1}{\sigma \sqrt{2\pi} } e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}$$
+	
+also, given as 
+$$f(x)\sim \mathcal{N}(\mu, \sigma^2)$$
+
+with mean $\mu \in R$ and variance $\sigma^2 >0$ 
+
+\end{frame}
+
+\begin{frame}{Univariate Normal Distribution}
+Pop Quiz: Why is the denominator the way it is? 
+
+$\int f(x) = 1$
+
+$\int $
+\end{frame}
+
+\begin{frame}{Univariate Normal Distribution}
+Add plots for 1d scatter 
+\end{frame}
+
+\begin{frame}{Univariate Normal Distribution}
+Add plots for 1d histogram
+\end{frame}
+
+\begin{frame}{Univariate Normal Distribution}
+Add plots for 1d histogram with different bin-width
+\end{frame}
+
+\begin{frame}{Univariate Normal Distribution}
+Add plots for 1d KDE
+\end{frame}
+
+
+\begin{frame}{Bivariate Normal Distribution}
+Bivariate normal distribution of two-dimensional random vector $\bf{X} =\begin{bmatrix}
+X_{1} \\
+X_{2} \\
+\end{bmatrix}
+$
+
+$
+\bf{X} = \begin{pmatrix}
+	X_1 \\
+	X_2
+\end{pmatrix}  \sim \mathcal{N}_2 (\mu ,\Sigma))
+$
+
+where, mean vector $\bm{\mu} =\begin{bmatrix}
+\mu_{1} \\
+\mu_{2} \\
+\end{bmatrix}
+=\begin{bmatrix}
+\operatorname{E}[X_{1}] \\
+\operatorname{E}[X_{2}] \\
+\end{bmatrix}
+$
+
+and, covariance matrix $\Sigma$
+$
+\Sigma_{i,j} := \operatorname{E} [(X_i - \mu_i)( X_j - \mu_j)] = \operatorname{Cov}[X_i, X_j] $
+\end{frame}
+
+\begin{frame}{Bivariate Normal Distribution}
+
+Question: What is Cov(X, X)?
+
+Answer: Var(X) = Cov(X, X) =  $\operatorname{E}[(X - \operatorname{E}[X])]^2$
+
+In the case of univariate normal, Var(X) is written as $\sigma^2$
+
+Question: What is the relation between $\Sigma_{i, j}$ and $\Sigma_{j, i}$?
+
+Answer: They are the same!
+
+Question: What can we say about the covariance matrix $\Sigma$?
+
+Answer: It is symmetric. Thus $\Sigma = \Sigma^T$
+\end{frame}
+
+\begin{frame}{Correlation and Covariance}
+If $X$ and $Y$ are two random variables, with means (expected values) $\mu_X$ and $\mu_Y$ and standard deviations $\sigma_X$ and $\sigma_Y$, respectively, then their covariance and correlation are as follows:
+
+$$\text{cov}_{XY} = \sigma_{XY} = E[(X-\mu_X)\,(Y-\mu_Y)] $$
+
+$$	\text{corr}_{XY} = \rho_{XY} = E[(X-\mu_X)\,(Y-\mu_Y)]/(\sigma_X \sigma_Y)
+$$
+so that
+$$
+\rho_{XY} = \sigma_{XY} / (\sigma_X \sigma_Y) $$
+
+where $E$ is the expected value operator. 
+\end{frame}
+
+\begin{frame}{PDF of bivariate normal distribution}
+
+We might have seen that 
+
+$$f_X(X_1, X_2) = \frac{exp(\frac{-1}{2}(X-\mu)^T \Sigma^{-1}(X-\mu))}{2\pi |\Sigma|^\frac{1}{2}}$$
+
+How do we get such a weird looking formula?!
+
+\end{frame}
+
+\begin{frame}{PDF of bivariate normal with no cross-correlation}
+
+Let us assume no correlation between $X_1$ and $X_2$.
+
+We have $\Sigma = \begin{bmatrix}
+\sigma_1^2 & 0 \\
+0 & \sigma_2^2 \\
+\end{bmatrix}$
+
+We have $f_X(X_1, X_2) = f_X(X_1)f_X(X_2)$
+
+$$=\frac{1}{\sigma_1 \sqrt{2\pi} } e^{-\frac{1}{2}\left(\frac{X_1-\mu_1}{\sigma_1}\right)^2} \times \frac{1}{\sigma_2 \sqrt{2\pi} } e^{-\frac{1}{2}\left(\frac{X_2-\mu_2}{\sigma_2}\right)^2}$$
+
+$$= \frac{1}{\sigma_1 \sigma_2 2\pi } e^{-\frac{1}{2}\{\left(\frac{X_1-\mu_1}{\sigma_1}\right)^2 + \left(\frac{X_2-\mu_2}{\sigma_2}\right)^2 \}}  $$
+
+
+
+\end{frame}
+
+\begin{frame}
+
+Let us consider only the exponential part for now
+
+$ Q =  \left(\frac{X_1-\mu_1}{\sigma_1}\right)^2 + \left(\frac{X_2-\mu_2}{\sigma_2}\right)^2 $
+
+Question: Can you write Q in the form of vectors X and $\mu$?
+
+$$
+ = \begin{bmatrix}
+	X_1 - \mu_1 &
+	X_2 - \mu_2 \\
+\end{bmatrix}_{1\times2}  g(\Sigma)_{2\times2} \begin{bmatrix}
+X_1 - \mu_1 \\
+X_2 - \mu_2 \\
+\end{bmatrix}_{2\times1}
+$$
+
+Here $g(\Sigma)$ is a matrix function of $\Sigma$ that will result in $\sigma_1^2$ like terms in the denominator; also there is no cross-terms indicating zeros in right diagonal!
+
+$g(\Sigma) = \begin{bmatrix}
+ \frac{1}{\sigma_1^2}& 0  \\
+ 0 &  \frac{1}{\sigma_2^2} \\
+\end{bmatrix}_{2\times2} = \frac{1}{\sigma_1^2 \sigma_2^2}\begin{bmatrix}
+{\sigma_2^2}& 0  \\
+0 &  {\sigma_1^2}   \\ 
+\end{bmatrix}_{2\times2} = \frac{1}{|\Sigma|} \operatorname{adj(\Sigma)} = \Sigma^{-1}$
+
+\end{frame}
+
+
+\begin{frame}
+Let us consider the normalizing constant part now
+
+$M = \frac{1}{\sigma_1 \sigma_2 2\pi }$
+$=\frac{1}{2\pi \times |\Sigma|^{\frac{1}{2}}}$
+\end{frame}
+
+
+\begin{frame}{Example of pdf with cross-correlation  = 0}
+
+\end{frame}
+
+\begin{frame}{Example of pdf with cross-correlation  $\neq$ 0}
+
+\end{frame}
+
+\begin{frame}{Detour: Inverse of partioned symmetric matrix}
+\href{http://fourier.eng.hmc.edu/e161/lectures/gaussianprocess/node6.html}{Courtesy}
+
+Consider an $n\times n$ symmetric matrix $A$ and divide it into four blocks
+
+$
+A = \begin{bmatrix}
+	A_{11} & A_{12}\\
+	A_{21} & A_{22} \\
+\end{bmatrix} =  \begin{bmatrix}
+A_{11} & A_{12}\\
+A_{12}^T & A_{22} \\
+\end{bmatrix}
+$
+
+For example, let $n=4$, we have
+
+$$
+A =  \begin{bmatrix}
+	1 & 2 & 3\\
+	2 & 5 & 6 \\
+	3 & 6 & 8 \\
+	
+\end{bmatrix}
+$$
+
+We could for example have 
+
+$A_{11} = \begin{bmatrix}
+1 & 2 \\
+2 & 5 \\
+\end{bmatrix}$ and $A_{12} = \begin{bmatrix}
+3 \\ 6
+\end{bmatrix}
+$ and $A_{22} = \begin{bmatrix}
+8
+\end{bmatrix}$
+
+
+\end{frame}
+
+\begin{frame}
+Question: Write $B = A^{-1}$ in terms of the four blocks
+$
+B = \begin{bmatrix}
+	B_{11} & B_{12}\\
+	B_{12}^T & A_{22} \\
+\end{bmatrix}
+= A^{-1}$
+
+$A_{11}$ and $B_{11} \in R^{p\times p}$ 
+
+$A_{22}$ and $B_{2} \in R^{q\times q}$
+
+$A_{12} = A_{21}^T$ and $B_{12} = B_{21}^T \in R^{p\times q}$
+
+and, p + q = n 
+ 
+\end{frame}
+
+\begin{frame}
+$I_n = AA^{-1} = AB$
+
+$=\begin{bmatrix}
+A_{11} & A_{12}\\
+A_{12}^T & A_{22} \\
+\end{bmatrix} \begin{bmatrix}
+B_{11} & B_{12}\\
+B_{12}^T & B_{22} \\
+\end{bmatrix}
+= \begin{bmatrix}
+A_{11}B_{11} +A_{12}B_{12}^T & A_{11}B_{12} + A_{12}A_{22}\\
+A_{12}^TB_{11} + A_{22}B_{12}^T & A_{12}^TB_{12} + A_{22}B_{22}  \\
+\end{bmatrix} = \begin{bmatrix}
+I_p & 0 \\
+0 & I_q
+\end{bmatrix}$
+
+Thus, we have
+
+$A_{11}B_{11} +A_{12}B_{12}^T = I_p$
+Similarly, we get 3 more equations --- complete..
+\end{frame}
+
+\begin{frame}
+Write the four results of $B_11$ etc. in terms of A
+\end{frame}
+
+\begin{frame}{Determinant of Partitioned Symmetric Matrix}
+Proof 3 from http://fourier.eng.hmc.edu/e161/lectures/gaussianprocess/node6.html
+\end{frame}
+
+\begin{frame}
+
+\end{frame}
+
+
+\begin{frame}{Marginalisation of bivariate normal}
+Complete derivation from
+\end{frame}
+
+\begin{frame}{Conditional Normal Distribution}
+
+\end{frame}
+\end{document}
