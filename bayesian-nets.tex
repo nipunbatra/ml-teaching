@@ -1,4 +1,4 @@
-  \documentclass{beamer}
+\documentclass{beamer}
 \usepackage{tcolorbox}
 
 %\beamerdefaultoverlayspecification{<+->}
@@ -285,6 +285,81 @@ $$
     Calculate, $P(y=1 \vert w_{1}=0, w_{2}=0, w_{3}=1)$ and $P(y=1 \vert w_{1}=0, w_{2}=0, w_{3}=1)$.\\
     
     if $P(y=1 \vert w_{1}=0, w_{2}=0, w_{3}=1)$ \gt $P(y=0 \vert w_{1}=0, w_{2}=0, w_{3}=1)$, then it is a spam mail
+\end{frame}
+
+\begin{frame}{Gaussian naive Bayes}
+    We have classes $C_{1}, C_{2}, C_{3},\dots, C_{k}$\\
+    There is a continuous attribute x\\
+    For Class k 
+    \begin{itemize}
+        \item $\mu_{k} = Mean(x \vert y(x) = C_{k})$
+        \item $\sigma_{k}^{2} = Variance(x \vert y(x)=C_{k})$
+    \end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Guassian Naive Bayes}
+    Now for x = some observation 'v'\\
+    \begin{equation*}
+        P(x=v\vert C_{k}) = \frac{1}{\sqrt{2\pi \sigma_{k}^{2}}} \exp^{\frac{-(v-\mu_{k})^{2}}{2\sigma_{k}^{2}}}
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{Wikipedia Example}
+
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    Height&Weight&Footsize&Gender\\
+    \hline
+    \hline
+         6 & 180& 12& M \\
+         5.92 & 190& 11& M \\
+         5.58 & 170& 12& M \\
+         5.92 & 165& 10& M \\
+         5 & 100& 6& F \\
+         5.5 & 100& 6& F \\
+         5.42 & 130& 7& F \\
+         5.75 & 150& 7& F \\
+         \hline
+    \end{tabular}
+    
+    \end{center}
+    
+\end{frame}
+
+\begin{frame}{Example}
+    \begin{center}
+        
+    
+    \begin{tabular}{|c|c|c|}
+    \hline
+     &Male&Female\\
+     \hline
+     \hline
+     Mean (height) & 5.855 & 5.41  \\
+     Variance (height) & 3.5 \times 10^{-2} & 9.7 \times 10^{-2}  \\
+     Mean (weight) & 176.25 & 132.5  \\
+     Variance (weight) & 1.22 \times 10^{2} & 5.5 \times 10^{2}   \\
+     Mean (Foot) & 11.25 & 7.5  \\
+     Variance (Foot) & 9.7 \times 10^{-1} & 1.67  \\
+    \hline
+    \hline
+    \end{tabular}
+    \end{center}
+\end{frame}
+
+
+\begin{frame}{Classify the Person}
+
+    Given height = 6ft, weight = 13.5 lbs, feet = 8 inches, classify if it's male or female.
+    
+\end{frame}
+
+\begin{frame}{Classify the Person}
+    Given height = 6ft, weight = 13.5 lbs, feet = 8 inches, classify if it's male or female.\\
+    \\
+    It is female!
 \end{frame}
 % \begin{frame}{Matrix representation of the expression}
 % \begin{center}
