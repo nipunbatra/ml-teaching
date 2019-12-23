@@ -2,6 +2,9 @@
 \usepackage{notation}
 \usepackage{forloop}
 \usepackage{hyperref}
+
+\usepackage{mathtools}  
+\mathtoolsset{showonlyrefs}  
 % \usepackage[dvipsnames]{xcolor}
 
 \usetheme{metropolis}           % Use metropolis theme
@@ -309,9 +312,83 @@ and the conditional variance is: $\operatorname{var}(X_2 \mid X_1 = x_1) = 1-\rh
 \begin{frame}{Varying $\sigma$ with $l = 0.1$}
 	\begin{center}
 		\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/vary_s}\\
-		As it can be seen with the plots above, a small $s$ keeps the variance and covariance values small. Whereas, a bigger $s$ leads to higher values of variance and covariance.
+		As it can be seen with the plots above, a small $s$ keeps the variance and covariance values small. Whereas, a bigger $s$ leads to higher values of variance and covariance. One thing to notice is that we are talking about covariance, not correlation, $s$ doesn't affect the correlation between random variables.
 	\end{center}
+\end{frame}
+
+\begin{frame}{Varying kernel parameters on 20D Guassian with conditioning}
+	\begin{center}
+		\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/kernel/20gp_ker1}\\
+		The big dark circles in the above plot denote the fixed points on which the GP is conditioned. Furthermore, notice the translucent areas, denoting the variance and the smoothness of the function denoting the correlation between random variables.
+		
+		We have used the squared exponential kernel introduced earlier in this example.
+	\end{center}
+\end{frame}
+
+\begin{frame}{Varying kernel parameters on 20D Guassian with conditioning}
+	\begin{center}
+		\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/kernel/20gp_ker2}\\
+		We can notice the increase in the variance of each of the random variables by increasing the value of $s$ parameter of the kernel.
+	\end{center}
+\end{frame}
+
+\begin{frame}{Varying kernel parameters on 20D Guassian with conditioning}
+	\begin{center}
+		\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/kernel/20gp_ker3}\\
+		Increasing the value of $l$ reduces the correlation between nearby points. We, therefore, see that the resulting curve is rougher.
+	\end{center}
+\end{frame}
+
+\begin{frame}{Varying kernel parameters on 20D Guassian with conditioning}
+	\begin{center}
+		\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/kernel/20gp_ker4}\\
+		Keeping a huge value of $l$ results in the conditioned random variables to be highly uncorrelated with the fixed points, as can be seen above. Further, the conditioned points just move around the mean, which is set to zero in this example.
+	\end{center}
+\end{frame}
+
+\section{Formalization of Gaussian Processes}
+
+\begin{frame}{Gaussian Processes}
+		A Gaussian process is fully specified by a mean function $m(\vecMat{x})$ and covariance function $K(\vecMat{x}, \vecMat{x'})$
+		
+		$$f(\vecMat{x}) \sim GP (m(\vecMat{x}),K(\vecMat{x}, \vecMat{x'}))$$
+		
+		where $\vecMat{x}$ is a vector and $f$ is a real-valued function, i.e. $f: \mathbb{R}^n \rightarrow \mathbb{R}$.
+\end{frame}
+
+\begin{frame}{Noiseless GPs}
+		We will first consider the case of noiseless GPs. This case assumes that for a particular $\vecMat{x}$, we would always receive a single functional value $f(\vecMat{x})$, i.e., there is no inherent noise in our function.
+\end{frame}
+
+\begin{frame}{Noiseless GPs}
+		Given train data:
+		
+		$$D = {(\vecMat{x_i}, y_i), i = 1:N}$$
+\end{frame}
+
+\begin{frame}{Noiseless GPs}
+	Given a test set $\vecMat{X}_{\ast}$ of size $N_{\ast} \times d$ containing $N_{\ast}$ points in $\mathbb{R}_d$, we want to predict function outputs $y_{\ast}$.
+
+	We can write:
+
+	$$\begin{pmatrix}
+	y \\
+	y_*
+	\end{pmatrix}  \sim \mathcal{N} \left( \begin{pmatrix}
+	\vecMat{\mu} \\
+	\vecMat{\mu}_*
+	\end{pmatrix} , \begin{pmatrix}
+	\vecMat{K} & \vecMat{K}_* \\
+	\vecMat{K}_*^T & \vecMat{K}_{**}
+	\end{pmatrix} \right)$$
 	
+	where:
+	
+	\begin{gather}
+	K = Ker(X, X) \in {\rm I\!R}^{N\times N} \label{eq1}\\
+	K_* = Ker(X, X_*) \in {\rm I\!R}^{N\times N_*} \label{eq2}\\
+	K_{**} = Ker(X_*, X_*) \in {\rm I\!R}^{N_*\times N_*} \label{eq3}
+	\end{gather}
 \end{frame}
 
 
