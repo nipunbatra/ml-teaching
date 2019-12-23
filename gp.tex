@@ -2,27 +2,32 @@
 \usepackage{notation}
 \usepackage{forloop}
 \usepackage{hyperref}
+% \usepackage[dvipsnames]{xcolor}
 
 \usetheme{metropolis}           % Use metropolis theme
 \title{Gaussian Processes}
 \date{\today}
 \author{Nipun Batra}
 \institute{IIT Gandhinagar}
+% \hypersetup{colorlinks=true,linkcolor=magenta,filecolor=magenta,urlcolor=magenta,
+% 	linkbordercolor=magenta,
+	% pdfborderstyle={/S/U/W 1}
+% }
 \begin{document}
   \maketitle
   
   
   
 \section{Gaussian Distribution}
-  \begin{frame}{1d Gaussian Scatter Plot}
+  \begin{frame}{1D Gaussian Scatter Plot}
     \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/1d-gp}
   \end{frame}
 
-  \begin{frame}{1d Gaussian Histogram}
+  \begin{frame}{1D Gaussian Histogram}
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/1d-gp-hist}
 \end{frame}
 
-  \begin{frame}{Varying 1d Gaussian Variance}
+  \begin{frame}{Varying 1D Gaussian Variance}
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/1d-gp-kde2}\end{frame}
 
 \begin{frame}{Bi-variate Gaussian}
@@ -37,25 +42,37 @@ X_2
 a &\rho \\
 \rho & b
 \end{pmatrix} \right)
-$$
+$$\\
+
+\begin{center}
+	$\rho$ denotes the correlation between $X_1$ and $X_2$.
+	
+	$b$ denotes the variance of $X_1$.
+	
+	$a$ denotes the variance of $X_2$.
+\end{center}
+
 \end{frame}
 
 \begin{frame}{Sampling Bi-variate Gaussian - 1}
 \begin{center}
-	\includegraphics[height=\textheight -10pt ,keepaspectratio]{gp/2d-gp}
+	\includegraphics[height=\textheight -45pt ,keepaspectratio]{gp/2d-gp}\\
+	Here the covariance between the two random variables is positive.
 \end{center}
 \end{frame}
 
 
 \begin{frame}{Sampling Bi-variate Gaussian - 2}
 	\begin{center}
-		\includegraphics[height=\textheight -10pt ,keepaspectratio]{gp/2d-gp2}
+		\includegraphics[height=\textheight -45pt ,keepaspectratio]{gp/2d-gp2}\\
+		Here the covariance between the two random variables is negative.
 	\end{center}
 \end{frame}
 
 \begin{frame}{Sampling Bi-variate Gaussian - 3}
 	\begin{center}
-		\includegraphics[height=\textheight -10pt ,keepaspectratio]{gp/2d-gp3}
+		\includegraphics[height=\textheight -30pt ,keepaspectratio]{gp/2d-gp3}\\
+		The two random variables are uncorrelated.
 	\end{center}
 \end{frame}
 
@@ -71,21 +88,23 @@ $$
 	\end{center}
 \end{frame}
 
-\section{Visualizing samples from 2d Gaussian}
+\section{Visualizing samples from 2D Gaussian}
 
 % for cov
 \newcounter{iter}
 \forloop{iter}{1}{\value{iter} < 6}%
 {%
 	\begin{frame}{Cov = 0.1 | Random State - \theiter}
-		\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/0.1/\theiter}
+		\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/0.1/\theiter}\\
+		One can notice, increasing the $\rho$ (or the covariance) between $X_1$ and $X_2$ results in the realizations of $X_1$ and $X_2$ to increasingly move together.
 	\end{frame}
 }
 % for cov
 \forloop{iter}{1}{\value{iter} < 6}%
 {%
 	\begin{frame}{Cov = 0.7 | Random State - \theiter}
-		\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/0.7/\theiter}
+		\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/0.7/\theiter}\\
+		One can notice, increasing the $\rho$ (or the covariance) between $X_1$ and $X_2$ results in the realizations of $X_1$ and $X_2$ to increasingly move together.
 	\end{frame}
 }
 
@@ -114,7 +133,8 @@ and the conditional variance is: $\operatorname{var}(X_2 \mid X_1 = x_1) = 1-\rh
 \forloop{iter}{1}{\value{iter} < 6}%
 {%
 	\begin{frame}{Conditional bi-variate | Cov = 0.1 | Random State - \theiter}
-		\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/conditional/0.1/\theiter}
+		\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/conditional/0.1/\theiter}\\
+		Notice that upon fixing the first random variable, the variance of the second random variable $X_2$ is a function of the covariance ($\rho$) between the two random variables.
 	\end{frame}
 }
 
@@ -122,7 +142,8 @@ and the conditional variance is: $\operatorname{var}(X_2 \mid X_1 = x_1) = 1-\rh
 \forloop{iter}{1}{\value{iter} < 6}%
 {%
 	\begin{frame}{Conditional bi-variate | Cov = 0.7 | Random State - \theiter}
-		\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/conditional/0.7/\theiter}
+		\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/conditional/0.7/\theiter}\\
+		Notice that upon fixing the first random variable, the variance of the second random variable $X_2$ is a function of the covariance ($\rho$) between the two random variables.
 	\end{frame}
 }
 
@@ -144,6 +165,10 @@ and the conditional variance is: $\operatorname{var}(X_2 \mid X_1 = x_1) = 1-\rh
 }
 
 \section{Conditional Multivariate Distribution}
+
+%\begin{frame}
+%	The idea that is that we can extend this modelling technique to any number of random variables.
+%\end{frame}
 
 \urldef\urlwik\url{https://en.wikipedia.org/wiki/Multivariate\_normal\_distribution#Conditional\_distributions}
 
@@ -198,8 +223,8 @@ and the conditional variance is: $\operatorname{var}(X_2 \mid X_1 = x_1) = 1-\rh
 		\end{center}
 		From the visualisation above we can see that:
 		\begin{itemize}
-			\item Since $X_4$ and $X_5$ are highly correlated, $X_4$ moves such that it's value is similar to the fixed value of $X_5$.
-			\item but, $X_1$ and $X_5$ have low correlation, thus, there seems low relation between the values of these points.
+			\item Since the covariance between $X_4$ and $X_5$ is high, $X_4$ moves such that it's value is similar to the fixed value of $X_5$.
+			\item Since covariance between $X_1$ and $X_5$ is low, thus the realizations of $X_1$ are uncorrelated to the fixed value of $X_5$.
 		\end{itemize}
 	\end{frame}
 }
@@ -208,7 +233,7 @@ and the conditional variance is: $\operatorname{var}(X_2 \mid X_1 = x_1) = 1-\rh
 	\begin{center}
 		\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/20d}\\
 	\end{center}	
-	The above heatmap shows that there is correlation between nearby points, but close to zero or zero correlation otherwise.
+	The above heatmap shows that there is high covariance value between nearby points, but close to zero or zero covariance otherwise.
 \end{frame}
 
 % for cov
@@ -222,8 +247,10 @@ and the conditional variance is: $\operatorname{var}(X_2 \mid X_1 = x_1) = 1-\rh
 	\end{frame}
 }
 
+\section{Learning from Data}
+
 \begin{frame}{Adding new Data Points}
-	Now we want to update the model with new data. We find the functional value at the points $X_1, X_2, X_6, X_11$.
+	Now we want to update the model with new data. We find the functional value at the points $X_1, X_2, X_6, X_{11}$.
 	
 	We will be using the equations at the start of \hyperref[sec:condMul]{section} Conditional multivariate distribution, to update or Guassian Process, in the wake of new data points.
 \end{frame}
@@ -256,7 +283,7 @@ and the conditional variance is: $\operatorname{var}(X_2 \mid X_1 = x_1) = 1-\rh
 \urldef\urlsek\url{http://evelinag.com/Ariadne/covarianceFunctions.html}
 \section{Kernels!}
 \begin{frame}{Defining Squared Exponential Kernel}
-	We will now a bit into kernels. These are functions that are used to generate the covariance matrix.
+	We will now dive a bit into kernels. These are functions that are used to generate the covariance matrix.
 	
 	Below we have defined, what is known as the Squared Exponential Kernel\footnote{\urlsek}. \\
 	
@@ -273,14 +300,16 @@ and the conditional variance is: $\operatorname{var}(X_2 \mid X_1 = x_1) = 1-\rh
 
 \begin{frame}{Varying $l$ with $\sigma = 1$}
 	\begin{center}
-		\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/vary_l}
+		\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/vary_l}\\
+		As it can be seen with the plots above, using a smaller $l$ means the function is much more smoother. Using a larger $l$, as in the case when $l = 1$, we see the covariance between two points that are far off, falls to zero.
 	\end{center}
 	
 \end{frame}
 
 \begin{frame}{Varying $\sigma$ with $l = 0.1$}
 	\begin{center}
-		\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/vary_s}
+		\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/vary_s}\\
+		As it can be seen with the plots above, a small $s$ keeps the variance and covariance values small. Whereas, a bigger $s$ leads to higher values of variance and covariance.
 	\end{center}
 	
 \end{frame}
