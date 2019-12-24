@@ -421,15 +421,12 @@
 	
 	\begin{frame}{GP Updates - Cholesky Decomposition}
 		$\mathbf{K}$ is a semi positive definite matrix. Such matrices can be decomposed using cholesky decomposition. Which can be written as:
-		
 		$$\mathbf{A} = \mathbf{L L}^T$$
 		
 		where:
-		
 		$\mathbf{L}$ is a lower triangular matrix with real and positive diagonal entries.	
 		
 		We can thus re-write the posterior mean and covariance as:
-		
 		\begin{gather}
 			p(y_*|X_*, X, y) \sim \mathcal{N}(\mu', \Sigma') \\
 			K = LL^T
@@ -439,19 +436,61 @@
 	\begin{frame}{GP Updates - Cholesky Decomposition}
 		We are now going to use the \textbackslash \ as follows: if $\mathbf{Aω}=\mathbf{B}$, then $\mathbf{ω} = \mathbf{B} \textbackslash \mathbf{A}$. We now have:
 		\begin{gather}
-			\alpha = K^{-1}(x-\mu) \\
-			\text{or, } \alpha = {LL^T}^{-1}(x-\mu) \\
-			\text{or, } \alpha = L^{-T}L^{-1}(x-\mu) \\
-			\text{Let, } K^{-1}(x-\mu) = \beta \\
-			\text{Thus, } L^{-T}L^{-1}(x-\mu) = \beta \\
-			\text{Let, } L^{-1}(x-\mu) = \gamma\\
-			\text{Thus, } L\gamma = x-\mu \\
-			\text{Thus, } \gamma = L \setminus (x-\mu)\\\
-			\text{Thus, } \alpha = L^{T} \setminus (L \setminus (x-\mu))
-		\end{gather}
-		
-		We can therefore have avoid matrix inversion.
+\bm{\alpha} = \mathbf{K}^{-1}(\mathbf{x}-\bm{\mu}) \\
+\text{or, } \bm{\alpha} = {\mathbf{L}\mathbf{L}^T}^{-1}(\mathbf{x}-\bm{\mu}) \\
+\text{or, } \bm{\alpha} = \mathbf{L}^{-T}\mathbf{L}^{-1}(\mathbf{x}-\bm{\mu}) \\
+\text{Let, } \mathbf{K}^{-1}(\mathbf{x}-\bm{\mu}) = \bm{\beta} \\
+\text{Thus, } \mathbf{L}^{-T}\mathbf{L}^{-1}(\mathbf{x}-\bm{\mu}) = \bm{\beta} \\
+\text{Let, } \mathbf{L}^{-1}(\mathbf{x}-\bm{\mu}) = \bm{\gamma}\\
+\text{Thus, } \mathbf{L}\bm{\gamma} = \mathbf{x}-\bm{\mu} \\
+\text{Thus, } \bm{\gamma} = \mathbf{L} \setminus (\mathbf{x}-\bm{\mu})\\\
+\text{Thus, } \bm{\alpha} = \mathbf{L}^{T} \setminus (\mathbf{L} \setminus (\mathbf{x}-\bm{\mu}))
+\end{gather}
+
+
+
+		We avoided matrix inversion by instead solving a system of eq.
 	\end{frame}
+
+	\begin{frame}{GP Updates - Cholesky Decomposition}
+	Thus, we can find the posterior mean as:
+	$$\bm{\mu'} = \bm{\mu}_* + \mathbf{K}_*^T \bm{\alpha}$$
+	
+	We also know that
+	$$\bm{\Sigma'} = \mathbf{K}_{**} - \mathbf{K}_*^T\mathbf{K}^{-1}\mathbf{K}_*$$
+	
+	Let us now define
+	\begin{gather}
+	\mathbf{v} = \mathbf{L} \setminus \mathbf{K}_{*}\\
+	\text{or, } \mathbf{v} = \mathbf{L}^{-1}\mathbf{K}_{*}\\
+	\text{Thus, } \mathbf{v}^{T} = \mathbf{K}_{*}^T\mathbf{L}^{-T}\\
+	\text{Thus, } \mathbf{v}^{T}\mathbf{v} = \mathbf{K}_{*}^T\mathbf{L}^{-T}\mathbf{L}^{-1}\mathbf{K}_{*}\\
+	\text{Thus, } \mathbf{v}^{T}\mathbf{v} = \mathbf{K}_*^T\mathbf{K}^{-1}\mathbf{K}_* = \mathbf{K}_{**} - \bm{\Sigma'}
+	\end{gather}
+	
+\end{frame}
+
+\begin{frame}{Noiseless GPs}
+    Initially, we had assumed that the functional evaluations were free of noise. That is.
+	$$y_i = f(\mathbf{x}_i)$$
+	
+	But there can be cases where we have noise in the observed data as well.
+	\begin{gather}
+	y_i = f(\mathbf{x}_i) + \epsilon \\
+	\epsilon \sim \mathcal{N}(0, \sigma_y^2)
+	\end{gather}
+	
+	This adds uncertainty to the training points as well. We can counter this issue by updating the covariance matrix $\mathbf{K}$ in the following way.
+	$$\mathbf{K}_y = \sigma_y^2\mathbf{I_n} + \mathbf{K}$$	
+\end{frame}
+
+
+\begin{frame}{GPs}
+	\includegraphics[width=.5\textwidth]{gp/final/noisygp}%
+	\includegraphics[width=.5\textwidth]{gp/final/noiselessgp}
+	
+	One can see the differences between the two in the above plots. The left one is of a noisy GP, where even after adding the data points, the uncertainty doesn't go to zero, whereas the uncertainty reaches zero for the noiseless GP.
+\end{frame}
 
 	
 	
