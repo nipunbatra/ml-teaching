@@ -16,6 +16,15 @@
     urlcolor=cyan,
 }
 
+\newcommand*{\mathcolor}{}
+\def\mathcolor#1#{\mathcoloraux{#1}}
+\newcommand*{\mathcoloraux}[3]{%
+	\protect\leavevmode
+	\begingroup
+	\color#1{#2}#3%
+	\endgroup
+}
+
 \usepackage{tikz}
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
 
@@ -466,29 +475,29 @@ Prediction: & Made by the model \\
 
 \end{frame}
 
-%\begin{frame}{Accuracy Metrics: Accuracy}
-%$$
-%\bordermatrix{&\texttt{Prediction}\;(\hat{y})\cr
-%               \checkmark&\texttt{Good}\cr
-%               \checkmark&\texttt{Good}\cr
-%                &\texttt{Good}\cr
-%                &\texttt{Good}\cr
-%               \checkmark&\texttt{Bad}}
-%\qquad \qquad
-%\bordermatrix{&\texttt{Ground Truth}\cr
-%                &\texttt{Good}\cr
-%                &\texttt{Good}\cr
-%                &\texttt{Bad}\cr
-%                &\texttt{Bad}\cr
-%                &\texttt{Bad}}
-%$$
-%
-%\begin{align*}
-%\texttt{Accuracy} &= \frac{||y = \hat{y}||}{||y||} \\
-%&= \frac{3}{5} = 0.6
-%\end{align*}
-%
-%\end{frame}
+\begin{frame}{Accuracy Metrics: Accuracy}
+$$
+\bordermatrix{&\texttt{Prediction}\;(\hat{y})\cr
+               \checkmark&\texttt{Good}\cr
+               \checkmark&\texttt{Good}\cr
+                &\texttt{Good}\cr
+                &\texttt{Good}\cr
+               \checkmark&\texttt{Bad}}
+\qquad \qquad
+\bordermatrix{&\texttt{Ground Truth}\cr
+                &\texttt{Good}\cr
+                &\texttt{Good}\cr
+                &\texttt{Bad}\cr
+                &\texttt{Bad}\cr
+                &\texttt{Bad}}
+$$
+
+\begin{align*}
+\texttt{Accuracy} &= \frac{||y = \hat{y}||}{||y||} \\
+&= \frac{3}{5} = 0.6
+\end{align*}
+
+\end{frame}
 
 \begin{frame}{Types of Data: Imbalanced Classes}
 \[
@@ -543,7 +552,7 @@ $$
 \texttt{Accuracy} &= \frac{||y = \hat{y} = \texttt{Good}||}{||\hat{y} = \texttt{Good}||} = \frac{2}{4} = 0.5
 \end{align*}
 
-``the fraction of relevant instances among the retrieved instances''
+``the fraction of relevant instances among the retrieved instances'', i.e. ``out of the number of times we predict \texttt{Good}, how many times is the condition actually \texttt{Good}''
 
 \end{frame}
 
@@ -573,7 +582,7 @@ $$
 \end{frame}
 
 \begin{frame}{Types of Data: Imbalanced Classes}
-Given predictions of weather a tissue is cancerous or not ($n = 100$).
+Given predictions of whether a tissue is cancerous or not ($n = 100$).
 $$
 \bordermatrix{&\texttt{Prediction}\;(\hat{y})\cr
                \rightarrow&\texttt{No}\cr
@@ -678,20 +687,20 @@ Matthew's Coeff. = 0.14
 \end{frame}
 
 
-\section{Regression}
 
-\begin{frame}{Regression Examples}
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.7\linewidth]{accuracy/reg1.png}
-\end{figure}
 
-\pause
+%\begin{frame}{Regression Examples}
+%\begin{figure}[htp]
+%    \centering
+%    \includegraphics[width=0.7\linewidth]{accuracy/reg1.png}
+%\end{figure}
+%
+%\pause
+%
+%Regression involves continuous data.
+%\end{frame}
 
-Regression involves continuous data.
-\end{frame}
-
-\begin{frame}{Accuracy Metrics: MSE \& MAE}
+\begin{frame}{Metrics for Regression MSE \& MAE}
 $$
 \bordermatrix{&\texttt{Prediction}\;(\hat{y})\cr
                &10\cr
@@ -700,7 +709,7 @@ $$
                 &40\cr
                &50}
 \qquad \qquad
-\bordermatrix{&\texttt{Ground Truth}\cr
+\bordermatrix{&\texttt{Ground Truth}\;(y)\cr
                &20\cr
                &30\cr
                 &40\cr
@@ -709,7 +718,7 @@ $$
 $$
 
 \begin{align*}
-\texttt{Mean Square Error (MSE)} &=  \frac{\sum_{}^{}(\hat{y}-y)^2}{N} \\ 
+\texttt{\textcolor{red}{Mean} \textcolor{green}{Squared} \textcolor{Tan}{Error} (MSE)} &=  \frac{\mathcolor{red}{\sum_{i=1}^{N}}(\mathcolor{Tan}{\hat{y}-y)}^{\mathcolor{green}2}}{\mathcolor{red}{N}} \\ 
 \texttt{Root Mean Square Error (RMSE)} &=  \sqrt{\texttt{MSE}}
 \end{align*}
 
