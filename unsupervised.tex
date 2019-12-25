@@ -1,0 +1,254 @@
+\documentclass{beamer}
+\usepackage{tcolorbox}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[labelformat=empty]{caption}
+\usepackage{subcaption}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+
+
+%\beamerdefaultoverlayspecification{<+->}
+\newcommand{\data}{\mathcal{D}}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand\Item[1][]{%
+	\ifx\relax#1\relax  \item \else \item[#1] \fi
+	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+	
+
+
+\usetheme{metropolis}           % Use metropolis theme
+
+
+\title{Unsupervised Learning}
+\date{\today}
+\author{Nipun Batra}
+\institute{IIT Gandhinagar}
+\begin{document}
+  \maketitle
+
+\begin{frame}{The need for Unsupervised Learning}
+\begin{itemize}
+\item Aids the search of patterns in data.
+\item Find features for categorization.
+\item Easier to collect unlabeled data.
+\end{itemize}
+\pause
+Places where you will see unsupervised learning 
+\begin{itemize}
+\item It can be used to segment the market based on customer preferences.
+\item A data science team reduces the number of dimensions in a large data set to simplify modeling and reduce file size.
+\end{itemize}
+\end{frame}
+
+\section{Clustering}
+
+\begin{frame}{Clustering}
+\textbf{AIM:} To find groups/subgroups in a data set.
+\pause
+\textbf{REQUIREMENTS:} A predefined notion of similarity/dissimilarity.
+\pause
+\textbf{Examples:} \\
+Market Segmentation: Customers with similar preferences in the same groups. This would aid in targeted marketing.
+\end{frame}
+
+\begin{frame}{Clustering}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.7\linewidth]{unsupervised/gt_iris.png}
+    \caption{Iris Data Set with ground truth}
+\end{figure}
+\end{frame}
+
+\begin{frame}{K-Means Clustering}
+\begin{columns}[T]
+  \begin{column}{0.5\textwidth}
+  \begin{itemize}
+\item $N$ points in a $R^d$ space.
+\item $C_i$: set of points in the $i^{th}$ cluster.
+\item $C_1 \cup C_2 \cup \ldots C_k = \{1, \ldots , n\}$
+\item $C_i \cap C_j = \{\phi \}$ for $i\neq j$
+\end{itemize}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=\linewidth]{unsupervised/k_1.png}
+    \caption{Dataset with 5 clusters}
+\end{figure}  
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{K-Means Clustering}
+\begin{columns}[T]
+  \begin{column}{0.5\textwidth}
+    \begin{figure}
+      \includegraphics[width=.8\textwidth]{unsupervised/k_ex_6.png}
+      \vspace*{-0.3cm}
+      \caption{K=6}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \begin{figure}
+      \includegraphics[width=.8\textwidth]{unsupervised/k_ex_5.png}
+      \vspace*{-0.3cm}
+      \caption{K=5}
+    \end{figure}
+  \end{column}
+\end{columns}
+\vspace*{-0.5cm}
+\begin{columns}[T]
+  \begin{column}{0.5\textwidth}
+    \begin{figure}
+      \includegraphics[width=.8\textwidth]{unsupervised/k_ex_4.png}
+      \vspace*{-0.3cm}
+      \caption{K=4}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \begin{figure}
+      \includegraphics[width=.8\textwidth]{unsupervised/k_ex_3.png}
+      \vspace*{-0.3cm}
+      \caption{K=3}
+    \end{figure}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{K-Means Intuition}
+\begin{itemize}
+\item<1-> Good Clustering: Within the cluster the variation ($WCV$) is small.
+\item<2-> Objective: $$ \min_{C_1,\ldots , C_k} \left( \sum_{i=1}^{k} WCV \left(C_i\right) \right) $$
+\item[]<3-> Minimize the $WCV$ as much as possible
+\end{itemize}
+\end{frame}
+
+\begin{frame}{K-Means Intuition}
+
+Objective: $$ \min_{C_1,\ldots , C_k} \left( \sum_{i=1}^{k} WCV \left(C_i\right) \right) $$
+\pause
+\begin{align*}
+WCV\left(C_i\right) &= \frac{1}{|C_i|}\texttt{ (Distance between all points)} \\
+ WCV\left(C_i\right) &= \frac{1}{|C_i|}\sum_{a\in C_i}\sum_{b\in C_i}|| x_a - x_b ||_2^2
+\end{align*}
+where $|C_i|$ is the number of points in $C_i$
+\end{frame}
+
+\begin{frame}{K-Means Algorithm}
+\begin{enumerate}
+\item<1-> Randomly assign a cluster number $i$ to every point $\left(\text{where } i\in\left\lbrace 1, \ldots n \right\rbrace \right)$
+\item<4-> Iterate until convergence:
+\item[]<2-> \begin{enumerate}
+\item<2-> For each cluster $C_i$ compute the centroid (mean of all points in $C_i$ over $d$ dimensions)
+\item<3-> Assign each observation to the cluster which is the closest.
+\end{enumerate}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Working of K-Means Algorithm}
+
+\end{frame}
+	
+\begin{frame}{Why does K-Means work?}
+\begin{align*}
+\text{Let, } x_i\in R^d &= \text{Centroid for} i^{th} \text{cluster} \\
+&= \frac{1}{|C_i|}\sum_{a\in C_i} x_a
+\end{align*}
+\pause
+Then,
+\begin{align*}
+WCV\left(C_i\right) &= \frac{1}{|C_i|}\sum_{a\in C_i}\sum_{b\in C_i}|| x_a - x_b ||_2^2 \\
+&= 2\sum_{a\in C_i} ||x_a - x_i||_2^2
+\end{align*}
+\pause
+This shows that K-Means gives the \textbf{local minima}.
+\end{frame}
+
+\section{Hierarchal Clustering}
+
+\begin{frame}{Hierarchal Clustering}
+\vspace{1cm}
+Gives a clustering of all the clusters \\
+\pause
+There is no need to specify $K$ at the start
+\pause
+\vspace{-0.5cm}
+\begin{figure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\linewidth]{unsupervised/k_bad_1.png}
+        \end{subfigure}%
+        \begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\linewidth]{unsupervised/k_bad_2.png}
+        \end{subfigure}%
+        \caption{Examples where K-Means fails}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Algorithm for Hierarchal Clustering}
+\vspace{0.5cm}
+\begin{enumerate}
+\item<1-> Start with all points in a single cluster
+\item<4-> Repeat until all points are in a single cluster
+\item[]<2-> \begin{enumerate}
+\item<2-> Identify the 2 closest points 
+\item<3-> Merge them
+\end{enumerate}
+\end{enumerate}
+\vspace{-0.8cm}
+\begin{columns}[T]
+  \begin{column}{0.5\textwidth}
+    \begin{figure}
+      \includegraphics[width=1.1\textwidth]{unsupervised/h_e_1.png}
+      \vspace*{-0.6cm}
+      \caption{Example Dataset}
+    \end{figure}
+  \end{column}
+  \begin{column}{0.5\textwidth}
+    \begin{figure}
+    \begin{overprint}
+      \onslide<4-> \includegraphics[width=1.1\textwidth]{unsupervised/h_e_2.png}
+      \vspace*{-0.6cm}
+      \caption{Final Clustering}
+    \end{overprint}
+    \end{figure}
+  \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Joining Clusters/Linkages}
+\begin{columns}[T]
+  \begin{column}{0.33\textwidth}
+  \textbf{Complete}\\
+  Max inter-cluster similarity
+  \end{column}
+  \begin{column}{0.33\textwidth}
+  \textbf{Single} \\
+  Min inter-cluster similarity
+  \end{column}
+  \begin{column}{0.33\textwidth}
+  \textbf{Centroid} \\
+  Dissimilarity between cluster centroids 
+  \end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{More Code}
+\begin{center}
+\href{https://colab.research.google.com/drive/1HMPn0mpMAe4XFe5Zvh4oExgi5evkgjTi}{Google Colab Link}
+\end{center}
+\end{frame}
+
+\end{document}
