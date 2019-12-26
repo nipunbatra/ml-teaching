@@ -1,8 +1,12 @@
-\documentclass{beamer}
+\documentclass[usenames,dvipsnames]{beamer}
+\usepackage{xcolor}
 \usepackage{tcolorbox}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{subcaption}
+
 \usepackage[labelformat=empty]{caption}
+\usepackage{color, colortbl}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -12,9 +16,30 @@
     urlcolor=cyan,
 }
 
+\newcommand*{\mathcolor}{}
+\def\mathcolor#1#{\mathcoloraux{#1}}
+\newcommand*{\mathcoloraux}[3]{%
+	\protect\leavevmode
+	\begingroup
+	\color#1{#2}#3%
+	\endgroup
+}
+
 \usepackage{tikz}
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
 
+\newcommand{\DoTikzmark}[1]{%
+	\tikz[remember picture] \coordinate[shift={(0,.7ex)}](#1);%
+}
+
+\newcommand{\colrow}[3][]{%
+	\tikz[overlay,remember picture, line width=10pt]
+	\draw[shorten >=-.1em, shorten <=-.1em, #1] (#2)--(#3);
+}
+
+
+\newcolumntype{g}{>{\columncolor{Lavender}}c}
+\newcolumntype{t}{>{\columncolor{Tan}}c}
 
 %\beamerdefaultoverlayspecification{<+->}
 \newcommand{\data}{\mathcal{D}}
@@ -30,7 +55,7 @@
 \usetheme{metropolis}           % Use metropolis theme
 
 
-\title{Accuracy metrics, Classification, Regression}
+\title{Convention, Accuracy metrics, Classification, Regression}
 \date{\today}
 \author{Nipun Batra}
 \institute{IIT Gandhinagar}
@@ -39,63 +64,393 @@
   
   
   
-\section{Classification}
 
-\begin{frame}{Feature Table}
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.7\linewidth]{accuracy/ml_2_accuracy_table_1.png}
-\end{figure}
+
+
+\begin{frame}{First ML Task: Grocery store tomatoes quality prediction}
+Problem statement: You want to predict the quality/condition of a tomato given its visual features.
 \end{frame}
 
-\begin{frame}{Feature Table}
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.7\linewidth]{accuracy/ml_2_accuracy_table_2.png}
-\end{figure}
+\begin{frame}{Dataset}
+Imagine you have some past data on quality of tomatoes. What visual features do you think will be useful?
+
+\begin{itemize}
+	\item Size
+	\item Colour
+	\item Texture
+\end{itemize}
+\end{frame}
+  
+\begin{frame}{Dataset}
+Imagine you have some past data on quality of tomatoes. 
+
+\begin{table}[]
+	\begin{tabular}{|l|l|l|l||l|}
+		\hline 
+		\textbf{Sample} & \textbf{Colour} & \textbf{Size} & \textbf{Texture} & \textbf{Condition} \\ \hline 
+		1      & Orange & Small & Smooth  & Good      \\
+		2      & Red    & Small  & Rough  & Good \\
+		3      & Orange & Medium & Smooth & Bad \\
+		4      & Yellow & Large  & Smooth & Bad \\ \hline          
+	\end{tabular}
+\end{table}
 \end{frame}
 
-\begin{frame}{Feature Table}
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.7\linewidth]{accuracy/ml_2_accuracy_table_3.png}
-\end{figure}
+\begin{frame}{Useful Features}
+Is the sample number a useful feature for predicting quality of a tomato?
+
+Answer: It depends! Maybe, all tomatoes received after a certain date are bad! Let us ignore that for now.
+
+Let us modify our data table for now.
+
+\begin{table}[]
+	\begin{tabular}{|l|l|l||l|}
+		\hline 
+		\textbf{Colour} & \textbf{Size} & \textbf{Texture} & \textbf{Condition} \\ \hline 
+		Orange & Small & Smooth  & Good      \\
+		Red    & Small  & Rough  & Good \\
+		Orange & Medium & Smooth & Bad \\
+		Yellow & Large  & Smooth & Bad \\ \hline 
+
+	\end{tabular}
+\end{table}
 \end{frame}
 
-\begin{frame}{Feature Table}
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.7\linewidth]{accuracy/ml_2_accuracy_table_4.png}
-    \caption{Training Set for Supervised Learning}
-\end{figure}
+\begin{frame}{Training Set}
+The training set consists of two parts:
+\begin{enumerate}
+	\item \color{Lavender}{Features, Attributes or Covariates}
+	\item \color{Tan}{Output or Response Variable}
+\end{enumerate}
+\begin{table}[]
+	\begin{tabular}{|g|g|g||t|}
+		\hline 
+				\rowcolor{white}
+		\textbf{Colour} & \textbf{Size} & \textbf{Texture} & \textbf{Condition} \\ \hline 
+		Orange & Small & Smooth  & Good      \\
+		Red    & Small  & Rough  & Good \\
+		Orange & Medium & Smooth & Bad \\
+		Yellow & Large  & Smooth & Bad \\ \hline 
+		
+	\end{tabular}
+\end{table}
 \end{frame}
 
-\begin{frame}{Feature Table}
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.7\linewidth]{accuracy/ml_2_accuracy_table_4.png}
-\end{figure}
-We hope to learn $f$, where:
-\begin{tcolorbox}
-\begin{center}
-$\texttt{Condition} = f(\texttt{colour, size, texture})$
-\end{center}
-\end{tcolorbox}
+\begin{frame}{Training Set}
+\vspace{-5pt}
+\begin{table}[]
+	\begin{tabular}{|g|g|g||t|}
+		\hline 
+		\rowcolor{white}
+		\textbf{Colour} & \textbf{Size} & \textbf{Texture} & \textbf{Condition} \\ \hline 
+		Orange & Small & Smooth  & Good      \\
+		Red    & Small  & Rough  & Good \\
+		Orange & Medium & Smooth & Bad \\
+		Yellow & Large  & Smooth & Bad \\ \hline 
+		
+	\end{tabular}
+\end{table}
+
+
+We call this matrix as $\mathcal{D}$, containing:
+\begin{enumerate}
+	\item Feature matrix ($\mathbf{X \in \mathcal{R}^{N\times P}}$) containing data of $N$ samples each of which is $P$ dimensional.
+	\begin{itemize}
+		\item Thus, $\mathbf{X} = \{x_i^T\}_{i=1}^N$ where $x_i \in \mathcal{R}^P$
+		\item Example $x_1 = \begin{bmatrix}
+		Orange \\
+		Small \\
+		Smooth \\
+		\end{bmatrix}
+		$
+	\end{itemize}
+\item Output Vector ($y \in \mathcal{R}^N$) containing output variable for $N$ samples.
+\item Thus, we can also write $\mathcal{D} = \{(x_i^T, y_i)\}_{i=1}^N$
+\end{enumerate}
+
 \end{frame}
 
-\begin{frame}{Classification}
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.7\linewidth]{accuracy/ml_2_accuracy_table_5.png}
-\end{figure}
 
-\begin{center}
-Condition here is discrete $\rightarrow$ \textbf{Classification}
-\end{center}
+\begin{frame}{Prediction Task}
+Estimate condition for unseen tomatoes (\#5, 6) based on data set. 
+
+\begin{table}[]
+	\begin{tabular}{|l|l|l||l|}
+		\hline 
+		
+		\textbf{Colour} & \textbf{Size} & \textbf{Texture} & \textbf{Condition} \\ \hline 
+		Orange & Small & Smooth  & Good      \\
+		Red    & Small  & Rough  & Good \\
+		Orange & Medium & Smooth & Bad \\
+		Yellow & Large  & Smooth & Bad \\ \hline
+		Red    & Large  & Rough  & ? \\
+		Orange &  Large & Rough  & ? \\ \hline          
+	\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Testing Set}
+\textcolor{YellowGreen}{Testing set} is similar to \textcolor{Peach}{training set}, but, does not contain labels for output variable. 
+
+\begin{table}[]
+	\begin{tabular}{|l|l|l||l|}
+		\hline 
+		\textbf{Colour} & \textbf{Size} & \textbf{Texture} & \textbf{Condition} \\ \hline 
+		\rowcolor{Peach}
+		Orange & Small & Smooth  & Good      \\
+		\rowcolor{Peach}
+		Red    & Small  & Rough  & Good \\
+		\rowcolor{Peach}
+		Orange & Medium & Smooth & Bad \\
+		\rowcolor{Peach}
+		Yellow & Large  & Smooth & Bad \\ \hline
+				\rowcolor{YellowGreen}
+		Red    & Large  & Rough  & ? \\
+		\rowcolor{YellowGreen}
+		Orange &  Large & Rough  & ? \\ \hline          
+	\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Prediction Task}
+We hope to:
+\begin{enumerate}
+	\item Learn $f$: 		$\texttt{Condition} = f(\texttt{colour, size, texture})$
+	\item From Training Dataset
+	\item To Predict the condition for the Testing set
+\end{enumerate}
+
+
+\begin{table}[]
+	\begin{tabular}{|l|l|l||l|}
+		\hline 
+		
+		\textbf{Colour} & \textbf{Size} & \textbf{Texture} & \textbf{Condition} \\ \hline 
+		Orange & Small & Smooth  & Good      \\
+		Red    & Small  & Rough  & Good \\
+		Orange & Medium & Smooth & Bad \\
+		Yellow & Large  & Smooth & Bad \\ \hline
+		Red    & Large  & Rough  & ? \\
+		Orange &  Large & Rough  & ? \\ \hline          
+	\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Second ML Task: Predict energy consumption of campus}
+
+Question: What factors does the campus energy consumption depend on?
+
+Answer:\begin{itemize}
+	\item \# People (More people $\implies$ More Energy)
+	\item Temperature (Higher Temp. $\implies$ Higher Energy)
+
+\begin{table}[]
+	\begin{tabular}{|l|l||l|}
+		\hline 
+		
+		\textbf{\# People} & \textbf{Temp (C)} &  \textbf{Energy (kWh)} \\ \hline 
+		
+		4000 & 30 & 30 \\
+		4200 & 30 & 32 \\
+		4200 & 35 & 40 \\ \hline
+		3000 & 20& ? \\
+		1000 & 45 & ? \\ \hline          
+	\end{tabular}
+\end{table}	
+\end{itemize}
 
 \end{frame}
 
-\begin{frame}{Accuracy Metrics}
+
+
+
+
+\begin{frame}{Classification v/s Regression}
+\begin{itemize}
+	\item Classification
+	\begin{itemize}
+		\item Output variable is discrete
+		\item i.e.  $y_i\in \{1, \cdots C\}$ 
+		\item Examples - Predicting: 
+		\begin{itemize}
+			\item Will I get a loan? (Yes, No)
+			\item What is the quality of fruit? (Good, Bad)
+		\end{itemize}
+	\end{itemize}
+	\item Regression
+	\begin{itemize}
+		\item Output variable is continuous
+		\item i.e.  $y_i\in \mathcal{R}$ 
+		\item Examples - Predicting: 
+		\begin{itemize}
+			\item How much energy will campus consume? 
+			\item How much rainfall will fall?
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+%\begin{frame}{Feature Table}
+%\begin{figure}[htp]
+%    \centering
+%    \includegraphics[width=0.7\linewidth]{accuracy/ml_2_accuracy_table_1.png}
+%\end{figure}
+%\end{frame}
+
+\captionsetup[subtable]{labelformat=empty}
+
+\begin{frame}{Metrics for Classification}
+\begin{table}[!htb]
+	\caption{}
+	\begin{subtable}{.5\linewidth}
+		\centering
+		\caption{Prediction ($\hat{y}$)}
+		\begin{tabular}{ |c| } \hline 
+			
+			Good \\
+			Good \\
+			Good \\
+			Good \\
+			Bad  \\ \hline 
+			
+		\end{tabular}
+	\end{subtable}%
+	\begin{subtable}{.5\linewidth}
+		\centering
+		\caption{Ground Truth ($y$)}
+		\begin{tabular}{ |c| } 
+			\hline 
+			Good \\
+			Good \\
+			Bad \\
+			Bad  \\
+			Bad \\ \hline 
+		\end{tabular} \\
+	\end{subtable} 
+\end{table}
+
+\begin{align*}
+\texttt{Accuracy} &= \frac{||y = \hat{y}||}{||y||} \end{align*}
+\end{frame}
+
+\begin{frame}{Metrics for Classification}
+\begin{table}[!htb]
+	\caption{}
+	\begin{subtable}{.5\linewidth}
+		\centering
+		\caption{Prediction ($\hat{y}$)}
+		\begin{tabular}{ |c| } \hline 
+			
+			\rowcolor{Green}Good \\
+			\rowcolor{Green}Good \\
+			\rowcolor{Red}Good \\
+			\rowcolor{Red}Good \\
+			\rowcolor{Green}Bad  \\ \hline 
+			
+		\end{tabular}
+	\end{subtable}%
+	\begin{subtable}{.5\linewidth}
+		\centering
+		\caption{Ground Truth ($y$)}
+		\begin{tabular}{ |c| } 
+			\hline 
+			Good \\
+			Good \\
+			Bad \\
+			Bad  \\
+			Bad \\ \hline 
+		\end{tabular} \\
+	\end{subtable} 
+\end{table}
+
+\begin{align*}
+\texttt{Accuracy} &= \frac{||y = \hat{y}||}{||y||} \\
+&= \frac{3}{5} = 0.6
+\end{align*}
+\end{frame}
+
+%\begin{frame}
+%\setlength{\tabcolsep}{12pt}
+%\begin{tabular}{ cc }   % top level tables, with 2 rows
+%	Ground Truth ($y$) & Prediction ($\hat{y}$) \\  
+%	% bottom left of the top level table: table 1 
+%	\begin{tabular}{ |c| } 
+%		
+%		Good \\
+%		Good \\
+%		Good \\
+%		Good \\
+%		Bad  \\
+%		
+%	\end{tabular} &  % starting bottom right of the top level table
+%	% table 2
+%	\begin{tabular}{ |c| } 
+%		Good \\
+%		Good \\
+%		Bad \\
+%		Bad  \\
+%		Bad \\
+%	\end{tabular} \\
+%\end{tabular}
+%\end{frame}
+%
+%\begin{frame}{Metrics for Classification}
+%
+%
+%
+%$
+%Prediction (\hat{y}) = \begin{bmatrix}
+%	Good \\
+%	Good \\
+%	Good \\
+%	Good \\
+%	Bad  \\
+%\end{bmatrix} ~~~~Ground Truth (y) = \begin{bmatrix}
+%Good \\
+%Good \\
+%Bad \\
+%Bad  \\
+%Bad \\
+%\end{bmatrix}$ 
+%\vspace{30pt}
+%
+%\begin{itemize}
+%	\item Ground Truth: From the actual training set 
+%	\item Prediction: Made by the model
+%\end{itemize}
+%
+%\end{frame}
+%
+%\begin{frame}{Metrics for Classification}
+%%\DoTikzmark{num-3}{-}3 & 0 & {4}\DoTikzmark{num4}
+%$
+%Prediction (\hat{y}) = \begin{bmatrix}
+%Good \\
+%Good \\
+%Good \\
+%Good \\
+%Bad  \\
+%\end{bmatrix} ~~~~Ground Truth (y) = \begin{bmatrix}
+%Good \\
+%Good \\
+%Bad \\
+%Bad  \\
+%Bad \\
+%\end{bmatrix}$ 
+%
+%
+%\vspace{30pt}
+
+
+
+%\end{frame}
+
+
+\begin{frame}{Accuracy Metrics for Classification}
+
+
+
 $$\bordermatrix{&\texttt{Prediction}\;(\hat{y})\cr
                 &\texttt{Good}\cr
                 &\texttt{Good}\cr
@@ -197,7 +552,7 @@ $$
 \texttt{Accuracy} &= \frac{||y = \hat{y} = \texttt{Good}||}{||\hat{y} = \texttt{Good}||} = \frac{2}{4} = 0.5
 \end{align*}
 
-``the fraction of relevant instances among the retrieved instances''
+``the fraction of relevant instances among the retrieved instances'', i.e. ``out of the number of times we predict \texttt{Good}, how many times is the condition actually \texttt{Good}''
 
 \end{frame}
 
@@ -227,7 +582,7 @@ $$
 \end{frame}
 
 \begin{frame}{Types of Data: Imbalanced Classes}
-Given predictions of weather a tissue is cancerous or not ($n = 100$).
+Given predictions of whether a tissue is cancerous or not ($n = 100$).
 $$
 \bordermatrix{&\texttt{Prediction}\;(\hat{y})\cr
                \rightarrow&\texttt{No}\cr
@@ -332,20 +687,20 @@ Matthew's Coeff. = 0.14
 \end{frame}
 
 
-\section{Regression}
 
-\begin{frame}{Regression Examples}
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.7\linewidth]{accuracy/reg1.png}
-\end{figure}
 
-\pause
+%\begin{frame}{Regression Examples}
+%\begin{figure}[htp]
+%    \centering
+%    \includegraphics[width=0.7\linewidth]{accuracy/reg1.png}
+%\end{figure}
+%
+%\pause
+%
+%Regression involves continuous data.
+%\end{frame}
 
-Regression involves continuous data.
-\end{frame}
-
-\begin{frame}{Accuracy Metrics: MSE \& MAE}
+\begin{frame}{Metrics for Regression MSE \& MAE}
 $$
 \bordermatrix{&\texttt{Prediction}\;(\hat{y})\cr
                &10\cr
@@ -354,7 +709,7 @@ $$
                 &40\cr
                &50}
 \qquad \qquad
-\bordermatrix{&\texttt{Ground Truth}\cr
+\bordermatrix{&\texttt{Ground Truth}\;(y)\cr
                &20\cr
                &30\cr
                 &40\cr
@@ -363,7 +718,7 @@ $$
 $$
 
 \begin{align*}
-\texttt{Mean Square Error (MSE)} &=  \frac{\sum_{}^{}(\hat{y}-y)^2}{N} \\ 
+\texttt{\textcolor{red}{Mean} \textcolor{green}{Squared} \textcolor{Tan}{Error} (MSE)} &=  \frac{\mathcolor{red}{\sum_{i=1}^{N}}(\mathcolor{Tan}{\hat{y}-y)}^{\mathcolor{green}2}}{\mathcolor{red}{N}} \\ 
 \texttt{Root Mean Square Error (RMSE)} &=  \sqrt{\texttt{MSE}}
 \end{align*}
 
