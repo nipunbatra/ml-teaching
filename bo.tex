@@ -29,14 +29,6 @@
 \begin{document}
   \maketitle
   
-\section{Mining Gold!}
-\begin{frame}{Motivation}
-	We will first start with an example which is a manifestation of optimization problems we would encounter in the wild.
-	
-	Our goal is to mine for gold in a new, unknown land. For now, let us make a simplifying assumption, the gold content lies in a one-dimensional space, i.e., we are talking gold distribution only about a line.
-	
-	We would like to find the location with the maximum gold content for us to dug out.
-\end{frame}
 %\newcounter{iter}
 %\forloop{iter}{1}{\value{iter} < 5}%
 %{%
@@ -57,6 +49,59 @@
 		\end{center}
 	\end{frame}
 }
+
+\section{Mining Gold!}
+\begin{frame}{Problem Setting}
+	We will first start with an example, which is a manifestation of the optimization problems we encounter in the wild.
+	
+	Our goal is to mine for gold in a new, unknown land. For now, let us make a simplifying assumption, the gold content lies in a one-dimensional space, i.e., we are talking gold distribution only about a line. Let the function be denoted by $f(x)$ where $x$ signifies the location.
+	
+	We want to find the location with the maximum gold content is situated though one caveat is that the cost of each drilling is too huge.
+\end{frame}
+
+\begin{frame}{Problem Specifications}
+    As stated above, we would like to find the location of the maximum gold concentration.
+
+	We want to \textbf{minimize the number of drilling required} while still being able to \textbf{find the location of the maximum gold quickly}.
+	
+	Looking below, we see that the gold distribution is the maximum around $x=5$.
+	\begin{center}
+		\includegraphics[height=.5\textheight]{bo-images/gifs/GT}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Surrogate Model}
+	\urldef\matern\url{https://scikit-learn.org/stable/modules/generated/sklearn.gaussian_process.kernels.Matern.html}
+	
+	To model the unknown function we would use Gaussian Process Regressor. This is called the surrogate model.
+	
+	\begin{center}
+		\includegraphics[height=.46\textheight]{bo-images/gifs/prior}
+	\end{center}
+	
+	Initially the GP would not have any information, which can be seen by looking at the prior above. We assume that the gold distribution $f$ is smooth, via a Matern kernel \footnote{\matern}.
+\end{frame}
+
+\begin{frame}{Adding Training Data}
+	\begin{center}
+		\includegraphics[height=.46\textheight]{bo-images/gifs/posterior}
+	\end{center}
+	
+	We see how adding training point (drilling at a location and actually getting the gold concentration) changed the posterior of our surrogate model.
+	
+	We see that as more points are sampled, our surrogate is able to model more accurately.
+\end{frame}
+
+\section{Formalizing Bayesian Optimization}
+\begin{frame}{Idea}
+	Our main aim in the example discussed is to find the point where we can get the maximum gold content.
+	
+	Given this, it might be a good idea to use the information from the surrogate model. It might be likely where the surrogate predicts higher functional value; the functional value is actually higher.    In Essence, one might want to \textbf{exploit}.
+	
+	But, the surrogate is not a perfect model of $f$. Therefore, one would like to improve the surrogate model too. This is done by getting the functional values at points the surrogate is most uncertain about. This is \textbf{exploration}.
+\end{frame} 
+
+
 % [width=\linewidth]
 
 %\begin{frame}{Bayes Rule - 2}
