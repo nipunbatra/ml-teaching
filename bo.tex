@@ -96,12 +96,114 @@
 \begin{frame}{Idea}
 	Our main aim in the example discussed is to find the point where we can get the maximum gold content.
 	
-	Given this, it might be a good idea to use the information from the surrogate model. It might be likely where the surrogate predicts higher functional value; the functional value is actually higher.    In Essence, one might want to \textbf{exploit}.
+	Given this, it might be a good idea to use the information from the surrogate model. It might be likely where the surrogate predicts higher functional
 	
 	But, the surrogate is not a perfect model of $f$. Therefore, one would like to improve the surrogate model too. This is done by getting the functional values at points the surrogate is most uncertain about. This is \textbf{exploration}.
 \end{frame} 
 
+\begin{frame}
+	
+	\urldef\peter\url{https://www.youtube.com/watch?v=c4KKvyWW_Xk}
+	
+	Let us now formally introduce Bayesian Optimization. \footnote{Taken from \peter} Our goal is to find the $x$ where we reached global maximum (or minimum) of a function $f: \mathbb{R}^d \mapsto \mathbb{R}$.
+\end{frame}
 
+\begin{frame}
+	We’d like to optimize $f: \mathbb{R}^d \mapsto \mathbb{R}$.
+	
+	\begin{itemize}
+		\item $f$’s feasible set $A$ is simple, e.g., box constraints.
+		
+		\item $f$ is continuous but lacks special structure, e.g., concavity, that would make it easy to optimize.
+		
+		\item $f$ is derivative-free: evaluations do not give gradient information.
+		
+		\item $f$ is expensive to evaluate: the number of times we can evaluate it is severely limited.
+		
+		\item $f$ may be noisy. If noise is present, we’ll assume it is independent and normally distributed, with common but unknown variance.		
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	Let us link the above constraints to our initial problem statement of gold mining.
+	
+	\begin{itemize}
+		\item Our domain in the gold mining problem is a single-dimensional box constraint of $0 \leq x \leq 6$.
+		
+		\item Our ground truth can be seen as neither convex nor concave function, which resulted in local minima as well.
+		
+		\item Our evaluation (by drilling) of the amount of gold content at a location didn’t give us any gradient information.
+		
+		\item The function we used in the case of gold mining problem is extremely costly to evaluate (drilling costs millions).
+		
+		\item This constraint is still satisfied in our case as we had have taken noiseless measurements. Which can be considered as a Gaussian noise with zero mean and zero standard deviation.
+	\end{itemize}
+
+	We see that our original problem of mining gold fits into the criterions required to use BO.
+\end{frame}
+
+\begin{frame}{Acquisition Functions}
+	\urldef\washu\url{https://www.cse.wustl.edu/~garnett/cse515t/spring_2015/files/lecture_notes/12.pdf}
+	
+	Original optimization problem $x^* = \text{argmax}_{x \in A} f(x)x$ is hard given the expensive nature of evaluating $f$.
+	
+	Idea: Replace original optimization into sequence of easier inexpensive optimizations on a function called acquisition function $(\alpha(x))$.
+	
+	Each optimization on $(\alpha(x))$ provides next point to get the functional value for. we can interpret the acquisition function as commensurate with how desirable evaluating $f$ at $x$ is expected to be for the maximisation problem. \footnote{Get more information at \washu}
+\end{frame}
+
+\begin{frame}{Combining Components}
+	Let is re-wind and link all the things that we have discussed till now.
+	
+	\begin{enumerate}
+		\item Choose a surrogate model and its prior over space of objectives $f$.
+		
+		\item Given the set of observations (function sampling), use Bayes rule to obtain the posterior.
+		
+		\item Use an acquisition function $\alpha(x)$, which is a function of the posterior to decide where to sample next $x_t = \text{argmax}_x \alpha(x)$.
+		
+		\item Add new sampled data to the set of observations and Goto Step \#2 till convergence or budget elapses.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Core Ideas}
+	We now have three core ideas associated with acquisition functions: 
+	
+	\begin{enumerate}
+		\item They are a function of the surrogate posterior.
+		
+		\item They combine exploration and exploitation.
+		
+		\item They are inexpensive to evaluate.
+	\end{enumerate}
+
+	Let us now look into a few examples of commonly used acquisition functions to understand the concept better.
+\end{frame}
+
+\section{Acquisition Functions}
+\begin{frame}{Probability of Improvement}
+	Idea: Choose the next point as the one which has the highest probability of improvement over the current max $f(x^+)$, where $x^+ = \text{argmax}_{x_i \in x_{1:t}}f(x_i)$ and $x_i$ is the location queried at $i^{th}$ time step.
+	
+	Looking closely, we see PI is essentially the left tail probability of the posterior.
+\end{frame}
+
+\begin{frame}
+	The formulation or procedure can be given as:
+	
+	\begin{itemize}
+		\item Let $f(x^+)$ be the current highest value of the function.
+		
+		\item Let $\epsilon$ be close to zero.
+		
+		\item Choose $x_{t+1} = argmax(\alpha_{PI}(x))$ where $\alpha_{PI}(x) = P(f(x)) \geq (f(x^+) +\epsilon)$ 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	For the case where our surrogate is a GP, we can obtain a closed form solution making evaluation of $\alpha_{PI}$ cheap.
+	$$x_{t+1} = argmax_x \Phi\left(\frac{\mu_t(x) - f(x^+) - \epsilon}{\sigma_t(x)}\right)$$
+	where $\Phi(\cdot)$ indicates the CDF.
+\end{frame}
 % [width=\linewidth]
 
 %\begin{frame}{Bayes Rule - 2}
