@@ -337,6 +337,26 @@
 	Let us apply Bayesian Optimization to learn the best hyperparameters for this classification task. The optimum values for $<C, \ \gamma>$ have been found via running grid search at a high granularity. \footnote{Note: the surface plots you see for the Ground Truth Accuracies below were calculated for each possible hyperparameter for showcasing purposes only. We don't have these values in real applications.}	
 \end{frame}
 
+\forloop{iter}{0}{\value{iter} < 10}%
+{%
+	\begin{frame}{\theiter \ $|$ SVM Hyperpramater tuning with PI}
+		\begin{center}
+			\includegraphics[width=\linewidth]{bo-images/pngs/PI3d/0.05/\theiter}
+		\end{center}
+		Above we see a gif showing the work of the Probability of Improvement acquisition function in finding the best hyperparameters.
+	\end{frame}
+}
+
+\forloop{iter}{0}{\value{iter} < 10}%
+{%
+	\begin{frame}{\theiter \ $|$ SVM Hyperpramater tuning with EI}
+		\begin{center}
+			\includegraphics[width=\linewidth]{bo-images/pngs/EI3d/0.0001/\theiter}
+		\end{center}
+		Above we see a gif showing the work of the Expected Improvement acquisition function in finding the best hyperparameters.
+	\end{frame}
+}
+
 \begin{frame}{Embracing Bayesian Optimization}
 	Optimizing or tuning hyperparams is an important facet of modern machine learning algorithms and BO is an efficient way of tuning the same.
 	
