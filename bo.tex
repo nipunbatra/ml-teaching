@@ -204,6 +204,124 @@
 	$$x_{t+1} = argmax_x \Phi\left(\frac{\mu_t(x) - f(x^+) - \epsilon}{\sigma_t(x)}\right)$$
 	where $\Phi(\cdot)$ indicates the CDF.
 \end{frame}
+
+\begin{frame}{Effects of $\epsilon$ in PI}
+	\urldef\teaser\url{https://nipunbatra.github.io/distillpub/public/index.html\#Teaser1}
+	
+	PI makes use of $\epsilon$ in order to strike a balance between exploration and exploitation. Essentially by setting $\epsilon$ to some value, we want to choose a point such that the probability of improvement over $f(x^+) + \epsilon$ is the most.
+	
+	Increasing $\epsilon$ results in the locations with a larger $\sigma$ to benefit as their probability density is spread more. Thus points with more $\sigma$ would have a higher $\alpha_{PI}$ when the $\epsilon$ is set to a large value. \footnote{Have a look at \teaser \ for an interactive plot.}
+\end{frame}
+
+\forloop{iter}{0}{\value{iter} < 10}%
+{%
+	\begin{frame}{\theiter \ $|$ PI when $\epsilon = 0.01$}
+		\begin{center}
+			\includegraphics[width=\linewidth]{bo-images/pngs/PI/0.01/\theiter}
+		\end{center}
+	We see that having $\epsilon = 0.01$ primarily results in exploitation, and we are not able to get to the global maxima due to this myopic drilling point selection.
+	\end{frame}
+}
+
+\forloop{iter}{0}{\value{iter} < 10}%
+{%
+	\begin{frame}{\theiter \ $|$ PI when $\epsilon = 1$}
+		\begin{center}
+			\includegraphics[width=\linewidth]{bo-images/pngs/PI/1/\theiter}
+		\end{center}
+	Looking above, we see increasing the value to $\epsilon = 1$, enables us to explore more and get near to the maximum value.
+	\end{frame}
+}
+
+\forloop{iter}{0}{\value{iter} < 10}%
+{%
+	\begin{frame}{\theiter \ $|$ PI when $\epsilon = 8$}
+		\begin{center}
+			\includegraphics[width=\linewidth]{bo-images/pngs/PI/8/\theiter}
+		\end{center}
+		We see that we made things worse! Our model now uses $\epsilon = 8$, which has effectively resulted in way too much exploration. This amount of exploration is not able to exploit when we land somewhere near a global maximum.
+	\end{frame}
+}
+
+\begin{frame}{Expected Improvement}
+	Probability of improvement only looked at how likely is an improvement, but, shouldn’t we be looking into how much we can improve? The next criterion called, Expected Improvement, (EI) does exactly that!
+\end{frame}
+
+\begin{frame}
+	In this acquisition function, $t + 1^{th}$ query point, $x_{t+1}$, is selected according to the equation below.
+	$$x_{t+1} = argmin_x \mathbb{E} \left( ||h_{t+1}(x) - f(x^\star) || \ | \ \mathcal{D}_t \right)$$
+	
+	Where, $f$ is the actual ground truth function, $h_{t+1}$ is our GP posterior of the ground truth for $t+1^{th}$ timestep, $\mathcal{D}_t$ is the training data $\{(x_i, f(x_i))\} \ \forall x \in x_{1:t}$ and $x^\star$ is the actual position where the ground truth function takes the maximum value.
+\end{frame}
+
+\begin{frame}
+	\urldef\doiMockus\url{https://doi.org/10.1007/BF00940509}
+	
+	In essence, we are trying to select the point that minimizes the distance to the objective evaluated at the maximum. Unfortunately, we don’t know the ground truth function, $f$. Mockus \footnote{Bayesian approach to global optimization and application to multiobjective and constrained problems
+	\doiMockus}	proposed the following acquisition function to overcome the issue.
+	$$x_{t+1} = argmax_x \mathbb{E} \left( {max} \{ 0, \ h_{t+1}(x) - f(x^+) \} \ | \ \mathcal{D}_t \right)$$
+	
+	Where $f(x^+)$ is the maximum value that has been encountered so far. 
+\end{frame}
+
+\begin{frame}
+	For the case of the GP surrogate, the last equation can be easily converted to a closed form equation shown below.
+	$$EI(x)= \begin{cases} (\mu_t(x) - f(x^+) - \epsilon)\Phi(Z) + \sigma_t(x)\phi(Z), & \text{if}\ \sigma_t(x) > 0 \\ 0 & \text{if}\ \sigma_t(x) = 0 \end{cases}$$
+	
+	where $\Phi(\cdot)$ indicates CDF and $\phi(\cdot)$ indicates pdf.
+\end{frame}
+
+
+\forloop{iter}{0}{\value{iter} < 10}%
+{%
+	\begin{frame}{\theiter \ $|$ EI when $\epsilon = 0.01$}
+		\begin{center}
+			\includegraphics[width=\linewidth]{bo-images/pngs/EI/0.01/\theiter}
+		\end{center}
+		We see that having $\epsilon = 0.01$ primarily results in exploitation, and we are not able to get to the global maxima due to this myopic drilling point selection.
+	\end{frame}
+}
+
+
+\forloop{iter}{0}{\value{iter} < 10}%
+{%
+	\begin{frame}{\theiter \ $|$ EI when $\epsilon = 1.5$}
+		\begin{center}
+			\includegraphics[width=\linewidth]{bo-images/pngs/EI/1.5/\theiter}
+		\end{center}
+		As we expected, increasing the value to $\epsilon = 1.5$ makes the acquisition function explore more and exploit when the time comes. We see that it moves slowly once it reaches near the global maxima, trying to find the global maxima. In this case, the exploration is effectively helping us reach a higher functional value much earlier!
+	\end{frame}
+}
+
+
+\forloop{iter}{0}{\value{iter} < 10}%
+{%
+	\begin{frame}{\theiter \ $|$ EI when $\epsilon = 3$}
+		\begin{center}
+			\includegraphics[width=\linewidth]{bo-images/pngs/EI/3/\theiter}
+		\end{center}
+		Is this better than before? Turns out a yes and a no. We see that here we do too much exploration given the value of $\epsilon = 3$. Which results in early reaching something close to global maxima, but unfortunately we don't exploit to get more gains near the global maxima.
+	\end{frame}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 % [width=\linewidth]
 
 %\begin{frame}{Bayes Rule - 2}
