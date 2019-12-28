@@ -2,6 +2,7 @@
 \usepackage{tcolorbox}
 \usepackage{forloop}
 \usepackage{textpos}
+\usepackage{textcomp}
 
 
 %\beamerdefaultoverlayspecification{<+->}
@@ -303,6 +304,56 @@
 		Is this better than before? Turns out a yes and a no. We see that here we do too much exploration given the value of $\epsilon = 3$. Which results in early reaching something close to global maxima, but unfortunately we don't exploit to get more gains near the global maxima.
 	\end{frame}
 }
+
+\begin{frame}{Why is it easier to optimize the acquisition function?}
+	There are a lot more acquisition functions available possible that discussed above.
+	
+	But one valid question that might arise it why are we replacing one optimization problem with a sequence of optimization problems. How is this any better than the last problem?
+	
+	The main reason lies in the fact that evaluating the acquisition function is much cheaper. We know that the acquisition function is a function of the posterior of the surrogate. If we have a closed-form solution, it makes the calculation of the acquisition function extremely cheap. In contrast, the original black-box function was extremely costly to evaluate, by definition.
+\end{frame}
+
+\begin{frame}{Hyperparameter Tuning}
+	Let us use an SVM on sklearn's moons dataset and try to find the optimal hyperparameter using BO. Let us have a look at the dataset first.
+	
+	\begin{center}
+		\includegraphics[width=0.7\linewidth]{bo-images/gifs/moons}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\urldef\intuition\url{https://stackoverflow.com/questions/35848210/support-vector-machine-what-are-c-gamma}
+	
+	Let us now try to learn the classification problem above using a Support Vector Machine (SVM). We are aware that an SVM takes in two important hyperparameters, \footnote{For intuition look at this stack overflow answer - \intuition}
+	
+	\begin{enumerate}
+		\item $\gamma$ -- modifies the behavior of the SVM's kernel. Intuitively it is a measure of how far the influence of a single training example reaches.
+		
+		\item $C$ -- modifies the slackness of the classification, the higher the CC is, the more sensitive is SVM towards the noise.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	Let us apply Bayesian Optimization to learn the best hyperparameters for this classification task. The optimum values for $<C, \ \gamma>$ have been found via running grid search at a high granularity. \footnote{Note: the surface plots you see for the Ground Truth Accuracies below were calculated for each possible hyperparameter for showcasing purposes only. We don't have these values in real applications.}	
+\end{frame}
+
+\begin{frame}{Embracing Bayesian Optimization}
+	Optimizing or tuning hyperparams is an important facet of modern machine learning algorithms and BO is an efficient way of tuning the same.
+	
+	There are a plethora of Bayesian Optimization libraries available. Few of them can be found below.
+	
+	\begin{itemize}
+		\item scikit-optmize
+		\item sigopt
+		\item hyperopt
+		\item spearmint
+		\item MOE
+	\end{itemize}
+\end{frame}
+
+
+
+
 
 
 
