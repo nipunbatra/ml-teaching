@@ -21,10 +21,60 @@
 	
 	
 	
-	\section{Gaussian Distribution}
-	\begin{frame}{1D Gaussian Scatter Plot}
-		\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/1d-gp}
+	\section{Problem Setting}
+	\begin{frame}{Learning}
+		We have three main types of learning algorithms:
+		
+		\begin{itemize}
+			\item Supervised Learning (SL)
+			\item Unsupervised Learning (UL)
+			\item Reinforcement Learning (RL)
+		\end{itemize}
 	\end{frame}
+
+\begin{frame}
+	\urldef\diff\url{https://classroom.udacity.com/courses/ud600/lessons/4100878601/concepts/6512308540923}
+	
+	Broadly, we can take three basic examples where each of these method is used. \footnote{https://classroom.udacity.com/courses/ud600/lessons/4100878601/concepts/6512308540923}
+	
+	\begin{itemize}
+		\item (SL) - Image Classification
+		\begin{itemize}
+			\item Data available - $<y, \ x>$ pairs
+			\item Goal - Function Approximation $f$ where $f : x \rightarrow y$
+		\end{itemize}
+		\item (UL) - Clustering
+		\begin{itemize}
+			\item Data available - $<x>$
+			\item Goal - Clustering - $f$ where $f : x \rightarrow z$ and, $z$ is a compact discription of $x$(s).
+		\end{itemize}
+		\item (RL) - Play a Game
+		\begin{itemize}
+			\item Data available - $<r, \ x>$ pairs
+			\item Goal - ****
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\urldef\rlOne\url{http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching_files/intro_RL.pdf}
+	
+	Some of the characteristic features of Reinforcement Leaning problems: \footnote{Take from \rlOne.}
+	
+	\begin{itemize}
+		\item There is no supervisor, only a reward signal.
+		\item Feedback is delayed, not instantaneous.
+		\item Time really matters (sequential, non i.i.d. data)
+		\item Agent's actions affect the subsequent data it receives.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\urldef\rl\url{http://www0.cs.ucl.ac.uk/staff/d.silver/web/Teaching.html}
+	
+	This might be helpful \rl.
+	
+\end{frame}
 	
 	
 \end{document}
