@@ -214,6 +214,8 @@ Estimate condition for unseen tomatoes (\#5, 6) based on data set.
 \end{table}
 \end{frame}
 
+
+
 \begin{frame}{Prediction Task}
 We hope to:
 \begin{enumerate}
@@ -236,6 +238,33 @@ We hope to:
 		Orange &  Large & Rough  & ? \\ \hline          
 	\end{tabular}
 \end{table}
+\end{frame}
+
+\begin{frame}{Generalisation}
+\begin{itemize}
+	\item Q: Is predicting on test set enough to say our model generalises? 
+	\item \pause A: Ideally, no!
+	\item \pause Ideally - we want to predict ``well'' on all possible inputs. But, can we test that?
+	\item No! Since, the test set is only a sample from all possible inputs.
+\end{itemize}
+
+
+
+
+
+\end{frame}
+
+\begin{frame}{Generalisation}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\textwidth]{train-test}
+	\caption{Image courtesy Google ML crash course}
+	\label{fig:train-test}
+\end{figure}
+
+\pause Both the training set and the test set are samples drawn from the hidden true distribution (also sometimes called population)
+
+\pause More discussion later once we study bias and variance
 \end{frame}
 
 \begin{frame}{Second ML Task: Predict energy consumption of campus}
@@ -447,6 +476,7 @@ Answer:\begin{itemize}
 %
 %
 %%\end{frame}
+
 
 
 \begin{frame}{Metrics for Classification}
@@ -746,10 +776,13 @@ $$
 
 \begin{align*}
 \texttt{\textcolor{red}{Mean} \textcolor{green}{Absolute} \textcolor{Tan}{Error} (ME)} &=  \frac{\mathcolor{red}{\sum_{i=1}^{N}}\mathcolor{green}|\mathcolor{Tan}{\hat{y}_i-y_i\mathcolor{green}|}}{\mathcolor{red}{N}} \\ 
-\texttt{Mean Error} &=  \frac{\sum_{}^{}\hat{y}-y}{N}
+\texttt{Mean Error} &=  \frac{\sum_{i=1}^{N}\hat{y}_i-y_i}{N}
 \end{align*}
+\pause Is there any downside with using mean error?\\
+\pause Errors can get cancelled out
 
 \end{frame}
+
 
 \begin{frame}{The Importance of Plotting}
 \begin{figure}[htp]
