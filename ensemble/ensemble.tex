@@ -1,0 +1,231 @@
+\documentclass{beamer}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\usepackage{../notation}
+
+%\beamerdefaultoverlayspecification{<+->}
+% \newcommand{\data}{\mathcal{D}}
+% \newcommand\Item[1][]{%
+% 	\ifx\relax#1\relax  \item \else \item[#1] \fi
+% 	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+
+\newcommand*{\Comb}[2]{{}^{#1}C_{#2}}%
+
+\graphicspath{ {imgs/} }
+
+\usetheme{metropolis}           % Use metropolis theme
+
+
+\title{Ensemble Learning}
+\date{\today}
+\author{Nipun Batra and teaching staff}
+\institute{IIT Gandhinagar}
+\begin{document}
+	\maketitle
+
+	\begin{frame}{Ensemble Methods}
+	\only<1->{
+	Use multiple models for prediction.\\
+	Most winning entries of Kaggle competition using ensemble learning.\\
+	\vspace{1cm}
+	 }
+	 \only<2>{
+	\textbf{ Example:}\\
+	Classifier 1 - Good\\
+	Classifier 2 - Good\\
+	Classifier 3 - Bad\\
+	\vspace{0.5cm}
+	Using Majority Voting, we predict Good.\\
+	}
+	 \only<3>{
+	\textbf{ Example:}\\
+	Classifier 1 - 20\\
+	Classifier 2 - 30\\
+	Classifier 3 - 30\\
+	\vspace{0.5cm}
+	Using Average, we predict $\dfrac{80}{3}$ 
+	}
+	\end{frame}
+
+	\begin{frame}{Ensemble Methods}
+	Error Probability of each model = $\varepsilon$ = 0.3\\
+	\vspace{1cm}
+	$Pr(\text{2 models being wrong}) = \Comb{3}{2}(\varepsilon^2)(1-\varepsilon)^{3-2} + \Comb{3}{3}(\varepsilon^3)(1-\varepsilon)^{3-3}$\\
+	\vspace{0.5cm}
+	\hspace{4.4cm}$ = 0.19 \leq 0.3$ 
+	\end{frame}
+
+	\begin{frame}{Ensemble Methods}
+	\only<1->{
+	Where does ensemble learning not work well?
+	}
+	\only<2->{
+	\begin{itemize}
+		\item The base model is bad.
+		\item All models give similar or opposite prediction.
+	\end{itemize}
+	}
+	\end{frame}
+
+	\begin{frame}{Bagging}
+	\only<1->{
+	Also known as $Bootstrap$ $Aggregation$.\\
+	}
+	\only<2->{
+		$Key$ $idea$ : Reduce Variance\\
+		\vspace{1cm}
+	}
+	\only<3->{
+		How to learn different classifiers while feeding in the same data?\\
+		\vspace{0.5cm}
+	}
+	\only<4->{
+		Think about cross-validation!\\
+		\vspace{0.5cm}
+	}
+	\only<5->{
+		We will create multiple datasets from our single dataset using ``$sampling$ $with$ $replacement$''.
+	}
+	\end{frame}
+
+	\begin{frame}{Bagging}
+	\only<1->{
+	Consider our dataset has $n$ samples, $D_1, D_2, D_3, \dots, D_n$.\\
+	For each model in the ensemble, we create a new dataset of size $n$ by sampling uniformly with replacement.\\
+	\vspace{1cm}
+	}
+	\only<2->{
+	Round 1 : $D_1, D_3, D_6, D_1, \dots, D_n$\\
+	Round 2 : $D_2, D_4, D_1, D_{80}, \dots, D_3$\\
+	\vdots
+	}
+	\only<3->{
+	Repetition of samples is possible.\\
+	}
+	\only<4->{
+	We can train the same classifier/models on each of these different ``Bagging Rounds''.
+	}
+	\end{frame}
+
+	\begin{frame}{Bagging : Classification Example}
+	Consider the dataset below. Points (2,2) and (4,4) are anomalies.\\
+	\vspace{0.5cm}
+	\centering
+	\includegraphics[width = 0.6\textwidth]{dataset}
+	\end{frame}
+
+
+	\begin{frame}{Bagging : Classification Example}
+	Decision Boundary for decision tree with depth 9.\\
+	\vspace{0.5cm}
+	\centering
+	\includegraphics[width = 0.6\textwidth]{strong-tree}
+	\end{frame}
+	
+	\begin{frame}{Bagging : Classification Example}
+	Lets use bagging with ensemble of 3 trees.\\
+	\vspace{1cm}
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\centering
+			Round - 1\\
+			\vspace{0.5cm}
+			\includegraphics[width = \textwidth]{decision-boundary-0}
+			Depth of tree = 5
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\centering
+			Round - 2\\
+			\vspace{0.5cm}
+			\includegraphics[width = \textwidth]{decision-boundary-1}
+			Depth of tree = 6
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\centering
+			Round - 3\\
+			\vspace{0.5cm}
+			\includegraphics[width = \textwidth]{decision-boundary-2}
+			Depth of tree = 3
+		\end{column}
+	\end{columns}
+
+	\end{frame}
+
+	\begin{frame}{Bagging : Classification Example}
+	Using majority voting to combine all predictions, we get the decision boundary below.\\
+	\vspace{0.5cm}
+	\centering
+	\includegraphics[width = 0.6\textwidth]{decision-boundary-ensemble}
+	\end{frame}
+	
+	\begin{frame}{Bagging}
+	\textbf{Summary}
+	\begin{itemize}
+		\item We take ``strong'' learners and combine them to reduce variance.
+		\item All learners are independent of each other.
+	\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Boosting}
+	\begin{itemize}
+		\item We take ``weak'' learners and combine them to reduce bias.
+		\item All learners are incrementally built.
+	\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Boosting : AdaBoost }
+	Consider we have a dataset of $N$ samples.\\
+	Sample $i$ has weight $w_i$. There are $M$ classifers in ensemble.\\
+	\begin{enumerate}
+		\item Initialize weights of data samples, $w_i = \dfrac{1}{N}$
+		\item For $m = 1\dots M$
+		\begin{enumerate}
+			\item Learn classifier using current weights $w_i's$
+			\item Compute the weighted error, $err_m = \dfrac{\sum\limits_iw_i(incorrect)}{\sum\limits_iw_i}$
+			\item Compute $\alpha_m = \dfrac{1}{2}log\left(\dfrac{1 - err_m}{err_m}\right)$
+			\item For samples which were predicted correctly, $w_i = w_ie^{-\alpha_m}$
+			\item For samples which were predicted incorrectly, $w_i = w_ie^{\alpha_m}$  
+			\item Normalize $w_i's$ to sum up to 1.
+		\end{enumerate}
+	\end{enumerate}
+	\end{frame}
+	
+	\begin{frame}{Boosting: Adaboost}
+	Intuitively, after each iteration, importance of wrongly classified samples is increased by increasing their weights and importance of correctly classified 		samples is decreased by decreasing their weights.
+	\end{frame}
+	
+	\begin{frame}{Boosting: Adaboost}
+	\textbf{Testing}\\
+	Final Prediction = $\alpha_1$(Pred. of Clf. 1) +  $\alpha_2$(Pred. Clf. 2) + $\dots$ +  $\alpha_M$(Pred. Clf $M$)
+	\end{frame}
+	
+
+	\begin{frame}{Random Forest}
+		It is an ensemble of decision trees, where each tree is trained on randomly-selected features.\\
+		\vspace{1cm}
+		As features are randomly selected, we learn decorrelated trees and helps in reducing variance.\\
+	\end{frame}
+
+	\begin{frame}{Random Forest}
+	There are 3 parameters while training a random forest ``$number$ $of$ $trees$'', ``$number$ $of$ $features'' (m)$, ``$maximum$ $depth$''.\\
+	\vspace{1cm}
+	\underline{Training Algorithm}\\
+	\begin{itemize}
+		\item for $depth$ in $[1, \dots,$ $maximum$ $depth$ $]$
+			\begin{itemize}
+				\item for $tree$ in $[1, \dots,$ $number$ $of$ $trees$ $]$
+				\begin{itemize}
+					\item Select ``$m$'' features from total available $M$ features and train a decision tree on selected features
+					
+				\end{itemize}
+			\end{itemize}
+	\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Code for Examples}
+		\centering
+		\href{https://colab.research.google.com/drive/1Yix-Hn1zqT6o-wOQkoiBhjKklzhJgekF}{Google Colab}
+	\end{frame}
+
+
+\end{document}
