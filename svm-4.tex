@@ -1,0 +1,64 @@
+\documentclass{beamer}
+\usepackage{tcolorbox}
+\usepackage{mathtools}
+\usepackage{notation} % Custom package
+\usepackage{pgfplots}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%\beamerdefaultoverlayspecification{<+->}
+% \newcommand{\data}{\mathcal{D}}
+% \newcommand\Item[1][]{%
+% 	\ifx\relax#1\relax  \item \else \item[#1] \fi
+% 	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+
+
+\usetheme{metropolis}           % Use metropolis theme
+
+
+\title{SVM Multi-Classs Classification}
+\date{\today}
+\author{Nipun Batra}
+\institute{IIT Gandhinagar}
+\begin{document}
+	\maketitle
+	
+	\begin{frame}{SVM Multi-Classs Classification}
+	    \begin{enumerate}
+	        \item One v/s All
+	    \end{enumerate}
+	\end{frame}
+	
+	\begin{frame}{SVM Multi-Classs Classification}
+	    \begin{enumerate}
+	        \item One v/s All
+	    \end{enumerate}
+	    \[
+	    \begin{rcases*}
+	    \text{Blue (+1) v/s All (-1)} : $\overline{w} . \overline{x}_{test} + b = 0.8$ \\
+	    \text{Yellow (+1) v/s All (-1)} : $\overline{w} . \overline{x}_{test} + b = 0.6$ \\
+	    \text{Red (+1) v/s All (-1)} : $\overline{w} . \overline{x}_{test} + b = -0.2$ \\
+	    \end{rcases*} \text{argmax = Blue}
+	    \]
+	\end{frame}
+	\begin{frame}{SVM Multi-Classs Classification}
+	    \begin{enumerate}
+	        \item One v/s One
+	    \end{enumerate}
+	\end{frame}
+	\begin{frame}{SVM Multi-Classs Classification}
+	   \begin{enumerate}
+	       \item One v/s One
+	       \begin{enumerate}[1]
+	           \item Blue v/s Yellow $\rightarrow$ Blue
+	           \item Yellow v/s Red $\rightarrow$ Red
+	           \item Red v/s Blue $\rightarrow$ Blue
+	       \end{enumerate}
+	   \end{enumerate}
+	   \hspace{3cm}Majority = Blue
+	\end{frame}
+	\begin{frame}{Support Vector Regression}
+	    Hard Margin or $\epsilon$-SVR \\
+	    $\hat{y}(x) = \overline{w}.\overline{x} + b$\\
+	\end{frame}
+\end{document}
