@@ -4,7 +4,7 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{subcaption}
-
+\usepackage{makecell}
 \usepackage[labelformat=empty]{caption}
 \usepackage{color, colortbl}
 
@@ -26,7 +26,16 @@
 }
 
 \usepackage{tikz}
+
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=brown!30]
+
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+
 \def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
 
 \newcommand{\DoTikzmark}[1]{%
 	\tikz[remember picture] \coordinate[shift={(0,.7ex)}](#1);%
@@ -64,8 +73,76 @@
   
   
   
+\begin{frame}{Logistics}
+\begin{itemize}
+	\item \pause Please sign up on Google Classroom: {\Huge cgt6rwd}
+	\item \pause Extra lecture on Saturday, 11 Jan at 11 AM in 1/101
+	\item \pause FAQ, Project google docs open for comments. Please use comments to seek clarity.
+	\item \pause Video and slides from last lecture up on course website: https://sites.google.com/view/es654-2020/
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Revision: What is Machine Learning}
+
+	\pause``Field of study that give computers the ability to learn
+	without being explicitly programmed'' - Arthur Samuel
+	[1959]
+	\vspace{-10pt}
+	\pause \begin{figure}
+		\centering
+		\includegraphics[width=0.25\linewidth]{mnist}
+		\caption{}\vspace{-20pt}
+		\label{fig:mnist}
+	\end{figure}
+	\vspace{-20pt}
+	\pause How would you program to recognise digits? Start with 4.
+	
+	\pause Maybe 4 can be thought of as: ``|'' + ``\_\_''  + ``|'' + another vertically down ``|''
+	
+	\pause The heights of each of the ``|'' need to be similar within tolerance
+	
+	\pause Each of the ``|'' can be slightly slanted. Similarly the horizontal line can be slanted.
+	\pause There can be some cases of 4 where the first ``|'' is at 45 degrees
+	\pause There can be some cases of 4 where the width of each stroke is different
+	
 
 
+\end{frame}	
+
+
+
+\begin{frame}
+
+\begin{tikzpicture}[node distance=2cm]
+\node (Data) [startstop] {Data};
+\node (Rules) [startstop, below of=Data] {Rules};
+\node (Traditional) [startstop, right of=Data, xshift=2cm, yshift=-1cm] {\makecell[l]{Traditional\\Programming}};
+\node (Answers) [startstop, right of=Traditional, xshift=2cm] {Answers};
+\draw [arrow] (Data) -- (Traditional);
+\draw [arrow] (Rules) -- (Traditional);
+\draw [arrow] (Traditional) -- (Answers);
+\end{tikzpicture}
+\vspace{40pt}
+
+\pause \begin{tikzpicture}[node distance=2cm]
+\node (Data) [startstop] {Data};
+\node (Answers) [startstop, below of=Data] {Answers};
+\node (ML) [startstop, right of=Data, xshift=2cm, yshift=-1cm] {\makecell[l]{Machine \\Learning}};
+\node (Rules) [startstop, right of=ML, xshift=2cm] {Rules};
+\draw [arrow] (Data) -- (ML);
+\draw [arrow] (Answers) -- (ML);
+\draw [arrow] (ML) -- (Rules);
+\end{tikzpicture}
+	
+\end{frame}
+
+\begin{frame}{Revision: What is Machine Learning}
+``A computer program is said to learn from
+experience E with respect to some class of tasks T
+and performance measure P if its performance at
+tasks in T, as measured by P, improves with
+experience E.'' - Tom Mitchell
+\end{frame}
 
 \begin{frame}{First ML Task: Grocery store tomatoes quality prediction}
 Problem statement: You want to predict the quality/condition of a tomato given its visual features.
@@ -646,12 +723,12 @@ For the same data
 \pause $$
 \bordermatrix{&\texttt{G.T. Positive}&\texttt{G.T. Negative}\cr
                \texttt{Pred Positive}&0&1\cr
-               \texttt{Pred Positive}&1&98}
+               \texttt{Pred Negative}&1&98}
 $$
 \pause $$
 \bordermatrix{&\texttt{G.T. Positive}&\texttt{G.T. Negative}\cr
                \texttt{Pred Positive}&\texttt{True Positive}&\texttt{False Positive}\cr
-               \texttt{Pred Positive}&\texttt{True Negative}&\texttt{False Negative}}
+               \texttt{Pred Negative}&\texttt{True Negative}&\texttt{False Negative}}
 $$
 
 
@@ -666,7 +743,7 @@ For the same data
 $$
 \bordermatrix{&\texttt{G.T. Positive}&\texttt{G.T. Negative}\cr
                \texttt{Pred Positive}&\texttt{True Positive}&\texttt{False Positive}\cr
-               \texttt{Pred Positive}&\texttt{True Negative}&\texttt{False Negative}}
+               \texttt{Pred Negative}&\texttt{True Negative}&\texttt{False Negative}}
 $$
 
 $$
@@ -696,7 +773,7 @@ For the same data
 $$
 \bordermatrix{&\texttt{G.T. Positive}&\texttt{G.T. Negative}\cr
                \texttt{Pred Positive}&90&4\cr
-               \texttt{Pred Positive}&1&1}
+               \texttt{Pred Negative}&1&1}
 $$
 
 Precision = ?  \\
