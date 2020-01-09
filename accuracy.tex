@@ -7,6 +7,8 @@
 \usepackage{makecell}
 \usepackage[labelformat=empty]{caption}
 \usepackage{color, colortbl}
+\usepackage{booktabs}
+\usepackage{multirow}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -296,7 +298,7 @@ Estimate condition for unseen tomatoes (\#5, 6) based on data set.
 \begin{frame}{Prediction Task}
 We hope to:
 \begin{enumerate}
-	\item \pause Learn $f$: 		$\texttt{Condition} = f(\texttt{colour, size, texture})$
+	\item \pause Learn $f$: 		$\text{Condition} = f(\text{colour, size, texture})$
 	\item \pause From Training Dataset
 	\item \pause To Predict the condition for the Testing set
 \end{enumerate}
@@ -439,7 +441,7 @@ Answer:\begin{itemize}
 %\end{table}
 %
 %\begin{align*}
-%\texttt{Accuracy} &= \frac{||y = \hat{y}||}{||y||} \end{align*}
+%\text{Accuracy} &= \frac{||y = \hat{y}||}{||y||} \end{align*}
 %\end{frame}
 
 %\begin{frame}{Metrics for Classification}
@@ -473,7 +475,7 @@ Answer:\begin{itemize}
 %\end{table}
 %
 %\begin{align*}
-%\texttt{Accuracy} &= \frac{||y = \hat{y}||}{||y||} \\
+%\text{Accuracy} &= \frac{||y = \hat{y}||}{||y||} \\
 %&= \frac{3}{5} = 0.6
 %\end{align*}
 %\end{frame}
@@ -560,19 +562,19 @@ Answer:\begin{itemize}
 
 
 
-$$\bordermatrix{&\texttt{Prediction}\;(\hat{y})\cr
-                &\texttt{Good}\cr
-                &\texttt{Good}\cr
-                &\texttt{Good}\cr
-                &\texttt{Good}\cr
-                &\texttt{Bad}}
+$$\bordermatrix{&\text{Prediction}\;(\hat{y})\cr
+                &\text{Good}\cr
+                &\text{Good}\cr
+                &\text{Good}\cr
+                &\text{Good}\cr
+                &\text{Bad}}
                 \qquad \qquad
-   \bordermatrix{&\texttt{Ground Truth}\;(y)\cr
-                &\texttt{Good}\cr
-                &\texttt{Good}\cr
-                &\texttt{Bad}\cr
-                &\texttt{Bad}\cr
-                &\texttt{Bad}}
+   \bordermatrix{&\text{Ground Truth}\;(y)\cr
+                &\text{Good}\cr
+                &\text{Good}\cr
+                &\text{Bad}\cr
+                &\text{Bad}\cr
+                &\text{Bad}}
 $$
 
 \vspace{1cm}
@@ -586,23 +588,23 @@ Prediction: & Made by the model \\
 
 \begin{frame}{Accuracy}
 $$
-\bordermatrix{&\texttt{Prediction}\;(\hat{y})\cr
-               \checkmark&\texttt{Good}\cr
-               \checkmark&\texttt{Good}\cr
-                &\texttt{Good}\cr
-                &\texttt{Good}\cr
-               \checkmark&\texttt{Bad}}
+\bordermatrix{&\text{Prediction}\;(\hat{y})\cr
+               \checkmark&\text{Good}\cr
+               \checkmark&\text{Good}\cr
+                &\text{Good}\cr
+                &\text{Good}\cr
+               \checkmark&\text{Bad}}
 \qquad \qquad
-\bordermatrix{&\texttt{Ground Truth}\;(y)\cr
-                &\texttt{Good}\cr
-                &\texttt{Good}\cr
-                &\texttt{Bad}\cr
-                &\texttt{Bad}\cr
-                &\texttt{Bad}}
+\bordermatrix{&\text{Ground Truth}\;(y)\cr
+                &\text{Good}\cr
+                &\text{Good}\cr
+                &\text{Bad}\cr
+                &\text{Bad}\cr
+                &\text{Bad}}
 $$
 
 \pause \begin{align*}
-\texttt{Accuracy} &= \frac{||y = \hat{y}||}{||y||} \\ 
+\text{Accuracy} &= \frac{||y = \hat{y}||}{||y||} \\ 
 &= \frac{3}{5} = 0.6
 \end{align*}
 
@@ -617,11 +619,11 @@ $$
     \end{array}
     \left (
       \begin{array}{ *{1}{c} }
-        \texttt{Bad}  \\
-        \texttt{Good}  \\
-        \texttt{Good}  \\
+        \text{Bad}  \\
+        \text{Good}  \\
+        \text{Good}  \\
         \ldots  \\
-        \texttt{Good}  \\
+        \text{Good}  \\
       \end{array}
     \right ) \\
     \mathstrut
@@ -642,48 +644,48 @@ Cases for this:
 
 \begin{frame}{Accuracy Metrics: Precision}
 $$
-\bordermatrix{&\texttt{Prediction}\;(\hat{y})\cr
-               \rightarrow\checkmark&\texttt{Good}\cr
-               \rightarrow\checkmark&\texttt{Good}\cr
-                \rightarrow&\texttt{Good}\cr
-                \rightarrow&\texttt{Good}\cr
-               &\texttt{Bad}}
+\bordermatrix{&\text{Prediction}\;(\hat{y})\cr
+               \rightarrow\checkmark&\text{Good}\cr
+               \rightarrow\checkmark&\text{Good}\cr
+                \rightarrow&\text{Good}\cr
+                \rightarrow&\text{Good}\cr
+               &\text{Bad}}
 \qquad \qquad
-\bordermatrix{&\texttt{Ground Truth}\;(y)\cr
-                &\texttt{Good}\cr
-                &\texttt{Good}\cr
-                &\texttt{Bad}\cr
-                &\texttt{Bad}\cr
-                &\texttt{Good}}
+\bordermatrix{&\text{Ground Truth}\;(y)\cr
+                &\text{Good}\cr
+                &\text{Good}\cr
+                &\text{Bad}\cr
+                &\text{Bad}\cr
+                &\text{Good}}
 $$
 
 \begin{align*}
-\pause \texttt{Precision} &= \frac{||y = \hat{y} = \texttt{Good}||}{||\hat{y} = \texttt{Good}||} = \frac{2}{4} = 0.5
+\pause \text{Precision} &= \frac{||y = \hat{y} = \text{Good}||}{||\hat{y} = \text{Good}||} = \frac{2}{4} = 0.5
 \end{align*}
 
-``the fraction of relevant instances among the retrieved instances'', i.e. ``out of the number of times we predict \texttt{Good}, how many times is the condition actually \texttt{Good}''
+``the fraction of relevant instances among the retrieved instances'', i.e. ``out of the number of times we predict \text{Good}, how many times is the condition actually \text{Good}''
 
 \end{frame}
 
 \begin{frame}{Accuracy Metrics: Recall}
 $$
-\bordermatrix{&\texttt{Prediction}\;(\hat{y})\cr
-               \rightarrow\checkmark&\texttt{Good}\cr
-               \rightarrow\checkmark&\texttt{Good}\cr
-                &\texttt{Good}\cr
-                &\texttt{Good}\cr
-               \rightarrow&\texttt{Bad}}
+\bordermatrix{&\text{Prediction}\;(\hat{y})\cr
+               \rightarrow\checkmark&\text{Good}\cr
+               \rightarrow\checkmark&\text{Good}\cr
+                &\text{Good}\cr
+                &\text{Good}\cr
+               \rightarrow&\text{Bad}}
 \qquad \qquad
-\bordermatrix{&\texttt{Ground Truth}\;(y)\cr
-                &\texttt{Good}\cr
-                &\texttt{Good}\cr
-                &\texttt{Bad}\cr
-                &\texttt{Bad}\cr
-                &\texttt{Good}}
+\bordermatrix{&\text{Ground Truth}\;(y)\cr
+                &\text{Good}\cr
+                &\text{Good}\cr
+                &\text{Bad}\cr
+                &\text{Bad}\cr
+                &\text{Good}}
 $$
 
 \begin{align*}
-\texttt{Recall} &= \frac{||y = \hat{y} = \texttt{Good}||}{||y = \texttt{Good}||} = \frac{2}{3} = 0.67
+\text{Recall} &= \frac{||y = \hat{y} = \text{Good}||}{||y = \text{Good}||} = \frac{2}{3} = 0.67
 \end{align*}
 
 ``the fraction of the total amount of relevant instances that were actually retrieved''
@@ -693,87 +695,232 @@ $$
 \begin{frame}{Types of Data: Imbalanced Classes}
 Given predictions of whether a tissue is cancerous or not ($n = 100$).
 $$
-\bordermatrix{&\texttt{Prediction}\;(\hat{y})\cr
-               \rightarrow&\texttt{No}\cr
-               &\texttt{Yes}\cr
-                &\texttt{Yes}\cr
+\bordermatrix{&\text{Prediction}\;(\hat{y})\cr
+               \rightarrow&\text{Yes}\cr
+               &\text{No}\cr
+                &\text{No}\cr
                 &\ldots\cr
-               &\texttt{Yes}}
+               &\text{No}}
 \qquad \qquad
-\bordermatrix{&\texttt{Ground Truth}\;(y)\cr
-                &\texttt{Yes}\cr
-                &\texttt{Yes}\cr
+\bordermatrix{&\text{Ground Truth}\;(y)\cr
+                &\text{No}\cr
+                &\text{No}\cr
                 &\ldots\cr
-                &\texttt{Yes}\cr
-                \rightarrow&\texttt{No}}
-$$
+                &\text{No}\cr
+                \rightarrow&\text{Yes}}a
+            $$
 
 \pause 
 \begin{align*}
-\texttt{Accuracy} = \frac{98}{100} = 0.98 \qquad \qquad \qquad
-\texttt{Recall} &= \frac{0}{99} = 0 \\
-\texttt{Precision} &= \frac{0}{99} = 0
+\text{Accuracy} = \frac{98}{100} = 0.98 \qquad \qquad \qquad
+\text{Recall} &= \frac{0}{1} = 0 \\
+\text{Precision} &= \frac{0}{1} = 0
 \end{align*}
 
 
 \end{frame}
 
 \begin{frame}{Accuracy Metrics: Confusion Matrix}
-For the same data
-\pause $$
-\bordermatrix{&\texttt{G.T. Positive}&\texttt{G.T. Negative}\cr
-               \texttt{Pred Positive}&0&1\cr
-               \texttt{Pred Negative}&1&98}
-$$
-\pause $$
-\bordermatrix{&\texttt{G.T. Positive}&\texttt{G.T. Negative}\cr
-               \texttt{Pred Positive}&\texttt{True Positive}&\texttt{False Positive}\cr
-               \texttt{Pred Negative}&\texttt{True Negative}&\texttt{False Negative}}
-$$
+\begin{center}
 
 
-\pause \begin{align*}
-\texttt{Recall} = \frac{\texttt{T.P}}{\texttt{T.P + F.P}} \qquad \qquad 
-\texttt{Precision} = \frac{\texttt{T.P}}{\texttt{T.P + F.N}}
-\end{align*}
+\begin{tabular}{@{}cc cc@{}}
+	\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{2}{c}{Ground Truth} \\ 
+	\cmidrule(lr){3-4}
+	\multicolumn{1}{c}{} & 
+	\multicolumn{1}{c}{} & 
+	\multicolumn{1}{c}{Yes} & 
+	\multicolumn{1}{c}{No} \\ 
+	\cline{2-4}
+	\multirow[c]{2}{*}{\rotatebox[origin=tr]{90}{Predicted}}
+	& Yes  & 0 & 1   \\[1.5ex]
+	& No  & 1   & 98 \\ 
+	\cline{2-4}
+\end{tabular}
+
+\pause 
+\vspace{60pt}
+\begin{tabular}{@{}cc cc@{}}
+	\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{2}{c}{Ground Truth} \\ 
+	\cmidrule(lr){3-4}
+	\multicolumn{1}{c}{} & 
+	\multicolumn{1}{c}{} & 
+	\multicolumn{1}{c}{Yes} & 
+	\multicolumn{1}{c}{No} \\ 
+	\cline{2-4}
+	\multirow[c]{2}{*}{\rotatebox[origin=tr]{90}{Predicted}}
+	& Yes  & True Positive & False Positive   \\[1.5ex]
+	& No  & False Negative   & True Negative \\ 
+	\cline{2-4}
+\end{tabular}
+\end{center}
 \end{frame}
 
+\begin{frame}{Accuracy Metric: Confusion Matrix}
+\begin{center}
+	\begin{tabular}{@{}cc cc@{}}
+		\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{2}{c}{Ground Truth} \\ 
+		\cmidrule(lr){3-4}
+		\multicolumn{1}{c}{} & 
+		\multicolumn{1}{c}{} & 
+		\multicolumn{1}{c}{Yes} & 
+		\multicolumn{1}{c}{No} \\ 
+		\cline{2-4}
+		\multirow[c]{2}{*}{\rotatebox[origin=tr]{90}{Predicted}}
+		
+		& Yes  & \cellcolor{blue!25}True Positive & \cellcolor{blue!25}False Positive   \\[1.5ex]
+		& No  & False Negative   & True Negative \\ 
+		\cline{2-4}
+	\end{tabular}\\
+	
+	\vspace{30pt}
+	Precision = $\frac{T.P.}{T.P. + F.P.}$
+\end{center}
+\end{frame}
+
+\begin{frame}{Accuracy Metric: Confusion Matrix}
+\begin{center}
+\begin{tabular}{@{}cc cc@{}}
+	\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{2}{c}{Ground Truth} \\ 
+	\cmidrule(lr){3-4}
+	\multicolumn{1}{c}{} & 
+	\multicolumn{1}{c}{} & 
+	\multicolumn{1}{c}{Yes} & 
+	\multicolumn{1}{c}{No} \\ 
+	\cline{2-4}
+	\multirow[c]{2}{*}{\rotatebox[origin=tr]{90}{Predicted}}
+	
+	& Yes  & \cellcolor{blue!60}True Positive & \cellcolor{blue!25}False Positive   \\[1.5ex]
+	& No  & False Negative   & True Negative \\ 
+	\cline{2-4}
+\end{tabular}\\
+
+\vspace{30pt}
+Precision = $\frac{T.P.}{T.P. + F.P.}$
+\end{center}
+\end{frame}
+
+\begin{frame}{Accuracy Metric: Confusion Matrix}
+\begin{center}
+	\begin{tabular}{@{}cc cc@{}}
+		\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{2}{c}{Ground Truth} \\ 
+		\cmidrule(lr){3-4}
+		\multicolumn{1}{c}{} & 
+		\multicolumn{1}{c}{} & 
+		\multicolumn{1}{c}{Yes} & 
+		\multicolumn{1}{c}{No} \\ 
+		\cline{2-4}
+		\multirow[c]{2}{*}{\rotatebox[origin=tr]{90}{Predicted}}
+		
+		& Yes  & \cellcolor{blue!25}True Positive &False Positive   \\[1.5ex]
+		& No  &  \cellcolor{blue!25}False Negative   & True Negative \\ 
+		\cline{2-4}
+	\end{tabular}\\
+	
+	\vspace{30pt}
+	Recall = $\frac{T.P.}{T.P. + F.N.}$
+\end{center}
+\end{frame}
+
+\begin{frame}{Accuracy Metric: Confusion Matrix}
+\begin{center}
+	\begin{tabular}{@{}cc cc@{}}
+		\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{2}{c}{Ground Truth} \\ 
+		\cmidrule(lr){3-4}
+		\multicolumn{1}{c}{} & 
+		\multicolumn{1}{c}{} & 
+		\multicolumn{1}{c}{Yes} & 
+		\multicolumn{1}{c}{No} \\ 
+		\cline{2-4}
+		\multirow[c]{2}{*}{\rotatebox[origin=tr]{90}{Predicted}}
+		
+		& Yes  & \cellcolor{blue!50}True Positive &False Positive   \\[1.5ex]
+		& No  &  \cellcolor{blue!25}False Negative   & True Negative \\ 
+		\cline{2-4}
+	\end{tabular}\\
+	
+	\vspace{30pt}
+	Recall = $\frac{T.P.}{T.P. + F.N.}$
+\end{center}
+\end{frame}
+
+
+%\begin{frame}{Accuracy Metrics: Confusion Matrix}
+%For the same data
+%\pause $$
+%\bordermatrix{&\text{G.T. Positive}&\text{G.T. Negative}\cr
+%               \text{Pred Positive}&0&1\cr
+%               \text{Pred Negative}&1&98}
+%$$
+%\pause $$
+%\bordermatrix{&\text{G.T. Positive}&\text{G.T. Negative}\cr
+%               \text{Pred Positive}&\text{True Positive}&\text{False Positive}\cr
+%               \text{Pred Negative}&\text{True Negative}&\text{False Negative}}
+%$$
+%
+%
+%\pause \begin{align*}
+%\text{Recall} = \frac{\text{T.P}}{\text{T.P + F.P}} \qquad \qquad 
+%\text{Precision} = \frac{\text{T.P}}{\text{T.P + F.N}}
+%\end{align*}
+%\end{frame}
+
 \begin{frame}{Accuracy Metrics: F-Score}
-For the same data
-$$
-\bordermatrix{&\texttt{G.T. Positive}&\texttt{G.T. Negative}\cr
-               \texttt{Pred Positive}&\texttt{True Positive}&\texttt{False Positive}\cr
-               \texttt{Pred Negative}&\texttt{True Negative}&\texttt{False Negative}}
-$$
 
-$$
-\texttt{F-Score} = \frac{2\times\texttt{Precision}\times\texttt{Recall}}{\texttt{Precision} + \texttt{Recall}}
-$$
+\begin{center}
+	\begin{tabular}{@{}cc cc@{}}
+		\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{2}{c}{Ground Truth} \\ 
+		\cmidrule(lr){3-4}
+		\multicolumn{1}{c}{} & 
+		\multicolumn{1}{c}{} & 
+		\multicolumn{1}{c}{Yes} & 
+		\multicolumn{1}{c}{No} \\ 
+		\cline{2-4}
+		\multirow[c]{2}{*}{\rotatebox[origin=tr]{90}{Predicted}}
+		
+		& Yes  & True Positive &False Positive   \\[1.5ex]
+		& No  &  False Negative   & True Negative \\ 
+		\cline{2-4}
+	\end{tabular}\\
+	
+	\vspace{30pt}
+	\(\mathrm{F}-\) Score \(=\frac{2 \times \text { Precision } \times \text { Recall }}{\text { Precision }+\text { Recall }}\)
 
-
+\end{center}
 \end{frame}
 
 
 \begin{frame}{Accuracy Metrics: Matthew's Correlation Coefficient}
-For the same data
-$$
-\bordermatrix{&\texttt{G.T. Positive}&\texttt{G.T. Negative}\cr
-               \texttt{Pred Positive}&\texttt{True Positive}&\texttt{False Positive}\cr
-               \texttt{Pred Positive}&\texttt{True Negative}&\texttt{False Negative}}
-$$
+\begin{center}
+	\begin{tabular}{@{}cc cc@{}}
+		\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{2}{c}{Ground Truth} \\ 
+		\cmidrule(lr){3-4}
+		\multicolumn{1}{c}{} & 
+		\multicolumn{1}{c}{} & 
+		\multicolumn{1}{c}{Yes} & 
+		\multicolumn{1}{c}{No} \\ 
+		\cline{2-4}
+		\multirow[c]{2}{*}{\rotatebox[origin=tr]{90}{Predicted}}
+		
+		& Yes  & True Positive &False Positive   \\[1.5ex]
+		& No  &  False Negative   & True Negative \\ 
+		\cline{2-4}
+	\end{tabular}\\
 
-\texttt{Matthew's Correlation Coefficient =}
-$$
-\frac{\texttt{TP $\times$ TN} - \texttt{FP $\times$ FN}}{\sqrt{\texttt{(TP + FP)(TP + FN)(TN + FP)(TN + FN)}}}
-$$
+\vspace{30pt}
+Matthew's correlation coefficient =
+\(\frac{\mathrm{TP} \times \mathrm{TN}-\mathrm{FP} \times \mathrm{FN}}{\sqrt{(\mathrm{TP}+\mathrm{FP})(\mathrm{TP}+\mathrm{FN})(\mathrm{TN}+\mathrm{FP})(\mathrm{TN}+\mathrm{FN})}}\)
+\end{center}
 \end{frame}
 
+
+
 \begin{frame}{Accuracy Metrics: Example}
-For the same data
+For the data given below, calculate: 
 $$
-\bordermatrix{&\texttt{G.T. Positive}&\texttt{G.T. Negative}\cr
-               \texttt{Pred Positive}&90&4\cr
-               \texttt{Pred Negative}&1&1}
+\bordermatrix{&\text{G.T. Positive}&\text{G.T. Negative}\cr
+               \text{Pred Positive}&90&4\cr
+               \text{Pred Negative}&1&1}
 $$
 
 Precision = ?  \\
@@ -785,9 +932,9 @@ Matthew's Coeff. = ?\\
 \begin{frame}{Accuracy Metrics: Answer}
 For the same data
 $$
-\bordermatrix{&\texttt{G.T. Positive}&\texttt{G.T. Negative}\cr
-               \texttt{Pred Positive}&90&4\cr
-               \texttt{Pred Positive}&1&1}
+\bordermatrix{&\text{G.T. Positive}&\text{G.T. Negative}\cr
+               \text{Pred Positive}&90&4\cr
+               \text{Pred Positive}&1&1}
 $$
 
 Precision = $\frac{90}{94}$ \\
@@ -812,14 +959,14 @@ Matthew's Coeff. = 0.14
 
 \begin{frame}{Metrics for Regression MSE \& MAE}
 $$
-\bordermatrix{&\texttt{Prediction}\;(\hat{y})\cr
+\bordermatrix{&\text{Prediction}\;(\hat{y})\cr
                &10\cr
                &20\cr
                 &30\cr
                 &40\cr
                &50}
 \qquad \qquad
-\bordermatrix{&\texttt{Ground Truth}\;(y)\cr
+\bordermatrix{&\text{Ground Truth}\;(y)\cr
                &20\cr
                &30\cr
                 &40\cr
@@ -828,22 +975,22 @@ $$
 $$
 
 \begin{align*}
-\texttt{\textcolor{red}{Mean} \textcolor{green}{Squared} \textcolor{Tan}{Error} (MSE)} &=  \frac{\mathcolor{red}{\sum_{i=1}^{N}}(\mathcolor{Tan}{\hat{y}_i-y_i)}^{\mathcolor{green}2}}{\mathcolor{red}{N}} \\ 
-\texttt{Root Mean Square Error (RMSE)} &=  \sqrt{\texttt{MSE}}
+\text{\textcolor{red}{Mean} \textcolor{green}{Squared} \textcolor{Tan}{Error} (MSE)} &=  \frac{\mathcolor{red}{\sum_{i=1}^{N}}(\mathcolor{Tan}{\hat{y}_i-y_i)}^{\mathcolor{green}2}}{\mathcolor{red}{N}} \\ 
+\text{Root Mean Square Error (RMSE)} &=  \sqrt{\text{MSE}}
 \end{align*}
 
 \end{frame}
 
 \begin{frame}{Accuracy Metrics: MAE \& ME}
 $$
-\bordermatrix{&\texttt{Prediction}\;(\hat{y})\cr
+\bordermatrix{&\text{Prediction}\;(\hat{y})\cr
                &10\cr
                &20\cr
                 &30\cr
                 &40\cr
                &50}
 \qquad \qquad
-\bordermatrix{&\texttt{Ground Truth}\cr
+\bordermatrix{&\text{Ground Truth}\cr
                &20\cr
                &30\cr
                 &40\cr
@@ -852,8 +999,8 @@ $$
 $$
 
 \begin{align*}
-\texttt{\textcolor{red}{Mean} \textcolor{green}{Absolute} \textcolor{Tan}{Error} (ME)} &=  \frac{\mathcolor{red}{\sum_{i=1}^{N}}\mathcolor{green}|\mathcolor{Tan}{\hat{y}_i-y_i\mathcolor{green}|}}{\mathcolor{red}{N}} \\ 
-\texttt{Mean Error} &=  \frac{\sum_{i=1}^{N}\hat{y}_i-y_i}{N}
+\text{\textcolor{red}{Mean} \textcolor{green}{Absolute} \textcolor{Tan}{Error} (ME)} &=  \frac{\mathcolor{red}{\sum_{i=1}^{N}}\mathcolor{green}|\mathcolor{Tan}{\hat{y}_i-y_i\mathcolor{green}|}}{\mathcolor{red}{N}} \\ 
+\text{Mean Error} &=  \frac{\sum_{i=1}^{N}\hat{y}_i-y_i}{N}
 \end{align*}
 \pause Is there any downside with using mean error?\\
 \pause Errors can get cancelled out
