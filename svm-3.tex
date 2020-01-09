@@ -1,0 +1,73 @@
+\documentclass{beamer}
+\usepackage{tcolorbox}
+\usepackage{mathtools}
+\usepackage{notation} % Custom package
+\usepackage{pgfplots}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+%\beamerdefaultoverlayspecification{<+->}
+% \newcommand{\data}{\mathcal{D}}
+% \newcommand\Item[1][]{%
+% 	\ifx\relax#1\relax  \item \else \item[#1] \fi
+% 	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+
+
+\usetheme{metropolis}           % Use metropolis theme
+
+
+\title{Support Vector Machines}
+\date{\today}
+\author{Nipun Batra}
+\institute{IIT Gandhinagar}
+\begin{document}
+	\maketitle
+	
+	\begin{frame}{Non-Linearly Separable Data}
+	    Data not separate in $\mathbb{R}$ \\
+	    \vspace{0.5cm}
+	    Can we still use SVM? \\
+	    \vspace{0.5cm}
+	    Yes!\\
+	    How? Project data to a higher dimensional space.
+	\end{frame}
+	\begin{frame}{Projection/Transformation Function}
+	    \begin{equation*}
+	        \phi : \mathbb{R}^{d} \rightarrow \mathbb{R}^{D}
+	    \end{equation*}
+	    where, $d$ = original dimension \\
+	    \hspace{1cm} $D$ = new dimension \\
+	    In our example:\\
+	    \hspace{1cm} $d = 1; D = 2$ 
+	\end{frame}
+	\begin{frame}{}
+	    Linear SVM:\\
+	    \hspace{1cm} Maximize\\
+	    \begin{equation*}
+	        L(\alpha) = \sum_{i=1}^{N}\alpha_{i} - \frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_{i}\alpha_{j}y_{i}y_{j}\overline{x_{i}}.\overline{x_{j}}
+	    \end{equation*}
+	    \hspace{1cm} such that constriants are satisfied.\\
+	   \hspace{5cm} \downarrow\\
+	   \hspace{3.8cm} Transformation ($\phi$)\\
+	   \hspace{5cm} \downarrow\\
+	   \begin{equation*}
+	       L(\alpha) = \sum_{i=1}^{N}\alpha_{i} - \frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_{i}\alpha_{j}y_{i}y_{j}\phi(\overline{x_{i}}).\phi(\overline{x_{j}})
+	   \end{equation*}
+	\end{frame}
+	\begin{frame}{Steps}
+	    \begin{enumerate}
+	        \item Compute $\phi(x)$ for each point \\
+	        \begin{equation*}
+	            \phi: \mathbb{R}^{d} \rightarrow \mathbb{R}^{D}
+	        \end{equation*}
+	        \item Computer dot products over $\mathbb{R}^{d}$ space
+	    \end{enumerate}
+	    \hspace{0.1cm} Q. If $D >> d$ \\
+	    \hspace{0.6cm} Both steps are expensive!
+	\end{frame}
+	\begin{frame}{Kernel Trick}
+	    
+	\end{frame}
+	
+\end{document}
