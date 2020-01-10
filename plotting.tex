@@ -249,13 +249,14 @@ Gain (S, Outlook) $=$ Entropy $(\mathrm{S})$ -$(5 / 14)$* Entropy(S\textsubscrip
 	
 	\begin{tikzpicture}
 	\begin{axis}[
-	symbolic x coords={Outlook,Humidity,a large bar},
-	xtick=data,xtick pos=left,
+	symbolic x coords={Outlook,Humidity,Wind,Temperature},
+	xtick=data,xtick pos=left, width=8cm,
 	ytick pos=left,axis x line*=bottom,nodes near coords,hide y axis,title=Information Gain, ymin=0.0]
 	\addplot[ybar,fill=black] coordinates {
 		(Outlook,0.246)
-		(Humidity,0.15)
-		(a large bar,0.2)
+		(Humidity,0.151)
+		(Wind,0.048)
+		(Temperature,0.029)
 	};
 	\end{axis}
 	\end{tikzpicture}
@@ -263,30 +264,30 @@ Gain (S, Outlook) $=$ Entropy $(\mathrm{S})$ -$(5 / 14)$* Entropy(S\textsubscrip
 
 \end{frame}
 
-\begin{frame}
-\begin{tikzpicture}
-\begin{axis}[
-domain=-180:180,
-samples=50,
-colormap/PiYG,
-colorbar,
-colorbar style={
-	title=Color key,
-	ylabel=Z-value,
-	ytick={-1,-0.75,...,1},
-	yticklabel style={
-		text width=2.5em,
-		align=right,
-		/pgf/number format/.cd,
-		fixed,
-		fixed zerofill
-	}
-}
-]
-\addplot3 [surf] {sin(x) * sin(y)};
-\end{axis}
-\end{tikzpicture}
-\end{frame}
+%\begin{frame}
+%\begin{tikzpicture}
+%\begin{axis}[
+%domain=-4:4,
+%samples=50,
+%colormap/viridis,
+%colorbar,
+%colorbar style={
+%	title=Color key,
+%	ylabel=Z-value,
+%	ytick={0, 4, ..., 32},
+%	yticklabel style={
+%		text width=2.5em,
+%		align=right,
+%		/pgf/number format/.cd,
+%		fixed,
+%		fixed zerofill
+%	}
+%}
+%]
+%\addplot3 [surf] {x^2 + y^2};
+%\end{axis}
+%\end{tikzpicture}
+%\end{frame}
 
 \begin{frame}
 \begin{columns}[T] % align columns

@@ -245,23 +245,56 @@ Gain (S, Outlook) $=$ Entropy $(\mathrm{S})$ -$(5 / 14)$* Entropy(S\textsubscrip
 
 \begin{frame}
 
-	
-	\begin{tikzpicture}
-	\begin{axis}[
-	symbolic x coords={Outlook,Humidity,a large bar},
-	xtick=data,xtick pos=left,
-	ytick pos=left,axis x line*=bottom,nodes near coords,hide y axis,title=Information Gain, ymin=0.0]
-	\addplot[ybar,fill=black] coordinates {
-		(Outlook,0.246)
-		(Humidity,0.15)
-		(a large bar,0.2)
-	};
-	\end{axis}
-	\end{tikzpicture}
-	
+
+\begin{tikzpicture}
+\begin{axis}[
+symbolic x coords={Outlook,Humidity,Wind,Temperature},
+xtick=data,xtick pos=left, width=8cm,
+ytick pos=left,axis x line*=bottom,nodes near coords,hide y axis,title=Information Gain, ymin=0.0]
+\addplot[ybar,fill=black] coordinates {
+	(Outlook,0.246)
+	(Humidity,0.151)
+	(Wind,0.048)
+	(Temperature,0.029)
+};
+\end{axis}
+\end{tikzpicture}
+
 
 \end{frame}
 
+\begin{frame}{Learnt Decision Tree}
+\begin{tikzpicture}[
+node/.style={%
+	draw,
+	rectangle,
+},
+]
+
+\node [node] (A) {Outlook};
+\path (A) ++(-150:\nodeDist) node [node] (B) {?};
+\path (A) ++(-90:\nodeDist/2) node [node, fill=green] (C) {Yes};
+\path (A) ++(-30:\nodeDist) node [node] (D) {?};
+
+
+\draw (A) -- (B) node [left,pos=0.25] {Sunny}(A);
+\draw (A) -- (C) node [right,pos=0.8] {Overcast}(A);
+\draw (A) -- (D) node [right,pos=0.5] {Rain}(A);
+
+\end{tikzpicture}
+
+\end{frame}
+
+	\begin{frame}{Training Data}
+\begin{tabular}{lllll||l} \toprule
+	\textbf{Day} & \textbf{Outlook}  & \textbf{Temp} & \textbf{Humidity} & \textbf{Windy}  & \textbf{Play} \\ \midrule
+	D1  & Sunny    & Hot  & High     & Weak   & No   \\
+	D2  & Sunny    & Hot  & High     & Strong & No   \\
+	D8  & Sunny    & Mild & High     & Weak   & No   \\
+	D9  & Sunny    & Cool & Normal   & Weak   & Yes  \\
+	D11 & Sunny    & Mild & Normal   & Strong & Yes  \\ \bottomrule
+\end{tabular}
+\end{frame}
 
 \begin{frame}
 \begin{columns}[T] % align columns
