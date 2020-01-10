@@ -263,31 +263,47 @@ Gain (S, Outlook) $=$ Entropy $(\mathrm{S})$ -$(5 / 14)$* Entropy(S\textsubscrip
 	
 
 \end{frame}
+\textit{
+\begin{frame}
+\begin{tikzpicture}
+\begin{axis}[
+domain=-4:4,
+samples=50,
+colormap/viridis,
+colorbar,
+colorbar style={
+	title=Color key,
+	ylabel=Z-value,
+	ytick={0, 4, ..., 32},
+	yticklabel style={
+		text width=2.5em,
+		align=right,
+		/pgf/number format/.cd,
+		fixed,
+		fixed zerofill
+	}
+}
+]
+\addplot3 [surf] {x^2 + y^2};
+\end{axis}
+\end{tikzpicture}
+\end{frame}}
 
-%\begin{frame}
-%\begin{tikzpicture}
-%\begin{axis}[
-%domain=-4:4,
-%samples=50,
-%colormap/viridis,
-%colorbar,
-%colorbar style={
-%	title=Color key,
-%	ylabel=Z-value,
-%	ytick={0, 4, ..., 32},
-%	yticklabel style={
-%		text width=2.5em,
-%		align=right,
-%		/pgf/number format/.cd,
-%		fixed,
-%		fixed zerofill
-%	}
-%}
-%]
-%\addplot3 [surf] {x^2 + y^2};
-%\end{axis}
-%\end{tikzpicture}
-%\end{frame}
+\begin{frame}
+\begin{tikzpicture}
+\begin{axis}
+[
+title={Contour plot, view from top},
+view={0}{90},
+unit vector ratio*=1 1 1,
+]
+\addplot3[
+contour gnuplot={levels={0.8, 0.4, 0.2, -0.2}}, samples=100,
+]
+{x^2+y^2};
+\end{axis}
+\end{tikzpicture}
+\end{frame}
 
 \begin{frame}
 \begin{columns}[T] % align columns
