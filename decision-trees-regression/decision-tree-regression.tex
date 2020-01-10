@@ -14,6 +14,7 @@
 
 
 
+
 \usepackage{../notation} % Custom package
 
 %\beamerdefaultoverlayspecification{<+->}
@@ -36,6 +37,14 @@
 	\maketitle
 	
 	
+	\begin{frame}{The need for interpretability}
+	\begin{figure}
+		\centering
+		\includegraphics[width=1\linewidth]{../interpretability}
+		\label{fig:interpretability}
+	\end{figure}
+	
+\end{frame}
 	
 	\renewcommand{\arraystretch}{0.9}
 	\begin{frame}{Training Data}
@@ -58,7 +67,14 @@
 	\end{tabular}
 \end{frame}
 
-
+\begin{frame}{Learning a Complicated Neural Network}
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{../neural}
+	
+	\label{fig:neural}
+\end{figure}
+\end{frame}
 
 \begin{frame}{Learnt Decision Tree}
 \begin{tikzpicture}[
@@ -88,6 +104,87 @@ node/.style={%
 
 \end{frame}
 
+\begin{frame}{Medical Diagnosis using Decision Trees }
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{../decision-medical}
+	\caption{Source: Improving medical decision trees by combining relevant health-care criteria}
+	\label{fig:decision-medical}
+\end{figure}
+
+\end{frame}
+
+
+\begin{frame}{Optimal Decision Tree}
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{../NP-hard}
+
+	\label{fig:np-hard}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Greedy Algorithm}
+Core idea: At each level, choose an attribute that gives
+\textbf{biggest estimated} performance gain!
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{../gredy}
+	\caption{Greedy!=Optimal}
+	\label{fig:gredy}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Towards biggest estimated performance gain}
+\begin{columns}
+\begin{column}{.7\textwidth}
+
+
+\begin{scriptsize}
+
+
+	\begin{tabular}{lllll||l} \toprule
+	\textbf{Day} & \textbf{Outlook}  & \textbf{Temp} & \textbf{Humidity} & \textbf{Windy}  & \textbf{Play} \\ \midrule
+	D1  & Sunny    & Hot  & High     & Weak   & No   \\
+	D2  & Sunny    & Hot  & High     & Strong & No   \\
+	D3  & Overcast & Hot  & High     & Weak   & Yes  \\
+	D4  & Rain     & Mild & High     & Weak   & Yes  \\
+	D5  & Rain     & Cool & Normal   & Weak   & Yes  \\
+	D6  & Rain     & Cool & Normal   & Strong & No   \\
+	D7  & Overcast & Cool & Normal   & Strong & Yes  \\
+	D8  & Sunny    & Mild & High     & Weak   & No   \\
+	D9  & Sunny    & Cool & Normal   & Weak   & Yes  \\
+	D10 & Rain     & Mild & Normal   & Weak   & Yes  \\
+	D11 & Sunny    & Mild & Normal   & Strong & Yes  \\
+	D12 & Overcast & Mild & High     & Strong & Yes  \\
+	D13 & Overcast & Hot  & Normal   & Weak   & Yes  \\
+	D14 & Rain     & Mild & High     & Strong & No  \\ \bottomrule
+\end{tabular}
+\end{scriptsize}
+\end{column}
+\begin{column}{0.4\textwidth}
+	\begin{scriptsize}
+\begin{itemize}
+	\pause \item For examples, we have 9 Yes, 5 No
+	\pause \item Would it be trivial if we had 14 Yes or 14 No?
+	\pause \item Yes!
+	\pause \item Key insights:  Problem is ``easier'' when there is lesser disagreement
+	\pause 	\item Need some statistical measure of ``disagreement'' 
+	\end{itemize}
+
+\end{scriptsize}
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+
+
 %\begin{frame}
 %\begin{forest}
 %	for tree={grow'=south}
@@ -100,7 +197,12 @@ node/.style={%
 %\end{frame}
 
 \begin{frame}{Entropy}
-\begin{tikzpicture}
+ Statistical measure to characterize the
+(im)purity of examples
+
+\pause $H(X) = -\sum_{i=1}^n p(x_i) \log p(x_i)$
+
+\pause \begin{tikzpicture}
 \begin{axis}[
 axis lines = left,
 xlabel = $P(+)$,
@@ -117,14 +219,85 @@ color=black
 
 \end{axis}
 \end{tikzpicture}
+
+\pause Avg. \# of bits to transmit 
 \end{frame}
 	
+\begin{frame}{Towards biggest estimated performance gain}
+\begin{columns}
+	\begin{column}{.7\textwidth}
+		
+		
+		\begin{scriptsize}
+			
+
+			\begin{tabular}{lllll||l} \toprule
+				\textbf{Day} & \textbf{Outlook}  & \textbf{Temp} & \textbf{Humidity} & \textbf{Windy}  & \textbf{Play} \\ \midrule
+				D1  & Sunny    & Hot  & High     & Weak   & No   \\
+				D2  & Sunny    & Hot  & High     & Strong & No   \\
+				D3  & Overcast & Hot  & High     & Weak   & Yes  \\
+				D4  & Rain     & Mild & High     & Weak   & Yes  \\
+				D5  & Rain     & Cool & Normal   & Weak   & Yes  \\
+				D6  & Rain     & Cool & Normal   & Strong & No   \\
+				D7  & Overcast & Cool & Normal   & Strong & Yes  \\
+				D8  & Sunny    & Mild & High     & Weak   & No   \\
+				D9  & Sunny    & Cool & Normal   & Weak   & Yes  \\
+				D10 & Rain     & Mild & Normal   & Weak   & Yes  \\
+				D11 & Sunny    & Mild & Normal   & Strong & Yes  \\
+				D12 & Overcast & Mild & High     & Strong & Yes  \\
+				D13 & Overcast & Hot  & Normal   & Weak   & Yes  \\
+				D14 & Rain     & Mild & High     & Strong & No  \\ \bottomrule
+			\end{tabular}
+		\end{scriptsize}
+	\end{column}
+	\begin{column}{0.4\textwidth}
+		\begin{scriptsize}
+			\begin{itemize}
+				\pause \item Can we use Outlook as the root node?
+				\pause 	\item When Outlook is overcast, we always Play and thus no ``disagreement'' 
+			\end{itemize}
+			
+		\end{scriptsize}
+	\end{column}
+	
+\end{columns}
+
+\end{frame}
 	
 \begin{frame}{Information Gain}
+ Reduction in entropy
+by partitioning examples (S) on attribute A
 $$
 \operatorname{Gain}(S, A) \equiv \text { Entropy }(S)-\sum_{v \in V a l u e s(A)} \frac{\left|S_{v}\right|}{|S|} \text {Entropy}\left(S_{v}\right)
 $$
 \end{frame}
+
+
+\begin{frame}{D3 (Examples, Target Attribute, Attributes)}
+\begin{itemize}[<+->]
+	\item Create a root node for tree
+	\item If all examples are +/-, return root with label = +/-
+	\item  If attributes = empty, return root with most common value of
+	Target Attribute in Examples
+	\item Begin
+	\begin{itemize}[<+->]
+		\item A $\leftarrow$ attribute from Attributes which best classifies
+		Examples
+		\item 	Root $\leftarrow$ A
+		\item  For each value (v) of A
+		\begin{itemize}[<+->]
+			\item Add new tree branch : A = v
+			\item  Examples\textsubscript{v}: subset of examples that A = v
+			\item If Examples\textsubscript{v}is empty: add leaf with label = most
+			common value of Target Attribute
+			\item Else: ID3 (Examples\textsubscript{v}, Target attribute, Attributes - {A})
+		\end{itemize}
+	\end{itemize}
+
+
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Learnt Decision Tree}
 \begin{tikzpicture}[
 node/.style={%
@@ -286,15 +459,91 @@ node/.style={%
 \end{frame}
 
 	\begin{frame}{Training Data}
-\begin{tabular}{lllll||l} \toprule
-	\textbf{Day} & \textbf{Outlook}  & \textbf{Temp} & \textbf{Humidity} & \textbf{Windy}  & \textbf{Play} \\ \midrule
-	D1  & Sunny    & Hot  & High     & Weak   & No   \\
-	D2  & Sunny    & Hot  & High     & Strong & No   \\
-	D8  & Sunny    & Mild & High     & Weak   & No   \\
-	D9  & Sunny    & Cool & Normal   & Weak   & Yes  \\
-	D11 & Sunny    & Mild & Normal   & Strong & Yes  \\ \bottomrule
+\begin{tabular}{llll||l} \toprule
+	\textbf{Day} & \textbf{Temp} & \textbf{Humidity} & \textbf{Windy}  & \textbf{Play} \\ \midrule
+	D1    & Hot  & High     & Weak   & No   \\
+	D2     & Hot  & High     & Strong & No   \\
+	D8     & Mild & High     & Weak   & No   \\
+	D9    & Cool & Normal   & Weak   & Yes  \\
+	D11    & Mild & Normal   & Strong & Yes  \\ \bottomrule
 \end{tabular}
+
+\begin{itemize}
+	\pause \item Gain(S\textsubscript{Outlook=Sunny}, Temp) = Entropy(3 Yes, 2 No) - (2/5)*Entropy(2 No, 0 Yes) -(2/5)*Entropy(1 No, 1 Yes) - (1/5)*Entropy(1 Yes) 
+	\pause \item Gain(S\textsubscript{Outlook=Sunny}, Humidity) = Entropy(3 Yes, 2 No) - (2/5)*Entropy(2 Yes) -(3/5)*Entropy(3 No) $\implies$ \textbf{maximum possible for the set}
+	\pause \item Gain(S\textsubscript{Outlook=Sunny}, Windy) = Entropy(3 Yes, 2 No) - (3/5)*Entropy(2 No, 1 Yes) -(2/5)*Entropy(1 No, 1 Yes) 
+\end{itemize}
 \end{frame}
+
+\begin{frame}{Learnt Decision Tree}
+\begin{tikzpicture}[
+node/.style={%
+	draw,
+	rectangle,
+},
+]
+
+\node [node] (A) {Outlook};
+\path (A) ++(-150:\nodeDist) node [node] (B) {Humidity};
+\path (A) ++(-90:\nodeDist/2) node [node, fill=green] (C) {Yes};
+\path (A) ++(-30:\nodeDist) node [node] (D) {?};
+\path (B) ++(-135:\nodeDist) node [node, fill=red] (E) {No};
+\path (B) ++(-45:\nodeDist) node [node, fill=green] (F) {Yes};
+;
+
+\draw (A) -- (B) node [left,pos=0.25] {Sunny}(A);
+\draw (A) -- (C) node [right,pos=0.8] {Overcast}(A);
+\draw (A) -- (D) node [right,pos=0.5] {Rain}(A);
+\draw (B) -- (E) node [left,pos=0.25] {High}(A);
+\draw (B) -- (F) node [right,pos=0.25] {Normal}(C);
+
+\end{tikzpicture}
+
+\end{frame}
+
+
+	\begin{frame}{Training Data (Outlook=Rain)}
+\begin{tabular}{llll||l} \toprule
+	\textbf{Day}  & \textbf{Temp} & \textbf{Humidity} & \textbf{Windy}  & \textbf{Play} \\ \midrule
+	D4    & Mild & High     & Weak   & Yes  \\
+	D5     & Cool & Normal   & Weak   & Yes  \\
+	D6      & Cool & Normal   & Strong & No   \\
+	D10     & Mild & Normal   & Weak   & Yes  \\
+	D14      & Mild & High     & Strong & No  \\ \bottomrule
+\end{tabular}
+\begin{itemize}
+	\item The attribute Windy gives the highest information gain
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Learnt Decision Tree}
+\begin{tikzpicture}[
+node/.style={%
+	draw,
+	rectangle,
+},
+]
+
+\node [node] (A) {Outlook};
+\path (A) ++(-150:\nodeDist) node [node] (B) {Humidity};
+\path (A) ++(-90:\nodeDist/2) node [node, fill=green] (C) {Yes};
+\path (A) ++(-30:\nodeDist) node [node] (D) {Wind};
+\path (B) ++(-135:\nodeDist) node [node, fill=red] (E) {No};
+\path (B) ++(-45:\nodeDist) node [node, fill=green] (F) {Yes};
+\path (D) ++(-45:\nodeDist) node [node, fill=red] (G) {No};
+\path (D) ++(-135:\nodeDist) node [node, fill=green] (H) {Yes};
+
+\draw (A) -- (B) node [left,pos=0.25] {Sunny}(A);
+\draw (A) -- (C) node [right,pos=0.8] {Overcast}(A);
+\draw (A) -- (D) node [right,pos=0.5] {Rain}(A);
+\draw (B) -- (E) node [left,pos=0.25] {High}(A);
+\draw (B) -- (F) node [right,pos=0.25] {Normal}(C);
+\draw (D) -- (G) node [right,pos=0.25] {Strong}(A);
+\draw (D) -- (H) node [left,pos=0.25] {Weak}(A);
+\end{tikzpicture}
+
+\end{frame}
+
 
 \begin{frame}
 \begin{columns}[T] % align columns
