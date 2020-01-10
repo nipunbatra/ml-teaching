@@ -1,0 +1,218 @@
+\documentclass{beamer}
+\usepackage{tcolorbox}
+\ProvidesPackage{notation}
+\RequirePackage{tcolorbox}
+\RequirePackage{bm}
+
+%\beamerdefaultoverlayspecification{<+->}
+\newcommand{\data}{\mathcal{D}}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand\Item[1][]{%
+	\ifx\relax#1\relax  \item \else \item[#1] \fi
+	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+
+
+\usetheme{metropolis}           % Use metropolis theme
+
+
+\title{Gradient Descent}
+\date{\today}
+\author{Nipun Batra}
+\institute{IIT Gandhinagar}
+\begin{document}
+  \maketitle
+  
+  
+\begin{frame}{Data}
+
+\begin{center}
+    \begin{tabular}{|c|c|}
+    \hline
+    \hline
+     x&y  \\
+     \hline
+     1&1\\
+     2&2\\
+     3&3\\
+     \hline
+\end{tabular}\\
+
+\end{center}
+
+    % $\hat{y} = \theta_{0} + \theta_{1}x$\\
+    % \epsilon_{i} = y_{i} = \hat{y_{i}}\\
+    % \begin{itemize}
+    %     \item $\epsilon_{1} = 1 - \theta_{0} - \theta_{1}$
+    %     \item $\epsilon_{2} = 2 - \theta_{0} - 2\theta_{1}$
+    %     \item $\epsilon_{3} = 3 - \theta_{0} - 3\theta_{1}$
+    % \end{itemize}
+\end{frame}
+  
+% \section{Linear Regression}
+
+\begin{frame}{Cost Function}
+    The following denote the cost function for the above examples
+    
+    \begin{itemize}
+        \item $\epsilon_{1} =1 -  \theta_{0} - \theta_{1}$
+        \item $\epsilon_{2} =2 -  \theta_{0} - 2\theta_{1}$
+        \item $\epsilon_{3} =3 -  \theta_{0} - 3\theta_{1}$
+    \end{itemize}
+    
+    $\sum \epsilon_{i}^{2}$ = $14+3\theta_{0}^{2}+14\theta_{1}^{2}-12\theta_{0}-28\theta_{1}+12\theta_{0}\theta_{1}$
+\end{frame}
+
+
+\begin{frame}{Gradient Descent}
+    General Optimization Technique\\
+    Question: Find minimum y
+\end{frame}
+
+\begin{frame}{Gradient Descent}
+    General Optimization Technique\\
+    Question: Find minimum y
+    \begin{itemize}
+        \item Start with some $x_{0}$
+        \item Go to $x_{1}$ from $x_{0} $ such that $y_{1}< y_{0}$
+    \end{itemize}
+    
+    \begin{equation*}
+        x_{i} = x_{i-1} - \alpha\frac{\grad y }{\grad x} x_{i-1}
+    \end{equation*}
+    
+\end{frame}
+
+\begin{frame}{Local Minima}
+    
+\end{frame}
+
+
+\begin{frame}{Minimizing using Gradient Descent}
+    
+
+    
+\end{frame}
+
+
+\begin{frame}{What if $\alpha$ is large?}
+    
+\end{frame}
+
+
+\begin{frame}{What if $\alpha$ is very small?}
+    
+\end{frame}
+
+\begin{frame}{Gradient Descent for Linear Regression}
+
+\begin{equation*}
+    \sum \epsilon_{i}^{2} = \sum (y_{i} - (\theta_{0} + \theta_{1}x_{i}))^{2}
+\end{equation*}
+
+\end{frame}
+
+\begin{frame}{Gradient Descent Algorithm}
+    
+    Start with random values of $\theta_{0}$ and $\theta_{1}$\\
+    Till convergence
+    \begin{itemize}
+        \item $\theta_{0} = \theta_{0} - \cfrac{\partial}{\partial \theta_{0}} (\sum \epsilon_{i}^{2}) $
+        \item $\theta_{1} = \theta_{1} - \cfrac{\partial}{\partial \theta_{1}} (\sum \epsilon_{i}^{2}) $
+    \end{itemize}
+    
+    
+\end{frame}
+
+\begin{frame}{Gradient Descent Algorithm}
+    
+    \begin{itemize}
+        \item $\cfrac{\partial}{\partial \theta_{0}} (\sum \epsilon_{i}^{2}) = 2\sum (y_{i} - (\theta_{0} + \theta_{1}x{i}))(-1)$
+        $\cfrac{\partial}{\partial \theta_{1}} (\sum \epsilon_{i}^{2}) = 2\sum (y_{i} - (\theta_{0} + \theta_{1}x{i}))(-x_{i})$
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Gradient Descent vs SGD}
+    
+    
+    
+    Vanilla Gradient Descent
+    \begin{itemize}
+        \item 
+        in Vanilla(Batch) gradient descent: We update params after going through all the data 
+        \item Smooth curve for Iteration vs Cost
+        \item For a single update, it needs to compute the gradient over all the samples, hence takes more time
+
+    \end{itemize}
+    
+    Stochastic Gradient Descent
+    \begin{itemize}
+        \item In SGD, we update parameters after seeing each each point
+        \item Noisier curve for iteration vs cost is much smoother
+        \item  For a single update, it computes the gradient over one example. hence lesser time
+    \end{itemize}
+    
+      
+\end{frame}
+
+\begin{frame}{Mini-Batch Gradient Descent}
+    
+    In mini-batch gradient descent, we compute the gradient over a mini-batch of samples, thereby getting the best of both worlds.
+    
+\end{frame}
+
+\begin{frame}{When to use Gradient Descent}
+
+
+Gradient Descent
+\begin{itemize}
+    \item Good for online setting(more data)
+    \item Good for large data
+\end{itemize}
+
+
+Normal systems
+\begin{itemize}
+    \item Good for simple data
+    \item No need to worry about learning rates, etc
+    \item Non trivial to solve
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Projected Gradient Descent}
+    For the $\theta_{i}$
+    
+    \begin{equation*}
+        \theta_{i} = max(\theta_{i} - \alpha \cfrac{\grad \epsilon (\theta_{0},\theta_{1},...)}{ \nabla  \theta_{i}},0)
+    \end{equation*}
+\end{frame}
+
+\begin{frame}{Difference between SSE and MSE}
+    
+    
+    
+    \begin{equation*}
+        \sum \epsilon_{i}^{2} \textit{ increases as the number of examples increase}
+    \end{equation*}
+    
+    So, we use MSE
+    
+    \begin{equation*}
+        \textit{MSE} = \frac{1}{n} \sum \epsilon_{i}^{2}
+    \end{equation*}
+    
+    Here $n$ denotes the number of samples
+    
+    
+    
+\end{frame}
+
+\begin{frame}{When to Stop iterating?}
+    We stop iterating when the MSE at epoch $i$ is close to the loss at MSE at epoch $i+1$.
+\end{frame}
+
+\end{document}

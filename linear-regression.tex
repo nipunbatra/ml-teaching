@@ -1,5 +1,7 @@
 \documentclass{beamer}
+
 \usepackage{tcolorbox}
+\usepackage{graphicx}
 
 %\beamerdefaultoverlayspecification{<+->}
 \newcommand{\data}{\mathcal{D}}
@@ -16,7 +18,7 @@
 
 \title{Linear Regression}
 \date{\today}
-\author{Nipun Batra}
+\author{Nipun Batra and the teaching staff}
 \institute{IIT Gandhinagar}
 \begin{document}
   \maketitle
@@ -29,11 +31,11 @@
 \begin{itemize}
 	
 	
-	\item O/P is continuous in nature.
-	\item Examples of linear systems:
+	\item<+-> O/P is continuous in nature.
+	\item<+-> Examples of linear systems:
 	\begin{itemize}
-		\item $F=ma$
-		\item $v=u+at$
+		\item<+-> $F=ma$
+		\item<+-> $v=u+at$
 	\end{itemize}
 	
 \end{itemize}
@@ -52,15 +54,33 @@
  Height & Weight \\
 \hline
 3 & 29 \\ 
-4 & 9 \\ 
-. & .\\
-. & .\\
-. & .\\
-
+4 & 35 \\ 
+5 & 39\\
+2 & 20\\
+6 & 41\\
+\hline
+\hline
+7 & ?\\
+8 & ?\\
+1 &? \\
 \hline
 \end{tabular}
+
 \end{center}
-	
+The first part of the dataset are the training points. The latter ones are testing points.	
+
+\end{frame}
+
+
+
+\begin{frame}{Scatter Plot}
+\begin{center}
+        \includegraphics[totalheight=6cm]{linear-reg/height-weight-scatterplot.eps}
+        
+
+        
+\end{center}
+
 
 \end{frame}
 
@@ -99,20 +119,25 @@ $\theta_{0}$+$\theta_{1}$*$height_{N}$
 = \begin{bmatrix}
     1& height_{1}   \\
     1& height_{2}   \\
-    \dots \\
+    \dots & \dots  \\
     1& height_{N}   \\
 \end{bmatrix}
 \begin{bmatrix}
     \theta_{0} \\
     \theta_{1}
 \end{bmatrix}\]
+\[W=X\theta \]
+
+
+W(N \times 1); X(N\times 2); \theta(2 \times 1);
 
 
 \begin{itemize}
-    \item $\theta_{0}$ - Bias Term
-    \item $\theta_{1}$ - Intercept Term
+    \item<+-> $\theta_{0}$ - Bias Term
+    \item<+-> $\theta_{1}$ - Intercept Term
 \end{itemize}
 \end{frame}
+
 
 
 \begin{frame}{Extension to multiple dimensions}
@@ -137,16 +162,49 @@ One example is to predict the water demand of the IITGN campus
 
 \end{frame}
 
+\begin{frame}{Intuition}
+    We hope to: 
+    \begin{itemize}
+        \item Learn $F$: $Demand$ = $F(\# occupants, Temperature)$
+        \item From training dataset
+        \item To predict the condition for the testing set
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Linear Relationship}
+    We have 
+    \begin{itemize}
+        \item $demand_{i} = \theta_{0} + \theta_{1} X_{i,1} + \theta_{2} X_{i,2} + \dots$
+        \item $demand_{i} = x_{i}^{T} \theta$
+    \end{itemize}
+    Both of the above are the same.\\
+    \textbf{Notice the transpose in the second equation! This is because $x_{i}$ is a column vector} 
+\end{frame}
+
+
+\begin{frame}{Linear Relationship}
+    So, $y_{i}$ = $\hat{y_{i}}$ + $\epsilon_{i}$, where
+    \begin{itemize}
+        \item $y_{i}$ denotes the ground truth for $i^{th}$ sample
+        \item $\hat{y_{i}}$ denotes the prediction for $i^{th}$ sample, where $\hat{y_{i}}$ = $x_{i}^{T} \theta$
+        \item $\epsilon_{i}$ denotes the error for $i^{th}$ sample
+    \end{itemize}
+\end{frame}
+
+
+
 \begin{frame}{We can expect the following}
     \begin{itemize}
-        \item Demand increases, if \# occupants increases, then $K_{1}$ is likely to be positive
+        \item<+-> Demand increases, if \# occupants increases, then $K_{1}$ is likely to be positive
         
-        \item Demand increases, if temperature increases, then $K_{2}$ is likely to be positive
+        \item<+-> Demand increases, if temperature increases, then $K_{2}$ is likely to be positive
         
-        \item Base demand is independent of the temperature and the \# occupants.
+        \item<+-> Base demand is independent of the temperature and the \# occupants.
         
     \end{itemize}
 \end{frame}
+
 
 
 \begin{frame}{Generalized Linear Regression Format}
@@ -167,28 +225,30 @@ One example is to predict the water demand of the IITGN campus
         % \vdots \\
         % y_{N}
     \end{bmatrix}
-    [\begin{bmatrix}
-        theta_{0}\\
-        theta_{1}\\
-        \vdots{5} \\
-        theta_{m}\\
+    \begin{bmatrix}
+        \theta_{0}\\
+        \theta_{1}\\
+        \vdots \\
+        \theta_{m}\\
     \end{bmatrix}
    \]
    
+%   \begin{center}
+%       \textbf{Y}: N\times1; \textbf{X}: N\times(M+1); $\mathbf{\theta}$: (M+1)\times1 
+%   \end{center}
    
    \begin{tcolorbox}
    \begin{center}
        
    
-       
-   
+
    $ Y \approx X\theta$
    \end{center}
    \end{tcolorbox}
    
    \begin{itemize}
-       \item We have N knows, (or N equations)
-       \item M unknowns (or M parameters/ variables)
+       \item<+-> We have N knows, (or N equations)
+       \item<+-> M unknowns (or M parameters/ variables)
    \end{itemize}
    
 \end{frame}
@@ -196,7 +256,7 @@ One example is to predict the water demand of the IITGN campus
 
 \begin{frame}{Relationships between feature and target variables}
     
-    There are differenct $\theta_{0}$ $\&$ $\theta_{1}$. Each of them can represents a relationship.\\
+    There are different $\theta_{0}$ $\&$ $\theta_{1}$. Each of them can represents a relationship.\\
     \vspace{0.5em}
     Given multiples values of $\theta_{0}$ $\&$ $\theta_{1}$ how to choose which is the  best?
     
@@ -221,10 +281,10 @@ One example is to predict the water demand of the IITGN campus
 \begin{frame}{Good fit}
 
 \begin{itemize}
-    \item $|\epsilon_{1}|$, $|\epsilon_{2}|$, $|\epsilon_{3}|$, ... should be small.
-    \item 
+    \item<+-> $|\epsilon_{1}|$, $|\epsilon_{2}|$, $|\epsilon_{3}|$, ... should be small.
+    \item<+-> 
 ${\text{minimize }} \epsilon_{1}^2 + \epsilon_{2}^2 + \dots + \epsilon_{N}^2$ - $L_{2}$ Norm
-    \item 
+    \item<+-> 
 ${\text{minimize }} |\epsilon_{1}| + |\epsilon_{1}| + \dots + |\epsilon_{1}|$ - $L_{1}$ Norm
 \end{itemize}
 \end{frame}
@@ -285,12 +345,12 @@ This is what we wish to minimize
     
     \begin{itemize}
         \item $
-    \frac{\partial }{\partial \theta} y^{T}y= 0
+    \cfrac{\partial }{\partial \theta} y^{T}y= 0
     $
     \item $
-    \frac{\partial }{\partial \theta}(-2y^{T}X\theta ) = (-2y^{T}X)^{T} = -2X^{T}y
+    \cfrac{\partial }{\partial \theta}(-2y^{T}X\theta ) = (-2y^{T}X)^{T} = -2X^{T}y
     $
-    \item $ \frac{\partial}{\partial\theta} (\theta^{T}X^{T}X\theta) = 2X^{T}X\theta$
+    \item $ \cfrac{\partial}{\partial\theta} (\theta^{T}X^{T}X\theta) = 2X^{T}X\theta$
     \end{itemize}
     
     Substitute the values in the top equation
@@ -329,10 +389,20 @@ $$
  \hline
 \end{tabular}
 \end{center}
+
+Given the data above, find $\theta_{0}$ and $\theta_{1}$.
+
 \end{frame}
 
 
-Given the data above, find $\theta_{0}$ and $\theta_{1}$.
+\begin{frame}{Scatter Plot}
+\begin{center}
+            \includegraphics[totalheight=6cm]{linear-reg/scatterplot-2.eps}
+\end{center}
+    
+\end{frame}
+
+
 \begin{frame}{Worked out example}
 \begin{align}
     \begin{split}
@@ -351,8 +421,128 @@ Given the data above, find $\theta_{0}$ and $\theta_{1}$.
         \end{bmatrix}
     \end{split}
 \end{align}
+Given the data above, find $\theta_{0}$ and $\theta_{1}$.
+\end{frame}
+
+
+\begin{frame}{Worked out example}
+    \begin{align}
+        \begin{split}
+            (X^{T}X)^{-1} &= \frac{1}{20} \begin{bmatrix}
+                14 & -6\\
+                -6& 4
+            \end{bmatrix}\\
+            X^{T}y &= \begin{bmatrix}
+                6\\
+                14
+            \end{bmatrix}
+        \end{split}
+    \end{align}
+\end{frame}
+
+
+\begin{frame}{Worked out example}
+    \begin{align}
+        \begin{split}
+            \theta &= (X^{T}X)^{-1}(X^{T}y)\\
+            \begin{bmatrix}
+        \theta_{0}\\
+        \theta_{1}
+    \end{bmatrix} &= 
+    \begin{bmatrix}
+        0\\
+        1
+    \end{bmatrix} 
+        \end{split}
+    \end{align}
+\end{frame}
+
+
+\begin{frame}{Effect of outlier}
+
+    \begin{center}
+ \begin{tabular}{||c c||} 
+ \hline
+ x  & y \\ [0.5ex] 
+ \hline\hline
+ 0 & 0 \\
+ 1 & 1 \\
+ 2 & 2 \\
+ 3 & 3 \\
+ 4 & 0 \\
+ \hline
+\end{tabular}
+\end{center}
+
+Compute the $\theta_{0}$ and $\theta_{1}$.
+\end{frame}
+\begin{frame}{Scatter Plot}
+    
+    \begin{center}
+        \includegraphics[totalheight=6cm]{linear-reg/scatterplot-3.eps}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}{Effect of outlier}
+    
+    \begin{center}
+        \begin{bmatrix}
+        $\theta_{0}$\\
+        $\theta_{1}$
+        
+    \end{bmatrix}
+     = 
+     \begin{bmatrix}
+        2\\
+        -\frac{1}{5}
+    \end{bmatrix}
+    \end{center}
     
 \end{frame}
+
+\begin{frame}{Model fit}
+    
+       
+    \begin{center}
+        \includegraphics[totalheight=6cm]{linear-reg/linear-fit.eps}
+    \end{center}
+
+
+
+\end{frame}
+% \begin{frame}{Frame Title}
+    
+%     \begin{align}
+        
+%         \begin{split}
+%             \theta &= \frac{1}{20}\begin{bmatrix}
+%                 14 & -6\\
+%                 -6 & 4
+%             \end{bmatrix}
+%             \begin{bmatrix}
+%                 6\\
+%                 14
+%             \end{bmatrix}\\
+%             &= \frac{1}{20} \begin{bmatrix}
+%                 0 \\
+%                 20
+%             \end{bmatrix}\\
+            
+%             % \begin{bmatrix}
+%             %     \theta_{0}\\
+%             %     \theta_{1}
+%             % \end{bmatrix}
+%             %  = 
+%             %  \begin{bmatrix}
+%             %      0 \\
+%             %      1
+%             %  \end{bmatrix}
+%         \end{split}
+%     \end{align}
+%     $$
+% \end{frame}
 
 \begin{frame}{Quick Question}
     
@@ -428,7 +618,7 @@ Given the data above, find $\theta_{0}$ and $\theta_{1}$.
 
 \begin{frame}{Relation between \#instances and \# Variables}
     What if N $>$ M\\
-    Then it is an over determined system. So, the sum of squared residuals > 0.
+    Then it is an over determined system. So, the sum of squared residuals $>$ 0.
 \end{frame}
 \begin{frame}{Special Cases}
 There can be situations where $X^{T}X$ is not computable. This condition arises when the $|X^{T}X|$ = 0.
@@ -492,6 +682,20 @@ The above table represents the data after transformation
 \end{frame}
 
 
+\begin{frame}{Class Exercise}
+    
+    \begin{center}
+         \begin{tabular}{||c c | c||} 
+         \hline
+         $x_{1}$  & $x_{2}$ & y  \\ [0.5ex] 
+         \hline\hline
+         1 & 2 & 4 \\
+         2 & 4 & 6\\
+         3 & 6 & 8\\
+         \hline
+        \end{tabular}
+    \end{center}
+\end{frame}
 
 
 
@@ -505,10 +709,10 @@ It arises when one or more predictor varibale/feature in X can be expressed as a
 
 How to tackle it?
 \begin{itemize}
-    \item Regularize
-    \item Drop variables
-    \item use different subsets of data
-    \item Avoid dummy variable trap
+    \item<+-> Regularize
+    \item<+-> Drop variables
+    \item<+-> use different subsets of data
+    \item<+-> Avoid dummy variable trap
 \end{itemize}
 \end{frame}
 
@@ -520,7 +724,7 @@ How to tackle it?
     \dots + x_{m}\theta_{m} 
     $$
     
-    If x_{1} increases by one unit, then y increases by \theta_{1} units, irrespective of the interactive with x_{2},x_{3},\dots,d_{m}.
+    If $x_{1}$ increases by one unit, then y increases by $\theta_{1}$ units, irrespective of the interactive with $x_{2},x_{3},\dots,d_{m}$.
     
     $$
     y = \theta_{0} + \theta_{1}x_{1} + \theta_{2}x_{2} + \theta_{3}x_{1}x_{2} + \dots
@@ -546,6 +750,131 @@ How to tackle it?
     
 \end{frame}
 
+
+\begin{frame}{Dummy variables}
+    Say Pollution in Delhi = P
+    \begin{center}
+         P = $\theta_{0}$ + $\theta_{1}$*\#Vehicles + $\theta_{1}$*
+        \textit{Wind speed} + $\theta_{3}$ * \textit{Wind Direction}
+    \end{center}
+    
+    But, wind direction is a categorical variable. It is denoted as follows \{N:0, E:1, W:2, S:3 \}\\
+    \vspace{3em}
+    
+    Can we use the direct encoding? Then this implies that S$>$W$>$E$>$N
+\end{frame}
+
+\begin{frame}{Dummy Variables}
+    \begin{center}
+    
+        N-1 Variable encoding\\
+        \vspace{1em}
+        \begin{tabular}{|c|c|c|c|}
+        \hline
+        & Is it N? &Is it E? &Is it W?\\
+        \hline
+        \hline
+            N & 1&0&0 \\
+            E & 0&1&0\\
+            W & 0&0&1\\
+            S & 0&0&0\\
+        \hline
+        \end{tabular}
+    
+    \end{center}
+\end{frame}
+
+
+\begin{frame}{Dummy Variables}
+    \begin{center}
+    
+        N Variable encoding\\
+        \vspace{1em}
+        \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        & Is it N? &Is it E? &Is it W? & Is it S?\\
+        \hline
+        \hline
+            N & 1&0&0&0 \\
+            E & 0&1&0&0\\
+            W & 0&0&1&0\\
+            S & 0&0&0&1\\
+        \hline
+        \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Dummy Variables}
+    Which is better N variable encoding or N-1 variable encoding?
+\end{frame}
+
+\begin{frame}{Dummy Variables}
+    Which is better N variable encoding or N-1 variable encoding?
+    
+    The N-1 variable encoding is better because the N variable encoding can cause multi-collinearity.
+\end{frame}
+
+
+\begin{frame}{Binary Encoding}
+
+\begin{center}
+    \begin{tabular}{|c|c|}
+        \hline
+         N & 00 \\
+         E& 01\\
+         W & 10\\
+         S& 11\\
+         \hline
+    \end{tabular}\\
+\end{center}
+    
+    
+    \vspace{1em}
+    W and S are related by one bit. This introduces dependencies between them, and this can confusion in classifiers.
+\end{frame}
+
+\begin{frame}{Interpreting Dummy variables}
+    \begin{center}
+        \begin{tabular}{c|c}
+        Gender& height\\
+        \hline
+        \hline
+            F & \dots \\
+            F & \dots \\
+            F & \dots \\
+            M & \dots \\
+            M & \dots \\
+        \end{tabular}
+            
+    \end{center}
+    
+    Encoding
+    
+        \begin{center}
+        \begin{tabular}{c|c}
+        Is Female& height\\
+        \hline
+        \hline
+            1 & \dots \\
+            1 & \dots \\
+            1 & \dots \\
+            0 & \dots \\
+            0 & \dots \\
+        \end{tabular}
+    \end{center}
+
+\end{frame}
+
+\begin{frame}{Interpreting Dummy Variables}
+    
+    $height_{i}$ = $\theta_{0}$ + $\theta_{1}$ *  (Is Female) + $\epsilon_{i}$\\
+    \vspace{1em}
+    $\theta_{0}$ = Avg height of Male\\
+    $\theta_{0} + \theta_{1}$ = Avg height of Male\\
+    $\theta_{1}$ = Difference b/w Avg height of Male and Female
+\end{frame}
+
+
 \begin{frame}{Alternative approach}
 
 \begin{align}
@@ -562,9 +891,6 @@ How to tackle it?
     $ \theta_{0} = \bar{y} - \theta_{1} \bar{x}$
 \end{center}
 \end{tcolorbox}
-        
-
-
 \end{frame}
 \begin{frame}{Alternative approach}
 
@@ -614,13 +940,15 @@ $$
 \begin{frame}{Alternative approach}
     
     $$
-    \theta_{i} = \frac{ \frac{1}{N} \sum_{i=1}^{N}(X_{i} - \bar{X})(Y_{i} - \bar{y})}{\frac{1}{N}(X_{i} - \bar{x})^{2}}
+    \theta_{1} = \frac{ \frac{1}{N} \sum_{i=1}^{N}(X_{i} - \bar{X})(Y_{i} - \bar{y})}{\frac{1}{N}(X_{i} - \bar{x})^{2}}
     $$
+    
+    \begin{tcolorbox}
     
     $$
     \theta_{1} = \frac{Cov(x,y)}{variance(x)}
     $$
-    
+    \end{tcolorbox}
 \end{frame}
 % \begin{frame}{Derivation of Normal Rule}
 %     \begin{equation*}
