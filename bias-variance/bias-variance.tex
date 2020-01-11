@@ -23,9 +23,14 @@
 	\maketitle
 
 	\begin{frame}{A Question!}
-	What would be the decision boundary of a decision tree classifier?
-	\centering
+	What would be the decision boundary of a decision tree classifier? 
+		
+	\begin{figure}
+		\centering
 	\includegraphics[scale=0.55]{dataset-1}
+	\end{figure}
+
+
 	\end{frame}
 
 	\begin{frame}{Decision Boundary for a tree with depth 1}
@@ -138,12 +143,13 @@
 	\end{frame}
 
 	\begin{frame}{Accuracy vs Depth Curve}
-	Initially, train accuracy is better than test accuracy.\\
-	As depth increases, test accuracy overtakes train accuracy.\\
-	At very high depths, train accuracy is better than test accuracy. 
-	\begin{center}
-	\includegraphics[scale=0.55]{acc-depth-plot}
+		\begin{center}
+		\includegraphics[scale=0.55]{acc-depth-plot}
 	\end{center}
+	\pause As depth increases, train accuracy improves\\
+	\pause As depth increases, test accuracy improves till a point\\
+	\pause At very high depths, test accuracy is not good (overfitting). 
+
 	\end{frame}
 
 	\begin{frame}{Accuracy vs Depth Curve : Underfitting}
