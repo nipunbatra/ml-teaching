@@ -191,11 +191,15 @@
 	\includegraphics[width = \textwidth]{general-workflow}
 	\end{frame}
 
+	\begin{frame}{K-Fold cross-validation: Utilise full dataset for testing}
+	\includegraphics[width = \textwidth]{../cross-validation-train-test.pdf}
+	\end{frame}
+
 	\begin{frame}{The Validation Set}
 	\includegraphics[width = \textwidth]{validation-workflow}
 	\end{frame}
 
-	\begin{frame}{K-Fold Cross Validation}
+	\begin{frame}{Nested Cross Validation}
 	Divide your training set into $K$ equal 	parts.\\
 	 Cyclically use 1 part as ``validation set" and the rest for training.\\
 	Here $K = 4$
@@ -204,16 +208,25 @@
 	\end{center}
 	\end{frame}
 
-	\begin{frame}{K-Fold Cross Validation}
+	\begin{frame}{Nested Cross Validation}
 	Average out the validation accuracy across all the folds\\
 	Use the model with highest validation accuracy\\
 	\includegraphics[width = \textwidth]{cross-validation-avg}
 	\end{frame}
 
-	\begin{frame}{Code for examples}
-	\begin{center}
-	\href{https://colab.research.google.com/drive/18E4HCN82GSa8-81h9yw2daHVg146IuWe}{Google Colab}
-	\end{center}
-	\end{frame}
+\begin{frame}{Next time: Ensemble Learning}
+\begin{itemize}
+	\item How to combine various models?
+	\item Why to combine multiple models?
+	\item How can we reduce bias?
+	\item How can we reduce variance?
+\end{itemize}
+\end{frame}
+
+%	\begin{frame}{Code for examples}
+%	\begin{center}
+%	\href{https://colab.research.google.com/drive/18E4HCN82GSa8-81h9yw2daHVg146IuWe}{Google Colab}
+%	\end{center}
+%	\end{frame}
 
 \end{document}
