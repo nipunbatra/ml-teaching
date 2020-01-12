@@ -27,37 +27,14 @@
 	\maketitle
 	
 	
-	\begin{frame}
-	\begin{tikzpicture}[
-	declare function={binom(\k,\n,\p)=\n!/(\k!*(\n-\k)!)*\p^\k*(1-\p)^(\n-\k);}
-	]
-	\begin{axis}[ymin=0, xmin=-0.5,axis lines=left,xlabel={$k$}, ylabel={$P(X=k)$}, x label style={at={(axis description cs:1,0.1)},anchor=north},
-	y label style={at={(axis description cs:-0.15,1)},rotate = -90, anchor=north}, ,
-	samples at={0,...,21},
-	yticklabel style={
-		/pgf/number format/fixed,
-		/pgf/number format/fixed zerofill,
-		/pgf/number format/precision=2
-	},
-	ybar=0pt, bar width=1, bar shift=0pt
-	]
-	\addplot [fill=gray!25] {binom(x,21,0.3)}; 
-	\path[name path=B] 
-	(axis cs:10.5,\pgfkeysvalueof{/pgfplots/ymin})--
-	(axis cs:10.5,\pgfkeysvalueof{/pgfplots/ymax});
-          %  \draw (name path=first, axis cs:10.5,\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:10.5,\pgfkeysvalueof{/pgfplots/ymax});
-          %  \draw (name path =l2, axis cs:20.5,\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:20.5,\pgfkeysvalueof{/pgfplots/ymax});
-            %\addplot[domain=-.15:1,fill=gray!50] {x^2}\closedcycle;
-%\addplot fill between[ 
-%of =  l2 and l, 
-%split, % calculate segments
-%every even segment/.style = {orange!70},
-%every odd segment/.style  = {gray!60}
-%];
 
 
-	\end{axis}
-	\end{tikzpicture}
+\begin{frame}{Why combine models?}
+\input{test-0.3.tex}
+\end{frame}
+
+\begin{frame}{Why combine models?}
+\input{test-0.6.tex}
 \end{frame}
 
 	\begin{frame}{Ensemble Methods}
