@@ -29,6 +29,17 @@
 	
 
 
+\begin{frame}{Intuition}
+\url{https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html}
+
+Three reasons:
+1) Statistical
+2) Computational
+3) Representational: Decision Stump can not learn moon ..Random forest can...
+
+
+\end{frame}
+
 \begin{frame}{Why combine models?}
 \input{test-0.3.tex}
 \end{frame}
@@ -433,6 +444,93 @@
 			\end{itemize}
 	\end{itemize}
 	\end{frame}
+
+
+\begin{frame}{Decision Tree \# 0}
+\begin{figure}
+	\includegraphics[scale=0.7]{tree-0.pdf}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Decision Tree \# 1}
+\begin{figure}
+\includegraphics[scale=0.7]{tree-1.pdf}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Decision Tree \# 2}
+\begin{figure}
+\includegraphics[scale=0.7]{tree-2.pdf}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Decision Tree \# 3}
+\begin{figure}
+\includegraphics[scale=0.7]{tree-3.pdf}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Decision Tree \# 4}
+\begin{figure}
+\includegraphics[scale=0.7]{tree-4.pdf}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Decision Tree \# 5}
+\begin{figure}
+\includegraphics[scale=0.7]{tree-5.pdf}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Decision Tree \# 6}
+\begin{figure}
+\includegraphics[scale=0.7]{tree-6.pdf}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Decision Tree \# 7}
+\begin{figure}
+\includegraphics[scale=0.7]{tree-7.pdf}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Decision Tree \# 8}
+\begin{figure}
+\includegraphics[scale=0.7]{tree-8.pdf}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Decision Tree \# 9}
+\begin{figure}
+\includegraphics[scale=0.7]{tree-9.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Feature Importance\footnotemark}
+\begin{figure}
+	\includegraphics[scale=0.4]{mdi.pdf}
+\end{figure}
+Importance of variable $X_j$ for an ensemble of $M$ trees $\varphi_{m}$ is:
+\begin{equation*}
+\text{Imp}(X_j) = \frac{1}{M} \sum_{m=1}^M \sum_{t \in \varphi_{m}} 1(j_t = j) \Big[ p(t) \Delta i(t) \Big],
+\end{equation*}
+where $j_t$ denotes the variable used at node $t$, $p(t)=N_t/N$ and $\Delta i(t)$ is the impurity reduction at node $t$:
+\begin{equation*}
+\Delta i(t) = i(t) - \frac{N_{t_L}}{N_t} i(t_L) - \frac{N_{t_r}}{N_t} i(t_R)
+\end{equation*}
+\footnotetext[1]{Sllide Courtesy Gilles Louppe}
+
+\end{frame}
+
 
 	\begin{frame}{Code for Examples}
 		\centering
