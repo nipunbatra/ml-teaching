@@ -64,7 +64,7 @@
 	\begin{frame}{Ensemble Methods}
 	Error Probability of each model = $\varepsilon$ = 0.3\\
 	\vspace{1cm}
-	$Pr(\text{2 models being wrong}) = \Comb{3}{2}(\varepsilon^2)(1-\varepsilon)^{3-2} + \Comb{3}{3}(\varepsilon^3)(1-\varepsilon)^{3-3}$\\
+	$Pr(\text{ensemble being wrong}) = \Comb{3}{2}(\varepsilon^2)(1-\varepsilon)^{3-2} + \Comb{3}{3}(\varepsilon^3)(1-\varepsilon)^{3-3}$\\
 	\vspace{0.5cm}
 	\hspace{4.4cm}$ = 0.19 \leq 0.3$ 
 	\end{frame}
@@ -122,7 +122,7 @@
 	\end{frame}
 
 	\begin{frame}{Bagging : Classification Example}
-	Consider the dataset below. Points (2,2) and (4,4) are anomalies.\\
+	Consider the dataset below. Points (3,3) and (5,8) are anomalies.\\
 	\vspace{0.5cm}
 	\centering
 	\includegraphics[width = 0.6\textwidth]{dataset}
@@ -130,39 +130,109 @@
 
 
 	\begin{frame}{Bagging : Classification Example}
-	Decision Boundary for decision tree with depth 9.\\
+	Decision Boundary for decision tree with depth 6.\\
 	\vspace{0.5cm}
 	\centering
 	\includegraphics[width = 0.6\textwidth]{strong-tree}
 	\end{frame}
-	
+
 	\begin{frame}{Bagging : Classification Example}
-	Lets use bagging with ensemble of 3 trees.\\
-	\vspace{1cm}
+	Lets use bagging with ensemble of 5 trees.\\
+	\vspace{0.5cm}
 	\begin{columns}
 		\begin{column}{0.3\textwidth}
 			\centering
 			Round - 1\\
-			\vspace{0.5cm}
-			\includegraphics[width = \textwidth]{decision-boundary-0}
-			Depth of tree = 5
+		
+			\includegraphics[width = 0.9\textwidth]{dataset-rnd-0}
+			
 		\end{column}
 		\begin{column}{0.3\textwidth}
 			\centering
 			Round - 2\\
-			\vspace{0.5cm}
-			\includegraphics[width = \textwidth]{decision-boundary-1}
-			Depth of tree = 6
+	
+			\includegraphics[width = 0.9\textwidth]{dataset-rnd-1}
+			
 		\end{column}
 		\begin{column}{0.3\textwidth}
 			\centering
 			Round - 3\\
-			\vspace{0.5cm}
-			\includegraphics[width = \textwidth]{decision-boundary-2}
-			Depth of tree = 3
+	
+			\includegraphics[width = 0.9\textwidth]{dataset-rnd-2}
+			
 		\end{column}
-	\end{columns}
 
+	\end{columns}
+	\vspace{0.5cm}
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\centering
+			Round - 4\\
+	
+			\includegraphics[width = 0.9\textwidth]{dataset-rnd-3}
+			
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\centering
+			Round - 5\\
+		
+			\includegraphics[width = 0.9\textwidth]{dataset-rnd-4}
+			
+		\end{column}
+
+	\end{columns}
+	\end{frame}
+	
+	
+	\begin{frame}{Bagging : Classification Example}
+	\vspace{0.3cm}
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\centering
+			Round - 1\\
+		
+			\includegraphics[width = 0.9\textwidth]{decision-boundary-0}
+			Tree Depth = 4
+			
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\centering
+			Round - 2\\
+	
+			\includegraphics[width = 0.9\textwidth]{decision-boundary-1}
+			Tree Depth = 5
+			
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\centering
+			Round - 3\\
+	
+			\includegraphics[width = 0.9\textwidth]{decision-boundary-2}
+			Tree Depth = 5
+			
+		\end{column}
+
+	\end{columns}
+	\vspace{0.5cm}
+	\begin{columns}
+		\begin{column}{0.3\textwidth}
+			\centering
+			Round - 4\\
+	
+			\includegraphics[width = 0.9\textwidth]{decision-boundary-3}
+			Tree Depth = 2
+			
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\centering
+			Round - 5\\
+		
+			\includegraphics[width = 0.9\textwidth]{decision-boundary-4}
+			Tree Depth = 4
+			
+		\end{column}
+
+	\end{columns}
 	\end{frame}
 
 	\begin{frame}{Bagging : Classification Example}
