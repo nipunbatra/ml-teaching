@@ -260,18 +260,146 @@
 	\begin{frame}{Boosting : AdaBoost }
 	Consider we have a dataset of $N$ samples.\\
 	Sample $i$ has weight $w_i$. There are $M$ classifers in ensemble.\\
+	\vspace{0.5cm}
+	\centering
+	\includegraphics[width = 0.6\textwidth]{ada_data}
+	\end{frame}
+
+	\begin{frame}{Boosting : AdaBoost }
+	Consider we have a dataset of $N$ samples.\\
+	Sample $i$ has weight $w_i$. There are $M$ classifers in ensemble.\\
+	\begin{enumerate}
+		\item Initialize weights of data samples, $w_i = \dfrac{1}{N}$
+	\end{enumerate}
+	\vspace{0.5cm}
+	\centering
+	\includegraphics[width = 0.6\textwidth]{ada_data_init_weights}
+	\end{frame}
+
+	\begin{frame}{Boosting : AdaBoost }
+	Consider we have a dataset of $N$ samples.\\
+	Sample $i$ has weight $w_i$. There are $M$ classifers in ensemble.\\
+	\begin{enumerate}
+		\item Initialize weights of data samples, $w_i = \dfrac{1}{N}$
+		\item For $m = 1\dots M$
+		\begin{enumerate}
+			\item Learn classifier using current weights $w_i's$
+		\end{enumerate}
+	\end{enumerate}
+	\centering
+	\includegraphics[width = 0.6\textwidth]{ada_iter1}
+	\end{frame}
+
+	\begin{frame}{Boosting : AdaBoost }
+	Consider we have a dataset of $N$ samples.\\
+	Sample $i$ has weight $w_i$. There are $M$ classifers in ensemble.\\
+	\begin{enumerate}
+		\item Initialize weights of data samples, $w_i = \dfrac{1}{N}$
+		\item For $m = 1\dots M$
+		\begin{enumerate}
+			\item Learn classifier using current weights $w_i's$
+		\end{enumerate}
+	\end{enumerate}
+	\centering
+	\includegraphics[width = 0.85\textwidth]{ada_iter1_misclassify}
+	\end{frame}
+
+	\begin{frame}{Boosting : AdaBoost }
+	Consider we have a dataset of $N$ samples.\\
+	Sample $i$ has weight $w_i$. There are $M$ classifers in ensemble.\\
 	\begin{enumerate}
 		\item Initialize weights of data samples, $w_i = \dfrac{1}{N}$
 		\item For $m = 1\dots M$
 		\begin{enumerate}
 			\item Learn classifier using current weights $w_i's$
 			\item Compute the weighted error, $err_m = \dfrac{\sum\limits_iw_i(incorrect)}{\sum\limits_iw_i}$
-			\item Compute $\alpha_m = \dfrac{1}{2}log\left(\dfrac{1 - err_m}{err_m}\right)$
+		\end{enumerate}
+	\end{enumerate}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+				\centering
+				\includegraphics[width = 1.1\textwidth]{ada_iter1_misclassify}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			$err_1 = \dfrac{0.3}{1}$
+		\end{column}
+	\end{columns}
+	\end{frame}
+
+
+	\begin{frame}{Boosting : AdaBoost }
+	Consider we have a dataset of $N$ samples.\\
+	Sample $i$ has weight $w_i$. There are $M$ classifers in ensemble.\\
+	\begin{enumerate}
+		\item Initialize weights of data samples, $w_i = \dfrac{1}{N}$
+		\item For $m = 1\dots M$
+		\begin{enumerate}
+			\item Learn classifier using current weights $w_i's$
+			\item Compute the weighted error, $err_m = \dfrac{\sum\limits_iw_i(incorrect)}{\sum\limits_iw_i}$
+			\item Compute $\alpha_m = \dfrac{1}{2}log_e\left(\dfrac{1 - err_m}{err_m}\right)$
+		\end{enumerate}
+	\end{enumerate}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+				\centering
+				\includegraphics[width = \textwidth]{ada_iter1_misclassify}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			$err_1 = \dfrac{0.3}{1}$\\
+			$\alpha_1 = \dfrac{1}{2}log\left(\dfrac{1-0.3}{0.3}\right) = 0.42$
+		\end{column}
+	\end{columns}
+	\end{frame}
+
+	\begin{frame}{Boosting : AdaBoost }
+	Consider we have a dataset of $N$ samples.\\
+	Sample $i$ has weight $w_i$. There are $M$ classifers in ensemble.\\
+	\begin{enumerate}
+		\item Initialize weights of data samples, $w_i = \dfrac{1}{N}$
+		\item For $m = 1\dots M$
+		\begin{enumerate}
+			\item Learn classifier using current weights $w_i's$
+			\item Compute the weighted error, $err_m = \dfrac{\sum\limits_iw_i(incorrect)}{\sum\limits_iw_i}$
+			\item Compute $\alpha_m = \dfrac{1}{2}log_e\left(\dfrac{1 - err_m}{err_m}\right)$
+			\item For samples which were predicted correctly, $w_i = w_ie^{-\alpha_m}$
+			\item For samples which were predicted incorrectly, $w_i = w_ie^{\alpha_m}$  
+		\end{enumerate}
+	\end{enumerate}
+	\end{frame}
+
+	\begin{frame}{Boosting : AdaBoost }
+				\vspace{0.5cm}
+				\centering
+				\includegraphics[width = 0.8\textwidth]{ada_iter1_new_weights_exp}
+	\end{frame}
+
+	\begin{frame}{Boosting : AdaBoost }
+				\vspace{0.5cm}
+				\centering
+				\includegraphics[width = 0.8\textwidth]{ada_iter1_new_weights}
+	\end{frame}
+
+	\begin{frame}{Boosting : AdaBoost }
+	Consider we have a dataset of $N$ samples.\\
+	Sample $i$ has weight $w_i$. There are $M$ classifers in ensemble.\\
+	\begin{enumerate}
+		\item Initialize weights of data samples, $w_i = \dfrac{1}{N}$
+		\item For $m = 1\dots M$
+		\begin{enumerate}
+			\item Learn classifier using current weights $w_i's$
+			\item Compute the weighted error, $err_m = \dfrac{\sum\limits_iw_i(incorrect)}{\sum\limits_iw_i}$
+			\item Compute $\alpha_m = \dfrac{1}{2}log_e\left(\dfrac{1 - err_m}{err_m}\right)$
 			\item For samples which were predicted correctly, $w_i = w_ie^{-\alpha_m}$
 			\item For samples which were predicted incorrectly, $w_i = w_ie^{\alpha_m}$  
 			\item Normalize $w_i's$ to sum up to 1.
 		\end{enumerate}
 	\end{enumerate}
+	\end{frame}
+	
+	\begin{frame}{Boosting : AdaBoost }
+				\vspace{0.5cm}
+				\centering
+				\includegraphics[width = 0.8\textwidth]{ada_iter1_new_weights_normalized}
 	\end{frame}
 	
 	\begin{frame}{Boosting: Adaboost}
