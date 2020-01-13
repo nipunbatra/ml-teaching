@@ -1,0 +1,29 @@
+% This file was created by tikzplotlib v0.9.0.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.12156862745098,0.466666666666667,0.705882352941177}
+
+\begin{axis}[
+axis line style={white!50.1960784313725!black},
+tick align=outside,
+tick pos=left,
+x grid style={white!69.0196078431373!black},
+xmin=-0.5, xmax=3.5,
+xtick style={color=white!50.1960784313725!black},
+xtick={0,1,2,3},
+xticklabels={sepal\_length,sepal\_width,petal\_length,petal\_width},
+y grid style={white!69.0196078431373!black},
+ylabel={Feature Importance},
+ymin=0, ymax=0.563035764686882,
+ytick style={color=white!50.1960784313725!black}
+]
+\draw[draw=none,fill=color0] (axis cs:-0.25,0) rectangle (axis cs:0.25,0.12090692189598);
+\addlegendimage{ybar,ybar legend,draw=none,fill=color0};
+\addlegendentry{None}
+
+\draw[draw=none,fill=color0] (axis cs:0.75,0) rectangle (axis cs:1.25,0.0204918771734566);
+\draw[draw=none,fill=color0] (axis cs:1.75,0) rectangle (axis cs:2.25,0.53622453779703);
+\draw[draw=none,fill=color0] (axis cs:2.75,0) rectangle (axis cs:3.25,0.322376663133533);
+\end{axis}
+
+\end{tikzpicture}
