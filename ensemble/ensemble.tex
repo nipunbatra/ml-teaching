@@ -26,60 +26,102 @@
 \begin{document}
 	\maketitle
 	
-	
-
-
-\begin{frame}{Intuition}
-\url{https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html}
-
-Three reasons:
-1) Statistical
-2) Computational
-3) Representational: Decision Stump can not learn moon ..Random forest can...
-
-
-\end{frame}
-
-\begin{frame}{Why combine models?}
-\input{test-0.3.tex}
-\end{frame}
-
-\begin{frame}{Why combine models?}
-\input{test-0.6.tex}
-\end{frame}
-
-	\begin{frame}{Ensemble Methods}
-	\only<1->{
+\begin{frame}{Ensemble Methods}
+\only<1->{
 	Use multiple models for prediction.\\
 	Most winning entries of Kaggle competition using ensemble learning.\\
 	\vspace{1cm}
-	 }
-	 \only<2>{
+}
+\only<2>{
 	\textbf{ Example:}\\
 	Classifier 1 - Good\\
 	Classifier 2 - Good\\
 	Classifier 3 - Bad\\
 	\vspace{0.5cm}
 	Using Majority Voting, we predict Good.\\
-	}
-	 \only<3>{
+}
+\only<3>{
 	\textbf{ Example:}\\
-	Classifier 1 - 20\\
-	Classifier 2 - 30\\
-	Classifier 3 - 30\\
+	Regressor 1 - 20\\
+	Regressor 2 - 30\\
+	Regressor 3 - 30\\
 	\vspace{0.5cm}
 	Using Average, we predict $\dfrac{80}{3}$ 
-	}
-	\end{frame}
+}
+\end{frame}
 
-	\begin{frame}{Ensemble Methods}
-	Error Probability of each model = $\varepsilon$ = 0.3\\
+
+\begin{frame}{Intuition}
+
+Three reasons why ensembles make sense:
+
+\pause 1) Statistical: Sometimes if data is less, many competing hypothesis can be learnt. 
+
+\pause Eg. Depending on criteria and initialisation, we can learn many decision trees for the same data. 
+
+\pause 2) Computational: Some classifiers/regressors can get stuck in local optima. Computationally learning the ``best'' hypothesis can be non-trivial.
+
+\pause Eg. Decision Trees employ greedy critera
+
+\pause 3) Representational: Some classifiers/regressors can not learn the true form/representation.
+
+\end{frame}
+
+\begin{frame}{Representation of Limited Depth DTs vs RFs}
+\begin{figure}
+	\includegraphics[scale=0.7]{1-representation.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Representation of Limited Depth DTs vs RFs}
+\begin{figure}
+	\includegraphics[scale=0.7]{2-representation.pdf}
+\end{figure}
+\end{frame}
+
+
+
+
+	\begin{frame}{Necessary and Sufficient Conditions}
+	\pause 1)A necessary and sufficient condition for an ensemble of classiers to be more
+	accurate than any of its individual members is if the classiers are accurate and
+	diverse.
+	
+	\pause 2) An accurate classier: \pause  is one that has an
+	error rate of better than random guessing on new x values.
+	
+	\pause 3) Two classifiers are diverse: \pause  if they make different errors on new data points 
+	
+\end{frame}
+
+	\begin{frame}{Necessary and Sufficient Conditions}
+	Imagine that we have an ensemble of three classifiers ($h_1, h_2, h_3$) and consider a new case x. 
+	
+	
+	\pause If the three classifiers are identical, i.e.
+not diverse, then when $h_1(x)$ is wrong $h_2(x)$ and $h_3(x)$ will also be wrong.
+
+
+\pause However, if the errors made by the classifiers are uncorrelated, then when $h_1(x)$
+is wrong, $h_2(x)$ and $h_3(x)$ may be correct, so that a majority vote will correctly
+class.
+
+\end{frame}
+	\begin{frame}{Intuition for Ensemble Methods from Quantitative Perspective}
+	\pause Error Probability of each model = $\varepsilon$ = 0.3\\
 	\vspace{1cm}
 	$Pr(\text{ensemble being wrong}) = \Comb{3}{2}(\varepsilon^2)(1-\varepsilon)^{3-2} + \Comb{3}{3}(\varepsilon^3)(1-\varepsilon)^{3-3}$\\
 	\vspace{0.5cm}
 	\hspace{4.4cm}$ = 0.19 \leq 0.3$ 
 	\end{frame}
 
+\begin{frame}{Some calculations}
+\input{test-0.3.tex}
+\end{frame}
+
+\begin{frame}{Some calculations}
+\input{test-0.6.tex}
+\end{frame}
 	\begin{frame}{Ensemble Methods}
 	\only<1->{
 	Where does ensemble learning not work well?
@@ -87,7 +129,7 @@ Three reasons:
 	\only<2->{
 	\begin{itemize}
 		\item The base model is bad.
-		\item All models give similar or opposite prediction.
+		\item All models give similar prediction or the models are highly correlated.
 	\end{itemize}
 	}
 	\end{frame}
@@ -151,21 +193,21 @@ Three reasons:
 	Lets use bagging with ensemble of 5 trees.\\
 	\vspace{0.5cm}
 	\begin{columns}
-		\begin{column}{0.3\textwidth}
+	\pause 	\begin{column}{0.3\textwidth}
 			\centering
 			Round - 1\\
 		
 			\includegraphics[width = 0.9\textwidth]{dataset-rnd-0}
 			
 		\end{column}
-		\begin{column}{0.3\textwidth}
+	\pause	\begin{column}{0.3\textwidth}
 			\centering
 			Round - 2\\
 	
 			\includegraphics[width = 0.9\textwidth]{dataset-rnd-1}
 			
 		\end{column}
-		\begin{column}{0.3\textwidth}
+	\pause	\begin{column}{0.3\textwidth}
 			\centering
 			Round - 3\\
 	
@@ -176,14 +218,14 @@ Three reasons:
 	\end{columns}
 	\vspace{0.5cm}
 	\begin{columns}
-		\begin{column}{0.3\textwidth}
+	\pause	\begin{column}{0.3\textwidth}
 			\centering
 			Round - 4\\
 	
 			\includegraphics[width = 0.9\textwidth]{dataset-rnd-3}
 			
 		\end{column}
-		\begin{column}{0.3\textwidth}
+	\pause	\begin{column}{0.3\textwidth}
 			\centering
 			Round - 5\\
 		
@@ -198,7 +240,7 @@ Three reasons:
 	\begin{frame}{Bagging : Classification Example}
 	\vspace{0.3cm}
 	\begin{columns}
-		\begin{column}{0.3\textwidth}
+	\pause	\begin{column}{0.3\textwidth}
 			\centering
 			Round - 1\\
 		
@@ -206,7 +248,7 @@ Three reasons:
 			Tree Depth = 4
 			
 		\end{column}
-		\begin{column}{0.3\textwidth}
+	\pause	\begin{column}{0.3\textwidth}
 			\centering
 			Round - 2\\
 	
@@ -214,7 +256,7 @@ Three reasons:
 			Tree Depth = 5
 			
 		\end{column}
-		\begin{column}{0.3\textwidth}
+	\pause	\begin{column}{0.3\textwidth}
 			\centering
 			Round - 3\\
 	
@@ -225,7 +267,7 @@ Three reasons:
 
 	\end{columns}
 	\vspace{0.5cm}
-	\begin{columns}
+\pause	\begin{columns}
 		\begin{column}{0.3\textwidth}
 			\centering
 			Round - 4\\
@@ -234,7 +276,7 @@ Three reasons:
 			Tree Depth = 2
 			
 		\end{column}
-		\begin{column}{0.3\textwidth}
+	\pause	\begin{column}{0.3\textwidth}
 			\centering
 			Round - 5\\
 		
@@ -264,7 +306,8 @@ Three reasons:
 	\begin{frame}{Boosting}
 	\begin{itemize}
 		\item We take ``weak'' learners and combine them to reduce bias.
-		\item All learners are incrementally built.
+		\pause \item All learners are incrementally built.
+		\pause \item Incremental building: Incrementally try to classify ``harder'' samples correctly.
 	\end{itemize}
 	\end{frame}
 	
@@ -412,6 +455,101 @@ Three reasons:
 				\centering
 				\includegraphics[width = 0.8\textwidth]{ada_iter1_new_weights_normalized}
 	\end{frame}
+
+
+	\begin{frame}{Boosting : AdaBoost }
+Consider we have a dataset of $N$ samples.\\
+Sample $i$ has weight $w_i$. There are $M$ classifers in ensemble.\\
+\begin{enumerate}
+	\item Initialize weights of data samples, $w_i = \dfrac{1}{N}$
+	\item For $m = 1\dots M$
+	\begin{enumerate}
+		\item Learn classifier using current weights $w_i's$
+		\item Compute the weighted error, $err_m = \dfrac{\sum\limits_iw_i(incorrect)}{\sum\limits_iw_i}$
+		\item Compute $\alpha_m = \dfrac{1}{2}log_e\left(\dfrac{1 - err_m}{err_m}\right)$
+	\end{enumerate}
+\end{enumerate}
+\begin{columns}
+	\begin{column}{0.5\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{ada_iter2_misclassify}
+	\end{column}
+	\begin{column}{0.5\textwidth}
+		$err_2 = \dfrac{0.21}{1}$\\
+		$\alpha_2 = \dfrac{1}{2}log\left(\dfrac{1-0.21}{0.21}\right) = 0.66$
+	\end{column}
+\end{columns}
+\end{frame}
+
+	\begin{frame}{Boosting : AdaBoost }
+Consider we have a dataset of $N$ samples.\\
+Sample $i$ has weight $w_i$. There are $M$ classifers in ensemble.\\
+\begin{enumerate}
+	\item Initialize weights of data samples, $w_i = \dfrac{1}{N}$
+	\item For $m = 1\dots M$
+	\begin{enumerate}
+		\item Learn classifier using current weights $w_i's$
+		\item Compute the weighted error, $err_m = \dfrac{\sum\limits_iw_i(incorrect)}{\sum\limits_iw_i}$
+		\item Compute $\alpha_m = \dfrac{1}{2}log_e\left(\dfrac{1 - err_m}{err_m}\right)$
+		\item For samples which were predicted correctly, $w_i = w_ie^{-\alpha_m}$
+		\item For samples which were predicted incorrectly, $w_i = w_ie^{\alpha_m}$  
+	\end{enumerate}
+\end{enumerate}
+\end{frame}
+
+	\begin{frame}{Boosting : AdaBoost }
+\vspace{0.5cm}
+\centering
+\includegraphics[width = 0.8\textwidth]{ada_iter2_new_weights}
+\end{frame}
+
+	\begin{frame}{Boosting : AdaBoost }
+Consider we have a dataset of $N$ samples.\\
+Sample $i$ has weight $w_i$. There are $M$ classifers in ensemble.\\
+\begin{enumerate}
+	\item Initialize weights of data samples, $w_i = \dfrac{1}{N}$
+	\item For $m = 1\dots M$
+	\begin{enumerate}
+		\item Learn classifier using current weights $w_i's$
+		\item Compute the weighted error, $err_m = \dfrac{\sum\limits_iw_i(incorrect)}{\sum\limits_iw_i}$
+		\item Compute $\alpha_m = \dfrac{1}{2}log_e\left(\dfrac{1 - err_m}{err_m}\right)$
+		\item For samples which were predicted correctly, $w_i = w_ie^{-\alpha_m}$
+		\item For samples which were predicted incorrectly, $w_i = w_ie^{\alpha_m}$  
+		\item Normalize $w_i's$ to sum up to 1.
+	\end{enumerate}
+\end{enumerate}
+\end{frame}
+
+	\begin{frame}{Boosting : AdaBoost }
+\vspace{0.5cm}
+\centering
+\includegraphics[width = 0.8\textwidth]{ada_iter2_new_weights_normalized}
+\end{frame}
+
+
+\begin{frame}{Boosting : AdaBoost }
+Consider we have a dataset of $N$ samples.\\
+Sample $i$ has weight $w_i$. There are $M$ classifers in ensemble.\\
+\begin{enumerate}
+	\item Initialize weights of data samples, $w_i = \dfrac{1}{N}$
+	\item For $m = 1\dots M$
+	\begin{enumerate}
+		\item Learn classifier using current weights $w_i's$
+		\item Compute the weighted error, $err_m = \dfrac{\sum\limits_iw_i(incorrect)}{\sum\limits_iw_i}$
+		\item Compute $\alpha_m = \dfrac{1}{2}log_e\left(\dfrac{1 - err_m}{err_m}\right)$
+	\end{enumerate}
+\end{enumerate}
+\begin{columns}
+	\begin{column}{0.5\textwidth}
+		\centering
+		\includegraphics[width = \textwidth]{ada_iter3_misclassify}
+	\end{column}
+	\begin{column}{0.5\textwidth}
+		$err_3 = \dfrac{0.12}{1}$\\
+		$\alpha_3 = \dfrac{1}{2}log\left(\dfrac{1-0.12}{0.12}\right) = 0.99$
+	\end{column}
+\end{columns}
+\end{frame}
 	
 	\begin{frame}{Boosting: Adaboost}
 	Intuitively, after each iteration, importance of wrongly classified samples is increased by increasing their weights and importance of correctly classified 		samples is decreased by decreasing their weights.
@@ -419,9 +557,79 @@ Three reasons:
 	
 	\begin{frame}{Boosting: Adaboost}
 	\textbf{Testing}\\
-	Final Prediction = $\alpha_1$(Pred. of Clf. 1) +  $\alpha_2$(Pred. Clf. 2) + $\dots$ +  $\alpha_M$(Pred. Clf $M$)
+\pause	Final Prediction = SIGN($\alpha_1$(Pred. of Clf. 1) +  $\alpha_2$(Pred. Clf. 2) + $\dots$ +  $\alpha_M$(Pred. Clf $M$))
+	
+	\begin{columns}
+	\pause 			\begin{column}{0.33\textwidth}
+			\centering
+			\begin{figure}
+				\includegraphics[width = \textwidth]{ada_iter1_misclassify}
+								\vspace{-20pt}
+				\caption{$\alpha_1=0.42$}
+			\end{figure}
+			
+		\end{column}
+		
+		
+		\pause \begin{column}{0.4\textwidth}
+			\centering
+			\begin{figure}
+				\includegraphics[width = \textwidth]{ada_iter2_misclassify}
+				\vspace{-20pt}
+				\caption{$\alpha_2=0.66$}
+			\end{figure}
+
+		\pause \end{column}
+				\begin{column}{0.3\textwidth}
+			\centering
+			\begin{figure}
+				\includegraphics[width = \textwidth]{ada_iter3_misclassify}
+								\vspace{-20pt}
+				\caption{$\alpha_3=0.99$}
+			\end{figure}
+			
+		\end{column}
+	\end{columns}
+
+	\begin{columns}
+		\pause \begin{column}{0.5\textwidth}
+			\begin{figure}
+			\includegraphics[scale=0.1]{testing}
+			\end{figure}
+		\end{column}
+	
+	\begin{column}{0.5\textwidth}
+		\pause Let us say, yellow class is +1 and blue class is -1
+		
+		\pause Prediction = SIGN(0.42*-1 + 0.66*-1 + 0.99*+1) = Negative = blue
+	\end{column}
+	\end{columns}
+
 	\end{frame}
 	
+	
+	\begin{frame}{Intuition behind weight update formula}
+	\begin{columns}
+\pause \begin{column}{0.5\textwidth}
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.7]{alpha-boosting.pdf}
+	
+	\label{fig:alpha-boosting}
+\end{figure}
+\end{column}
+\pause \begin{column}{0.5\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.7]{alpha-boosting-weight.pdf}
+		
+		\label{fig:alpha-boosting}
+	\end{figure}
+\end{column}
+	\end{columns}
+
+
+\end{frame}
 
 	\begin{frame}{Random Forest}
 		It is an ensemble of decision trees, where each tree is trained on randomly-selected features.\\
@@ -430,20 +638,32 @@ Three reasons:
 	\end{frame}
 
 	\begin{frame}{Random Forest}
-	There are 3 parameters while training a random forest ``$number$ $of$ $trees$'', ``$number$ $of$ $features'' (m)$, ``$maximum$ $depth$''.\\
-	\vspace{1cm}
-	\underline{Training Algorithm}\\
+
 	\begin{itemize}
-		\item for $depth$ in $[1, \dots,$ $maximum$ $depth$ $]$
-			\begin{itemize}
-				\item for $tree$ in $[1, \dots,$ $number$ $of$ $trees$ $]$
-				\begin{itemize}
-					\item Select ``$m$'' features from total available $M$ features and train a decision tree on selected features
-					
-				\end{itemize}
-			\end{itemize}
+		\item for $tree$ in $[1, \dots,$ $number$ $of$ $trees$ $]$
+		\begin{itemize}
+			\item For each split, select ``$m$'' features from total available $M$ features and train a decision tree on selected features
+			
+		\end{itemize}
 	\end{itemize}
-	\end{frame}
+
+\end{frame}
+
+%	\begin{frame}{Random Forest}
+%	There are 3 parameters while training a random forest ``$number$ $of$ $trees$'', ``$number$ $of$ $features'' (m)$, ``$maximum$ $depth$''.\\
+%	\vspace{1cm}
+%	\underline{Training Algorithm}\\
+%	\begin{itemize}
+%		\item for $depth$ in $[1, \dots,$ $maximum$ $depth$ $]$
+%			\begin{itemize}
+%				\item for $tree$ in $[1, \dots,$ $number$ $of$ $trees$ $]$
+%				\begin{itemize}
+%					\item For each split, select ``$m$'' features from total available $M$ features and train a decision tree on selected features
+%					
+%				\end{itemize}
+%			\end{itemize}
+%	\end{itemize}
+%	\end{frame}
 
 
 \begin{frame}{Decision Tree \# 0}
@@ -527,7 +747,7 @@ where $j_t$ denotes the variable used at node $t$, $p(t)=N_t/N$ and $\Delta i(t)
 \begin{equation*}
 \Delta i(t) = i(t) - \frac{N_{t_L}}{N_t} i(t_L) - \frac{N_{t_r}}{N_t} i(t_R)
 \end{equation*}
-\footnotetext[1]{Sllide Courtesy Gilles Louppe}
+\footnotetext[1]{Slide Courtesy Gilles Louppe}
 
 \end{frame}
 
