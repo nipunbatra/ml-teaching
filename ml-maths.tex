@@ -1,5 +1,6 @@
 \documentclass{beamer}
 \usepackage{tcolorbox}
+\usepackage{amsmath}
 
 %\beamerdefaultoverlayspecification{<+->}
 \newcommand{\data}{\mathcal{D}}
@@ -10,6 +11,11 @@
 	\ifx\relax#1\relax  \item \else \item[#1] \fi
 	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
 
+
+\newcounter{saveenumi}
+\newcommand{\seti}{\setcounter{saveenumi}{\value{enumi}}}
+\newcommand{\conti}{\setcounter{enumi}{\value{saveenumi}}}
+\resetcounteronoverlays{saveenumi}
 
 \usetheme{metropolis}           % Use metropolis theme
 
@@ -26,94 +32,121 @@
 % \section{Linear Regression}
 
 \begin{frame}{Maths for ML}
+\begin{enumerate}
+	\item Given a vector of $\epsilon$, we can calculate $\sum \epsilon_{i}^{2}$ using $\epsilon^{T}\epsilon$
+	
+	\pause $$
+	\epsilon = \begin{bmatrix}
+	\epsilon_{1}   \\
+	\epsilon_{2}   \\
+	\dots \\
+	\epsilon_{N}
+	\end{bmatrix}_{N \times 1}   
+	$$
+	
+	\pause $$
+	\epsilon^T = \begin{bmatrix}
+	\epsilon_{1}, 
+	\epsilon_{2},  
+	\dots, 
+	\epsilon_{N}
+	\end{bmatrix}_{1 \times N}   
+	$$
+	
+	\pause $$\epsilon^T\epsilon = \sum \epsilon_{i}^{2}$$
+	    \seti
+	
+\end{enumerate}
 
-$$
-\epsilon = \begin{bmatrix}
-    \epsilon_{1}   \\
-    \epsilon_{2}   \\
-    \dots \\
-    \epsilon{N}
-\end{bmatrix}    
-$$
 
-Given a vector of $\epsilon$, we can calculate $\sum \epsilon_{i}^{2}$ using $\epsilon^{T}\epsilon$
+
 \end{frame}
 
 \begin{frame}{Maths for ML}
+\begin{enumerate}
+	\conti
+	\item $$
+	(AB)^{T} = B^{T}A^{T}    
+	$$
+	\pause \item 
+	For a scalar s
+	$$
+	s = s^{T}    
+	$$
+	\seti
+\end{enumerate}
 
-$$
-(AB)^{T} = B^{T}A^{T}    
-$$
-
-
-
-For a scalar s
-$$
-S = S^{T}    
-$$
 
 \end{frame}
 
 
 \begin{frame}{Maths for ML}
 
-    
-    
-  \begin{equation*}
-      \theta = \begin{bmatrix}
+\begin{enumerate}
+	\conti
+	\item Derivative of a scalar $s$ wrt a vector $\theta$
+	\seti
+\end{enumerate}
+ 
+    $$
+        \theta = \begin{bmatrix}
   \theta_{1}\\
   \theta_{2}\\
   \vdots\\
   \theta_{N}
     \end{bmatrix}   
+  $$
   
-  \end{equation*} 
 
 
    
  
-  \begin{equation*}
-        \frac{\partial S}{\partial \theta} = \begin{bmatrix}
-  \frac{\partial S}{\partial \theta_{1}}\\
-  \frac{\partial S}{\partial \theta_{2}}\\
+  $$
+        \frac{\partial s}{\partial \theta} =\pause  \begin{bmatrix}
+  \frac{\partial s}{\partial \theta_{1}}\\
+  \frac{\partial s}{\partial \theta_{2}}\\
     \vdots\\
-  \frac{\partial S}{\partial \theta_{N}}\\
+  \frac{\partial s}{\partial \theta_{N}}\\
     \end{bmatrix}
-  \end{equation*}
+ $$
       
-    
+   
     
 
 \end{frame}
 
 
-\begin{frame}{Maths for ML}
-  $A$ is a matrix.\\
-  $\theta$ is a vector.\\
-  $A\theta$ is a scalar.\\
-  
+\begin{frame}{Maths for ML}\
+\begin{enumerate}
+	\conti
+	\item   If $A$ is a matrix.\\
+	and $\theta$ is a vector.\\
+	and $A\theta$ is a scalar.\\
+	\seti
+\end{enumerate}
+
+  Example
   \begin{equation*}
       \theta = \begin{bmatrix}
       \theta_{1}\\
       \theta_{2}
-      \end{bmatrix}
+      \end{bmatrix}_{2\times 1}
   \end{equation*}
   
     \begin{equation*}
       A = \begin{bmatrix}
       A_{1}& A_{2}
-      \end{bmatrix}
+      \end{bmatrix}_{1 \times 2}
   \end{equation*}
   
     \begin{equation*}
-      A\theta = 
+      A\theta_{1 \times 1} = 
       A_{1}\theta_{1}+A_{2}\theta_{2}
-      
-  \end{equation*}
+       \end{equation*}
   
 \end{frame}
 
-\begin{frame}{maths for ML}
+\begin{frame}{Maths for ML}
 
 \begin{equation*}
     \frac{\partial A\theta}{\partial \theta} = \begin{bmatrix}
@@ -122,18 +155,20 @@ $$
     \end{bmatrix}
     = \begin{bmatrix}
     A_{1}\\A_{2}
-    \end{bmatrix}
+    \end{bmatrix}_{2 \times 1}
      = A^{T}
 \end{equation*}
     
 \end{frame}
 
 
-\begin{frame}{maths for ML}
+\begin{frame}{Maths for ML}
+\begin{enumerate}[<+->] \conti
+	\item Assume $Z$ is a matrix of format $X^{T}X$, then $\frac{\partial}{ \partial \theta} (\theta^{T}Z\theta)=2Z^T\theta$
+\end{enumerate}
 
 
-Assume $Z$ is of format $C^{T}C$
-
+\pause
 \begin{equation*}
     X = \begin{bmatrix}
     a&b\\
@@ -141,6 +176,7 @@ Assume $Z$ is of format $C^{T}C$
     \end{bmatrix}
 \end{equation*}
 
+\pause
 \begin{equation*}
     X^{T} = \begin{bmatrix}
     a&c\\
@@ -148,33 +184,65 @@ Assume $Z$ is of format $C^{T}C$
     \end{bmatrix}
 \end{equation*}
 
+\pause
 \begin{equation*}
     Z = X^{T}X =  \begin{bmatrix}
     a^{2}+c^{2}&ab+cd\\
     ab+cd&b^{2}+d^{2}
-    \end{bmatrix}
+    \end{bmatrix}_{2\times 2}
 \end{equation*}
 
-$Z$ has a property $Z_{ij}=z_{ji}$ \implies $Z^{T}=Z$
+\pause
+$Z$ has a property $Z_{ij}=Z_{ji} \implies Z^{T}=Z$
 
-\begin{equation*}
-    \frac{\partial}{ \partial \theta} (\theta^{T}Z\theta)
-\end{equation*}
     
 \end{frame}
 
 
 \begin{frame}{Maths for ML}
-    \begin{equation*}
+Let
+\begin{equation*}
+Z = X^{T}X =  \begin{bmatrix}
+e&f\\
+f&g
+\end{bmatrix}_{2\times 2}
+\end{equation*}
+ \pause   \begin{equation*}
         \theta = \begin{bmatrix}
         \theta_{1}\\
         \theta_{2}
-        \end{bmatrix}
+        \end{bmatrix}_{2\times 1}
     \end{equation*}
     
+    \pause
     \begin{equation*}
-        \theta^{T}Z\theta = a\theta_{1}^{2} + 2b\theta_{1}\theta_{2}+c\theta_{2}^{2} 
-    \end{equation*}f
+    \theta^{T}Z\theta=  \begin{bmatrix}
+    \theta_1&\theta_2\\
+
+    \end{bmatrix}_{1\times 2} \begin{bmatrix}
+    e&f\\
+    f&g
+    \end{bmatrix}_{2\times 2}\begin{bmatrix}
+    \theta_{1}\\
+    \theta_{2}
+    \end{bmatrix}_{2\times 1}
+    \end{equation*}
+    
+    \pause
+       \begin{equation*}
+    \theta^{T}Z\theta=  \begin{bmatrix}
+    \theta_1&\theta_2\\
+    
+    \end{bmatrix}_{1\times 2} \begin{bmatrix}
+    e\theta_1+f\theta_2\\
+    f\theta_1+g\theta_2
+    \end{bmatrix}_{2\times 1}
+    \end{equation*}
+    
+    
+    \begin{equation*}
+        \theta^{T}Z\theta = e\theta_{1}^{2} + 2f\theta_{1}\theta_{2}+g\theta_{2}^{2} 
+    \end{equation*}
 
 The term $\theta^{T}Z\theta$ is a scalar.
 
@@ -185,26 +253,105 @@ The term $\theta^{T}Z\theta$ is a scalar.
     
     \begin{center}
     
-        \begin{align}
-        \label{eqn*:eqlabel}
-        \begin{split}
-            \cfrac{\partial}{\partial \theta} \theta^{T} Z \theta &= \cfrac{\partial}{\partial \theta} (a\theta_{1}^{2} + 2b\theta_{1}\theta_{2}+c\theta_{2}^{2} )\\
-            &= \begin{bmatrix}\cfrac{\partial}{\partial \theta_{1}} (a\theta_{1}^{2} + 2b\theta_{1}\theta_{2}+c\theta_{2}^{2} )\\
-            \cfrac{\partial}{\partial \theta_{2}} (a\theta_{1}^{2} + 2b\theta_{1}\theta_{2}+c\theta_{2}^{2} )
+        \begin{align*}
+             \cfrac{\partial}{\partial \theta} \theta^{T} Z \theta &= \cfrac{\partial}{\partial \theta} (e\theta_{1}^{2} + 2f\theta_{1}\theta_{2}+g\theta_{2}^{2} )\\
+            &= \begin{bmatrix}\cfrac{\partial}{\partial \theta_{1}} (e\theta_{1}^{2} + 2f\theta_{1}\theta_{2}+g\theta_{2}^{2} )\\
+            \cfrac{\partial}{\partial \theta_{2}} (e\theta_{1}^{2} + 2f\theta_{1}\theta_{2}+g\theta_{2}^{2} )
             \end{bmatrix}\\
-            &=\begin{bmatrix}2a\theta_{1}+2b\theta_{2}\\
-            2b\theta_{1}+2c\theta_{2}\end{bmatrix}
-            =  2\begin{bmatrix}a&b\\b&c\end{bmatrix}\begin{bmatrix}\theta_{1}\\ \theta_{1} \end{bmatrix}
-        \end{split}
-    \end{align}
+            &=\begin{bmatrix}2e\theta_{1}+2f\theta_{2}\\
+            2f\theta_{1}+2g\theta_{2}\end{bmatrix}
+            =  2\begin{bmatrix}e&f\\f&g\end{bmatrix}\begin{bmatrix}\theta_{1}\\ \theta_{1} \end{bmatrix} \\
+            =2Z\theta = 2Z^{T}\theta
+    \end{align*}
     \end{center}
 \end{frame}
 
-\begin{frame}{Maths for ML}
-    \begin{equation*}
-        \cfrac{\partial}{\partial \theta} (\theta^{T}Z\theta) = 2Z\theta = 2Z^{T}\theta
-    \end{equation*}
+\begin{frame}{Maths for ML: Matrix Rank\footnotemark}
+\begin{itemize}[<+-> ]
+	\item An $r x c$ matrix as a set of $r$ row vectors, each having $c$ elements; or you can think of it as a set of $c$ column vectors, each having $r$ elements.
+	\item The rank of a matrix is defined as (a) the maximum number of linearly independent column vectors in the matrix or (b) the maximum number of linearly independent row vectors in the matrix. Both definitions are equivalent.
+	\item If $r$ is less than $c$, then the maximum rank of the matrix is $r$.
+	\item If $r$ is greater than $c$, then the maximum rank of the matrix is $c$.
+	
+\end{itemize}
+\footnotetext[1]{Courtesy: \url{https://stattrek.com/matrix-algebra/matrix-rank.aspx}}
 \end{frame}
 
+\begin{frame}{Maths for ML: Matrix Rank}
+\begin{itemize}[<+-> ] 
+\item Given a matrix $A$:$$
+\left[\begin{array}{lll}
+	{0} & {1} & {2} \\
+	{1} & {2} & {1} \\
+	{2} & {7} & {8}
+\end{array}\right]
+$$
+\item What is the rank?
+\item $r=c=$. Thus, rank is $<=3$
+\item Row 3 can be written as: 3 times Row 1 + 2 times Row 1. Thus, Row 3 is linearly dependent on Row 1 and 2. Thus, rank(A)=2
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Maths for ML: Matrix Rank}
+What is the rank of
+\begin{equation*}
+ X=\left[\begin{array}{llll}
+{1} & {2} & {4} & {4} \\
+{3} & {4} & {8} & {0}
+\end{array}\right]
+\end{equation*}
+\pause Since $X$ has fewer rows than columns, its maximum rank is equal to the maximum number of linearly independent rows. And because neither row is linearly dependent on the other row, the matrix has 2 linearly independent rows; so its rank is 2.
+\end{frame}
+
+\begin{frame}{Maths for ML: Matrix Inverse}
+Suppose $\mathrm{A}$ is an $n \times n$ matrix. The inverse of $\mathrm{A}$ is another $n \times n$ matrix, denoted $\mathrm{A}^{-1}$, that satisfies the following conditions.
+\[
+\mathrm{AA}^{-1}=\mathrm{A}^{-1} \mathrm{A}=\mathrm{I}_{\mathrm{n}}
+\]
+\pause 
+where $\mathrm{I}_{\mathrm{n}}$ is the identity matrix.
+
+\pause  Below, with an example, we illustrate the relationship between a matrix and its inverse.
+
+\pause \[
+\begin{array}{l}
+{\left[\begin{array}{cc}
+	{2} & {1} \\
+	{3} & {4}
+	\end{array}\right]\left[\begin{array}{cc}
+	{0.8} & {-0.2} \\
+	{-0.6} & {0.4}
+	\end{array}\right]=\left[\begin{array}{ll}
+	{1} & {0} \\
+	{0} & {1}
+	\end{array}\right]} \\ \\
+{\left[\begin{array}{cc}
+	{0.8} & {-0.2} \\
+	{-0.6} & {0.2}
+	\end{array}\right]\left[\begin{array}{ll}
+	{2} & {1} \\
+	{3} & {4}
+	\end{array}\right]=\left[\begin{array}{ll}
+	{1} & {0} \\
+	{0} & {1}
+	\end{array}\right]}
+\end{array}
+\]
+
+\end{frame}
+
+\begin{frame}{Maths for ML: Matrix Inverse}
+There are two ways to determine whether the inverse of a square matrix exists.
+
+\pause 
+\begin{itemize}[<+->]
+	\item If the rank of an $n \times n$ matrix is less than $n,$ the matrix does not have an inverse.
+	\item When the determinant for a square matrix is equal to zero, the inverse for that matrix does not exist.
+\end{itemize}
+\pause A square matrix that has an inverse is said to be nonsingular or invertible; a square matrix that does not have an inverse is said to be singular. \\
+\pause Not every square matrix has an inverse; but if a matrix does have an inverse, it is unique.
+
+\end{frame}
 
 \end{document}
