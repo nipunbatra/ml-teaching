@@ -1,5 +1,6 @@
 \documentclass{beamer}
 \usepackage{tcolorbox}
+\usepackage{amsmath}
 
 %\beamerdefaultoverlayspecification{<+->}
 \newcommand{\data}{\mathcal{D}}
@@ -147,14 +148,14 @@
     
     
 %     \begin{equation*}
-%         \grad f(x,y) = \begin{bmatrix}
+%         \nabla f(x,y) = \begin{bmatrix}
 %             \frac{\partial }{\partial x} f(x,y)\\
 %             \frac{\partial }{\partial y} f(x,y)
 %         \end{bmatrix}
 %     \end{equation*}
     
 %     \begin{equation*}
-%         \grad f(x,y) = 
+%         \nabla f(x,y) = 
 %         2
 %         \begin{bmatrix}
 %         x\\
@@ -176,12 +177,12 @@
 
 \begin{frame}{Constrained Optimization}
     
-    $\grad f(x,y) = \lambda g(x,y)$\\
-    $\grad f(x,y) = \begin{bmatrix}
+    $\nabla f(x,y) = \lambda g(x,y)$\\
+    $\nabla f(x,y) = \begin{bmatrix}
     2x\\
     2y
     \end{bmatrix}
-    = \lambda \grad g(x,y)  = \lambda \begin{bmatrix}
+    = \lambda \nabla g(x,y)  = \lambda \begin{bmatrix}
     y\\
     x\\
     \end{bmatrix}$
@@ -209,7 +210,7 @@
 \begin{frame}{Constrained optimization}
     We have three equations involving three variables. 
     On solving the above equations, we get\\
-    x = y = \sqrt{k}\\
+    x = y = $\sqrt{k}$\\
     $\lambda = 2$\\
 \end{frame}
 
@@ -221,19 +222,19 @@
 \end{frame}
 
 \begin{frame}{Constrained Optimization}
-    $\grad f(x,y) = \lambda g(x,y)$\\
+    $\nabla f(x,y) = \lambda g(x,y)$ \\
     \vspace{1em}
-    $\grad f(x,y)$ = 
-    \begin{bmatrix}
-    2x\\
-    2y
-    \end{bmatrix}\\
-    \vspace{1em}
-    $\grad g(x,y)$ = 
-    \begin{bmatrix}
-    1\\
-    1
-    \end{bmatrix}
+    $$
+   \nabla f(x, y)=\left[\begin{array}{l}
+   	{2 x} \\
+   	{2 y}
+   \end{array}\right] 
+    \vspace{10em} 
+    \nabla g(x, y)=\left[\begin{array}{l}
+    	{1} \\
+    	{1}
+    \end{array}\right]
+    $$
 \end{frame}
 
 \begin{frame}{Constrained Optimization}
@@ -297,15 +298,15 @@
 \end{frame}
 
 \begin{frame}{Case 2}
-    x $\neq$  \implies y = \lambda\\
+    x $\neq  \implies y = \lambda$
     \vspace{1em}
     $x^{2} = 2\lambda^{2}$ substitute the above values in Equation 9
     \vspace{1em}
-    $3\lambda^{2} = 1 \implies \lambda = \pm \cfrac{1}{\sqrt{3}}$\\
+    $3\lambda^{2} = 1 \implies \lambda = \pm \cfrac{1}{\sqrt{3}}$
     \vspace{1em}
-    $y = \pm \cfrac{1}{\sqrt{3}}$\\
+    $y = \pm \cfrac{1}{\sqrt{3}}$
     \vspace{1em}
-    Max of $x^{2}y = \cfrac{2}{3} \sqrt{\cfrac{1}{3}}$\\
+    Max of $x^{2}y = \cfrac{2}{3} \sqrt{\cfrac{1}{3}}$
 \end{frame}
 
 
@@ -327,11 +328,11 @@
 \begin{frame}{Lagrange Multiplier}
     Stationarity\\
     \begin{equation*}
-        \grad_{x}f(x) + \sum_{i=1}^{m} \grad_{x}\lambda_{i}h_{i}(x)+\sum_{i=1}^{m}\grad_{x}\mu_{i}g_{i}(x)=0\\
+        \nabla_{x}f(x) + \sum_{i=1}^{m} \nabla_{x}\lambda_{i}h_{i}(x)+\sum_{i=1}^{m}\nabla_{x}\mu_{i}g_{i}(x)=0
     \end{equation*}
     Equality
     \begin{equation*}
-        \grad_{x}f(\lambda) + \sum_{i=1}^{m} \grad_{\lambda}\lambda_{i}h_{i}(x)+\sum_{i=1}^{m}\grad_{\lambda}\mu_{i}g_{i}(x)=0\\
+        \nabla_{x}f(\lambda) + \sum_{i=1}^{m} \nabla_{\lambda}\lambda_{i}h_{i}(x)+\sum_{i=1}^{m}\nabla_{\lambda}\mu_{i}g_{i}(x)=0
     \end{equation*}
     Inequality
     \begin{equation*}
