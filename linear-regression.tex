@@ -473,7 +473,7 @@ coordinates{ % plot 1 data set
 
 
 	\begin{itemize}[<+->]
-		\item $y_{i}$ = $\hat{y_{i}}$ + $\epsilon_{i}\sim\mathcal{N}(0, \sigma^2)$, where
+		\item $y_{i}$ = $\hat{y_{i}}$ + $\epsilon_{i}$ where $\epsilon_{i} \sim\mathcal{N}(0, \sigma^2)$
 		\item $y_{i}$ denotes the ground truth for $i^{th}$ sample
 		\item $\hat{y_{i}}$ denotes the prediction for $i^{th}$ sample, where $\hat{y_{i}}$ = $x_{i}'^{T} \theta$
 		\item $\epsilon_{i}$ denotes the error/residual for $i^{th}$ sample
@@ -585,7 +585,7 @@ $$
 \begin{center}
     
 
-        $\hat{\theta}_{OLS} = (X^{T}X)^{-1}X^{T}$
+        $\hat{\theta}_{OLS} = (X^{T}X)^{-1}X^{T}y$
 \end{center}
 \end{tcolorbox}
 

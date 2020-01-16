@@ -1,5 +1,10 @@
 \documentclass{beamer}
 \usepackage{tcolorbox}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{adjustbox}
+
 
 %\beamerdefaultoverlayspecification{<+->}
 \newcommand{\data}{\mathcal{D}}
@@ -14,7 +19,7 @@
 \usetheme{metropolis}           % Use metropolis theme
 
 
-\title{Maths for ML}
+\title{Maths for ML II}
 \date{\today}
 \author{Nipun Batra}
 \institute{IIT Gandhinagar}
@@ -26,25 +31,250 @@
 % \section{Linear Regression}
 
 \begin{frame}{Contour Plot}
- $f(x,y) = x^{2} + y^{2}$\\
+
+ $z = f(x,y) = x^{2} + y^{2}$\\
+
+\begin{columns}
+	\pause \begin{column}{0.6\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			
+		\begin{tikzpicture}
+		\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
+		\addplot3[
+		surf,
+		]
+		{x^2+y^2};
+		\end{axis}
+		\end{tikzpicture}
+	\end{adjustbox}
+
+	\end{column}
+	\pause \begin{column}{0.5\textwidth}
+				\begin{adjustbox}{max totalsize={\textwidth},center}
+		\begin{tikzpicture}
+		\begin{axis}
+		[
+		title={Contour plot, view from top},
+		view={0}{90},
+		xlabel=$x$,
+		ylabel=$y$,
+		axis x line*=bottom,
+		axis y line*=left,
+		xtick align=outside,
+		ytick align=outside,
+		unit vector ratio*=1 1 1,
+		]
+		\addplot3[
+		contour gnuplot={number=14,}
+		]
+		{x^2+y^2};
+		\end{axis}
+		\end{tikzpicture}
+		\end{adjustbox}
+	\end{column}
+\end{columns}
+ 
  Then plot $f(x,y)=K$ for varying K.
- \begin{center}
-     \includegraphics[totalheight=6cm]{ml-maths/contour-plot-1.eps}
- \end{center}
+
  
 \end{frame}
 
 
+\begin{frame}{Contour Plot}
 
+$z = f(x,y) = x^{2}$\\
+
+\begin{columns}
+	\pause \begin{column}{0.6\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			
+			\begin{tikzpicture}
+			\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
+			\addplot3[
+			surf,
+			]
+			{x^2};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+		
+	\end{column}
+	\pause \begin{column}{0.5\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			\begin{tikzpicture}
+			\begin{axis}
+			[
+			title={Contour plot, view from top},
+			view={0}{90},
+			xlabel=$x$,
+			ylabel=$y$,
+			axis x line*=bottom,
+			axis y line*=left,
+			xtick align=outside,
+			ytick align=outside,
+			unit vector ratio*=1 1 1,
+			]
+			\addplot3[
+			contour gnuplot={number=14,}
+			]
+			{x^2};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+	\end{column}
+\end{columns}
+
+Then plot $f(x,y)=K$ for varying K.
+
+
+\end{frame}
+
+\begin{frame}{Contour Plot}
+
+$z = f(x,y) = |x|+|y|$\\
+
+\begin{columns}
+	\pause \begin{column}{0.6\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			
+			\begin{tikzpicture}
+			\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
+			\addplot3[
+			surf,
+			]
+			{abs(x)+abs(y)};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+		
+	\end{column}
+	\pause \begin{column}{0.5\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			\begin{tikzpicture}
+			\begin{axis}
+			[
+			title={Contour plot, view from top},
+			view={0}{90},
+			xlabel=$x$,
+			ylabel=$y$,
+			axis x line*=bottom,
+			axis y line*=left,
+			xtick align=outside,
+			ytick align=outside,
+			unit vector ratio*=1 1 1,
+			]
+			\addplot3[
+			contour gnuplot={number=14,}
+			]
+			{abs(x)+abs(y)};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+	\end{column}
+\end{columns}
+
+Then plot $f(x,y)=K$ for varying K.
+
+
+\end{frame}
+
+\begin{frame}{Contour Plot}
+
+$z = f(x,y) = (x^2)*y$\\
+
+\begin{columns}
+	\pause \begin{column}{0.6\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			
+			\begin{tikzpicture}
+			\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
+			\addplot3[
+			surf,
+			]
+			{(x^2)*y};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+		
+	\end{column}
+	\pause \begin{column}{0.5\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			\begin{tikzpicture}
+			\begin{axis}
+			[
+			title={Contour plot, view from top},
+			view={0}{90},
+			xlabel=$x$,
+			ylabel=$y$,
+			axis x line*=bottom,
+			axis y line*=left,
+			xtick align=outside,
+			ytick align=outside,
+			unit vector ratio*=1 1 1,
+			]
+			\addplot3[
+			contour gnuplot={number=14,}
+			]
+			{(x^2)*y};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+	\end{column}
+\end{columns}
+
+Then plot $f(x,y)=K$ for varying K.
+
+
+\end{frame}
 
 
 \begin{frame}{Contour Plot}
-    Draw the contour plot for $f(x) = x^{2}$\\
-    Plot $x^{2}=K$
-     \begin{center}
-     \includegraphics[totalheight=6cm]{ml-maths/contour-plot-1.eps}
- \end{center}
- 
+
+$z = f(x,y) = xy$\\
+
+\begin{columns}
+	\pause \begin{column}{0.6\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			
+			\begin{tikzpicture}
+			\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
+			\addplot3[
+			surf,
+			]
+			{x*y};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+		
+	\end{column}
+	\pause \begin{column}{0.5\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			\begin{tikzpicture}
+			\begin{axis}
+			[
+			title={Contour plot, view from top},
+			view={0}{90},
+			xlabel=$x$,
+			ylabel=$y$,
+			axis x line*=bottom,
+			axis y line*=left,
+			xtick align=outside,
+			ytick align=outside,
+			unit vector ratio*=1 1 1,
+			]
+			\addplot3[
+			contour gnuplot={number=14,}
+			]
+			{x*y};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+	\end{column}
+\end{columns}
+
+Then plot $f(x,y)=K$ for varying K.
+
+
 \end{frame}
 
 
@@ -52,55 +282,6 @@
 
 
 
-
-
-\begin{frame}{Contour Plot}
-    Draw the contour plot for $f(x,y) = \vert x \vert + \vert y \vert $\\
-    
-    Plot $\vert x \vert + \vert y \vert = K$\\
-     \begin{center}
-     \includegraphics[totalheight=6cm]{ml-maths/contour-plot-3.eps}
- \end{center}
-\end{frame}
-
-
-
-\begin{frame}{Contour Plot}
-    Draw the contour plot for $f(x,y) = x^{2}y$\\
-    \begin{equation*}
-        x^{2}y = K
-    \end{equation*}
-    
-    \begin{equation*}
-        y = \frac{K}{x^{2}}
-    \end{equation*}
-\end{frame}
-
-\begin{frame}{Contour Plot}
-    Draw the contour plot for $f(x,y) = x^{2}y$\\
-    \begin{center}
-     \includegraphics[totalheight=6cm]{ml-maths/contour-plot-4.eps}
- \end{center}
-\end{frame}
-
-
-\begin{frame}{Contour Plot}
-    Draw the contour plot for $f(x,y) = xy$\\
-    \begin{equation*}
-        xy = K
-    \end{equation*}
-    
-    \begin{equation*}
-        y = \frac{1}{x}
-    \end{equation*}
-\end{frame}
-
-\begin{frame}{Contour Plot}
-    Draw the contour plot for $f(x,y) = xy$\\
-        \begin{center}
-     \includegraphics[totalheight=6cm]{ml-maths/contour-plot-5.eps}
- \end{center}
-\end{frame}
 
 
 
@@ -113,14 +294,63 @@
     
 \end{frame}
 
-\begin{frame}{Contours plots and gradients}
-    
-     \begin{center}
-     \includegraphics[totalheight=6cm]{ml-maths/gradient-field.eps}
- \end{center}
-    
-    
+\begin{frame}{Contour Plot And Gradients}
+
+$z = f(x,y) = x^{2} + y^{2}$\\
+
+\begin{columns}
+	\pause \begin{column}{0.6\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			
+			\begin{tikzpicture}
+			\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
+			\addplot3[
+			surf,
+			]
+			{x^2+y^2};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+		
+	\end{column}
+	\pause \begin{column}{0.5\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			\begin{tikzpicture}
+			\begin{axis}
+			[
+			title={Contour plot, view from top},
+			view={0}{90},
+			xlabel=$x$,
+			ylabel=$y$,
+			axis x line*=bottom,
+			axis y line*=left,
+			xtick align=outside,
+			ytick align=outside,
+			unit vector ratio*=1 1 1,
+			]
+			\addplot3[
+			contour gnuplot={number=20,}
+			]
+			{x^2+y^2};
+			\addplot3[black,
+			quiver={
+				u={2*x},
+				v={2*y},
+				scale arrows=0.1,
+			},
+			-stealth,samples=10]
+			{x^2+y^2};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+	\end{column}
+\end{columns}
+
+Then plot $f(x,y)=K$ for varying K.
+
+
 \end{frame}
+
 
 
 
@@ -147,14 +377,14 @@
     
     
 %     \begin{equation*}
-%         \grad f(x,y) = \begin{bmatrix}
+%         \nabla f(x,y) = \begin{bmatrix}
 %             \frac{\partial }{\partial x} f(x,y)\\
 %             \frac{\partial }{\partial y} f(x,y)
 %         \end{bmatrix}
 %     \end{equation*}
     
 %     \begin{equation*}
-%         \grad f(x,y) = 
+%         \nabla f(x,y) = 
 %         2
 %         \begin{bmatrix}
 %         x\\
@@ -176,12 +406,12 @@
 
 \begin{frame}{Constrained Optimization}
     
-    $\grad f(x,y) = \lambda g(x,y)$\\
-    $\grad f(x,y) = \begin{bmatrix}
+    $\nabla f(x,y) = \lambda g(x,y)$\\
+    $\nabla f(x,y) = \begin{bmatrix}
     2x\\
     2y
     \end{bmatrix}
-    = \lambda \grad g(x,y)  = \lambda \begin{bmatrix}
+    = \lambda \nabla g(x,y)  = \lambda \begin{bmatrix}
     y\\
     x\\
     \end{bmatrix}$
@@ -209,7 +439,7 @@
 \begin{frame}{Constrained optimization}
     We have three equations involving three variables. 
     On solving the above equations, we get\\
-    x = y = \sqrt{k}\\
+    x = y = $\sqrt{k}$\\
     $\lambda = 2$\\
 \end{frame}
 
@@ -221,19 +451,19 @@
 \end{frame}
 
 \begin{frame}{Constrained Optimization}
-    $\grad f(x,y) = \lambda g(x,y)$\\
+    $\nabla f(x,y) = \lambda g(x,y)$ \\
     \vspace{1em}
-    $\grad f(x,y)$ = 
-    \begin{bmatrix}
-    2x\\
-    2y
-    \end{bmatrix}\\
-    \vspace{1em}
-    $\grad g(x,y)$ = 
-    \begin{bmatrix}
-    1\\
-    1
-    \end{bmatrix}
+    $$
+   \nabla f(x, y)=\left[\begin{array}{l}
+   	{2 x} \\
+   	{2 y}
+   \end{array}\right] 
+    \vspace{1em} 
+    \nabla g(x, y)=\left[\begin{array}{l}
+    	{1} \\
+    	{1}
+    \end{array}\right]
+    $$
 \end{frame}
 
 \begin{frame}{Constrained Optimization}
@@ -297,15 +527,15 @@
 \end{frame}
 
 \begin{frame}{Case 2}
-    x $\neq$  \implies y = \lambda\\
+    x $\neq  \implies y = \lambda$
     \vspace{1em}
     $x^{2} = 2\lambda^{2}$ substitute the above values in Equation 9
     \vspace{1em}
-    $3\lambda^{2} = 1 \implies \lambda = \pm \cfrac{1}{\sqrt{3}}$\\
+    $3\lambda^{2} = 1 \implies \lambda = \pm \cfrac{1}{\sqrt{3}}$
     \vspace{1em}
-    $y = \pm \cfrac{1}{\sqrt{3}}$\\
+    $y = \pm \cfrac{1}{\sqrt{3}}$
     \vspace{1em}
-    Max of $x^{2}y = \cfrac{2}{3} \sqrt{\cfrac{1}{3}}$\\
+    Max of $x^{2}y = \cfrac{2}{3} \sqrt{\cfrac{1}{3}}$
 \end{frame}
 
 
@@ -327,11 +557,11 @@
 \begin{frame}{Lagrange Multiplier}
     Stationarity\\
     \begin{equation*}
-        \grad_{x}f(x) + \sum_{i=1}^{m} \grad_{x}\lambda_{i}h_{i}(x)+\sum_{i=1}^{m}\grad_{x}\mu_{i}g_{i}(x)=0\\
+        \nabla_{x}f(x) + \sum_{i=1}^{m} \nabla_{x}\lambda_{i}h_{i}(x)+\sum_{i=1}^{m}\nabla_{x}\mu_{i}g_{i}(x)=0
     \end{equation*}
     Equality
     \begin{equation*}
-        \grad_{x}f(\lambda) + \sum_{i=1}^{m} \grad_{\lambda}\lambda_{i}h_{i}(x)+\sum_{i=1}^{m}\grad_{\lambda}\mu_{i}g_{i}(x)=0\\
+        \nabla_{x}f(\lambda) + \sum_{i=1}^{m} \nabla_{\lambda}\lambda_{i}h_{i}(x)+\sum_{i=1}^{m}\nabla_{\lambda}\mu_{i}g_{i}(x)=0
     \end{equation*}
     Inequality
     \begin{equation*}

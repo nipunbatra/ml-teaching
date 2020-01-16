@@ -1,0 +1,1 @@
+unset surface; set cntrparam levels 14; set contour; set table "ml-maths-2_contourtmp6.table"; splot "ml-maths-2_contourtmp6.dat";
