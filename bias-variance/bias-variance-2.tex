@@ -1,0 +1,264 @@
+\documentclass{beamer}
+\usepackage{tcolorbox}
+\usepackage{hyperref}
+\usepackage{../notation}
+\usepackage{subfig}
+
+%\beamerdefaultoverlayspecification{<+->}
+% \newcommand{\data}{\mathcal{D}}
+% \newcommand\Item[1][]{%
+% 	\ifx\relax#1\relax  \item \else \item[#1] \fi
+% 	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+
+\graphicspath{ {imgs/} }
+
+\usetheme{metropolis}           % Use metropolis theme
+
+
+\title{Bias-Variance}
+\date{\today}
+\author{Nipun Batra and teaching staff}
+\institute{IIT Gandhinagar}
+\begin{document}
+	\maketitle
+
+
+
+\begin{frame}{Deriving Expected Prediction Error}
+Expected prediction error at $x_t$ = $E_{train,y_t}[(y_t - f_{\hat\theta(train)}(x_t))^2]$\\
+\vspace{0.5cm}
+\only<1>{
+=  $E_{train,y_t}[(          (y_t - f_{\theta(true)}(x_t))     + (f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )            )^2]$
+}
+\only<2->{
+=  $E_{train,y_t}[(      \underbrace{(y_t - f_{\theta(true)}(x_t))}_\text{a}   +   \underbrace{(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) ) }_\text{b}          )^2]$\\
+\vspace{0.5cm}
+}
+\only<3->{
+=  $E_{train,y_t}[(a + b) ^ 2]$\\
+\vspace{0.5cm}
+}
+\only<4->{
+=  $E_{train,y_t}[a^2 + 2ab + b^2]$\\
+\vspace{0.5cm}
+}
+\only<5->{
+(Using Linearity of Expectation)\\
+=  $E_{train,y_t}[a^2] + 2E_{train,y_t}[ab] + E_{train,y_t}[b^2]$.......................(Eqn. 1) \\
+}
+
+\end{frame}
+
+
+\begin{frame}{Deriving Expected Prediction Error}
+$E_{train,y_t}[a^2]  = E_{train,y_t}[(y_t - f_{\theta(true)}(x_t))^2] $\\
+\vspace{0.5cm}
+\only<2>{
+ \hspace{1.70cm}(Since there is no dependence on training set)\\
+\hspace{1.70cm} $ =  E_{y_t}[(y_t - f_{\theta(true)}(x_t))^2] $\\
+ \vspace{0.5cm}
+}
+\only<3->{
+ \hspace{1.70cm}($\because$ there is no dependence on training set)\\
+ \vspace{0.3cm}
+\hspace{1.70cm} $ =  E_{y_t}[\underbrace{(y_t - f_{\theta(true)}(x_t))^2}_\text{$\epsilon^2$}] $\\
+ \vspace{0.5cm}
+}
+\only<3->{
+\hspace{1.70cm} $ =  E_{y_t}[\epsilon^2] $\\
+ \vspace{0.5cm}
+}
+\only<4->{
+\hspace{1.70cm} $ =  \sigma^2 $(By definition) \\
+ \vspace{0.5cm}
+}
+
+\only<5->{
+$ E_{train,y_t}[a^2] =  \sigma^2  $.................(Eqn. 2)\\
+ \vspace{0.5cm}
+}
+\end{frame}
+
+
+\begin{frame}{Deriving Expected Prediction Error}
+\only<1>{
+$E_{train,y_t}[ab]  = E_{train,y_t}[(y_t - f_{\theta(true)}(x_t))(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )] $\\
+\vspace{0.5cm}
+}
+\only<2->{
+$E_{train,y_t}[ab]  = E_{train,y_t}[\underbrace{(y_t - f_{\theta(true)}(x_t))}_\text{$\epsilon$}(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )] $\\
+\vspace{0.5cm}
+}
+\only<3->{
+\hspace{1.70cm} $= E_{train,y_t}[\epsilon (f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )] $\\
+\vspace{0.5cm}
+}
+\only<4>{
+\hspace{1.70cm} ( $\because \epsilon$ and $(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t))$ are independent)\\
+\vspace{0.3cm}
+\hspace{1.70cm} $= E_{train,y_t}[\epsilon] \times E_{train,y_t}[(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )] $\\
+\vspace{0.5cm}
+}
+\only<5->{
+\hspace{1.70cm} ( $\because \epsilon$ and $(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t))$ are independent)\\
+\vspace{0.3cm}
+\hspace{1.70cm} $= \underbrace{E_{train,y_t}[\epsilon]}_\text{ = 0 } \times E_{train,y_t}[(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )] $\\
+\vspace{0.25cm}
+\hspace{1.70cm} (By definition $\epsilon$ has mean 0)\\
+\vspace{0.5cm}
+}
+\only<6->{
+$E_{train,y_t}[ab] = 0$..............(Eqn. 3)
+}
+
+
+\end{frame}
+
+\begin{frame}{Deriving Expected Prediction Error}
+$ E_{train,y_t}[b^2] =  E_{train, y_t}[(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )^2]$\\
+\vspace{0.5cm}
+\only<2->{
+($f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t)$ is independent of $y_t$)\\
+\vspace{0.5cm}
+\hspace{1.70cm} $=  E_{train}[(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )^2]$\\
+\vspace{0.5cm}
+}
+\only<3->{
+\hspace{1.70cm} $ = MSE( f_{\hat\theta(train)}(x_t))$\\
+\vspace{0.5cm}
+}
+\only<4->{
+$ E_{train,y_t}[b^2] = MSE( f_{\hat\theta(train)}(x_t))$ ............ (Eqn. 4)
+}
+\end{frame}
+
+\begin{frame}{Deriving Expected Prediction Error}
+From Eqn. 1, 2, 3 and 4, we get, \\
+\vspace{1cm}
+Expected prediction error at $x_t$ = $\sigma^2 + MSE( f_{\hat\theta(train)}(x_t)) $ \\
+\vspace{1cm}
+Now, we will further simplify the MSE term into bias and variance.
+\end{frame}
+
+\begin{frame}{Deriving Expected Prediction Error}
+$MSE( f_{\hat\theta(train)}(x_t)) =  E_{train}[(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )^2]$\\
+\vspace{0.5cm}
+\only<2>{
+$= E_{train}[(   (f_{\theta(true)}(x_t)  -  f_{\hat\theta(avg)}(x_t) ) + (f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t)      ) )^2]$\\
+}
+\only<3->{
+$= E_{train}[(   \underbrace{(f_{\theta(true)}(x_t)  -  f_{\hat\theta(avg)}(x_t) )}_\text{$\alpha$} + \underbrace{(f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t)      )}_\text{$\beta$} )^2]$\\
+\vspace{0.5cm}
+}
+\only<4->{
+$= E_{train}[( \alpha + \beta )^2]$\\
+\vspace{0.5cm}
+}
+\only<5->{
+$= E_{train}[ \alpha^2 + 2\alpha\beta + \beta ^2]$\\
+\vspace{0.5cm}
+}
+\only<6->{
+(Using Linearity of Expectation)
+$= E_{train}[ \alpha^2] + 2E_{train}[ \alpha\beta] + E_{train}[ \beta^2]$ ..........(Eqn. 5)\\
+\vspace{0.5cm}
+}
+\end{frame}
+
+
+\begin{frame}{Deriving Expected Prediction Error}
+$E_{train}[\alpha^2]  = E_{train}[(f_{\theta(true)}(x_t)  -  f_{\hat\theta(avg)}(x_t))^2]$\\
+\vspace{0.5cm}
+\only<2->{
+\hspace{1.45cm} $ = E_{train}[bias(f_{\hat\theta}(x_t))^2]$\hfill(By definition of bias)\\
+\vspace{0.5cm}
+}
+\only<3->{
+\hspace{1.45cm} $ = bias(f_{\hat\theta}(x_t))^2 $\\
+\vspace{0.5cm}
+\hspace{1.45cm} ($\because$ bias is not a function of training data)\\
+
+}
+\only<4->{
+\vspace{0.5cm}
+$E_{train}[\alpha^2]  = bias(f_{\hat\theta}(x_t))^2$ .............(Eqn. 6)
+}
+\end{frame}
+
+
+\begin{frame}{Deriving Expected Prediction Error}
+$E_{train}[\alpha\beta] $ \\
+$= E_{train}[(f_{\theta(true)}(x_t)  -  f_{\hat\theta(avg)}(x_t))(f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t)   )]$\\
+\vspace{0.5cm}
+\only<2->{
+$ = E_{train}[bias \times (f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t)   )]$\\
+\vspace{0.5cm}
+}
+\only<3->{
+$ = bias \times E_{train}[f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t)  ]$\\
+\vspace{0.5cm}
+($\because$ bias is not a function of training data)\\
+\vspace{0.5cm}
+}
+\only<4->{
+$ = bias \times \left( E_{train}[f_{\hat\theta(avg)}(x_t)]  -  E_{train}[f_{\hat\theta(train)}(x_t) ] \right)$\\
+\vspace{0.5cm}
+}
+\only<5>{
+$ = bias \times \left( f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(avg)}(x_t)  \right) $\\
+\vspace{0.5cm}
+($\because f_{\hat\theta(avg)}(x_t) =  E_{train}[f_{\hat\theta(train)}(x_t)$ )\\
+\vspace{0.5cm}
+}
+\only<6->{
+$ = bias \times \left( f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(avg)}(x_t)  \right) $\\
+\vspace{0.5cm}
+$E_{train}[\alpha\beta]  = 0$..........................(Eqn. 7) 
+\vspace{0.5cm}
+}
+
+\end{frame}
+
+
+
+\begin{frame}{Deriving Expected Prediction Error}
+$E_{train}[\beta^2]  = E_{train}[(f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t) )^2]$ \\
+\vspace{0.5cm}
+\only<2->{
+\hspace{1.45cm} $=  E_{train}[(f_{\hat\theta(train)}(x_t) - f_{\hat\theta(avg)}(x_t))^2]$\\
+\vspace{0.5cm}
+}
+\only<3->{
+\hspace{1.45cm} $=  E_{train}[(f_{\hat\theta(train)}(x_t) - E_{train}[(f_{\hat\theta(train)}(x_t)])^2]$\\
+\vspace{0.5cm}
+\hspace{1.45cm} ($\because f_{\hat\theta(avg)}(x_t) = E_{train}[(f_{\hat\theta(train)}(x_t)] $ )\\
+\vspace{0.5cm}
+}
+\only<4->{
+\hspace{1.45cm} $= variance(f_{\hat\theta}(x_t))$\\
+\vspace{0.5cm}
+}
+\only<5->{
+$E_{train}[\beta^2] = variance(f_{\hat\theta}(x_t))$...............(Eqn. 8)\\
+}
+
+\end{frame}
+
+
+
+\begin{frame}{Deriving Expected Prediction Error}
+From Eqn. 1 - 8, we get, \\
+\vspace{0.5cm}
+Expected prediction error at $x_t$ \\
+\vspace{0.5cm}
+$ = \sigma^2 + MSE( f_{\hat\theta(train)}(x_t)) $\\
+\vspace{0.5cm}
+$ = \sigma^2 +bias(f_{\hat\theta}(x_t))^2 + variance(f_{\hat\theta}(x_t))$
+
+\end{frame}
+
+
+
+
+
+\end{document}
