@@ -1,6 +1,10 @@
 \documentclass{beamer}
 \usepackage{tcolorbox}
 \usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{adjustbox}
+
 
 %\beamerdefaultoverlayspecification{<+->}
 \newcommand{\data}{\mathcal{D}}
@@ -27,25 +31,250 @@
 % \section{Linear Regression}
 
 \begin{frame}{Contour Plot}
- $f(x,y) = x^{2} + y^{2}$\\
+
+ $z = f(x,y) = x^{2} + y^{2}$\\
+
+\begin{columns}
+	\pause \begin{column}{0.6\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			
+		\begin{tikzpicture}
+		\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
+		\addplot3[
+		surf,
+		]
+		{x^2+y^2};
+		\end{axis}
+		\end{tikzpicture}
+	\end{adjustbox}
+
+	\end{column}
+	\pause \begin{column}{0.5\textwidth}
+				\begin{adjustbox}{max totalsize={\textwidth},center}
+		\begin{tikzpicture}
+		\begin{axis}
+		[
+		title={Contour plot, view from top},
+		view={0}{90},
+		xlabel=$x$,
+		ylabel=$y$,
+		axis x line*=bottom,
+		axis y line*=left,
+		xtick align=outside,
+		ytick align=outside,
+		unit vector ratio*=1 1 1,
+		]
+		\addplot3[
+		contour gnuplot={number=14,}
+		]
+		{x^2+y^2};
+		\end{axis}
+		\end{tikzpicture}
+		\end{adjustbox}
+	\end{column}
+\end{columns}
+ 
  Then plot $f(x,y)=K$ for varying K.
- \begin{center}
-     \includegraphics{ml-maths/contour-plot-1.pdf}
- \end{center}
+
  
 \end{frame}
 
 
+\begin{frame}{Contour Plot}
 
+$z = f(x,y) = x^{2}$\\
+
+\begin{columns}
+	\pause \begin{column}{0.6\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			
+			\begin{tikzpicture}
+			\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
+			\addplot3[
+			surf,
+			]
+			{x^2};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+		
+	\end{column}
+	\pause \begin{column}{0.5\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			\begin{tikzpicture}
+			\begin{axis}
+			[
+			title={Contour plot, view from top},
+			view={0}{90},
+			xlabel=$x$,
+			ylabel=$y$,
+			axis x line*=bottom,
+			axis y line*=left,
+			xtick align=outside,
+			ytick align=outside,
+			unit vector ratio*=1 1 1,
+			]
+			\addplot3[
+			contour gnuplot={number=14,}
+			]
+			{x^2};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+	\end{column}
+\end{columns}
+
+Then plot $f(x,y)=K$ for varying K.
+
+
+\end{frame}
+
+\begin{frame}{Contour Plot}
+
+$z = f(x,y) = |x|+|y|$\\
+
+\begin{columns}
+	\pause \begin{column}{0.6\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			
+			\begin{tikzpicture}
+			\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
+			\addplot3[
+			surf,
+			]
+			{abs(x)+abs(y)};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+		
+	\end{column}
+	\pause \begin{column}{0.5\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			\begin{tikzpicture}
+			\begin{axis}
+			[
+			title={Contour plot, view from top},
+			view={0}{90},
+			xlabel=$x$,
+			ylabel=$y$,
+			axis x line*=bottom,
+			axis y line*=left,
+			xtick align=outside,
+			ytick align=outside,
+			unit vector ratio*=1 1 1,
+			]
+			\addplot3[
+			contour gnuplot={number=14,}
+			]
+			{abs(x)+abs(y)};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+	\end{column}
+\end{columns}
+
+Then plot $f(x,y)=K$ for varying K.
+
+
+\end{frame}
+
+\begin{frame}{Contour Plot}
+
+$z = f(x,y) = (x^2)*y$\\
+
+\begin{columns}
+	\pause \begin{column}{0.6\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			
+			\begin{tikzpicture}
+			\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
+			\addplot3[
+			surf,
+			]
+			{(x^2)*y};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+		
+	\end{column}
+	\pause \begin{column}{0.5\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			\begin{tikzpicture}
+			\begin{axis}
+			[
+			title={Contour plot, view from top},
+			view={0}{90},
+			xlabel=$x$,
+			ylabel=$y$,
+			axis x line*=bottom,
+			axis y line*=left,
+			xtick align=outside,
+			ytick align=outside,
+			unit vector ratio*=1 1 1,
+			]
+			\addplot3[
+			contour gnuplot={number=14,}
+			]
+			{(x^2)*y};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+	\end{column}
+\end{columns}
+
+Then plot $f(x,y)=K$ for varying K.
+
+
+\end{frame}
 
 
 \begin{frame}{Contour Plot}
-    Draw the contour plot for $f(x) = x^{2}$\\
-    Plot $x^{2}=K$
-     \begin{center}
-     \includegraphics{ml-maths/contour-plot-2.pdf}
- \end{center}
- 
+
+$z = f(x,y) = xy$\\
+
+\begin{columns}
+	\pause \begin{column}{0.6\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			
+			\begin{tikzpicture}
+			\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
+			\addplot3[
+			surf,
+			]
+			{x*y};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+		
+	\end{column}
+	\pause \begin{column}{0.5\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			\begin{tikzpicture}
+			\begin{axis}
+			[
+			title={Contour plot, view from top},
+			view={0}{90},
+			xlabel=$x$,
+			ylabel=$y$,
+			axis x line*=bottom,
+			axis y line*=left,
+			xtick align=outside,
+			ytick align=outside,
+			unit vector ratio*=1 1 1,
+			]
+			\addplot3[
+			contour gnuplot={number=14,}
+			]
+			{x*y};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+	\end{column}
+\end{columns}
+
+Then plot $f(x,y)=K$ for varying K.
+
+
 \end{frame}
 
 
@@ -53,55 +282,6 @@
 
 
 
-
-
-\begin{frame}{Contour Plot}
-    Draw the contour plot for $f(x,y) = \vert x \vert + \vert y \vert $\\
-    
-    Plot $\vert x \vert + \vert y \vert = K$\\
-     \begin{center}
-     \includegraphics[totalheight=6cm]{ml-maths/contour-plot-3.eps}
- \end{center}
-\end{frame}
-
-
-
-\begin{frame}{Contour Plot}
-    Draw the contour plot for $f(x,y) = x^{2}y$\\
-    \begin{equation*}
-        x^{2}y = K
-    \end{equation*}
-    
-    \begin{equation*}
-        y = \frac{K}{x^{2}}
-    \end{equation*}
-\end{frame}
-
-\begin{frame}{Contour Plot}
-    Draw the contour plot for $f(x,y) = x^{2}y$\\
-    \begin{center}
-     \includegraphics[totalheight=6cm]{ml-maths/contour-plot-4.eps}
- \end{center}
-\end{frame}
-
-
-\begin{frame}{Contour Plot}
-    Draw the contour plot for $f(x,y) = xy$\\
-    \begin{equation*}
-        xy = K
-    \end{equation*}
-    
-    \begin{equation*}
-        y = \frac{1}{x}
-    \end{equation*}
-\end{frame}
-
-\begin{frame}{Contour Plot}
-    Draw the contour plot for $f(x,y) = xy$\\
-        \begin{center}
-     \includegraphics[totalheight=6cm]{ml-maths/contour-plot-5.eps}
- \end{center}
-\end{frame}
 
 
 
@@ -114,14 +294,63 @@
     
 \end{frame}
 
-\begin{frame}{Contours plots and gradients}
-    
-     \begin{center}
-     \includegraphics[totalheight=6cm]{ml-maths/gradient-field.eps}
- \end{center}
-    
-    
+\begin{frame}{Contour Plot And Gradients}
+
+$z = f(x,y) = x^{2} + y^{2}$\\
+
+\begin{columns}
+	\pause \begin{column}{0.6\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			
+			\begin{tikzpicture}
+			\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
+			\addplot3[
+			surf,
+			]
+			{x^2+y^2};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+		
+	\end{column}
+	\pause \begin{column}{0.5\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			\begin{tikzpicture}
+			\begin{axis}
+			[
+			title={Contour plot, view from top},
+			view={0}{90},
+			xlabel=$x$,
+			ylabel=$y$,
+			axis x line*=bottom,
+			axis y line*=left,
+			xtick align=outside,
+			ytick align=outside,
+			unit vector ratio*=1 1 1,
+			]
+			\addplot3[
+			contour gnuplot={number=20,}
+			]
+			{x^2+y^2};
+			\addplot3[black,
+			quiver={
+				u={2*x},
+				v={2*y},
+				scale arrows=0.1,
+			},
+			-stealth,samples=10]
+			{x^2+y^2};
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+	\end{column}
+\end{columns}
+
+Then plot $f(x,y)=K$ for varying K.
+
+
 \end{frame}
+
 
 
 
