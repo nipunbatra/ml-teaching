@@ -3,6 +3,8 @@
 \usepackage{forloop}
 \usepackage{bm}
 
+\usepackage{mathtools}  
+\mathtoolsset{showonlyrefs}  
 
 %\beamerdefaultoverlayspecification{<+->}
 \newcommand{\data}{\mathcal{D}}
@@ -38,27 +40,44 @@ with mean $\mu \in R$ and variance $\sigma^2 >0$
 \end{frame}
 
 \begin{frame}{Univariate Normal Distribution}
-Pop Quiz: Why is the denominator the way it is? 
+Pop Quiz: Why is the denominator the way it is? Let the normalizing constant be $c$.
 
-$\int f(x) = 1$
+\begin{gather}
+\visible<1->{1 = \int_{-\infty}^{\infty} c \cdot f(x) dx\\}
+\visible<2->{1 = \int_{-\infty}^{\infty} ce^{-\frac{(x - u)^2}{2\sigma^2}} dx}
+\end{gather}
+\visible<3->{Let's substitute $\frac{x - u}{\sqrt{2}\sigma}$ with $t$.}
+\begin{gather}
+\visible<4->{1 = \int_{-\infty}^{\infty} ce^{-t^2} dt \times \sqrt{2}\sigma\\}
+\visible<5->{1 = \sqrt{2}\sigma c \times 2\int_{0}^{\infty} e^{-t^2} dt}
+\end{gather}
+\end{frame}
 
-$\int $
+\begin{frame}
+	$$ \frac{2}{\sqrt{\pi}}\int_{0}^{\infty} e^{-t^2} dt $$
+	The above expression is called error function and is it's value is denoted by $erf(t)$. In our case, we want $erf(\infty)$ which is equal to 1.
+	
+	\begin{gather}
+	\visible<2->{1 = \sqrt{2\pi}\sigma c \times \frac{2}{\sqrt{\pi}}\int_{0}^{\infty} e^{-t^2} dt\\}
+	\visible<3->{1 = \sqrt{2\pi}\sigma c \times 1\\}
+	\visible<4->{\frac{1}{\sqrt{2\pi}\sigma} = c}
+	\end{gather}
 \end{frame}
 
 \begin{frame}{Univariate Normal Distribution}
-Add plots for 1d scatter 
+	\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/1d-gp} 
 \end{frame}
 
 \begin{frame}{Univariate Normal Distribution}
-Add plots for 1d histogram
+	\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/1d-gp-hist}
 \end{frame}
 
-\begin{frame}{Univariate Normal Distribution}
-Add plots for 1d histogram with different bin-width
-\end{frame}
+%\begin{frame}{Univariate Normal Distribution}
+%Add plots for 1d histogram with different bin-width
+%\end{frame}
 
 \begin{frame}{Univariate Normal Distribution}
-Add plots for 1d KDE
+	\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/1d-gp-kde2}
 \end{frame}
 
 
@@ -69,12 +88,12 @@ X_{2} \\
 \end{bmatrix}
 $
 
-$
-\bf{X} = \begin{pmatrix}
+\begin{gather}
+	\bf{X} = \begin{pmatrix}
 	X_1 \\
 	X_2
-\end{pmatrix}  \sim \mathcal{N}_2 (\mu ,\Sigma))
-$
+	\end{pmatrix} \sim \mathcal{N}_2 (\mu , Σ)
+\end{gather}
 
 where, mean vector $\bm{\mu} =\begin{bmatrix}
 \mu_{1} \\
@@ -87,8 +106,7 @@ where, mean vector $\bm{\mu} =\begin{bmatrix}
 $
 
 and, covariance matrix $\Sigma$
-$
-\Sigma_{i,j} := \operatorname{E} [(X_i - \mu_i)( X_j - \mu_j)] = \operatorname{Cov}[X_i, X_j] $
+$$\Sigma_{i,j} := \operatorname{E} [(X_i - \mu_i)( X_j - \mu_j)] = \operatorname{Cov}[X_i, X_j] $$
 \end{frame}
 
 \begin{frame}{Bivariate Normal Distribution}
@@ -125,6 +143,8 @@ where $E$ is the expected value operator.
 \begin{frame}{PDF of bivariate normal distribution}
 
 We might have seen that 
+
+\textcolor{red}{AA: Should we not have $X_1$ as $x_1$ instead?}
 
 $$f_X(X_1, X_2) = \frac{exp(\frac{-1}{2}(X-\mu)^T \Sigma^{-1}(X-\mu))}{2\pi |\Sigma|^\frac{1}{2}}$$
 
@@ -185,17 +205,23 @@ $g(\Sigma) = \begin{bmatrix}
 \begin{frame}
 Let us consider the normalizing constant part now
 
+\textcolor{red}{Needs to be completed.}
+
 $M = \frac{1}{\sigma_1 \sigma_2 2\pi }$
 $=\frac{1}{2\pi \times |\Sigma|^{\frac{1}{2}}}$
 \end{frame}
 
 
 \begin{frame}{Example of pdf with cross-correlation  = 0}
-
+	\begin{center}
+		\includegraphics[width=\linewidth,height=\textheight - 10pt,keepaspectratio]{gp/2d-gp3}
+	\end{center}
 \end{frame}
 
 \begin{frame}{Example of pdf with cross-correlation  $\neq$ 0}
-
+	\begin{center}
+		\includegraphics[width=\linewidth,height=\textheight - 10pt,keepaspectratio]{gp/2d-gp}
+	\end{center}
 \end{frame}
 
 \begin{frame}{Detour: Inverse of partioned symmetric matrix}
@@ -213,7 +239,7 @@ A_{12}^T & A_{22} \\
 \end{bmatrix}
 $
 
-For example, let $n=4$, we have
+For example, let $n=3$, we have
 
 $$
 A =  \begin{bmatrix}
@@ -250,7 +276,7 @@ B = \begin{bmatrix}
 
 $A_{11}$ and $B_{11} \in R^{p\times p}$ 
 
-$A_{22}$ and $B_{2} \in R^{q\times q}$
+$A_{22}$ and $B_{22} \in R^{q\times q}$
 
 $A_{12} = A_{21}^T$ and $B_{12} = B_{21}^T \in R^{p\times q}$
 
@@ -277,26 +303,161 @@ I_p & 0 \\
 \end{bmatrix}$
 
 Thus, we have
-
-$A_{11}B_{11} +A_{12}B_{12}^T = I_p$
-Similarly, we get 3 more equations --- complete..
+\begin{gather}
+A_{11}B_{11} +A_{12}B_{12}^T = I_p\\
+A_{11}B_{12} + A_{12}A_{22} = 0^{p\times q}\\
+A_{12}^TB_{11} + A_{22}B_{12}^T = 0^{q\times p}\\
+A_{12}^TB_{12} + A_{22}B_{22} = I_q
+\end{gather}
 \end{frame}
 
 \begin{frame}
-Write the four results of $B_11$ etc. in terms of A
+Moving around the expressions we get the following results.
+
+\begin{gather}
+	B_{11} = (A_{11} - A_{12}A_{22}^{-1}A_{12}^T)^{-1} = A_{11}^{-1} + A_{11}^{-1}A_{12}(A_{22} - A_{12}^TA_{11}^{-1}A_{12})^{-1}A_{12}^TA_{11}^{-1}\\
+	B_{22} = (A_{22} - A_{12}^TA_{11}^{-1}A_{12})^{-1} = A_{22}^{-1} + A_{22}^{-1}A_{12}^T(A_{11} - A_{12}A_{22}^{-1}A_{12}^T)^{-1}A_{12}A_{22}^{-1}\\
+	B_{12}^T = - A_{22}^{-1}A_{12}^T ( A_{11} - A_{12} A_{22}^{-1} A_{12}^T)^{-1}\\\\
+	B_{12}^T = - A_{11}^{-1}A_{12}^T ( A_{22} - A_{12} ^TA_{11}^{-1} A_{12})^{-1}
+\end{gather}
 \end{frame}
 
-\begin{frame}{Determinant of Partitioned Symmetric Matrix}
-Proof 3 from http://fourier.eng.hmc.edu/e161/lectures/gaussianprocess/node6.html
+
+\urldef\nodeSix\url{http://fourier.eng.hmc.edu/e161/lectures/gaussianprocess/node6.html}
+\urldef\nodeSeven\url{http://fourier.eng.hmc.edu/e161/lectures/gaussianprocess/node7.html}
+
+\begin{frame}{Determinant of Partitioned Symmetric Matrix\footnote{Taken from \nodeSix.}}
+	
+\textbf{Theorem:} Determinant of a partitioned symmetric matrix can be written as follows
+	\begin{gather}
+		\vert A \vert 
+		= \bigg| 
+		\begin{bmatrix}
+			A_{11}&A_{12}\\
+			A_{21}&A_{22}
+		\end{bmatrix}
+		\bigg| \\
+		=\vert A_{11}\vert \vert A_{22}-A_{12}^TA_{11}^{-1}A_{12}\vert \\
+		=\vert A_{22}\vert \vert
+		 A_{11}-A_{12}A_{22}^{-1}A_{12}^T \vert 
+	\end{gather}
+	
+\end{frame}
+
+\begin{frame}	
+\textbf{Proof:} Note that
+	\begin{gather}
+		A = 
+		\begin{bmatrix}
+			A_{11}&A_{12} \\
+			A_{21}&A_{22}
+		\end{bmatrix}
+		= 
+		\begin{bmatrix}
+			A_{11}& 0 \\
+			A_{12}^T& I
+		\end{bmatrix}
+		\begin{bmatrix}
+			I & A_{11}^{-1}A_{12} \\
+			0 & A_{22} - A_{12}^TA_{11}^{-1}A_{12}
+		\end{bmatrix}\\
+		= 
+		\begin{bmatrix}
+			I & A_{12} \\
+			0 & A_{22}
+		\end{bmatrix}
+		\begin{bmatrix}
+			A_{11} - A_{12}A_{22}^{-1}A_{12}^T & 0\\
+			A_{22}^{-1}A_{21}  & I
+		\end{bmatrix}
+	\end{gather} 
+	
+The theorem is proved as we also know that
+\begin{equation}
+	\vert AB\vert=\vert A\vert  \vert B\vert 
+\end{equation}
+
+and
+\begin{equation}
+	\left\vert 
+		\begin{matrix}
+			B&0 \\
+			C&D
+		\end{matrix} 
+	\right\vert
+	=
+	\left\vert 
+		\begin{matrix}
+			B&C \\
+			0&D
+		\end{matrix} 
+	\right\vert
+	=
+	\vert B\vert\
+	\vert D\vert 
+\end{equation}	
+\end{frame}
+
+\begin{frame}{Marginalisation and Conditional of multivariate normal\footnote{Taken from \nodeSeven.}}
+Assume an n-dimensional random vector
+
+\begin{equation}
+	{\bf x}=\begin{bmatrix}{\bf x}_1 & {\bf x}_2\end{bmatrix} 
+\end{equation}
+
+has a normal distribution $N({\bf x},\mu,\Sigma)$ with
+\begin{gather}\mu=
+	\begin{bmatrix}
+		\mu_1 \\
+		\mu_2
+	\end{bmatrix} 
+	\text{and}
+	\Sigma = \begin{bmatrix}
+		\Sigma_{11}& \Sigma_{12}\\
+		\Sigma_{21}&\Sigma_{22}
+	\end{bmatrix} 
+\end{gather}
+
+where ${\bf x}_1$ and ${\bf x}_2$ are two subvectors of respective dimensions $p$ and $q$ with $p+q=n$. Note that $\Sigma=\Sigma^T$, and $\Sigma_{21}=\Sigma_{21}^T$.
 \end{frame}
 
 \begin{frame}
+\textbf{Theorem:}
+
+\textbf{part a:} The marginal distributions of ${\bf x}_1$ and ${\bf x}_2$ are also normal with mean vector $\mu_i$ and covariance matrix $\Sigma_{ii}$ ($i=1,2$), respectively.
+
+\textbf{part b:} The conditional distribution of ${\bf x}_i$ given ${\bf x}_j$ is also normal with mean vector
 
 \end{frame}
 
+\begin{frame}
+	\textbf{Proof:}
+	
+	The joint density of ${\bf x}$ is:
+	
+	\begin{equation}
+	f({\bf x})=f({\bf x}_1,{\bf x}_2)=\frac{1}{(2\pi)^{n/2\vert\Sigma\vert^{1/2}}}exp[-\frac{1}{2}Q({\bf x}_1,{\bf x}_2)] 
+	\end{equation}
+	
+	where $Q$ is defined as
+	\begin{gather}
+		Q({\bf x}_1,{\bf x}_2) = ({\bf x}-\mu)^T\Sigma^{-1}({\bf x}-\mu)\\
+		= [({\bf x}_1-\mu_1)^T, ({\bf x}-\mu_2)^T] 
+		\begin{bmatrix}
+			\Sigma^{11} & \Sigma^{12}\\
+			\Sigma^{21} & \Sigma^{22}
+		\end{bmatrix}
+		\begin{bmatrix}
+			{\bf x}_1-\mu_1 \\
+			{\bf x}_2-\mu_2
+		\end{bmatrix}\\
+		= ({\bf x}_1-\mu_1)^T\Sigma^{11}({\bf x}_1-\mu_1)+ 2({\bf x}_1-\mu_1)^T\Sigma^{12}({\bf x}_2-\mu_2) + ({\bf x}_2-\mu_2)^T \cdots \\
+		\cdots \Sigma^{22}({\bf x}_2-\mu_2)
+	\end{gather}
+\end{frame}
 
 \begin{frame}{Marginalisation of bivariate normal}
-Complete derivation from
+	Complete derivation from \textcolor{red}{Where?}
 \end{frame}
 
 \begin{frame}{Conditional Normal Distribution}
