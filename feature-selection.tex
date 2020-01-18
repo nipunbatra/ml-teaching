@@ -14,9 +14,9 @@
 \usetheme{metropolis}           % Use metropolis theme
 
 
-\title{Feature Selection}
+\title{Some Practical Tips And Feature Selection}
 \date{\today}
-\author{Nipun Batra}
+\author{Nipun Batra and teaching staff}
 \institute{IIT Gandhinagar}
 \begin{document}
   \maketitle
@@ -29,8 +29,8 @@
 \begin{frame}{Ideas for Baselines}
     
     
-    \begin{itemize}
-        \item Mean Model, return the Mean of the training set
+    \begin{itemize}[<+->]
+        \item Mean Model: $\hat{y}$= Mean of the training set
         \item Median or Mode of the training set
         \item Random (Min(training set), Max(training set))
     \end{itemize}
@@ -38,34 +38,35 @@
 
 
 \begin{frame}{Choosing Best features}
-    To find the best set of features, one can do exhaustive enumeration(brute force) of features.    
+    To find the best set of features, one can do exhaustive enumeration (brute force) of features.    
     
-    \begin{tabular}{|c|c|c|\dots|c|}
+    \pause \begin{tabular}{c|c|c|c}
         $Feature_{1}$ & $Feature_{2}$ &\dots & $Feature_{d}$  \\
         \hline
-        \hline
+      
          True  & False &  \dots & False\\
          False &  True & \dots & False\\ 
          True &  True & \dots & False\\ 
-         \vdots &  \vdots & \vdots\\
+         \vdots &  \vdots & \vdots&\\
          True & True &\dots & True\\ 
+         \hline 
          
     \end{tabular}
     
-    The entries of the table denote if the feature is used for creating a model. In total we have $2^{d}$ models. This is the reason why it takes more time for training models using exhaustive enumeration.
+    \pause The entries of the table denote if the feature is used for creating a model. In total we have $2^{d}$ models: training models using exhaustive enumeration is very expensive!
 \end{frame}
 
 
-\begin{frame}{stepwise Forward Selection}
-    It is a greedy algorithm.\\
+\begin{frame}{Stepwise Forward Selection}
+    \pause It is a greedy algorithm.\\
     sel\_features = $\{\}$\\
     for i= 1 to d\\
-    \hspace{1em} for feature in f_{1} \dots f_{d}:\\
+    \hspace{1em} for feature in $f_{1} \dots f_{d}$:\\
     \hspace{2em} train model with [sel\_features $\cup$ feature]\\
     \hspace{2em} Validate the model\\
     
     \hspace{1em} best\_feature  = The feature with best validation performance\\
-    sel\_features = sel\_features \cup best\_feature
+    sel\_features = sel\_features $\cup$ best\_feature
     
 \end{frame}
 
@@ -79,19 +80,15 @@
     Both SFS and SBS are $O(d^2)$ algorithms, where d is the number of features.
     
      \begin{equation*}
-         \implies (d) + (d-1) + (d-2) + \dots + (1)\\
-           
-     \end{equation*}
+         \implies (d) + (d-1) + (d-2) + \dots + (1)
+           \end{equation*}
      
      \begin{equation*}
-          \implies \cfrac{d(d-1)}{2}\\
-            
-     \end{equation*}
+          \implies \cfrac{d(d-1)}{2}
+            \end{equation*}
      
      \begin{equation*}
          \implies d(d-1)  \implies d^{2}
-           
-           
-     \end{equation*}
+           \end{equation*}
 \end{frame}
 \end{document}

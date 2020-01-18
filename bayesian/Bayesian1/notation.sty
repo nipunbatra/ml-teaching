@@ -1,0 +1,24 @@
+\ProvidesPackage{notation}
+\RequirePackage{tcolorbox}
+\RequirePackage{bm}
+
+%\beamerdefaultoverlayspecification{<+->}
+\newcommand{\data}{\mathcal{D}}
+\newcommand\Item[1][]{%
+	\ifx\relax#1\relax  \item \else \item[#1] \fi
+	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+\newcommand{\set}[1]{\mathcal{#1}}
+\newcommand{\vecMat}[1]{\bm{#1}}
+\newcommand{\transpose}{^T}
+\newcommand{\innerprod}[2]{\langle\vecMat{#1}, \ \vecMat{#2}\rangle}
+\newcommand{\dotprod}[2]{\vecMat{#1}\transpose\vecMat{#2}}
+\newcommand{\numberset}[1]{\mathbb{#1}}
+\newcommand{\trace}[1]{\texttt{\textbf{tr}}\left(\vecMat{#1}\right)}
+\newcommand{\deter}[1]{\texttt{det}\left(\vecMat{#1}\right)}
+\newcommand{\defined}{:=}
+
+\newcommand{\lagra}{\mathfrak{L}}
+\newcommand{\param}{\vecMat{\theta}}
+\newcommand{\grad}{\nabla}
+\newcommand{\distrib}[3]{\mathcal{#1}\left(\vecMat{#2}, \ \vecMat{#3}\right)}
+
