@@ -127,7 +127,7 @@
 	\end{frame}
 
 	\begin{frame}{Alternative ways to prove convexity}
-	Using the Hessian Matrix\\
+	The double derivate test for multi-parameter function is equal to using the Hessian Matrix\\
 	\vspace{1cm}
 	A function $f(x_1,x_2,\dots,x_n)$ is convex iff its $n \times n$ Hessian Matrix is positive semidefinite for all posible values of $(x_1,x_2,\dots, x_n)$\\
 	\begin{equation*}
@@ -162,6 +162,27 @@
 	\vspace{1cm}
 	Eigen Values of H are 2 and 2 $> 0 \Rightarrow$ H is positive semi-definite.\\
 	Hence, $f(x_1,x_2) = x_1^2 + x_2^2$ is convex. 
+	}
+	\end{frame}
+
+	\begin{frame}{Convexity of linear least squares}
+	Prove the convexity of linear least squares i.e. $f(\theta) = ||y - X\theta||^2$\\
+	\vspace{0.5cm}
+	\only<2->{
+	We will use the double derivate (Hessian)\\
+	\vspace{0.5cm}
+	}
+	\only<3->{
+	$\dfrac{df}{d\theta} = \dfrac{d(||y^2||  - 2y^TX\theta + ||X\theta||^2)}{d\theta} = -2y^TX + 2(X\theta)^TX$\\
+	\vspace{0.5cm}
+	}
+	\only<4->{
+	$\dfrac{d^2f}{d\theta^2} = H = 2X^TX$\\
+	\vspace{1cm}
+	}
+	\only<5->{
+	$X^TX$ is positive semi-definite for any $X \in \mathbb{R}^{m\times n}$.\\
+	Hence, linear least squares function is convex.
 	}
 	\end{frame}
 
