@@ -116,13 +116,55 @@
 	\end{frame}
 
 
-	\begin{frame}{Question: Prove that $f(x) = x^2$ is convex}
-	An Easier Way,\\
+	\begin{frame}{Alternative ways to prove convexity}
+	The Double-Derivative Test\\
 	\vspace{1cm}
-	Use the Double-Derivative Test\\
+	If f''(x) $>$ 0, the function is  convex.\\
 	\vspace{1cm}
-	Will need to generalize to Hessian Matrices
+	For example,\\
+	\vspace{1cm}
+	$\dfrac{\partial ^2( x^2)}{\partial x^2} = 2 > 0 \Rightarrow x^2$ is a Convex function.\\  
 	\end{frame}
+
+	\begin{frame}{Alternative ways to prove convexity}
+	Using the Hessian Matrix\\
+	\vspace{1cm}
+	A function $f(x_1,x_2,\dots,x_n)$ is convex iff its $n \times n$ Hessian Matrix is positive semidefinite for all posible values of $(x_1,x_2,\dots, x_n)$\\
+	\begin{equation*}
+\mathbf{H}=\left[\begin{array}{cccc}
+{\frac{\partial^{2} f}{\partial x_{1}^{2}}} & {\frac{\partial^{2} f}{\partial x_{1} \partial x_{2}}} & {\cdots} & {\frac{\partial^{2} f}{\partial x_{1} \partial x_{n}}} \\
+{\frac{\partial^{2} f}{\partial x_{2} \partial x_{1}}} & {\frac{\partial^{2} f}{\partial x_{2}^{2}}} & {\cdots} & {\frac{\partial^{2} f}{\partial x_{2} \partial x_{n}}} \\
+{\vdots} & {\vdots} & {\ddots} & {\vdots} \\
+{\frac{\partial^{2} f}{\partial x_{n} \partial x_{1}}} & {\frac{\partial^{2} f}{\partial x_{n} \partial x_{2}}} & {\cdots} & {\frac{\partial^{2} f}{\partial x_{n}^{2}}}
+\end{array}\right]
+\end{equation*}
+	\end{frame}
+
+
+	\begin{frame}{Alternative ways to prove convexity}
+	Show that $f(x_1,x_2) = x_1^2 + x_2^2$ is convex.\\
+	\vspace{1cm} 
+	\only<2->{
+	\begin{equation*}
+	H = 
+	\begin{bmatrix}
+		\dfrac{\partial ^2( x_1^2 + x_2^2)}{\partial x_1^2} & \dfrac{\partial ^2( x_1^2 + x_2^2)}{\partial x_1\partial x_2} \\
+		 \dfrac{\partial ^2( x_1^2 + x_2^2)}{\partial x_2\partial x_1} & \dfrac{\partial ^2( x_1^2 + x_2^2)}{\partial x_2^2} \\
+	\end{bmatrix}
+	= 
+	\begin{bmatrix}
+		2 & 0 \\
+		0 & 2\\
+	\end{bmatrix}
+	\end{equation*}\\
+	}
+	\only<3->{
+	\vspace{1cm}
+	Eigen Values of H are 2 and 2 $> 0 \Rightarrow$ H is positive semi-definite.\\
+	Hence, $f(x_1,x_2) = x_1^2 + x_2^2$ is convex. 
+	}
+	\end{frame}
+
 
 	\begin{frame}{Properties of Convex Functions}
 	\begin{itemize}
