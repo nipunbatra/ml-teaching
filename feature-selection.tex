@@ -9,7 +9,22 @@
 \newcommand\Item[1][]{%
 	\ifx\relax#1\relax  \item \else \item[#1] \fi
 	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+\usepackage{amsmath}
 
+% limits underneath
+\DeclareMathOperator*{\argminA}{arg\,min} % Jan Hlavacek
+\DeclareMathOperator*{\argminB}{argmin}   % Jan Hlavacek
+\DeclareMathOperator*{\argminC}{\arg\min}   % rbp
+
+\newcommand{\argminD}{\arg\!\min} % AlfC
+
+\newcommand{\argminE}{\mathop{\mathrm{argmin}}}          % ASdeL
+\newcommand{\argminF}{\mathop{\mathrm{argmin}}\limits}   % ASdeL
+
+% limits on side
+\DeclareMathOperator{\argminG}{arg\,min} % Jan Hlavacek
+\DeclareMathOperator{\argminH}{argmin}   % Jan Hlavacek
+\newcommand{\argminI}{\mathop{\mathrm{argmin}}\nolimits} % ASdeL
 
 \usetheme{metropolis}           % Use metropolis theme
 
@@ -58,16 +73,47 @@
 
 
 \begin{frame}{Stepwise Forward Selection}
-    \pause It is a greedy algorithm.\\
-    sel\_features = $\{\}$\\
-    for i= 1 to d\\
-    \hspace{1em} for feature in $f_{1} \dots f_{d}$:\\
-    \hspace{2em} train model with [sel\_features $\cup$ feature]\\
-    \hspace{2em} Validate the model\\
-    
-    \hspace{1em} best\_feature  = The feature with best validation performance\\
-    sel\_features = sel\_features $\cup$ best\_feature
-    
+
+    $F$ = $\{\}$\\
+    for i = 1 to K\\
+    \vspace{1em}
+    \hspace{2em} $F_{i}$  = $\argminF_{feature \notin F} $ Loss(F $\cup$ feature)\\
+    \vspace{1em}
+    \hspace{2em} $F$ = $F \cup F_{i}$ \\
+        
+\vspace{2em}
+Loss($features$) denotes the loss incurred by the model trained with $features$.
+\end{frame}
+
+
+
+\begin{frame}{Stepwise Forward Selection for California Housing Data }
+
+	Now we will be doing SFS on the California Housing Dataset. We will try to predict the median-selling price(in thousands of dollars) for households in the neighbourhood.
+	
+\end{frame}
+
+\begin{frame}{Stepwise Forward Selection for California Housing Data }
+\begin{center}
+
+	\begin{tabular}{|c|c|c|}
+	\hline
+	\textbf{Iteration}&	\textbf{Added Feature}	&\textbf{MSE}\\
+	\hline
+	\hline
+	1&Median Income of block&0.97\\
+	2&Avg. number  of rooms in the block&0.63\\
+	3&Latitude&0.65\\
+	4&Longitude&0.66\\
+	\hline
+	
+	
+	\end{tabular}
+
+
+\end{center}
+
+	This shows except the first two features, everything else are unimportant features.
 \end{frame}
 
 \begin{frame}{Stepwise Backward Selection}
