@@ -1,0 +1,122 @@
+\documentclass{beamer}
+\usepackage{tcolorbox}
+\ProvidesPackage{notation}
+\RequirePackage{tcolorbox}
+\RequirePackage{bm}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{adjustbox}
+
+%\beamerdefaultoverlayspecification{<+->}
+\newcommand{\data}{\mathcal{D}}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand\Item[1][]{%
+	\ifx\relax#1\relax  \item \else \item[#1] \fi
+	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+
+
+\usetheme{metropolis}           % Use metropolis theme
+
+
+\title{Geometric Regression}
+\date{\today}
+\author{Nipun Batra}
+\institute{IIT Gandhinagar}
+\begin{document}
+	\maketitle
+	
+	
+	\begin{frame}{Linear Combination of Vectors}
+		Let $v_{1},v_{2},v_{3},\dots,v_{i}$ be vectors in  ${\rm I\!R}^{D}$, where $D$ denotes the dimensions. A linear combination of $v_{1},v_{2},v_{3},\dots,v_{i}$ is of the following form
+		
+		\begin{equation*}
+			\alpha_{1}x_{1}+			\alpha_{2}x_{2}+			\alpha_{3}x_{3}+
+			\dots+\alpha_{i}x_{i}
+		\end{equation*}
+		
+		where $\alpha_{1},\alpha_{2},\alpha_{3},\dots,\alpha_{i} \in {\rm I\!R}$
+		
+	\end{frame}
+
+\begin{frame}{Span of vectors}
+		Let $v_{1},v_{2},\dots,v_{i}$ be vectors in  ${\rm I\!R}^{D}$, with $D$ dimensions. \\
+		The span of  $v_{1},v_{2},\dots,v_{i}$ is denoted by SPAN\{$v_{1},v_{2},\dots,v_{i} $\}
+		
+		\begin{equation*}
+	    \{	\alpha_{1}x_{1}+			\alpha_{2}x_{2}+
+		\dots+\alpha_{i}x_{i} \hspace{1em}\vert \hspace{1em}  \alpha_{1},\alpha_{2},\dots,\alpha_{i} \in {\rm I\!R}\}
+		\end{equation*}
+		
+		The above denotes the span of the vectors $v_{1},v_{2},\dots,v_{i}$.  It is the set of all vectors that can be gengerated by linear combinations of $v_{1},v_{2},\dots,v_{i}$.
+\end{frame}
+
+
+\begin{frame}{Subspace}
+	A subset $S$ $\in {\rm I\!R}$ is called a subspace if  
+	\begin{itemize}
+		\item origin belongs to $S$
+		\item if $u,v \in S$, then $u+v \in S$  
+		\item if $u \in S$, then $\alpha u \in S$,  $\forall \alpha \in {\rm I\!R}$
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}{When does a Span become a subspace?}
+	Think about it!
+\end{frame}
+	
+
+
+\begin{frame}{Geometric Interpretation of Linear Regression}
+	Let $\bar{x_{j}}$ denote the $j^{th}$ column of $X$. \\
+	Let $\hat{y}$ be the prediction.
+	
+	$$
+	\hat{y} = w_{1}\bar{x_{1}}+w_{2}\bar{x_{2}}+\dots+w_{D}\bar{x_{D}} = XW
+	$$
+	
+	
+	Clearly, $\hat{y} \in $ SPAN\{$\bar{x_{1}},\bar{x_{2}},\dots,\bar{x_{D}}$\} 
+	How to choose the best $\hat{y}$?
+\end{frame}
+
+\begin{frame}{Geometric Interpretation of Linear Regression}
+	We wish to $\hat{y}$ such that 
+	$$
+		\underset{\hat{y} \in SPAN\{\bar{x_{1}},\bar{x_{2}},\dots,\bar{x_{D}}\} } \argmin \vert \vert y - \hat{y} \vert \vert_{2}
+	$$
+\end{frame}
+
+\begin{frame}{Geometric Interpretation of Linear Regression}
+	It is analogus to choosing $\hat_{y}$ such that it is closest to $y$. It is the projection of $y$ onto the solumn space of $X$.\\
+	\vspace{2em}\\
+	Hence the residual vector $y - \hat{y}$ will be perpendicular to each of the columns of $X$. 
+\end{frame}
+
+
+
+\begin{frame}{Geometric Interpretation of Linear Regression}
+	$$
+		\bar{x_{i}}(y - \hat{y}) = 0
+	$$
+	$$
+		X^{T}(y - XW) = \mathbf{0}
+	$$
+	
+	\begin{tcolorbox}
+		$$
+			W = (X^{T}X)^{-1}X^{T}y
+		$$
+	\end{tcolorbox}
+
+	
+	
+\end{frame}
+
+
+
+
+
+\end{document}
