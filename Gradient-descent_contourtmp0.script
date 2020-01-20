@@ -1,1 +1,1 @@
-unset surface; set cntrparam levels 25; set contour; set table "Gradient-descent_contourtmp0.table"; splot "Gradient-descent_contourtmp0.dat";
+unset surface; set cntrparam levels 20; set contour; set table "Gradient-descent_contourtmp0.table"; splot "Gradient-descent_contourtmp0.dat";
