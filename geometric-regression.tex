@@ -7,6 +7,22 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{adjustbox}
+\usepackage{calculator}
+\usetikzlibrary{calc}
+
+\pgfplotsset{compat=1.14}
+
+% Draw vector and corresponding unitvector
+\newcommand{\vecuvec}[2] %start point, end point (of vector)
+{   \VECTORSUB(#2)(#1)(\sola,\solb,\solc)
+	\UNITVECTOR(\sola, \solb, \solc)(\sola,\solb,\solc)
+	%arrow in blue
+	\draw[->,thick,blue] (#1) -- (#2); 
+	%corresponding unit-vector in red:
+	\edef\temp{\noexpand\draw[->, thick,red] (#1) -- ($(#1)+(\sola,\solb,\solc)$);}
+	\temp
+}
+
 
 %\beamerdefaultoverlayspecification{<+->}
 \newcommand{\data}{\mathcal{D}}
@@ -66,6 +82,74 @@
 \begin{frame}{When does a Span become a subspace?}
 	Think about it!
 \end{frame}
+
+
+\begin{frame}{}	\begin{columns}
+	\pause \begin{column}{0.6\textwidth}
+		\begin{adjustbox}{max totalsize={\textwidth},center}
+			
+			\begin{tikzpicture}
+			\begin{axis}[xlabel=$\theta_0$, ylabel=$\theta_1$, zlabel=$\mathrm{Cost Function}$,title={Surface Plot}]
+			\addplot3[
+			surf,
+			colormap/violet,
+			opacity=0.1,
+			]
+			{x};
+			\addplot3 coordinates {
+				(0, 0, 0)
+				(1, 1, 1)
+			};
+		\addplot3 coordinates {
+			(0, 0, 0)
+			(2, -2, 2)
+		};
+	\addplot3 coordinates {
+		(0, 0, 0)
+		(8.89, 0.61, 1.77)
+	};
+	\addplot3 coordinates {
+	(0, 0, 0)
+	(5.33, 0.61, 5.33)
+};
+	\addplot3 coordinates {
+	(8.89, 0.61, 1.77)
+	(5.33, 0.61, 5.33)
+};
+	\legend{{}, $x^1$,$x^2$, $y$, $\hat{y}$}
+			\end{axis}
+			\end{tikzpicture}
+		\end{adjustbox}
+		
+	\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+Solution: 2.97, 1.18
+\end{frame}
+
+\begin{frame}
+\begin{tikzpicture}
+\draw[->](0,0) -- (5,0);
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\draw[<<->>](0,0) -- (5,0);
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\draw[<<->>, ultra thick, blue](0,0) -- (5,0);
+\end{tikzpicture}
+
+\begin{tikzpicture}
+\draw[|->>, thick, red](0,0) -- (5,0);
+\end{tikzpicture}
+
+
+
+\end{frame}
 	
 
 
@@ -89,11 +173,11 @@
 	$$
 \end{frame}
 
-\begin{frame}{Geometric Interpretation of Linear Regression}
-	It is analogus to choosing $\hat_{y}$ such that it is closest to $y$. It is the projection of $y$ onto the solumn space of $X$.\\
-	\vspace{2em}\\
-	Hence the residual vector $y - \hat{y}$ will be perpendicular to each of the columns of $X$. 
-\end{frame}
+%\begin{frame}{Geometric Interpretation of Linear Regression}
+%	It is analogus to choosing $\hat_{y}$ such that it is closest to $y$. It is the projection of $y$ onto the column space of $X$.
+%	\vspace{2em}\\
+%	Hence the residual vector $y - \hat{y}$ will be perpendicular to each of the columns of $X$. 
+%\end{frame}
 
 
 
@@ -101,6 +185,7 @@
 	$$
 		\bar{x_{i}}(y - \hat{y}) = 0
 	$$
+	
 	$$
 		X^{T}(y - XW) = \mathbf{0}
 	$$
@@ -115,7 +200,28 @@
 	
 \end{frame}
 
+\begin{frame}
+\begin{tikzpicture}
+\begin{axis}
+\addplot3 coordinates {
+	(0.81,	0.19,	0.00)
+	(0.76,	0.17,	0.07)
+	(0.66,	0.16,	0.16)
+	(0.76,	0.07,	0.17)
+	(0.81,	0.00,	0.19)
+};
 
+\addplot3 coordinates {
+	(0.85,	0.15,	0.00)
+	(0.82,	0.13,	0.05)
+	(0.73,	0.14,	0.13)
+	(0.82,	0.06,	0.13)
+	(0.84,	0.00,	0.16)
+};
+\legend{$10$\textdegree, $20$\textdegree}
+\end{axis}
+\end{tikzpicture}
+\end{frame}
 
 
 
