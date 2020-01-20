@@ -37,66 +37,74 @@
 \institute{IIT Gandhinagar}
 \begin{document}
   \maketitle
-  
-\begin{frame}{Introduction}
-\vspace{0.9cm}
-To prevent over fitting we place penalties on large $\theta_i$
-\pause
-\vspace{-0.4cm}
-\begin{figure}
-        \begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\linewidth]{ridge/lin_1.png}
-                \caption{Base Data Set}
-        \end{subfigure}%
-        \begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\linewidth]{ridge/lin_plot_1.png}
-                \caption{Degree 1 (Coeff. = $-0.62$)}
-        \end{subfigure}%
-        \caption{An example of over fitting}
-\end{figure}
-\end{frame}  
 
 \begin{frame}{Introduction}
-\vspace{0.9cm}
-To prevent over fitting we place penalties on large $\theta_i$
-\vspace{-0.4cm}
-\begin{figure}
-        \begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\linewidth]{ridge/lin_plot_5.png}
-                \caption{Degree 5 (Coeff. = $-5.12$)}
-        \end{subfigure}%
-        \begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\linewidth]{ridge/lin_plot_12.png}
-                \caption{Degree 12 (Coeff. = $6007.88$)}
-        \end{subfigure}%
-        \caption{An example of over fitting}
-\end{figure}
-\end{frame}  
+A know measure of over-fitting can be the magnitude of the coefficient. \\ \bigskip
+\pause
+In $f(x) = c_0 + c_1x + c_2x^2 + \dots$ it is $\max|c_i|$ \\ \bigskip
+\end{frame}
   
 \begin{frame}{Introduction}
 \vspace{0.4cm}
+\only<1>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/lin_1.pdf}\caption{Base Data Set}
+\end{figure}}
+\only<2>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/lin_plot_1.pdf}\caption{Fit with Degree 1}
+\end{figure}}
+\only<3>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/lin_plot_3.pdf}\caption{Fit with Degree 3}
+\end{figure}}
+\only<4>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/lin_plot_6.pdf}\caption{Fit with Degree 6}
+\end{figure}}
+\only<5>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/lin_plot_11.pdf}\caption{Fit with Degree 11}
+\end{figure}}
+\end{frame}  
+
+\begin{frame}{Introduction}
+\vspace{0.4cm}
+In the examples we notice that as the degree increase (as the prediction starts to overfit the base data), the maximum coefficient also increases.
+%\vspace{-0.3cm}
+\begin{figure}\includegraphics[width=0.7\linewidth]{ridge/lin_plot_coef.pdf}\caption{Trend of the coefficients}\end{figure}
+
+\end{frame}
+ 
+\begin{frame}{Introduction}
+\vspace{0.4cm}
 To prevent over fitting we place penalties on large $\theta_i$
+\pause
  \\ \bigskip
 \begin{tcolorbox}{Objective}
 \begin{align*}
-\text{Minimize } & \left(y-x\theta\right)^T\left(y-x\theta\right) \\
+\text{Minimize } & \left(y-X\theta\right)^T\left(y-X\theta\right) \\
 \text{s.t. } & \theta ^T\theta \leq S
 \end{align*}
 \end{tcolorbox}
 \pause
 This is equivalent to \vspace{-0.4cm}
 $$
-\text{Minimize } \left(y-x\theta\right)^T\left(y-x\theta\right) + \delta ^2\theta ^T\theta
+\text{Minimize } \left(y-X\theta\right)^T\left(y-X\theta\right) + \delta ^2\theta ^T\theta
 $$
 \end{frame}  
+
+\begin{frame}{Introduction}
+\begin{figure}
+        \begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\linewidth]{ridge/ridge_base_contour.pdf}
+                \caption{Contour Plot}
+        \end{subfigure}%
+        \begin{subfigure}[b]{0.5\textwidth}
+                \includegraphics[width=\linewidth]{ridge/ridge_base_surface.pdf}
+                \caption{Surface Plot}
+        \end{subfigure}%
+        \caption{Visualization of the Example}
+\end{figure}
+\end{frame}
 
 \begin{frame}{KKT Conditions}
 To implement this we use KKT Conditions
 \pause
 \begin{align*}
-\text{Minimize } & \left(y-x\theta\right)^T\left(y-x\theta\right) \\
+\text{Minimize } & \left(y-X\theta\right)^T\left(y-X\theta\right) \\
 \text{s.t. } & \theta ^T\theta \leq S \\
-L\left(\theta, \mu \right) =& \left(y-x\theta\right)^T\left(y-x\theta\right) + \mu\left(\theta^T\theta - S\right)
+L\left(\theta, \mu \right) =& \left(y-X\theta\right)^T\left(y-X\theta\right) + \mu\left(\theta^T\theta - S\right)
 \end{align*}
 where, $\mu \geq 0$ \bigskip
 
@@ -116,36 +124,28 @@ $\implies \theta^T\theta - S = 0$
 \end{frame}
 
 \begin{frame}{Effect of $\mu$}
-\begin{figure}
-        \begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\linewidth]{ridge/rid_plot_15.png}
-                \caption{$\mu = 1e-15$}
-        \end{subfigure}%
-        \begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\linewidth]{ridge/rid_plot_4.png}
-                \caption{$\mu = 1e-4$}
-        \end{subfigure}%
-\end{figure}
-\end{frame} 
-
-\begin{frame}{Effect of $\mu$}
-\begin{figure}
-        \begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\linewidth]{ridge/rid_plot_5.png}
-                \caption{$\mu = 5$}
-        \end{subfigure}%
-        \begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\linewidth]{ridge/rid_plot_9.png}
-                \caption{$\mu = 20$}
-        \end{subfigure}%
-\end{figure}
+\vspace{0.4cm}
+\only<1>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/ridge_1.pdf}\caption{$\mu = 1$}
+\end{figure}}
+\only<2>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/ridge_10.pdf}\caption{$\mu = 10$}
+\end{figure}}
+\only<3>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/ridge_1000.pdf}\caption{$\mu = 1000$}
+\end{figure}}
 \end{frame}
 
-\begin{frame}{Effect of $\mu$}
-\begin{figure}
-\includegraphics[width=\linewidth]{ridge/rid_reg.png}
-\vspace{-0.8cm}
-\caption{Effect of $\mu$ on the magnitude of the parameters}
+\begin{frame}{Effect of $\mu$ on higher degree fits}
+\vspace{0.4cm}
+\only<1>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/ridge_1_16.pdf}\caption{$\mu = 1$ when Degree $= 16$}
+\end{figure}}
+\only<2>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/ridge_100_16.pdf}\caption{$\mu = 100$  when Degree $= 16$}
+\end{figure}}
+\only<3>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/ridge_100000_16.pdf}\caption{$\mu = 100000$  when Degree $= 16$}
+\end{figure}}
+\end{frame}
+
+\begin{frame}{Effect of $\mu$ - Regularization of Parameters}
+\vspace{0.4cm}
+\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/rid_reg.pdf}\caption{Comparing the magnitudes of the coefficients with varying $\mu$\\(on the \emph{Real Estate Data Set})}
 \end{figure}
 \end{frame}
 
@@ -153,14 +153,14 @@ $\implies \theta^T\theta - S = 0$
 \begin{tcolorbox}{Ridge Objective}
 \vspace{-0.4cm}
 $$
-\min_\theta \left(y-x\theta\right)^T\left(y-x\theta\right)\delta^2\theta^T\theta
+\min_\theta \left(y-X\theta\right)^T\left(y-X\theta\right)\delta^2\theta^T\theta
 $$
 \end{tcolorbox}
 \begin{align*}
 \frac{\partial L\left(\theta, \mu\right)}{\partial \theta} &= 0 \\ 
-\frac{\partial}{\partial \theta}\left\lbrace y^Ty - 2y^Tx\theta + \theta^Tx^Tx\theta \right\rbrace + \frac{\partial}{\partial \theta} \delta^2\theta^T\theta &= 0 \\
-\implies -x^Ty + \left(x^Tx + \delta^2I\right)\theta &= 0 \\
-\implies \theta^* &= \left(x^Tx + \delta^2I\right)^{-1}x^Ty
+\frac{\partial}{\partial \theta}\left\lbrace y^Ty - 2y^TX\theta + \theta^TX^TX\theta \right\rbrace + \frac{\partial}{\partial \theta} \delta^2\theta^T\theta &= 0 \\
+\implies -X^Ty + \left(X^TX + \delta^2I\right)\theta &= 0 \\
+\implies \theta^* &= \left(X^TX + \delta^2I\right)^{-1}X^Ty
 \end{align*}
 \end{frame}
 
@@ -168,7 +168,7 @@ $$
 \begin{columns}
 \begin{column}{0.4\textwidth}
 \begin{figure}
-\includegraphics[width=\linewidth]{ridge/rid_plot_15.png}
+\includegraphics[width=\linewidth]{ridge/ridge_1_19.pdf}
 \end{figure}
 Fit High Order Polynomial \\
 $\implies$ high variance \\
@@ -176,7 +176,7 @@ $\implies \, \delta^2 \rightarrow 0$
 \end{column}
 \begin{column}{0.4\textwidth}
 \begin{figure}
-\includegraphics[width=\linewidth]{ridge/rid_plot_9.png}
+\includegraphics[width=\linewidth]{ridge/ridge_10000000000_19.pdf}
 \end{figure}
 Fit High Order Polynomial \\
 $\implies$ low variance \\
@@ -190,35 +190,17 @@ $\implies \, \delta^2 \rightarrow \infty$
 \textbf{Q.)} Solve Regularized ($\delta^2 = 2$) and Unregularized.
 \vspace{-0.6cm}
 \begin{figure}
-\includegraphics[width=\linewidth]{ridge/ques_1.png}
-\end{figure}
-\end{frame}
-
-\begin{frame}{Example}
-\vspace{0.4cm}
-For Unregularized, $\hat{y} = 2-0.2x$
-\vspace{-0.6cm}
-\begin{figure}
-\includegraphics[width=\linewidth]{ridge/ques_2.png}
-\end{figure}
-\end{frame}
-
-\begin{frame}{Example}
-\vspace{0.4cm}
-For Regularized, $\hat{y} = 0.5+0.4x$
-\vspace{-0.6cm}
-\begin{figure}
-\includegraphics[width=\linewidth]{ridge/ques_3.png}
+\includegraphics[width=\linewidth]{ridge/temp.pdf}
 \end{figure}
 \end{frame}
 
 \begin{frame}{Extension of the analytical model}
 For ridge with no penalty on $\theta_0$
 $$
-\hat{\theta} = \left(x^Tx+\delta^2I^*\right)^{-1}x^Ty
+\hat{\theta} = \left(X^TX+\delta^2I^*\right)^{-1}X^Ty
 $$
 where, $$I = \begin{bmatrix}
-    0 & 0 & 0 & \dots  & 0 \\
+    \color{red}0 & 0 & 0 & \dots  & 0 \\
     0 & 1& 0 & \dots  & 0\\
     \vdots & \vdots & \vdots & \ddots & \vdots \\
     0 & 0 & 0 & \dots  & 1
