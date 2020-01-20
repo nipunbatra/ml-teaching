@@ -30,22 +30,22 @@
 \begin{frame}{Deriving Expected Prediction Error}
 Expected prediction error at $x_t$ = $E_{train,y_t}[(y_t - f_{\hat\theta(train)}(x_t))^2]$\\
 \vspace{0.5cm}
-\only<1>{
+\only<2>{
 =  $E_{train,y_t}[(          (y_t - f_{\theta(true)}(x_t))     + (f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )            )^2]$
 }
-\only<2->{
+\only<3->{
 =  $E_{train,y_t}[(      \underbrace{(y_t - f_{\theta(true)}(x_t))}_\text{a}   +   \underbrace{(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) ) }_\text{b}          )^2]$\\
 \vspace{0.5cm}
 }
-\only<3->{
+\only<4->{
 =  $E_{train,y_t}[(a + b) ^ 2]$\\
 \vspace{0.5cm}
 }
-\only<4->{
+\only<5->{
 =  $E_{train,y_t}[a^2 + 2ab + b^2]$\\
 \vspace{0.5cm}
 }
-\only<5->{
+\only<6->{
 (Using Linearity of Expectation)\\
 =  $E_{train,y_t}[a^2] + 2E_{train,y_t}[ab] + E_{train,y_t}[b^2]$.......................(Eqn. 1) \\
 }
