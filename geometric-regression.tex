@@ -89,34 +89,32 @@
 		\begin{adjustbox}{max totalsize={\textwidth},center}
 			
 			\begin{tikzpicture}
-			\begin{axis}[xlabel=$\theta_0$, ylabel=$\theta_1$, zlabel=$\mathrm{Cost Function}$,title={Surface Plot}]
+			\begin{axis}[xlabel=$x_1$, ylabel=$x_2$, zlabel=$x_3$,title={Surface Plot}]
 			\addplot3[
 			surf,
+			domain=-0.2:1.2,
+			y domain=-0.7:1.2,
 			colormap/violet,
 			opacity=0.1,
 			]
 			{x};
-			\addplot3 coordinates {
-				(0, 0, 0)
-				(1, 1, 1)
-			};
-		\addplot3 coordinates {
-			(0, 0, 0)
-			(2, -2, 2)
-		};
-	\addplot3 coordinates {
-		(0, 0, 0)
-		(8.89, 0.61, 1.77)
-	};
-	\addplot3 coordinates {
-	(0, 0, 0)
-	(5.33, 0.61, 5.33)
-};
-	\addplot3 coordinates {
-	(8.89, 0.61, 1.77)
-	(5.33, 0.61, 5.33)
-};
-	\legend{{}, $x^1$,$x^2$, $y$, $\hat{y}$}
+	
+	%\node{D}  at (axis cs:0, 0, 0){};
+	\node (A) at (axis cs:0.58, 0.58, 0.58) {$X_1$};
+	\node (D) at (axis cs:0,0,0) {};
+	\node (B) at (axis cs:0.58, -0.58, 0.58) {$X_2$};
+	\node (C) at (axis cs:0.97, 0.07, 0.19) {$y$};
+	\node (E) at (axis cs:0.70, 0.08, 0.70) {$\hat{y}$};
+	\draw[->] (D) -- (C);
+	\draw[->] (D) -- (A);
+		\draw[->] (C) -- (E);
+
+
+%	\addplot3 coordinates {
+%	(8.89, 0.61, 1.77)
+%	(5.33, 0.61, 5.33)
+%};
+
 			\end{axis}
 			\end{tikzpicture}
 		\end{adjustbox}
@@ -128,6 +126,14 @@
 
 \begin{frame}
 Solution: 2.97, 1.18
+0.97853679, 0.06714369, 0.19482678
+
+$$x_1 = (1, 1, 1)/||<1, 1, 1>||$$
+
+0.58, 0.58, 0.58
+
+
+Solution: 5.33, 0.61, 5.33 to .70480267, 0.08066222, 0.70480267
 \end{frame}
 
 \begin{frame}
