@@ -3,7 +3,7 @@
 \usepackage{forloop}
 \usepackage{bm}
 
-\usepackage{mathtools}  
+\usepackage{mathtools}
 \mathtoolsset{showonlyrefs}  
 
 %\beamerdefaultoverlayspecification{<+->}
@@ -40,10 +40,10 @@ with mean $\mu \in R$ and variance $\sigma^2 >0$
 \end{frame}
 
 \begin{frame}{Univariate Normal Distribution}
-Pop Quiz: Why is the denominator the way it is? Let the normalizing constant be $c$.
+Pop Quiz: Why is the denominator the way it is? Let the normalizing constant be $c$ and let $g(x) = e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}$.
 
 \begin{gather}
-\visible<1->{1 = \int_{-\infty}^{\infty} c \cdot f(x) dx\\}
+\visible<1->{1 = \int_{-\infty}^{\infty} c \cdot g(x) dx\\}
 \visible<2->{1 = \int_{-\infty}^{\infty} ce^{-\frac{(x - u)^2}{2\sigma^2}} dx}
 \end{gather}
 \visible<3->{Let's substitute $\frac{x - u}{\sqrt{2}\sigma}$ with $t$.}
@@ -53,7 +53,7 @@ Pop Quiz: Why is the denominator the way it is? Let the normalizing constant be 
 \end{gather}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Univariate Normal Distribution}
 	$$ \frac{2}{\sqrt{\pi}}\int_{0}^{\infty} e^{-t^2} dt $$
 	The above expression is called error function and is it's value is denoted by $erf(t)$. In our case, we want $erf(\infty)$ which is equal to 1.
 	
@@ -144,8 +144,6 @@ where $E$ is the expected value operator.
 
 We might have seen that 
 
-\textcolor{red}{AA: Should we not have $X_1$ as $x_1$ instead?}
-
 $$f_X(X_1, X_2) = \frac{exp(\frac{-1}{2}(X-\mu)^T \Sigma^{-1}(X-\mu))}{2\pi |\Sigma|^\frac{1}{2}}$$
 
 How do we get such a weird looking formula?!
@@ -166,12 +164,9 @@ We have $f_X(X_1, X_2) = f_X(X_1)f_X(X_2)$
 $$=\frac{1}{\sigma_1 \sqrt{2\pi} } e^{-\frac{1}{2}\left(\frac{X_1-\mu_1}{\sigma_1}\right)^2} \times \frac{1}{\sigma_2 \sqrt{2\pi} } e^{-\frac{1}{2}\left(\frac{X_2-\mu_2}{\sigma_2}\right)^2}$$
 
 $$= \frac{1}{\sigma_1 \sigma_2 2\pi } e^{-\frac{1}{2}\{\left(\frac{X_1-\mu_1}{\sigma_1}\right)^2 + \left(\frac{X_2-\mu_2}{\sigma_2}\right)^2 \}}  $$
-
-
-
 \end{frame}
 
-\begin{frame}
+\begin{frame}{PDF of bivariate normal with no cross-correlation}
 
 Let us consider only the exponential part for now
 
@@ -198,11 +193,10 @@ $g(\Sigma) = \begin{bmatrix}
 {\sigma_2^2}& 0  \\
 0 &  {\sigma_1^2}   \\ 
 \end{bmatrix}_{2\times2} = \frac{1}{|\Sigma|} \operatorname{adj(\Sigma)} = \Sigma^{-1}$
-
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}{PDF of bivariate normal with no cross-correlation}
 Let us consider the normalizing constant part now
 
 \textcolor{red}{Needs to be completed.}
@@ -224,8 +218,12 @@ $=\frac{1}{2\pi \times |\Sigma|^{\frac{1}{2}}}$
 	\end{center}
 \end{frame}
 
-\begin{frame}{Detour: Inverse of partioned symmetric matrix}
-\href{http://fourier.eng.hmc.edu/e161/lectures/gaussianprocess/node6.html}{Courtesy}
+
+\urldef\nodeSix\url{http://fourier.eng.hmc.edu/e161/lectures/gaussianprocess/node6.html}
+\urldef\nodeSeven\url{http://fourier.eng.hmc.edu/e161/lectures/gaussianprocess/node7.html}
+
+
+\begin{frame}{Detour: Inverse of partioned symmetric matrix \footnote{Courtesy: \nodeSix}}
 
 Consider an $n\times n$ symmetric matrix $A$ and divide it into four blocks
 
@@ -261,11 +259,9 @@ $A_{11} = \begin{bmatrix}
 $ and $A_{22} = \begin{bmatrix}
 8
 \end{bmatrix}$
-
-
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Detour: Inverse of partioned symmetric matrix}
 Question: Write $B = A^{-1}$ in terms of the four blocks
 $
 B = \begin{bmatrix}
@@ -284,7 +280,7 @@ and, p + q = n
  
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Detour: Inverse of partioned symmetric matrix}
 $I_n = AA^{-1} = AB$
 
 $=\begin{bmatrix}
@@ -311,7 +307,7 @@ A_{12}^TB_{12} + A_{22}B_{22} = I_q
 \end{gather}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Detour: Inverse of partioned symmetric matrix}
 Moving around the expressions we get the following results.
 
 \begin{gather}
@@ -322,11 +318,7 @@ Moving around the expressions we get the following results.
 \end{gather}
 \end{frame}
 
-
-\urldef\nodeSix\url{http://fourier.eng.hmc.edu/e161/lectures/gaussianprocess/node6.html}
-\urldef\nodeSeven\url{http://fourier.eng.hmc.edu/e161/lectures/gaussianprocess/node7.html}
-
-\begin{frame}{Determinant of Partitioned Symmetric Matrix\footnote{Taken from \nodeSix.}}
+\begin{frame}{Determinant of Partitioned Symmetric Matrix}
 	
 \textbf{Theorem:} Determinant of a partitioned symmetric matrix can be written as follows
 	\begin{gather}
@@ -341,10 +333,9 @@ Moving around the expressions we get the following results.
 		=\vert A_{22}\vert \vert
 		 A_{11}-A_{12}A_{22}^{-1}A_{12}^T \vert 
 	\end{gather}
-	
 \end{frame}
 
-\begin{frame}	
+\begin{frame}{Determinant of Partitioned Symmetric Matrix}
 \textbf{Proof:} Note that
 	\begin{gather}
 		A = 
@@ -398,7 +389,7 @@ and
 \end{equation}	
 \end{frame}
 
-\begin{frame}{Marginalisation and Conditional of multivariate normal\footnote{Taken from \nodeSeven.}}
+\begin{frame}{Marginalisation and Conditional of multivariate normal\footnote{Courtesy: \nodeSeven.}}
 Assume an n-dimensional random vector
 
 \begin{equation}
@@ -421,7 +412,7 @@ has a normal distribution $N({\bf x},\mu,\Sigma)$ with
 where ${\bf x}_1$ and ${\bf x}_2$ are two subvectors of respective dimensions $p$ and $q$ with $p+q=n$. Note that $\Sigma=\Sigma^T$, and $\Sigma_{21}=\Sigma_{21}^T$.
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Marginalisation and Conditional of multivariate normal}
 \textbf{Theorem:}
 
 \textbf{part a:} The marginal distributions of ${\bf x}_1$ and ${\bf x}_2$ are also normal with mean vector $\mu_i$ and covariance matrix $\Sigma_{ii}$ ($i=1,2$), respectively.
@@ -430,7 +421,7 @@ where ${\bf x}_1$ and ${\bf x}_2$ are two subvectors of respective dimensions $p
 
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Marginalisation and Conditional of multivariate normal}
 	\textbf{Proof:}
 	
 	The joint density of ${\bf x}$ is:
