@@ -133,15 +133,15 @@ $\implies \theta^T\theta - S = 0$
 \end{figure}}
 \end{frame}
 
-\begin{frame}{Effect of $\mu$ on higher degree fits}
-\vspace{0.4cm}
-\only<1>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/ridge_1_16.pdf}\caption{$\mu = 1$ when Degree $= 16$}
-\end{figure}}
-\only<2>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/ridge_100_16.pdf}\caption{$\mu = 100$  when Degree $= 16$}
-\end{figure}}
-\only<3>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/ridge_100000_16.pdf}\caption{$\mu = 100000$  when Degree $= 16$}
-\end{figure}}
-\end{frame}
+%\begin{frame}{Effect of $\mu$ on higher degree fits}
+%\vspace{0.4cm}
+%\only<1>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/ridge_1_16.pdf}\caption{$\mu = 1$ when Degree $= 16$}
+%\end{figure}}
+%\only<2>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/ridge_100_16.pdf}\caption{$\mu = 100$  when Degree $= 16$}
+%\end{figure}}
+%\only<3>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/ridge_100000_16.pdf}\caption{$\mu = 100000$  when Degree $= 16$}
+%\end{figure}}
+%\end{frame}
 
 \begin{frame}{Effect of $\mu$ - Regularization of Parameters}
 \vspace{0.4cm}
@@ -153,12 +153,12 @@ $\implies \theta^T\theta - S = 0$
 \begin{tcolorbox}{Ridge Objective}
 \vspace{-0.4cm}
 $$
-\min_\theta \left(y-X\theta\right)^T\left(y-X\theta\right)\delta^2\theta^T\theta
+\min_\theta \left(y-X\theta\right)^T\left(y-X\theta\right)+ \delta^2\theta^T\theta
 $$
 \end{tcolorbox}
 \begin{align*}
 \frac{\partial L\left(\theta, \mu\right)}{\partial \theta} &= 0 \\ 
-\frac{\partial}{\partial \theta}\left\lbrace y^Ty - 2y^TX\theta + \theta^TX^TX\theta \right\rbrace + \frac{\partial}{\partial \theta} \delta^2\theta^T\theta &= 0 \\
+\frac{\partial}{\partial \theta}\left\lbrace y^Ty - 2y^TX\theta + \theta^TX^TX\theta +\right\rbrace +  \frac{\partial}{\partial \theta} \delta^2\theta^T\theta &= 0 \\
 \implies -X^Ty + \left(X^TX + \delta^2I\right)\theta &= 0 \\
 \implies \theta^* &= \left(X^TX + \delta^2I\right)^{-1}X^Ty
 \end{align*}
