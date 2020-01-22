@@ -1,0 +1,100 @@
+\documentclass{beamer}
+\usepackage{tcolorbox}
+
+%\beamerdefaultoverlayspecification{<+->}
+\newcommand{\data}{\mathcal{D}}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand\Item[1][]{%
+	\ifx\relax#1\relax  \item \else \item[#1] \fi
+	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+
+
+\usetheme{metropolis}           % Use metropolis theme
+
+
+\title{Subgradient}
+\date{\today}
+\author{Nipun Batra}
+\institute{IIT Gandhinagar}
+\begin{document}
+  \maketitle
+  
+  
+  
+% \section{Linear Regression}
+
+\begin{frame}{Subgradient }
+\begin{itemize}
+	
+	
+	\item Generalizes gradient to convex but non-differentiable problems
+	\item Examples:
+	\begin{itemize}
+		\item $f(x) = |x|$
+	\end{itemize}
+	
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Task at hand}
+\begin{itemize}
+
+\item TASK: find derivative of $f(x)$ at x = $x^0$
+\end{itemize}
+\begin{figure}
+    \centering
+    \includegraphics[scale = 0.5]{curve1.png}
+    
+    \label{fig:Non-differentiable function}
+\end{figure}
+	
+
+\end{frame}
+
+\begin{frame}{Solution}
+
+\begin{itemize}
+\item Construct a differentiable g(x) 
+\begin{itemize}
+    \item Intersecting $f(x)$ at $x = x_0$
+    \item Below or on $f(x)$ for all x
+\end{itemize}
+\end{itemize}
+\begin{figure}
+    \centering
+    \includegraphics[scale = 0.5]{curve2.png}
+    \label{fig:my_label}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Solution}
+
+\begin{itemize}
+\item Compute slope of g(x) at $x = x_0$
+\end{itemize}
+\begin{figure}
+    \centering
+    \includegraphics[scale = 0.5]{curve2.png}
+    
+    \label{fig:my_label}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Another Example: f(x) = |x|}
+
+\begin{itemize}
+\item Subgradient of f(x) belongs to [-1, 1]
+\end{itemize}
+\begin{figure}
+    \centering
+    \includegraphics[scale = 0.5]{curve3.png}
+    \label{fig:my_label}
+\end{figure}
+\end{frame}
+
+
+
+
+\end{document}
