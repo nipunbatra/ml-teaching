@@ -106,7 +106,7 @@ To implement this we use KKT Conditions
 \text{s.t. } & \theta ^T\theta \leq S \\
 L\left(\theta, \mu \right) =& \left(y-X\theta\right)^T\left(y-X\theta\right) + \mu\left(\theta^T\theta - S\right)
 \end{align*}
-where, $\mu \geq 0$ \bigskip
+where, $\mu \geq 0$ (and $\mu = \delta^2$)\bigskip
 
 \pause
 \begin{columns}
@@ -153,14 +153,14 @@ $\implies \theta^T\theta - S = 0$
 \begin{tcolorbox}{Ridge Objective}
 \vspace{-0.4cm}
 $$
-\min_\theta \left(y-X\theta\right)^T\left(y-X\theta\right)+ \delta^2\theta^T\theta
+\min_\theta \left(y-X\theta\right)^T\left(y-X\theta\right)+ \mu\theta^T\theta
 $$
 \end{tcolorbox}
 \begin{align*}
 \frac{\partial L\left(\theta, \mu\right)}{\partial \theta} &= 0 \\ 
-\frac{\partial}{\partial \theta}\left\lbrace y^Ty - 2y^TX\theta + \theta^TX^TX\theta +\right\rbrace +  \frac{\partial}{\partial \theta} \delta^2\theta^T\theta &= 0 \\
-\implies -X^Ty + \left(X^TX + \delta^2I\right)\theta &= 0 \\
-\implies \theta^* &= \left(X^TX + \delta^2I\right)^{-1}X^Ty
+\frac{\partial}{\partial \theta}\left\lbrace y^Ty - 2y^TX\theta + \theta^TX^TX\theta +\right\rbrace +  \frac{\partial}{\partial \theta} \mu\theta^T\theta &= 0 \\
+\implies -X^Ty + \left(X^TX + \mu I\right)\theta &= 0 \\
+\implies \theta^* &= \left(X^TX + \mu I\right)^{-1}X^Ty
 \end{align*}
 \end{frame}
 
@@ -168,36 +168,153 @@ $$
 \begin{columns}
 \begin{column}{0.4\textwidth}
 \begin{figure}
-\includegraphics[width=\linewidth]{ridge/ridge_1_19.pdf}
+\includegraphics[width=\linewidth]{ridge/ridge_new_0_17.pdf}
 \end{figure}
 Fit High Order Polynomial \\
 $\implies$ high variance \\
-$\implies \, \delta^2 \rightarrow 0$
+$\implies \, \mu \rightarrow 0$
 \end{column}
 \begin{column}{0.4\textwidth}
 \begin{figure}
-\includegraphics[width=\linewidth]{ridge/ridge_10000000000_0_19.pdf}
+\includegraphics[width=\linewidth]{ridge/ridge_new_1_17.pdf}
 \end{figure}
 Fit High Order Polynomial \\
 $\implies$ low variance \\
-$\implies \, \delta^2 \rightarrow \infty$
+$\implies \, \mu \rightarrow \infty$
 \end{column}
 \end{columns}
 \end{frame}
 
 \begin{frame}{Example}
 \vspace{0.4cm}
-\textbf{Q.)} Solve Regularized ($\delta^2 = 2$) and Unregularized.
+\textbf{Q.)} Solve Regularized ($\mu = 2$) and Unregularized.
 \vspace{-0.6cm}
 \begin{figure}
 \includegraphics[width=\linewidth]{ridge/temp.pdf}
 \end{figure}
 \end{frame}
 
+\begin{frame}{Example: Unregularized}
+\[
+\theta = (X^{T}X)^{-1}(X^{T}y)
+\]
+\pause
+\begin{align*}
+X^{T}X &= \begin{bmatrix}
+4 &10\\10&30
+\end{bmatrix} \\
+(X^{T}X)^{-1} &= \frac{1}{20} \begin{bmatrix}
+30 & -10\\
+-10& 4
+\end{bmatrix}\\
+X^{T}y &= \begin{bmatrix}
+6\\
+14
+\end{bmatrix}
+\end{align*}
+\end{frame}
+
+
+\begin{frame}{Example: Unregularized}
+\vspace{0.4cm}
+\begin{align*}
+\begin{split}
+\theta &= (X^{T}X)^{-1}(X^{T}y)\\
+\begin{bmatrix}
+\theta_{0}\\
+\theta_{1}
+\end{bmatrix} &= 
+\begin{bmatrix}
+2\\
+(-1/5)
+\end{bmatrix} 
+\end{split}
+\end{align*}
+\vspace{-0.8cm}
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{ridge/q_unreg.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Example: Regularized}
+\[
+\theta = (X^{T}X+\mu I)^{-1}(X^{T}y)
+\]
+\pause
+\begin{align*}
+X^{T}X &= \begin{bmatrix}
+4 &10\\10&30
+\end{bmatrix} \\
+X^{T}X+\mu I &= \begin{bmatrix}
+6 &10\\10&32
+\end{bmatrix} \\
+(X^{T}X+\mu I)^{-1} &= \frac{1}{92} \begin{bmatrix}
+32 & -10\\
+-10& 6
+\end{bmatrix}\\
+X^{T}y &= \begin{bmatrix}
+6\\
+14
+\end{bmatrix}
+\end{align*}
+\end{frame}
+
+\begin{frame}{Example: Regularized}
+\vspace{0.4cm}
+\begin{align*}
+\begin{split}
+\theta &= (X^{T}X+\mu I)^{-1}(X^{T}y) \\
+\begin{bmatrix}
+\theta_{0}\\
+\theta_{1}
+\end{bmatrix} &= 
+\begin{bmatrix}
+0.56\\
+0.26
+\end{bmatrix} 
+\end{split}
+\end{align*}
+\vspace{-0.8cm}
+\begin{figure}
+\includegraphics[width=0.8\linewidth]{ridge/q_reg.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Multi-collinearity}
+$(X^{T}X)^{-1}$ is not computable when $|X^{T}X|$ = 0.
+
+This was a drawback of using linear regression
+
+\begin{equation*}
+X = \begin{bmatrix}
+1 & 1& 2\\
+1 & 2& 4\\
+1 & 3& 6\\
+\end{bmatrix}
+\end{equation*}
+
+The matrix X is not full rank. 
+\end{frame}
+
+\begin{frame}{Multi-collinearity}
+But with ridge regression, the matrix to be inverted is $X^{T}X + \mu I$ and not $X^{T}X$.
+
+\begin{equation*}
+X = \begin{bmatrix}
+1+\mu & 1& 2\\
+1 & 2+\mu & 4\\
+1 & 3& 6+\mu \\
+\end{bmatrix}
+\end{equation*}
+
+The matrix X would be full rank depending on the value of $\mu$ . 
+\end{frame}
+
+
 \begin{frame}{Extension of the analytical model}
 For ridge with no penalty on $\theta_0$
 $$
-\hat{\theta} = \left(X^TX+\delta^2I^*\right)^{-1}X^Ty
+\hat{\theta} = \left(X^TX+\mu I^*\right)^{-1}X^Ty
 $$
 where, $$I = \begin{bmatrix}
     \color{red}0 & 0 & 0 & \dots  & 0 \\
