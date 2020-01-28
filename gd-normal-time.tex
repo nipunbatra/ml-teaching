@@ -1,0 +1,119 @@
+
+\documentclass{beamer}
+\usepackage{tcolorbox}
+\usepackage{caption}
+\usepackage{pgfplots}
+\usepackage{grffile}
+%\beamerdefaultoverlayspecification{<+->}
+\newcommand{\data}{\mathcal{D}}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand\Item[1][]{%
+	\ifx\relax#1\relax  \item \else \item[#1] \fi
+	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+
+
+\usetheme{metropolis}           % Use metropolis theme
+
+
+\title{Linear Rergression Time Complexity Calculation}
+\date{\today}
+\author{Nipun Batra}
+\institute{IIT Gandhinagar}
+\begin{document}
+  \maketitle
+  
+  
+  
+  
+% \section{Linear Regression}
+
+\begin{frame}{Normal Equation}
+
+	\begin{itemize}[<+->]
+		\item Consider $X\in \mathcal{R}^{N\times D}$
+		\item $N$ examples and $D$ dimensions
+		\item What is the time complexity of solving the normal equation $\hat{\theta} = (X^TX)^{-1}X^Ty$?
+	\end{itemize}
+	
+	
+
+\end{frame}
+
+\begin{frame}{Normal Equation}
+
+\begin{itemize}[<+->]
+	\item $X$ has dimensions $N\times D$, $X^T$ has dimensions $D \times N$
+	\item $X^TX$ is a matrix product of matrices of size: $D \times N$ and $N \times D$, which is $\mathcal{O}(D^{2}N)$
+	\item Inversion of $X^TX$ is an inversion of a $D\times D$ matrix, which is $\mathcal{O}(D^{3})$
+	\item $X^Ty$ is a matrix vector product of size $D \times N$ and $N \times 1$, which is $\mathcal{O}(DN)$
+	\item $(X^TX)^{-1}X^Ty$ is a matrix product of a  $D\times D$ matrix and $D \times 1$ matrix, which is $\mathcal{O}(D^2)$
+	\item Overall complexity: $\mathcal{O}(D^{2}N)$ + $\mathcal{O}(D^{3})$ + $\mathcal{O}(DN)$ + $\mathcal{O}(D^2)$ = $\mathcal{O}(D^{2}N)$ + $\mathcal{O}(D^{3})$
+	\item Scales cubic in the number of columns/features of $X$
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Gradient Descent}
+Start with random values of $\theta_{0}$ and $\theta_{1}$\\
+Till convergence
+\begin{itemize}[<+->]
+	\item $\theta_{0} = \theta_{0} - \cfrac{\partial}{\partial \theta_{0}} (\sum \epsilon_{i}^{2}) $
+	\item $\theta_{1} = \theta_{1} - \cfrac{\partial}{\partial \theta_{1}} (\sum \epsilon_{i}^{2}) $
+	\item Question: Can you write the above for $D$ dimensional data in vectorised form?
+	\item	\(\theta_{0}=\theta_{0}-\alpha \frac{\partial}{\partial \theta_{0}}\left(y-X\theta\right)^{\top}\left(y-X\theta\right)\)
+	\(\theta_{1}=\theta_{1}-\alpha \frac{\partial}{\partial \theta_{1}}\left(y-X\theta\right)^{\top}\left(y-X\theta\right)\) 
+	\\ $\vdots$
+	\\	\(\theta_{D}=\theta_{D}-\alpha \frac{\partial}{\partial \theta_{D}}\left(y-X\theta\right)^{\top}\left(y-X\theta\right)\)
+	\item \(\theta=\theta - \alpha \frac{\partial}{\partial \theta}\left(y-X\theta\right)^{\top}\left(y-X\theta\right)\) 
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Gradient Descent}
+
+
+\(\frac{\partial}{\partial \theta}(y-X \theta)^{\top}(y-X \theta)\)
+\\ \(=\frac{\partial}{\partial \theta}\left(y^{\top}-\theta^{\top} X^{\top}\right)(y-X \theta)\)
+\\ \(=\frac{\partial}{\partial \theta}\left(y^{\top} y-\theta^{\top} X^{\top} y-y^{\top} x \theta+\theta^{\top} X^{\top} X \theta\right)\)
+\\ \(=-2 X^{\top} y+2 X^{\top} x \theta\)
+\\ \(=2 X^{\top}(X \theta-y)\)
+	
+
+\end{frame}
+
+\begin{frame}{Gradient Descent}
+
+
+We can write the vectorised update equation as follows, for each iteration
+
+\(\theta=\theta - \alpha X^{\top}(X \theta-y)\) 
+
+
+\pause For $t$ iterations, what is the computational complexity of our gradient descent solution?
+
+\pause Hint, rewrite the above as: \(\theta=\theta - \alpha X^{\top}X \theta+ \alpha X^{\top}y\) 
+
+\pause Complexity of computing $X^{\top}y$ is $\mathcal{O}(DN)$
+
+\pause Complexity of computing $\alpha X^{\top}y$ once we have $X^{\top}y$ is $\mathcal{O}(DN)$ since  $X^{\top}y$ has $DN$ entries
+
+\pause Complexity of computing $X^{\top}X$ is $\mathcal{O}(D^2N)$ and then multiplying with $\alpha$ is  $\mathcal{O}(D^2)$
+
+\pause All of the above need only be calculated once!
+
+
+
+\end{frame}
+
+
+
+\begin{frame}{Gradient Descent}
+\pause For $t$ iterations, we now need to first multiply  $\alpha X^{\top}X$ with $\theta$ which is matrix multiplication of a $D \times D$ matrix with a $D \times 1$, which is 
+\end{frame}
+
+\end{document}
