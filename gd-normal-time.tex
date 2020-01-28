@@ -113,7 +113,31 @@ We can write the vectorised update equation as follows, for each iteration
 
 
 \begin{frame}{Gradient Descent}
-\pause For $t$ iterations, we now need to first multiply  $\alpha X^{\top}X$ with $\theta$ which is matrix multiplication of a $D \times D$ matrix with a $D \times 1$, which is 
+\pause For each of the $t$ iterations, we now need to first multiply  $\alpha X^{\top}X$ with $\theta$ which is matrix multiplication of a $D \times D$ matrix with a $D \times 1$, which is $\mathcal{O}(D^2)$ 
+
+\pause The remaining subtraction/addition can be done in $\mathcal{O}(D)$ for each iteration.
+
+\pause What is overall computational complexity?
+
+\pause $\mathcal{O}(tD^2)$ + $\mathcal{O}(D^2N) = \mathcal{O}((t+N)D^2)$
+\end{frame}
+
+\begin{frame}{Gradient Descent (Alternative)}
+\pause If we do not rewrite the expression
+\(\theta=\theta - \alpha X^{\top}(X \theta-y)\) 
+
+For each iteration, we have:
+\begin{itemize}[<+->]
+	\item Computing $X\theta$ is $\mathcal{O}(ND)$
+	\item Computing $X\theta - y$ is $\mathcal{O}(N)$
+	\item Computing $\alpha X^{\top}$ is $\mathcal{O}(ND)$
+	\item Computing $\alpha X^{\top}(X\theta - y)$ is $\mathcal{O}(ND)$
+	\item Computing \(\theta=\theta - \alpha X^{\top}(X \theta-y)\) is $\mathcal{O}(N)$
+\end{itemize}
+
+\pause What is overall computational complexity?
+
+\pause $\mathcal{O}(NDt)$
 \end{frame}
 
 \end{document}
