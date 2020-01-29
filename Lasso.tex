@@ -30,7 +30,7 @@
 % \section{Linear Regression}
 
 \begin{frame}{Lasso Regression}
-\begin{itemize}
+\begin{itemize}[<+->]
 	
 	
 	\item LASSO $\longrightarrow$ Least absolute shrinkage and selection operator
@@ -40,7 +40,7 @@
 \end{frame}
 
 \begin{frame}{Constructing the Objective Function}
-\begin{itemize}
+\begin{itemize}[<+->]
 
 \item Find a $\theta_{opt}$ such that  \begin{equation}    \theta_{opt} =  \argmin_{\theta} {(Y-X\theta)^T(Y-X\theta)} : \ |\theta|<s \end{equation}
 \item Using KKT conditions
@@ -54,7 +54,7 @@
 \end{frame}
 
 \begin{frame}{Solving the Objective}
-\begin{itemize}
+\begin{itemize}[<+->]
 
 \item Since $|\theta|$ is not differentiable, we cannot solve,  \begin{equation}    \frac{\partial {(Y-X\theta)^T(Y-X\theta) + \delta^2|\theta|}}{\partial \theta} = 0 \end{equation}
 
