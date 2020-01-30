@@ -62,8 +62,8 @@
 Start with random values of $\theta_{0}$ and $\theta_{1}$\\
 Till convergence
 \begin{itemize}[<+->]
-	\item $\theta_{0} = \theta_{0} - \cfrac{\partial}{\partial \theta_{0}} (\sum \epsilon_{i}^{2}) $
-	\item $\theta_{1} = \theta_{1} - \cfrac{\partial}{\partial \theta_{1}} (\sum \epsilon_{i}^{2}) $
+	\item $\theta_{0} = \theta_{0} - \alpha\cfrac{\partial}{\partial \theta_{0}} (\sum \epsilon_{i}^{2}) $
+	\item $\theta_{1} = \theta_{1} - \alpha \cfrac{\partial}{\partial \theta_{1}} (\sum \epsilon_{i}^{2}) $
 	\item Question: Can you write the above for $D$ dimensional data in vectorised form?
 	\item	\(\theta_{0}=\theta_{0}-\alpha \frac{\partial}{\partial \theta_{0}}\left(y-X\theta\right)^{\top}\left(y-X\theta\right)\)
 	\(\theta_{1}=\theta_{1}-\alpha \frac{\partial}{\partial \theta_{1}}\left(y-X\theta\right)^{\top}\left(y-X\theta\right)\) 
@@ -100,7 +100,7 @@ We can write the vectorised update equation as follows, for each iteration
 
 \pause Complexity of computing $X^{\top}y$ is $\mathcal{O}(DN)$
 
-\pause Complexity of computing $\alpha X^{\top}y$ once we have $X^{\top}y$ is $\mathcal{O}(DN)$ since  $X^{\top}y$ has $DN$ entries
+\pause Complexity of computing $\alpha X^{\top}y$ once we have $X^{\top}y$ is $\mathcal{O}(D)$ since  $X^{\top}y$ has $D$ entries
 
 \pause Complexity of computing $X^{\top}X$ is $\mathcal{O}(D^2N)$ and then multiplying with $\alpha$ is  $\mathcal{O}(D^2)$
 
