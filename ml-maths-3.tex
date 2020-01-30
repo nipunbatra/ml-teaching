@@ -4,6 +4,7 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{adjustbox}
+\usepackage{pdfpages}
 
 
 %\beamerdefaultoverlayspecification{<+->}
@@ -297,21 +298,26 @@ Max of $x^{2}y = \cfrac{2}{3} \sqrt{\cfrac{1}{3}}$
 	In both cases, $\mu_ig_i(x^*) = 0$
 \end{frame}
 
-\begin{frame}
-\includegraphics[width=1.1\textwidth]{ml-maths/2.png}
-\end{frame}
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=-]{kkt-drawing.pdf}
+}
 
-\begin{frame}
-\includegraphics[width=1.1\textwidth]{ml-maths/1.png}
-\end{frame}
+%\begin{frame}
+%\includegraphics[width=1.1\textwidth]{ml-maths/2.png}
+%\end{frame}
+%
+%\begin{frame}
+%\includegraphics[width=1.1\textwidth]{ml-maths/1.png}
+%\end{frame}
 
-\begin{frame}{Constraint on $\mu_i$'s}
-	\centering
-	\includegraphics[width = 0.5\textwidth]{ml-maths/img3}
-	$min_xL(x, \lambda, \mu)  \implies \nabla_xf(x) + \nabla_x\mu_ig_i(x) = 0$\\
-	\vspace{0.5cm}
-	$\mu_i = \dfrac{\nabla_xf(x)}{\nabla_x\mu_ig_i(x)} = +ve$
-\end{frame}
+%\begin{frame}{Constraint on $\mu_i$'s}
+%	\centering
+%	\includegraphics[width = 0.5\textwidth]{ml-maths/img3}
+%	$min_xL(x, \lambda, \mu)  \implies \nabla_xf(x) + \nabla_x\mu_ig_i(x) = 0$\\
+%	\vspace{0.5cm}
+%	$\mu_i = \dfrac{\nabla_xf(x)}{\nabla_x\mu_ig_i(x)} = +ve$
+%\end{frame}
 
 \begin{frame}{KKT Conditions}
 	\only<1->{
