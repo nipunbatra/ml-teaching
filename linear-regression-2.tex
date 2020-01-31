@@ -407,6 +407,17 @@ Is Female& height\\
 \pause $\theta_{1}$ = Avg. female height (5+5.2+5.4)/3 - Avg. male height(5.9)
 \end{frame}
 
+\begin{frame}{Interpreting Dummy Variables}
+Alternatively, instead of a 0/1 coding scheme, we could create a dummy variable
+
+\pause \(x_{i}=\left\{\begin{array}{ll}{1} & {\text { if } i \text { th person is female }} \\ {-1} & {\text { if } i \text { th person is male }}\end{array}\right.\)
+
+\pause \(y_{i}=\theta_{0}+\theta_{1} x_{i}+\epsilon_{i}=\left\{\begin{array}{ll}{\theta_{0}+\theta_{1}+\epsilon_{i}} & {\text { if } i \text { th person is female }} \\ {\theta_{0}-\theta_{1}+\epsilon_{i}} & {\text { if } i \text { th person is male. }}\end{array}\right.\)
+
+
+\pause Now, $\theta_{0}$ can be interpreted as average person height. $\theta_{1}$ as the amount that female height is above average and male height is below average.
+\end{frame}
+
 %\begin{frame}{Modelling Interaction}
 %    
 %    $$
