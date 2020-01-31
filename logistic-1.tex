@@ -88,7 +88,7 @@
 	    \end{equation*}
 	    Q. Write $X\theta$ in a more convenient form (as $P(y = 1|X)$, $P(y = 0 | X)$)\\
 	    \begin{equation*}
-	        P(y = 0 | X) = 1 - P(y = 1 | X) = 1 - \frac{1}{1 + e^{-X\theta}} = \frac{e^{-X\theta}}{1 + e^{-X\theta}} \\
+	        P(y = 0 | X) = 1 - P(y = 1 | X) = 1 - \frac{1}{1 + e^{-X\theta}} = \frac{e^{-X\theta}}{1 + e^{-X\theta}} 
 	        \therefore \frac{P(y = 1|X)}{1 - P(y = 1|X)} = e^{X\theta}
 	        \implies X\theta = \log\frac{P(y = 1|X)}{1 - P(y = 1 | X)}
 	    \end{equation*}
@@ -118,12 +118,12 @@
 	\begin{frame}{Learning Parameters}
 	    Could we use cost function as:
 	    \begin{equation*}
-	        J(\theta) = \sum (y_{i} - \hat{y}_{i})^{2}\\
+	        J(\theta) = \sum (y_{i} - \hat{y}_{i})^{2}
 	    \end{equation*}
 	    \begin{equation*}
 	        \hat{y}_{i} = \sigma(X\theta)
 	    \end{equation*}
-	    Answer: No (Non-Convex) \\ \hspace{1.2cm} (See Jupyter Notebook)
+	    Answer: No (Non-Convex)  \hspace{1.2cm} (See Jupyter Notebook)
 	\end{frame}
 	\begin{frame}{Learning Parameters}
 	    Likelihood = $P(D | \theta)$ \\
@@ -140,15 +140,15 @@
 	    [Above: Similar to $P(D|\theta)$ for Linear Regression; \\
 	    \hspace{1.3cm} Difference Bernoulli instead of Gaussian]\\
 	    \begin{equation*}
-	        -\log P(y | X, \theta) = \text{Negative Log Likelihood}\\
-	        \hspace{3cm} = \text{Cost function will be minimising} \\
+	        -\log P(y | X, \theta) = \text{Negative Log Likelihood}
+	        \hspace{3cm} = \text{Cost function will be minimising} 
 	        \hspace{3cm} = J(\theta)
 	    \end{equation*}
 	\end{frame}
 	\begin{frame}{Learning Parameters}
 	    \begin{equation*}
-	        J(\theta) = -\log \bigg\{\prod_{i=1}^{n} \Big\{\frac{1}{1 + e^{-x_{i}\theta}}\Big\}^{y_{i}}\Big\{1 - \frac{1}{1 + e^{-x_{i}\theta}}\Big\}^{1 - y_{i}}\bigg\}\\
-	        \hspace{0.5cm} J(\theta) = -\bigg\{\sum_{i=1}^{n} y_{i} \log(\sigma_{\theta}(x_{i})) + (1 - y_{i})\log(1 - \sigma_{\theta}(x_{i}))\bigg\} \\
+	        J(\theta) = -\log \bigg\{\prod_{i=1}^{n} \Big\{\frac{1}{1 + e^{-x_{i}\theta}}\Big\}^{y_{i}}\Big\{1 - \frac{1}{1 + e^{-x_{i}\theta}}\Big\}^{1 - y_{i}}\bigg\}
+	        \hspace{0.5cm} J(\theta) = -\bigg\{\sum_{i=1}^{n} y_{i} \log(\sigma_{\theta}(x_{i})) + (1 - y_{i})\log(1 - \sigma_{\theta}(x_{i}))\bigg\} 
 	    \end{equation*}
 	    \begin{equation*}
 	        \hspace{0.5cm} \frac{\partial J(\theta)}{\partial \theta_{j}} = -\frac{\partial }{\partial \theta_{j}} \bigg\{\sum_{i=1}^{n} y_{i} log(\sigma_{\theta}(x_{i})) + (1 - y_{i})log(1 - \sigma{\theta}(x_{i}))\bigg\}
@@ -203,7 +203,7 @@
 	\begin{frame}{Regularized Logistic Regression}
 	    Unregularised:
 	    \begin{equation*}
-	        J_{1}(\theta) = -\bigg\{\sum_{i=1}^{n}y_{i}\log(\sigma_{theta}(x_{i})) + (1 - y_{i})\log(1 - \simga_{\theta}(x_{i}))\bigg\}
+	        J_{1}(\theta) = -\bigg\{\sum_{i=1}^{n}y_{i}\log(\sigma_{theta}(x_{i})) + (1 - y_{i})\log(1 - \sigma_{\theta}(x_{i}))\bigg\}
 	    \end{equation*}
 	    L2 Regularization:
 	    \begin{equation*}
@@ -261,28 +261,28 @@
 	        = \text{Sigmoid!}
 	    \end{equation*}
 	\end{frame}
-	\begin{frame}{Multi-Class Logistic Regression Cost}
-	    For 2 class we had:
-	    \begin{equation*}
-	        J(\theta) = -\bigg\{\sum_{i=1}^{n}y_{i}\log(\sigma_{\theta}(x_{i})) + (1 - y_{i})\log(1 - \sigma_{\theta}(x_{i}))\bigg\}
-	    \end{equation*}
-	    Extend to K-class:
-	    \begin{equation*}
-	        J(\theta) = \bigg\{\sum_{i=1}^{n}\sum_{k=1}^{K}I\{y_{i} = k\}\log\frac{e^{x_{i}\theta_{k}}}{\sum_{k=1}^{K}e^{x_{i}\theta_{k}}}\bigg\}
-	    \end{equation*}
-	    \begin{equation*}
-	        i \rightarrow \text{Sample #} \hspace{2cm} \text{I: Identity Function}
-	    \end{equation*}
-	    \begin{equation*}
-	        k \rightarrow Class \hspace{2cm} \text{I(true) = 1; I(false) = 0}
-	    \end{equation*}
-	\end{frame}
-	\begin{frame}{Multi-Class Logistic Regression Cost}
-	    \begin{equation*}
-	        \text{Now:}
-	    \end{equation*}
-	    \begin{equation*}
-	        \frac{\partial J(\theta)}{\partial \theta_{k}} = \sum_{i=1}^{n}\bigg[x_{i}\bigg\{I(y_{i} = k) - P(y_{i} = k | x_{i}, \theta)\bigg\}\bigg]
-	    \end{equation*}
-	\end{frame}
+%	\begin{frame}{Multi-Class Logistic Regression Cost}
+%	    For 2 class we had:
+%	    \begin{equation*}
+%	        J(\theta) = -\bigg\{\sum_{i=1}^{n}y_{i}\log(\sigma_{\theta}(x_{i})) + (1 - y_{i})\log(1 - \sigma_{\theta}(x_{i}))\bigg\}
+%	    \end{equation*}
+%	    Extend to K-class:
+%	    \begin{equation*}
+%	        J(\theta) = \bigg\{\sum_{i=1}^{n}\sum_{k=1}^{K}I\{y_{i} = k\}\log\frac{e^{x_{i}\theta_{k}}}{\sum_{k=1}^{K}e^{x_{i}\theta_{k}}}\bigg\}
+%	    \end{equation*}
+%	    \begin{equation*}
+%	        i \rightarrow \text{Sample #} \hspace{2cm} \text{I: Identity Function}
+%	    \end{equation*}
+%	    \begin{equation*}
+%	        k \rightarrow Class \hspace{2cm} \text{I(true) = 1; I(false) = 0}
+%	    \end{equation*}
+%	\end{frame}
+%	\begin{frame}{Multi-Class Logistic Regression Cost}
+%	    \begin{equation*}
+%	        \text{Now:}
+%	    \end{equation*}
+%	    \begin{equation*}
+%	        \frac{\partial J(\theta)}{\partial \theta_{k}} = \sum_{i=1}^{n}\bigg[x_{i}\bigg\{I(y_{i} = k) - P(y_{i} = k | x_{i}, \theta)\bigg\}\bigg]
+%	    \end{equation*}
+%	\end{frame}
 \end{document}

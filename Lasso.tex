@@ -119,45 +119,51 @@ Use Coordinate descent!
 \end{figure}
 \end{frame}
 
-\begin{frame}{Why Lasso Gives Sparse solution}
-\begin{figure}
-    \centering
-    \includegraphics[scale = 0.4]{Lasso/lasso_2.png}
-    \label{fig:my_label}
-\end{figure}
-\begin{itemize}
-\small{
-    \item Pointedness of $L_{p}$ norm 
-    \item  Probability of Intersecting an axis increases.
-    \item Sparsity increases. 
-    \item Solving difficulty also increases
-    }
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Interpretation : II}
-\begin{figure}
-    \centering
-    \includegraphics[scale = 0.3]{Lasso/lasso_3.png}
-    \label{fig:my_label}
-\end{figure}
-
-\end{frame}
-
-
-
-\begin{frame}{Gradient Descent}
-
-
-\foreach \x in {0,1,2,3,4} 
-{%
-\includegraphics<\x>[scale=0.75]{Lasso/GD_iteration_\x.pdf}
-%    
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=-]{lasso-sparse.pdf}
 }
 
 
-\end{frame}
+%\begin{frame}{Why Lasso Gives Sparse solution}
+%\begin{figure}
+%    \centering
+%    \includegraphics[scale = 0.4]{Lasso/lasso_2.png}
+%    \label{fig:my_label}
+%\end{figure}
+%\begin{itemize}
+%\small{
+%    \item Pointedness of $L_{p}$ norm 
+%    \item  Probability of Intersecting an axis increases.
+%    \item Sparsity increases. 
+%    \item Solving difficulty also increases
+%    }
+%\end{itemize}
+%
+%\end{frame}
+%
+%\begin{frame}{Interpretation : II}
+%\begin{figure}
+%    \centering
+%    \includegraphics[scale = 0.3]{Lasso/lasso_3.png}
+%    \label{fig:my_label}
+%\end{figure}
+%
+%\end{frame}
+%
+%
+%
+%\begin{frame}{Gradient Descent}
+%
+%
+%\foreach \x in {0,1,2,3,4} 
+%{%
+%\includegraphics<\x>[scale=0.75]{Lasso/GD_iteration_\x.pdf}
+%%    
+%}
+%
+%
+%\end{frame}
 
 \begin{frame}{Regularization path of lasso regression}
 \begin{figure}
