@@ -4,7 +4,7 @@
 \usepackage{amsmath}
 \usepackage[labelformat=empty]{caption}
 \usepackage{subcaption}
-
+\usepackage{pdfpages}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -314,7 +314,9 @@ X = \begin{bmatrix}
 \end{bmatrix}
 \end{equation*}
 
-The matrix X would be full rank depending on the value of $\mu$ . 
+The matrix X would be full rank for $\mu>0$ . 
+
+\pause Another interpretation of ``regularisation''
 \end{frame}
 
 
@@ -330,5 +332,32 @@ where, $$I = \begin{bmatrix}
     0 & 0 & 0 & \dots  & 1
 \end{bmatrix}$$
 \end{frame}
+
+
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=-]{ridge-intercept.pdf}
+}
+
+\begin{frame}{Ridge Solution using Gradient Descent}
+\begin{itemize}[<+->]
+	\item \(\theta=\theta - \alpha \frac{\partial}{\partial \theta}(\left(y-X\theta\right)^{\top}\left(y-X\theta\right)+\mu\theta^{\top}\theta)\) 
+	\item \(\theta=\theta - \alpha(-2 X^{\top} y+2 X^{\top} X \theta + 2\mu I \theta)\)
+	\item \(\theta=(1-2\alpha\mu I)\theta - \alpha(-2 X^{\top} y+2 X^{\top} X \theta)\)
+	\item \(\theta=\underbrace{(1-2\alpha\mu I)\theta}_\text{Shrinking $\theta$} - \alpha(-2 X^{\top} y+2 X^{\top} X \theta)\)
+\end{itemize}
+\pause \begin{itemize}
+
+	\item Contrast with update equation for unregularised regression:
+	\item \(\theta=\underbrace{\theta}_\text{No Shrinking $\theta$} - \alpha(-2 X^{\top} y+2 X^{\top} X \theta)\)
+	
+\end{itemize}
+
+\end{frame}
+
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=-]{ridge-gd.pdf}
+}
 
 \end{document}
