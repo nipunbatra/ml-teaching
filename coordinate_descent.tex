@@ -5,6 +5,7 @@
 \usepackage{pgfplots}
 \usepackage{adjustbox}
 \usepackage{pgfplots}
+\usepackage{pdfpages}
 %\beamerdefaultoverlayspecification{<+->}
 \newcommand{\data}{\mathcal{D}}
 
@@ -28,9 +29,35 @@
 \maketitle
 
 
+\begin{frame}{Coordinate Descent}
+\begin{itemize}[<+->]
+	\item Another optimisation method (akin to gradient descent)
+	\item Objective: $_{\operatorname{Min_\theta}}f(\theta)$
+	\item Key idea: Sometimes difficult to find minimum for all coordinates
+	\item ..., but, easy for each coordinate
+	\item turns into a $1D$ optimisation problem
+\end{itemize}
+\end{frame}
+
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=-]{coordinate-vis.pdf}
+}
+
+
+\begin{frame}{Coordinate Descent}
+\begin{itemize}[<+->]
+	\item Picking next coordinate: \pause random, round-robin
+	\item No step-size to choose!
+	\item Converges for Lasso objective
+\end{itemize}
+\end{frame}
+
+
+
 
 	\begin{frame}{Coordinate Descent : Example}
-Learn $y = \theta_0 + \theta_1 x$ on following dataset, using gradient descent where initially $(\theta_0, \theta_1) = (2,3)$  for 2 iterations. 
+Learn $y = \theta_0 + \theta_1 x$ on following dataset, using coordinate descent where initially $(\theta_0, \theta_1) = (2,3)$  for 2 iterations. 
 \begin{table}[]
 	\centering
 	\label{tab:my-table}
@@ -107,7 +134,9 @@ MSE = $\frac{1}{3}(14+3\theta_{0}^{2}+14\theta_{1}^{2}-12\theta_{0}-28\theta_{1}
 			\addplot[only marks, mark=*]
 			coordinates{ % plot 1 data set
 				( 2 , 3 )
-			}; 
+			};
+			
+			
 			\end{axis}
 			\end{tikzpicture}
 		\end{adjustbox}
@@ -157,6 +186,7 @@ MSE = $\frac{1}{3}(14+3\theta_{0}^{2}+14\theta_{1}^{2}-12\theta_{0}-28\theta_{1}
 			coordinates{ % plot 1 data set
 				( -4 , 3 )
 			}; 
+		
 			\end{axis}
 			\end{tikzpicture}
 		\end{adjustbox}
@@ -181,10 +211,7 @@ MSE = $\frac{1}{3}(14+3\theta_{0}^{2}+14\theta_{1}^{2}-12\theta_{0}-28\theta_{1}
 			contour gnuplot={number=25,}
 			]
 			{(14 + 3*x^2 +14*y^2 -12*x - 28*y + 12*x*y)/3};
-			\addplot[only marks, mark=*]
-			coordinates{ % plot 1 data set
-				( -4 , 3 )
-			}; 
+			\draw [->] (axis cs: 2,3) -- (axis cs:-4,3);
 			\end{axis}
 			\end{tikzpicture}
 		\end{adjustbox}
@@ -228,6 +255,7 @@ MSE = $\frac{1}{3}(14+3\theta_{0}^{2}+14\theta_{1}^{2}-12\theta_{0}-28\theta_{1}
 			coordinates{ % plot 1 data set
 				( -4 , 2.7 )
 			}; 
+	
 			\end{axis}
 			\end{tikzpicture}
 		\end{adjustbox}
@@ -252,10 +280,8 @@ MSE = $\frac{1}{3}(14+3\theta_{0}^{2}+14\theta_{1}^{2}-12\theta_{0}-28\theta_{1}
 			contour gnuplot={number=25,}
 			]
 			{(14 + 3*x^2 +14*y^2 -12*x - 28*y + 12*x*y)/3};
-			\addplot[only marks, mark=*]
-			coordinates{ % plot 1 data set
-				( -4 , 2.7 )
-			}; 
+		\draw [->] (axis cs: 2,3) -- (axis cs:-4,3);
+		\draw [->] (axis cs: -4,3) -- (axis cs:-4,2.7);
 			\end{axis}
 			\end{tikzpicture}
 		\end{adjustbox}
@@ -322,10 +348,9 @@ MSE = $\frac{1}{3}(14+3\theta_{0}^{2}+14\theta_{1}^{2}-12\theta_{0}-28\theta_{1}
 			contour gnuplot={number=25,}
 			]
 			{(14 + 3*x^2 +14*y^2 -12*x - 28*y + 12*x*y)/3};
-			\addplot[only marks, mark=*]
-			coordinates{ % plot 1 data set
-				( -3.4 , 2.7 )
-			}; 
+		\draw [->] (axis cs: 2,3) -- (axis cs:-4,3);
+		\draw [->] (axis cs: -4,3) -- (axis cs:-4,2.7);
+		\draw [->] (axis cs: -4,2.7) -- (axis cs:-3.4,2.7);
 			\end{axis}
 			\end{tikzpicture}
 		\end{adjustbox}
@@ -336,5 +361,9 @@ MSE = $\frac{1}{3}(14+3\theta_{0}^{2}+14\theta_{1}^{2}-12\theta_{0}-28\theta_{1}
 \end{frame}
 
 
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=-]{coordinate-descent-fail.pdf}
+}
 
 \end{document}

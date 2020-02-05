@@ -197,22 +197,19 @@ $g(\Sigma) = \begin{bmatrix}
 
 
 \begin{frame}{PDF of bivariate normal with no cross-correlation}
-Let us consider the normalizing constant part now
-
-\textcolor{red}{Needs to be completed.}
-
+Let us consider the normalizing constant part now.
 $M = \frac{1}{\sigma_1 \sigma_2 2\pi }$
 $=\frac{1}{2\pi \times |\Sigma|^{\frac{1}{2}}}$
 \end{frame}
 
 
-\begin{frame}{Example of pdf with cross-correlation  = 0}
+\begin{frame}{Bivariate Gaussian samples with cross-correlation  = 0}
 	\begin{center}
 		\includegraphics[width=\linewidth,height=\textheight - 10pt,keepaspectratio]{gp/2d-gp3}
 	\end{center}
 \end{frame}
 
-\begin{frame}{Example of pdf with cross-correlation  $\neq$ 0}
+\begin{frame}{Bivariate Gaussian samples with cross-correlation  $\neq$ 0}
 	\begin{center}
 		\includegraphics[width=\linewidth,height=\textheight - 10pt,keepaspectratio]{gp/2d-gp}
 	\end{center}
@@ -308,7 +305,7 @@ A_{12}^TB_{12} + A_{22}B_{22} = I_q
 \end{frame}
 
 \begin{frame}{Detour: Inverse of partioned symmetric matrix}
-Moving around the expressions we get the following results.
+Moving the expressions around we get the following results.
 
 \begin{gather}
 	B_{11} = (A_{11} - A_{12}A_{22}^{-1}A_{12}^T)^{-1} = A_{11}^{-1} + A_{11}^{-1}A_{12}(A_{22} - A_{12}^TA_{11}^{-1}A_{12})^{-1}A_{12}^TA_{11}^{-1}\\
@@ -402,7 +399,7 @@ has a normal distribution $N({\bf x},\mu,\Sigma)$ with
 		\mu_1 \\
 		\mu_2
 	\end{bmatrix} 
-	\text{and}
+	\text{and }
 	\Sigma = \begin{bmatrix}
 		\Sigma_{11}& \Sigma_{12}\\
 		\Sigma_{21}&\Sigma_{22}
@@ -433,7 +430,7 @@ where ${\bf x}_1$ and ${\bf x}_2$ are two subvectors of respective dimensions $p
 	where $Q$ is defined as
 	\begin{gather}
 		Q({\bf x}_1,{\bf x}_2) = ({\bf x}-\mu)^T\Sigma^{-1}({\bf x}-\mu)\\
-		= [({\bf x}_1-\mu_1)^T, ({\bf x}-\mu_2)^T] 
+		= [({\bf x}_1-\mu_1)^T, ({\bf x}_2-\mu_2)^T] 
 		\begin{bmatrix}
 			\Sigma^{11} & \Sigma^{12}\\
 			\Sigma^{21} & \Sigma^{22}
@@ -447,11 +444,110 @@ where ${\bf x}_1$ and ${\bf x}_2$ are two subvectors of respective dimensions $p
 	\end{gather}
 \end{frame}
 
-\begin{frame}{Marginalisation of bivariate normal}
-	Complete derivation from \textcolor{red}{Where?}
+\begin{frame}{Marginalisation and Conditional of multivariate normal}
+	Here we have assumed 
+$$	
+	\Sigma^{-1}=\left[\begin{array}{cc}
+		{\Sigma_{11}} & {\Sigma_{12}} \\
+		{\Sigma_{21}} & {\Sigma_{22}}
+	\end{array}\right]^{-1}=\left[\begin{array}{cc}
+		{\Sigma^{11}} & {\Sigma^{12}} \\
+		{\Sigma^{21}} & {\Sigma^{22}}
+	\end{array}\right]
+$$
+
+	According to inverse of a partitioned symmetric matrix we have, 
+	\begin{gather}
+		\Sigma^{11}=\left(\Sigma_{11}-\Sigma_{12} \Sigma_{22}^{-1} \Sigma_{12}^{T}\right)^{-1}=\Sigma_{11}^{-1}+\Sigma_{11}^{-1} \Sigma_{12}\left(\Sigma_{22}-A_{12}^{T} \Sigma_{11}^{T} \Sigma_{12}\right)^{-1} \Sigma_{12}^{T} \Sigma_{11}^{-1}\\
+		\Sigma^{22}=\left(\Sigma_{22}-\Sigma_{12}^{T} \Sigma_{11}^{-1} \Sigma_{12}\right)^{-1}=\Sigma_{22}^{-1}+\Sigma_{22}^{-1} \Sigma_{12}^{T}\left(\Sigma_{11}-\Sigma_{12} \Sigma_{22}^{-1} \Sigma_{12}^{T}\right)^{-1} \Sigma_{12} \Sigma_{22}^{-1}\\
+		\Sigma^{12}=-\Sigma_{11}^{-1} \Sigma_{12}\left(\Sigma_{22}-\Sigma_{12}^{T} \Sigma_{11}^{-1} \Sigma_{12}\right)^{-1}=\left(\Sigma^{21}\right)^{T}
+	\end{gather}
+
 \end{frame}
 
-\begin{frame}{Conditional Normal Distribution}
-
+\begin{frame}{Marginalisation and Conditional of multivariate normal}
+	Substituting the second expression for $\Sigma^{11}$, first expression for $\Sigma^{22}$, and $\Sigma^{12}$ into $Q({\bf x}_1,{\bf x}_2)$ to get:
+	
+	\begin{gather}
+	\begin{aligned}
+	Q\left(\mathbf{x}_{1}, \mathbf{x}_{2}\right)=&\left(\mathbf{x}_{1}-\mu_{1}\right)^{T}\left[\Sigma_{11}^{-1}+\Sigma_{11}^{-1} \Sigma_{12}\left(\Sigma_{22}-A_{12}^{T} \Sigma_{11}^{-1} \Sigma_{12}\right)^{-1} \Sigma_{12}^{T} \Sigma_{11}^{-1}\right]\left(\mathbf{x}_{1}-\mu_{1}\right) \\
+	&-2\left(\mathbf{x}_{1}-\mu_{1}\right)^{T}\left[\Sigma_{11}^{-1} \Sigma_{12}\left(\Sigma_{22}-\Sigma_{12}^{T} \Sigma_{11}^{-1} \Sigma_{12}\right)^{-1}\right]\left(\mathbf{x}_{2}-\mu_{2}\right) \\
+	&+\left(\mathbf{x}_{2}-\mu_{2}\right)^{T}\left[\left(\Sigma_{22}-\Sigma_{12}^{T} \Sigma_{11}^{-1} \Sigma_{12}\right)^{-1}\right]\left(\mathbf{x}_{2}-\mu_{2}\right)\\
+	=&\left(\mathbf{x}_{1}-\mu_{1}\right)^{T} \Sigma_{11}^{-1}\left(\mathbf{x}_{1}-\mu_{1}\right) \\
+	&\left.+\left(\mathbf{x}_{1}-\mu_{1}\right)^{T} \Sigma_{11}^{-1} \Sigma_{12}\left(\Sigma_{22}-A_{12}^{T} \Sigma_{11}^{-1} \Sigma_{12}\right)^{-1} \Sigma_{12}^{T} \Sigma_{11}^{-1}\right]\left(\mathbf{x}_{1}-\mu_{1}\right) \\
+	&-2\left(\mathbf{x}_{1}-\mu_{1}\right)^{T}\left[\Sigma_{11}^{-1} \Sigma_{12}\left(\Sigma_{22}-\Sigma_{12}^{T} \Sigma_{11}^{-1} \Sigma_{12}\right)^{-1}\right]\left(\mathbf{x}_{2}-\mu_{2}\right) \\
+	&+\left(\mathbf{x}_{2}-\mu_{2}\right)^{T}\left[\left(\Sigma_{22}-\Sigma_{12}^{T} \Sigma_{11}^{-1} \Sigma_{12}\right)^{-1}\right]\left(\mathbf{x}_{2}-\mu_{2}\right)
+	\end{aligned}\\
+	\end{gather})
 \end{frame}
+
+\begin{frame}{Marginalisation and Conditional of multivariate normal}
+	\begin{gather}
+	\begin{aligned}
+	=&\left(\mathbf{x}_{1}-\mu_{1}\right)^{T} \Sigma_{11}^{-1}\\
+	&+\left[\left(\mathbf{x}_{2}-\mu_{2}\right)-\Sigma_{12}^{T} \Sigma_{11}^{-1}\left(\mathbf{x}_{1}-\mu_{1}\right)\right]^{T}\left(\Sigma_{22}-\Sigma_{12}^{T} \Sigma_{11}^{-1} \Sigma_{12}\right)^{-1}\left[\left(\mathbf{x}_{2}-\mu_{2}\right)-\Sigma_{12}^{T} \Sigma_{11}^{-1}\left(\mathbf{x}_{1}-\mu_{1}\right)\right]
+	\end{aligned}
+	\end{gather}
+	The last equal sign is due to the following equations for any vectors $u$ and $v$ and a symmetric matrix $A=A^T$:
+	
+	\begin{gather}
+		\begin{aligned}
+		& u^{T} A u-2 u^{T} A v+v^{T} A v=u^{T} A u-u^{T} A v-u^{T} A v+v^{T} A v \\
+		=& u^{T} A(u-v)-(u-v)^{T} A v=u^{T} A(u-v)-v^{T} A(u-v) \\
+		=&(u-v)^{T} A(u-v)=(v-u)^{T} A(v-u)
+		\end{aligned} 
+	\end{gather}
+\end{frame}
+
+\begin{frame}{Marginalisation and Conditional of multivariate normal}
+	We define  
+	$b \triangleq \mu_{2}+\Sigma_{12}^{T} \Sigma_{11}^{-1}\left(\mathbf{x}_{1}-\mu_{1}\right)$
+	\[
+	A \triangleq \Sigma_{22}-\Sigma_{12}^{T} \Sigma_{11}^{-1} \Sigma_{12}
+	\]
+	
+	and 
+	$$\left\{\begin{array}{l}{Q_{1}\left(\mathrm{x}_{1}\right) \quad \triangleq\left(\mathrm{x}_{1}-\mu_{1}\right)^{T} \Sigma_{1}^{-1}\left(\mathrm{x}_{1}-\mu_{1}\right)} \\ {Q_{2}\left(\mathrm{x}_{1}, \mathrm{x}_{2}\right) \triangleq\left[\left(\mathrm{x}_{2}-\mu_{2}\right)-\Sigma_{12}^{T} \Sigma_{11}^{-1}\left(\mathrm{x}_{1}-\mu_{1}\right)\right]^{T}\left(\Sigma_{22}-\Sigma_{12}^{T} \Sigma_{11}^{-1} \Sigma_{12}\right)^{-1}\left[\left(\mathrm{x}_{2}-\mu_{2}\right)-\Sigma_{12}^{T} \Sigma_{11}^{-1}\left(\mathrm{x}_{1}-\mu_{1}\right)\right]} \\ {=\left(\mathrm{x}_{2}-b\right)^{T} A^{-1}\left(\mathrm{x}_{2}-b\right)}\end{array}\right.$$
+	
+	and get 
+	$$Q\left(\mathbf{x}_{1}, \mathbf{x}_{2}\right)=Q_{1}\left(\mathbf{x}_{1}\right)+Q_{2}\left(\mathbf{x}_{1}, \mathbf{x}_{2}\right)$$
+\end{frame}
+
+
+\begin{frame}{Marginalisation and Conditional of multivariate normal}
+	Now the joint distribution can be written as: 
+	
+	$$\begin{aligned} f(\mathrm{x}) &=f\left(\mathrm{x}_{1}, \mathrm{x}_{2}\right)=\frac{1}{(2 \pi)^{n / 2}\vert\Sigma\vert^{1 / 2}} \exp \left[-\frac{1}{2} Q\left(\mathrm{x}_{1}, \mathrm{x}_{2}\right)\right] \\ &=\frac{1}{(2 \pi)^{n / 2}\left|\Sigma_{11}\right|^{1 / 2}\left|\Sigma_{22}-\Sigma_{12}^{T} \Sigma_{11}^{-1} \Sigma_{12}\right|^{1 / 2}} \exp \left[-\frac{1}{2} Q\left(\mathrm{x}_{1}, \mathrm{x}_{2}\right)\right] \\ &=\frac{1}{(2 \pi)^{p / 2}\left|\Sigma_{11}\right|^{1 / 2}} \exp \left[-\frac{1}{2}\left(\mathrm{x}_{1}-\mu_{1}\right)^{T} \Sigma_{11}^{-1}\left(\mathrm{x}_{1}-\mu_{1}\right)\right] \frac{1}{(2 \pi)^{q / 2}|A|^{1 / 2}} \exp \left[-\frac{1}{2}\left(\mathrm{x}_{2}-b\right)^{T} A^{-1}\left(\mathrm{x}_{2}-b\right)\right] \\ &=N\left(\mathrm{x}_{1}, \mu_{1}, \Sigma_{11}\right) N\left(\mathrm{x}_{2}, b, A\right) \end{aligned}$$
+	
+	The third equal sign is due to Determinant of a partitioned symmetric matrix:
+	
+	$|\Sigma|=\left|\Sigma_{11}\right|\left|\Sigma_{22}-\Sigma_{12}^{T} \Sigma_{11}^{-1} \Sigma_{12}\right|$
+\end{frame}
+
+\begin{frame}{Marginalisation and Conditional of multivariate normal}
+	The marginal distribution of ${\bf x}_1$ is 
+	$$f_{1}\left(\mathbf{x}_{1}\right)=\int f\left(\mathbf{x}_{1}, \mathbf{x}_{2}\right) d \mathbf{x}_{2}=\frac{1}{(2 \pi)^{p / 2}\left|\Sigma_{11}\right|^{1 / 2}} \exp \left[-\frac{1}{2}\left(\mathbf{x}_{1}-\mu_{1}\right)^{T} \Sigma_{11}^{-1}\left(\mathbf{x}_{1}-\mu_{1}\right)\right]$$
+	
+	and the conditional distribution of ${\bf x}_2$ given ${\bf x}_1$ is 
+	
+	$$f_{2 | 1}\left(\mathrm{x}_{2} | \mathrm{x}_{1}\right)=\frac{f\left(\mathrm{x}_{1}, \mathrm{x}_{2}\right)}{f\left(\mathrm{x}_{1}\right)}=\frac{1}{(2 \pi)^{q / 2}|A|^{1 / 2}} \exp \left[-\frac{1}{2}\left(\mathrm{x}_{2}-b\right)^{T} A^{-1}\left(\mathrm{x}_{2}-b\right)\right]$$
+\end{frame}
+
+\begin{frame}{Marginalisation and Conditional of multivariate normal}
+	with
+	
+	$$b=\mu_{2}+\Sigma_{12}^{T} \Sigma_{11}^{-1}\left(\mathbf{x}_{1}-\mu_{1}\right)$$
+	\[
+	A=\Sigma_{22}-\Sigma_{12}^{T} \Sigma_{11}^{-1} \Sigma_{12}
+	\]
+\end{frame}
+
+
+%\begin{frame}{Marginalisation of bivariate normal}
+%	Complete derivation from \textcolor{red}{Where?}
+%\end{frame}
+%
+%\begin{frame}{Conditional Normal Distribution}
+%
+%\end{frame}
 \end{document}

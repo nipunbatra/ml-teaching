@@ -4,6 +4,7 @@
 %\beamerdefaultoverlayspecification{<+->}
 \newcommand{\data}{\mathcal{D}}
 \usepackage{amsmath}
+\usepackage{pdfpages}
 
 \DeclareMathOperator*{\argmin}{arg\,min}
 
@@ -32,18 +33,18 @@
 
 \begin{frame}{Coordinate Descent for Unregularized Regression}
 
-\begin{itemize}
+\begin{itemize}[<+->]
     
 
     
     
     
-    \item Express error as a difference of $y_{i}$ and $y_{i}^{'}$
+    \item Express error as a difference of $y_{i}$ and $\hat{y_{i}}$
     \begin{align}
-    y &= \sum \theta_{j}x^{j}_{i} = \theta_{0}x_{i}^{0} + \theta_{1}x_{i}^{1} +\theta_{2}x_{i}^{2} ...... + \theta_{d}x_{i}^{d}  \\
-    \zeta_{i} &= y_{i} - y_{i}^{'}\\
+    \hat{y_i} &= \sum_{j=0}^{d} \theta_{j}x^{j}_{i} = \theta_{0}x_{i}^{0} + \theta_{1}x_{i}^{1} +\theta_{2}x_{i}^{2} ...... + \theta_{d}x_{i}^{d}  \\
+    \epsilon_{i} &= y_{i} - \hat{y_{i}}\\
     &= y_{i} - \theta_{0}x_{i}^{0} + \theta_{1}x_{i}^{1} + ...... + \theta_{d}x_{i}^{d}\\
-    &= y_{i} - \sum \theta_{j}x_{i}^{j}
+    &= y_{i} - \sum_{j=0}^{d} \theta_{j}x_{i}^{j}
     \end{align}
    
    
@@ -58,29 +59,51 @@
 \begin{frame}{Coordinate Descent for Unregularized regression}
 
 \begin{align*}
-    \sum_{i=1}^{N}  \zeta^{2}=RSS &=\sum_{i=1}^{N}\left(y_{i}-\left(\theta_{0}x_{i}^{0}+\ldots \quad \theta_{j} x_{i}^{j}+\theta_{d} x_{i}^{d}\right)\right)^{2}\\
-    \frac{\partial \operatorname{RSS}\left(\theta_{j}\right)}{\partial \theta_{j}}&=0 \Rightarrow 2 \sum_{i=1}^{N}\left(y_{i}-\left(\theta_{0}x_{i}^{0}+\ldots \quad \theta_{j} x_{i}^{j}+\ldots \right)\right)\left(-x_{i}^{j}\right)\\
-    &=\underbrace{2\sum_{i=1}^{N}\left(y_{i}-\left(\theta_{0} x_{i}^{0}+\ldots + \theta_{d} x_{i}^{d}\right)\right)\left(-x_{i}^{j}\right)}_{\text{$\hat{y}_{i}$ without $\theta_{j}$}}+2 \sum_{i=1}^{N} \theta_{j}\left(x_{i}\right)\\
+    \sum_{i=1}^{N}  \epsilon^{2}=RSS &=\sum_{i=1}^{N}\left(y_{i}-\left(\theta_{0}x_{i}^{0}+\ldots \quad \theta_{j} x_{i}^{j}+\theta_{d} x_{i}^{d}\right)\right)^{2}\\
+   \end{align*}
+\end{frame}
+
+\begin{frame}{Coordinate Descent for Unregularized regression}
+
+\begin{align*}
+\sum_{i=1}^{N}  \epsilon^{2}=RSS &=\sum_{i=1}^{N}\left(y_{i}-\left(\theta_{0}x_{i}^{0}+\ldots \quad \theta_{j} x_{i}^{j}+\theta_{d} x_{i}^{d}\right)\right)^{2}\\
+\frac{\partial \operatorname{RSS}\left(\theta_{j}\right)}{\partial \theta_{j}}&= 2 \sum_{i=1}^{N}\left(y_{i}-\left(\theta_{0}x_{i}^{0}+\ldots \quad \theta_{j} x_{i}^{j}+\ldots \right)\right)\left(-x_{i}^{j}\right)\\
 \end{align*}
 \end{frame}
 
 \begin{frame}{Coordinate Descent for Unregularized regression}
 
 \begin{align*}
+\sum_{i=1}^{N}  \epsilon^{2}=RSS &=\sum_{i=1}^{N}\left(y_{i}-\left(\theta_{0}x_{i}^{0}+\ldots \quad \theta_{j} x_{i}^{j}+\theta_{d} x_{i}^{d}\right)\right)^{2}\\
+\frac{\partial \operatorname{RSS}\left(\theta_{j}\right)}{\partial \theta_{j}}&= 2 \sum_{i=1}^{N}\left(y_{i}-\left(\theta_{0}x_{i}^{0}+\ldots \quad \theta_{j} x_{i}^{j}+\ldots \right)\right)\left(-x_{i}^{j}\right)\\
+&=2\sum_{i=1}^{N}\left(y_{i}-\left(\theta_{0} x_{i}^{0}+\ldots + \theta_{d} x_{i}^{d}\right)\right)\left(-x_{i}^{j}\right)+2 \sum_{i=1}^{N} \theta_{j}(x_{i}^j)^2\\
+\end{align*}
+where: $$\hat{y_{i}}^{(-j)} = \theta_{0} x_{i}^{0}+\ldots + \theta_{d} x_{i}^{d}$$ is $\hat{y}_{i}$ without $\theta_{j}$
+\end{frame}
+
+\begin{frame}{Coordinate Descent for Unregularized regression}
+
+\begin{align*}
+	Set \frac{\partial \operatorname{RSS}\left(\theta_{j}\right)}{\partial \theta_{j}}&= 0\\
     \theta_{j}&=\sum_{i=1}^{N} \frac{\left(y_{i}-\left(\theta_{0} x_{i}^{0}+\ldots + \ldots + \theta_{d}
     x_{i}^{d}\right)\right)\left(x_{i}^{j}\right)}{\left(x_{i}^{j}\right)^{2}}= \frac{\rho_{j}}{z_{j}}\\
     \rho_{j} &=\sum_{i=1}^{N} x_{i}^{j}\left(y_{i}-{\hat{y}_{i}^{(-j)}})\right)\\
     z_{j}&=\sum_{i=1}^{N}\left(x_{i}^{j}\right)^{2}
 \end{align*}
+$z_{j}$ is the squared of $\ell_2$ norm of the $j^{th}$ feature
 \end{frame}
 
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=-]{coordinate-rho.pdf}
+}
 
 
 
 
 \begin{frame}{Coordinate Descent for Lasso Regression}
 \[
-  \text{Minimize} \underbrace{\sum \zeta^{2} + \delta^{2}\left\{\left|\theta_{0}\right|+\left|\theta_{1}\right|+\ldots\left|\theta_{j}\right|+\ldots |\theta_{d}|\right\}}_{LASSO \: OBJECTIVE}
+  \text{Minimize} \underbrace{\sum_{i=1}^{N} \epsilon^{2} + \delta^{2}\left\{\left|\theta_{0}\right|+\left|\theta_{1}\right|+\ldots\left|\theta_{j}\right|+\ldots |\theta_{d}|\right\}}_{LASSO \: OBJECTIVE}
 \]
 \begin{align*}
 \frac{\partial}{\partial \theta_{j}}(& \text {LASSO OBJECTIVE})=-2 \rho_{j}+2 \theta_{j} z_{j}+\delta^{2}{\frac{\partial}{\partial \theta_{j}}}\left|\theta_{j}\right|\\[18pt]
@@ -93,7 +116,7 @@
 \end{frame}
 
 \begin{frame}{Coordinate Descent for Lasso Regression}
-\begin{itemize}
+\begin{itemize}[<+->]
     \item \textbf{Case 1: $\theta_{j}>0$}
     \begin{align*}
     \-2\rho_j+2\theta_j z_j+\delta^{2}  = 0\\
@@ -134,4 +157,9 @@
 \end{equation}
     
 \end{frame}
+
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=-]{coordinate-thresholding.pdf}
+}
 \end{document}
