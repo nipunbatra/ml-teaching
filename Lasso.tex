@@ -5,8 +5,10 @@
 \usepackage{pgfplots}
 \usepackage{pdfpages}
 \usepackage{grffile}
+\usepackage{adjustbox}
 %\beamerdefaultoverlayspecification{<+->}
 \newcommand{\data}{\mathcal{D}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 
 \DeclareMathOperator*{\argmin}{arg\,min}
 
@@ -43,10 +45,10 @@
 \begin{frame}{Constructing the Objective Function}
 \begin{itemize}[<+->]
 
-\item Find a $\theta_{opt}$ such that  \begin{equation}    \theta_{opt} =  \argmin_{\theta} {(Y-X\theta)^T(Y-X\theta)} : \ |\theta|<s \end{equation}
+\item Find a $\theta_{opt}$ such that  \begin{equation}    \theta_{opt} =  \argmin_{\theta} {(Y-X\theta)^T(Y-X\theta)} : \ \norm{\theta}_1<s \end{equation}
 \item Using KKT conditions
 \begin{equation}
-    \theta_{opt} = \underbrace{\argmin_{\theta}{(Y-X\theta)^T(Y-X\theta) + \delta^2|\theta|}}_\text{convex function}
+    \theta_{opt} = \underbrace{\argmin_{\theta}{(Y-X\theta)^T(Y-X\theta) + \delta^2\norm{\theta}_1}}_\text{convex function}
 \end{equation}
 	
 \end{itemize}
@@ -57,7 +59,7 @@
 \begin{frame}{Solving the Objective}
 \begin{itemize}[<+->]
 
-\item Since $|\theta|$ is not differentiable, we cannot solve,  \begin{equation}    \frac{\partial {(Y-X\theta)^T(Y-X\theta) + \delta^2|\theta|}}{\partial \theta} = 0 \end{equation}
+\item Since $|\theta|$ is not differentiable, we cannot solve,  \begin{equation}    \frac{\partial {(Y-X\theta)^T(Y-X\theta) + \delta^2\norm{\theta}_1}}{\partial \theta} = 0 \end{equation}
 
 \item How to Solve?
 Use Coordinate descent!
@@ -176,6 +178,553 @@ Use Coordinate descent!
 
 \end{frame}
 
+
+\begin{frame}{LASSO and feature selection}
+\begin{itemize}[<+->]
+	\item LASSO inherently does feature selection!
+	\item Sets coefficients of ``less important'' features to zero.
+	\item Sparse and memory efficient and often more interpretable models.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Subgradient }
+\begin{itemize}
+	
+	
+	\item Generalizes gradient to convex but non-differentiable problems
+	\item Examples:
+	\begin{itemize}
+		\item $f(x) = |x|$
+	\end{itemize}
+	
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Task at hand}
+\begin{itemize}
+
+\item TASK: find derivative of $f(x)$ at x = $x^0$
+\end{itemize}
+\begin{figure}
+\centering
+\includegraphics[scale = 0.25]{subgradient/subgradient_1.pdf}
+
+\label{fig:Non-differentiable function}
+\end{figure}
+
+
+\end{frame}
+
+\begin{frame}{Solution}
+
+\begin{itemize}
+\item Construct a differentiable g(x) 
+\begin{itemize}
+\item Intersecting $f(x)$ at $x = x_0$
+\item Below or on $f(x)$ for all x
+\end{itemize}
+\end{itemize}
+\begin{figure}
+\centering
+\includegraphics[scale = 0.25]{subgradient/subgradient_2.pdf}
+\label{fig:my_label}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Solution}
+
+\begin{itemize}
+\item Compute slope of g(x) at $x = x_0$
+\end{itemize}
+\begin{figure}
+\centering
+\includegraphics[scale = 0.25]{subgradient/subgradient_2.pdf}
+
+\label{fig:my_label}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Another Example: f(x) = $\mid x \mid$}
+
+\begin{itemize}
+\item Subgradient of f(x) belongs to [-1, 1]
+\end{itemize}
+\begin{figure}
+\centering
+\includegraphics[scale = 0.25]{subgradient/subgradient_3.pdf}
+\label{fig:my_label}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Coordinate Descent}
+\begin{itemize}[<+->]
+	\item Another optimisation method (akin to gradient descent)
+	\item Objective: $_{\operatorname{Min_\theta}}f(\theta)$
+	\item Key idea: Sometimes difficult to find minimum for all coordinates
+	\item ..., but, easy for each coordinate
+	\item turns into a $1D$ optimisation problem
+\end{itemize}
+\end{frame}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf[page=-]{coordinate-vis.pdf}
+}
+
+
+\begin{frame}{Coordinate Descent}
+\begin{itemize}[<+->]
+\item Picking next coordinate: \pause random, round-robin
+\item No step-size to choose!
+\item Converges for Lasso objective
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{Coordinate Descent : Example}
+Learn $y = \theta_0 + \theta_1 x$ on following dataset, using coordinate descent where initially $(\theta_0, \theta_1) = (2,3)$  for 2 iterations. 
+\begin{table}[]
+\centering
+\label{tab:my-table}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{x} & \textbf{y} \\ \hline
+1 & 1 \\ \hline
+2 & 2 \\ \hline
+3 & 3 \\ \hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+
+
+\begin{frame}{Coordinate Descent : Example}
+Our predictor, $\hat{y} = \theta_0 + \theta_1x$\\
+\vspace{1cm}
+Error for $i^{th}$ datapoint, $\epsilon_i = y_i - \hat{y_i}$\\
+$\epsilon_1 = 1 - \theta_0 - \theta_1$ \\
+$\epsilon_2 = 2 - \theta_0 - 2\theta_1$ \\
+$\epsilon_3 = 3 - \theta_0 - 3\theta_1$ \\
+
+\vspace{1cm}
+MSE = $\dfrac{\epsilon_1^2 + \epsilon_2^2 + \epsilon_3^2}{3}$ = $\dfrac{14 + 3\theta_0^2 + 14\theta_1^2 -12\theta_0 - 28\theta_1 + 12\theta_0\theta_1}{3}$\\
+\end{frame}
+
+
+
+
+
+\begin{frame}{Iteration 0}
+
+MSE = $\frac{1}{3}(14+3\theta_{0}^{2}+14\theta_{1}^{2}-12\theta_{0}-28\theta_{1}+12\theta_{0}\theta_{1})$\\
+
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{adjustbox}{max totalsize={\textwidth},center}
+
+\begin{tikzpicture}
+\begin{axis}[colorbar,xlabel=$\theta_0$, ylabel=$\theta_1$, zlabel=$\mathrm{Cost Function}$,title={Surface Plot}]
+\addplot3[
+surf,opacity=0.1,
+]
+{(14 + 3*x^2 +14*y^2 -12*x - 28*y + 12*x*y)/3};
+\addplot[only marks, mark=*]
+coordinates{ % plot 1 data set
+( 2 , 3 )
+}; 
+\end{axis}
+\end{tikzpicture}
+\end{adjustbox}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{adjustbox}{max totalsize={\textwidth},center}
+\begin{tikzpicture}
+\begin{axis}
+[
+title={Contour plot, view from top},
+view={0}{90},
+xlabel=$\theta_0$,
+ylabel=$\theta_1$,
+axis x line*=bottom,
+axis y line*=left,
+xtick align=outside,
+ytick align=outside,
+unit vector ratio*=1 1 1,
+]
+\addplot3[
+contour gnuplot={number=25,}
+]
+{(14 + 3*x^2 +14*y^2 -12*x - 28*y + 12*x*y)/3};
+\addplot[only marks, mark=*]
+coordinates{ % plot 1 data set
+( 2 , 3 )
+};
+
+
+\end{axis}
+\end{tikzpicture}
+\end{adjustbox}
+\end{column}
+\end{columns}
+
+
+
+
+\end{frame}
+
+\begin{frame}{Coordinate Descent : Example}
+\textbf{Iteration 1}\\
+\vspace{0.5cm}
+INIT: $\theta_{0} = 2$ and  $\theta_{1}  = 3$\\
+
+\vspace{0.5cm}
+$\theta_1 = 3$ optimize for $\theta_{0}$\\ 
+\only<2->{
+\vspace{0.5cm}
+$\frac{\partial MSE}{\partial \theta_{0}} = 6\theta_0 + 24 =  0$\\
+\vspace{0.5cm}
+$\theta_0 = -4$
+
+
+}
+
+
+\end{frame}
+
+
+\begin{frame}{Iteration 1}
+
+MSE = $\frac{1}{3}(14+3\theta_{0}^{2}+14\theta_{1}^{2}-12\theta_{0}-28\theta_{1}+12\theta_{0}\theta_{1})$\\
+
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{adjustbox}{max totalsize={\textwidth},center}
+
+\begin{tikzpicture}
+\begin{axis}[colorbar,xlabel=$\theta_0$, ylabel=$\theta_1$, zlabel=$\mathrm{Cost Function}$,title={Surface Plot}]
+\addplot3[
+surf,opacity=0.1,
+]
+{(14 + 3*x^2 +14*y^2 -12*x - 28*y + 12*x*y)/3};
+\addplot[only marks, mark=*]
+coordinates{ % plot 1 data set
+( -4 , 3 )
+}; 
+
+\end{axis}
+\end{tikzpicture}
+\end{adjustbox}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{adjustbox}{max totalsize={\textwidth},center}
+\begin{tikzpicture}
+\begin{axis}
+[
+title={Contour plot, view from top},
+view={0}{90},
+xlabel=$\theta_0$,
+ylabel=$\theta_1$,
+axis x line*=bottom,
+axis y line*=left,
+xtick align=outside,
+ytick align=outside,
+unit vector ratio*=1 1 1,
+]
+\addplot3[
+contour gnuplot={number=25,}
+]
+{(14 + 3*x^2 +14*y^2 -12*x - 28*y + 12*x*y)/3};
+\draw [->] (axis cs: 2,3) -- (axis cs:-4,3);
+\end{axis}
+\end{tikzpicture}
+\end{adjustbox}
+\end{column}
+\end{columns}
+
+
+\end{frame}
+
+\begin{frame}{Coordinate Descent : Example}
+\textbf{Iteration 2}\\
+\vspace{0.5cm}
+INIT: $\theta_{0} = -4$ and  $\theta_{1}  = 3$\\
+
+\vspace{0.5cm}
+$\theta_0 = -4$ optimize for $\theta_{1}$\\ 
+\only<2->{
+\vspace{0.5cm}
+$\theta_1 = 2.7$
+}
+
+
+\end{frame}
+
+
+\begin{frame}{Iteration 2}
+
+MSE = $\frac{1}{3}(14+3\theta_{0}^{2}+14\theta_{1}^{2}-12\theta_{0}-28\theta_{1}+12\theta_{0}\theta_{1})$\\
+
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{adjustbox}{max totalsize={\textwidth},center}
+
+\begin{tikzpicture}
+\begin{axis}[colorbar,xlabel=$\theta_0$, ylabel=$\theta_1$, zlabel=$\mathrm{Cost Function}$,title={Surface Plot}]
+\addplot3[
+surf,opacity=0.1,
+]
+{(14 + 3*x^2 +14*y^2 -12*x - 28*y + 12*x*y)/3};
+\addplot[only marks, mark=*]
+coordinates{ % plot 1 data set
+( -4 , 2.7 )
+}; 
+
+\end{axis}
+\end{tikzpicture}
+\end{adjustbox}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{adjustbox}{max totalsize={\textwidth},center}
+\begin{tikzpicture}
+\begin{axis}
+[
+title={Contour plot, view from top},
+view={0}{90},
+xlabel=$\theta_0$,
+ylabel=$\theta_1$,
+axis x line*=bottom,
+axis y line*=left,
+xtick align=outside,
+ytick align=outside,
+unit vector ratio*=1 1 1,
+]
+\addplot3[
+contour gnuplot={number=25,}
+]
+{(14 + 3*x^2 +14*y^2 -12*x - 28*y + 12*x*y)/3};
+\draw [->] (axis cs: 2,3) -- (axis cs:-4,3);
+\draw [->] (axis cs: -4,3) -- (axis cs:-4,2.7);
+\end{axis}
+\end{tikzpicture}
+\end{adjustbox}
+\end{column}
+\end{columns}
+
+
+\end{frame}
+
+\begin{frame}{Coordinate Descent : Example}
+\textbf{Iteration 3}\\
+\vspace{0.5cm}
+INIT: $\theta_{0} = -4$ and $\theta_{1}  = 2.7$\\
+
+\vspace{0.5cm}
+$\theta_1 = 2.7$ optimize for $\theta_{0}$\\ 
+\only<2->{
+\vspace{0.5cm}
+$\theta_0 = -3.4$
+}
+
+
+\end{frame}
+
+\begin{frame}{Iteration 3}
+
+MSE = $\frac{1}{3}(14+3\theta_{0}^{2}+14\theta_{1}^{2}-12\theta_{0}-28\theta_{1}+12\theta_{0}\theta_{1})$\\
+
+\begin{columns}
+\begin{column}{0.6\textwidth}
+\begin{adjustbox}{max totalsize={\textwidth},center}
+
+\begin{tikzpicture}
+\begin{axis}[colorbar,xlabel=$\theta_0$, ylabel=$\theta_1$, zlabel=$\mathrm{Cost Function}$,title={Surface Plot}]
+\addplot3[
+surf,opacity=0.1,
+]
+{(14 + 3*x^2 +14*y^2 -12*x - 28*y + 12*x*y)/3};
+\addplot[only marks, mark=*]
+coordinates{ % plot 1 data set
+( -3.4 , 2.7 )
+}; 
+\end{axis}
+\end{tikzpicture}
+\end{adjustbox}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+\begin{adjustbox}{max totalsize={\textwidth},center}
+\begin{tikzpicture}
+\begin{axis}
+[
+title={Contour plot, view from top},
+view={0}{90},
+xlabel=$\theta_0$,
+ylabel=$\theta_1$,
+axis x line*=bottom,
+axis y line*=left,
+xtick align=outside,
+ytick align=outside,
+unit vector ratio*=1 1 1,
+]
+\addplot3[
+contour gnuplot={number=25,}
+]
+{(14 + 3*x^2 +14*y^2 -12*x - 28*y + 12*x*y)/3};
+\draw [->] (axis cs: 2,3) -- (axis cs:-4,3);
+\draw [->] (axis cs: -4,3) -- (axis cs:-4,2.7);
+\draw [->] (axis cs: -4,2.7) -- (axis cs:-3.4,2.7);
+\end{axis}
+\end{tikzpicture}
+\end{adjustbox}
+\end{column}
+\end{columns}
+
+
+\end{frame}
+
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf[page=-]{coordinate-descent-fail.pdf}
+}
+
+
+\begin{frame}{Coordinate Descent for Unregularized Regression}
+
+\begin{itemize}[<+->]
+	
+	
+	
+	
+	
+	\item Express error as a difference of $y_{i}$ and $\hat{y_{i}}$
+	\begin{align}
+	\hat{y_i} &= \sum_{j=0}^{d} \theta_{j}x^{j}_{i} = \theta_{0}x_{i}^{0} + \theta_{1}x_{i}^{1} +\theta_{2}x_{i}^{2} ...... + \theta_{d}x_{i}^{d}  \\
+	\epsilon_{i} &= y_{i} - \hat{y_{i}}\\
+	&= y_{i} - \theta_{0}x_{i}^{0} + \theta_{1}x_{i}^{1} + ...... + \theta_{d}x_{i}^{d}\\
+	&= y_{i} - \sum_{j=0}^{d} \theta_{j}x_{i}^{j}
+	\end{align}
+	
+	
+	
+\end{itemize}
+
+
+\end{frame}
+
+
+
+\begin{frame}{Coordinate Descent for Unregularized regression}
+
+\begin{align*}
+\sum_{i=1}^{N}  \epsilon^{2}=RSS &=\sum_{i=1}^{N}\left(y_{i}-\left(\theta_{0}x_{i}^{0}+\ldots \quad \theta_{j} x_{i}^{j}+\theta_{d} x_{i}^{d}\right)\right)^{2}\\
+\end{align*}
+\end{frame}
+
+\begin{frame}{Coordinate Descent for Unregularized regression}
+
+\begin{align*}
+\sum_{i=1}^{N}  \epsilon^{2}=RSS &=\sum_{i=1}^{N}\left(y_{i}-\left(\theta_{0}x_{i}^{0}+\ldots \quad \theta_{j} x_{i}^{j}+\theta_{d} x_{i}^{d}\right)\right)^{2}\\
+\frac{\partial \operatorname{RSS}\left(\theta_{j}\right)}{\partial \theta_{j}}&= 2 \sum_{i=1}^{N}\left(y_{i}-\left(\theta_{0}x_{i}^{0}+\ldots \quad \theta_{j} x_{i}^{j}+\ldots \right)\right)\left(-x_{i}^{j}\right)\\
+\end{align*}
+\end{frame}
+
+\begin{frame}{Coordinate Descent for Unregularized regression}
+
+\begin{align*}
+\sum_{i=1}^{N}  \epsilon^{2}=RSS &=\sum_{i=1}^{N}\left(y_{i}-\left(\theta_{0}x_{i}^{0}+\ldots \quad \theta_{j} x_{i}^{j}+\theta_{d} x_{i}^{d}\right)\right)^{2}\\
+\frac{\partial \operatorname{RSS}\left(\theta_{j}\right)}{\partial \theta_{j}}&= 2 \sum_{i=1}^{N}\left(y_{i}-\left(\theta_{0}x_{i}^{0}+\ldots \quad \theta_{j} x_{i}^{j}+\ldots \right)\right)\left(-x_{i}^{j}\right)\\
+&=2\sum_{i=1}^{N}\left(y_{i}-\left(\theta_{0} x_{i}^{0}+\ldots + \theta_{d} x_{i}^{d}\right)\right)\left(-x_{i}^{j}\right)+2 \sum_{i=1}^{N} \theta_{j}(x_{i}^j)^2\\
+\end{align*}
+\pause where: $$\hat{y_{i}}^{(-j)} = \theta_{0} x_{i}^{0}+\ldots + \theta_{d} x_{i}^{d}$$ is $\hat{y}_{i}$ without $\theta_{j}$
+\end{frame}
+
+\begin{frame}{Coordinate Descent for Unregularized regression}
+
+\begin{align*}
+Set \frac{\partial \operatorname{RSS}\left(\theta_{j}\right)}{\partial \theta_{j}}&= 0\\
+\theta_{j}&=\sum_{i=1}^{N} \frac{\left(y_{i}-\left(\theta_{0} x_{i}^{0}+\ldots + \ldots + \theta_{d}
+x_{i}^{d}\right)\right)\left(x_{i}^{j}\right)}{\left(x_{i}^{j}\right)^{2}}= \frac{\rho_{j}}{z_{j}}\\
+\rho_{j} &=\sum_{i=1}^{N} x_{i}^{j}\left(y_{i}-{\hat{y}_{i}^{(-j)}})\right)\\
+z_{j}&=\sum_{i=1}^{N}\left(x_{i}^{j}\right)^{2}
+\end{align*}
+$z_{j}$ is the squared of $\ell_2$ norm of the $j^{th}$ feature
+\end{frame}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf[page=-]{coordinate-rho.pdf}
+}
+
+
+
+
+\begin{frame}{Coordinate Descent for Lasso Regression}
+\[
+\text{Minimize} \underbrace{\sum_{i=1}^{N} \epsilon^{2} + \delta^{2}\left\{\left|\theta_{0}\right|+\left|\theta_{1}\right|+\ldots\left|\theta_{j}\right|+\ldots |\theta_{d}|\right\}}_{LASSO \: OBJECTIVE}
+\]
+\begin{align*}
+\frac{\partial}{\partial \theta_{j}}(& \text {LASSO OBJECTIVE})=-2 \rho_{j}+2 \theta_{j} z_{j}+\delta^{2}{\frac{\partial}{\partial \theta_{j}}}\left|\theta_{j}\right|\\[18pt]
+&\frac{\partial}{\partial \theta_{j}}\left|\theta_{j}\right|=\left\{\begin{array}{cc}
+{1} & {\theta_{j}>0} \\
+{[-1,1]} & {\theta_{j}=0} \\
+{-1} & {\theta_{j}<0}
+\end{array}\right.
+\end{align*}
+\end{frame}
+
+\begin{frame}{Coordinate Descent for Lasso Regression}
+\begin{itemize}[<+->]
+\item \textbf{Case 1: $\theta_{j}>0$}
+\begin{align*}
+\-2\rho_j+2\theta_j z_j+\delta^{2}  = 0\\
+\theta_j = \frac{\rho_j - \frac{\delta^{2}}{2}}{z_{j}}\\
+\rho_{j}>\frac{\delta^{2}}{2} \Rightarrow  \theta_{j} = \frac{\rho_j - \frac{\delta^{2}}{2}}{z_{j}}
+\end{align*}
+
+\item \textbf{Case 2: $\theta_{j}<0$}
+\begin{equation}
+\rho_{j} < \frac{\delta^{2}}{2} \Rightarrow \theta_{j} = \frac{\rho_{j}+\delta^{2} / 2}{z_{j}}
+\end{equation}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Coordinate Descent for Lasso Regression}
+\begin{itemize}
+\item \textbf{Case 3: $\theta_{j} = 0$}
+\begin{align*}
+\frac{\partial}{\partial \theta_{j}}(\text {LASSO OBJECTIVE})&=-2 \rho_{j}+2\theta_{j} z_{j}+ \delta^{2}\underbrace{{\frac{\partial}{\partial \theta_{j}}}\left|\theta_{j}\right|}_{\text{[-1,1]}}\\
+&\epsilon \underbrace{[-2\rho_{j} - \delta^{2}, -2\rho_{j} + \delta^{2}]}_{\text{$\{0\}$ lies in this range}}\\
+\end{align*}
+\begin{align*}
+-2\rho_{j} - \delta^{2} \leq 0 \text{ and }& -2\rho_{j} - \delta^{2} \leq 0\\
+-\frac{\delta^{2}}{2} \leq \rho_j \leq \frac{\delta^{2}}{2}  \Rightarrow & \hspace{2mm} \theta_{j}=0
+\end{align*}
+
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Summary of Lasso Regression}
+\begin{equation}
+\theta_{j} =\left[\begin{array}{ccc}
+{\frac{\rho_{j} + \frac{\delta^{2}}{2}}{z_{j}}} & {if}  & {\rho_{j}<-\frac{\delta^{2}}{2}} \\
+{0} & {if} & {-\frac{\delta^{2}}{2} \leq \rho_{j} \leq \frac{\delta^{2}}{2}} \\
+{\frac{\rho_{j} - \frac{\delta^{2}}{2}}{z_{j}}} & {i f} & {\rho_{j}>\frac{\delta^{2}}{2}}
+\end{array}\right]
+\end{equation}
+
+\end{frame}
+
+{
+\setbeamercolor{background canvas}{bg=}
+\includepdf[page=-]{coordinate-thresholding.pdf}
+}
 
 
 \end{document}
