@@ -1,6 +1,6 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.4.5)  18 JAN 2020 13:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.4.5)  7 FEB 2020 15:50
 entering extended mode
- \write18 enabled.
+ restricted \write18 enabled.
  %&-line parsing enabled.
 **bayesian1.tex
 (./bayesian1.tex
@@ -1026,6 +1026,12 @@ LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 
 [2
 
+] [3
+
+] [4
+
+] [5
+
 ]
 LaTeX Font Info:    Try loading font information for U+msa on input line 85.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1043,53 +1049,53 @@ line 85.
 File: ot1mathkerncmss.fd 2013/03/27 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
 )
-[3
+[6
 
-] [4
+] [7
 
-] [5
+] [8
 
 ]
-<plots/online.pdf, id=48, 433.62pt x 289.08pt>
+<plots/online.pdf, id=64, 433.62pt x 289.08pt>
 File: plots/online.pdf Graphic file (type pdf)
 <use plots/online.pdf>
 Package pdftex.def Info: plots/online.pdf  used on input line 115.
 (pdftex.def)             Requested size: 256.0748pt x 170.72333pt.
- [6
+ [9
 
- <./plots/online.pdf>] [7
-
-] [8
-
-] [9
-
-] [10
+ <./plots/online.pdf>] [10
 
 ] [11
 
 ] [12
 
+] [13
+
+] [14
+
+] [15
+
 ]
-<plots/uniformprior.pdf, id=111, 433.62pt x 289.08pt>
+<plots/uniformprior.pdf, id=127, 433.62pt x 289.08pt>
 File: plots/uniformprior.pdf Graphic file (type pdf)
 <use plots/uniformprior.pdf>
 Package pdftex.def Info: plots/uniformprior.pdf  used on input line 244.
 (pdftex.def)             Requested size: 128.0374pt x 85.35725pt.
-<plots/nonuniformprior.pdf, id=112, 433.62pt x 289.08pt>
+<plots/nonuniformprior.pdf, id=128, 433.62pt x 289.08pt>
 File: plots/nonuniformprior.pdf Graphic file (type pdf)
 <use plots/nonuniformprior.pdf>
 Package pdftex.def Info: plots/nonuniformprior.pdf  used on input line 244.
 (pdftex.def)             Requested size: 128.0374pt x 85.35725pt.
- [13
+ [16
 
  <./plots/uniformprior.pdf> <./plots/nonuniformprior.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file ./plots/nonuniformprior.pdf): PDF inclu
 sion: multiple pdfs with page group included in a single page
->] [14
+>] [17
 
 ]
-<plots/beta22.pdf, id=148, 433.62pt x 289.08pt>
+<plots/beta22.pdf, id=164, 433.62pt x 289.08pt>
 File: plots/beta22.pdf Graphic file (type pdf)
 <use plots/beta22.pdf>
 Package pdftex.def Info: plots/beta22.pdf  used on input line 273.
@@ -1098,13 +1104,13 @@ Package pdftex.def Info: plots/beta22.pdf  used on input line 273.
 Overfull \vbox (5.014pt too high) detected at line 273
  []
 
-[15
+[18
 
- <./plots/beta22.pdf>] [16
+ <./plots/beta22.pdf>] [19
 
-] [17
+] [20
 
-] [18
+] [21
 
 ]
 \tf@nav=\write8
@@ -1129,10 +1135,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 23071 strings out of 492641
- 467021 string characters out of 6131788
- 538905 words of memory out of 5000000
- 26440 multiletter control sequences out of 15000+600000
+ 23078 strings out of 492641
+ 467095 string characters out of 6131788
+ 538906 words of memory out of 5000000
+ 26441 multiletter control sequences out of 15000+600000
  16023 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,18n,83p,1841b,581s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1150,10 +1156,10 @@ m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10
 .pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.
 pfb>
-Output written on bayesian1.pdf (18 pages, 251900 bytes).
+Output written on bayesian1.pdf (21 pages, 255391 bytes).
 PDF statistics:
- 236 PDF objects out of 1000 (max. 8388607)
- 190 compressed objects within 2 object streams
- 40 named destinations out of 1000 (max. 500000)
+ 254 PDF objects out of 1000 (max. 8388607)
+ 204 compressed objects within 3 object streams
+ 46 named destinations out of 1000 (max. 500000)
  63 words of extra memory for PDF output out of 10000 (max. 10000000)
 

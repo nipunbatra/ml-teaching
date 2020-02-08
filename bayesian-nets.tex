@@ -234,7 +234,7 @@
     
     
     \begin{tabular}{c|c|c|c|c}
-    Index&w_{1}&w_{2}&w_{3}&y\\
+    Index&$w_{1}$&$w_{2}$&$w_{3}$&y\\
     \hline
     \hline
          1 & 0 & 0 & 0 & 1  \\
@@ -272,20 +272,20 @@
     Given, test email {0,0,1}, classify it. Using naive bayes rule, we can do the following, 
     \begin{center}
 $$
-        P(y=1\vert w_{1}=0,w_{2} = 0,w_{3}=1) \\
-         \frac{P(w_{1}=0|y=1) P(w_{2}=0|y=1) P(w_{3}=1|y=1) P(y=1)}{P(w_{1}=0, w_{2}=0, w_{3}=1} \\
+        P(y=1\vert w_{1}=0,w_{2} = 0,w_{3}=1) 
+         \frac{P(w_{1}=0|y=1) P(w_{2}=0|y=1) P(w_{3}=1|y=1) P(y=1)}{P(w_{1}=0, w_{2}=0, w_{3}=1} 
     $$
     
     \end{center}
     
 \end{frame}
 
-\begin{frame}{Spam Classification}
-    
-    Calculate, $P(y=1 \vert w_{1}=0, w_{2}=0, w_{3}=1)$ and $P(y=1 \vert w_{1}=0, w_{2}=0, w_{3}=1)$.\\
-    
-    if $P(y=1 \vert w_{1}=0, w_{2}=0, w_{3}=1)$ \gt $P(y=0 \vert w_{1}=0, w_{2}=0, w_{3}=1)$, then it is a spam mail
-\end{frame}
+%\begin{frame}{Spam Classification}
+%    
+%    Calculate, $P(y=1 \vert w_{1}=0, w_{2}=0, w_{3}=1)$ and $P(y=1 \vert w_{1}=0, w_{2}=0, w_{3}=1)$
+%    
+%    if $P(y=1 \vert w_{1}=0, w_{2}=0, w_{3}=1)$ $\gt$ $P(y=0 \vert w_{1}=0, w_{2}=0, w_{3}=1)$, then it is a spam mail
+%\end{frame}
 
 \begin{frame}{Gaussian naive Bayes}
     We have classes $C_{1}, C_{2}, C_{3},\dots, C_{k}$\\
@@ -338,11 +338,11 @@ $$
      \hline
      \hline
      Mean (height) & 5.855 & 5.41  \\
-     Variance (height) & 3.5 \times 10^{-2} & 9.7 \times 10^{-2}  \\
+     Variance (height) & 3.5 $\times$ 10^{-2} & 9.7 $\times$ 10^{-2}  \\
      Mean (weight) & 176.25 & 132.5  \\
-     Variance (weight) & 1.22 \times 10^{2} & 5.5 \times 10^{2}   \\
+     Variance (weight) & 1.22 $\times$ 10^{2} & 5.5 $\times$ 10^{2}   \\
      Mean (Foot) & 11.25 & 7.5  \\
-     Variance (Foot) & 9.7 \times 10^{-1} & 1.67  \\
+     Variance (Foot) & 9.7 $\times$ 10^{-1} & 1.67  \\
     \hline
     \hline
     \end{tabular}
