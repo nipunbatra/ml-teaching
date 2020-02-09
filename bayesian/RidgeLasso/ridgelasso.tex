@@ -1,0 +1,326 @@
+\documentclass{beamer}
+\usepackage{tcolorbox}
+
+%\beamerdefaultoverlayspecification{<+->}
+\newcommand{\data}{\mathcal{D}}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand\Item[1][]{%
+	\ifx\relax#1\relax  \item \else \item[#1] \fi
+	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+
+\usetheme{metropolis}           % Use metropolis theme
+
+
+\title{MLE for Linear Regression}
+\date{\today}
+\author{Nipun Batra}
+\institute{IIT Gandhinagar}
+\begin{document}
+
+\maketitle
+\begin{frame}{Bayes Rule}
+\begin{itemize}
+	\item Bayes Rule: $P(A | B) = \frac{P(B|A)P(A)}{P(B)}$.
+
+% 	\item Examples of linear systems:
+% 	\begin{itemize}
+% 		\item $F=ma$
+% 		\item $v=u+at$
+% 	\end{itemize}
+	
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bayes Rule}
+\begin{itemize}
+	\item Bayes Rule: $P(A | B) = \frac{P(B|A)P(A)}{P(B)}$.
+	\item Notation: Let $\theta$ denote the parameters of the model and let $\mathcal{D}$ denote observed data. From Bayes Rule, we have 
+	\begin{equation*}
+	    P(\theta | \mathcal{D}) = \frac{ P(\mathcal{D}|\theta)P(\theta) }{P(\mathcal{D})}
+	\end{equation*}
+	
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bayes Rule}
+\begin{itemize}
+	\item Bayes Rule: $P(A | B) = \frac{P(B|A)P(A)}{P(B)}$.
+	\item Notation: Let $\theta$ denote the parameters of the model and let $\mathcal{D}$ denote observed data. From Bayes Rule, we have 
+	\begin{equation*}
+	    P(\theta | \mathcal{D}) = \frac{ P(\mathcal{D}|\theta)P(\theta) }{P(\mathcal{D})}
+	\end{equation*}
+	\item In the above equation $P(\theta | \mathcal{D})$ is called the posterior, $P(\mathcal{D}|\theta)$ is called the likelihood, $P(\theta)$ is called the prior and $P(\mathcal{D})$ is called the evidence.
+	\item An example of a prior probability would be $\theta \stackrel{}{\sim} \mathcal{N}(0, \mathcal{I}_n)$. The prior acts as a \textit{regularizer as we will see.}
+% 	\item Examples of linear systems:
+% 	\begin{itemize}
+% 		\item $F=ma$
+% 		\item $v=u+at$
+% 	\end{itemize}
+	
+\end{itemize}
+\end{frame}
+
+\begin{frame}{MLE for Linear Regression}
+\begin{itemize}
+    \item  $\hat{\theta}_{LS}$ = $\argmin  \epsilon^{T}\epsilon = \argmin_{\theta} (y - X\theta)^{T}(y - X\theta)$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{MLE for Linear Regression}
+\begin{itemize}
+    \item  $\hat{\theta}_{LS}$ = $\argmin  \epsilon^{T}\epsilon = \argmin_{\theta} (y - X\theta)^{T}(y - X\theta)$.
+    \item Let $\epsilon_i \stackrel{}{\sim} \mathcal{N}(0, \sigma^{2})$, where $\sigma^{2}$ is known.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{MLE for Linear Regression}
+\begin{itemize}
+    \item  $\hat{\theta}_{LS}$ = $\argmin  \epsilon^{T}\epsilon = \argmin_{\theta} (y - X\theta)^{T}(y - X\theta)$.
+    \item Let $\epsilon_i \stackrel{}{\sim} \mathcal{N}(0, \sigma^{2})$, where $\sigma^{2}$ is known.
+    \item Let $\epsilon$ be independent across all the observations.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{MLE for Linear Regression}
+\begin{itemize}
+    \item  $\hat{\theta}_{LS}$ = $\argmin  \epsilon^{T}\epsilon = \argmin_{\theta} (y - X\theta)^{T}(y - X\theta)$.
+    \item Let $\epsilon_i \stackrel{}{\sim} \mathcal{N}(0, \sigma^{2})$, where $\sigma^{2}$ is known.
+    \item Let $\epsilon$ be independent across all the observations.
+    \item $y \stackrel{}{\sim} \mathcal{N}(X\theta, \sigma^{2})$, since $\{ X\theta + \mathcal{N}(0, \sigma^{2})\}$
+\end{itemize}
+\end{frame}
+
+% \begin{frame}{MLE for Linear Regression}
+    
+% \begin{itemize}
+%     \item  $\hat{\theta}_{LS}$ = $\argmin  \epsilon^{T}\epsilon = \argmin_{\theta} (y - X\theta)^{T}(y - X\theta)$.
+%     \item Let $\epsilon_i \stackrel{}{\sim} \mathcal{N}(0, \sigma^{2})$, where $\sigma^{2}$ is known.
+%     \item Let $\epsilon$ be independent across all the observations.
+%     \item $y \stackrel{}{\sim} \mathcal{N}(X\theta, \sigma^{2})$, since $\{ X\theta + \mathcal{N}(0, \sigma^{2})\}$
+%     \item Insert plot
+% \end{itemize}
+% \end{frame}
+
+\begin{frame}{MLE for Linear Regression - Likelihood}
+\begin{itemize}
+\item Likelihood = $P(\mathcal{D}|\theta)$. Data = $<x_i, y_i>$, Parameters = $\theta, \sigma$.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{MLE for Linear Regression - Likelihood}
+\begin{itemize}
+\item Likelihood = $P(\mathcal{D}|\theta)$. Data = $<x_i, y_i>$, Parameters = $\theta, \sigma$.
+\item $P(y | X, \theta, \sigma) = P(y_1 | x_1, \theta, \sigma) \times P(y_2 | x_2, \theta, \sigma) \dots$
+
+    \end{itemize}
+
+\end{frame}
+\begin{frame}{MLE for Linear Regression - Likelihood}
+\begin{itemize}
+\item Likelihood = $P(\mathcal{D}|\theta)$. Data = $<x_i, y_i>$, Parameters = $\theta, \sigma$.
+\item $P(y | X, \theta, \sigma) = P(y_1 | x_1, \theta, \sigma) \times P(y_2 | x_2, \theta, \sigma) \dots$
+\item $\implies$ \begin{equation*}
+  \prod_{i=1}^{n} P(y | X, \theta, \sigma)
+\end{equation*}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{MLE for Linear Regression - Likelihood}
+\begin{itemize}
+\item Likelihood = $P(\mathcal{D}|\theta)$. Data = $<x_i, y_i>$, Parameters = $\theta, \sigma$.
+\item $P(y | X, \theta, \sigma) = P(y_1 | x_1, \theta, \sigma) \times P(y_2 | x_2, \theta, \sigma) \dots$
+\item $\implies$ \begin{equation*}
+  \prod_{i=1}^{n} P(y | X, \theta, \sigma)
+\end{equation*}
+\item $\implies$ \begin{equation*}
+    \prod_{i=1}^{n} \sqrt{\frac{1}{2 \pi \sigma^{2}}}e^{\frac{-1}{2\sigma^{2}}(y - x_i\theta)^{2}}
+\end{equation*}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{MLE for Linear Regression - Likelihood}
+\begin{itemize}
+\item Likelihood = $P(\mathcal{D}|\theta)$. Data = $<x_i, y_i>$, Parameters = $\theta, \sigma$.
+\item $P(y | X, \theta, \sigma) = P(y_1 | x_1, \theta, \sigma) \times P(y_2 | x_2, \theta, \sigma) \dots$
+\item $\implies$ \begin{equation*}
+  \prod_{i=1}^{n} P(y | X, \theta, \sigma)
+\end{equation*}
+\item $\implies$ \begin{equation*}
+    \prod_{i=1}^{n} \sqrt{\frac{1}{2 \pi \sigma^{2}}}e^{\frac{-1}{2\sigma^{2}}(y - x_i\theta)^{2}}
+\end{equation*}
+\item Log Likelihood : \begin{equation*}
+    \sum_{i = 1}^{n} k \times (y_i - x_i\theta)^{2} = k \times \sum_{i=1}^{n}\epsilon_i^{2}
+\end{equation*}
+where $k$ is a constant
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{MLE for Linear Regression - Likelihood}
+\begin{itemize}
+\item Likelihood = $P(\mathcal{D}|\theta)$. Data = $<x_i, y_i>$, Parameters = $\theta, \sigma$.
+\item $P(y | X, \theta, \sigma) = P(y_1 | x_1, \theta, \sigma) \times P(y_2 | x_2, \theta, \sigma) \dots$
+\item $\implies$ \begin{equation*}
+  \prod_{i=1}^{n} P(y | X, \theta, \sigma)
+\end{equation*}
+\item $\implies$ \begin{equation*}
+    \prod_{i=1}^{n} \sqrt{\frac{1}{2 \pi \sigma^{2}}}e^{\frac{-1}{2\sigma^{2}}(y - x_i\theta)^{2}}
+\end{equation*}
+\item Log Likelihood : \begin{equation*}
+    \sum_{i = 1}^{n} k \times (y_i - x_i\theta)^{2} = k \times \sum_{i=1}^{n}\epsilon_i^{2}
+\end{equation*}
+where $k$ is a constant
+
+\item $\hat{\theta}_{MLE} = \argmax_\theta (y - X\theta)^{T}(y - X\theta) = \hat{\theta}_{LS}$, when the residues are normally distributed
+\end{itemize}
+\end{frame}
+
+\begin{frame}{MAP for Linear Regression}
+
+\begin{itemize}
+    \item Let $\epsilon_i \stackrel{}{\sim} \mathcal{N}(0, \sigma^{2})$, where $\sigma^{2}$ is known.
+    \item Let $\epsilon$ be independent across all the observations.
+    \item $y \stackrel{}{\sim} \mathcal{N}(X\theta, \sigma^{2})$, since $\{ X\theta + \mathcal{N}(0, \sigma^{2})\}$ 
+    % \item $\theta$ is a gaussian prior distribtuion, i.e., $\theta \stackrel{}{\sim} \mathcal{N}(0, \mathcal{I}_n)$
+
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{MAP for Linear Regression}
+
+\begin{itemize}
+    \item Let $\epsilon_i \stackrel{}{\sim} \mathcal{N}(0, \sigma^{2})$, where $\sigma^{2}$ is known.
+    \item Let $\epsilon$ be independent across all the observations.
+    \item $y \stackrel{}{\sim} \mathcal{N}(X\theta, \sigma^{2})$, since $\{ X\theta + \mathcal{N}(0, \sigma^{2})\}$ 
+    \item Suppose $\theta$ is a gaussian prior distribtuion, i.e., $\theta \stackrel{}{\sim} \mathcal{N}(0, T^{2}\mathcal{I}_n)$
+
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{MAP for Linear Regression}
+
+\begin{itemize}
+    \item Let $\epsilon_i \stackrel{}{\sim} \mathcal{N}(0, \sigma^{2})$, where $\sigma^{2}$ is known.
+    \item Let $\epsilon$ be independent across all the observations.
+    \item $y \stackrel{}{\sim} \mathcal{N}(X\theta, \sigma^{2})$, since $\{ X\theta + \mathcal{N}(0, \sigma^{2})\}$ 
+    \item Suppose $\theta$ is a gaussian prior distribution, i.e., $\theta \stackrel{}{\sim} \mathcal{N}(0, T^{2}\mathcal{I}_n)$
+    \item $P(\theta | \mathcal{D}) \propto P(\mathcal{D} | \theta) \times P(\theta) \implies log(P(\theta | \mathcal{D})) \propto log(P(\mathcal{D} | \theta)) + log(P(\theta))$
+\end{itemize}
+
+    
+\end{frame}
+
+
+\begin{frame}{MAP for Linear Regression}
+
+\begin{itemize}
+    \item Let $\epsilon_i \stackrel{}{\sim} \mathcal{N}(0, \sigma^{2})$, where $\sigma^{2}$ is known.
+    \item Let $\epsilon$ be independent across all the observations.
+    \item $y \stackrel{}{\sim} \mathcal{N}(X\theta, \sigma^{2})$, since $\{ X\theta + \mathcal{N}(0, \sigma^{2})\}$ 
+    \item Suppose $\theta$ is a gaussian prior distribtuion, i.e., $\theta \stackrel{}{\sim} \mathcal{N}(0, T^{2}\mathcal{I}_n)$
+    \item $P(\theta | \mathcal{D}) \propto P(\mathcal{D} | \theta) \times P(\theta) \implies log(P(\theta | \mathcal{D})) \propto log(P(\mathcal{D} | \theta)) + log(P(\theta))$
+    \item $\hat{\theta}_{MAP} = \argmax_\theta \{ log(P(\mathcal{D} | \theta)) + log(P(\theta)) \}$
+\end{itemize}
+
+    
+\end{frame}
+\begin{frame}{MLE for Linear Regression - Continued}
+\begin{itemize}
+    \item $P(\theta | \mathcal{D}) \propto P(\mathcal{D} | \theta) \times P(\theta) \implies log(P(\theta | \mathcal{D})) \propto log(P(\mathcal{D} | \theta)) + log(P(\theta))$
+    \item $\hat{\theta}_{MAP} = \argmax_\theta \{ log(P(\mathcal{D} | \theta)) + log(P(\theta)) \}$  $ = \argmin_{\theta} (y - X\theta)^{T}(y - X\theta) + \lambda^{2}\theta^{T}\theta$
+\item MAP with Gaussian Prior $\implies$ Ridge Regression
+\end{itemize}
+
+
+    
+\end{frame}
+
+\begin{frame}{Priors and Regularization}
+\begin{itemize}
+    \item Prior leads to regularization
+    \item $\theta \stackrel{}{\sim} \mathcal{N}(0, \mathcal{I}_n)$ : Ridge Regression
+    \item $\theta \stackrel{}{\sim}\text{ Laplace}(0, t)$ : Lasso.
+\end{itemize}
+    
+\end{frame}
+% \begin{frame}{Predictive Distribution for the Coin Toss Problem}
+% \begin{itemize}
+% \item $P(\text{Next Toss} = H | \text{ Data})$
+% \item What value of $\theta$ should be used?
+% \item Answer: Use all the possible values of $\theta$.
+% \item  $P(\text{Next Toss} = H | Data)$ = $\int P(\text{Next Toss} = H, \theta | \text{ Data})d\theta$ Why?
+% \item  Marginalization! $p(x) = \int_y p(x,y)dy$
+% \item Note that the conditioning above is only over the observed data or evidence.
+% \end{itemize}
+% \end{frame}
+% \begin{frame}{Predictive Distribution for the Coin Toss Problem if $\theta$ is known}
+
+% \begin{itemize}
+	
+% 	\item Let $c$ be a random variable that is assigned the value $1$ if head results after tossing a coin and 0 if tail results after tossing a coin.
+% 	\item  Question: What is $P(\text{Next Toss} = c | \theta)$?
+% 	\item Answer: $\theta^c(1 - \theta)^{1-c}$. Why?
+% 	\item Suppose c = 0. Then $P(\text{Tails} | \theta)$ = $(1 - \theta)$.
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Predictive Distribution for the Coin Toss Problem}
+
+% \begin{itemize}
+	
+% 	\item Let us consider the case where we have a Beta prior for our coin toss problem. What is the predictive distribution, given we have observed some data?
+% 	\item Answer: $P(\text{Next} = c | \mathcal{D}, a, b )$ = $\int P(\text{Next =}c, \theta | \mathcal{D}, a, b)d\theta$
+% 	\item From the chain rule of probability, we have the following:
+% 	\begin{align*}
+% 	    P(AB|CDE) = \frac{P(ABCDE)}{P(CDE)} = \frac{P(A|BCDE)P(BCDE)}{P(CDE)}
+% 	\end{align*}
+% 	\begin{align*}
+% 	    = P(A|BCDE)P(B|CDE)
+% 	\end{align*}
+	
+	
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Predictive Distribution for the Coin Toss Problem}
+
+% \begin{itemize}
+	
+% 	\item In our case, the integrand $P(\text{Next =}c, \theta |  \mathcal{D}, a, b)$ therefore becomes, $ P(\text{Next =}c, | \theta,  \mathcal{D}, a, b)P(\theta|\mathcal{D}, a, b)$
+% 	\item If $\theta$ is known, then $P(\text{Next =}c | \theta,  \mathcal{D}, a, b) = P(\text{Next =}c | \theta)$. Why? 
+% 	\item This is because we know the actual model parameter distribution. The data \emph{cannot} affect it. What about a and b affecting the prior? They do not concern us anymore either, since we actually know the parameters. 
+% 	\item $\implies$ The predictive distribution is, 
+% 	\begin{align*}
+% 	    \int_\theta \theta^c(1 - \theta)^{1-c}\frac{\Gamma(n_H + n_T + a + b)\theta^{n_H + a - 1}(1 - \theta)^{n_T + b - 1}d\theta}{\Gamma(n_H + a)\Gamma(n_T + b)}
+% 	\end{align*}
+	
+	
+% \end{itemize}
+% \end{frame}
+% \begin{frame}{Predictive Distribution for the Coin Toss Problem}
+% \begin{align*}
+%      = \frac{\Gamma(n_H + n_T + a + b)}{\Gamma(n_H + a)\Gamma(n_T + b)}\int_\theta \theta^{n+h + a - 1 + c}(1 - \theta)^{n_T + b - c}d\theta
+% \end{align*}
+% \begin{align*}
+%   =   \frac{\Gamma(n_H + n_T + a + B)\Gamma(c + n_H + a)\Gamma(n_T + b - c + 1)}{\Gamma(n_H + a)\Gamma(n_T + b)\Gamma(1 + n_H + a + n_T + b)}
+% \end{align*}
+    
+% \end{frame}
+
+
+\end{document}
+
