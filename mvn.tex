@@ -110,20 +110,21 @@ $$\Sigma_{i,j} := \operatorname{E} [(X_i - \mu_i)( X_j - \mu_j)] = \operatorname
 \end{frame}
 
 \begin{frame}{Bivariate Normal Distribution}
-
-Question: What is Cov(X, X)?
-
-Answer: Var(X) = Cov(X, X) =  $\operatorname{E}[(X - \operatorname{E}[X])]^2$
-
-In the case of univariate normal, Var(X) is written as $\sigma^2$
-
-Question: What is the relation between $\Sigma_{i, j}$ and $\Sigma_{j, i}$?
-
-Answer: They are the same!
-
-Question: What can we say about the covariance matrix $\Sigma$?
-
-Answer: It is symmetric. Thus $\Sigma = \Sigma^T$
+	
+	\visible<1->{Question: What is Cov(X, X)?}
+	
+	\visible<2->{Answer: Var(X) = Cov(X, X) =  $\operatorname{E}[(X - \operatorname{E}[X])]^2$}
+	
+	\visible<2->{In the case of univariate normal, Var(X) is written as $\sigma^2$}
+	
+	\visible<3->{Question: What is the relation between $\Sigma_{i, j}$ and $\Sigma_{j, i}$?}
+	
+	\visible<4->{Answer: They are the same!}
+	
+	\visible<5->{Question: What can we say about the covariance matrix $\Sigma$?}
+	
+	\visible<6->{Answer: It is symmetric. Thus $\Sigma = \Sigma^T$}
+	
 \end{frame}
 
 \begin{frame}{Correlation and Covariance}
@@ -131,13 +132,13 @@ If $X$ and $Y$ are two random variables, with means (expected values) $\mu_X$ an
 
 $$\text{cov}_{XY} = \sigma_{XY} = E[(X-\mu_X)\,(Y-\mu_Y)] $$
 
-$$	\text{corr}_{XY} = \rho_{XY} = E[(X-\mu_X)\,(Y-\mu_Y)]/(\sigma_X \sigma_Y)
-$$
-so that
+\visible<2->{$$	\text{corr}_{XY} = \rho_{XY} = E[(X-\mu_X)\,(Y-\mu_Y)]/(\sigma_X \sigma_Y)
+$$}
+\visible<3->{so that
 $$
 \rho_{XY} = \sigma_{XY} / (\sigma_X \sigma_Y) $$
 
-where $E$ is the expected value operator. 
+where $E$ is the expected value operator. }
 \end{frame}
 
 \begin{frame}{PDF of bivariate normal distribution}
@@ -216,21 +217,35 @@ $=\frac{1}{2\pi \times |\Sigma|^{\frac{1}{2}}}$
 \end{frame}
 
 \begin{frame}{Intuition for Multivariate Gaussian}
+	
+	Let us assume no correlation between the elements of $\bf{X}$. This means $\Sigma$ is a diagonal matrix.
+	
+	We have $\Sigma = \begin{bmatrix} 
+	\sigma_{1} & & \textbf{0}\\
+	 & \ddots &\\
+	\textbf{0} &  & \sigma_n 
+	\end{bmatrix}
+	$ 
+	
+	And,
 	\begin{gather}
-		p(\mathbf{x} ; \mu, \Sigma)=\frac{1}{(2 \pi)^{\frac{n}{2}}|\Sigma|^{\frac{1}{2}}} \exp \left(-\frac{1}{2}(\mathbf{x}-\mu)^{T} \Sigma^{-1}(\mathbf{x}-\mu)\right)
+		p(\mathbf{X} ; \mu, \Sigma)=\frac{1}{(2 \pi)^{\frac{n}{2}}|\Sigma|^{\frac{1}{2}}} \exp \left(-\frac{1}{2}(\mathbf{X}-\mu)^{T} \Sigma^{-1}(\mathbf{X}-\mu)\right)
 	\end{gather}
 	
-	In the univariate case, the term $-\frac{1}{2 \sigma^{2}}(x-\mu)^{2}$ in the exponential was a quadratic function of $x$. Being a quadratic function, it was a parabola which opened downwards because of the leading negative coefficient.
+	As seen in the case for univariate Gaussians, we can write the following for the multivariate case,
 	
-	In the case of multivariate Gaussian, the term in exponential is a quadratic form in vector $\bf {x}$. Since $\Sigma$ is positive definite, this quadratic opens a high dimensional ``bowl'' oriented downwards
-	
+	We have $f_X(X_1, \cdots, X_n) = f_X(X_1)\times \cdots \times f_X(X_n)$
 \end{frame}
 
-\urldef\urld\url{https://brilliant.org/wiki/multivariate-normal-distribution/}
-
-\begin{frame}{Intuition for Multivariate Gaussian \footnote{Courtesy: \urld}}
-	The normalizing factor used above is chosen in such a way that,
-	$\frac{1}{(2 \pi)^{\frac{1}{2}}|\Sigma|^{\frac{1}{2}}} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \ldots \int_{-\infty}^{\infty} \exp \left(-\frac{1}{2}(\mathbf{x}-\mu)^{T} \Sigma^{-1}(\mathbf{x}-\mu)\right)=1$
+\begin{frame}{Intuition for Multivariate Gaussian}
+	Now,
+	$$=\frac{1}{\sigma_1 \sqrt{2\pi} } e^{-\frac{1}{2}\left(\frac{X_1-\mu_1}{\sigma_1}\right)^2} \times \cdots \times \frac{1}{\sigma_n \sqrt{2\pi} } e^{-\frac{1}{2}\left(\frac{X_n-\mu_n}{\sigma_n}\right)^2}$$
+	
+	$$= \frac{1}{\sigma_1 \cdots \sigma_n \sqrt{2\pi}^{\frac{n}{2}} } e^{-\frac{1}{2}\{\left(\frac{X_1-\mu_1}{\sigma_1}\right)^2 + \cdots + \left(\frac{X_n-\mu_n}{\sigma_n}\right)^2 \}}  $$
+	
+	Taking all $\sqrt{2\pi}$ together, we get $\sqrt{2\pi}^{\frac{n}{2}}$.
+	
+	Similarly, taking all $\sigma$ together, we get $\sigma_1 \cdots \sigma_n$. Which can be written as $\vert\Sigma\vert^{\frac{1}{2}}$, given the determinant of a digonal matrix is the multiplication of it's diagonal elements.
 \end{frame}
 
 \end{document}
