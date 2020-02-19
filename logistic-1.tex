@@ -220,6 +220,11 @@ P(y | X, \theta) &= \prod_{i=1}^{n} P(y_{i} | x_{i}, \theta) \\ &= \prod_{i=1}^{
 \end{align*}
 \end{frame}
 
+
+\begin{frame}{Likelihood Visualisation}
+\includegraphics{notebooks/logistic-likelihood.pdf}
+\end{frame}
+
 \begin{frame}{Aside on Bernoulli Likelihood}
 \begin{itemize}[<+->]
 \item Assume you have a coin and flip it ten times and get (H, H, T, T, T, H, H, T, T, T).
@@ -284,6 +289,17 @@ J(\theta) &= -\bigg\{\sum_{i=1}^{n} y_{i} \log(\sigma_{\theta}(x_{i})) + (1 - y_
 
 \end{frame}
 
+\begin{frame}{Cost function convexity}
+\begin{columns}
+	\begin{column}{0.5\textwidth}
+		\includegraphics[scale=0.7]{notebooks/logistic-cross-loss-contour.pdf}
+	\end{column}
+	\begin{column}{0.5\textwidth}
+		\includegraphics[scale=0.7]{notebooks/logistic-cross-loss-surface.pdf}
+	\end{column}
+\end{columns}
+\end{frame}
+
 \begin{frame}{Learning Parameters}
 \begin{align*}
 \frac{\partial J(\theta)}{\partial \theta_{j}} &= -\frac{\partial }{\partial \theta_{j}} \bigg\{\sum_{i=1}^{n} y_{i} log(\sigma_{\theta}(x_{i})) + (1 - y_{i})log(1 - \sigma_{\theta}(x_{i}))\bigg\} \\
@@ -334,15 +350,223 @@ Now, just use Gradient Descent!
 \end{frame}
 
 
-\begin{frame}{Cost function convexity}
-\begin{columns}
-	\begin{column}{0.5\textwidth}
-		\includegraphics[scale=0.7]{notebooks/logistic-cross-loss-contour.pdf}
-	\end{column}
-	\begin{column}{0.5\textwidth}
-		\includegraphics[scale=0.7]{notebooks/logistic-cross-loss-surface.pdf}
-	\end{column}
-\end{columns}
+\begin{frame}{Logistic Regression with feature transformation}
+\includegraphics{notebooks/logisitic-circular-data.pdf}
+
+What happens if you apply logistic regression on the above data?
+\end{frame}
+
+
+\begin{frame}{Logistic Regression with feature transformation}
+\includegraphics{notebooks/logisitic-linear-prediction.pdf}
+
+Linear boundary will not be accurate here. What is the technical name of the problem?
+\pause Bias! 
+\end{frame}
+
+\begin{frame}{Logistic Regression with feature transformation}
+$$
+\phi(x)=\left[\begin{array}{c}
+{\phi_{0}(x)} \\
+{\phi_{1}(x)} \\
+{\vdots} \\
+{\phi_{K-1}(x)}
+\end{array}\right]=\left[\begin{array}{c}
+{1} \\
+{x} \\
+{x^{2}} \\
+{x^{3}} \\
+{\vdots} \\
+{x^{K-1}}
+\end{array}\right] \in \mathbb{R}^{K}
+$$
+\end{frame}
+
+
+\begin{frame}{Logistic Regression with feature transformation}
+\includegraphics{notebooks/logisitic-circular-prediction.pdf}
+
+Using $x_1^2, x_2^2$ as additional features, we are able to learn a more accurate classifier. 
+\end{frame}
+
+\begin{frame}{Logistic Regression with feature transformation}
+
+How would you expect the probability contours look like?
+\pause \includegraphics{notebooks/logisitic-circular-probability.pdf}
+
+
+\end{frame}
+
+\begin{frame}{Multi-Class Prediction}
+\includegraphics{notebooks/logisitic-iris.pdf}
+
+
+\pause How would you learn a classifier? Or, how would you expect the classifier to learn decision boundaries?
+\end{frame}
+
+\begin{frame}{Multi-Class Prediction}
+\includegraphics{notebooks/logisitic-iris-prediction.pdf}
+\pause \begin{enumerate}
+\item Use one-vs.-all on \underline{Binary} Logistic Regression
+\item Use one-vs.-one on \underline{Binary} Logistic Regression
+\item Extend \underline{Binary} Logistic Regression to \underline{Multi-Class} Logistic Regression
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Multi-Class Prediction}
+\includegraphics[scale=0.8]{notebooks/logisitic-iris-prediction.pdf}
+\pause \begin{enumerate}
+	\item Learn P(setosa (class 1)) = $\mathcal{F}({X\theta_1})$
+	\item P(versicolor (class 2)) = $\mathcal{F}({X\theta_2})$
+	\item P(virginica (class 3)) = $\mathcal{F}({X\theta_3})$
+	\item Goal: Learn $\theta_i \forall i \in \{1, 2, 3\}$
+	\item Question: What could be an $\mathcal{F}?$
+
+\end{enumerate}
+
+
+\end{frame}
+
+\begin{frame}{Multi-Class Prediction}
+\includegraphics[scale=0.8]{notebooks/logisitic-iris-prediction.pdf}
+\pause \begin{enumerate}
+	\item Question: What could be an $\mathcal{F}?$
+	\item Property: $\sum_{i=1}^{3}\mathcal{F}{({X\theta_i})} = 1$
+	\item Also $\mathcal{F}(z)\in [0, 1]$
+	\item Also, $\mathcal{F}(z)$ has squashing proprties: $R \mapsto [0, 1]$
+\end{enumerate}
+
+
+\end{frame}
+\begin{frame}{Softmax}
+\begin{equation*}
+Z \in \mathbb{R}^{d}
+\end{equation*}
+\begin{equation*}
+\mathcal{F}(z_{i}) = \frac{e^{z_{i}}}{\sum_{i=1}^{d}e^{z_{i}}}
+\end{equation*}
+\begin{equation*}
+\therefore \sum \mathcal{F}(z_{i}) = 1
+\end{equation*}
+
+$\mathcal{F}(z_{i})$ refers to \underline{probability} of class \underline{i}
+\end{frame}
+\begin{frame}{Softmax for Multi-Class Logistic Regression}
+\begin{equation*}
+k = \{1, \ldots, k\} \text{classes}
+\end{equation*}
+$$
+\theta=\left[\begin{array}{llll}
+{\vdots} & {\vdots} & {\vdots} & {\vdots} \\
+{\theta_{1}} & {\theta_{2}} & {\cdots} & {\theta_{k}} \\
+{\vdots} & {\vdots} & {\vdots} & {\vdots} 	
+\end{array}\right]
+$$
+\centering
+\framebox{$P(y = k|X, \theta) = \frac{e^{X\theta_{k}}}{\sum_{k=1}^{K}e^{X\theta_{k}}}$}
+\end{frame}
+\begin{frame}{Softmax for Multi-Class Logistic Regression}
+For K = 2 classes,
+\begin{equation*}
+P(y = k|X, \theta) = \frac{e^{X\theta_{k}}}{\sum_{k=1}^{K}e^{X\theta_{k}}}
+\end{equation*}
+\begin{equation*}
+P(y = 0|X, \theta) = \frac{e^{X\theta_{0}}}{e^{X\theta_{0}} + e^{X\theta_{1}}}
+\end{equation*}
+\begin{equation*}
+P(y = 1|X, \theta) = \frac{e^{X\theta_{1}}}{e^{X\theta_{0}} + e^{X\theta_{1}}} = \frac{e^{X\theta_{1}}}{e^{X\theta_{1}}\{1 + e^{X(\theta_{0} - \theta_{1})}\}}
+\end{equation*}
+\begin{equation*}
+= \frac{1}{1 + e^{-X\theta^{'}}}
+\end{equation*}
+\begin{equation*}
+= \text{Sigmoid!}
+\end{equation*}
+\end{frame}
+
+\begin{frame}{Multi-Class Logistic Regression Cost}
+Assume our prediction and ground truth  for the three classes for $i^{th}$ point is:
+$$
+\hat{y_i} = \begin{bmatrix}
+	0.1\\0.8\\0.1
+\end{bmatrix} = \begin{bmatrix}
+\hat{y}_i^1\\\hat{y}_i^2\\\hat{y}_i^3
+\end{bmatrix} 
+$$
+
+$$
+y_i = \begin{bmatrix}
+0\\1\\0
+\end{bmatrix}=\begin{bmatrix}
+y_i^1\\y_i^2\\ y_i^3
+\end{bmatrix}
+$$
+meaning the true class is Class \#2
+
+\pause Let us calculate $-\sum_{k=1}^{3}y_i^k \log{\hat{y}_i^k} $
+
+\pause  = $-(0\times \log(0.1) + 1\times \log(0.8) + 0\times \log(0.1))$
+
+\pause Tends to zero
+
+\end{frame}
+
+\begin{frame}{Multi-Class Logistic Regression Cost}
+Assume our prediction and ground truth  for the three classes for $i^{th}$ point is:
+$$
+\hat{y_i} = \begin{bmatrix}
+0.3\\0.4\\0.3
+\end{bmatrix} = \begin{bmatrix}
+\hat{y}_i^1\\\hat{y}_i^2\\\hat{y}_i^3
+\end{bmatrix} 
+$$
+
+$$
+y_i = \begin{bmatrix}
+0\\1\\0
+\end{bmatrix}=\begin{bmatrix}
+y_i^1\\y_i^2\\ y_i^3
+\end{bmatrix}
+$$
+meaning the true class is Class \#2
+
+\pause Let us calculate $-\sum_{k=1}^{3}y_i^k \log{\hat{y}_i^k} $
+
+\pause  = $-(0\times \log(0.1) + 1\times \log(0.4) + 0\times \log(0.1))$
+
+\pause High number! Huge penalty for misclassification!
+
+\end{frame}
+
+\begin{frame}{Multi-Class Logistic Regression Cost}
+
+
+For 2 class we had:
+\begin{equation*}
+J(\theta) = -\bigg\{\sum_{i=1}^{n}y_{i}\log(\sigma_{\theta}(x_{i})) + (1 - y_{i})\log(1 - \sigma_{\theta}(x_{i}))\bigg\}
+\end{equation*}
+
+\pause More generally, 
+\pause \begin{equation*}
+J(\theta) = -\bigg\{\sum_{i=1}^{n}y_{i}\log(\hat{y}_i) + (1 - y_{i})\log(1 - \hat{y}_i)\bigg\}
+\end{equation*}
+
+\pause \begin{equation*}
+J(\theta) = -\bigg\{\sum_{i=1}^{n}y_{i}\log(\hat{y}_i) + (1 - y_{i})\log(1 - \hat{y}_i)\bigg\}
+\end{equation*}
+
+Extend to K-class:
+\begin{equation*}
+J(\theta) = -\bigg\{\sum_{i=1}^{n}\sum_{k=1}^{K}y_{i}^k\log(\hat{y}_{i}^k)\bigg\}
+\end{equation*}
+\end{frame}
+\begin{frame}{Multi-Class Logistic Regression Cost}
+\begin{equation*}
+\text{Now:}
+\end{equation*}
+\begin{equation*}
+\frac{\partial J(\theta)}{\partial \theta_{k}} = \sum_{i=1}^{n}\bigg[x_{i}\bigg\{I(y_{i} = k) - P(y_{i} = k | x_{i}, \theta)\bigg\}\bigg]
+\end{equation*}
 \end{frame}
 
 
@@ -401,75 +625,6 @@ J(\theta) = J_{1}(\theta) + \lambda\theta^{T}\theta
 L1 Regularization:
 \begin{equation*}
 J(\theta) = J_{1}(\theta) + \lambda|\theta|
-\end{equation*}
-\end{frame}
-\begin{frame}{Multi-Class Prediction}
-\begin{enumerate}
-\item Use one-vs.-all on \underline{Binary} Logistic Regression
-\item Use one-vs.-one on \underline{Binary} Logistic Regression
-\item Extend \underline{Binary} Logistic Regression to \underline{Multi-Class} Logistic Regression
-\end{enumerate}
-\end{frame}
-\begin{frame}{Softmax}
-\begin{equation*}
-Z \in \mathbb{R}^{d}
-\end{equation*}
-\begin{equation*}
-f(z_{i}) = \frac{e^{z_{i}}}{\sum_{i=1}^{d}e^{z_{i}}}
-\end{equation*}
-\begin{equation*}
-\therefore \sum f(z_{i}) = 1
-\end{equation*}
-
-$f(z_{i})$ refers to \underline{probability} of class \underline{i}
-\end{frame}
-\begin{frame}{Softmax for Multi-Class Logistic Regression}
-\begin{equation*}
-k = \{1, \ldots, k\} \text{classes}
-\end{equation*}
-\centering
-\framebox{$P(y = k|x, \theta) = \frac{e^{x\theta_{k}}}{\sum_{k=1}^{K}e^{x\theta_{k}}}$}
-\end{frame}
-\begin{frame}{Softmax for Multi-Class Logistic Regression}
-For K = 2 classes,
-\begin{equation*}
-P(y = k|x, \theta) = \frac{e^{x\theta_{k}}}{\sum_{k=1}^{K}e^{x\theta_{k}}}
-\end{equation*}
-\begin{equation*}
-P(y = 0|x, \theta) = \frac{e^{x\theta_{0}}}{e^{x\theta_{0}} + e^{x\theta_{1}}}
-\end{equation*}
-\begin{equation*}
-P(y = 1|x, \theta) = \frac{e^{}x\theta_{1}}{e^{x\theta_{0}} + e^{x\theta_{1}}} = \frac{e^{x\theta_{1}}}{e^{x\theta_{1}}\{1 + e^{x(\theta_{0} - \theta_{1})}\}}
-\end{equation*}
-\begin{equation*}
-= \frac{1}{1 + e^{-x\theta^{'}}}
-\end{equation*}
-\begin{equation*}
-= \text{Sigmoid!}
-\end{equation*}
-\end{frame}
-\begin{frame}{Multi-Class Logistic Regression Cost}
-For 2 class we had:
-\begin{equation*}
-J(\theta) = -\bigg\{\sum_{i=1}^{n}y_{i}\log(\sigma_{\theta}(x_{i})) + (1 - y_{i})\log(1 - \sigma_{\theta}(x_{i}))\bigg\}
-\end{equation*}
-Extend to K-class:
-\begin{equation*}
-J(\theta) = \bigg\{\sum_{i=1}^{n}\sum_{k=1}^{K}I\{y_{i} = k\}\log\frac{e^{x_{i}\theta_{k}}}{\sum_{k=1}^{K}e^{x_{i}\theta_{k}}}\bigg\}
-\end{equation*}
-\begin{equation*}
-i \rightarrow \text{Sample \#} \hspace{2cm} \text{I: Identity Function}
-\end{equation*}
-\begin{equation*}
-k \rightarrow Class \hspace{2cm} \text{I(true) = 1; I(false) = 0}
-\end{equation*}
-\end{frame}
-\begin{frame}{Multi-Class Logistic Regression Cost}
-\begin{equation*}
-\text{Now:}
-\end{equation*}
-\begin{equation*}
-\frac{\partial J(\theta)}{\partial \theta_{k}} = \sum_{i=1}^{n}\bigg[x_{i}\bigg\{I(y_{i} = k) - P(y_{i} = k | x_{i}, \theta)\bigg\}\bigg]
 \end{equation*}
 \end{frame}
 \end{document}
