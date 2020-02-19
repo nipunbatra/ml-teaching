@@ -210,7 +210,7 @@ $P(y | X, \theta) = \prod_{i=1}^{n} P(y_{i} | x_{i}, \theta)$ \\ where y = 0 or 
 Likelihood = $P(D | \theta)$ \\
 \vspace{-0.4cm}
 \begin{align*}
-P(y | X, \theta) &= \prod_{i=1}^{n} P(y_{i} | x_{i}, \theta) \\ &= \prod_{i=1}^{n} \Big\{\frac{1}{1 + e^{-x_{i}\theta}}\Big\}^{y_{i}}\Big\{1 - \frac{1}{1 + e^{-x_{i}\theta}}\Big\}^{1 - y_{i}} \\
+P(y | X, \theta) &= \prod_{i=1}^{n} P(y_{i} | x_{i}, \theta) \\ &= \prod_{i=1}^{n} \Big\{\frac{1}{1 + e^{-x_{i}^{T}\theta}}\Big\}^{y_{i}}\Big\{1 - \frac{1}{1 + e^{-x_{i}^{T}\theta}}\Big\}^{1 - y_{i}} \\
 \end{align*}
 \vspace{0.2cm}
 [Above: Similar to $P(D|\theta)$ for Linear Regression; \\
@@ -250,9 +250,41 @@ P(y | X, \theta) &= \prod_{i=1}^{n} P(y_{i} | x_{i}, \theta) \\ &= \prod_{i=1}^{
 
 \begin{frame}{Learning Parameters}
 \begin{align*}
-J(\theta) &= -\log \bigg\{\prod_{i=1}^{n} \Big\{\frac{1}{1 + e^{-x_{i}\theta}}\Big\}^{y_{i}}\Big\{1 - \frac{1}{1 + e^{-x_{i}\theta}}\Big\}^{1 - y_{i}}\bigg\}\\
+J(\theta) &= -\log \bigg\{\prod_{i=1}^{n} \Big\{\frac{1}{1 + e^{-x_{i}^T\theta}}\Big\}^{y_{i}}\Big\{1 - \frac{1}{1 + e^{-x_{i}^T\theta}}\Big\}^{1 - y_{i}}\bigg\}\\
 J(\theta) &= -\bigg\{\sum_{i=1}^{n} y_{i} \log(\sigma_{\theta}(x_{i})) + (1 - y_{i})\log(1 - \sigma_{\theta}(x_{i}))\bigg\} \\
 \end{align*}
+\pause This cost function is called cross-entropy.
+
+\pause Why?
+\end{frame}
+
+\begin{frame}{Interpretation of Cross-Entropy Cost Function}\pause What is the interpretation of the cost function?
+
+\pause Let us try to write the cost function for a single example:
+
+\pause $$J(\theta) = -y_i\log{\hat{y}_i} - (1-y_i)\log({1-\hat{y}_i})$$
+
+\pause First, assume $y_i$ is 0, then if $\hat{y}_i$ is 0, the loss is 0; but, if $\hat{y}_i$ is 1, the loss tends towards infinity!
+
+	\includegraphics[scale=0.7]{notebooks/logistic-cross-cost-0}
+
+
+\end{frame}
+
+\begin{frame}{Interpretation of Cross-Entropy Cost Function}\pause What is the interpretation of the cost function?
+
+
+
+ $$J(\theta) = -y_i\log{\hat{y}_i} - (1-y_i)\log({1-\hat{y}_i})$$
+
+\pause Now, assume $y_i$ is 1, then if $\hat{y}_i$ is 0, the loss is huge; but, if $\hat{y}_i$ is 1, the loss is zero!
+
+\includegraphics[scale=0.7]{notebooks/logistic-cross-cost-1}
+
+
+\end{frame}
+
+\begin{frame}{Learning Parameters}
 \begin{align*}
 \frac{\partial J(\theta)}{\partial \theta_{j}} &= -\frac{\partial }{\partial \theta_{j}} \bigg\{\sum_{i=1}^{n} y_{i} log(\sigma_{\theta}(x_{i})) + (1 - y_{i})log(1 - \sigma_{\theta}(x_{i}))\bigg\} \\
 &= -\sum_{i=1}^{n}\bigg[y_{i}\frac{\partial}{\partial \theta_{j}} \log(\sigma_{\theta}(x_{i})) + (1-y_{i})\frac{\partial}{\partial \theta_{j}} log(1 - \sigma_{\theta}(x_{i}))\bigg]
@@ -393,7 +425,7 @@ $f(z_{i})$ refers to \underline{probability} of class \underline{i}
 \end{frame}
 \begin{frame}{Softmax for Multi-Class Logistic Regression}
 \begin{equation*}
-k = 1, \ldots, k \text{classes}
+k = \{1, \ldots, k\} \text{classes}
 \end{equation*}
 \centering
 \framebox{$P(y = k|x, \theta) = \frac{e^{x\theta_{k}}}{\sum_{k=1}^{K}e^{x\theta_{k}}}$}
