@@ -59,10 +59,10 @@
 \begin{figure}
 \centering
 \begin{overprint}
-    \onslide<1>\includegraphics[scale = 0.3]{SVM/Svm-1.pdf}
-    \onslide<2>\includegraphics[scale = 0.3]{SVM/Svm-2.pdf}
-    \onslide<3>\includegraphics[scale = 0.3]{SVM/Svm-3.pdf}
-    \onslide<4>\includegraphics[scale = 0.3]{SVM/Svm-4.pdf}
+    \onslide<1>\includegraphics[scale = 0.4]{SVM/Svm-1.pdf}
+    \onslide<2>\includegraphics[scale = 0.4]{SVM/Svm-2.pdf}
+    \onslide<3>\includegraphics[scale = 0.4]{SVM/Svm-3.pdf}
+    \onslide<4>\includegraphics[scale = 0.4]{SVM/Svm-4.pdf}
     
     \end{overprint}
 \end{figure}
@@ -107,11 +107,11 @@
 
 \begin{figure}
 \begin{overprint}
-\onslide<1> \includegraphics[scale=0.3]{./SVM/Svm-12.pdf}
-\onslide<2> \includegraphics[scale=0.3]{./SVM/Svm-13.pdf}
-\onslide<3> \includegraphics[scale=0.3]{./SVM/Svm-14.pdf}
-\onslide<4> \includegraphics[scale=0.3]{./SVM/Svm-15.pdf}
-\onslide<5> \includegraphics[scale=0.3]{./SVM/Svm-16.pdf}
+\onslide<1> \includegraphics[scale=0.5]{./SVM/Svm-12.pdf}
+\onslide<2> \includegraphics[scale=0.5]{./SVM/Svm-13.pdf}
+\onslide<3> \includegraphics[scale=0.5]{./SVM/Svm-14.pdf}
+\onslide<4> \includegraphics[scale=0.5]{./SVM/Svm-15.pdf}
+\onslide<5> \includegraphics[scale=0.5]{./SVM/Svm-16.pdf}
 \end{overprint}
 \end{figure}
 
@@ -119,74 +119,47 @@
 \end{frame}
 
 \begin{frame}{Equation of Hyperplane}
- \begin{itemize}
+\begin{itemize}
 	\item Defined by the point $P_{0}$ and the $\perp$ to the plane at that point $\overrightarrow{\text{w}}$
 \end{itemize}
-       \begin{tabular}{cl}  
-         \begin{tabular}{c}
-         
-         \includegraphics[scale = 0.25]{./SVM/Svm-13.pdf}
-         
-          \end{tabular}
-          
-          
-        & \begin{tabular}{l}
-             \parbox{0.5\linewidth}{
-             \textbf{$P$, $P_{0}$ on plane} 
-
-Now, 
- $w \perp \overrightarrow{\text{x}} - \overrightarrow{x_{0}}$\\
- $\Rightarrow w.(\overrightarrow{\text{x}} - \overrightarrow{x_{0}}) = 0$\\
- $\Rightarrow w.\overrightarrow{\text{x}} +  \overrightarrow{b} = 0$
- 
-    }
-         \end{tabular}  \\
-          
-\end{tabular}
+\begin{align*}
+  w \perp \overrightarrow{\text{x}} - \overrightarrow{x_{0}}\\
+ \Rightarrow w.(\overrightarrow{\text{x}} - \overrightarrow{x_{0}}) = 0\\
+ \Rightarrow w.\overrightarrow{\text{x}} +  \overrightarrow{b} = 0
+\end{align*}       
+        
 \end{frame}
 
-\begin{frame}{An Example}
+\begin{frame}{Distance between 2 parallel hyperplanes}
 
 \begin{figure}
-\includegraphics[scale=0.3]{SVM/Svm-1.pdf}
+\includegraphics[scale=0.5]{SVM/Svm-17.pdf}
 \end{figure}
-$w = (2,1,4)$\\
-$p_{0} = (0,2,3)$\\
-$b = -w.x_{0} = (-2 \times 0 + 1 \times 2 + 4 \times 3) = -14$\\
-
 
 \end{frame}
 
 \begin{frame}{Distance between 2 parallel hyperplanes}
 
-\begin{tabular}{cl}  
-         \begin{tabular}{l}
-         
-         \includegraphics[height = 4cm, width = 5cm]{./SVM/Svm-17.pdf}
-         
-          \end{tabular}
-          
-          
-        & \begin{tabular}{c}
-             \parbox{0.5\linewidth}{
-             \textbf{$P$, $P_{0}$ on plane} 
-
-Now, 
- $w \perp \overrightarrow{\text{x}} - \overrightarrow{x_{0}}$\\
- $\Rightarrow w.(\overrightarrow{\text{x}} - \overrightarrow{x_{0}}) = 0$\\
- $\Rightarrow w.\overrightarrow{\text{x}} +  \overrightarrow{b} = 0$
- 
-    }
-         \end{tabular}  \\
-          
-\end{tabular}
+\begin{figure}
+\includegraphics[scale=0.5]{SVM/Svm-18.pdf}
+\end{figure}
 
 \end{frame}
+
+\begin{frame}{An Example}
+
+$w = (2,1,4)$\\
+$p_{0} = (0,2,3)$\\
+$b = -w.x_{0} = (-2 \times 0 + 1 \times 2 + 4 \times 3) = -14$\\
+
+\end{frame}
+
+
 
 \begin{frame}{Formulation}
 
 \begin{figure}
-\includegraphics[scale=0.3]{SVM/Svm-20.pdf}
+\includegraphics[scale=0.4]{SVM/Svm-20.pdf}
 \end{figure}
 
 \begin{itemize}
@@ -234,13 +207,16 @@ Q) What is $||w||$?
 \end{frame}
 
 \begin{frame}{Simple Exercise}
-\begin{multicols}{2}
 
 \begin{figure}
-\includegraphics[scale = 0.25]{SVM/Svm-21.pdf}
-\end{figure} \break
-\vspace{10cm}
-\begin{equation*}
+\includegraphics[scale = 0.5]{SVM/Svm-21.pdf}
+\end{figure} 
+
+\end{frame}
+
+\begin{frame}{Simple Exercise}
+
+\begin{align*}
 \begin{bmatrix}
 x_{1} && y \\
 1 && 1\\
@@ -248,11 +224,8 @@ x_{1} && y \\
 -1 && -1\\
 -2 && -1\\
 \end{bmatrix}
-\end{equation*}
-
-\end{multicols}
+\end{align*}
 Separating Hyperplane: $w_{1}x_{1} + b = 0$
-
 \end{frame}
 
 \begin{frame}{Simple Exercise}
@@ -285,21 +258,13 @@ x_{1} && y \\
 \end{multicols}
 \end{frame}
 
-\begin{frame}{Simple Exercise}
-\begin{multicols}{2}
+\begin{frame}{Simple Exercise} 
 \begin{figure}
-\includegraphics[scale=0.3]{SVM/Svm-27.pdf}
+\includegraphics[scale=0.5]{SVM/Svm-27.pdf}
 \end{figure}
+\end{frame}
 
-
-\begin{align*}
-&\Rightarrow 1(w_{1} + b) \geq 1\\
-&\Rightarrow 1(2w_{1} + b)\geq 1\\
-&\Rightarrow -1(-w_{1}+b) \geq 1\\
-&\Rightarrow -1(-2w_{1}+b) \geq 1\\
-\end{align*}
-
-\end{multicols}
+\begin{frame}{Simple Exercise}
 
 \begin{align*}
 w_{min} = 1, b&= 0\\
@@ -322,7 +287,6 @@ $\therefore$ Max margin classifier $ \Rightarrow x = 0$
 &\Rightarrow \text{Minimize Quadratic(x)}\\
 &\Rightarrow \text{such that, Linear(x)}
 \end{align*}
-\begin{multicols}{2}
 \begin{tcolorbox}
 Question
 \begin{align*}
@@ -331,10 +295,15 @@ Question
 &\colon x_{1} + x_{2} - 1 \geq 0
 \end{align*}
 \end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+
 \begin{figure}
-\includegraphics[scale=0.3]{SVM/Svm-28.pdf}
+\includegraphics[scale=0.5]{SVM/Svm-28.pdf}
 \end{figure}
-\end{multicols}
+
+
 \end{frame}
 
 \begin{frame}{Converting to Dual Problem}
@@ -397,11 +366,12 @@ $\text{For all non-support vector points }\alpha_{i} = 0$
 \end{frame}
 
 \begin{frame}{Revisiting the Simple Example}
-\begin{multicols}{2}
-
 \begin{figure}
-\includegraphics[scale = 0.25]{SVM/Svm-21.pdf}
+\includegraphics[scale = 0.5]{SVM/Svm-21.pdf}
 \end{figure}
+\end{frame}
+\begin{frame}{Revisiting the Simple Example}
+
 
 \begin{equation*}
 \begin{bmatrix}
@@ -412,7 +382,7 @@ x_{1} && y \\
 -2 && -1\\
 \end{bmatrix}
 \end{equation*}
-\end{multicols}
+
 \begin{align*}
 L(\alpha) &= \sum_{i=1}^{4} \alpha_{i} - \frac{1}{2}\sum_{i=1}^{4}\sum_{j=1}^{4}\alpha_{i}\alpha_{j}y_{i}y_{j}\bar{x_i}\bar{x_j} \hspace{1cm}\alpha_{i} \geq 0 \\
 &\sum \alpha_{i}y_{i} = 0 \hspace{1.5cm}
