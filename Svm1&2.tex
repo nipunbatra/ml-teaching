@@ -146,6 +146,36 @@
 
 \end{frame}
 
+\begin{frame}{Distance between 2 parallel hyperplanes}
+Equation of two planes is:
+$$
+\begin{aligned}
+&\vec{w}\cdot \vec{x}+b_1=0\\
+&\vec{w}\cdot \vec{x}+b_2=0
+\end{aligned}
+$$
+
+\pause For a point $\vec{x_1}$ on plane 1 and $\vec{x_2}$ on plane 2, we have:
+\pause $$
+\begin{array}{l}
+{\overrightarrow{x_{2}}=\overrightarrow{x_{1}}+t \vec{w}} \\
+{D=|t \vec{w}|=|t|||\vec{w}| |}
+\end{array}
+$$
+
+\pause We can rewrite as follows:
+\pause $$
+\begin{array}{c}
+{\vec{w} \cdot \vec{x}_{2}+b_{2}=0} \\
+{\Rightarrow \vec{w} \cdot\left(\vec{x}_{1}+t \vec{w}\right)+b_{2}=0}
+\end{array}
+$$
+\pause $$
+\Rightarrow \vec{w} \cdot \vec{x}_{1}+t\|\vec{w}\|^{2}+b_1-b_1+b_2 = 0
+\Rightarrow t = \frac{b_1 - b_2}{\|\vec{w}\|^{2}}  \Rightarrow D = t\|\vec{w}\| =  \frac{b_1 - b_2}{\|\vec{w}\|}
+$$
+\end{frame}
+
 \begin{frame}{An Example}
 
 $w = (2,1,4)$\\
