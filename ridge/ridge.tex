@@ -46,15 +46,15 @@ In $f(x) = c_0 + c_1x + c_2x^2 + \dots$ it is $\max|c_i|$ \\ \bigskip
   
 \begin{frame}{Introduction}
 \vspace{0.4cm}
-\only<1>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/lin_1.pdf}\caption{Base Data Set}
+\only<1>{\begin{figure}\includegraphics[width=0.8\linewidth]{lin_1.pdf}\caption{Base Data Set}
 \end{figure}}
-\only<2>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/lin_plot_1.pdf}\caption{Fit with Degree 1}
+\only<2>{\begin{figure}\includegraphics[width=0.8\linewidth]{lin_plot_1.pdf}\caption{Fit with Degree 1}
 \end{figure}}
-\only<3>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/lin_plot_3.pdf}\caption{Fit with Degree 3}
+\only<3>{\begin{figure}\includegraphics[width=0.8\linewidth]{lin_plot_3.pdf}\caption{Fit with Degree 3}
 \end{figure}}
-\only<4>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/lin_plot_6.pdf}\caption{Fit with Degree 6}
+\only<4>{\begin{figure}\includegraphics[width=0.8\linewidth]{lin_plot_6.pdf}\caption{Fit with Degree 6}
 \end{figure}}
-\only<5>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/lin_plot_11.pdf}\caption{Fit with Degree 11}
+\only<5>{\begin{figure}\includegraphics[width=0.8\linewidth]{lin_plot_11.pdf}\caption{Fit with Degree 11}
 \end{figure}}
 \end{frame}  
 
@@ -62,7 +62,7 @@ In $f(x) = c_0 + c_1x + c_2x^2 + \dots$ it is $\max|c_i|$ \\ \bigskip
 \vspace{0.4cm}
 In the examples we notice that as the degree increase (as the prediction starts to overfit the base data), the maximum coefficient also increases.
 %\vspace{-0.3cm}
-\begin{figure}\includegraphics[width=0.7\linewidth]{ridge/lin_plot_coef.pdf}\caption{Trend of the coefficients}\end{figure}
+\begin{figure}\includegraphics[width=0.7\linewidth]{lin_plot_coef.pdf}\caption{Trend of the coefficients}\end{figure}
 
 \end{frame}
  
@@ -87,11 +87,11 @@ $$
 \begin{frame}{Introduction}
 \begin{figure}
         \begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\linewidth]{ridge/ridge_base_contour.pdf}
+                \includegraphics[width=\linewidth]{ridge_base_contour.pdf}
                 \caption{Contour Plot}
         \end{subfigure}%
         \begin{subfigure}[b]{0.5\textwidth}
-                \includegraphics[width=\linewidth]{ridge/ridge_base_surface.pdf}
+                \includegraphics[width=\linewidth]{ridge_base_surface.pdf}
                 \caption{Surface Plot}
         \end{subfigure}%
         \caption{Visualization of the Example}
@@ -125,11 +125,11 @@ $\implies \theta^T\theta - S = 0$
 
 \begin{frame}{Effect of $\mu$}
 \vspace{0.4cm}
-\only<1>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/ridge_1.pdf}\caption{$\mu = 1$}
+\only<1>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge_1.pdf}\caption{$\mu = 1$}
 \end{figure}}
-\only<2>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/ridge_10.pdf}\caption{$\mu = 10$}
+\only<2>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge_10.pdf}\caption{$\mu = 10$}
 \end{figure}}
-\only<3>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/ridge_1000.pdf}\caption{$\mu = 1000$}
+\only<3>{\begin{figure}\includegraphics[width=0.8\linewidth]{ridge_1000.pdf}\caption{$\mu = 1000$}
 \end{figure}}
 \end{frame}
 
@@ -145,14 +145,14 @@ $\implies \theta^T\theta - S = 0$
 
 \begin{frame}{Effect of $\mu$ - Regularization of Parameters}
 \vspace{0.4cm}
-\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/rid_reg-without-lim.pdf}\caption{Comparing the magnitudes of the coefficients with varying $\mu$\\(on the \emph{Real Estate Data Set})}
+\begin{figure}\includegraphics[width=0.8\linewidth]{rid_reg-without-lim.pdf}\caption{Comparing the magnitudes of the coefficients with varying $\mu$\\(on the \emph{Real Estate Data Set})}
 \end{figure}
 \pause Are $\theta_{i}$ all zero for high $\mu$?
 \end{frame}
 
 \begin{frame}{Effect of $\mu$ - Regularization of Parameters}
 \vspace{0.4cm}
-\begin{figure}\includegraphics[width=0.8\linewidth]{ridge/rid_reg-with-lim.pdf}\caption{Comparing the magnitudes of the coefficients with varying $\mu$\\(on the \emph{Real Estate Data Set})}
+\begin{figure}\includegraphics[width=0.8\linewidth]{rid_reg-with-lim.pdf}\caption{Comparing the magnitudes of the coefficients with varying $\mu$\\(on the \emph{Real Estate Data Set})}
 \end{figure}
 \end{frame}
 
@@ -175,7 +175,7 @@ $$
 \begin{columns}
 \begin{column}{0.4\textwidth}
 \begin{figure}
-\includegraphics[width=\linewidth]{ridge/ridge_new_0_17.pdf}
+\includegraphics[width=\linewidth]{ridge_new_0_17.pdf}
 \end{figure}
 Fit High Order Polynomial \\
 $\implies$ high variance \\
@@ -183,7 +183,7 @@ $\implies \, \mu \rightarrow 0$
 \end{column}
 \begin{column}{0.4\textwidth}
 \begin{figure}
-\includegraphics[width=\linewidth]{ridge/ridge_new_1_17.pdf}
+\includegraphics[width=\linewidth]{ridge_new_1_17.pdf}
 \end{figure}
 Fit High Order Polynomial \\
 $\implies$ low variance \\
@@ -197,7 +197,7 @@ $\implies \, \mu \rightarrow \infty$
 \textbf{Q.)} Solve Regularized ($\mu = 2$) and Unregularized.
 \vspace{-0.6cm}
 \begin{figure}
-\includegraphics[width=\linewidth]{ridge/temp.pdf}
+\includegraphics[width=\linewidth]{temp.pdf}
 \end{figure}
 \end{frame}
 
@@ -239,7 +239,7 @@ X^{T}y &= \begin{bmatrix}
 \end{align*}
 \vspace{-0.8cm}
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{ridge/q_unreg.pdf}
+\includegraphics[width=0.8\linewidth]{q_unreg.pdf}
 \end{figure}
 \end{frame}
 
@@ -283,7 +283,7 @@ X^{T}y &= \begin{bmatrix}
 \end{align*}
 \vspace{-0.8cm}
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{ridge/q_reg.pdf}
+\includegraphics[width=0.8\linewidth]{q_reg.pdf}
 \end{figure}
 \end{frame}
 
