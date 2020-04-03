@@ -235,11 +235,11 @@ $E_{train,y_t}[a^2]  = E_{train,y_t}[(y_t - f_{\theta(true)}(x_t))^2] $\\
 \only<3->{
  \hspace{1.70cm}($\because$ there is no dependence on training set)\\
  \vspace{0.3cm}
-\hspace{1.70cm} $ =  E_{y_t}[\underbrace{(y_t - f_{\theta(true)}(x_t))^2}_\text{$\epsilon^2$}] $\\
+\hspace{1.70cm} $ =  E_{y_t}[\underbrace{(y_t - f_{\theta(true)}(x_t))^2}_\text{$\epsilon_t^2$}] $\\
  \vspace{0.5cm}
 }
 \only<3->{
-\hspace{1.70cm} $ =  E_{y_t}[\epsilon^2] $\\
+\hspace{1.70cm} $ =  E_{y_t}[\epsilon_t^2] $\\
  \vspace{0.5cm}
 }
 \only<4->{
@@ -260,25 +260,25 @@ $E_{train,y_t}[ab]  = E_{train,y_t}[(y_t - f_{\theta(true)}(x_t))(f_{\theta(true
 \vspace{0.5cm}
 }
 \only<2->{
-$E_{train,y_t}[ab]  = E_{train,y_t}[\underbrace{(y_t - f_{\theta(true)}(x_t))}_\text{$\epsilon$}(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )] $\\
+$E_{train,y_t}[ab]  = E_{train,y_t}[\underbrace{(y_t - f_{\theta(true)}(x_t))}_\text{$\epsilon_t$}(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )] $\\
 \vspace{0.5cm}
 }
 \only<3->{
-\hspace{1.70cm} $= E_{train,y_t}[\epsilon (f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )] $\\
+\hspace{1.70cm} $= E_{train,y_t}[\epsilon_t (f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )] $\\
 \vspace{0.5cm}
 }
 \only<4>{
-\hspace{1.70cm} ( $\because \epsilon$ and $(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t))$ are independent)\\
+\hspace{1.70cm} ( $\because \epsilon_t$ and $(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t))$ are independent)\\
 \vspace{0.3cm}
-\hspace{1.70cm} $= E_{train,y_t}[\epsilon] \times E_{train,y_t}[(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )] $\\
+\hspace{1.70cm} $= E_{train,y_t}[\epsilon_t] \times E_{train,y_t}[(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )] $\\
 \vspace{0.5cm}
 }
 \only<5->{
-\hspace{1.70cm} ( $\because \epsilon$ and $(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t))$ are independent)\\
+\hspace{1.70cm} ( $\because \epsilon_t$ and $(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t))$ are independent)\\
 \vspace{0.3cm}
-\hspace{1.70cm} $= \underbrace{E_{train,y_t}[\epsilon]}_\text{ = 0 } \times E_{train,y_t}[(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )] $\\
+\hspace{1.70cm} $= \underbrace{E_{train,y_t}[\epsilon_t]}_\text{ = 0 } \times E_{train,y_t}[(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )] $\\
 \vspace{0.25cm}
-\hspace{1.70cm} (By definition $\epsilon$ has mean 0)\\
+\hspace{1.70cm} (By definition $\epsilon_t$ has mean 0)\\
 \vspace{0.5cm}
 }
 \only<6->{
@@ -344,16 +344,20 @@ $= E_{train}[ \alpha^2] + 2E_{train}[ \alpha\beta] + E_{train}[ \beta^2]$ ......
 $E_{train}[\alpha^2]  = E_{train}[(f_{\theta(true)}(x_t)  -  f_{\hat\theta(avg)}(x_t))^2]$\\
 \vspace{0.5cm}
 \only<2->{
-\hspace{1.45cm} $ = E_{train}[bias(f_{\hat\theta}(x_t))^2]$\hfill(By definition of bias)\\
+\hspace{1.45cm} $  = E_{train}[(f_{\theta(true)}(x_t)  -  E_{train}[f_{\hat\theta(train)}(x_t)]^2]$\\
 \vspace{0.5cm}
 }
 \only<3->{
+\hspace{1.45cm} $ = E_{train}[bias(f_{\hat\theta}(x_t))^2]$\hfill(By definition of bias)\\
+\vspace{0.5cm}
+}
+\only<4->{
 \hspace{1.45cm} $ = bias(f_{\hat\theta}(x_t))^2 $\\
 \vspace{0.5cm}
 \hspace{1.45cm} ($\because$ bias is not a function of training data)\\
 
 }
-\only<4->{
+\only<5->{
 \vspace{0.5cm}
 $E_{train}[\alpha^2]  = bias(f_{\hat\theta}(x_t))^2$ .............(Eqn. 6)
 }
@@ -365,13 +369,13 @@ $E_{train}[\alpha\beta] $ \\
 $= E_{train}[(f_{\theta(true)}(x_t)  -  f_{\hat\theta(avg)}(x_t))(f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t)   )]$\\
 \vspace{0.5cm}
 \only<2->{
-$ = E_{train}[bias \times (f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t)   )]$\\
+$ = E_{train}[bias_t \times (f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t)   )]$\\
 \vspace{0.5cm}
 }
 \only<3->{
-$ = bias \times E_{train}[f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t)  ]$\\
+$ = bias_t \times E_{train}[f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t)  ]$\\
 \vspace{0.5cm}
-($\because$ bias is not a function of training data)\\
+($\because$ bias$_t$ is not a function of training data)\\
 \vspace{0.5cm}
 }
 \only<4->{
