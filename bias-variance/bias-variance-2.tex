@@ -27,7 +27,7 @@
 For the purpose of this lecture we assume that there exists a relation between \textbf{Housing Prices} and \textbf{area of the house}.
 \pause
 
-Here, the true function $f_{\theta (true)}$ is used to model the relation $y_i = f_{\theta (true)}(x_i)$
+Here, the true function $f_{\theta (true)}$ is used to model the relation $y_t = f_{\theta (true)}(x_t)$
 \begin{figure}
 \includegraphics[width=0.6\textwidth]{images/true.pdf}
 \vspace*{-0.3cm}
@@ -47,21 +47,29 @@ Any prediction made is effected by 3 sources of error:
 \begin{frame}{Noise}
 \vspace*{0.4cm}
 
-\only<1-2>{Data is inherently noisy. This stems from the fact that no relation can model all possible attributes. }
+\only<1-2>{A relation between \textbf{price} and \textbf{size} will be affected by other factors that we have not considered or cannot be perfectly captured. Such factors would include:
+\begin{itemize}
+\item the condition of the house (cannot be measured perfectly)
+\item sale prices of other houses in the neighborhood (measurements that have biases in themselves)
+\end{itemize}}
 
-\only<2-2>{So a relation between \textbf{price} and \textbf{size} will be affected by other factors such as the \textbf{condition of the house}.}
-\only<3->{This is \textbf{not} a property of data and is an \textbf{Irreducible error}. 
-It can be understood by the equation: $y_i = f_{\theta (true)}(x_i)+\epsilon_i$
+\only<2-2>{It is because of this data is inherently noisy.}
+\only<3-4>{This is \textbf{not} a property of data and is instead an \textbf{irreducible error}.}
+
+\only<4-4>{
+This error can be captured by the error term $\epsilon$ which causes the final value of the house to follow the equation: $y_t = f_{\theta (true)}(x_t)+\epsilon_t$
 }
 
-\only<4->{The noise is mean centered around the true function and has spread that is called the variance of the noise}
+\only<5->{This noise can be assumed to be mean centered around $0$ and has spread that is called the variance of the noise. 
+
+This causes $y_t$ to become mean centered around the true relation.}
 \vspace*{-0.6cm}
-\only<2-3>{\begin{figure}
+\only<4-4>{\begin{figure}
 \includegraphics[width=0.7\textwidth]{images/data.pdf}
 \vspace*{-0.3cm}
 \caption{Modeling the relation}
 \end{figure}}
-\only<4->{\begin{figure}
+\only<5->{\begin{figure}
 \includegraphics[width=0.7\textwidth]{images/data_var.pdf}
 \vspace*{-0.3cm}
 \caption{Modeling the relation}
@@ -71,7 +79,37 @@ It can be understood by the equation: $y_i = f_{\theta (true)}(x_i)+\epsilon_i$
 
 \begin{frame}{Bias}
 \vspace*{0.4cm}
-\only<1-4>{\textbf{Bias} is a measure of how well can the model fit the true relation between the parameters.}
+\only<1-2>{\textbf{Bias} is a measure of how well a model can fit a given relation.}
+
+\only<2-3>{
+To understand this let us take an example where we try to learn the relation that models the \textit{Price} and \textit{Size} of a house using a \textit{constant function}. \vspace*{-0.4cm}}
+
+\only<2>{\begin{figure}
+\includegraphics[width=0.7\textwidth]{images/biasn_1.pdf}
+\vspace*{-0.3cm}
+\caption{An example dataset}
+\end{figure}}
+
+\only<3>{\begin{figure}
+\includegraphics[width=0.8\textwidth]{images/biasn_2.pdf}
+\vspace*{-0.3cm}
+\caption{An example dataset}
+\end{figure}}
+
+\only<4>{
+So the bias in this scenario looks something like this:
+\begin{figure}
+\includegraphics[width=0.8\textwidth]{images/biasn_3.pdf}
+\vspace*{-0.3cm}
+\caption{An example dataset}
+\end{figure}
+}
+
+\end{frame}
+
+\begin{frame}{Bias}
+\vspace*{0.4cm}
+\only<1-4>{But it is important to understand that there are a large number of different datasets possible for a given situation, with each having their individual fits.}
 
 \only<2>{Assume that we have two datasets of houses sold.}
 \only<2>{\begin{figure}
@@ -94,15 +132,18 @@ It can be understood by the equation: $y_i = f_{\theta (true)}(x_i)+\epsilon_i$
 \caption{Two Datasets from same relation}
 \end{figure}}
 
-\only<5>{Doing so for all possible size N training sets we get}
-\only<5>{\begin{figure}
-\includegraphics[width=\textwidth]{images/bias4.pdf}
-\vspace*{-0.6cm}
+\only<5-6>{Doing so for all possible size N training sets we get}
+
+\only<6>{A way of consolidating all these possible fits is to calculate an average fit that is weighted by how likely they are to appear.}
+
+\only<5-6>{\begin{figure}
+\includegraphics[width=0.8\textwidth]{images/bias4.pdf}
+\vspace*{-0.4cm}
 \caption{Fits on different training sets}
 \end{figure}}
 
-\only<6>{Averaging all the fits (based on their likelihood) we get the average fit.}
-\only<6>{\begin{figure}
+\only<7>{Averaging all the fits (as in this scenario all datasets are equally likely) we get the average fit.}
+\only<7>{\begin{figure}
 \includegraphics[width=0.7\textwidth]{images/bias5.pdf}
 \vspace*{-0.3cm}
 \caption{Average fit on all different training sets}
@@ -122,16 +163,25 @@ It can be understood by the equation: $y_i = f_{\theta (true)}(x_i)+\epsilon_i$
 \end{frame}
 
 \begin{frame}{Bias Contribution: Effect of Complexity}
-\only<1>{As we increase the complexity of the fit \\ $\implies$ fit becomes more flexible \\ $\implies$ bias decreases}
+\only<1->{As we increase the complexity of the fit \\ $\implies$ fit becomes more flexible \\ $\implies$ bias decreases}
 \only<1>{\begin{figure}
 \includegraphics[width=\textwidth]{images/bias7.pdf}
 \vspace*{-0.3cm}
 \caption{Effect of degree on Bias of the fit}
 \end{figure}}
+\only<2>{\begin{figure}
+\includegraphics[width=\textwidth]{images/bias8.pdf}
+\vspace*{-0.3cm}
+\caption{Effect of degree on Bias of the fit}
+\end{figure}}
+\end{frame}
+
+\begin{frame}{Bias: Calculating the Bias}
+
 \end{frame}
 
 \begin{frame}{Variance}
-\only<1->{Variance of the fit is a measure of how different specific fits can be from each other.}
+\only<1->{Variance of the fit is a measure of the variation in the fits when trained across different training sets.}
 \only<1->{\begin{figure}
 \includegraphics[width=0.7\textwidth]{images/var1.pdf}
 \vspace*{-0.3cm}
@@ -162,13 +212,18 @@ It can be understood by the equation: $y_i = f_{\theta (true)}(x_i)+\epsilon_i$
 \end{frame}
 
 \begin{frame}{The Bias-Variance Trade off}
-\textbf{Plot Graph - 3:06 Variance and the bias-variance trade off}
+\only<1>{\begin{figure}
+\includegraphics[width=\textwidth]{images/bv-2.pdf}
+\vspace*{-0.3cm}
+\caption{Variance in high complexity fits}
+\end{figure}}
+\only<2>{\textbf{Plot Graph - 3:06 Variance and the bias-variance trade off}}
 \end{frame}
 
 \section{Mathematically Formulating the Error of a Model}
 
 \begin{frame}{Measuring the goodness of a Model}
-To measure the goodness of a model, we have to understand how well it can predict the behavior of the phenomenon.
+To measure the goodness of a model, we have to understand how well it can predict the behavior of the phenomenon it is trying to model.
 \pause
 
 This behavior varies due to training set randomness.
@@ -190,12 +245,67 @@ Any prediction made is effected by 3 sources of error:
 \end{itemize}
 \pause
 
-Therefore, $E_{train} = f(\text{noise, bias, variance}) $
+Therefore, $E_{train}[\text{at a point } x_t] = f(\text{noise, bias, variance}) $ 
 
 \end{frame}
 
-\begin{frame}{Effect of Noise on the Model}
-Noise in a model can be understood \textbf{continue from 5:47 in Formally defining 3 sources of error}
+\begin{frame}{Formally defining the 3 sources of error: Noise}
+\only<1->{Noise is an \textbf{irreducible error} that is capture by the error term $\epsilon$.
+
+The equation of the relation becomes $y_t = f_{\theta (true)}(x_t)+\epsilon_t$}
+
+\only<2->{The noise is mean centered around $0$ and has spread that is called the variance of the noise which is denoted by $\sigma^2$. }
+
+\only<3>{That is it can be denoted by $\epsilon_t \in \mathcal{N}(0, \sigma^2)$}
+
+\vspace*{-0.6cm}
+\only<2>{\begin{figure}
+\includegraphics[width=0.7\textwidth]{images/data_var.pdf}
+\vspace*{-0.3cm}
+\caption{Variance in the noise}
+\end{figure}}
+
+\end{frame}
+
+\begin{frame}{Formally defining the 3 sources of error: Bias}
+\only<1->{Bias is a measure of how flexible the fit is in capturing the true function $f_{\theta(true)}(x)$}
+\only<1->{$$\text{Bias}(x_t) = f_{\theta(true)}(x_t) - f_{\bar\theta}(x_t)$$
+where $f_{\bar\theta}$ denotes the average fit over all datasets.
+}
+\only<1>{\begin{figure}
+\includegraphics[width=0.65\textwidth]{images/bias6.pdf}
+\vspace*{-0.3cm}
+\caption{Bias of the fit}
+\end{figure}}
+
+\only<2->{As $f_{\bar\theta}$ denotes the average fit over all datasets, it can be expressed by $f_{\bar\theta}(x_t) = E_{train}[f_{\hat{\theta}}(x_t)]$
+}
+\end{frame}
+
+\begin{frame}{Formally defining the 3 sources of error: Variance}
+\only<1->{Variance of the fit is a measure of the variation in the fits when trained across different training sets.}
+
+\only<2->{Variance of the fit can be defined by
+$$\text{var}(f_{\hat{\theta}}(x_t)) = E_{train}[(f_{\hat{\theta}}(x) - f_{\bar\theta}(x_t))^2]$$
+
+where $f_{\hat{\theta}}(x) - f_{\bar\theta}(x_t)$ denotes the deviation that a specific fit has from the average.
+}
+\only<1>{\begin{figure}
+\includegraphics[width=0.8\textwidth]{images/var4.pdf}
+\vspace*{-0.3cm}
+\caption{Variance of a fit}
+\end{figure}}
+\end{frame}
+
+\begin{frame}{Deriving Expected Prediction Error}
+Now we will see how, 
+$ E_{train}[\text{at a point } x_t] = \sigma^2 + [\text{bias}(f_{\hat{\theta}}(x_t))]^2 + \text{var}(f_{\hat{\theta}}(x_t)) $
+
+where, 
+
+given a training set, the parameters $\hat{\theta}$ of the fit are learned as $f_{\hat{\theta}}$ 
+
+and, the prediction at a point $x_t$ for the model trained on that training set is $f_{\hat{\theta}}(x_t)$
 \end{frame}
 
 \begin{frame}{Deriving Expected Prediction Error}
