@@ -177,7 +177,9 @@ So the bias in this scenario looks something like this:
 \end{frame}
 
 \begin{frame}{Bias: Calculating the Bias}
+Bias calculation for a model is at the core a calculation of the area under a curve. 
 
+Therefore, finding the bias for a model in the range $(a,b)$ is the calculation of the integral: $$ \int_a^b |f_{\bar{\theta}}(x)-f_{\theta(\text{true})}(x)| dx $$
 \end{frame}
 
 \begin{frame}{Variance}
