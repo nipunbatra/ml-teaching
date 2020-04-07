@@ -440,10 +440,10 @@ Now, we will further simplify the MSE term into bias and variance.
 $MSE( f_{\hat\theta(train)}(x_t)) =  E_{train}[(f_{\theta(true)}(x_t) -  f_{\hat\theta(train)}(x_t) )^2]$\\
 \vspace{0.5cm}
 \only<2>{
-$= E_{train}[(   (f_{\theta(true)}(x_t)  -  f_{\hat\theta(avg)}(x_t) ) + (f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t)      ) )^2]$\\
+$= E_{train}[(   (f_{\theta(true)}(x_t)  -  f_{\bar\theta}(x_t) ) + (f_{\bar\theta}(x_t)  -  f_{\hat\theta(train)}(x_t)      ) )^2]$\\
 }
 \only<3->{
-$= E_{train}[(   \underbrace{(f_{\theta(true)}(x_t)  -  f_{\hat\theta(avg)}(x_t) )}_\text{$\alpha$} + \underbrace{(f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t)      )}_\text{$\beta$} )^2]$\\
+$= E_{train}[(   \underbrace{(f_{\theta(true)}(x_t)  -  f_{\bar\theta}(x_t) )}_\text{$\alpha$} + \underbrace{(f_{\bar\theta}(x_t)  -  f_{\hat\theta(train)}(x_t)      )}_\text{$\beta$} )^2]$\\
 \vspace{0.5cm}
 }
 \only<4->{
@@ -463,7 +463,7 @@ $= E_{train}[ \alpha^2] + 2E_{train}[ \alpha\beta] + E_{train}[ \beta^2]$ ......
 
 
 \begin{frame}{Deriving Expected Prediction Error}
-$E_{train}[\alpha^2]  = E_{train}[(f_{\theta(true)}(x_t)  -  f_{\hat\theta(avg)}(x_t))^2]$\\
+$E_{train}[\alpha^2]  = E_{train}[(f_{\theta(true)}(x_t)  -  f_{\bar\theta}(x_t))^2]$\\
 \vspace{0.5cm}
 \only<2->{
 \hspace{1.45cm} $  = E_{train}[(f_{\theta(true)}(x_t)  -  E_{train}[f_{\hat\theta(train)}(x_t)]^2]$\\
@@ -488,30 +488,30 @@ $E_{train}[\alpha^2]  = bias(f_{\hat\theta}(x_t))^2$ .............(Eqn. 6)
 
 \begin{frame}{Deriving Expected Prediction Error}
 $E_{train}[\alpha\beta] $ \\
-$= E_{train}[(f_{\theta(true)}(x_t)  -  f_{\hat\theta(avg)}(x_t))(f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t)   )]$\\
+$= E_{train}[(f_{\theta(true)}(x_t)  -  f_{\bar\theta}(x_t))(f_{\bar\theta}(x_t)  -  f_{\hat\theta(train)}(x_t)   )]$\\
 \vspace{0.5cm}
 \only<2->{
-$ = E_{train}[bias_t \times (f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t)   )]$\\
+$ = E_{train}[bias_t \times (f_{\bar\theta}(x_t)  -  f_{\hat\theta(train)}(x_t)   )]$\\
 \vspace{0.5cm}
 }
 \only<3->{
-$ = bias_t \times E_{train}[f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t)  ]$\\
+$ = bias_t \times E_{train}[f_{\bar\theta}(x_t)  -  f_{\hat\theta(train)}(x_t)  ]$\\
 \vspace{0.5cm}
 ($\because$ bias$_t$ is not a function of training data)\\
 \vspace{0.5cm}
 }
 \only<4->{
-$ = bias \times \left( E_{train}[f_{\hat\theta(avg)}(x_t)]  -  E_{train}[f_{\hat\theta(train)}(x_t) ] \right)$\\
+$ = bias \times \left( E_{train}[f_{\bar\theta}(x_t)]  -  E_{train}[f_{\hat\theta(train)}(x_t) ] \right)$\\
 \vspace{0.5cm}
 }
 \only<5>{
-$ = bias \times \left( f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(avg)}(x_t)  \right) $\\
+$ = bias \times \left( f_{\bar\theta}(x_t)  -  f_{\bar\theta}(x_t)  \right) $\\
 \vspace{0.5cm}
-($\because f_{\hat\theta(avg)}(x_t) =  E_{train}[f_{\hat\theta(train)}(x_t)$ )\\
+($\because f_{\bar\theta}(x_t) =  E_{train}[f_{\hat\theta(train)}(x_t)$ )\\
 \vspace{0.5cm}
 }
 \only<6->{
-$ = bias \times \left( f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(avg)}(x_t)  \right) $\\
+$ = bias \times \left( f_{\bar\theta}(x_t)  -  f_{\bar\theta}(x_t)  \right) $\\
 \vspace{0.5cm}
 $E_{train}[\alpha\beta]  = 0$..........................(Eqn. 7) 
 \vspace{0.5cm}
@@ -522,16 +522,16 @@ $E_{train}[\alpha\beta]  = 0$..........................(Eqn. 7)
 
 
 \begin{frame}{Deriving Expected Prediction Error}
-$E_{train}[\beta^2]  = E_{train}[(f_{\hat\theta(avg)}(x_t)  -  f_{\hat\theta(train)}(x_t) )^2]$ \\
+$E_{train}[\beta^2]  = E_{train}[(f_{\bar\theta}(x_t)  -  f_{\hat\theta(train)}(x_t) )^2]$ \\
 \vspace{0.5cm}
 \only<2->{
-\hspace{1.45cm} $=  E_{train}[(f_{\hat\theta(train)}(x_t) - f_{\hat\theta(avg)}(x_t))^2]$\\
+\hspace{1.45cm} $=  E_{train}[(f_{\hat\theta(train)}(x_t) - f_{\bar\theta}(x_t))^2]$\\
 \vspace{0.5cm}
 }
 \only<3->{
 \hspace{1.45cm} $=  E_{train}[(f_{\hat\theta(train)}(x_t) - E_{train}[(f_{\hat\theta(train)}(x_t)])^2]$\\
 \vspace{0.5cm}
-\hspace{1.45cm} ($\because f_{\hat\theta(avg)}(x_t) = E_{train}[(f_{\hat\theta(train)}(x_t)] $ )\\
+\hspace{1.45cm} ($\because f_{\bar\theta}(x_t) = E_{train}[(f_{\hat\theta(train)}(x_t)] $ )\\
 \vspace{0.5cm}
 }
 \only<4->{
