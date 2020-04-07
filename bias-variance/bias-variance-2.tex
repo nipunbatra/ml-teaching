@@ -311,6 +311,16 @@ and, the prediction at a point $x_t$ for the model trained on that training set 
 \end{frame}
 
 \begin{frame}{Deriving Expected Prediction Error}
+Prediction Error at a point $x_t$ can be calculated using the squared loss function.\\
+\vspace{0.5cm}
+ Prediction error at $x_t$ = $(y_t - f_{\hat\theta(train)}(x_t))^2$\\
+\vspace{0.5cm}
+To find the ``Expected Prediction Error'' at a point $x_t$ we average out the prediction error at that point over all possible learned models. This can be done by finding the expectation of prediction error for that point over all possible training datasets ($train$) and labels for that point ($y_t$).  \\
+\vspace{0.5cm}
+Expected prediction error at $x_t$ = $E_{train,y_t}[(y_t - f_{\hat\theta(train)}(x_t))^2]$\\
+\end{frame}
+
+\begin{frame}{Deriving Expected Prediction Error}
 Expected prediction error at $x_t$ = $E_{train,y_t}[(y_t - f_{\hat\theta(train)}(x_t))^2]$\\
 \vspace{0.5cm}
 \only<2>{
