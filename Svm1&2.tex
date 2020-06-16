@@ -6,6 +6,7 @@
 \usepackage{adjustbox}
 \usepackage{pgfplots}
 \usepackage{multicol}
+\usepackage{pdfpages}
 %\beamerdefaultoverlayspecification{<+->}
 \newcommand{\data}{\mathcal{D}}
 
@@ -51,100 +52,14 @@
 \maketitle
 
 
-\begin{frame}{Support Vector Machines}
-\begin{itemize}
-	\item Popular binary classification technique
-\end{itemize}
-
-\begin{figure}
-\centering
-\begin{overprint}
-    \onslide<1>\includegraphics[scale = 0.4]{SVM/Svm-1.pdf}
-    \onslide<2>\includegraphics[scale = 0.4]{SVM/Svm-2.pdf}
-    \onslide<3>\includegraphics[scale = 0.4]{SVM/Svm-3.pdf}
-    \onslide<4>\includegraphics[scale = 0.4]{SVM/Svm-4.pdf}
-    
-    \end{overprint}
-\end{figure}
-
-
-\only<2->
 {
-  $\Rightarrow$Draw a separating hyperplane\\
- 
-}
-\only<3->
-{
-  $\Rightarrow$Maximize the Margin
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=1-19]{svm/Svm-notes.pdf}
 }
 
-\end{frame}
-
-\begin{frame}{Hyperplane v/s Dimensions}
-\begin{figure}
-    \includegraphics[width=\linewidth]{./SVM/Svm-5.pdf}  
-\end{figure}
-\end{frame}
-
-\begin{frame}{Hyperplane v/s Dimensions}
-\begin{figure}
-    \includegraphics[width=\linewidth]{./SVM/Svm-6.pdf}  
-\end{figure}
-\end{frame}
-
-\begin{frame}{Hyperplane v/s Dimensions}
-\begin{figure}
-    \includegraphics[width=\linewidth]{./SVM/Svm-7.pdf}  
-\end{figure}
-\end{frame}
 
 
-\begin{frame}{Equation of a Hyperplane}
 
-\begin{itemize}
-	\item Defined by the point $P_{0}$ and the $\perp$ to the plane at that point $\overrightarrow{\text{w}}$
-\end{itemize}
-
-\begin{figure}
-\begin{overprint}
-\onslide<1> \includegraphics[scale=0.5]{./SVM/Svm-12.pdf}
-\onslide<2> \includegraphics[scale=0.5]{./SVM/Svm-13.pdf}
-\onslide<3> \includegraphics[scale=0.5]{./SVM/Svm-14.pdf}
-\onslide<4> \includegraphics[scale=0.5]{./SVM/Svm-15.pdf}
-\onslide<5> \includegraphics[scale=0.5]{./SVM/Svm-16.pdf}
-\end{overprint}
-\end{figure}
-
-
-\end{frame}
-
-\begin{frame}{Equation of Hyperplane}
-\begin{itemize}
-	\item Defined by the point $P_{0}$ and the $\perp$ to the plane at that point $\overrightarrow{\text{w}}$
-\end{itemize}
-\begin{align*}
-  w \perp \overrightarrow{\text{x}} - \overrightarrow{x_{0}}\\
- \Rightarrow w.(\overrightarrow{\text{x}} - \overrightarrow{x_{0}}) = 0\\
- \Rightarrow w.\overrightarrow{\text{x}} +  \overrightarrow{b} = 0
-\end{align*}       
-        
-\end{frame}
-
-\begin{frame}{Distance between 2 parallel hyperplanes}
-
-\begin{figure}
-\includegraphics[scale=0.5]{SVM/Svm-17.pdf}
-\end{figure}
-
-\end{frame}
-
-\begin{frame}{Distance between 2 parallel hyperplanes}
-
-\begin{figure}
-\includegraphics[scale=0.5]{SVM/Svm-18.pdf}
-\end{figure}
-
-\end{frame}
 
 \begin{frame}{Distance between 2 parallel hyperplanes}
 Equation of two planes is:
@@ -176,35 +91,20 @@ $$
 $$
 \end{frame}
 
-\begin{frame}{An Example}
-
-$w = (2,1,4)$\\
-$p_{0} = (0,2,3)$\\
-$b = -w.x_{0} = (-2 \times 0 + 1 \times 2 + 4 \times 3) = -14$\\
-
-\end{frame}
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=20-25]{svm/Svm-notes.pdf}
+}
 
 
 
-\begin{frame}{Formulation}
 
-\begin{figure}
-\includegraphics[scale=0.4]{SVM/Svm-20.pdf}
-\end{figure}
-
-\begin{itemize}
-\item Margin $ = \frac{(b+1)-(b-1)}{||w||} = \frac{2}{||w||}$\
-\item Goal is to Maximize margin $\Rightarrow$ minimize $||w||$
-
-\end{itemize}
-
-\end{frame}
 
 \begin{frame}{Primal Formulation}
 	\begin{tcolorbox}{Objective}
 	\begin{align*}
 	\text{Minimize } & \frac{1}{2}||w||^{2} \\
-	\text{s.t. } & y_{i}(w.x_{i} + b) \geq 0 \hspace{2mm}\forall i
+	\text{s.t. } & y_{i}(w.x_{i} + b) \geq 1 \hspace{2mm}\forall i
 	\end{align*}
 \end{tcolorbox}
 \pause 
@@ -236,26 +136,25 @@ Q) What is $||w||$?
 
 \end{frame}
 
-\begin{frame}{Simple Exercise}
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=27]{svm/Svm-notes.pdf}
+}
 
-\begin{figure}
-\includegraphics[scale = 0.5]{SVM/Svm-21.pdf}
-\end{figure} 
 
-\end{frame}
 
 \begin{frame}{Simple Exercise}
 
 \begin{align*}
 \begin{bmatrix}
-x_{1} && y \\
+x && y \\
 1 && 1\\
 2 && 1\\
 -1 && -1\\
 -2 && -1\\
 \end{bmatrix}
 \end{align*}
-Separating Hyperplane: $w_{1}x_{1} + b = 0$
+Separating Hyperplane: $wx + b = 0$
 \end{frame}
 
 \begin{frame}{Simple Exercise}
@@ -288,11 +187,11 @@ x_{1} && y \\
 \end{multicols}
 \end{frame}
 
-\begin{frame}{Simple Exercise} 
-\begin{figure}
-\includegraphics[scale=0.5]{SVM/Svm-27.pdf}
-\end{figure}
-\end{frame}
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=28-33]{svm/Svm-notes.pdf}
+}
+
 
 \begin{frame}{Simple Exercise}
 
@@ -306,7 +205,7 @@ x &=0 \\
 
 \begin{frame}{Simple Exercise}
 Minimum values satisfying constraints  $\Rightarrow$
-$w_{1}$ = 1 and $b = 0$\\
+$w$ = 1 and $b = 0$\\
 $\therefore$ Max margin classifier $ \Rightarrow x = 0$
 
 \end{frame}
@@ -327,20 +226,21 @@ Question
 \end{tcolorbox}
 \end{frame}
 
-\begin{frame}
-
-\begin{figure}
-\includegraphics[scale=0.5]{SVM/Svm-28.pdf}
-\end{figure}
 
 
-\end{frame}
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=34]{svm/Svm-notes.pdf}
+}
+
+
 
 \begin{frame}{Converting to Dual Problem}
-Primal $\Rightarrow$ Dual Conversion\\
+Primal $\Rightarrow$ Dual Conversion using Lagrangian multipliers\\
 \begin{align*}
 	\text{Minimize } & \frac{1}{2}||\bar{w}||^{2} \\
-	\text{s.t. } & y_{i}(\bar{w}.x_{i} + b) \geq 0 \hspace{2mm}\forall i
+	\text{s.t. } & y_{i}(\bar{w}.x_{i} + b) \geq 1\\
+	 \hspace{2mm}\forall i
 	\end{align*}
 \begin{align*}
 &L(\bar{w},b,\alpha_{1},\alpha_{2},...\alpha_{n}) = \frac{1}{2}
@@ -380,7 +280,7 @@ Primal $\Rightarrow$ Dual Conversion\\
 \begin{frame}{Question}
 \textbf{Question}:\\
 \vspace{2mm}
-$\alpha_{i}\left(y_{i}\left(\bar{w}, \bar{x}_{i}+b\right)-1\right)=0 \quad \forall i$\\
+$\alpha_{i}\left(y_{i}\left(\bar{w}, \bar{x}_{i}+b\right)-1\right)=0 \quad \forall i$ as per KKT slackness\\
 \vspace{2mm}
 What is $\alpha_{i}$ for support vector points?\\
 \vspace{4mm}
@@ -395,11 +295,12 @@ $\therefore \alpha_{i} \text { where i } \in \text{\{support vector points\}} \n
 $\text{For all non-support vector points }\alpha_{i} = 0$
 \end{frame}
 
-\begin{frame}{Revisiting the Simple Example}
-\begin{figure}
-\includegraphics[scale = 0.5]{SVM/Svm-21.pdf}
-\end{figure}
-\end{frame}
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=27]{svm/Svm-notes.pdf}
+}
+
+
 \begin{frame}{Revisiting the Simple Example}
 
 
@@ -440,45 +341,46 @@ How to Solve? $\Rightarrow$ Use the QP Solver!!
 
 \begin{frame}{Revisiting the Simple Example}
 For the trivial example, \\
-\hspace{2cm} By symmetry, $\alpha_{2} = \alpha_{4} = \alpha $\text{ (say) }\\
-\hspace{2cm} \& $\alpha_1 = \alpha_3  = 0$ \\
+We know that only x = $\pm 1$ will take part in the constraint actively. Thus, $\alpha_2, \alpha_{4} = 0$ \\
+\hspace{2cm} By symmetry, $\alpha_{1} = \alpha_{3} = \alpha $\text{ (say) }\\
 \hspace{2cm} \& $\sum y_i\alpha_i = 0$
 \begin{align*}
 \begin{aligned}
-\left.L(\alpha_{1},\alpha_{2},\alpha_{3},\alpha_{4}\right)=& \alpha_{1}+\alpha_{2}+\alpha_{3}+\alpha_{4} \\
-&-\frac{1}{2}\left\{\alpha_{2} \alpha_{4}(1)(-1)(2)(-2) \right. \\
-&\hspace{1cm} +\\
-& \alpha_{4} \alpha_{2}(-1)(1)(-2)(2) \\
+\left.L(\alpha_{1},\alpha_{2},\alpha_{3},\alpha_{4}\right)=& 2\alpha \\
+&-\frac{1}{2}\left\{\alpha^{2} (1)(-1)(1)(-1) \right. \\
+&\hspace{1cm} + \alpha^{2} (-1)(1)(-1)(1) \\
+&\hspace{1cm} + \alpha^{2} (1)(1)(1)(1) +  \alpha^{2} (-1)(-1)(-1)(-1) \\
 \}\\
 \end{aligned}
 \end{align*}
-\hspace{2cm} $\underset{\alpha}{Maximize} \hspace{3mm} 2\alpha - \frac{1}{2}(4\alpha^{2} + 4\alpha^{2})$
+\hspace{2cm} $\underset{\alpha}{Maximize} \hspace{3mm} 2\alpha - \frac{1}{2}(4\alpha^{2})$
 \end{frame}
 
 \begin{frame}{Revisiting the Simple Example}
 \begin{align*}
 \begin{aligned}
-\frac{\partial}{\partial \alpha}\left(2 \alpha-4 \alpha^{2}\right)=0 & \Rightarrow 2-8 \alpha=0 \\
-\Rightarrow \hspace{2mm}& \alpha=1 / 4 \\
+\frac{\partial}{\partial \alpha}\left(2 \alpha- 2\alpha^{2}\right)=0 & \Rightarrow 2-4 \alpha=0 \\
+\Rightarrow \hspace{2mm}& \alpha=1/2\\
 \end{aligned}\\
-\therefore \alpha_{1}=0 \hspace{2mm} \alpha_{2}=\frac{1}{4} ; \hspace{2mm} \alpha_{3}=0 \hspace{2mm} \alpha_{4}=\frac{1}{4}
+\therefore \alpha_{1}=1/2 \hspace{2mm} \alpha_{2}=0 ; \hspace{2mm} \alpha_{3}=1/2 \hspace{2mm} \alpha_{4}=0
 \\
-\vec{w}=\sum_{i=1}^{N} \alpha_{i} y_{i} \bar{x}_{i} =0 \times 1 \times 1+\frac{1}{4} \times 1 \times 2 \\
-+ 0 \times -1 \times -1 + \frac{1}{4}\times -1 \times -2 \\
- = 2/4 + 2/4 = 1
+\vec{w}=\sum_{i=1}^{N} \alpha_{i} y_{i} \bar{x}_{i} =1/2 \times 1 \times 1+0 \times 1 \times 2 \\
++ 1/2 \times -1 \times -1 + 0\times -1 \times -2 \\
+ = 1/2 + 1/2 = 1
 \end{align*}
 \end{frame}
 
 \begin{frame}{Revisiting the Simple Example}
 \textbf{Finding b:}\\
 For the support vectors we have, \\
-$\alpha_{i}=0$\\
-$\&$\\
+
 $y_{i}(\vec{w} \cdot \overrightarrow{x_{i}}+b)-1=0$\\
 or, $y_{i}$ $\left(\bar{w} \cdot \bar{x}_{1}+b\right)=1$\\
-or, $y_{i}^{2}\left(\tilde{w} \cdot \tilde{x}_{i}+b\right)=y_{i}$\\
+or, $y_{i}^{2}\left(\bar{w} \cdot \bar{x}_{i}+b\right)=y_{i}$\\
 or, $\quad \bar{w}, \bar{x}_{i}+b=y_{i} \hspace{2mm}(\because y_{i}^{2} = 1)$\\
 or, $b= y_i - w \cdot x_i$
+
+In practice, $b=\frac{1}{N_{SV}} \sum_{i=1}^{N_{SV}}\left(y_{i}-\bar{w}\bar{x}_{i}\right)$
 
 \end{frame}
 
@@ -487,7 +389,7 @@ or, $b= y_i - w \cdot x_i$
 \begin{aligned}
 b &=\frac{1}{2}\{(1-(1)(1))+(-1-(1)(-1))\\
 &=\frac{1}{2}\{0+0\}=0 \\
-&=1 \\
+&=0 \\
 & \therefore w = 1 \hspace{2mm}\& \hspace{2mm} b = 0
 \end{aligned}
 \end{align*}
@@ -496,9 +398,7 @@ b &=\frac{1}{2}\{(1-(1)(1))+(-1-(1)(-1))\\
 \begin{frame}{Making Predictions}
 \textbf{Making Predictions} \\
 \hspace{2cm} $\hat{y}(x_i) = \operatorname{SIGN}(w \cdot x_i + b)$\\
-\begin{figure}
-\includegraphics[scale = 0.3]{SVM/Svm-21.pdf}
-\end{figure}
+
 For $x_{test} = 3$; $\hat{y}(3) = \operatorname{SIGN}(1 \times 3 + 0)$ = +ve class
 \end{frame}
 
@@ -515,11 +415,80 @@ For $x_{test} = 3$; $\hat{y}(3) = \operatorname{SIGN}(1 \times 3 + 0)$ = +ve cla
 \begin{align*}
 \begin{aligned}
 &\text{In our example,} \\
-&\alpha_{1}=0 ; \alpha_{2}=1 / 4 ; \quad \alpha_{3}=0 ; \alpha_{4}=1 / 4\\
-&\hat{y}(3) =\operatorname{SIGN}\left(\frac{1}{4} \times 1 \times (2 \times 3)+0+\frac{1}{4} \times (-1) \times (-2 \times 3)+0\right)\\
-&=\operatorname{SIGN} \left(\frac{12}{4}\right)=\operatorname{SIGN}(3)=+1
+&\alpha_{1}=1/2 ; \alpha_{2}=0 ; \quad \alpha_{3}=1/2 ; \alpha_{4}=0\\
+&\hat{y}(3) =\operatorname{SIGN}\left(\frac{1}{2} \times 1 \times (1 \times 3)+0+\frac{1}{2} \times (-1) \times (-1 \times 3)+0\right)\\
+&=\operatorname{SIGN} \left(\frac{6}{2}\right)=\operatorname{SIGN}(3)=+1
 \end{aligned}
 \end{align*}
 
+\end{frame}
+
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=35]{svm/Svm-notes.pdf}
+}
+
+
+	\begin{frame}{Non-Linearly Separable Data}
+		\begin{itemize}[<+->]
+			\item Data not separable in $\mathbb{R}$ 
+		
+	
+
+	\item Can we still use SVM? 
+
+	\item Yes!
+	\item How? Project data to a higher dimensional space.
+\end{itemize}
+\end{frame}
+
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=36-41]{svm/Svm-notes.pdf}
+}
+
+
+
+\begin{frame}{Projection/Transformation Function}
+	\begin{equation*}
+	\phi : \mathbb{R}^{d} \rightarrow \mathbb{R}^{D}
+	\end{equation*}
+	where, $d$ = original dimension \\
+	\hspace{1cm} $D$ = new dimension \\
+	In example next :\\
+	\hspace{1cm} $d = 1; D = 2$ 
+\end{frame}
+
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=42-44]{svm/Svm-notes.pdf}
+}
+\begin{frame}{}
+	Linear SVM:\\
+	\hspace{1cm} Maximize\\
+	\begin{equation*}
+	L(\alpha) = \sum_{i=1}^{N}\alpha_{i} - \frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_{i}\alpha_{j}y_{i}y_{j}\overline{x_{i}}.\overline{x_{j}}
+	\end{equation*}
+	\hspace{1cm} such that constraints are satisfied.\\
+	\hspace{5cm} $\downarrow$\\
+	\hspace{3.8cm} Transformation ($\phi$)\\
+	\hspace{5cm} $\downarrow$\\
+	\begin{equation*}
+	L(\alpha) = \sum_{i=1}^{N}\alpha_{i} - \frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_{i}\alpha_{j}y_{i}y_{j}\phi(\overline{x_{i}}).\phi(\overline{x_{j}})
+	\end{equation*}
+\end{frame}
+\begin{frame}{Steps}
+	\begin{enumerate}
+		\item Compute $\phi(x)$ for each point \\
+		\begin{equation*}
+		\phi: \mathbb{R}^{d} \rightarrow \mathbb{R}^{D}
+		\end{equation*}
+		\item Computer dot products over $\mathbb{R}^{D}$ space
+	\end{enumerate}
+	\pause \hspace{0.1cm} Q. If $D >> d$ \\
+	\pause \hspace{0.6cm} Both steps are expensive!
+\end{frame}
+\begin{frame}{Kernel Trick}
+	
 \end{frame}
 \end{document}

@@ -25,7 +25,7 @@
 	\maketitle
 	
 	\begin{frame}{Non-Linearly Separable Data}
-	    Data not separate in $\mathbb{R}$ \\
+	    Data not separable in $\mathbb{R}$ \\
 	    \vspace{0.5cm}
 	    Can we still use SVM? \\
 	    \vspace{0.5cm}
@@ -47,10 +47,10 @@
 	    \begin{equation*}
 	        L(\alpha) = \sum_{i=1}^{N}\alpha_{i} - \frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_{i}\alpha_{j}y_{i}y_{j}\overline{x_{i}}.\overline{x_{j}}
 	    \end{equation*}
-	    \hspace{1cm} such that constriants are satisfied.\\
-	   \hspace{5cm} \downarrow\\
+	    \hspace{1cm} such that constraints are satisfied.\\
+	   \hspace{5cm} $\downarrow$\\
 	   \hspace{3.8cm} Transformation ($\phi$)\\
-	   \hspace{5cm} \downarrow\\
+	   \hspace{5cm} $\downarrow$\\
 	   \begin{equation*}
 	       L(\alpha) = \sum_{i=1}^{N}\alpha_{i} - \frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N}\alpha_{i}\alpha_{j}y_{i}y_{j}\phi(\overline{x_{i}}).\phi(\overline{x_{j}})
 	   \end{equation*}
