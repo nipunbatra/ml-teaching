@@ -1,0 +1,225 @@
+\documentclass[xcolor=table]{beamer}
+\usepackage{tcolorbox}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{adjustbox}
+
+\usepackage{booktabs}
+%\beamerdefaultoverlayspecification{<+->}
+\newcommand{\data}{\mathcal{D}}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\newcommand\Item[1][]{%
+	\ifx\relax#1\relax  \item \else \item[#1] \fi
+	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
+
+
+\usetheme{metropolis}           % Use metropolis theme
+
+
+\title{Maths for ML II}
+\date{\today}
+\author{Nipun Batra}
+\institute{IIT Gandhinagar}
+\begin{document}
+  \maketitle
+  
+  
+  
+% \section{Linear Regression}
+\begin{frame}{Minimax Inequality}
+
+    \begin{itemize}[<+->]
+       \item Minimax inequality states:$\max _{\boldsymbol{y}} \min _{\boldsymbol{x}} q(\boldsymbol{x}, \boldsymbol{y}) \leqslant \min _{\boldsymbol{x}} \max _{\boldsymbol{y}} q(\boldsymbol{x}, \boldsymbol{y})$
+        \item We first prove $\text { For all } \boldsymbol{x}, \boldsymbol{y} \quad \min _{\boldsymbol{x}} q(\boldsymbol{x}, \boldsymbol{y}) \leqslant \max _{\boldsymbol{y}} q(\boldsymbol{x}, \boldsymbol{y})$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Minimax Inequality}
+    \begin{itemize}[<+->]
+    \item Let us choose $q(x, y) = xy$
+    \item Let us first find $\max _{\boldsymbol{y}} q(\boldsymbol{x}, \boldsymbol{y})$
+
+    \end{itemize}
+    
+    \pause \begin{table}[]
+        \begin{tabular}{llllll}
+        \cline{2-2}
+        \multicolumn{1}{l|}{$x$}          & \multicolumn{1}{l|}{1} & 1                      & 2                      & 3                      & 4                      \\ \cline{2-2}
+        \multicolumn{1}{l|}{$\Downarrow$} & \multicolumn{1}{l|}{2} & 2                      & 4                      & 6                      & 8                      \\ \cline{2-2}
+        \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{3} & 3                      & 6                      & 9                      & 12                     \\ \cline{2-2}
+        \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{4} & 4                      & 8                      & 12                     & 16                     \\ \cline{2-6} 
+        \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{2} & \multicolumn{1}{l|}{3} & \multicolumn{1}{l|}{4} \\ \cline{2-6} 
+                                          &                        & $y$              & $\Rightarrow$           &                        &                       
+        \end{tabular}
+        \end{table}
+
+
+
+    \end{frame}
+
+    \begin{frame}{Minimax Inequality}
+        \begin{itemize}[<+->]
+            \item For each value of $x$, we find $y$ that maximizes $q(x, y)$ 
+            \item $y=4$ maximizes $q(x, y) ~\forall x$
+        \end{itemize}
+        
+        \begin{table}[]
+            \begin{tabular}{llllll}
+            \cline{2-2}
+            \multicolumn{1}{l|}{$x$}          & \multicolumn{1}{l|}{1} & 1                      & 2                      & 3                      & \cellcolor[HTML]{CBCEFB}4  \\ \cline{2-2}
+            \multicolumn{1}{l|}{$\Downarrow$} & \multicolumn{1}{l|}{2} & 2                      & 4                      & 6                      & \cellcolor[HTML]{CBCEFB}8  \\ \cline{2-2}
+            \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{3} & 3                      & 6                      & 9                      & \cellcolor[HTML]{CBCEFB}12 \\ \cline{2-2}
+            \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{4} & 4                      & 8                      & 12                     & \cellcolor[HTML]{CBCEFB}16 \\ \cline{2-6} 
+            \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{2} & \multicolumn{1}{l|}{3} & \multicolumn{1}{l|}{4}     \\ \cline{2-6} 
+                                              &                        & $y$              & $\Rightarrow$           &                        &                           
+            \end{tabular}
+            \end{table}
+    
+        \end{frame}
+
+ 
+        \begin{frame}{Minimax Inequality}
+            \begin{itemize}[<+->]
+                \item For each value of $y$, we find $x$ that minimizes $q(x, y)$ 
+                \item $x=1$ minimizes $q(x, y) ~\forall y$
+            \end{itemize}
+            
+            \begin{table}[]
+                \begin{tabular}{llllll}
+                \cline{2-2}
+                \multicolumn{1}{l|}{$x$}          & \multicolumn{1}{l|}{1} & \cellcolor[HTML]{FFCE93}1 & \cellcolor[HTML]{FFCE93}2 & \cellcolor[HTML]{FFCE93}3 & \cellcolor[HTML]{FFCE93}4 \\ \cline{2-2}
+                \multicolumn{1}{l|}{$\Downarrow$} & \multicolumn{1}{l|}{2} & 2                         & 4                         & 6                         & 8                         \\ \cline{2-2}
+                \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{3} & 3                         & 6                         & 9                         & 12                        \\ \cline{2-2}
+                \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{4} & 4                         & 8                         & 12                        & 16                        \\ \cline{2-6} 
+                \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{1}    & \multicolumn{1}{l|}{2}    & \multicolumn{1}{l|}{3}    & \multicolumn{1}{l|}{4}    \\ \cline{2-6} 
+                                                  &                        & $y$                 & $\Rightarrow$              &                           &                          
+                \end{tabular}
+                \end{table}
+        
+            \end{frame}
+    
+
+
+    \begin{frame}{Minimax Inequality}
+        \begin{itemize}[<+->]
+            \item We just showed $\text { For all } \boldsymbol{x}, \boldsymbol{y} \quad \min _{\boldsymbol{x}} q(\boldsymbol{x}, \boldsymbol{y}) \leqslant \max _{\boldsymbol{y}} q(\boldsymbol{x}, \boldsymbol{y})$
+            \item The equality occurs at $x=1, y = 4$
+        \end{itemize}
+        
+        \begin{table}[]
+            \begin{tabular}{llllll}
+            \cline{2-2}
+            \multicolumn{1}{l|}{$x$}          & \multicolumn{1}{l|}{1} & \cellcolor[HTML]{FFCE93}1 & \cellcolor[HTML]{FFCE93}2 & \cellcolor[HTML]{FFCE93}3 & \cellcolor[HTML]{CBCEFB}4  \\ \cline{2-2}
+            \multicolumn{1}{l|}{$\Downarrow$} & \multicolumn{1}{l|}{2} & 2                         & 4                         & 6                         & \cellcolor[HTML]{CBCEFB}8  \\ \cline{2-2}
+            \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{3} & 3                         & 6                         & 9                         & \cellcolor[HTML]{CBCEFB}12 \\ \cline{2-2}
+            \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{4} & 4                         & 8                         & 12                        & \cellcolor[HTML]{CBCEFB}16 \\ \cline{2-6} 
+            \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{1}    & \multicolumn{1}{l|}{2}    & \multicolumn{1}{l|}{3}    & \multicolumn{1}{l|}{4}     \\ \cline{2-6} 
+                                              &                        & $y$                       & $\Rightarrow$             &                           &                           
+            \end{tabular}
+            \end{table}
+        \end{frame}
+
+    
+
+        \begin{frame}{Minimax Inequality}
+            \begin{itemize}[<+->]
+                \item Let us now find $\max _{\boldsymbol{y}}\min _{\boldsymbol{x}} q(\boldsymbol{x}, \boldsymbol{y})$
+            \end{itemize}
+            
+            \begin{table}[]
+                \begin{tabular}{llllll}
+                \cline{2-2}
+                \multicolumn{1}{l|}{$x$}          & \multicolumn{1}{l|}{1} & \cellcolor[HTML]{FFCE93}1 & \cellcolor[HTML]{FFCE93}2 & \cellcolor[HTML]{FFCE93}3 & \cellcolor[HTML]{F8A102}\textbf{4} \\ \cline{2-2}
+                \multicolumn{1}{l|}{$\Downarrow$} & \multicolumn{1}{l|}{2} & 2                         & 4                         & 6                         & 8                                  \\ \cline{2-2}
+                \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{3} & 3                         & 6                         & 9                         & 12                                 \\ \cline{2-2}
+                \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{4} & 4                         & 8                         & 12                        & 16                                 \\ \cline{2-6} 
+                \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{1}    & \multicolumn{1}{l|}{2}    & \multicolumn{1}{l|}{3}    & \multicolumn{1}{l|}{4}             \\ \cline{2-6} 
+                                                  &                        & $y$                       & $\Rightarrow$             &                           &                                   
+                \end{tabular}
+                \end{table}
+            \end{frame}
+    
+            \begin{frame}{Minimax Inequality}
+                \begin{itemize}[<+->]
+                    \item Similarly, let us now find $\min_{\boldsymbol{x}}\max _{\boldsymbol{y}} q(\boldsymbol{x}, \boldsymbol{y})$
+                    \item We can thus see our Minimax inequality $\max _{\boldsymbol{y}} \min _{\boldsymbol{x}} q(\boldsymbol{x}, \boldsymbol{y}) \leqslant \min _{\boldsymbol{x}} \max _{\boldsymbol{y}} q(\boldsymbol{x}, \boldsymbol{y})$
+                \end{itemize}
+
+                \begin{table}[]
+                    \begin{tabular}{llllll}
+                    \cline{2-2}
+                    \multicolumn{1}{l|}{$x$}          & \multicolumn{1}{l|}{1} & 1                      & 2                      & 3                      & \cellcolor[HTML]{6665CD}\textbf{4} \\ \cline{2-2}
+                    \multicolumn{1}{l|}{$\Downarrow$} & \multicolumn{1}{l|}{2} & 2                      & 4                      & 6                      & \cellcolor[HTML]{CBCEFB}8          \\ \cline{2-2}
+                    \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{3} & 3                      & 6                      & 9                      & \cellcolor[HTML]{CBCEFB}12         \\ \cline{2-2}
+                    \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{4} & 4                      & 8                      & 12                     & \cellcolor[HTML]{CBCEFB}16         \\ \cline{2-6} 
+                    \multicolumn{1}{l|}{}             & \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{2} & \multicolumn{1}{l|}{3} & \multicolumn{1}{l|}{4}             \\ \cline{2-6} 
+                                                      &                        & $y$                    & $\Rightarrow$          &                        &                                   
+                    \end{tabular}
+                    \end{table}
+            \end{frame}
+
+            \begin{frame}{Revisiting the Lagrange multipliers}
+                Our problem is of the form \\
+               $$ \begin{array}{cl}
+                    \min _{\boldsymbol{x}} & f(\boldsymbol{x}) \\
+                    \text { subject to } & g_{i}(\boldsymbol{x}) \leqslant 0 \quad \text { for all } \quad i=1, \ldots, m
+                    \end{array}$$
+
+                    \pause Idea: Convert constrained problem to an unconstrained problem
+                    $$J(\boldsymbol{x})=f(\boldsymbol{x})+\sum_{i=1}^{m} \mathbf{1}\left(g_{i}(\boldsymbol{x})\right)$$
+
+                  \pause   where $1(z)$ is an infinite step function
+\[
+\mathbf{1}(z)=\left\{\begin{array}{ll}
+0 & \text { if } z \leqslant 0 \\
+\infty & \text { otherwise }
+\end{array}\right.
+\]
+
+\pause This would give infinte penalty if constraint is not satisfied. But, this formulation is hard to solve too.
+\end{frame}
+
+\begin{frame}{Revisiting the Lagrange multipliers}
+    Idea: Introduce Lagrange multipliers ($\lambda_i \geq 0$) to ``approximate'' $J(x)$
+    $$\mathfrak{L}(\boldsymbol{x}, \boldsymbol{\lambda})=f(\boldsymbol{x})+\sum_{i=1}^{m} \lambda_{i} g_{i}(\boldsymbol{x})$$
+    
+    \pause What is the relationship between $\mathfrak{L}(\boldsymbol{x}, \boldsymbol{\lambda})$ and $J(\boldsymbol{x})$ given $\lambda_i \geq 0$?
+
+    \pause When $\lambda \geqslant 0,$ the Lagrangian $\mathcal{L}(x, \lambda)$ is a lower bound of $J(\boldsymbol{x}) .$ Hence, the maximum of $\mathfrak{L}(\boldsymbol{x}, \boldsymbol{\lambda})$ with respect to $\boldsymbol{\lambda}$ is
+    \[
+    J(\boldsymbol{x})=\max _{\boldsymbol{\lambda} \geqslant 0} \mathfrak{L}(\boldsymbol{x}, \boldsymbol{\lambda})
+    \]
+
+\end{frame}
+
+\begin{frame}{Revisiting the Lagrange multipliers}
+    \[
+    J(\boldsymbol{x})=\max _{\boldsymbol{\lambda} \geqslant 0} \mathfrak{L}(\boldsymbol{x}, \boldsymbol{\lambda})
+    \]
+    \pause But, our original problem was minimizing $J(\boldsymbol{x})$, which is equivalent to: 
+    \[
+    \min _{\boldsymbol{x} \in \mathbb{R}^{d}} \max _{\boldsymbol{\lambda} \geqslant \mathbf{0}} \mathfrak{L}(\boldsymbol{x}, \boldsymbol{\lambda})
+    \]
+    \pause Using the Minimax inequality, we can write:
+    \pause$$\min _{\boldsymbol{x} \in \mathbb{R}^{d}} \max _{\boldsymbol{\lambda} \geqslant \mathbf{0}} \mathfrak{L}(\boldsymbol{x}, \boldsymbol{\lambda}) \geqslant \max _{\boldsymbol{\lambda} \geqslant \mathbf{0}} \min _{\boldsymbol{x} \in \mathbb{R}^{d}} \mathfrak{L}(\boldsymbol{x}, \boldsymbol{\lambda})$$
+    \pause We can write the dual objective as a function of $\lambda$ as $\mathfrak{D}(\boldsymbol{\lambda})=\min _{\boldsymbol{x} \in \mathbb{R}^{d}} \mathfrak{L}(\boldsymbol{x}, \boldsymbol{\lambda})$
+\end{frame}
+
+\begin{frame}{Revisiting the Lagrange multipliers}
+    \begin{itemize}[<+->]
+        \item Primal objective:  $$ \begin{array}{cl}
+            \min _{\boldsymbol{x}} & f(\boldsymbol{x}) \\
+            \text { subject to } & g_{i}(\boldsymbol{x}) \leqslant 0 \quad \text { for all } \quad i=1, \ldots, m
+            \end{array}$$
+
+        \item Or, primal objective = $J(x) \geq \max _{\boldsymbol{\lambda}}\mathfrak{D}(\boldsymbol{\lambda}) $     
+        \item Or, primal objective (in terms of x) $\geq $ dual objective (in terms of $\lambda$)
+        \item For SVM like formulations, primal objective is the same as dual objective (strong duality)
+        \item For some problems, there is a ``daulity-gap'' between the two objectives
+    \end{itemize}
+\end{frame}
+
+\end{document}
