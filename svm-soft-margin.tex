@@ -26,7 +26,7 @@
 	
 {
 	\setbeamercolor{background canvas}{bg=}
-	\includepdf[page=50]{svm/Svm-notes.pdf}
+	\includepdf[page=50]{Svm-notes.pdf}
 }
 
 	
@@ -43,13 +43,13 @@
 
 {
 	\setbeamercolor{background canvas}{bg=}
-	\includepdf[page=51-58]{svm/Svm-notes.pdf}
+	\includepdf[page=51-58]{Svm-notes.pdf}
 }
 	
 	\begin{frame}{Soft-Margin SVM}
 		Change Objective \\
 		\vspace{0.1cm}
-		$\min \frac{1}{2}\lvert\lvert\bar{w}\rvert\rvert^{2} + C \sum_{i=1}^{n}\xi_{i}$ \\ s.t. $y_{i}(\bar{w}\bar{x} + b) \geq 1 - \xi_{i}$ \\
+		$\min \frac{1}{2}\lvert\lvert\bar{w}\rvert\rvert^{2} + C \sum_{i=1}^{n}\xi_{i}$ \\ s.t. $y_{i}(\bar{w}\bar{x_i} + b) \geq 1 - \xi_{i}$ \\
 		
 		\vspace{0.2cm}
 		\pause In Dual:
@@ -62,7 +62,7 @@
 
 {
 	\setbeamercolor{background canvas}{bg=}
-	\includepdf[page=59-61]{svm/Svm-notes.pdf}
+	\includepdf[page=59-61]{Svm-notes.pdf}
 }
 
 \begin{frame}{Bias Variance Trade-off for Soft-Margin SVM}
@@ -101,7 +101,7 @@
 		\begin{itemize}
 			\item Zone 2: $y_{i}(\bar{w}\bar{x}_{i} + b) = 1$
 			\item Zone 3: $0 < \xi_{i} < 1$ (correctly classified)
-			\item Zone 4: $xi_{i} > 1$ (Misclassified)
+			\item Zone 4: $\xi_{i} > 1$ (Misclassified)
 		\end{itemize}
 		$\therefore$ As C increases, \# support vectors decreases \\
 		\vspace{1cm}
@@ -126,7 +126,7 @@
 
 {
 	\setbeamercolor{background canvas}{bg=}
-	\includepdf[page=62]{svm/Svm-notes.pdf}
+	\includepdf[page=62]{Svm-notes.pdf}
 }
 
 	\begin{frame}{Loss Function for Sum (Hinge Loss)}
