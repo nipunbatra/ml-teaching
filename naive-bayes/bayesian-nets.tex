@@ -26,6 +26,35 @@
 % \section{Linear Regression}
 
 \begin{frame}{Bayesian Networks}
+    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+        
+        %Shape: Ellipse [id:dp7372359450600154] 
+        \draw   (100,142.5) .. controls (100,130.07) and (122.27,120) .. (149.75,120) .. controls (177.23,120) and (199.5,130.07) .. (199.5,142.5) .. controls (199.5,154.93) and (177.23,165) .. (149.75,165) .. controls (122.27,165) and (100,154.93) .. (100,142.5) -- cycle ;
+        %Shape: Ellipse [id:dp773307115438193] 
+        \draw   (279,142) .. controls (279,130.95) and (294.67,122) .. (314,122) .. controls (333.33,122) and (349,130.95) .. (349,142) .. controls (349,153.05) and (333.33,162) .. (314,162) .. controls (294.67,162) and (279,153.05) .. (279,142) -- cycle ;
+        %Straight Lines [id:da30385042687371255] 
+        \draw    (279,142) -- (201.5,142.49) ;
+        \draw [shift={(199.5,142.5)}, rotate = 359.64] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Shape: Ellipse [id:dp08595332977182091] 
+        \draw   (182,236.5) .. controls (182,225.18) and (206.29,216) .. (236.25,216) .. controls (266.21,216) and (290.5,225.18) .. (290.5,236.5) .. controls (290.5,247.82) and (266.21,257) .. (236.25,257) .. controls (206.29,257) and (182,247.82) .. (182,236.5) -- cycle ;
+        %Straight Lines [id:da6920360079941172] 
+        \draw    (299,162) -- (271.38,218.2) ;
+        \draw [shift={(270.5,220)}, rotate = 296.17] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Straight Lines [id:da8073837163630633] 
+        \draw    (156,166) -- (206.15,220.53) ;
+        \draw [shift={(207.5,222)}, rotate = 227.4] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        
+        % Text Node
+        \draw (122,131) node [anchor=north west][inner sep=0.75pt]   [align=left] {Sprinkler};
+        % Text Node
+        \draw (297,131) node [anchor=north west][inner sep=0.75pt]   [align=left] {Rain};
+        % Text Node
+        \draw (197,226) node [anchor=north west][inner sep=0.75pt]   [align=left] {Grass Wet};
+        
+        
+        \end{tikzpicture}
+        
 \begin{itemize}
 	
 	
@@ -54,7 +83,7 @@
 
 \end{frame}
 
-\begin{frame}{bayesian Nets}
+\begin{frame}{Bayesian Nets}
     $P(X_{1},X_{2},X_{3},\dots,X_{N})$ denotes the joint probability, where $X_{i}$ are random variables.
     \begin{equation*}
         P(X_{1},X_{2},X_{3},\dots,X_{N}) = \Pi_{k=1}^{N} P(X_{k} | parents(X_{k}))
@@ -68,122 +97,84 @@
 \end{frame}
 
 
-\begin{frame}{Bayesian Networks}
-    % $$
-    %     P(Grass = Wet, Rain  = True, Sprinkler = True) =
-    %     \\P(G = W| S = T,R = T)P(S = T | R = T)P(R = T)
-    % $$
-\end{frame}
-
-
-\begin{frame}{Example}
-    Known Random variables
-    \begin{itemize}
-        \item $P(T)$
-        \item $P(E)$
-        \item $P(A|T,E)$
-        \item $P(R|E)$
+\begin{frame}{Spam Email Classification}
+    \begin{itemize}[<+->]
+        \item $y \in\{0,1\}$ where 0 means not spam and 1 means spam
+        \item From the emails construct a vector $X$.
+        \item $\left[\begin{array}{c}a \\ a n \\ \vdots \\ \text { computer } \\ \vdots \\ \text { lotery } \\ \vdots \\ 200\end{array}\right]\}$ N words
+        \item The vector has ones if the word is present, and zeros is the word is absent.
+        \item Each email corresponds to vector/feature of length N containing zeros or ones.
     \end{itemize}
-\end{frame}
-
-
-\begin{frame}{Question}
-    Given, the above, calculate
-    \begin{equation*}
-        P(A|T)
-    \end{equation*}
-\end{frame}
-
-\begin{frame}{Solution}
-    \begin{align*}
-        \begin{split}
-            P(A|T) &= \frac{P(A,T)}{P(A)}\\
-            &=\frac{(A,T,E)+P(A,T,\bar{E})}{(A,T,E)+P(A,T,\bar{E}) + (A,\bar{T},E)+P(A,\bar{T},\bar{E})}
-        \end{split}
-    \end{align*}
-\end{frame}
-
-\begin{frame}{Medical Diagnosis}
-    You tested positive for a disease.\\
-    Well, the test is only 99\% accurate.\\
-    \begin{itemize}
-        \item $P(Test = +ve | Disease = True) = 0.99$
-        \item $P(Test = -ve | Disease = False) = 0.99$
-    \end{itemize}
-    Also, the disease is a rare one. Only one in 10,000 has it.
-\end{frame}
-
-\begin{frame}{Problem}
-    \begin{itemize}
-        \item $P(T|D)$ = 0.99
-        \item $P(\bar{T}|\bar{D})$ = 0.99
-        \item $P(T|\bar{D})$ = 0.01
-        \item $P(\bar{T}|D)$ = 0.01
-        \item $P(D)$ =$ 10^{-4}$
-        \item $P(\bar{D})$ =$ 1 - 10^{-4}$
-    \end{itemize}
-    
-    Given the above, calculate $P(D|T)$. Given the result is positive, what is the probability that someone has the disease
-\end{frame}
-
-\begin{frame}{Problem}
-    \begin{align}
-    \label{eqn*:eqlabel}
-        \begin{split}
-            P(D|T) &= \frac{P(T|D)P(D)}{P(T)}\\
-            &=\frac{P(T|D)P(D)}{P(T|D)P(D) + P(T|\bar{D})P(\bar{D})}
-        \end{split}
-    \end{align}
-
-
-    % \begin{align}
-    % \label{eqn*:eqlabel}
-    % \begin{split}
-    
-            %     P(D|T) &= \frac{P(T|D)P(D)}{P(T)}\\
-            % &=\frac{P(T|D)P(D)}{P(T|D)P(D) + P(T|\bar{D})P(\bar{D})}
-            
-            
-            
-            
-    %   \epsilon &= y - X\theta \\
-    % \epsilon^{T} &= (y-X\theta)^{T} = y^{T} - \theta^{T}X^{T}\\
-    % \epsilon^{T}\epsilon &= (y^{T} - \theta^{T}X^{T})(y - X\theta)\\
-    % &=y^{T}y - \theta^{T}X^{T}y - y^{T}X\theta+\theta^{T}X^{T}X\theta\\
-    % &=y^{T}y - 2y^{T}X\theta+\theta^{T}X^{T}X\theta
-    % \end{split}
-    % \end{align}
-    
-
-    % \begin{align}
-    %     \begin{split}
-            % P(D|T) &= \frac{P(T|D)P(D)}{P(T)}\\
-            % &=\frac{P(T|D)P(D)}{P(T|D)P(D) + P(T|\bar{D})P(\bar{D})}
-            
-            
-            
-    %     \end{split}
-    % \end{align}
-\end{frame}
-
-\begin{frame}{SPAM EMAIL CLASSIFICATION}
-    From the emails construct a vector $X$. The vector has ones if the word is present, and zeros is the word is absent\\
+     
 \end{frame}
 
 \begin{frame}{Naive Bayes}
     \begin{itemize}
         \item Classification model
         \item Scalable
-        \item Generative
+        \item Generative and Bayesian
+        \item Usually a simple/good baselines
+        \item  We want to model $P(class (y) \mid$ features (x)) 
+        \item We can use Bayes rule as follows:
+        $P(class(y) \mid \text { features (x) })=\frac{P(\text { features (x) } \mid class(y)) P(class(y))}{P(\text { features (x) })}$
     \end{itemize}
     
-    \begin{equation*}
-        P(x_{1},x_{2},x_{3},\dots,x_{N} \vert y) = P(x_{1}|y) P(x_{2}|y) \dots P(x_{N}|y)
-    \end{equation*}
+   
+
 \end{frame}
 
 \begin{frame}{Quick Question}
-    Why is Naive Bayes model called Naive? 
+    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        %uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+        
+        %Shape: Ellipse [id:dp7372359450600154] 
+        \draw   (100,142.5) .. controls (100,130.07) and (122.27,120) .. (149.75,120) .. controls (177.23,120) and (199.5,130.07) .. (199.5,142.5) .. controls (199.5,154.93) and (177.23,165) .. (149.75,165) .. controls (122.27,165) and (100,154.93) .. (100,142.5) -- cycle ;
+        %Shape: Ellipse [id:dp08595332977182091] 
+        \draw   (60,244.5) .. controls (60,233.18) and (69.96,224) .. (82.25,224) .. controls (94.54,224) and (104.5,233.18) .. (104.5,244.5) .. controls (104.5,255.82) and (94.54,265) .. (82.25,265) .. controls (69.96,265) and (60,255.82) .. (60,244.5) -- cycle ;
+        %Straight Lines [id:da8073837163630633] 
+        \draw    (124.5,161) -- (92.43,222.23) ;
+        \draw [shift={(91.5,224)}, rotate = 297.65] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Shape: Ellipse [id:dp023537100462790228] 
+        \draw   (123,245.5) .. controls (123,234.18) and (132.96,225) .. (145.25,225) .. controls (157.54,225) and (167.5,234.18) .. (167.5,245.5) .. controls (167.5,256.82) and (157.54,266) .. (145.25,266) .. controls (132.96,266) and (123,256.82) .. (123,245.5) -- cycle ;
+        %Shape: Ellipse [id:dp4079980413843134] 
+        \draw   (182,246.5) .. controls (182,235.18) and (191.96,226) .. (204.25,226) .. controls (216.54,226) and (226.5,235.18) .. (226.5,246.5) .. controls (226.5,257.82) and (216.54,267) .. (204.25,267) .. controls (191.96,267) and (182,257.82) .. (182,246.5) -- cycle ;
+        %Shape: Ellipse [id:dp6596498120094669] 
+        \draw   (293,241.5) .. controls (293,230.18) and (302.96,221) .. (315.25,221) .. controls (327.54,221) and (337.5,230.18) .. (337.5,241.5) .. controls (337.5,252.82) and (327.54,262) .. (315.25,262) .. controls (302.96,262) and (293,252.82) .. (293,241.5) -- cycle ;
+        %Straight Lines [id:da15595132436398473] 
+        \draw    (144.5,167) -- (145.22,223) ;
+        \draw [shift={(145.25,225)}, rotate = 269.26] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Straight Lines [id:da8789748623945954] 
+        \draw    (165.5,164) -- (203.19,224.3) ;
+        \draw [shift={(204.25,226)}, rotate = 237.99] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Straight Lines [id:da7453498794319566] 
+        \draw    (187.5,160) -- (306.72,221.09) ;
+        \draw [shift={(308.5,222)}, rotate = 207.13] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        
+        % Text Node
+        \draw (122,131) node [anchor=north west][inner sep=0.75pt]   [align=left] {Class};
+        % Text Node
+        \draw (70,237) node [anchor=north west][inner sep=0.75pt]   [align=left] {x1};
+        % Text Node
+        \draw (133,238) node [anchor=north west][inner sep=0.75pt]   [align=left] {x2};
+        % Text Node
+        \draw (192,239) node [anchor=north west][inner sep=0.75pt]   [align=left] {x3};
+        % Text Node
+        \draw (303,234) node [anchor=north west][inner sep=0.75pt]   [align=left] {xn};
+        
+        
+        \end{tikzpicture}
+    
+    
+    \pause \begin{equation*}
+        P(x_{1},x_{2},x_{3},\dots,x_{N} \vert y) = P(x_{1}|y) P(x_{2}|y) \dots P(x_{N}|y)
+    \end{equation*}
+    \pause Why is Naive Bayes model called Naive? \\
+
+    \pause Naive assumption $x_{i}$ and $x_{i+1}$ are independent given y
+    \[
+    \text { i.e. }  p\left(x_{2} \mid x_{1}, y\right)=p\left(x_{2} \mid y\right)
+    \]
+
 \end{frame}
 
 
@@ -269,14 +260,19 @@
 
 \begin{frame}{Spam Classification}
     
-    Given, test email {0,0,1}, classify it. Using naive bayes rule, we can do the following, 
-    \begin{center}
+    Given, test email {0,0,1}, classify using naive bayes
+    \pause 
 $$
         P(y=1\vert w_{1}=0,w_{2} = 0,w_{3}=1) 
-         \frac{P(w_{1}=0|y=1) P(w_{2}=0|y=1) P(w_{3}=1|y=1) P(y=1)}{P(w_{1}=0, w_{2}=0, w_{3}=1} 
+$$
+$$ = \frac{P(w_{1}=0|y=1) P(w_{2}=0|y=1) P(w_{3}=1|y=1) P(y=1)}{P(w_{1}=0, w_{2}=0, w_{3}=1)}
+    $$
+    $$ = \frac{0.6\times 0.8 \times 0.6 \times 0.5}{Z}
     $$
     
-    \end{center}
+\pause Similarly, we can calculate $P(y=0\vert w_{1}=0,w_{2} = 0,w_{3}=1) = \frac{0.6*0.4*0.6*0.5}{Z} $
+
+\pause $\frac{P\left(y=1 \mid w_{1}=0, w_{2}=0, w_{3}=1\right)}{P\left(y=0 \mid w_{1}=0, w_{2}=0, w_{3}=1\right)} = 2 > 1$. Thus, classified as a spam example.
     
 \end{frame}
 
