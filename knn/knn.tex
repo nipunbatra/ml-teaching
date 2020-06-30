@@ -117,7 +117,7 @@ Examples    & Linear Regression                                        & KNN, De
 \item<2-> What is the \textbf{distance metric} that will be used to calculate data similarity?
 \item<3-> What is the \textbf{aggregation function} that is going to be used?
 \item<4-> What are the \textbf{number of neighbors} that you are going to take into consideration?
-\item<5-> \checkmark \textbf{computational complexity} 
+\item<5-> What is the \textbf{computational complexity} of the algorithm that you are implementing?
 \end{itemize}
 \end{frame}
 
@@ -127,9 +127,9 @@ The Distance Metric acts as a \emph{measure of similarity} between the points.
 {\centering
 \only<2>{\includegraphics[height=0.6\textheight]{knn/knn_ed.png}
 \captionof{figure}{Euclidean Distance}}
-\only<3>{\includegraphics[height=0.6\textheight]{knn/knn_hd.pdf}
+\only<3>{\includegraphics[height=0.6\textheight]{knn/knn_hd.png}
 \captionof{figure}{Hamming Distance}}
-\only<4>{\includegraphics[height=0.6\textheight]{knn/knn_md.pdf}
+\only<4>{\includegraphics[height=0.6\textheight]{knn/knn_md.png}
 \captionof{figure}{Manhattan Distance}}}
 
 \only<5>{
@@ -137,7 +137,7 @@ Choose the best distance metric \textbf{based on the properties of the data}.
 
 Euclidean is a good distance measure to use if the input variables are similar in type (e.g. all measured widths and heights). Manhattan distance is a good measure to use if the input variables are not similar in type (such as age, gender, height, etc.).
 
-\href{https://colab.research.google.com/drive/1HMPn0mpMAe4XFe5Zvh4oExgi5evkgjTi}{More Info}}
+\href{https://machinelearningmastery.com/k-nearest-neighbors-for-machine-learning/}{More Info}}
 \end{frame}
 
 \begin{frame}{Important Considerations: Distance Metric}
@@ -198,7 +198,7 @@ Choosing the correct value of \emph{K} is difficult.
 
 \begin{frame}{Important Considerations: Value of \emph{K}}
 \only<1>{\begin{columns}[T]
-  \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/exp.pdf}\captionof{figure}{Dataset}\end{column}
+  \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/iris_knn_data.pdf}\captionof{figure}{Dataset}\end{column}
   \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/exp_knn_1.pdf}\captionof{figure}{K = 1 High Variance}\end{column}\end{columns}}
 \only<2>{\begin{columns}[T]
   \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/exp_knn_3.pdf}\captionof{figure}{K = 3}\end{column}
@@ -206,17 +206,17 @@ Choosing the correct value of \emph{K} is difficult.
 
 \end{frame}
 
-\begin{frame}{Important Considerations: Value of \emph{K}}
-\only<1>{\begin{columns}[T]
-  \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/iris.pdf}\captionof{figure}{Iris Dataset}\end{column}
-  \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/iris_knn_1.pdf}\captionof{figure}{K = 1}\end{column}\end{columns}}
-\only<2>{\begin{columns}[T]
-  \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/iris_knn_3.pdf}\captionof{figure}{K = 3}\end{column}
-  \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/iris_knn_5.pdf}\captionof{figure}{K = 5}\end{column}\end{columns}}
-\only<3>{\begin{columns}[T]
-  \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/iris_knn_100.pdf}\captionof{figure}{K = 100}\end{column}
-  \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/iris_knn_150.pdf}\captionof{figure}{K = 150}\end{column}\end{columns}}
-\end{frame}
+%\begin{frame}{Important Considerations: Value of \emph{K}}
+%\only<1>{\begin{columns}[T]
+%  \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/iris.pdf}\captionof{figure}{Iris Dataset}\end{column}
+%  \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/iris_knn_1.pdf}\captionof{figure}{K = 1}\end{column}\end{columns}}
+%\only<2>{\begin{columns}[T]
+%  \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/iris_knn_3.pdf}\captionof{figure}{K = 3}\end{column}
+%  \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/iris_knn_5.pdf}\captionof{figure}{K = 5}\end{column}\end{columns}}
+%\only<3>{\begin{columns}[T]
+%  \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/iris_knn_100.pdf}\captionof{figure}{K = 100}\end{column}
+%  \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/iris_knn_150.pdf}\captionof{figure}{K = 150}\end{column}\end{columns}}
+%\end{frame}
 
 \begin{frame}{Important Considerations: Aggregation Functions}
 \only<1-2>{There are different ways to go about aggregating the data from the K nearest neighbors.}
