@@ -10,7 +10,7 @@
 \usepackage{booktabs}
 \usepackage{pdfpages}
 \usepackage{multirow}
-
+\usepackage{comment}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -74,24 +74,16 @@
 \begin{document}
   \maketitle
 
-\begin{frame}{Lazy vs Eager Strategies}
-\begin{table}[]
-\begin{tabular}{|l|p{3.5cm}|p{3.5cm}|}
-\hline
-           & Lazy                                     & Eager                                   \\
-           \hline
-Train Time & $0$                                      & $\neq 0$                                \\
-\hline
-Test       & Long (due to comparison with train data) & Quick (as only ``parameters'' are involved) \\
-\hline
-Memory     & Store/Memorise entire data               & Store only learnt parameters            \\
-\hline
-Utility    & Useful for online settings               &                                         \\
-\hline
-Examples   & KNN                                      & Linear Regression, Decision Tree       \\ \hline
-\end{tabular}
-\end{table}
-\end{frame}
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[page=-]{knn/knn-intuition.pdf}
+}
+
+{
+	\setbeamercolor{background canvas}{bg=}
+	\includepdf[pages=1-20]{knn/1nn.pdf}
+}
+
 
 \begin{frame}{Parametric vs Non-Parametric Models}
 \begin{table}[]
@@ -106,10 +98,24 @@ Examples    & Linear Regression                                        & KNN, De
 \end{table}
 \end{frame}
 
-{
-\setbeamercolor{background canvas}{bg=}
-\includepdf[page=-]{knn/knn-intuition.pdf}
-}
+\begin{frame}{Lazy vs Eager Strategies}
+	\begin{table}[]
+		\begin{tabular}{|l|p{3.5cm}|p{3.5cm}|}
+			\hline
+			& Lazy                                     & Eager                                   \\
+			\hline
+			Train Time & $0$                                      & $\neq 0$                                \\
+			\hline
+			Test       & Long (due to comparison with train data) & Quick (as only ``parameters'' are involved) \\
+			\hline
+			Memory     & Store/Memorise entire data               & Store only learnt parameters            \\
+			\hline
+			Utility    & Useful for online settings               &                                         \\
+			\hline
+			Examples   & KNN                                      & Linear Regression, Decision Tree       \\ \hline
+		\end{tabular}
+	\end{table}
+\end{frame}
 
 \begin{frame}{Important Considerations}
 \begin{itemize}
@@ -139,6 +145,10 @@ The Distance Metric acts as a \emph{measure of similarity} between the points.
 
 %\href{https://machinelearningmastery.com/k-nearest-neighbors-for-machine-learning/}{More Info}}
 \end{frame}
+
+
+\begin{comment}
+
 
 \begin{frame}{Important Considerations: Distance Metric}
 Variation of decision boundaries of a random data set
@@ -185,7 +195,7 @@ Variation of decision boundaries of a random data set
   \end{column}
 \end{columns}}
 \end{frame}
-
+\end{comment}
 \begin{frame}{Important Considerations: Value of \emph{K}}
 Choosing the correct value of \emph{K} is difficult.
 \pause
@@ -217,6 +227,8 @@ Choosing the correct value of \emph{K} is difficult.
 %  \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/iris_knn_100.pdf}\captionof{figure}{K = 100}\end{column}
 %  \begin{column}{0.5\textwidth}\includegraphics[height=0.7\textwidth]{knn/iris_knn_150.pdf}\captionof{figure}{K = 150}\end{column}\end{columns}}
 %\end{frame}
+\begin{comment}
+
 
 \begin{frame}{Important Considerations: Aggregation Functions}
 \only<1-2>{There are different ways to go about aggregating the data from the K nearest neighbors.}
@@ -248,7 +260,18 @@ There are different ways to go about aggregating the data from the K nearest nei
 \end{itemize}
 }
 \end{frame}
+\end{comment}
 
+\begin{frame}{Aggregating data}
+	There are different ways to go about aggregating the data from the K nearest neighbors.
+	
+	
+	\begin{itemize}
+		\item Median
+		\item Mean
+		\item Mode
+	\end{itemize}
+\end{frame}
 \begin{frame}{KNN Algorithm}
 \begin{itemize}
 \item<1-> Keep the entire dataset: ${(x,y)}$
