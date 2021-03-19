@@ -65,11 +65,11 @@ Pop Quiz: Why is the denominator the way it is? Let the normalizing constant be 
 \end{frame}
 
 \begin{frame}{Univariate Normal Distribution}
-	\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/gp/1d-gp} 
+	\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{fig1} 
 \end{frame}
 
 \begin{frame}{Univariate Normal Distribution}
-	\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/gp/1d-gp-hist}
+	\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{fig2}
 \end{frame}
 
 %\begin{frame}{Univariate Normal Distribution}
@@ -77,7 +77,7 @@ Pop Quiz: Why is the denominator the way it is? Let the normalizing constant be 
 %\end{frame}
 
 \begin{frame}{Univariate Normal Distribution}
-	\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/gp/1d-gp-kde2}
+	\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{fig3}
 \end{frame}
 
 
@@ -203,27 +203,28 @@ $M = \frac{1}{\sigma_1 \sigma_2 2\pi }$
 $=\frac{1}{2\pi \times |\Sigma|^{\frac{1}{2}}}$
 \end{frame}
 
+\begin{frame}{Bivariate Gaussian samples with cross-correlation  $\neq$ 0}
+	\begin{center}
+		\includegraphics[width=\linewidth,height=\textheight - 10pt,keepaspectratio]{cross-non-zero}
+	\end{center}
+\end{frame}
 
 \begin{frame}{Bivariate Gaussian samples with cross-correlation  = 0}
 	\begin{center}
-		\includegraphics[width=\linewidth,height=\textheight - 10pt,keepaspectratio]{gp/gp/2d-gp3}
+		\includegraphics[width=\linewidth,height=\textheight - 10pt,keepaspectratio]{cross-0}
 	\end{center}
 \end{frame}
 
-\begin{frame}{Bivariate Gaussian samples with cross-correlation  $\neq$ 0}
-	\begin{center}
-		\includegraphics[width=\linewidth,height=\textheight - 10pt,keepaspectratio]{gp/gp/2d-gp}
-	\end{center}
-\end{frame}
+
 
 \begin{frame}{Intuition for Multivariate Gaussian}
 	
 	Let us assume no correlation between the elements of $\bf{X}$. This means $\Sigma$ is a diagonal matrix.
 	
 	We have $\Sigma = \begin{bmatrix} 
-	\sigma_{1} & & \textbf{0}\\
+	\sigma_{1}^2 & & \textbf{0}\\
 	 & \ddots &\\
-	\textbf{0} &  & \sigma_n 
+	\textbf{0} &  & \sigma_n^2 
 	\end{bmatrix}
 	$ 
 	
@@ -241,11 +242,39 @@ $=\frac{1}{2\pi \times |\Sigma|^{\frac{1}{2}}}$
 	Now,
 	$$=\frac{1}{\sigma_1 \sqrt{2\pi} } e^{-\frac{1}{2}\left(\frac{X_1-\mu_1}{\sigma_1}\right)^2} \times \cdots \times \frac{1}{\sigma_n \sqrt{2\pi} } e^{-\frac{1}{2}\left(\frac{X_n-\mu_n}{\sigma_n}\right)^2}$$
 	
-	$$= \frac{1}{\sigma_1 \cdots \sigma_n \sqrt{2\pi}^{\frac{n}{2}} } e^{-\frac{1}{2}\{\left(\frac{X_1-\mu_1}{\sigma_1}\right)^2 + \cdots + \left(\frac{X_n-\mu_n}{\sigma_n}\right)^2 \}}  $$
+	$$= \frac{1}{\sigma_1 \cdots \sigma_n (2\pi)^{\frac{n}{2}} } e^{-\frac{1}{2}\{\left(\frac{X_1-\mu_1}{\sigma_1}\right)^2 + \cdots + \left(\frac{X_n-\mu_n}{\sigma_n}\right)^2 \}}  $$
 	
-	Taking all $\sqrt{2\pi}$ together, we get $\sqrt{2\pi}^{\frac{n}{2}}$.
+	Taking all $\sqrt{2\pi}$ together, we get $(2\pi)^{\frac{n}{2}}$.
 	
-	Similarly, taking all $\sigma$ together, we get $\sigma_1 \cdots \sigma_n$. Which can be written as $\vert\Sigma\vert^{\frac{1}{2}}$, given the determinant of a digonal matrix is the multiplication of it's diagonal elements.
+	Similarly, taking all $\sigma$ together, we get $\sigma_1 \cdots \sigma_n$. Which can be written as $\vert\Sigma\vert^{\frac{1}{2}}$, given the determinant of a digonal matrix is the multiplication of its diagonal elements.
+\end{frame}
+
+\begin{frame}
+	Now, let us remove the assumption of no covariance among the elements of X
+	
+	Main idea: A correlated Gaussian is a rotated independent Gaussian\footnote{Neil Lawrence GPSS 2016}
+	
+	
+	Rotate input space using rotation matrix $R$.
+	
+		\begin{gather}
+		p(\mathbf{X} ; \mu, \Sigma)=\frac{1}{(2 \pi)^{\frac{n}{2}}|\Sigma|^{\frac{1}{2}}} \exp \left(-\frac{1}{2}(\mathbf{R^TX}-R^T\mu)^{T} \Sigma^{-1}(\mathbf{R^TX}-R^T\mu)\right)
+	\end{gather}
+
+	
+\begin{gather}
+	p(\mathbf{X} ; \mu, \Sigma)=\frac{1}{(2 \pi)^{\frac{n}{2}}|\Sigma|^{\frac{1}{2}}} \exp \left(-\frac{1}{2}(\mathbf{X}-\mu)^{T} R\Sigma^{-1}R^T(\mathbf{X}-\mu)\right)
+\end{gather}
+	
+	
+\end{frame}
+
+\begin{frame}
+	
+	$C = R\Sigma^{-1}R^T$
+\begin{gather}
+	p(\mathbf{X} ; \mu, \Sigma)=\frac{1}{(2 \pi)^{\frac{n}{2}}|C|^{\frac{1}{2}}} \exp \left(-\frac{1}{2}(\mathbf{X}-\mu)^{T} C^{-1}(\mathbf{X}-\mu)\right)
+\end{gather}
 \end{frame}
 
 \end{document}

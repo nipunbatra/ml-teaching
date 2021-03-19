@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.28)  20 FEB 2021 13:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.28)  20 FEB 2021 13:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -706,6 +706,41 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \tcb@out=\write5
 \tcb@record@out=\write6
 )
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2020/01/28 v0.5q Insert pages of external PDF documents (AM)
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count313
+\calc@Bcount=\count314
+\calc@Adimen=\dimen279
+\calc@Bdimen=\dimen280
+\calc@Askip=\skip63
+\calc@Bskip=\skip64
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count315
+\calc@Cskip=\skip65
+)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2018/04/12 v2.0h eso-pic (RN)
+)
+\AM@pagewidth=\dimen281
+\AM@pageheight=\dimen282
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2020/01/28 v0.5q Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box82
+\AM@global@opts=\toks46
+\AM@pagecnt=\count316
+\AM@toc@title=\toks47
+\c@AM@survey=\count317
+\AM@templatesizebox=\box83
+)
 (/usr/local/texlive/2020/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
 
@@ -715,34 +750,34 @@ Package: caption 2020/01/03 v3.4h Customizing captions (AR)
 (/usr/local/texlive/2020/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 61.
-\captionmargin=\dimen279
-\captionmargin@=\dimen280
-\captionwidth=\dimen281
-\caption@tempdima=\dimen282
-\caption@indent=\dimen283
-\caption@parindent=\dimen284
-\caption@hangindent=\dimen285
+\captionmargin=\dimen283
+\captionmargin@=\dimen284
+\captionwidth=\dimen285
+\caption@tempdima=\dimen286
+\caption@indent=\dimen287
+\caption@parindent=\dimen288
+\caption@hangindent=\dimen289
 Package caption Info: beamer document class detected.
 )
-\c@caption@flags=\count313
-\c@continuedfloat=\count314
+\c@caption@flags=\count318
+\c@continuedfloat=\count319
 Package caption Info: beamer document class.
 Package caption Info: hyperref package is loaded.
 Package caption Info: Hyperref support is turned off
 (caption)             because hyperref has stopped early.
 )
-\c@KVtest=\count315
-\sf@farskip=\skip63
-\sf@captopadj=\dimen286
-\sf@capskip=\skip64
-\sf@nearskip=\skip65
-\c@subfigure=\count316
-\c@subfigure@save=\count317
-\c@depth=\count318
-\c@subtable=\count319
-\c@subtable@save=\count320
-\sf@top=\skip66
-\sf@bottom=\skip67
+\c@KVtest=\count320
+\sf@farskip=\skip66
+\sf@captopadj=\dimen290
+\sf@capskip=\skip67
+\sf@nearskip=\skip68
+\c@subfigure=\count321
+\c@subfigure@save=\count322
+\c@depth=\count323
+\c@subtable=\count324
+\c@subtable@save=\count325
+\sf@top=\skip69
+\sf@bottom=\skip70
 )
 (/usr/local/texlive/2020/texmf-dist/tex/latex/beamertheme-metropolis/beamerthem
 emetropolis.sty
@@ -754,26 +789,13 @@ Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
 (/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
 )
-\pgfopts@list@add@a@toks=\toks46
-\pgfopts@list@add@b@toks=\toks47
+\pgfopts@list@add@a@toks=\toks48
+\pgfopts@list@add@b@toks=\toks49
 )
 (/usr/local/texlive/2020/texmf-dist/tex/latex/beamertheme-metropolis/beamerinne
 rthememetropolis.sty
 Package: beamerinnerthememetropolis 2017/01/23 Metropolis inner theme
 
-(/usr/local/texlive/2020/texmf-dist/tex/latex/tools/calc.sty
-Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count321
-\calc@Bcount=\count322
-\calc@Adimen=\dimen287
-\calc@Bdimen=\dimen288
-\calc@Askip=\skip68
-\calc@Bskip=\skip69
-LaTeX Info: Redefining \setlength on input line 80.
-LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count323
-\calc@Cskip=\skip70
-)
 (/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
 (/usr/local/texlive/2020/texmf-dist/tex/latex/pgf/math/pgfmath.sty
@@ -782,10 +804,10 @@ LaTeX Info: Redefining \addtolength on input line 81.
 Package: pgffor 2020/01/08 v3.1.5b (3.1.5b)
 
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen289
-\pgffor@skip=\dimen290
-\pgffor@stack=\toks48
-\pgffor@toks=\toks49
+\pgffor@iter=\dimen291
+\pgffor@skip=\dimen292
+\pgffor@stack=\toks50
+\pgffor@toks=\toks51
 ))
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
 e.tex
@@ -794,34 +816,34 @@ Package: tikz 2020/01/08 v3.1.5b (3.1.5b)
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
 dlers.code.tex
 File: pgflibraryplothandlers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgf@plot@mark@count=\count324
-\pgfplotmarksize=\dimen291
+\pgf@plot@mark@count=\count326
+\pgfplotmarksize=\dimen293
 )
-\tikz@lastx=\dimen292
-\tikz@lasty=\dimen293
-\tikz@lastxsaved=\dimen294
-\tikz@lastysaved=\dimen295
-\tikz@lastmovetox=\dimen296
-\tikz@lastmovetoy=\dimen297
-\tikzleveldistance=\dimen298
-\tikzsiblingdistance=\dimen299
-\tikz@figbox=\box82
-\tikz@figbox@bg=\box83
-\tikz@tempbox=\box84
-\tikz@tempbox@bg=\box85
-\tikztreelevel=\count325
-\tikznumberofchildren=\count326
-\tikznumberofcurrentchild=\count327
-\tikz@fig@count=\count328
+\tikz@lastx=\dimen294
+\tikz@lasty=\dimen295
+\tikz@lastxsaved=\dimen296
+\tikz@lastysaved=\dimen297
+\tikz@lastmovetox=\dimen298
+\tikz@lastmovetoy=\dimen299
+\tikzleveldistance=\dimen300
+\tikzsiblingdistance=\dimen301
+\tikz@figbox=\box84
+\tikz@figbox@bg=\box85
+\tikz@tempbox=\box86
+\tikz@tempbox@bg=\box87
+\tikztreelevel=\count327
+\tikznumberofchildren=\count328
+\tikznumberofcurrentchild=\count329
+\tikz@fig@count=\count330
 
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
 e.tex
 File: pgfmodulematrix.code.tex 2020/01/08 v3.1.5b (3.1.5b)
-\pgfmatrixcurrentrow=\count329
-\pgfmatrixcurrentcolumn=\count330
-\pgf@matrix@numberofcolumns=\count331
+\pgfmatrixcurrentrow=\count331
+\pgfmatrixcurrentcolumn=\count332
+\pgf@matrix@numberofcolumns=\count333
 )
-\tikz@expandcount=\count332
+\tikz@expandcount=\count334
 
 (/usr/local/texlive/2020/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarytopaths.code.tex
@@ -862,8 +884,8 @@ aTeX to use the Fira fonts on input line 95.
 ))
 (/usr/local/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count333
-\l__pdf_internal_box=\box86
+\l__kernel_color_stack_int=\count335
+\l__pdf_internal_box=\box88
 )
 (./bayesian1.aux
 
@@ -928,17 +950,17 @@ LaTeX Font Info:    ... okay on input line 25.
 
 (/usr/local/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count334
-\scratchdimen=\dimen300
-\scratchbox=\box87
-\nofMPsegments=\count335
-\nofMParguments=\count336
-\everyMPshowfont=\toks50
-\MPscratchCnt=\count337
-\MPscratchDim=\dimen301
-\MPnumerator=\count338
-\makeMPintoPDFobject=\count339
-\everyMPtoPDFconversion=\toks51
+\scratchcounter=\count336
+\scratchdimen=\dimen302
+\scratchbox=\box89
+\nofMPsegments=\count337
+\nofMParguments=\count338
+\everyMPshowfont=\toks52
+\MPscratchCnt=\count339
+\MPscratchDim=\dimen303
+\MPnumerator=\count340
+\makeMPintoPDFobject=\count341
+\everyMPtoPDFconversion=\toks53
 ) (/usr/local/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -949,7 +971,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EveryShipout initializing macros
-\AtBeginShipoutBox=\box88
+\AtBeginShipoutBox=\box90
 Package hyperref Info: Link coloring OFF on input line 25.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
@@ -962,11 +984,12 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count340
+\c@section@level=\count342
 )
 LaTeX Info: Redefining \ref on input line 25.
 LaTeX Info: Redefining \pageref on input line 25.
 LaTeX Info: Redefining \nameref on input line 25.
+ (./bayesian1.out) (./bayesian1.out)
 \@outlinefile=\write7
 \openout7 = `bayesian1.out'.
 
@@ -1047,10 +1070,19 @@ Dictionary: translator-numbers-dictionary, Language: English
 tionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
+(/usr/local/texlive/2020/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
+
+(/usr/local/texlive/2020/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+)
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
- (./bayesian1.nav)
+
+(./bayesian1.nav)
 Overfull \vbox (15.63992pt too high) detected at line 26
  []
 
@@ -1069,59 +1101,205 @@ File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ] [4
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 78.
+
+Package pdfpages Warning: Option `page' is unknow to \includepdf.
+(pdfpages)                Did you mean `pages'? (Note the `s'!)
+(pdfpages)                OK, I'll proceed as if it were `pages'.
+
+<bayes.pdf, id=39, 614.295pt x 794.97pt>
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf>
+Package pdftex.def Info: bayes.pdf  used on input line 71.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf>
+Package pdftex.def Info: bayes.pdf  used on input line 71.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+<bayes.pdf, id=42, page=2, 794.97pt x 614.295pt>
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 2>
+Package pdftex.def Info: bayes.pdf , page2 used on input line 71.
+(pdftex.def)             Requested size: 794.96806pt x 614.29349pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 2>
+Package pdftex.def Info: bayes.pdf , page2 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 2>
+Package pdftex.def Info: bayes.pdf , page2 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 2>
+Package pdftex.def Info: bayes.pdf , page2 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 2>
+Package pdftex.def Info: bayes.pdf , page2 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+[5
+
+ <./bayes.pdf>]
+<bayes.pdf, id=55, page=3, 794.97pt x 614.295pt>
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 3>
+Package pdftex.def Info: bayes.pdf , page3 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 3>
+Package pdftex.def Info: bayes.pdf , page3 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 3>
+Package pdftex.def Info: bayes.pdf , page3 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+ [6 <./bayes.pdf>]
+<bayes.pdf, id=71, page=4, 794.97pt x 614.295pt>
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 4>
+Package pdftex.def Info: bayes.pdf , page4 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 4>
+Package pdftex.def Info: bayes.pdf , page4 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 4>
+Package pdftex.def Info: bayes.pdf , page4 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+ [7 <./bayes.pdf>]
+<bayes.pdf, id=94, page=5, 794.97pt x 614.295pt>
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 5>
+Package pdftex.def Info: bayes.pdf , page5 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 5>
+Package pdftex.def Info: bayes.pdf , page5 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 5>
+Package pdftex.def Info: bayes.pdf , page5 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+ [8 <./bayes.pdf>]
+<bayes.pdf, id=121, page=6, 794.97pt x 614.295pt>
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 6>
+Package pdftex.def Info: bayes.pdf , page6 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 6>
+Package pdftex.def Info: bayes.pdf , page6 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 6>
+Package pdftex.def Info: bayes.pdf , page6 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+
+[9 <./bayes.pdf>]
+<bayes.pdf, id=133, page=7, 794.97pt x 614.295pt>
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 7>
+Package pdftex.def Info: bayes.pdf , page7 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 7>
+Package pdftex.def Info: bayes.pdf , page7 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 7>
+Package pdftex.def Info: bayes.pdf , page7 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+ [10 <./bayes.pdf>]
+<bayes.pdf, id=142, page=8, 794.97pt x 614.295pt>
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 8>
+Package pdftex.def Info: bayes.pdf , page8 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 8>
+Package pdftex.def Info: bayes.pdf , page8 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 8>
+Package pdftex.def Info: bayes.pdf , page8 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+ [11 <./bayes.pdf>]
+<bayes.pdf, id=157, page=9, 794.97pt x 614.295pt>
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 9>
+Package pdftex.def Info: bayes.pdf , page9 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 9>
+Package pdftex.def Info: bayes.pdf , page9 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 9>
+Package pdftex.def Info: bayes.pdf , page9 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+ [12 <./bayes.pdf>]
+<bayes.pdf, id=173, page=10, 794.97pt x 614.295pt>
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 10>
+Package pdftex.def Info: bayes.pdf , page10 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 10>
+Package pdftex.def Info: bayes.pdf , page10 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 10>
+Package pdftex.def Info: bayes.pdf , page10 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+
+[13 <./bayes.pdf>]
+<bayes.pdf, id=183, page=11, 794.97pt x 614.295pt>
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 11>
+Package pdftex.def Info: bayes.pdf , page11 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 11>
+Package pdftex.def Info: bayes.pdf , page11 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 11>
+Package pdftex.def Info: bayes.pdf , page11 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+ [14 <./bayes.pdf>]
+<bayes.pdf, id=189, page=12, 794.97pt x 614.295pt>
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 12>
+Package pdftex.def Info: bayes.pdf , page12 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 12>
+Package pdftex.def Info: bayes.pdf , page12 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+File: bayes.pdf Graphic file (type pdf)
+<use bayes.pdf, page 12>
+Package pdftex.def Info: bayes.pdf , page12 used on input line 71.
+(pdftex.def)             Requested size: 353.6453pt x 273.27136pt.
+ [15 <./bayes.pdf>]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 83.
 
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 78.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 83.
 
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inp
-ut line 78.
+ut line 83.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/sansmathaccent/ot1mathkerncmss.fd
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/ma
 thkerncmss.
-) [5
-
-] [6
-
-] [7
-
-] [8
-
-] [9
-
-] [10
-
-] [11
-
-] [12
-
-]pdfTeX warning (ext4): destination with the same identifier (name{eqn*:eqlabel
-}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.117 \end{frame}
-                  [13
-
-]pdfTeX warning (ext4): destination with the same identifier (name{eqn*:eqlabel
-}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.132 \end{frame}
-                  [14
-
-] [15
-
-] [16
-
-] [17
+) [16] [17
 
 ] [18
 
@@ -1135,20 +1313,23 @@ l.132 \end{frame}
 
 ] [23
 
-] [24
+]pdfTeX warning (ext4): destination with the same identifier (name{eqn*:eqlabel
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.122 \end{frame}
+                  [24
 
-]
-[25
+]pdfTeX warning (ext4): destination with the same identifier (name{eqn*:eqlabel
+}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.137 \end{frame}
+                  [25
 
-]
-<plots/online.pdf, id=156, 433.62pt x 289.08pt>
-File: plots/online.pdf Graphic file (type pdf)
-<use plots/online.pdf>
-Package pdftex.def Info: plots/online.pdf  used on input line 179.
-(pdftex.def)             Requested size: 256.0748pt x 170.72333pt.
- [26
+] [26
 
- <./plots/online.pdf>] [27
+] [27
 
 ] [28
 
@@ -1169,9 +1350,15 @@ Package pdftex.def Info: plots/online.pdf  used on input line 179.
 ]
 [36
 
-] [37
+]
+<plots/online.pdf, id=314, 433.62pt x 289.08pt>
+File: plots/online.pdf Graphic file (type pdf)
+<use plots/online.pdf>
+Package pdftex.def Info: plots/online.pdf  used on input line 184.
+(pdftex.def)             Requested size: 256.0748pt x 170.72333pt.
+ [37
 
-] [38
+ <./plots/online.pdf>] [38
 
 ] [39
 
@@ -1190,6 +1377,29 @@ Package pdftex.def Info: plots/online.pdf  used on input line 179.
 ] [46
 
 ]
+[47
+
+] [48
+
+] [49
+
+] [50
+
+] [51
+
+] [52
+
+] [53
+
+] [54
+
+] [55
+
+] [56
+
+] [57
+
+]
 \tf@nav=\write8
 \openout8 = `bayesian1.nav'.
 
@@ -1199,32 +1409,26 @@ Package pdftex.def Info: plots/online.pdf  used on input line 179.
 \tf@snm=\write10
 \openout10 = `bayesian1.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 406.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 406.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 411.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 411.
  (./bayesian1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 406.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 406.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 411.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 411.
+Package rerunfilecheck Info: File `bayesian1.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
-
-Package rerunfilecheck Warning: File `bayesian1.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `bayesian1.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 24285 strings out of 480608
- 494982 string characters out of 5903629
- 737077 words of memory out of 5000000
- 39547 multiletter control sequences out of 15000+600000
+ 25062 strings out of 480608
+ 507774 string characters out of 5903629
+ 753321 words of memory out of 5000000
+ 40274 multiletter control sequences out of 15000+600000
  541577 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,17n,92p,1841b,574s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,18n,92p,1841b,574s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
@@ -1239,10 +1443,10 @@ al/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
 l/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
 texlive/2020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/lo
 cal/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb>
-Output written on bayesian1.pdf (46 pages, 243888 bytes).
+Output written on bayesian1.pdf (57 pages, 2435103 bytes).
 PDF statistics:
- 353 PDF objects out of 1000 (max. 8388607)
- 282 compressed objects within 3 object streams
- 95 named destinations out of 1000 (max. 500000)
- 48 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 517 PDF objects out of 1000 (max. 8388607)
+ 392 compressed objects within 4 object streams
+ 117 named destinations out of 1000 (max. 500000)
+ 118 words of extra memory for PDF output out of 10000 (max. 10000000)
 
