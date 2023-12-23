@@ -333,7 +333,7 @@ A small change in data can lead to very different models.\\
 
 \begin{frame}{Accuracy vs Depth Curve}
 \begin{center}
-\includegraphics[scale=0.55]{../bias-variance/imgs/acc-depth-plot}
+\includegraphics[scale=0.55]{../figures/decision-trees/bias-variance-accuracy-vs-depth.pdf}
 \end{center}
 \pause As depth increases, train accuracy improves\\
 \pause As depth increases, test accuracy improves till a point\\
@@ -345,7 +345,7 @@ A small change in data can lead to very different models.\\
 The highlighted region is the underfitting region.\\
 Model is too simple (less depth) to learn from the data. 
 \begin{center}
-\includegraphics[scale=0.55]{../bias-variance/imgs/acc-depth-plot-underfit}
+\includegraphics{../figures/decision-trees/bias-variance-accuracy-vs-depth-underfitting.pdf}
 \end{center}
 \end{frame}
 
@@ -353,7 +353,7 @@ Model is too simple (less depth) to learn from the data.
 The highlighted region is the overfitting region.\\
 Model is complex (high depth) and hence also learns the anomalies in data. 
 \begin{center}
-\includegraphics[scale=0.55]{../bias-variance/imgs/acc-depth-plot-overfit}
+\includegraphics{../figures/decision-trees/bias-variance-accuracy-vs-depth-overfitting.pdf}
 \end{center}
 \end{frame}
 
@@ -361,7 +361,7 @@ Model is complex (high depth) and hence also learns the anomalies in data.
 The highlighted region is the good fit region.\\
 We want to maximize test accuracy while being in this region.
 \begin{center}
-\includegraphics[scale=0.55]{../bias-variance/imgs/acc-depth-plot-properfit}
+\includegraphics{../figures/decision-trees/bias-variance-accuracy-vs-depth-good-fit.pdf}
 \end{center}
 \end{frame}
 
@@ -377,15 +377,15 @@ Use cross-validation!
 
 
 \begin{frame}{Our General Training Flow}
-\includegraphics[width = \textwidth]{../bias-variance/imgs/general-workflow}
+\includegraphics[width = \textwidth]{../diagrams/cross-validation/general-workflow}
 \end{frame}
 
 \begin{frame}{K-Fold cross-validation: Utilise full dataset for testing}
-\includegraphics[width = \textwidth]{cross-validation-train-test.pdf}
+\includegraphics[width = \textwidth]{../diagrams/cross-validation/cross-validation-train-test}
 \end{frame}
 
 \begin{frame}{The Validation Set}
-\includegraphics[width = \textwidth]{../bias-variance/imgs/validation-workflow}
+\includegraphics[width = \textwidth]{../diagrams/cross-validation/validation-workflow}
 \end{frame}
 
 \begin{frame}{Nested Cross Validation}
@@ -393,14 +393,14 @@ Divide your training set into $K$ equal 	parts.\\
 Cyclically use 1 part as ``validation set" and the rest for training.\\
 Here $K = 4$
 \begin{center}
-\includegraphics[scale=0.7]{../bias-variance/imgs/cross-validation}
+\includegraphics[scale=0.7]{../diagrams/cross-validation/cross-validation.pdf}
 \end{center}
 \end{frame}
 
 \begin{frame}{Nested Cross Validation}
 Average out the validation accuracy across all the folds\\
 Use the model with highest validation accuracy\\
-\includegraphics[width = \textwidth]{../bias-variance/imgs/cross-validation-avg}
+\includegraphics[width = \textwidth]{../diagrams/cross-validation/cross-validation-avg.pdf}
 \end{frame}
 
 \begin{frame}{Next time: Ensemble Learning}
