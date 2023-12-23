@@ -1,0 +1,24 @@
+project:
+  type: website
+
+website:
+  title: "Nipun Batra Blog"
+  navbar:
+    right:
+        - href: https://nipunbatra.github.io
+          text: Homepage
+        - href: notebooks/index.qmd
+          text: Notebooks
+format:
+  html:
+    theme:
+      light: [litera, styles.scss]
+      dark: [darkly, styles-dark.scss]
+    highlight-style: a11y-dark
+    mainfont: "Roboto"
+    code-copy: true
+    code-overflow: wrap
+
+
+execute:
+  freeze: auto
