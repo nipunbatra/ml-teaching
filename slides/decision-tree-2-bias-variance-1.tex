@@ -47,14 +47,14 @@
 \begin{frame}{Example 1}
 Let us consider the dataset given below
 \begin{center}
-\includegraphics[scale=0.5]{imgs/dataset}
+\includegraphics{../figures/decision-trees/ri-ro-dataset.pdf}
 \end{center}
 \end{frame}
 
 \begin{frame}{Example 1}
 What would be the prediction for decision tree with depth 0?
 \begin{center}
-\includegraphics[scale=0.5]{imgs/dataset}
+\includegraphics{../figures/decision-trees/ri-ro-dataset.pdf}
 \end{center}
 \end{frame}
 
@@ -62,7 +62,7 @@ What would be the prediction for decision tree with depth 0?
 Prediction for decision tree with depth 0.\\
 Horizontal dashed line shows the predicted $Y$ value. It is the average of $Y$ values of all datapoints.\\
 \begin{center}
-\includegraphics[scale=0.5]{imgs/depth-0-boundary}	
+\includegraphics{../figures/decision-trees/ri-ro-depth-0.pdf}	
 \end{center}
 \end{frame}
 
@@ -70,21 +70,21 @@ Horizontal dashed line shows the predicted $Y$ value. It is the average of $Y$ v
 \begin{frame}{Example 1}
 What would be the decision tree with depth 1?
 \begin{center}
-\includegraphics[scale=0.5]{imgs/dataset}
+\includegraphics{../figures/decision-trees/ri-ro-dataset.pdf}
 \end{center}
 \end{frame}
 
 \begin{frame}{Example 1}
 Decision tree with depth 1
 \begin{center}
-\includegraphics[scale=1]{imgs/depth-1-decision-tree}	
+\includegraphics{../figures/decision-trees/ri-ro-depth-1.pdf}	
 \end{center}
 \end{frame}
 
 \begin{frame}{Example 1}
 The Decision Boundary
 \begin{center}
-\includegraphics[scale=0.5]{imgs/depth-1-tree}
+\includegraphics{../figures/decision-trees/ri-ro-depth-1-sklearn.pdf}
 \end{center}
 \end{frame}
 
@@ -92,23 +92,24 @@ The Decision Boundary
 \begin{frame}{Example 1}
 What would be the decision tree with depth 2	?
 \begin{center}
-\includegraphics[scale=0.5]{imgs/dataset}
+	\includegraphics{../figures/decision-trees/ri-ro-dataset.pdf}
 \end{center}
 \end{frame}
 
 \begin{frame}{Example 1}
-Decision tree with depth 2
-\begin{center}
-\includegraphics[scale=0.65]{imgs/depth-2-decision-tree}	
-\end{center}
-\end{frame}
-
-\begin{frame}{Example 1}
-The Decision Boundary
-\begin{center}
-\includegraphics[scale=0.5]{imgs/depth-2-tree}
-\end{center}
-\end{frame}
+	Decision tree with depth 1
+	\begin{center}
+	\includegraphics{../figures/decision-trees/ri-ro-depth-2.pdf}	
+	\end{center}
+	\end{frame}
+	
+	\begin{frame}{Example 1}
+	The Decision Boundary
+	\begin{center}
+	\includegraphics{../figures/decision-trees/ri-ro-depth-2-sklearn.pdf}
+	\end{center}
+	\end{frame}
+	
 
 \begin{frame}{Objective function}
 \only<1-4>{
@@ -162,29 +163,29 @@ Draw a regression tree for Y = sin(X), $0 \leq X \leq 2\pi$
 \begin{frame}{A Question!}
 Dataset of Y = sin(X), $0 \leq X \leq 7$ with 10,000 points 
 \begin{center}
-\includegraphics[scale=0.5]{imgs/sine-dataset}
+\includegraphics{../figures/decision-trees/sine-dataset.pdf}
 \end{center}
 \end{frame}
 
 \begin{frame}{A Question!}
 Regression tree of depth 1
 \begin{center}
-\includegraphics[scale=0.5]{imgs/sine-depth-1-decision-tree}
+\includegraphics{../figures/decision-trees/sine-depth-1-sklearn.pdf}
 \end{center}
 \end{frame}
 
 \begin{frame}{A Question!}
 Decision Boundary
 \begin{center}
-\includegraphics[scale=0.5]{imgs/sine-depth-1-tree}
+\includegraphics[scale=0.5]{../figures/decision-trees/sine-depth-1.pdf}
 \end{center}
 \end{frame}
 
 \begin{frame}{A Question!}
 Regression tree with no depth limit is too big to fit in a slide. \\
-It has of depth 20. The decision boundaries are in figure below.\\
+It has of depth 4. The decision boundaries are in figure below.\\
 \begin{center}
-\includegraphics[scale=0.5]{imgs/sine-no-depth-tree}
+\includegraphics{../figures/decision-trees/sine-depth-4.pdf}
 \end{center}
 \end{frame}
 
@@ -215,7 +216,7 @@ What would be the decision boundary of a decision tree classifier?
 
 \begin{figure}
 	\centering
-	\includegraphics[scale=0.55]{../bias-variance/imgs/dataset-1}
+	\includegraphics{../figures/decision-trees/bias-variance-dataset.pdf}
 \end{figure}
 
 
@@ -224,9 +225,9 @@ What would be the decision boundary of a decision tree classifier?
 \begin{frame}{Decision Boundary for a tree with depth 1}
 \begin{figure}%
 \centering
-\subfloat[Decision Boundary]{{\includegraphics[width=0.45\textwidth]{../bias-variance/imgs/example-1-depth-1-boundary} }}%
+\subfloat[Decision Boundary]{{\includegraphics[width=0.45\textwidth]{../figures/decision-trees/bias-variance-depth-1.pdf} }}%
 \qquad
-\subfloat[Decision Tree]{{\includegraphics[width =0.45\textwidth]{../bias-variance/imgs/example-1-depth-1-decision-tree} }}%
+\subfloat[Decision Tree]{{\includegraphics[width =0.45\textwidth]{../figures/decision-trees/bias-variance-depth-1-sklearn.pdf} }}%
 \label{fig:example}%
 \end{figure}
 \end{frame}
@@ -234,9 +235,9 @@ What would be the decision boundary of a decision tree classifier?
 \begin{frame}{Decision Boundary for a tree with no depth limit}
 \begin{figure}%
 \centering
-\subfloat[Decision Boundary]{{\includegraphics[width=0.45\textwidth]{../bias-variance/imgs/example-1-nolimit-boundary} }}%
+\subfloat[Decision Boundary]{{\includegraphics[width=0.45\textwidth]{../figures/decision-trees/bias-variance-full-depth.pdf} }}%
 \qquad
-\subfloat[Decision Tree]{{\includegraphics[width =0.45\textwidth]{../bias-variance/imgs/example-1-nolimit-decision-tree} }}%
+\subfloat[Decision Tree]{{\includegraphics[width =0.45\textwidth]{../figures/decision-trees/bias-variance-full-depth-sklearn.pdf} }}%
 \label{fig:example}%
 \end{figure}
 \end{frame}
@@ -257,9 +258,9 @@ But, sometimes this can lead to $poor$ $generalization$
 Consider the dataset below
 \begin{figure}%
 \centering
-\subfloat[Train Set]{{\includegraphics[width=0.45\textwidth]{../bias-variance/imgs/dataset-2-train} }}%
+\subfloat[Train Set]{{\includegraphics[width=0.45\textwidth]{../figures/decision-trees/bias-variance-dataset-2.pdf} }}%
 \qquad
-\subfloat[Test Set]{{\includegraphics[width =0.45\textwidth]{../bias-variance/imgs/dataset-2-test} }}%
+\subfloat[Test Set]{{\includegraphics[width =0.45\textwidth]{../figures/decision-trees/bias-variance-dataset-2-test.pdf} }}%
 \label{fig:example}%
 \end{figure}
 \end{frame}
@@ -268,9 +269,9 @@ Consider the dataset below
 Underfitting is also known as $high$ $bias$, since it has a very biased incorrect assumption.
 \begin{figure}%
 \centering
-\subfloat[Decision Boundary]{{\includegraphics[width=0.45\textwidth]{../bias-variance/imgs/example-2-depth-1-boundary} }}%
+\subfloat[Decision Boundary]{{\includegraphics[width=0.45\textwidth]{../figures/decision-trees/bias-variance-depth-2.pdf} }}%
 \qquad
-\subfloat[Decision Tree]{{\includegraphics[width =0.45\textwidth]{../bias-variance/imgs/example-2-depth-1-decision-tree} }}%
+\subfloat[Decision Tree]{{\includegraphics[width =0.45\textwidth]{../figures/decision-trees/bias-variance-depth-2-sklearn.pdf} }}%
 \label{fig:example}%
 \end{figure}
 \end{frame}
@@ -279,7 +280,7 @@ Underfitting is also known as $high$ $bias$, since it has a very biased incorrec
 Overfitting is also known as $high$ $variance$, since very small changes in data can lead to very different models.\\
 Decision tree learned has depth of 10.
 \begin{center}
-\includegraphics[scale=0.5]{../bias-variance/imgs/example-2-nolimit-boundary}
+\includegraphics[scale=0.5]{../figures/decision-trees/bias-variance-full-depth.pdf}
 \end{center}
 \end{frame}
 

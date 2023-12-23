@@ -1,6 +1,5 @@
 \documentclass{beamer}
 
-\usepackage{forloop}
 \usepackage{hyperref}
 
 \usepackage{mathtools}  
@@ -23,15 +22,15 @@
 	
 	\section{Gaussian Distribution}
 	\begin{frame}{1D Gaussian Scatter Plot}
-		\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/1d-gp}
+		\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{../figures/gp/1d-gp}
 	\end{frame}
 	
 	\begin{frame}{1D Gaussian Histogram}
-		\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/1d-gp-hist}
+		\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{../figures/../figures/gp/1d-gp-hist}
 	\end{frame}
 	
 	\begin{frame}{Varying 1D Gaussian Variance}
-		\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/1d-gp-kde2}
+		\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{../figures/../figures/gp/1d-gp-kde2}
 	\end{frame}
 	
 	\begin{frame}{Bi-variate Gaussian}
@@ -60,7 +59,7 @@
 	
 	\begin{frame}{Sampling Bi-variate Gaussian - 1}
 		\begin{center}
-			\includegraphics[height=\textheight -45pt ,keepaspectratio]{gp/2d-gp}\\
+			\includegraphics[height=\textheight -45pt ,keepaspectratio]{../figures/../figures/gp/2d-gp}\\
 			Here the covariance between the two random variables is positive.
 		\end{center}
 	\end{frame}
@@ -68,27 +67,27 @@
 	
 	\begin{frame}{Sampling Bi-variate Gaussian - 2}
 		\begin{center}
-			\includegraphics[height=\textheight -45pt ,keepaspectratio]{gp/2d-gp2}\\
+			\includegraphics[height=\textheight -45pt ,keepaspectratio]{../figures/../figures/gp/2d-gp2}\\
 			Here the covariance between the two random variables is negative.
 		\end{center}
 	\end{frame}
 	
 	\begin{frame}{Sampling Bi-variate Gaussian - 3}
 		\begin{center}
-			\includegraphics[height=\textheight -30pt ,keepaspectratio]{gp/2d-gp3}\\
+			\includegraphics[height=\textheight -30pt ,keepaspectratio]{../figures/../figures/gp/2d-gp3}\\
 			The two random variables are uncorrelated.
 		\end{center}
 	\end{frame}
 	
 	\begin{frame}{Surface Plots Bi-variate Gaussian - 1}
 		\begin{center}
-			\includegraphics[height=\textheight -10pt ,keepaspectratio]{gp/2dgp3d}
+			\includegraphics[height=\textheight -10pt ,keepaspectratio]{../figures/../figures/gp/2dgp3d}
 		\end{center}
 	\end{frame}
 	
 	\begin{frame}{Surface Plots Sampling Bi-variate Gaussian - 2}
 		\begin{center}
-			\includegraphics[height=\textheight -10pt ,keepaspectratio]{gp/2dgp3d2}
+			\includegraphics[height=\textheight -10pt ,keepaspectratio]{../figures/gp/2dgp3d2}
 		\end{center}
 	\end{frame}
 	
@@ -96,18 +95,21 @@
 	
 	% for cov
 	\newcounter{iter}
-	\forloop{iter}{1}{\value{iter} < 6}%
-	{%
+	\setcounter{iter}{1}
+	
+	\loop
+	\ifnum\value{iter}<6
 		\begin{frame}{Cov = 0.1 | Random State - \theiter}
-			\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/0.1/\theiter}\\
+			\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{../figures/gp/0.1/\theiter}\\
 			One can notice, increasing the $\rho$ (or the covariance) between $X_1$ and $X_2$ results in the realizations of $X_1$ and $X_2$ to increasingly move together.
 		\end{frame}
-	}
+		\stepcounter{iter}
+	\repeat
 	% for cov
 	\forloop{iter}{1}{\value{iter} < 6}%
 	{%
 		\begin{frame}{Cov = 0.7 | Random State - \theiter}
-			\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/0.7/\theiter}\\
+			\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{../figures/gp/0.7/\theiter}\\
 			One can notice, increasing the $\rho$ (or the covariance) between $X_1$ and $X_2$ results in the realizations of $X_1$ and $X_2$ to increasingly move together.
 		\end{frame}
 	}
@@ -137,7 +139,7 @@
 	\forloop{iter}{1}{\value{iter} < 6}%
 	{%
 		\begin{frame}{Conditional bi-variate | Cov = 0.1 | Random State - \theiter}
-			\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/conditional/0.1/\theiter}\\
+			\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{../figures/gp/conditional/0.1/\theiter}\\
 			Notice that upon fixing the first random variable, the variance of the second random variable $X_2$ is a function of the covariance ($\rho$) between the two random variables.
 		\end{frame}
 	}
@@ -146,7 +148,7 @@
 	\forloop{iter}{1}{\value{iter} < 6}%
 	{%
 		\begin{frame}{Conditional bi-variate | Cov = 0.7 | Random State - \theiter}
-			\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{gp/conditional/0.7/\theiter}\\
+			\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{../figures/gp/conditional/0.7/\theiter}\\
 			Notice that upon fixing the first random variable, the variance of the second random variable $X_2$ is a function of the covariance ($\rho$) between the two random variables.
 		\end{frame}
 	}
@@ -158,7 +160,7 @@
 	{%
 		\begin{frame}{Multivariate Gaussian Sample | Random State - \theiter}
 			\begin{center}
-				\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/5d/\theiter}
+				\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{../figures/gp/5d/\theiter}
 			\end{center}
 			From the visualisation above we can see that:
 			\begin{itemize}
@@ -223,7 +225,7 @@
 	{%
 		\begin{frame}{Conditional Multivariate Distribution | Random State - \theiter}
 			\begin{center}
-				\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/5d/conditional/1/\theiter}
+				\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{../figures/gp/5d/conditional/1/\theiter}
 			\end{center}
 			From the visualisation above we can see that:
 			\begin{itemize}
@@ -235,7 +237,7 @@
 	
 	\begin{frame}{20 Dimensional Multivariate}
 		\begin{center}
-			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/20d}\\
+			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{../figures/gp/20d}\\
 		\end{center}	
 		The above heatmap shows that there is high covariance value between nearby points, but close to zero or zero covariance otherwise.
 	\end{frame}
@@ -245,7 +247,7 @@
 	{%
 		\begin{frame}{Multivariate (20D) Distribution Samples | Random State - \theiter}
 			\begin{center}
-				\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/20d/\theiter}
+				\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{../figures/gp/20d/\theiter}
 			\end{center}
 			From the animation above, we can see different family of functions of mean zero across 20 points. Notice that nearby points are more correlated (making the curve smooth) than the points farther away.
 		\end{frame}
@@ -261,7 +263,7 @@
 	
 	\begin{frame}{Updated Covariance Matrix}
 		\begin{center}
-			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/post20d}
+			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{../figures/gp/post20d}
 		\end{center}
 		Notice that the variance of the points near the newly added data points seem to have reduced.
 	\end{frame}
@@ -271,7 +273,7 @@
 	{%
 		\begin{frame}{Conditional Multivariate (20D) Distribution Samples | Random State - \theiter}
 			\begin{center}
-				\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/20d/conditional/\theiter}
+				\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{../figures/gp/20d/conditional/\theiter}
 			\end{center}
 			From the animation above, we can see points near the added data points (red) seem to have a much lower variance compared to points far off.
 		\end{frame}
@@ -279,7 +281,7 @@
 	
 	\begin{frame}{Multivariate (20D) Posterior}
 		\begin{center}
-			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/20dcov} \\
+			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{../figures/gp/20dcov} \\
 		\end{center}
 		We can easily see the reduced variance in this plot.
 	\end{frame}
@@ -304,7 +306,7 @@
 	
 	\begin{frame}{Varying $l$ with $\sigma = 1$}
 		\begin{center}
-			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/vary_l}\\
+			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{../figures/gp/vary_l}\\
 			As it can be seen with the plots above, using a smaller $l$ means the function is much more smoother. Using a larger $l$, as in the case when $l = 1$, we see the covariance between two points that are far off, falls to zero.
 		\end{center}
 		
@@ -312,14 +314,14 @@
 	
 	\begin{frame}{Varying $\sigma$ with $l = 0.1$}
 		\begin{center}
-			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/vary_s}\\
+			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{../figures/gp/vary_s}\\
 			As it can be seen with the plots above, a small $s$ keeps the variance and covariance values small. Whereas, a bigger $s$ leads to higher values of variance and covariance. One thing to notice is that we are talking about covariance, not correlation, $s$ doesn't affect the correlation between random variables.
 		\end{center}
 	\end{frame}
 	
 	\begin{frame}{Varying kernel parameters on 20D Guassian with conditioning}
 		\begin{center}
-			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/kernel/20gp_ker1}\\
+			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{../figures/gp/kernel/20gp_ker1}\\
 			The big dark circles in the above plot denote the fixed points on which the GP is conditioned. Furthermore, notice the translucent areas, denoting the variance and the smoothness of the function denoting the correlation between random variables.
 			
 			We have used the squared exponential kernel introduced earlier in this example.
@@ -328,21 +330,21 @@
 	
 	\begin{frame}{Varying kernel parameters on 20D Guassian with conditioning}
 		\begin{center}
-			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/kernel/20gp_ker2}\\
+			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{../figures/gp/kernel/20gp_ker2}\\
 			We can notice the increase in the variance of each of the random variables by increasing the value of $s$ parameter of the kernel.
 		\end{center}
 	\end{frame}
 	
 	\begin{frame}{Varying kernel parameters on 20D Guassian with conditioning}
 		\begin{center}
-			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/kernel/20gp_ker3}\\
+			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{../figures/gp/kernel/20gp_ker3}\\
 			Increasing the value of $l$ reduces the correlation between nearby points. We, therefore, see that the resulting curve is rougher.
 		\end{center}
 	\end{frame}
 	
 	\begin{frame}{Varying kernel parameters on 20D Guassian with conditioning}
 		\begin{center}
-			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{gp/kernel/20gp_ker4}\\
+			\includegraphics[width=\linewidth, height=\textheight -120pt ,keepaspectratio]{../figures/gp/kernel/20gp_ker4}\\
 			Keeping a huge value of $l$ results in the conditioned random variables to be highly uncorrelated with the fixed points, as can be seen above. Further, the conditioned points just move around the mean, which is set to zero in this example.
 		\end{center}
 	\end{frame}
@@ -487,8 +489,8 @@
 
 
 \begin{frame}{GPs}
-	\includegraphics[width=.5\textwidth]{gp/final/noisygp}%
-	\includegraphics[width=.5\textwidth]{gp/final/noiselessgp}
+	\includegraphics[width=.5\textwidth]{../figures/gp/final/noisygp}%
+	\includegraphics[width=.5\textwidth]{../figures/gp/final/noiselessgp}
 	
 	One can see the differences between the two in the above plots. The left one is of a noisy GP, where even after adding the data points, the uncertainty doesn't go to zero, whereas the uncertainty reaches zero for the noiseless GP.
 \end{frame}
