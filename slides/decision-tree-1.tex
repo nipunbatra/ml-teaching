@@ -17,11 +17,7 @@
 
 \usepackage{../notation} % Custom package
 
-%\beamerdefaultoverlayspecification{<+->}
-% \newcommand{\data}{\mathcal{D}}
-% \newcommand\Item[1][]{%
-% 	\ifx\relax#1\relax  \item \else \item[#1] \fi
-% 	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselinz`eskip}}
+
 
 \graphicspath{ {imgs/} }
 
@@ -41,7 +37,7 @@
 	\begin{frame}{The need for interpretability}
 	\begin{figure}
 		\centering
-		\includegraphics[width=1\linewidth]{../interpretability}
+		\includegraphics[width=1\linewidth]{../diagrams/decision-trees/interpretability}
 		\label{fig:interpretability}
 	\end{figure}
 	
@@ -71,7 +67,7 @@
 \begin{frame}{Learning a Complicated Neural Network}
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{../neural}
+	\includegraphics[width=1\linewidth]{../diagrams/decision-trees/neural}
 	
 	\label{fig:neural}
 \end{figure}
@@ -108,7 +104,7 @@ node/.style={%
 \begin{frame}{Medical Diagnosis using Decision Trees }
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{../decision-medical}
+	\includegraphics[width=1\linewidth]{../diagrams/decision-trees/decision-medical}
 	\caption{Source: Improving medical decision trees by combining relevant health-care criteria}
 	\label{fig:decision-medical}
 \end{figure}
@@ -119,7 +115,7 @@ node/.style={%
 \begin{frame}{Leo Brieman}
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{../brieman}
+	\includegraphics[width=1\linewidth]{../diagrams/decision-trees/brieman}
 
 	\label{fig:brieman}
 \end{figure}
@@ -129,7 +125,7 @@ node/.style={%
 \begin{frame}{Optimal Decision Tree}
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{../NP-hard}
+	\includegraphics[width=1\linewidth]{../diagrams/decision-trees/NP-hard}
 
 	\label{fig:np-hard}
 \end{figure}
@@ -142,7 +138,7 @@ Core idea: At each level, choose an attribute that gives
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\linewidth]{../gredy}
+	\includegraphics[width=0.8\linewidth]{../diagrams/decision-trees/gredy}
 	\caption{Greedy!=Optimal}
 	\label{fig:gredy}
 \end{figure}
@@ -773,7 +769,7 @@ ytick pos=left,axis x line*=bottom,nodes near coords,hide y axis,title=Informati
 \begin{frame}{Learnt Tree}
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{../tree}
+	\includegraphics[width=1\linewidth]{../diagrams/decision-trees/tree}
 
 	\label{fig:tree}
 \end{figure}
@@ -783,7 +779,7 @@ ytick pos=left,axis x line*=bottom,nodes near coords,hide y axis,title=Informati
 \begin{frame}{Learnt Tree}
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{../tree2}
+	\includegraphics[width=1\linewidth]{../diagrams/decision-trees/tree2}
 
 	\label{fig:tree}
 \end{figure}
@@ -814,96 +810,16 @@ ytick pos=left,axis x line*=bottom,nodes near coords,hide y axis,title=Informati
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Example}
-\begin{figure}
-	\centering
-	\includegraphics[scale=0.5]{../dt-0.pdf}
-	\label{fig:dt-1}
-\end{figure}
+\foreach \i in {0,...,9} {
+\begin{frame}{Example (DT of depth \i)}
+    \begin{figure}
+        \centering
+        \includegraphics[scale=0.5]{../figures/decision-trees/dt-\i.pdf}
+            \label{fig:dt-\i}
+        
+    \end{figure}
 \end{frame}
-
-\begin{frame}{Example (DT of depth 1)}
-\begin{figure}
-	\centering
-	\includegraphics[scale=0.5]{../dt-1.pdf}
-	\label{fig:dt-1}
-\end{figure}
-\end{frame}
-
-
-\begin{frame}{Example (DT of depth 2)}
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{../dt-2.pdf}
-\label{fig:dt-2}
-\end{figure}
-\end{frame}
-
-
-\begin{frame}{Example (DT of depth 3)}
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{../dt-3.pdf}
-\label{fig:dt-3}
-\end{figure}
-\end{frame}
-
-
-\begin{frame}{Example (DT of depth 4)}
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{../dt-4.pdf}
-\label{fig:dt-4}
-\end{figure}
-\end{frame}
-
-
-\begin{frame}{Example (DT of depth 5)}
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{../dt-5.pdf}
-\label{fig:dt-5}
-\end{figure}
-\end{frame}
-
-
-\begin{frame}{Example (DT of depth 6)}
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{../dt-6.pdf}
-\label{fig:dt-6}
-\end{figure}
-\end{frame}
-
-
-\begin{frame}{Example (DT of depth 7)}
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{../dt-7.pdf}
-\label{fig:dt-7}
-\end{figure}
-\end{frame}
-
-
-\begin{frame}{Example (DT of depth 8)}
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{../dt-8.pdf}
-\label{fig:dt-8}
-\end{figure}
-\end{frame}
-
-
-\begin{frame}{Example (DT of depth 9)}
-\begin{figure}
-\centering
-\includegraphics[scale=0.5]{../dt-9.pdf}
-\label{fig:dt-9}
-\end{figure}
-\end{frame}
-
-
-
+}
 
 
 
