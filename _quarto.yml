@@ -9,6 +9,8 @@ website:
           text: Homepage
         - href: notebooks.qmd
           text: Notebooks
+        - href: slides.qmd
+          text: Slides
 format:
   html:
     theme:
