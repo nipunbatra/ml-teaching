@@ -154,7 +154,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_format <span class="op">=</span> <span class="st">'retina'</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> latexify <span class="im">import</span> latexify, format_axes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="126">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create dataset</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>])</span>
@@ -168,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-3-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="22">
+<div class="cell" data-execution_count="127">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Depth 0 tree</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Average of all y values</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> np.mean(y)</span>
@@ -184,12 +184,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell">
+<div class="cell" data-execution_count="128">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Depth 1 tree</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="32">
+<div class="cell" data-execution_count="129">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># getting the same via sklearn</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor, DecisionTreeClassifier</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeRegressor(max_depth<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>dt.fit(x.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>), y)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> dt.predict(x.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
@@ -209,7 +209,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="33">
+<div class="cell" data-execution_count="130">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot tree using sklearn export</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> export_graphviz</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> graphviz</span>
@@ -217,11 +217,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>graph <span class="op">=</span> graphviz.Source(dot_data)</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>graph.<span class="bu">format</span> <span class="op">=</span> <span class="st">'pdf'</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>graph.render(<span class="st">"../figures/decision-trees/ri-ro-depth-1-sklearn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="33">
+<div class="cell-output cell-output-display" data-execution_count="130">
 <pre><code>'../figures/decision-trees/ri-ro-depth-1-sklearn.pdf'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="36">
+<div class="cell" data-execution_count="131">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Depth 2 tree</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeRegressor(max_depth<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>dt.fit(x.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>), y)</span>
@@ -241,17 +241,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="35">
+<div class="cell" data-execution_count="132">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot dt</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>dot_data <span class="op">=</span> export_graphviz(dt, out_file<span class="op">=</span><span class="va">None</span>, feature_names<span class="op">=</span>[<span class="st">'x'</span>], filled<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>graph <span class="op">=</span> graphviz.Source(dot_data)</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>graph.<span class="bu">format</span> <span class="op">=</span> <span class="st">'pdf'</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>graph.render(<span class="st">"../figures/decision-trees/ri-ro-depth-2-sklearn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
+<div class="cell-output cell-output-display" data-execution_count="132">
 <pre><code>'../figures/decision-trees/ri-ro-depth-2-sklearn.pdf'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="39">
+<div class="cell" data-execution_count="139">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Sine daatset</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">200</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.sin(x)</span>
@@ -265,7 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="40">
+<div class="cell" data-execution_count="140">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeRegressor(max_depth<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>dt.fit(x.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>), y)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -273,11 +273,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>graph <span class="op">=</span> graphviz.Source(dot_data)</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>graph.<span class="bu">format</span> <span class="op">=</span> <span class="st">'pdf'</span></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>graph.render(<span class="st">"../figures/decision-trees/sine-depth-1-sklearn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="40">
+<div class="cell-output cell-output-display" data-execution_count="140">
 <pre><code>'../figures/decision-trees/sine-depth-1-sklearn.pdf'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="42">
+<div class="cell" data-execution_count="141">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>latexify()</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(x, y, color<span class="op">=</span><span class="st">'C1'</span>, label<span class="op">=</span><span class="st">'Data'</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot decision boundary</span></span>
@@ -292,7 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="49">
+<div class="cell" data-execution_count="142">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeRegressor(max_depth<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(x, y, color<span class="op">=</span><span class="st">'C1'</span>, label<span class="op">=</span><span class="st">'Data'</span>,s<span class="op">=</span><span class="dv">1</span>)</span>
@@ -307,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="53">
+<div class="cell" data-execution_count="143">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Dataset for showing bias-variance tradeoff</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create dataset</span></span>
@@ -337,8 +337,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeRegressor(max_depth<span class="op">=</span><span class="dv">1</span>)</span>
+<div class="cell" data-execution_count="144">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>dt.fit(X, y)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict in entire 2d space and contour plot</span></span>
@@ -357,19 +357,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="57">
+<div class="cell" data-execution_count="145">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now, plot the dt via sklearn export</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>dot_data <span class="op">=</span> export_graphviz(dt, out_file<span class="op">=</span><span class="va">None</span>, feature_names<span class="op">=</span>[<span class="st">'x1'</span>, <span class="st">'x2'</span>], filled<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>graph <span class="op">=</span> graphviz.Source(dot_data)</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>graph.<span class="bu">format</span> <span class="op">=</span> <span class="st">'pdf'</span></span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>graph.render(<span class="st">"../figures/decision-trees/bias-variance-depth-1-sklearn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="57">
+<div class="cell-output cell-output-display" data-execution_count="145">
 <pre><code>'../figures/decision-trees/bias-variance-depth-1-sklearn.pdf'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="58">
+<div class="cell" data-execution_count="146">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># No depth limit</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeRegressor()</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeClassifier()</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>dt.fit(X, y)</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict in entire 2d space and contour plot</span></span>
@@ -383,37 +383,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="59">
+<div class="cell" data-execution_count="147">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># export tree </span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>dot_data <span class="op">=</span> export_graphviz(dt, out_file<span class="op">=</span><span class="va">None</span>, feature_names<span class="op">=</span>[<span class="st">'x1'</span>, <span class="st">'x2'</span>], filled<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>graph <span class="op">=</span> graphviz.Source(dot_data)</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>graph.<span class="bu">format</span> <span class="op">=</span> <span class="st">'pdf'</span></span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>graph.render(<span class="st">"../figures/decision-trees/bias-variance-full-depth-sklearn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="59">
+<div class="cell-output cell-output-display" data-execution_count="147">
 <pre><code>'../figures/decision-trees/bias-variance-full-depth-sklearn.pdf'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="100">
+<div class="cell" data-execution_count="148">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bias variance dataset 2</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># X is all integers from (1, 1) to (6, 6)</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[i, j] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>) <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="101">
+<div class="cell" data-execution_count="149">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.zeros(<span class="bu">len</span>(X), dtype<span class="op">=</span><span class="bu">int</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>y[(<span class="dv">2</span> <span class="op">&lt;=</span> X[:, <span class="dv">0</span>]) <span class="op">&amp;</span> (X[:, <span class="dv">0</span>] <span class="op">&lt;=</span> <span class="dv">5</span>) <span class="op">&amp;</span> (<span class="dv">2</span> <span class="op">&lt;=</span> X[:, <span class="dv">1</span>]) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">&lt;=</span> <span class="dv">5</span>)] <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="102">
+<div class="cell" data-execution_count="150">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="102">
-<pre><code>&lt;matplotlib.collections.PathCollection at 0x14fe9c8b0&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="150">
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x150a41df0&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-21-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="103">
+<div class="cell" data-execution_count="151">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>special_condition <span class="op">=</span> (X[:, <span class="dv">0</span>] <span class="op">==</span> <span class="dv">3</span>) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">==</span> <span class="dv">3</span>) <span class="op">|</span> (X[:, <span class="dv">0</span>] <span class="op">==</span> <span class="dv">4</span>) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">==</span> <span class="dv">4</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>y[special_condition] <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -425,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="104">
+<div class="cell" data-execution_count="152">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># X_test random uniform frmo (1, 1) to (6, 6) of size 1000</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> np.random.uniform(<span class="dv">1</span>, <span class="dv">6</span>, size<span class="op">=</span>(<span class="dv">1000</span>, <span class="dv">2</span>))</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> np.zeros(<span class="bu">len</span>(X_test), dtype<span class="op">=</span><span class="bu">int</span>)</span>
@@ -438,10 +438,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="105">
+<div class="cell" data-execution_count="153">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Underfitting</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Depth-1 tree</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeRegressor(max_depth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>dt.fit(X, y)</span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
@@ -463,16 +463,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>graph <span class="op">=</span> graphviz.Source(dot_data)</span>
 <span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>graph.<span class="bu">format</span> <span class="op">=</span> <span class="st">'pdf'</span></span>
 <span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>graph.render(<span class="st">"../figures/decision-trees/bias-variance-depth-2-sklearn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="105">
+<div class="cell-output cell-output-display" data-execution_count="153">
 <pre><code>'../figures/decision-trees/bias-variance-depth-2-sklearn.pdf'</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-24-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="106">
+<div class="cell" data-execution_count="154">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Overfitting</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeRegressor()</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeClassifier()</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>dt.fit(X, y)</span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict in entire 2d space and contour plot</span></span>
@@ -487,16 +487,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>graph <span class="op">=</span> graphviz.Source(dot_data)</span>
 <span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>graph.<span class="bu">format</span> <span class="op">=</span> <span class="st">'pdf'</span></span>
 <span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>graph.render(<span class="st">"../figures/decision-trees/bias-variance-full-depth-sklearn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="106">
+<div class="cell-output cell-output-display" data-execution_count="154">
 <pre><code>'../figures/decision-trees/bias-variance-full-depth-sklearn.pdf'</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-25-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="111">
+<div class="cell" data-execution_count="155">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Good fit</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeRegressor(max_depth<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>dt.fit(X, y)</span>
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
@@ -512,77 +512,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>graph <span class="op">=</span> graphviz.Source(dot_data)</span>
 <span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>graph.<span class="bu">format</span> <span class="op">=</span> <span class="st">'pdf'</span></span>
 <span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>graph.render(<span class="st">"../figures/decision-trees/bias-variance-good-fit-sklearn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="111">
+<div class="cell-output cell-output-display" data-execution_count="155">
 <pre><code>'../figures/decision-trees/bias-variance-good-fit-sklearn.pdf'</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-26-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="125">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>dt.predict(X_contour)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="125">
-<pre><code>array([0.        , 0.        , 0.        , ..., 0.46666667, 0.46666667,
-       0.46666667])</code></pre>
+<div class="cell" data-execution_count="162">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">### Train and test accuracy vs depth</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>depths <span class="op">=</span> np.arange(<span class="dv">2</span>, <span class="dv">10</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>train_accs <span class="op">=</span> {}</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>test_accs <span class="op">=</span> {}</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> depth <span class="kw">in</span> depths:</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    dt <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span>depth)</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    dt.fit(X, y)</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    train_accs[depth] <span class="op">=</span> accuracy_score(y, dt.predict(X))</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    test_accs[depth] <span class="op">=</span> accuracy_score(y_test, dt.predict(X_test))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div class="cell" data-execution_count="121">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co">### Train and test accuracy vs depth</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>depths <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">11</span>)</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>train_accs <span class="op">=</span> {}</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>test_accs <span class="op">=</span> {}</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> depth <span class="kw">in</span> depths:</span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    dt <span class="op">=</span> DecisionTreeRegressor(max_depth<span class="op">=</span>depth)</span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    dt.fit(X, y)</span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    train_accs[depth] <span class="op">=</span> accuracy_score(y, dt.predict(X))</span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>    test_accs[depth] <span class="op">=</span> accuracy_score(y_test, dt.predict(X_test))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>ValueError: Classification metrics can't handle a mix of binary and continuous targets</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="120">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>train_accs <span class="op">=</span> pd.Series(train_accs)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>test_accs <span class="op">=</span> pd.Series(test_accs)</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>plt.plot(depths, train_accs, label<span class="op">=</span><span class="st">'Train'</span>)</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>plt.plot(depths, test_accs, label<span class="op">=</span><span class="st">'Test'</span>)</span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Depth"</span>)</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Accuracy"</span>)</span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="120">
-<pre><code>&lt;matplotlib.legend.Legend at 0x14fbb88b0&gt;</code></pre>
-</div>
+<div class="cell" data-execution_count="173">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>train_accs <span class="op">=</span> pd.Series(train_accs)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>test_accs <span class="op">=</span> pd.Series(test_accs)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>plt.plot(depths, train_accs, label<span class="op">=</span><span class="st">'Train'</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>plt.plot(depths, test_accs, label<span class="op">=</span><span class="st">'Test'</span>)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Depth"</span>)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Accuracy"</span>)</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="fl">1.1</span>)</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-accuracy-vs-depth.pdf"</span>)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlight area of underfitting (depth &lt; 4) fill with green </span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>plt.fill_between(depths, <span class="dv">0</span>, <span class="dv">1</span>, where<span class="op">=</span>depths <span class="op">&lt;=</span> <span class="dv">4</span>, color<span class="op">=</span><span class="st">'g'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>, label<span class="op">=</span><span class="st">'Underfitting'</span>)</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-accuracy-vs-depth-underfitting.pdf"</span>)</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlight area of overfitting (depth &gt;7 4) fill with red</span></span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>plt.fill_between(depths, <span class="dv">0</span>, <span class="dv">1</span>, where<span class="op">=</span>depths <span class="op">&gt;=</span> <span class="dv">7</span>, color<span class="op">=</span><span class="st">'r'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>, label<span class="op">=</span><span class="st">'Overfitting'</span>)</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-accuracy-vs-depth-overfitting.pdf"</span>)</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlight good fit area (4 &lt; depth &lt; 7) fill with blue</span></span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>plt.fill_between(depths, <span class="dv">0</span>, <span class="dv">1</span>, where<span class="op">=</span>(depths <span class="op">&gt;=</span> <span class="dv">4</span>) <span class="op">&amp;</span> (depths <span class="op">&lt;=</span> <span class="dv">7</span>), color<span class="op">=</span><span class="st">'b'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>, label<span class="op">=</span><span class="st">'Good fit'</span>)</span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-accuracy-vs-depth-good-fit.pdf"</span>)</span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-29-output-2.png" class="img-fluid"></p>
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="107">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Slight variation of the dataset leads to a completely different tree</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.zeros(<span class="bu">len</span>(X), dtype<span class="op">=</span><span class="bu">int</span>)</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>y[(<span class="dv">2</span> <span class="op">&lt;=</span> X[:, <span class="dv">0</span>]) <span class="op">&amp;</span> (X[:, <span class="dv">0</span>] <span class="op">&lt;=</span> <span class="dv">5</span>) <span class="op">&amp;</span> (<span class="dv">2</span> <span class="op">&lt;=</span> X[:, <span class="dv">1</span>]) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">&lt;=</span> <span class="dv">5</span>)] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>special_condition <span class="op">=</span> (X[:, <span class="dv">0</span>] <span class="op">==</span> <span class="dv">3</span>) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">==</span> <span class="dv">3</span>) <span class="op">|</span> (X[:, <span class="dv">0</span>] <span class="op">==</span> <span class="dv">4</span>) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">==</span> <span class="dv">3</span>)</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>y[special_condition] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-dataset-2-2.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Slight variation of the dataset leads to a completely different tree</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.zeros(<span class="bu">len</span>(X), dtype<span class="op">=</span><span class="bu">int</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>y[(<span class="dv">2</span> <span class="op">&lt;=</span> X[:, <span class="dv">0</span>]) <span class="op">&amp;</span> (X[:, <span class="dv">0</span>] <span class="op">&lt;=</span> <span class="dv">5</span>) <span class="op">&amp;</span> (<span class="dv">2</span> <span class="op">&lt;=</span> X[:, <span class="dv">1</span>]) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">&lt;=</span> <span class="dv">5</span>)] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>special_condition <span class="op">=</span> (X[:, <span class="dv">0</span>] <span class="op">==</span> <span class="dv">3</span>) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">==</span> <span class="dv">3</span>) <span class="op">|</span> (X[:, <span class="dv">0</span>] <span class="op">==</span> <span class="dv">4</span>) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">==</span> <span class="dv">3</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>y[special_condition] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-dataset-2-2.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="97">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeRegressor()</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>dt.fit(X, y)</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Export</span></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>dot_data <span class="op">=</span> export_graphviz(dt, out_file<span class="op">=</span><span class="va">None</span>, feature_names<span class="op">=</span>[<span class="st">'x1'</span>, <span class="st">'x2'</span>], filled<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>graph <span class="op">=</span> graphviz.Source(dot_data)</span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>graph.<span class="bu">format</span> <span class="op">=</span> <span class="st">'pdf'</span></span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>graph.render(<span class="st">"../figures/decision-trees/bias-variance-full-depth-sklearn-2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> DecisionTreeRegressor()</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>dt.fit(X, y)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Export</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>dot_data <span class="op">=</span> export_graphviz(dt, out_file<span class="op">=</span><span class="va">None</span>, feature_names<span class="op">=</span>[<span class="st">'x1'</span>, <span class="st">'x2'</span>], filled<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>graph <span class="op">=</span> graphviz.Source(dot_data)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>graph.<span class="bu">format</span> <span class="op">=</span> <span class="st">'pdf'</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>graph.render(<span class="st">"../figures/decision-trees/bias-variance-full-depth-sklearn-2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="97">
 <pre><code>'../figures/decision-trees/bias-variance-full-depth-sklearn-2.pdf'</code></pre>
 </div>
