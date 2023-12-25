@@ -1,61 +1,6 @@
+% !TeX program = lualatex
 \documentclass[usenames,dvipsnames]{beamer}
-\usepackage{xcolor}
-\usepackage{tcolorbox}
-\usepackage{graphicx}
-\usepackage{amsmath}
-\usepackage{subcaption}
-\usepackage{makecell}
-\usepackage[labelformat=empty]{caption}
-\usepackage{color, colortbl}
-\usepackage{booktabs}
-\usepackage{multirow}
-
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=cyan,
-}
-
-
-\usepackage{tikz}
-
-\usetikzlibrary{shapes.geometric, arrows}
-\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=brown!30]
-
-\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
-
-\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
-
-\tikzstyle{arrow} = [thick,->,>=stealth]
-
-
-\newcommand{\DoTikzmark}[1]{%
-	\tikz[remember picture] \coordinate[shift={(0,.7ex)}](#1);%
-}
-
-\newcommand{\colrow}[3][]{%
-	\tikz[overlay,remember picture, line width=10pt]
-	\draw[shorten >=-.1em, shorten <=-.1em, #1] (#2)--(#3);
-}
-
-
-\newcolumntype{g}{>{\columncolor{Lavender}}c}
-\newcolumntype{t}{>{\columncolor{Tan}}c}
-
-%\beamerdefaultoverlayspecification{<+->}
-\newcommand{\data}{\mathcal{D}}
-
-\DeclareMathOperator*{\argmin}{arg\,min}
-
-\newcommand\Item[1][]{%
-	\ifx\relax#1\relax  \item \else \item[#1] \fi
-	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
-	
-
-
-\usetheme{metropolis}           % Use metropolis theme
+\usepackage{mycommonstyle}
 
 
 \title{Convention, Accuracy metrics, Classification, Regression}
@@ -977,12 +922,14 @@ $$
 
 
 \begin{frame}{The Importance of Plotting}
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=\linewidth]{../figures/anscombe.pdf}
-    \caption{Anscombe’s Quartet}
-\end{figure}
-\end{frame}
+    \begin{figure}[htp]
+      \centering
+      \begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/anscombe.html}
+        \includegraphics[width=\linewidth]{../figures/anscombe.pdf}
+      \end{notebookbox}
+      \caption{Anscombe’s Quartet}
+    \end{figure}
+  \end{frame}
 
 \begin{frame}{The Importance of Plotting}
 \begin{tabular}{|c|c|c|}
@@ -995,7 +942,6 @@ Linear regression line & 	y = 3.00 + 0.500x & upto 2 decimal places \\
 \hline 
 \end{tabular} 
 
-Try to play with the \href{https://colab.research.google.com/drive/12Rrh7sf_lR-WUd4nYciOAKiil5kqWPAq}{colab link} to see how similar the metrics like variance and correlation are.
 
 \end{frame}
 
