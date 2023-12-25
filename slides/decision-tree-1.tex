@@ -187,24 +187,9 @@ Core idea: At each level, choose an attribute that gives
 
 \pause $H(X) = -\sum_{i=1}^n p(x_i) \log p(x_i)$
 
-\pause \begin{tikzpicture}
-\begin{axis}[
-axis lines = left,
-xlabel = $P(+)$,
-ylabel = {$Entropy$},
-]
-%Below the red parabola is defined
-\addplot [
-domain=0:1, 
-samples=100, 
-color=black
-]
-{-x*log2(x)-(1-x)*log2(1-x)};
-
-
-\end{axis}
-\end{tikzpicture}
-
+\begin{notebookbox}[0.5\linewidth]{https://nipunbatra.github.io/ml-teaching/notebooks/entropy.html}{../figures/decision-trees/entropy.pdf}
+    % Your content goes here
+  \end{notebookbox}
 \pause Avg. \# of bits to transmit 
 \end{frame}
 	
