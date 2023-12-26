@@ -44,16 +44,12 @@
   \fi
 }
 
-\newtcolorbox{notebookbox}[1]{
-  width=\paperwidth,
-  colback=white,
-  colframe=myblue,
-  arc=0mm,
-  boxrule=1pt,
+\newtcolorbox{notebookbox}[2][]{
+  width=\paperwidth-2mm, % Adjusted to account for potential margins
+  left=1mm, % Adjusted to ensure content starts from the left edge
   title={\href{#1}{\textcolor{white}{\small\textbf{Notebook:} \lastpartofurl{#1}}}},
-  fonttitle=\bfseries,
+  #2
 }
-
 
 \usepackage{tikz} % Include TikZ-related packages
 
