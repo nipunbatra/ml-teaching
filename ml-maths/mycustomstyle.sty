@@ -1,0 +1,89 @@
+% mycommonstyle.sty
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mycommonstyle}
+
+\usetheme{metropolis}
+
+
+\RequirePackage{graphicx}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{xcolor}
+\RequirePackage{amsmath}
+\RequirePackage{subcaption}
+\RequirePackage{makecell}
+\RequirePackage[labelformat=empty]{caption}
+\RequirePackage{color, colortbl}
+\RequirePackage{booktabs}
+\RequirePackage{multirow}
+\RequirePackage{adjustbox}
+
+
+\RequirePackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\usepackage{url}
+
+\definecolor{myblue}{RGB}{60,130,200}
+
+\newcommand{\lastpartofurl}[1]{%
+  \edef\temp{\expandafter\lastpartofurlA#1/\relax}%
+  \expandafter\lastpartofurlB\temp\relax%
+}
+\def\lastpartofurlA#1/#2\relax{#2}
+\def\lastpartofurlB#1/#2\relax{%
+  \if\relax#2\relax
+    #1%
+  \else
+    \lastpartofurlB#2\relax%
+  \fi
+}
+
+\newtcolorbox{notebookbox}[1]{
+  colback=white,
+  colframe=myblue,
+  arc=0mm,
+  boxrule=1pt,
+  title={\href{#1}{\textcolor{white}{\small\textbf{Notebook:} \lastpartofurl{#1}}}},
+  fonttitle=\bfseries,
+}
+
+
+\usepackage{tikz} % Include TikZ-related packages
+
+\usetikzlibrary{shapes.geometric, arrows}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=brown!30]
+
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\newcommand{\DoTikzmark}[1]{%
+    \tikz[remember picture] \coordinate[shift={(0,.7ex)}](#1);%
+}
+
+\newcommand{\colrow}[3][]{%
+    \tikz[overlay,remember picture, line width=10pt]
+    \draw[shorten >=-.1em, shorten <=-.1em, #1] (#2)--(#3);
+}
+
+\newcolumntype{g}{>{\columncolor{Lavender}}c}
+\newcolumntype{t}{>{\columncolor{Tan}}c}
+
+\usepackage{siunitx}
+\usepackage{forest}
+\usetikzlibrary{positioning}
+\newdimen\nodeDist
+\nodeDist=33mm
+\usepackage{pgfplots}
+\pgfplotsset{width=6cm,compat=1.9}
+
+\endinput

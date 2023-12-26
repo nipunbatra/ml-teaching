@@ -1,19 +1,6 @@
 \documentclass{beamer}
-\usepackage{tcolorbox}
-\usepackage{amsmath}
-\usepackage{tikz}
-\usepackage{pgfplots}
-\usepackage{adjustbox}
+\usepackage{mycustomstyle} % Adjust the path as needed
 
-
-%\beamerdefaultoverlayspecification{<+->}
-\newcommand{\data}{\mathcal{D}}
-
-\DeclareMathOperator*{\argmin}{arg\,min}
-
-\newcommand\Item[1][]{%
-	\ifx\relax#1\relax  \item \else \item[#1] \fi
-	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
 
 
 \usetheme{metropolis}           % Use metropolis theme
@@ -77,6 +64,15 @@
  Then plot $f(x,y)=K$ for varying K.
 
  
+\end{frame}
+
+\begin{frame}
+	\begin{figure}[htp]
+		\centering
+		\begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/contour.html}
+		  \includegraphics[width=1.5\linewidth]{../figures/mml/contour-x_squared_plus_y_squared.pdf}
+		\end{notebookbox}
+	  \end{figure}
 \end{frame}
 
 
