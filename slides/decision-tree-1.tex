@@ -767,13 +767,14 @@ node/.style={%
 \end{itemize}
 \end{frame}
 
-\foreach \i in {0,...,9} {
+\foreach \i in {1,...,9} {
 \begin{frame}{Example (DT of depth \i)}
     \begin{figure}
-        \centering
-        \includegraphics[scale=0.5]{../figures/decision-trees/dt-\i.pdf}
-            \label{fig:dt-\i}
-        
+		\centering
+		\begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/decision-tree-real-input-discrete-output.html}
+			\includegraphics{../figures/decision-trees/dt-\i.pdf}
+		  \end{notebookbox}
+    
     \end{figure}
 \end{frame}
 }
