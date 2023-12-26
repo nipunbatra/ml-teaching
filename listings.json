@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/slides.html",
+    "items": []
+  },
+  {
     "listing": "/notebooks.html",
     "items": [
       "/notebooks/05_05_Naive_Bayes.html",
@@ -12,6 +16,7 @@
       "/notebooks/anscombe.html",
       "/notebooks/assignment3.html",
       "/notebooks/cost-iteration-notebook.html",
+      "/notebooks/decision-tree-discrete-input-discrete-output.html",
       "/notebooks/decision-tree-real-input-discrete-output.html",
       "/notebooks/decision-tree-real-input-real-output.html",
       "/notebooks/decision-tree-real-output.html",
@@ -27,9 +32,5 @@
       "/notebooks/ridge-calculation.html",
       "/notebooks/xor.html"
     ]
-  },
-  {
-    "listing": "/slides.html",
-    "items": []
   }
 ]
