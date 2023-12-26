@@ -187,10 +187,13 @@ Core idea: At each level, choose an attribute that gives
 
 \pause $H(X) = -\sum_{i=1}^n p(x_i) \log p(x_i)$
 
-\begin{notebookbox}[0.5\linewidth]{https://nipunbatra.github.io/ml-teaching/notebooks/entropy.html}{../figures/decision-trees/entropy.pdf}
-    % Your content goes here
-  \end{notebookbox}
-\pause Avg. \# of bits to transmit 
+\begin{figure}[htp]
+    \centering
+    \begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/entropy.html}
+      \includegraphics[width=0.7\linewidth]{../figures/decision-trees/entropy.pdf}
+    \end{notebookbox}
+  \end{figure}
+
 \end{frame}
 	
 \begin{frame}{Towards biggest estimated performance gain}
@@ -624,10 +627,10 @@ node/.style={%
 \begin{frame}{Measure of Impurity for Regression?}
 \begin{itemize}
 	\item \pause Any guesses?
-	\item \pause Standard Deviation/Variance
-	\item \pause STDEV(S) = 18.3, Variance(S)=335.3
+	\item \pause Mean Squared Error
+	\item \pause MSE(S) = 311.34
 	\item \pause Information Gain analogoue?
-	\item \pause Reduction in variance (weighted)
+	\item \pause Reduction in MSE (weighted)
 \end{itemize}
 
 \end{frame}
@@ -657,13 +660,13 @@ node/.style={%
 		Weak          & 35                      \\
 		Strong        & 20                      \\ \bottomrule
 	\end{tabular}
-\caption{VAR(S)=335.3}
+\caption{MSE(S)=311.34}
 \end{table}
 	\end{scriptsize}
 \end{column}
 \begin{column}{.5\textwidth}
-	\begin{scriptsize}
-\vspace{-25pt}		
+	\begin{tiny}
+\vspace{-5pt}		
 \begin{table}[]
 	\begin{tabular}{@{}ll@{}}
 		\toprule
@@ -677,12 +680,12 @@ node/.style={%
 		Weak          & 40                      \\
 		Weak          & 35                      \\ \bottomrule
 	\end{tabular}
-\caption{Weighted VAR(S\textsubscript{Wind=Weak}=(8/14)*317=181)}
+\caption{Weighted MSE(S\textsubscript{Wind=Weak}=(8/14)*277=159)}
 \end{table}
 \vspace{-25pt}
-	\end{scriptsize}
+	\end{tiny}
 
-	\begin{scriptsize}
+	\begin{tiny}
 	
 	\begin{table}[]
 		\begin{tabular}{@{}ll@{}}
@@ -696,9 +699,9 @@ node/.style={%
 			Strong        & 40                      \\
 			Strong        & 20                      \\ \bottomrule
 		\end{tabular}
-\caption{Weighted VAR(S\textsubscript{Wind=Strong}=(6/14)*261=112)}
+\caption{Weighted MSE(S\textsubscript{Wind=Strong}=(6/14)*218=93)}
 	\end{table}
-\end{scriptsize}
+\end{tiny}
 
 \end{column}
 \end{columns}
@@ -711,21 +714,12 @@ node/.style={%
 
 \begin{frame}{Information Gain}
 
-
-\begin{tikzpicture}
-\begin{axis}[
-symbolic x coords={Outlook,Humidity,Wind,Temp},
-xtick=data,xtick pos=left, width=8cm,
-ytick pos=left,axis x line*=bottom,nodes near coords,hide y axis,title=Information Gain, ymin=-80.0]
-\addplot[ybar,fill=black] coordinates {
-	(Outlook,-50)
-	(Humidity,-28)
-	(Wind,41)
-	(Temp,-63)
-};
-\end{axis}
-\end{tikzpicture}
-
+	\begin{figure}[htp]
+		\centering
+		\begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/decision-tree-real-output.html}
+		  \includegraphics[width=\linewidth]{../figures/decision-trees/discrete-input-real-output-level-1.pdf}
+		\end{notebookbox}
+	  \end{figure}
 
 \end{frame}
 
@@ -769,7 +763,7 @@ ytick pos=left,axis x line*=bottom,nodes near coords,hide y axis,title=Informati
 	\item How do you find splits?
 	\item Sort by attribute
 	\item Find attribute values where changes happen
-	\item For example, splits are: Temp > (48+60)/2 and Temp > (80+90)/2
+	\item For example, splits are: Temp $>$ (48+60)/2 and Temp $>$ (80+90)/2
 \end{itemize}
 \end{frame}
 
