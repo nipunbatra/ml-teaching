@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Nipun Batra Blog – decision-tree-real-output</title>
+<title>Nipun Batra Blog – decision-tree-real-input-discrete-output</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,9 +95,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -149,7 +146,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="cell" data-execution_count="40">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -159,252 +156,102 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> latexify <span class="im">import</span> latexify, format_axes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../datasets/tennis-real-output.csv"</span>, index_col<span class="op">=</span>[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Heavily borrowed and inspired from https://jakevdp.github.io/PythonDataScienceHandbook/05.08-random-forests.html</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>latexify()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Outlook</th>
-<th data-quarto-table-cell-role="th">Temp</th>
-<th data-quarto-table-cell-role="th">Humidity</th>
-<th data-quarto-table-cell-role="th">Wind</th>
-<th data-quarto-table-cell-role="th">Minutes Played</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">Day</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">D1</td>
-<td>Sunny</td>
-<td>Hot</td>
-<td>High</td>
-<td>Weak</td>
-<td>20</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">D2</td>
-<td>Sunny</td>
-<td>Hot</td>
-<td>High</td>
-<td>Strong</td>
-<td>24</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">D3</td>
-<td>Overcast</td>
-<td>Hot</td>
-<td>High</td>
-<td>Weak</td>
-<td>40</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">D4</td>
-<td>Rain</td>
-<td>Mild</td>
-<td>High</td>
-<td>Weak</td>
-<td>50</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">D5</td>
-<td>Rain</td>
-<td>Cool</td>
-<td>Normal</td>
-<td>Weak</td>
-<td>60</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">D6</td>
-<td>Rain</td>
-<td>Cool</td>
-<td>Normal</td>
-<td>Strong</td>
-<td>10</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">D7</td>
-<td>Overcast</td>
-<td>Cool</td>
-<td>Normal</td>
-<td>Strong</td>
-<td>4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">D8</td>
-<td>Sunny</td>
-<td>Mild</td>
-<td>High</td>
-<td>Weak</td>
-<td>10</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">D9</td>
-<td>Sunny</td>
-<td>Cool</td>
-<td>Normal</td>
-<td>Weak</td>
-<td>60</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">D10</td>
-<td>Rain</td>
-<td>Mild</td>
-<td>Normal</td>
-<td>Weak</td>
-<td>40</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">D11</td>
-<td>Sunny</td>
-<td>Mild</td>
-<td>High</td>
-<td>Strong</td>
-<td>45</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">D12</td>
-<td>Overcast</td>
-<td>Mild</td>
-<td>High</td>
-<td>Strong</td>
-<td>40</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">D13</td>
-<td>Overcast</td>
-<td>Hot</td>
-<td>Normal</td>
-<td>Weak</td>
-<td>35</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">D14</td>
-<td>Rain</td>
-<td>Mild</td>
-<td>High</td>
-<td>Strong</td>
-<td>20</td>
-</tr>
-</tbody>
-</table>
-
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_blobs</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> make_blobs(n_samples<span class="op">=</span><span class="dv">300</span>, centers<span class="op">=</span><span class="dv">4</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                  random_state<span class="op">=</span><span class="dv">0</span>, cluster_std<span class="op">=</span><span class="fl">1.2</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, s<span class="op">=</span><span class="dv">10</span>, cmap<span class="op">=</span><span class="st">'rainbow'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r"$x_1$"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r"$x_2$"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>Text(0, 0.5, '$x_2$')</code></pre>
 </div>
-</div>
-</div>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mean_mins <span class="op">=</span> df[<span class="st">"Minutes Played"</span>].mean()</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mean_mins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>32.714285714285715</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>initial_mse <span class="op">=</span> ((df[<span class="st">"Minutes Played"</span>] <span class="op">-</span> mean_mins) <span class="op">**</span> <span class="dv">2</span>).mean()</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(initial_mse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>311.3469387755102</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Explore MSE for different splits based on the "Outlook" attribute</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>weighted_total_mse <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> category <span class="kw">in</span> df[<span class="st">"Wind"</span>].unique():</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    subset <span class="op">=</span> df[df[<span class="st">"Wind"</span>] <span class="op">==</span> category]</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate MSE for the subset</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    mse_subset <span class="op">=</span> ((subset[<span class="st">"Minutes Played"</span>] <span class="op">-</span> subset[<span class="st">"Minutes Played"</span>].mean()) <span class="op">**</span> <span class="dv">2</span>).mean()</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the weighted MSE</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    weighted_mse <span class="op">=</span> (<span class="bu">len</span>(subset) <span class="op">/</span> <span class="bu">len</span>(df)) <span class="op">*</span> mse_subset</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    weighted_total_mse <span class="op">=</span> weighted_total_mse <span class="op">+</span> weighted_mse</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(subset[<span class="st">"Minutes Played"</span>].values)</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Wind: </span><span class="sc">{</span>category<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Subset MSE:"</span>, mse_subset)</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Weighted MSE = </span><span class="sc">{</span><span class="bu">len</span>(subset)<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span><span class="bu">len</span>(df)<span class="sc">}</span><span class="ss"> * </span><span class="sc">{</span>mse_subset<span class="sc">:0.4}</span><span class="ss"> = </span><span class="sc">{</span>weighted_mse<span class="sc">:0.4}</span><span class="ss">"</span>)</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Weighted total MSE:"</span>, weighted_total_mse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[20 40 50 60 10 60 40 35]
-Wind: Weak
-Subset MSE: 277.734375
-Weighted MSE = 8/14 * 277.7 = 158.7
-
-
-[24 10  4 45 40 20]
-Wind: Strong
-Subset MSE: 218.13888888888889
-Weighted MSE = 6/14 * 218.1 = 93.49
-
-
-Weighted total MSE: 252.19345238095235</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>reduction_mse_wind <span class="op">=</span> initial_mse <span class="op">-</span> weighted_total_mse</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(reduction_mse_wind)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>59.15348639455783</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reduction_mse(df_dataset, input_attribute, target_attribute):</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the initial MSE</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    mean_target <span class="op">=</span> df_dataset[target_attribute].mean()</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    initial_mse <span class="op">=</span> ((df_dataset[target_attribute] <span class="op">-</span> mean_target) <span class="op">**</span> <span class="dv">2</span>).mean()</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    weighted_total_mse <span class="op">=</span> <span class="fl">0.0</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> category <span class="kw">in</span> df_dataset[input_attribute].unique():</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>        subset <span class="op">=</span> df_dataset[df_dataset[input_attribute] <span class="op">==</span> category]</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        mse_subset <span class="op">=</span> ((subset[target_attribute] <span class="op">-</span> subset[target_attribute].mean()) <span class="op">**</span> <span class="dv">2</span>).mean()</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        weighted_mse <span class="op">=</span> (<span class="bu">len</span>(subset) <span class="op">/</span> <span class="bu">len</span>(df_dataset)) <span class="op">*</span> mse_subset</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        weighted_total_mse <span class="op">=</span> weighted_total_mse <span class="op">+</span> weighted_mse</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> initial_mse <span class="op">-</span> weighted_total_mse</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>reduction <span class="op">=</span> {}</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> attribute <span class="kw">in</span> [<span class="st">"Outlook"</span>, <span class="st">"Temp"</span>, <span class="st">"Humidity"</span>, <span class="st">"Wind"</span>]:</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    reduction[attribute] <span class="op">=</span> reduction_mse(df, attribute, <span class="st">"Minutes Played"</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>reduction_ser <span class="op">=</span> pd.Series(reduction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>latexify()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> reduction_ser.plot(kind<span class="op">=</span><span class="st">'bar'</span>, rot<span class="op">=</span><span class="dv">0</span>, color<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add values on top of the bars</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar <span class="kw">in</span> bars.patches:</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    yval <span class="op">=</span> bar.get_height()</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    plt.text(bar.get_x() <span class="op">+</span> bar.get_width()<span class="op">/</span><span class="dv">2</span>, yval, <span class="bu">round</span>(yval, <span class="dv">2</span>), ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'bottom'</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Attribute"</span>)</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Reduction in MSE"</span>)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/discrete-input-real-output-level-1.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="decision-tree-real-output_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+<p><img src="decision-tree-real-input-discrete-output_files/figure-html/cell-4-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> visualize_tree(depth, X, y, ax<span class="op">=</span><span class="va">None</span>, cmap<span class="op">=</span><span class="st">'rainbow'</span>):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span>depth)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> ax <span class="kw">or</span> plt.gca()</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(model, depth)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the training points</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    ax.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, s<span class="op">=</span><span class="dv">10</span>, cmap<span class="op">=</span>cmap,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>               clim<span class="op">=</span>(y.<span class="bu">min</span>(), y.<span class="bu">max</span>()), zorder<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    ax.axis(<span class="st">'tight'</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    format_axes(plt.gca())</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="vs">r"$x_1$"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="vs">r"$x_2$"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    xlim <span class="op">=</span> ax.get_xlim()</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    ylim <span class="op">=</span> ax.get_ylim()</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fit the estimator</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    model.fit(X, y)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    xx, yy <span class="op">=</span> np.meshgrid(np.linspace(<span class="op">*</span>xlim, num<span class="op">=</span><span class="dv">200</span>),</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                         np.linspace(<span class="op">*</span>ylim, num<span class="op">=</span><span class="dv">200</span>))</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> model.predict(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a color plot with the results</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    n_classes <span class="op">=</span> <span class="bu">len</span>(np.unique(y))</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    contours <span class="op">=</span> ax.contourf(xx, yy, Z, alpha<span class="op">=</span><span class="fl">0.2</span>,</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>                           levels<span class="op">=</span>np.arange(n_classes <span class="op">+</span> <span class="dv">1</span>) <span class="op">-</span> <span class="fl">0.5</span>,</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>                           cmap<span class="op">=</span>cmap, clim<span class="op">=</span>(y.<span class="bu">min</span>(), y.<span class="bu">max</span>()),</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>                           zorder<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    ax.<span class="bu">set</span>(xlim<span class="op">=</span>xlim, ylim<span class="op">=</span>ylim)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="ss">f"../figures/decision-trees/dt-</span><span class="sc">{</span>depth<span class="sc">}</span><span class="ss">.pdf"</span>)</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    plt.clf()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> depth <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    visualize_tree(depth, X, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>DecisionTreeClassifier(max_depth=1) 1
+DecisionTreeClassifier(max_depth=2) 2
+DecisionTreeClassifier(max_depth=3) 3
+DecisionTreeClassifier(max_depth=4) 4
+DecisionTreeClassifier(max_depth=5) 5
+DecisionTreeClassifier(max_depth=6) 6
+DecisionTreeClassifier(max_depth=7) 7
+DecisionTreeClassifier(max_depth=8) 8
+DecisionTreeClassifier(max_depth=9) 9
+DecisionTreeClassifier(max_depth=10) 10</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+  contours = ax.contourf(xx, yy, Z, alpha=0.2,
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+  contours = ax.contourf(xx, yy, Z, alpha=0.2,
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+  contours = ax.contourf(xx, yy, Z, alpha=0.2,
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+  contours = ax.contourf(xx, yy, Z, alpha=0.2,
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+  contours = ax.contourf(xx, yy, Z, alpha=0.2,
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+  contours = ax.contourf(xx, yy, Z, alpha=0.2,
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+  contours = ax.contourf(xx, yy, Z, alpha=0.2,
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+  contours = ax.contourf(xx, yy, Z, alpha=0.2,
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+  contours = ax.contourf(xx, yy, Z, alpha=0.2,
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+  contours = ax.contourf(xx, yy, Z, alpha=0.2,</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 339x209.514 with 0 Axes&gt;</code></pre>
 </div>
 </div>
 
