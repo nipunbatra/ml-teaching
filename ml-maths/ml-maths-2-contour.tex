@@ -15,64 +15,21 @@
   
   
   
-% \section{Linear Regression}
+
 
 \begin{frame}{Contour Plot}
 
- $z = f(x,y) = x^{2} + y^{2}$\\
+	$z = f(x,y) = x^{2} + y^{2}$\\
 
-\begin{columns}
-	\pause \begin{column}{0.6\textwidth}
-		\begin{adjustbox}{max totalsize={\textwidth},center}
-			
-		\begin{tikzpicture}
-		\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
-		\addplot3[
-		surf,
-		]
-		{x^2+y^2};
-		\end{axis}
-		\end{tikzpicture}
-	\end{adjustbox}
-
-	\end{column}
-	\pause \begin{column}{0.5\textwidth}
-				\begin{adjustbox}{max totalsize={\textwidth},center}
-		\begin{tikzpicture}
-		\begin{axis}
-		[
-		title={Contour plot, view from top},
-		view={0}{90},
-		xlabel=$x$,
-		ylabel=$y$,
-		axis x line*=bottom,
-		axis y line*=left,
-		xtick align=outside,
-		ytick align=outside,
-		unit vector ratio*=1 1 1,
-		]
-		\addplot3[
-		contour gnuplot={number=14,}
-		]
-		{x^2+y^2};
-		\end{axis}
-		\end{tikzpicture}
-		\end{adjustbox}
-	\end{column}
-\end{columns}
- 
- Then plot $f(x,y)=K$ for varying K.
-
- 
-\end{frame}
-
-\begin{frame}
 	\begin{figure}[htp]
 		\centering
 		\begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/contour.html}
-		  \includegraphics[width=1.5\linewidth]{../figures/mml/contour-x_squared_plus_y_squared.pdf}
+		  \includegraphics[width=\linewidth]{../figures/mml/contour-x_squared_plus_y_squared.pdf}
 		\end{notebookbox}
 	  \end{figure}
+
+Then plot $f(x,y)=K$ for varying K.
+
 \end{frame}
 
 
@@ -80,48 +37,12 @@
 
 $z = f(x,y) = x^{2}$\\
 
-\begin{columns}
-	\pause \begin{column}{0.6\textwidth}
-		\begin{adjustbox}{max totalsize={\textwidth},center}
-			
-			\begin{tikzpicture}
-			\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
-			\addplot3[
-			surf,
-			]
-			{x^2};
-			\end{axis}
-			\end{tikzpicture}
-		\end{adjustbox}
-		
-	\end{column}
-	\pause \begin{column}{0.5\textwidth}
-		\begin{adjustbox}{max totalsize={\textwidth},center}
-			\begin{tikzpicture}
-			\begin{axis}
-			[
-			title={Contour plot, view from top},
-			view={0}{90},
-			xlabel=$x$,
-			ylabel=$y$,
-			axis x line*=bottom,
-			axis y line*=left,
-			xtick align=outside,
-			ytick align=outside,
-			unit vector ratio*=1 1 1,
-			]
-			\addplot3[
-			contour gnuplot={number=14,}
-			]
-			{x^2};
-			\end{axis}
-			\end{tikzpicture}
-		\end{adjustbox}
-	\end{column}
-\end{columns}
-
-Then plot $f(x,y)=K$ for varying K.
-
+\begin{figure}[htp]
+	\centering
+	\begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/contour.html}
+	  \includegraphics[width=\linewidth]{../figures/mml/contour-x_squared.pdf}
+	\end{notebookbox}
+  \end{figure}
 
 \end{frame}
 

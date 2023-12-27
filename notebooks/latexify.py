@@ -25,10 +25,10 @@ def latexify(fig_width=None, fig_height=None, columns=1):
     assert(columns in [1,2])
 
     if fig_width is None:
-        fig_width = 3.39 if columns==1 else 6.9 # width in inches
+        fig_width = 2.2 if columns==1 else 4.4 # width in inches
 
     if fig_height is None:
-        golden_mean = (sqrt(5)-1.0)/2.0    # Aesthetic ratio
+        golden_mean = 1/1.62  # Aesthetic ratio
         fig_height = fig_width*golden_mean # height in inches
 
     MAX_HEIGHT_INCHES = 8.0
@@ -39,12 +39,12 @@ def latexify(fig_width=None, fig_height=None, columns=1):
 
     params = {'backend': 'ps',
               'text.latex.preamble': ['\\usepackage{gensymb}'],
-              'axes.labelsize': 8, # fontsize for x and y labels (was 10)
-              'axes.titlesize': 8,
-              'font.size': 8, # was 10
-              'legend.fontsize': 8, # was 10
-              'xtick.labelsize': 8,
-              'ytick.labelsize': 8,
+              'axes.labelsize': 10, # fontsize for x and y labels (was 10)
+              'axes.titlesize': 10,
+              'font.size': 10, # was 10
+              'legend.fontsize': 10, # was 10
+              'xtick.labelsize': 10,
+              'ytick.labelsize': 10,
               'text.usetex': True,
               'figure.figsize': [fig_width,fig_height],
               'font.family': 'serif'
