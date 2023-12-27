@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/slides.html",
+    "items": []
+  },
+  {
     "listing": "/notebooks.html",
     "items": [
       "/notebooks/05_05_Naive_Bayes.html",
@@ -10,6 +14,7 @@
       "/notebooks/Maths for ML-2.html",
       "/notebooks/SFS_and_BFS.html",
       "/notebooks/anscombe.html",
+      "/notebooks/autograd.html",
       "/notebooks/contour.html",
       "/notebooks/cost-iteration-notebook.html",
       "/notebooks/decision-tree-discrete-input-discrete-output.html",
@@ -27,9 +32,5 @@
       "/notebooks/perceptron-learning.html",
       "/notebooks/ridge-calculation.html"
     ]
-  },
-  {
-    "listing": "/slides.html",
-    "items": []
   }
 ]
