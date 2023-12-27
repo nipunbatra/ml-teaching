@@ -210,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    ax.<span class="bu">set</span>(xlim<span class="op">=</span>xlim, ylim<span class="op">=</span>ylim)</span>
 <span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="ss">f"../figures/decision-trees/dt-</span><span class="sc">{</span>depth<span class="sc">}</span><span class="ss">.pdf"</span>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="ss">f"../figures/decision-trees/dt-</span><span class="sc">{</span>depth<span class="sc">}</span><span class="ss">.pdf"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
 <span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    plt.clf()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="6">
@@ -229,29 +229,29 @@ DecisionTreeClassifier(max_depth=9) 9
 DecisionTreeClassifier(max_depth=10) 10</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+<pre><code>/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_73517/232881262.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_73517/232881262.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_73517/232881262.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_73517/232881262.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_73517/232881262.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_73517/232881262.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_73517/232881262.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_73517/232881262.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_73517/232881262.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_73517/232881262.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 480x237.325 with 0 Axes&gt;</code></pre>
+<pre><code>&lt;Figure size 400x246.914 with 0 Axes&gt;</code></pre>
 </div>
 </div>
 
