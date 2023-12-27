@@ -158,7 +158,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Heavily borrowed and inspired from https://jakevdp.github.io/PythonDataScienceHandbook/05.08-random-forests.html</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>latexify()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>latexify(columns<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_blobs</span>
@@ -179,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="13">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> visualize_tree(depth, X, y, ax<span class="op">=</span><span class="va">None</span>, cmap<span class="op">=</span><span class="st">'rainbow'</span>):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span>depth)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> ax <span class="kw">or</span> plt.gca()</span>
@@ -213,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="ss">f"../figures/decision-trees/dt-</span><span class="sc">{</span>depth<span class="sc">}</span><span class="ss">.pdf"</span>)</span>
 <span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    plt.clf()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> depth <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    visualize_tree(depth, X, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -229,29 +229,29 @@ DecisionTreeClassifier(max_depth=9) 9
 DecisionTreeClassifier(max_depth=10) 10</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+<pre><code>/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,
-/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_34403/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
+/var/folders/1x/wmgn24mn1bbd2vgbqlk98tbc0000gn/T/ipykernel_64496/3322787221.py:24: UserWarning: The following kwargs were not used by contour: 'clim'
   contours = ax.contourf(xx, yy, Z, alpha=0.2,</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 339x209.514 with 0 Axes&gt;</code></pre>
+<pre><code>&lt;Figure size 480x237.325 with 0 Axes&gt;</code></pre>
 </div>
 </div>
 
