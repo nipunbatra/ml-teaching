@@ -25,7 +25,7 @@ def latexify(fig_width=None, fig_height=None, columns=1):
     assert(columns in [1,2])
 
     if fig_width is None:
-        fig_width = 2.2 if columns==1 else 4.4 # width in inches
+        fig_width = 2.0 if columns==1 else 4.0 # width in inches
 
     if fig_height is None:
         golden_mean = 1/1.62  # Aesthetic ratio
