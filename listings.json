@@ -1,9 +1,5 @@
 [
   {
-    "listing": "/slides.html",
-    "items": []
-  },
-  {
     "listing": "/notebooks.html",
     "items": [
       "/notebooks/Gradient Descent-2d.html",
@@ -21,6 +17,7 @@
       "/notebooks/decision-tree-real-output.html",
       "/notebooks/dt.html",
       "/notebooks/entropy.html",
+      "/notebooks/hyperparameter-optimisation.html",
       "/notebooks/logistic-apple-oranges.html",
       "/notebooks/logistic-circular.html",
       "/notebooks/logistic-iris.html",
@@ -29,5 +26,9 @@
       "/notebooks/classes-trees.html",
       "/notebooks/anscombe.html"
     ]
+  },
+  {
+    "listing": "/slides.html",
+    "items": []
   }
 ]
