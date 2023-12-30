@@ -38,7 +38,7 @@ def latexify(fig_width=None, fig_height=None, columns=1):
         fig_height = MAX_HEIGHT_INCHES
 
     params = {'backend': 'ps',
-              'text.latex.preamble': ['\\usepackage{gensymb}'],
+              'text.latex.preamble': '\\usepackage{gensymb}',
               'axes.labelsize': 10, # fontsize for x and y labels (was 10)
               'axes.titlesize': 10,
               'font.size': 10, # was 10
