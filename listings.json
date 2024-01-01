@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/slides.html",
+    "items": []
+  },
+  {
     "listing": "/notebooks.html",
     "items": [
       "/notebooks/Gradient Descent-2d.html",
@@ -21,6 +25,7 @@
       "/notebooks/logistic-iris.html",
       "/notebooks/logistic-regression-cost.html",
       "/notebooks/perceptron-learning.html",
+      "/notebooks/text_to_image.html",
       "/notebooks/decision-tree-real-input-real-output.html",
       "/notebooks/hyperparameter-optimisation.html",
       "/notebooks/numpy-pandas-basics.html",
@@ -28,9 +33,5 @@
       "/notebooks/anscombe.html",
       "/notebooks/transcript.html"
     ]
-  },
-  {
-    "listing": "/slides.html",
-    "items": []
   }
 ]
