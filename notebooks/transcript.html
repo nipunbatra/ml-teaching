@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Nipun Batra">
+<meta name="dcterms.date" content="2023-12-18">
+
+<title>Machine Learning Resources - YouTube video to transcript using openAI whisper and summary using OLLama</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Machine Learning Resources</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://nipunbatra.github.io" rel="" target="">
+ <span class="menu-text">Instructor Homepage</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../notebooks.html" rel="" target="">
+ <span class="menu-text">Notebooks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides.html" rel="" target="">
+ <span class="menu-text">Slides</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#basic-imports" id="toc-basic-imports" class="nav-link active" data-scroll-target="#basic-imports">Basic Imports</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">YouTube video to transcript using openAI whisper and summary using OLLama</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">ML</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Nipun Batra </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 18, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p>References</p>
+<ol type="1">
+<li><a href="https://blog.devgenius.io/transcribing-youtube-videos-using-openais-whisper-%EF%B8%8F-%EF%B8%8F-a29d264d6fb1">Whisper</a></li>
+<li><a href="https://www.youtube.com/watch?v=k_1pOF1mj8k">Langchain and LLama</a></li>
+</ol>
+<section id="basic-imports" class="level3">
+<h3 class="anchored" data-anchor-id="basic-imports">Basic Imports</h3>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yt_dlp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download(video_id: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    video_url <span class="op">=</span> <span class="ss">f'https://www.youtube.com/watch?v=</span><span class="sc">{</span>video_id<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    ydl_opts <span class="op">=</span> {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">'format'</span>: <span class="st">'m4a/bestaudio/best'</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">'paths'</span>: {<span class="st">'home'</span>: <span class="st">'audio/'</span>},</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">'outtmpl'</span>: {<span class="st">'default'</span>: <span class="st">'</span><span class="sc">%(id)s</span><span class="st">.</span><span class="sc">%(ext)s</span><span class="st">'</span>},</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">'postprocessors'</span>: [{</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">'key'</span>: <span class="st">'FFmpegExtractAudio'</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">'preferredcodec'</span>: <span class="st">'m4a'</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        }]</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> yt_dlp.YoutubeDL(ydl_opts) <span class="im">as</span> ydl:</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        error_code <span class="op">=</span> ydl.download([video_url])</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> error_code <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">Exception</span>(<span class="st">'Failed to download video'</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f'audio/</span><span class="sc">{</span>video_id<span class="sc">}</span><span class="ss">.m4a'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>download(<span class="st">'CuBzyh4Xmvk'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[youtube] Extracting URL: https://www.youtube.com/watch?v=CuBzyh4Xmvk
+[youtube] CuBzyh4Xmvk: Downloading webpage
+[youtube] CuBzyh4Xmvk: Downloading ios player API JSON
+[youtube] CuBzyh4Xmvk: Downloading android player API JSON
+[youtube] CuBzyh4Xmvk: Downloading m3u8 information
+[info] CuBzyh4Xmvk: Downloading 1 format(s): 140
+[download] audio/CuBzyh4Xmvk.m4a has already been downloaded
+[download] 100% of   72.26MiB
+[ExtractAudio] Not converting audio audio/CuBzyh4Xmvk.m4a; file is already in target format m4a</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>'audio/CuBzyh4Xmvk.m4a'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> whisper</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>whisper_model <span class="op">=</span> whisper.load_model(<span class="st">"base.en"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>transcription <span class="op">=</span> whisper_model.transcribe(<span class="st">"audio/CuBzyh4Xmvk.m4a"</span>, fp16<span class="op">=</span><span class="va">True</span>, verbose<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 468481/468481 [02:05&lt;00:00, 3720.37frames/s]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>transcription[<span class="st">"text"</span>][:<span class="dv">100</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>" Please look at the code mentioned above and please sign up on the Google Cloud. We've already start"</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>transcription.keys()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>dict_keys(['text', 'segments', 'language'])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_srt_from_transcription(transcription_objects, srt_file_path):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(srt_file_path, <span class="st">'w'</span>) <span class="im">as</span> srt_file:</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        index <span class="op">=</span> <span class="dv">1</span>  <span class="co"># SRT format starts with index 1</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> entry <span class="kw">in</span> transcription_objects[<span class="st">'segments'</span>]:</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>            start_time <span class="op">=</span> entry[<span class="st">'start'</span>]</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>            end_time <span class="op">=</span> entry[<span class="st">'end'</span>]</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>            text <span class="op">=</span> entry[<span class="st">'text'</span>]</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Convert time to SRT format</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>            start_time_str <span class="op">=</span> format_time(start_time)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>            end_time_str <span class="op">=</span> format_time(end_time)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Write entry to SRT file</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>            srt_file.write(<span class="ss">f"</span><span class="sc">{</span>index<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>            srt_file.write(<span class="ss">f"</span><span class="sc">{</span>start_time_str<span class="sc">}</span><span class="ss"> --&gt; </span><span class="sc">{</span>end_time_str<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>            srt_file.write(<span class="ss">f"</span><span class="sc">{</span>text<span class="sc">}</span><span class="ch">\n\n</span><span class="ss">"</span>)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>            index <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> format_time(time_seconds):</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    minutes, seconds <span class="op">=</span> <span class="bu">divmod</span>(time_seconds, <span class="dv">60</span>)</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    hours, minutes <span class="op">=</span> <span class="bu">divmod</span>(minutes, <span class="dv">60</span>)</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span><span class="bu">int</span>(hours)<span class="sc">:02d}</span><span class="ss">:</span><span class="sc">{</span><span class="bu">int</span>(minutes)<span class="sc">:02d}</span><span class="ss">:</span><span class="sc">{</span><span class="bu">int</span>(seconds)<span class="sc">:02d}</span><span class="ss">,000"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>create_srt_from_transcription(transcription, <span class="st">"audio/CuBzyh4Xmvk.srt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>head audio<span class="op">/</span>CuBzyh4Xmvk.srt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1
+00:00:00,000 --&gt; 00:00:05,000
+ Please look at the code mentioned above and please sign up on the Google Cloud.
+
+2
+00:00:05,000 --&gt; 00:00:08,000
+ We've already started making some announcements.
+
+3
+00:00:08,000 --&gt; 00:00:14,000</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain.llms <span class="im">import</span> Ollama</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain.callbacks.manager <span class="im">import</span> CallbackManager</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain.callbacks.streaming_stdout <span class="im">import</span> StreamingStdOutCallbackHandler </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                                 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>llm <span class="op">=</span> Ollama(model<span class="op">=</span><span class="st">"mistral"</span>, </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>             callback_manager <span class="op">=</span> CallbackManager([StreamingStdOutCallbackHandler()]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>prompt_qs <span class="op">=</span> [<span class="st">"Please provide a bullet-point summary for the given text:"</span>,</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Summarize the following in Markdown bullets:"</span>,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Highlight the important topics and subtopics in the given lecture:"</span>,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">"Give us some question for a quiz based on the following text:"</span>]</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>prompts <span class="op">=</span> [q <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> transcription[<span class="st">"text"</span>] <span class="cf">for</span> q <span class="kw">in</span> prompt_qs]</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> prompt, prompt_qs <span class="kw">in</span> <span class="bu">zip</span>(prompts, prompt_qs):</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(prompt_qs, end<span class="op">=</span><span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> llm(prompt)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(output, end<span class="op">=</span><span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>)</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"=="</span><span class="op">*</span><span class="dv">50</span>, end<span class="op">=</span><span class="st">"</span><span class="ch">\n\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Please provide a bullet-point summary for the given text:
+
+ * The text asks for attention to the code and signing up on Google Cloud, as well as an announcement of an extra lecture
+* Machine learning definition: ability for computers to learn without being explicitly programmed
+* The example task is to write a program to recognize digits from a dataset
+* Rules for recognizing digits include vertical and horizontal lines, similar height of vertical lines, and no star or other mark on the digit
+* Slides and videos from first lecture have been put on Google Cloud
+* Previous lecture covered definition of machine learning and difference between explicit and implicit programming
+* Decision trees will be used to predict whether a day is good for playing tennis based on weather conditions
+* Decision trees involve creating rules based on attributes (in this case, outlook and humidity) and choosing the attribute that gives the best performance gain
+* Entropy is a measure of disorder or uncertainty in a system and is used to quantify the performance gain of an attribute. Information gain is the difference between the entropy of a set and the weighted entropy of its subsets based on an attribute. * The text asks for attention to the code and signing up on Google Cloud, as well as an announcement of an extra lecture
+* Machine learning definition: ability for computers to learn without being explicitly programmed
+* The example task is to write a program to recognize digits from a dataset
+* Rules for recognizing digits include vertical and horizontal lines, similar height of vertical lines, and no star or other mark on the digit
+* Slides and videos from first lecture have been put on Google Cloud
+* Previous lecture covered definition of machine learning and difference between explicit and implicit programming
+* Decision trees will be used to predict whether a day is good for playing tennis based on weather conditions
+* Decision trees involve creating rules based on attributes (in this case, outlook and humidity) and choosing the attribute that gives the best performance gain
+* Entropy is a measure of disorder or uncertainty in a system and is used to quantify the performance gain of an attribute. Information gain is the difference between the entropy of a set and the weighted entropy of its subsets based on an attribute.
+
+====================================================================================================
+
+Summarize the following in Markdown bullets:
+
+ * Please sign up on Google Cloud for the course
+* Announcements: extra lecture on Saturday, 11th Jan at 11am in 1.101
+* FAQ and projects shared on Google Docs, comment access given for questions
+* First lecture video and slides now available on Google Cloud
+* Review of previous lecture: machine learning defined as ability for computers to learn without explicit programming
+* Discussion on recognizing digits using a program and rules
+* Need to consider constraints such as similar height of vertical lines, no long or short lines dominating the digit shape
+* Slides refer to visuals with some angle or inclination, but in this context they mean features or attributes of data points
+* Example: predicting quality or condition of computer tomatoes using image features and machine learning algorithms
+* Data collected with human expert annotations for each tomato's quality (good or bad)
+* Features: color, size, texture
+* Training set: X (input features matrix), Y (output vector of labels)
+* Test set: unseen samples without labels, trying to predict their quality based on input features
+* Prediction tasks in machine learning: given input features, estimate the output using algorithms and models
+* Metrics for evaluating performance: accuracy, precision, recall, F-score, Matthew's correlation coefficient * Please sign up on Google Cloud for the course
+* Announcements: extra lecture on Saturday, 11th Jan at 11am in 1.101
+* FAQ and projects shared on Google Docs, comment access given for questions
+* First lecture video and slides now available on Google Cloud
+* Review of previous lecture: machine learning defined as ability for computers to learn without explicit programming
+* Discussion on recognizing digits using a program and rules
+* Need to consider constraints such as similar height of vertical lines, no long or short lines dominating the digit shape
+* Slides refer to visuals with some angle or inclination, but in this context they mean features or attributes of data points
+* Example: predicting quality or condition of computer tomatoes using image features and machine learning algorithms
+* Data collected with human expert annotations for each tomato's quality (good or bad)
+* Features: color, size, texture
+* Training set: X (input features matrix), Y (output vector of labels)
+* Test set: unseen samples without labels, trying to predict their quality based on input features
+* Prediction tasks in machine learning: given input features, estimate the output using algorithms and models
+* Metrics for evaluating performance: accuracy, precision, recall, F-score, Matthew's correlation coefficient
+
+====================================================================================================
+
+Highlight the important topics and subtopics in the given lecture:
+
+ Important topics and subtopics in the given lecture:
+
+1. Machine Learning Basics
+    * Definition of machine learning
+    * Explicit vs implicit programming
+    * Brief history of machine learning
+2. Recognizing Digits using Machine Learning
+    * Rules for recognizing digits
+3. Traditional Programming vs Machine Learning
+    * Explicit programming vs machine learning
+    * Example: Predicting tomato quality using computer vision
+4. Performance Measures in Machine Learning
+    * Accuracy, precision, recall, F-score, Matthew's correlation coefficient
+5. Decision Trees
+    * Introduction to decision trees
+    * Building a decision tree for predicting whether to play tennis or not based on weather conditions
+6. ID3 Algorithm
+    * Recursive algorithm for building decision trees
+7. Entropy and Information Gain
+    * Definition of entropy
+    * Choosing the best attribute for information gain
+8. Future lectures
+    * Additional lecture on Saturday, 11th Jan at 11am in 1.101
+    * FAQs and projects available on Google Docs
+    * Sharing video and slides from the first lecture on code translate and course website. Important topics and subtopics in the given lecture:
+
+1. Machine Learning Basics
+    * Definition of machine learning
+    * Explicit vs implicit programming
+    * Brief history of machine learning
+2. Recognizing Digits using Machine Learning
+    * Rules for recognizing digits
+3. Traditional Programming vs Machine Learning
+    * Explicit programming vs machine learning
+    * Example: Predicting tomato quality using computer vision
+4. Performance Measures in Machine Learning
+    * Accuracy, precision, recall, F-score, Matthew's correlation coefficient
+5. Decision Trees
+    * Introduction to decision trees
+    * Building a decision tree for predicting whether to play tennis or not based on weather conditions
+6. ID3 Algorithm
+    * Recursive algorithm for building decision trees
+7. Entropy and Information Gain
+    * Definition of entropy
+    * Choosing the best attribute for information gain
+8. Future lectures
+    * Additional lecture on Saturday, 11th Jan at 11am in 1.101
+    * FAQs and projects available on Google Docs
+    * Sharing video and slides from the first lecture on code translate and course website.
+
+====================================================================================================
+
+Give us some question for a quiz based on the following text:
+
+ 1. What is the purpose of the announcement about signing up on Google Cloud and missing announcements?
+2. What is the second quick logistical announcement regarding?
+3. In what room will there be an extra lecture on Saturday, 11th Jan at 11am?
+4. Who is Arthur Sandler and when did he first mention machine learning?
+5. What does being explicitly programmed mean in machine learning?
+6. Can you explain the difference between explicit programming and machine learning?
+7. How can you recognize a digit '4' based on the rules given in the text?
+8. What are some other rules that could be used to recognize the digit '4' from the dataset mentioned?
+9. What is meant by the term "slides" in the context of this machine learning course?
+10. What is the name of the business use case for this machine learning project and what is its goal?
+11. What data does the company have for this machine learning project?
+12. Which visual features are expected to be useful for characterizing tomatoes in this project?
+13. What is the difference between a training set and a test set in machine learning?
+14. What is the role of experience P, task P, and performance measure P in machine learning?
+15. Can you explain what is meant by the term "precision" in machine learning?
+16. What is the difference between precision and recall in machine learning?
+17. What is Matthew's correlation coefficient and why is it useful in machine learning?
+18. What are some common metrics used to evaluate the performance of machine learning models?
+19. What is the difference between mean squared error and mean absolute error as evaluation metrics in machine learning?
+20. What is a decision tree and how is it used in machine learning for classification problems? 1. What is the purpose of the announcement about signing up on Google Cloud and missing announcements?
+2. What is the second quick logistical announcement regarding?
+3. In what room will there be an extra lecture on Saturday, 11th Jan at 11am?
+4. Who is Arthur Sandler and when did he first mention machine learning?
+5. What does being explicitly programmed mean in machine learning?
+6. Can you explain the difference between explicit programming and machine learning?
+7. How can you recognize a digit '4' based on the rules given in the text?
+8. What are some other rules that could be used to recognize the digit '4' from the dataset mentioned?
+9. What is meant by the term "slides" in the context of this machine learning course?
+10. What is the name of the business use case for this machine learning project and what is its goal?
+11. What data does the company have for this machine learning project?
+12. Which visual features are expected to be useful for characterizing tomatoes in this project?
+13. What is the difference between a training set and a test set in machine learning?
+14. What is the role of experience P, task P, and performance measure P in machine learning?
+15. Can you explain what is meant by the term "precision" in machine learning?
+16. What is the difference between precision and recall in machine learning?
+17. What is Matthew's correlation coefficient and why is it useful in machine learning?
+18. What are some common metrics used to evaluate the performance of machine learning models?
+19. What is the difference between mean squared error and mean absolute error as evaluation metrics in machine learning?
+20. What is a decision tree and how is it used in machine learning for classification problems?
+
+====================================================================================================
+</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
