@@ -1,11 +1,14 @@
 [
   {
+    "listing": "/slides.html",
+    "items": []
+  },
+  {
     "listing": "/notebooks.html",
     "items": [
       "/notebooks/Gradient Descent-2d.html",
       "/notebooks/Gradient Descent.html",
       "/notebooks/Linear Regression Notebook.html",
-      "/notebooks/ML Notebook.html",
       "/notebooks/Maths for ML-2.html",
       "/notebooks/SFS_and_BFS.html",
       "/notebooks/autograd.html",
@@ -16,13 +19,13 @@
       "/notebooks/decision-tree-real-output.html",
       "/notebooks/dt.html",
       "/notebooks/entropy.html",
-      "/notebooks/perceptron-learning.html",
       "/notebooks/text_to_image.html",
       "/notebooks/logistic-apple-oranges.html",
       "/notebooks/logistic-circular.html",
       "/notebooks/logistic-iris.html",
       "/notebooks/logistic-regression-cost.html",
       "/notebooks/object-detection-segmentation.html",
+      "/notebooks/perceptron-learning.html",
       "/notebooks/decision-tree-real-input-real-output.html",
       "/notebooks/hyperparameter-optimisation.html",
       "/notebooks/numpy-pandas-basics.html",
@@ -30,9 +33,5 @@
       "/notebooks/anscombe.html",
       "/notebooks/transcript.html"
     ]
-  },
-  {
-    "listing": "/slides.html",
-    "items": []
   }
 ]
