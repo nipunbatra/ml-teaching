@@ -23,2524 +23,2524 @@
  So a lot of ones over there.
 
 7
-00:00:26,000 --> 00:00:32,000
- And I think one or two people still have conflict, but in the larger, in the larger
+00:00:26,000 --> 00:00:31,000
+ And I think one or two people still have conflict, but in the larger,
 
 8
-00:00:32,000 --> 00:00:36,000
- phone we will have almost everyone available, so we'll have to stick with this.
+00:00:31,000 --> 00:00:35,000
+ in the larger phone we'll have almost everyone available, so we'll have to stick with this.
 
 9
-00:00:36,000 --> 00:00:43,000
- FAQ and the projects which were earlier shared on Google Docs, I'll give all of you a comment
+00:00:38,000 --> 00:00:42,000
+ FAQ and the projects which were earlier shared on Google Docs,
 
 10
-00:00:43,000 --> 00:00:48,000
- access on it so that if you have any questions, queries, things like what should be the,
+00:00:42,000 --> 00:00:47,000
+ I'll give all of you comment access on it so that if you have any questions, queries,
 
 11
-00:00:48,000 --> 00:00:54,000
- what are the maps, what are the main group size you can ask situations if they're already
+00:00:47,000 --> 00:00:52,000
+ things like what should be the, what are the maps, what are the main group size?
 
 12
-00:00:54,000 --> 00:00:55,000
- not there.
+00:00:52,000 --> 00:00:55,000
+ You can ask situations if they're already not there.
 
 13
-00:00:55,000 --> 00:01:00,000
- Also about projects, if you have any questions, like what is the expectation if it's something
+00:00:55,000 --> 00:00:59,000
+ Also about projects, if you have any questions, like what is the expectation?
 
 14
-00:01:00,000 --> 00:01:06,000
- is not mentioned clearly, you can please comment on the Google Doc and we'll get back to you soon.
+00:00:59,000 --> 00:01:04,000
+ If it's something is not mentioned clearly, you can please comment on the Google Docs
 
 15
-00:01:08,000 --> 00:01:13,000
- Also the video and the slides from the first lecture, in order to actually, actually
+00:01:04,000 --> 00:01:06,000
+ and we'll get back to you soon.
 
 16
-00:01:13,000 --> 00:01:18,000
- haven't put up on code translate, which is at the entrance, as mentioned in the slide
+00:01:08,000 --> 00:01:11,000
+ Also the video and the slides from the first lecture,
 
 17
-00:01:18,000 --> 00:01:19,000
- above.
+00:01:11,000 --> 00:01:15,000
+ because I think we actually haven't put up on the code website,
 
 18
+00:01:15,000 --> 00:01:19,000
+ which is at the entrance, as mentioned in the slide above.
+
+19
 00:01:20,000 --> 00:01:23,000
  This course website has also been now put on Google Cloud.
 
-19
-00:01:23,000 --> 00:01:26,000
- So you can also get to that.
-
 20
-00:01:28,000 --> 00:01:33,000
- Before we go forward, we should quickly revise what we started last time.
+00:01:23,000 --> 00:01:26,000
+ So, you can also get to that.
 
 21
-00:01:34,000 --> 00:01:37,000
- And someone tell you what is machine learning based on what we learned last time.
+00:01:28,000 --> 00:01:34,000
+ Before we go forward, we should quickly revise what we started last time.
 
 22
+00:01:34,000 --> 00:01:38,000
+ And someone tell you what is machine learning based on what we learned last time.
+
+23
 00:01:38,000 --> 00:01:40,000
  We looked at a couple of definitions.
 
-23
+24
 00:01:40,000 --> 00:01:46,000
  One was from Arthur Sandler, who by the way was the first person to point with the machine learning
 
-24
-00:01:46,000 --> 00:01:48,000
+25
+00:01:46,000 --> 00:01:49,000
  and he did that in 1959.
 
-25
-00:01:49,000 --> 00:01:50,000
- So a long long time back.
-
 26
-00:01:51,000 --> 00:01:53,000
- Anyone for this machine learning?
+00:01:49,000 --> 00:01:52,000
+ So, a long long time back.
 
 27
-00:02:05,000 --> 00:02:12,000
- The ability to learn without explicitly being to add others, any definition you want to get?
+00:01:52,000 --> 00:01:54,000
+ Anyone? What does machine learning?
 
 28
-00:02:14,000 --> 00:02:16,000
- There's a more technical definition also.
+00:02:05,000 --> 00:02:09,000
+ Okay, the ability to learn without explicitly being proven,
 
 29
-00:02:16,000 --> 00:02:18,000
- But we'll get to that later.
+00:02:09,000 --> 00:02:13,000
+ that is correct. Any other definition you want to get?
 
 30
-00:02:18,000 --> 00:02:23,000
- Let's first start with again this same study, same definition of the learning code.
+00:02:14,000 --> 00:02:17,000
+ There was a more technical definition also.
 
 31
-00:02:23,000 --> 00:02:29,000
- It's a period of study and get computers, they are ready to learn without being explicitly programming.
+00:02:17,000 --> 00:02:18,000
+ But we'll get to that later.
 
 32
-00:02:29,000 --> 00:02:33,000
- Okay, anyone tell you what does being explicitly programming here?
+00:02:18,000 --> 00:02:23,000
+ Let's first start with again this same definition of the learning code.
 
 33
-00:02:37,000 --> 00:02:40,000
- Does a need a machine learning involves low programming?
+00:02:23,000 --> 00:02:29,000
+ It's a period of study and get computers, they are ready to learn without being explicitly proven.
 
 34
-00:02:40,000 --> 00:02:43,000
- So all programming, assignments are just the ways of learning.
+00:02:29,000 --> 00:02:34,000
+ Okay, anyone tell you what does being explicitly proven being there?
 
 35
-00:02:44,000 --> 00:02:46,000
- Program itself.
+00:02:37,000 --> 00:02:40,000
+ Does a linear machine learning involves no programming?
 
 36
-00:02:46,000 --> 00:02:47,000
- Program itself.
+00:02:40,000 --> 00:02:44,000
+ So, all programming assignments are the service of time.
 
 37
-00:02:47,000 --> 00:02:48,000
+00:02:45,000 --> 00:02:47,000
  Program itself.
 
 38
-00:02:48,000 --> 00:02:53,000
- So is it some, some oracle which ends up writing the code?
+00:02:47,000 --> 00:02:49,000
+ Program itself.
 
 39
-00:02:53,000 --> 00:02:55,000
- It's a whole writing program.
+00:02:49,000 --> 00:02:54,000
+ So, is it some, some article which ends up writing the code?
 
 40
-00:02:56,000 --> 00:03:02,000
- Of course there's one area, there's something on the computer architecture, so we're not going into that.
+00:02:54,000 --> 00:02:56,000
+ It's the whole writing program.
 
 41
-00:03:02,000 --> 00:03:04,000
- But who I'd say is the machine learning program.
+00:02:57,000 --> 00:03:01,000
+ Of course, there is one area, there is something on the computer architecture,
 
 42
-00:03:05,000 --> 00:03:07,000
- So today's legislative program.
+00:03:01,000 --> 00:03:03,000
+ so we're not going into that.
 
 43
-00:03:07,000 --> 00:03:12,000
- What is the exact meaning of adopting the executive program?
+00:03:03,000 --> 00:03:05,000
+ But who I'd say is the linear program.
 
 44
+00:03:05,000 --> 00:03:07,000
+ So, today's legislative program.
+
+45
+00:03:08,000 --> 00:03:13,000
+ What is the exact meaning of learning into the computer program?
+
+46
 00:03:14,000 --> 00:03:16,000
  You don't have to replace this.
 
-45
-00:03:16,000 --> 00:03:18,000
+47
+00:03:16,000 --> 00:03:19,000
  Okay, can you explain what does mean?
 
-46
-00:03:26,000 --> 00:03:28,000
+48
+00:03:27,000 --> 00:03:29,000
  But he's on the right track.
 
-47
-00:03:28,000 --> 00:03:32,000
+49
+00:03:29,000 --> 00:03:33,000
  Let's take an example to get this concept even better.
 
-48
-00:03:34,000 --> 00:03:36,000
+50
+00:03:35,000 --> 00:03:37,000
  Can you see these model digits?
 
-49
-00:03:36,000 --> 00:03:39,000
+51
+00:03:37,000 --> 00:03:40,000
  These are digits from 0 to 9.
 
-50
+52
 00:03:40,000 --> 00:03:42,000
- And these are from the dataset for in this.
+ And these are from the dataset for inness.
 
-51
+53
 00:03:42,000 --> 00:03:45,000
  One of the most popular machine learning datasets.
 
-52
+54
 00:03:45,000 --> 00:03:54,000
- Now the first task for all of us is we want to now write a program to recognize the digits.
+ Now, the first task for all of us is we want to now write a program to recognize the digits.
 
-53
+55
 00:03:54,000 --> 00:03:56,000
  And we'll start with code.
 
-54
+56
 00:03:56,000 --> 00:04:01,000
  Can someone tell me how they'll recognize if a digit is 4 or not?
 
-55
+57
 00:04:01,000 --> 00:04:03,000
  We're looking at these specific rules.
 
-56
+58
 00:04:03,000 --> 00:04:07,000
  What does how we add to the code that we need?
 
-57
-00:04:08,000 --> 00:04:17,000
+59
+00:04:08,000 --> 00:04:18,000
  Can we start off as 4 can be quantified as a vertical line, a horizontal line, a vertical line.
 
-58
-00:04:17,000 --> 00:04:19,000
+60
+00:04:18,000 --> 00:04:20,000
  All of them are jointed.
 
-59
-00:04:19,000 --> 00:04:24,000
+61
+00:04:20,000 --> 00:04:25,000
  And then another vertical line going down from the first, from the last vertical line.
 
-60
-00:04:24,000 --> 00:04:32,000
- Everything of that is that all that is there to 4 or if there are any models.
-
-61
-00:04:33,000 --> 00:04:41,000
- What about the fact that the height of each of the vertical lines need to be very similar?
-
 62
-00:04:41,000 --> 00:04:44,000
- Can you write this kind of a rule?
+00:04:25,000 --> 00:04:27,000
+ And we think of that.
 
 63
-00:04:44,000 --> 00:04:50,000
- Or do you see a force where one of the lines is very, very long compared to the other?
+00:04:28,000 --> 00:04:32,000
+ Is that all? That is there to 4 or is there anything important?
 
 64
-00:04:50,000 --> 00:04:52,000
- Generally not.
+00:04:32,000 --> 00:04:42,000
+ What about the fact that the height of each of the vertical lines need to be very similar?
 
 65
+00:04:42,000 --> 00:04:44,000
+ Can you write this kind of rule?
+
+66
+00:04:44,000 --> 00:04:51,000
+ Or do you see it posed where one of the lines is very, very long compared to the other?
+
+67
+00:04:51,000 --> 00:04:52,000
+ Generally not.
+
+68
 00:04:52,000 --> 00:04:56,000
  So you have to report some of these constraints.
 
-66
-00:04:56,000 --> 00:04:58,000
- But are you done with it anything more?
-
-67
-00:04:59,000 --> 00:05:05,000
- Just look through the example for do you see any force which would violate the difference
-
-68
-00:05:05,000 --> 00:05:08,000
- that we've seen it, specify the thought.
-
 69
-00:05:08,000 --> 00:05:13,000
- And a thought will look that.
+00:04:56,000 --> 00:04:59,000
+ But are you done or is there anything more?
 
 70
-00:05:13,000 --> 00:05:16,000
- Okay, the second last is one case.
+00:05:00,000 --> 00:05:06,000
+ Just look through the example for do you see any code which could violate the things that we've seen?
 
 71
-00:05:16,000 --> 00:05:21,000
- What about this one?
+00:05:06,000 --> 00:05:08,000
+ Specifically the thought.
 
 72
-00:05:21,000 --> 00:05:27,000
- Okay, so each of the vertical lines would be a little smaller.
+00:05:10,000 --> 00:05:12,000
+ And a thought would look that.
 
 73
-00:05:28,000 --> 00:05:32,000
- In many cases it would be a, and if I were to write, you will not understand it,
+00:05:14,000 --> 00:05:16,000
+ Okay, the second last is one case.
 
 74
-00:05:32,000 --> 00:05:34,000
- or you will get it.
+00:05:16,000 --> 00:05:19,000
+ What about this one?
 
 75
-00:05:34,000 --> 00:05:37,000
- So because people write different things.
+00:05:21,000 --> 00:05:26,000
+ Okay, so each of the vertical lines, but it will be a little smaller.
 
 76
-00:05:37,000 --> 00:05:39,000
- So that's another rule that I like.
+00:05:26,000 --> 00:05:34,000
+ In many cases it would be a, and if I were to write, you will not understand it.
 
 77
-00:05:39,000 --> 00:05:41,000
- Now what do you mean by slides?
+00:05:34,000 --> 00:05:38,000
+ So because people write different things.
 
 78
-00:05:41,000 --> 00:05:47,000
- Well, it doesn't mean that it can have an inclination of some 10 degrees, 20 degrees, 30 degrees,
+00:05:38,000 --> 00:05:40,000
+ So that's another rule that I like.
 
 79
-00:05:47,000 --> 00:05:49,000
- very excited, none of them.
+00:05:40,000 --> 00:05:42,000
+ Now what do you mean by slides?
 
 80
-00:05:49,000 --> 00:05:54,000
- So let's say you come up with some number, based on your experience, based on some rules of time.
+00:05:42,000 --> 00:05:47,000
+ Does it mean that it can have an inclination of some 10 degrees, 20 degrees, 30 degrees?
 
 81
-00:05:55,000 --> 00:05:56,000
- But is that all?
+00:05:47,000 --> 00:05:49,000
+ Where to decide a number?
 
 82
-00:05:56,000 --> 00:06:00,000
- No, some people write 4 with a star, right?
+00:05:49,000 --> 00:05:55,000
+ So let's say you come up with some number based on your experience based on some rules of time.
 
 83
-00:06:00,000 --> 00:06:07,000
- If you look at this, 1, 2, 3, 4, 5, 4, you have this particular line, we have to join
+00:05:55,000 --> 00:05:57,000
+ But is that all?
 
 84
-00:06:07,000 --> 00:06:10,000
- like this before piloting the end, right?
+00:05:57,000 --> 00:06:00,000
+ No, some people write 4 with a star, right?
 
 85
+00:06:00,000 --> 00:06:06,000
+ If you look at this 1, 2, 3, 4, 5, 4, you have this particular line.
+
+86
+00:06:06,000 --> 00:06:07,000
+ We have to join that.
+
+87
+00:06:07,000 --> 00:06:09,000
+ This is for perfect union.
+
+88
+00:06:09,000 --> 00:06:10,000
+ Right?
+
+89
 00:06:10,000 --> 00:06:13,000
  So that is now another rule that I've written.
 
-86
-00:06:13,000 --> 00:06:19,000
- You have already come up with 5, 6 of such rules, but that's not all.
+90
+00:06:13,000 --> 00:06:17,000
+ You have already come up with 5, 6 of such rules.
 
-87
+91
+00:06:17,000 --> 00:06:19,000
+ But that's not all.
+
+92
 00:06:19,000 --> 00:06:21,000
  Anything else you can think of?
 
-88
-00:06:21,000 --> 00:06:26,000
+93
+00:06:22,000 --> 00:06:26,000
  That's why we have not talked about the bits of the lines.
 
-89
+94
 00:06:26,000 --> 00:06:29,000
  What can we think about that?
 
-90
+95
 00:06:29,000 --> 00:06:31,000
  Can we cover some rules?
 
-91
-00:06:31,000 --> 00:06:39,000
+96
+00:06:34,000 --> 00:06:40,000
  Let's say if I'm writing the different mark or if I'm using the pen in different fashion,
 
-92
-00:06:39,000 --> 00:06:44,000
- where some of my strokes we fired will be thicker, right?
-
-93
-00:06:44,000 --> 00:06:47,000
- Maybe that's another particular rule, right?
-
-94
-00:06:47,000 --> 00:06:52,000
- There can be some cases where the width of each of the stroke is a little different.
-
-95
-00:06:52,000 --> 00:06:58,000
- You'll have to again capture some of these characteristics, while writing some rules or
-
-96
-00:06:58,000 --> 00:07:02,000
- writing a program to recognize 4.
-
 97
-00:07:02,000 --> 00:07:11,000
- So what we have done thus far is explicitly programmed to classify order, right?
+00:06:40,000 --> 00:06:43,000
+ where some of my scores we fired will be thicker.
 
 98
-00:07:11,000 --> 00:07:17,000
- So now we understand what is explicit programming, what we know is completely different from this.
+00:06:43,000 --> 00:06:44,000
+ Right?
 
 99
-00:07:17,000 --> 00:07:21,000
- So what if thus far does is we had data?
+00:06:44,000 --> 00:06:47,000
+ Maybe that's another particular rule.
 
 100
-00:07:21,000 --> 00:07:26,000
- Data was these examples that we already had.
+00:06:48,000 --> 00:06:49,000
+ Right?
 
 101
-00:07:26,000 --> 00:07:28,000
- We came up with some rules.
+00:06:49,000 --> 00:06:53,000
+ There can be some cases where the width of each of the stroke is a little different.
 
 102
-00:07:28,000 --> 00:07:33,000
- So these were rules which we as experts suggested.
+00:06:53,000 --> 00:07:03,000
+ You'll have to again capture some of these characteristics while writing some rules or writing a program to recognize 4.
 
 103
-00:07:33,000 --> 00:07:38,000
- And in traditional programming we have some kind of a pattern, some programming line would be right,
+00:07:03,000 --> 00:07:11,000
+ So what we have done thus far is explicitly programmed to classify order to recognize 4.
 
 104
-00:07:38,000 --> 00:07:41,000
- which would recognize all of these.
+00:07:11,000 --> 00:07:12,000
+ Right?
 
 105
-00:07:41,000 --> 00:07:45,000
- Of course, what is presented as a vertical line or horizontal line?
+00:07:12,000 --> 00:07:15,000
+ So now we understand what is explicit programming.
 
 106
-00:07:45,000 --> 00:07:48,000
- Are still higher constructs?
+00:07:15,000 --> 00:07:18,000
+ What we know is completely different from this.
 
 107
-00:07:48,000 --> 00:07:53,000
- For example, vertical line a program computer does not know what is a vertical line.
+00:07:18,000 --> 00:07:22,000
+ So what we have thus far done is we had data.
 
 108
-00:07:53,000 --> 00:07:56,000
- So you have to again boil it down to the computer.
+00:07:22,000 --> 00:07:27,000
+ Data was these examples that we already had.
 
 109
-00:07:56,000 --> 00:08:00,000
- What do you think the vertical line to the middle means?
+00:07:27,000 --> 00:07:29,000
+ We came up with some rules.
 
 110
-00:08:00,000 --> 00:08:02,000
- Same.
+00:07:29,000 --> 00:07:34,000
+ So these were rules which we as experts suggested.
 
 111
+00:07:34,000 --> 00:07:39,000
+ And in traditional programming we have some kind of program in language we write,
+
+112
+00:07:40,000 --> 00:07:42,000
+ which will recognize all of these.
+
+113
+00:07:42,000 --> 00:07:46,000
+ Of course, what is presented as a vertical line or horizontal line?
+
+114
+00:07:46,000 --> 00:07:48,000
+ Are still higher constructs.
+
+115
+00:07:48,000 --> 00:07:54,000
+ For example, vertical line a program computer does not know what is a vertical line.
+
+116
+00:07:54,000 --> 00:07:56,000
+ So you have to again boil it down to the computer.
+
+117
+00:07:56,000 --> 00:07:59,000
+ What is vertical line to the computer means?
+
+118
 00:08:02,000 --> 00:08:03,000
  Same.
 
-112
+119
 00:08:03,000 --> 00:08:04,000
  Same.
 
-113
+120
 00:08:04,000 --> 00:08:05,000
  Same.
 
-114
+121
 00:08:05,000 --> 00:08:06,000
  Ex-axis.
 
-115
-00:08:06,000 --> 00:08:16,000
- So think of it as pixels and all of the pixels would be of similar shape, like vertically going on.
+122
+00:08:07,000 --> 00:08:14,000
+ So think of it as pixels and all of the pixels will be of similar shape, like vertically going on.
 
-116
-00:08:16,000 --> 00:08:21,000
+123
+00:08:17,000 --> 00:08:22,000
  So we have data rules and traditional programming that gives us the answers.
 
-117
-00:08:21,000 --> 00:08:24,000
+124
+00:08:22,000 --> 00:08:24,000
  Now let's go back to the definition.
 
-118
+125
 00:08:24,000 --> 00:08:27,000
  The genome is a period of study as computers.
 
-119
-00:08:27,000 --> 00:08:32,000
- We have computers a little bit to learn without being explicit in the program.
-
-120
-00:08:32,000 --> 00:08:38,000
- And now to make this particular program, to tell me what, if you have to be able to
-
-121
-00:08:38,000 --> 00:08:43,000
- use traditional programming with machine learning, what do we need to do?
-
-122
-00:08:43,000 --> 00:08:45,000
- So we are not explicitly programming.
-
-123
-00:08:45,000 --> 00:08:46,000
- What changes?
-
-124
-00:08:46,000 --> 00:08:51,000
- The Romans are gone there.
-
-125
-00:08:51,000 --> 00:09:00,000
- So what we are saying is, I am going to learn with the only explicitly- describe program.
-
 126
-00:09:00,000 --> 00:09:02,000
- So we don't need the data.
+00:08:27,000 --> 00:08:32,000
+ We have computers a vertical line without being explicitly programmed.
 
 127
-00:09:02,000 --> 00:09:04,000
- We don't need the answers.
+00:08:33,000 --> 00:08:39,000
+ And now to make this particular program, to tell me what, if you have to do English,
 
 128
-00:09:04,000 --> 00:09:11,000
- And what we end up with is automatically some function of rules that are being run.
+00:08:39,000 --> 00:08:42,000
+ traditional programming with machine learning, what do we need to do?
 
 129
-00:09:11,000 --> 00:09:14,000
- So this is how traditional programming is.
+00:08:44,000 --> 00:08:46,000
+ So we are not explicitly programming.
 
 130
-00:09:14,000 --> 00:09:17,000
- The bad line of the system program is very different from machine learning.
+00:08:46,000 --> 00:08:47,000
+ What is this?
 
 131
-00:09:17,000 --> 00:09:21,000
- Which I have still done this, done this in a very abstract sense.
+00:08:47,000 --> 00:08:50,000
+ The Romans are gone there.
 
 132
-00:09:21,000 --> 00:09:24,000
- We are slowly going to go deeper from this.
+00:08:55,000 --> 00:09:00,000
+ So what we are saying is, how do we learn with the machine learning?
 
 133
-00:09:24,000 --> 00:09:30,000
- We also looked at another definition which was a more formal definition of machine learning,
+00:09:01,000 --> 00:09:03,000
+ So we don't need the data.
 
 134
-00:09:30,000 --> 00:09:33,000
- which was given by Tom, which I like.
+00:09:03,000 --> 00:09:05,000
+ We don't need the answers.
 
 135
-00:09:33,000 --> 00:09:36,000
- Tom is learning from experience E.
+00:09:05,000 --> 00:09:11,000
+ And what we end up with is automatically some motion and rules that are being written.
 
 136
-00:09:36,000 --> 00:09:43,000
- If you look at the experience E, tasks, P, and a performance measure, P,
+00:09:11,000 --> 00:09:12,000
+ Right?
 
 137
-00:09:43,000 --> 00:09:50,000
- if the performance is improving in the particular task, as to measure by the performance measure.
+00:09:12,000 --> 00:09:14,000
+ So this is how traditional programming is.
 
 138
+00:09:14,000 --> 00:09:18,000
+ The bad line of the system programming is very different from the machine learning.
+
+139
+00:09:18,000 --> 00:09:19,000
+ Which I have still done this.
+
+140
+00:09:19,000 --> 00:09:21,000
+ I have done this in a very abstract sense.
+
+141
+00:09:21,000 --> 00:09:24,000
+ We are slowly going to go be here for this.
+
+142
+00:09:25,000 --> 00:09:31,000
+ We also looked at another definition which was a more formal definition of machine learning,
+
+143
+00:09:31,000 --> 00:09:33,000
+ which was given by Tom, which I like.
+
+144
+00:09:33,000 --> 00:09:37,000
+ Tom is learning from experience E.
+
+145
+00:09:37,000 --> 00:09:40,000
+ If you look at the key, what is experience E?
+
+146
+00:09:40,000 --> 00:09:44,000
+ Tasks, P, and a performance measure of P.
+
+147
+00:09:44,000 --> 00:09:48,000
+ If the performance is improving in the particular task,
+
+148
+00:09:48,000 --> 00:09:50,000
+ ask the measure for the performance measure.
+
+149
 00:09:50,000 --> 00:09:53,000
  And it is improving with experience.
 
-139
-00:09:54,000 --> 00:09:58,000
+150
+00:09:54,000 --> 00:09:55,000
+ Right?
+
+151
+00:09:55,000 --> 00:09:58,000
  Let's say in this particular case, the task is what?
 
-140
+152
 00:09:58,000 --> 00:10:00,000
  For machine learning.
 
-141
+153
 00:10:00,000 --> 00:10:02,000
  To classify digits.
 
-142
-00:10:02,000 --> 00:10:05,000
+154
+00:10:02,000 --> 00:10:06,000
  And what is the input that is typically given?
 
-143
-00:10:05,000 --> 00:10:10,000
+155
+00:10:06,000 --> 00:10:10,000
  You have some, so you said that you have some experience.
 
-144
+156
 00:10:10,000 --> 00:10:16,000
- The experience can be you have some images along with the true label.
+ The experience can be you have some, some images along with the true label.
 
-145
+157
 00:10:16,000 --> 00:10:22,000
  So you have elements like this 0 along with that label that is actually 0.
 
-146
-00:10:22,000 --> 00:10:26,000
- But you have various different examples.
-
-147
-00:10:26,000 --> 00:10:31,000
- And the performance measure P, what do you think is the performance measure P?
-
-148
-00:10:31,000 --> 00:10:34,000
- What do you want to optimize on?
-
-149
-00:10:34,000 --> 00:10:37,000
- How correctly you are given to classify digits?
-
-150
-00:10:37,000 --> 00:10:43,000
- So, could you come up with a more scientific sub-centum for correctness?
-
-151
-00:10:43,000 --> 00:10:44,000
- I can see.
-
-152
-00:10:44,000 --> 00:10:45,000
- Or similar sub-centum.
-
-153
-00:10:45,000 --> 00:10:49,000
- So we look at some of these metrics in today.
-
-154
-00:10:49,000 --> 00:10:54,000
- So we will start of place lecture after having revised what is machine learning.
-
-155
-00:10:54,000 --> 00:10:58,000
- We will start, we are now starting a company, all of us are starting a company.
-
-156
-00:10:58,000 --> 00:11:04,000
- And we want to be the basket of those words or some similar words we saw.
-
-157
-00:11:04,000 --> 00:11:05,000
- We want to scale.
-
 158
-00:11:05,000 --> 00:11:10,000
- So if you remember one of the keywords which we use a lot in the previous lecture was scaled.
+00:10:22,000 --> 00:10:26,000
+ We will have various different examples.
 
 159
-00:11:10,000 --> 00:11:15,000
- The problem statement is that you want to predict the quality or condition for computer.
+00:10:26,000 --> 00:10:31,000
+ And the performance measure of P, what do you think is the performance measure of P?
 
 160
-00:11:15,000 --> 00:11:17,000
- Given its visual features.
+00:10:31,000 --> 00:10:33,000
+ What do you want to optimize on?
 
 161
-00:11:18,000 --> 00:11:25,000
- So we say that our business use cases that growth rates are similar such grocery stores,
+00:10:33,000 --> 00:10:34,000
+ Correct.
 
 162
-00:11:25,000 --> 00:11:29,000
- they have some human in the loop who looks at each of the tomatoes.
+00:10:34,000 --> 00:10:37,000
+ How correctly you are using classified digits?
 
 163
-00:11:29,000 --> 00:11:33,000
- And that is in let's say a per minute per tomato.
+00:10:37,000 --> 00:10:38,000
+ Right?
 
 164
-00:11:33,000 --> 00:11:39,000
- So there is a lot of human input involved which is making the whole process look.
+00:10:38,000 --> 00:10:43,000
+ So, could you come up with a more scientific section in terms of correctness?
 
 165
-00:11:39,000 --> 00:11:44,000
- We plan to scale it by using computer vision with your features between the data.
+00:10:43,000 --> 00:10:44,000
+ Accuracy.
 
 166
-00:11:44,000 --> 00:11:47,000
- So what we are going to do is we have now an assembly line.
+00:10:44,000 --> 00:10:45,000
+ Or similar circumstances.
 
 167
+00:10:45,000 --> 00:10:49,000
+ We will look at some of these metrics in a little bit.
+
+168
+00:10:50,000 --> 00:10:55,000
+ So we will start a place that you have to have a higher quality machine learning.
+
+169
+00:10:55,000 --> 00:10:57,000
+ We will start, we are now starting a company.
+
+170
+00:10:57,000 --> 00:10:59,000
+ All of us are starting a company.
+
+171
+00:10:59,000 --> 00:11:04,000
+ And we want to be the basket of those words or some similar words we saw.
+
+172
+00:11:04,000 --> 00:11:06,000
+ We want to scale.
+
+173
+00:11:06,000 --> 00:11:11,000
+ So if you remember one of the keywords which we use a lot in the previous lecture was scaled.
+
+174
+00:11:11,000 --> 00:11:16,000
+ The problem statement is that you want to predict the quality or condition for computer.
+
+175
+00:11:16,000 --> 00:11:18,000
+ Given its visual features.
+
+176
+00:11:19,000 --> 00:11:26,000
+ So we said that our business use cases that grovers are similar such grocery stores.
+
+177
+00:11:26,000 --> 00:11:30,000
+ They have some women in the loop who looks at each of the tomatoes.
+
+178
+00:11:30,000 --> 00:11:33,000
+ And that is in let's say a part minute for the tomato.
+
+179
+00:11:33,000 --> 00:11:34,000
+ Right?
+
+180
+00:11:34,000 --> 00:11:39,000
+ So there is a lot of human input involved which is making the whole process look.
+
+181
+00:11:39,000 --> 00:11:44,000
+ We have that the speed by using computer vision with your features.
+
+182
+00:11:44,000 --> 00:11:47,000
+ What we will say is we have now an assembly line.
+
+183
 00:11:47,000 --> 00:11:52,000
  You put the tomatoes in the assembly line as the pass of snapshots are taken.
 
-168
+184
 00:11:52,000 --> 00:11:56,000
  And you automatically classify whether it is a good tomato or bad tomato.
 
-169
+185
 00:11:56,000 --> 00:11:58,000
- And back of the tomatoes are from away.
+ And back of it is a problem.
 
-170
+186
 00:11:58,000 --> 00:11:59,000
  Right?
 
-171
-00:11:59,000 --> 00:12:00,000
- So you are saying that you are saying that you are saying that you are saying that you are
+187
+00:11:59,000 --> 00:12:02,000
+ So you are saying that you are saying that you are saying that you use a huge amount of human effort.
 
-172
-00:12:00,000 --> 00:12:01,000
- using a huge amount of human effort.
-
-173
-00:12:01,000 --> 00:12:03,000
+188
+00:12:02,000 --> 00:12:04,000
  And what are you making your process greater?
 
-174
-00:12:03,000 --> 00:12:09,000
- So you are saying that why this process we are able to make the living spirit.
+189
+00:12:04,000 --> 00:12:09,000
+ So you are saying that why this process you are able to make the living spirit.
 
-175
+190
 00:12:09,000 --> 00:12:10,000
  Right?
 
-176
-00:12:10,000 --> 00:12:14,000
- So let's now do one of the machine learning aspect of this problem spirit.
-
-177
-00:12:14,000 --> 00:12:20,000
- So if you remember that is why I just spoken that there is an enerity of data.
-
-178
-00:12:20,000 --> 00:12:21,000
- Right?
-
-179
-00:12:21,000 --> 00:12:24,000
- There is an enerity of experience and data.
-
-180
-00:12:24,000 --> 00:12:28,000
- So let's say that we have some pass data on the quality of tomatoes.
-
-181
-00:12:28,000 --> 00:12:34,000
- You have collected thousands of tomatoes and for each of the tomatoes some human expert
-
-182
-00:12:34,000 --> 00:12:37,000
- quantified whether it is a good tomato or bad tomato.
-
-183
-00:12:37,000 --> 00:12:42,000
- For now it is just any good or bad tomato talk on the scale of all the tomatoes.
-
-184
-00:12:42,000 --> 00:12:43,000
- Right?
-
-185
-00:12:43,000 --> 00:12:44,000
- There are two classes.
-
-186
-00:12:44,000 --> 00:12:45,000
- Two classes.
-
-187
-00:12:45,000 --> 00:12:50,000
- What visual features do you think would be useful to characterize the tomato?
-
-188
-00:12:50,000 --> 00:12:51,000
- Color?
-
-189
-00:12:51,000 --> 00:12:55,000
- Any...so what...what if they would be a good tomato?
-
-190
-00:12:55,000 --> 00:12:56,000
- You just...
-
 191
-00:12:56,000 --> 00:12:59,000
- Which is more red or more...
+00:12:10,000 --> 00:12:15,000
+ So let's now think about the machine learning aspect of this problem statement.
 
 192
-00:12:59,000 --> 00:13:01,000
- There is something on the shade of red.
+00:12:16,000 --> 00:12:21,000
+ So if you remember we have thus far just spoken that there is an enerity of data.
 
 193
-00:13:01,000 --> 00:13:03,000
- What is the data made of?
+00:12:21,000 --> 00:12:22,000
+ Right?
 
 194
-00:13:04,000 --> 00:13:10,000
- Something which is either showing some greenish shade, it may be an anterity.
+00:12:22,000 --> 00:12:24,000
+ There is an enerity of experience and data.
 
 195
-00:13:10,000 --> 00:13:16,000
- Black definitely or if it has some fungus or some other attributes.
+00:12:24,000 --> 00:12:29,000
+ So let's say that we have some pass data on the quality of tomatoes.
 
 196
-00:13:16,000 --> 00:13:19,000
- What is the other attributes which make it a little bit of bad?
+00:12:29,000 --> 00:12:35,000
+ We have collected thousands of tomatoes and for each of the tomatoes some human expert
 
 197
-00:13:19,000 --> 00:13:21,000
- It is a shade.
+00:12:35,000 --> 00:12:38,000
+ quantified whether it is a good tomato or bad tomato.
 
 198
+00:12:38,000 --> 00:12:43,000
+ For now let's just say we have a good environmental thought on the scale of all the environmental.
+
+199
+00:12:43,000 --> 00:12:44,000
+ Right?
+
+200
+00:12:44,000 --> 00:12:45,000
+ So we have a good process.
+
+201
+00:12:45,000 --> 00:12:46,000
+ Two classes.
+
+202
+00:12:46,000 --> 00:12:51,000
+ What visual features do you think would be useful to characterize the tomato?
+
+203
+00:12:51,000 --> 00:12:52,000
+ Color?
+
+204
+00:12:52,000 --> 00:12:56,000
+ Any, so what, what if it would be a good tomato?
+
+205
+00:12:56,000 --> 00:13:02,000
+ It is just more red or more, something on the shade of red.
+
+206
+00:13:02,000 --> 00:13:05,000
+ What is the data made of?
+
+207
+00:13:05,000 --> 00:13:11,000
+ Something which is either showing some greenish shade, it may be an anterity.
+
+208
+00:13:12,000 --> 00:13:17,000
+ Black definitely or if it has some fungus or some other attributes.
+
+209
+00:13:17,000 --> 00:13:20,000
+ What is the other attributes which make a tomato little bad?
+
+210
+00:13:20,000 --> 00:13:21,000
+ It is a shade.
+
+211
 00:13:21,000 --> 00:13:22,000
  Is it a shade?
 
-199
-00:13:22,000 --> 00:13:23,000
- Is it a shade?
-
-200
-00:13:23,000 --> 00:13:27,000
- It is a perfect surface.
-
-201
-00:13:27,000 --> 00:13:32,000
- So the...okay some...some...so the size is another attribute.
-
-202
-00:13:32,000 --> 00:13:39,000
- Let's say that we have seen for now that all tomatoes are roughly over and smaller tomatoes
-
-203
-00:13:39,000 --> 00:13:42,000
- are bad, very big tomatoes are also bad.
-
-204
-00:13:42,000 --> 00:13:47,000
- They are very injected with some growth...growth chemicals.
-
-205
-00:13:47,000 --> 00:13:52,000
- Size, whether we have seen, what are the other things you would typically do?
-
-206
-00:13:52,000 --> 00:13:53,000
- Fine.
-
-207
-00:13:53,000 --> 00:13:56,000
- Yeah, but visual features will not look at the people.
-
-208
-00:13:56,000 --> 00:13:58,000
- So you'll have to get some proxy for that.
-
-209
-00:13:59,000 --> 00:14:02,000
- So that is another thing which I want all of us to take from the machine learning course.
-
-210
-00:14:02,000 --> 00:14:05,000
- What are some of the proxy features we could take from?
-
-211
-00:14:05,000 --> 00:14:07,000
- Yes, texture.
-
 212
-00:14:07,000 --> 00:14:12,000
- So texture will tell us something about the field of the community, whether it's very rough,
+00:13:22,000 --> 00:13:25,000
+ Is it a shade that is a tomato or not?
 
 213
-00:14:12,000 --> 00:14:15,000
- there is more, there is light and etc.
+00:13:25,000 --> 00:13:28,000
+ It is a perfect surface.
 
 214
-00:14:15,000 --> 00:14:18,000
- So we looked at these three specific features.
+00:13:28,000 --> 00:13:33,000
+ So the size is another attribute.
 
 215
-00:14:18,000 --> 00:14:20,000
- Would there be others?
+00:13:33,000 --> 00:13:40,000
+ Let's say that we assume for now that all tomatoes are roughly oval and quality potatoes
 
 216
+00:13:40,000 --> 00:13:42,000
+ are very big tomatoes are also bad.
+
+217
+00:13:42,000 --> 00:13:48,000
+ They are very injected with some growth, growth chemicals.
+
+218
+00:13:48,000 --> 00:13:53,000
+ Size, whether we have seen, what are the other things you typically have?
+
+219
+00:13:53,000 --> 00:13:54,000
+ Fine.
+
+220
+00:13:54,000 --> 00:13:57,000
+ Yeah, but visual features will not look at the field.
+
+221
+00:13:57,000 --> 00:13:59,000
+ So you'll have to get some proxy for that.
+
+222
+00:13:59,000 --> 00:14:03,000
+ So that is another thing which I want all of us to take from the Michigan Learning course.
+
+223
+00:14:03,000 --> 00:14:06,000
+ What are some of the proxy features we could take from?
+
+224
+00:14:06,000 --> 00:14:07,000
+ Yes.
+
+225
+00:14:07,000 --> 00:14:08,000
+ Texture.
+
+226
+00:14:08,000 --> 00:14:14,000
+ So texture will tell us something about the field of the community, whether it's very
+
+227
+00:14:14,000 --> 00:14:16,000
+ rough, very smooth, very light, et cetera.
+
+228
+00:14:16,000 --> 00:14:19,000
+ So we look at these three specific features.
+
+229
+00:14:19,000 --> 00:14:20,000
+ Would there be others?
+
+230
 00:14:20,000 --> 00:14:22,000
  Yes, there might be thousands of other features.
 
-217
-00:14:22,000 --> 00:14:25,000
+231
+00:14:22,000 --> 00:14:27,000
  But for the purposes of this example, it's only these three.
 
-218
-00:14:26,000 --> 00:14:31,000
+232
+00:14:27,000 --> 00:14:32,000
  So we were talking about some vast data or some vast experience that we already have.
 
-219
-00:14:31,000 --> 00:14:35,000
+233
+00:14:32,000 --> 00:14:36,000
  Maybe it exists in a form of potato like this.
 
-220
-00:14:35,000 --> 00:14:40,000
- You have some sample, you have the color, size, texture, and you have the condition.
-
-221
-00:14:40,000 --> 00:14:45,000
- So this condition has been manually and data written down by human expert.
-
-222
-00:14:45,000 --> 00:14:57,000
- So in this particular table, you think sample number could be a useful attribute of feature
-
-223
-00:14:57,000 --> 00:14:59,000
- to predict the condition?
-
-224
-00:14:59,000 --> 00:15:01,000
- How many think yes?
-
-225
-00:15:01,000 --> 00:15:04,000
- How many think no?
-
-226
-00:15:04,000 --> 00:15:05,000
- Okay.
-
-227
-00:15:05,000 --> 00:15:08,000
- Now tell me that it could be a useful feature.
-
-228
-00:15:08,000 --> 00:15:10,000
- Now think more and more.
-
-229
-00:15:11,000 --> 00:15:14,000
- How could the sample number be useful?
-
-230
-00:15:22,000 --> 00:15:23,000
- Sorry.
-
-231
-00:15:23,000 --> 00:15:31,000
- No, so the equation is orange.
-
-232
-00:15:31,000 --> 00:15:35,000
- If the other is orange, decide the small, the texture is smooth.
-
-233
-00:15:35,000 --> 00:15:37,000
- I can roughly say the condition is good.
-
 234
-00:15:38,000 --> 00:15:43,000
- But does sample number be equal to 1, 10 because the parameters will be equal to 1?
+00:14:36,000 --> 00:14:42,000
+ You have some samples, you have the color, size, texture, and you have the condition.
 
 235
-00:15:43,000 --> 00:15:44,000
- Yes.
+00:14:42,000 --> 00:14:49,000
+ So this condition has been manually and a data written down by a human expert.
 
 236
-00:15:44,000 --> 00:15:45,000
- 1 and 2 are equal to 0.
+00:14:49,000 --> 00:14:58,000
+ So in this particular table, you think sample number would be a useful attribute of feature
 
 237
-00:15:45,000 --> 00:15:49,000
- It sequentially arranged the whole two, so it's not possible to do it.
+00:14:58,000 --> 00:15:00,000
+ to predict the condition?
 
 238
-00:15:49,000 --> 00:15:50,000
- Okay.
+00:15:00,000 --> 00:15:04,000
+ How many think yes?
 
 239
-00:15:50,000 --> 00:15:53,000
- We thought to try to find the data.
+00:15:04,000 --> 00:15:06,000
+ How many think no?
 
 240
-00:15:53,000 --> 00:15:54,000
+00:15:06,000 --> 00:15:07,000
  Okay.
 
 241
-00:15:54,000 --> 00:15:58,000
- But why do you think the sample number could be useful?
+00:15:07,000 --> 00:15:11,000
+ Now tell me that it could be a useful feature.
 
 242
-00:15:58,000 --> 00:16:03,000
- So some of you get it to the point that let's say if you sequentially arrange, then we will get something.
+00:15:11,000 --> 00:15:17,000
+ Now, how could the sample number be a useful feature?
 
 243
-00:16:03,000 --> 00:16:05,000
- But are we getting something?
+00:15:17,000 --> 00:15:22,000
+ Sorry.
 
 244
-00:16:05,000 --> 00:16:06,000
- Yes.
+00:15:23,000 --> 00:15:28,000
+ Sorry.
 
 245
-00:16:07,000 --> 00:16:08,000
- Okay.
+00:15:28,000 --> 00:15:33,000
+ No, so the equation is orange.
 
 246
-00:16:08,000 --> 00:16:11,000
- So, we'll just try to get it to the point that we can't qualify for.
+00:15:33,000 --> 00:15:36,000
+ If the other is orange, decide the small, the textless group.
 
 247
+00:15:36,000 --> 00:15:38,000
+ I can roughly say the condition is good.
+
+248
+00:15:38,000 --> 00:15:43,000
+ But does sample number equal to 1, 10, because the parameters will be good or bad?
+
+249
+00:15:43,000 --> 00:15:44,000
+ Yes.
+
+250
+00:15:44,000 --> 00:15:46,000
+ 1, 2, 3, 4, 3, 4, 3.
+
+251
+00:15:46,000 --> 00:15:53,000
+ So, you can see that the sample number is different.
+
+252
+00:15:53,000 --> 00:15:54,000
+ Okay.
+
+253
+00:15:54,000 --> 00:15:59,000
+ But why you think the sample number could be useful?
+
+254
+00:15:59,000 --> 00:16:03,000
+ So, some of you get it to the point that, let's say, it will be a sequence, we will get
+
+255
+00:16:03,000 --> 00:16:04,000
+ something.
+
+256
+00:16:04,000 --> 00:16:06,000
+ But are we getting something?
+
+257
+00:16:06,000 --> 00:16:07,000
+ Yes.
+
+258
+00:16:07,000 --> 00:16:11,000
+ So, in the time, the feature's might change and can't qualify for something.
+
+259
 00:16:11,000 --> 00:16:12,000
  Okay.
 
-248
-00:16:12,000 --> 00:16:17,000
+260
+00:16:13,000 --> 00:16:18,000
  So, he is answering that maybe there is a notion of time associated with samples, very likely
 
-249
-00:16:17,000 --> 00:16:18,000
- that could be.
+261
+00:16:18,000 --> 00:16:19,000
+ they could be.
 
-250
-00:16:18,000 --> 00:16:26,000
- And imagine a scenario where there is one specific time of the year, maybe when all of the variables
+262
+00:16:19,000 --> 00:16:26,000
+ And imagine a scenario where there is one specific time of the year, maybe when all of the
 
-251
+263
 00:16:26,000 --> 00:16:31,000
- are bad, maybe the producer was bad, maybe the leader was making the tomatoes was hot,
+ rates are bad, maybe the producer's bad, maybe the leader, which was bringing the tomatoes
 
-252
-00:16:31,000 --> 00:16:33,000
- had gone wrong, something would have happened.
+264
+00:16:31,000 --> 00:16:34,000
+ was had gone wrong, something would have happened.
 
-253
+265
 00:16:34,000 --> 00:16:38,000
- So, in some very limited cases, the sample number could be used for the feature.
+ So, in some very limited cases, the sample number could be a useful feature.
 
-254
+266
 00:16:38,000 --> 00:16:45,000
- But it's more likely that it's probably better to include more features, which are capturing
+ But it's more likely that it's probably better to include more features which are capturing
 
-255
+267
 00:16:45,000 --> 00:16:47,000
- the types of things we are looking at.
+ the 90th things we are looking at.
 
-256
+268
 00:16:47,000 --> 00:16:49,000
- For example, what was its vehicle condition?
+ For example, what was the peak-built condition?
 
-257
+269
 00:16:49,000 --> 00:16:53,000
- How many hours have passed through the way it was made?
+ How many hours had passed some three to wait hours right now?
 
-258
+270
 00:16:53,000 --> 00:16:55,000
  Things like that.
 
-259
+271
 00:16:55,000 --> 00:16:58,000
  The sample number might be giving them this up.
 
-260
-00:16:58,000 --> 00:17:02,000
- But then this could be the same example as we saw in the last lecture.
-
-261
-00:17:02,000 --> 00:17:09,000
- So, the sample number is more likely to be a good feature depending on how we model the
-
-262
-00:17:09,000 --> 00:17:10,000
- phone process.
-
-263
-00:17:10,000 --> 00:17:17,000
- So, for now, let's say you know to the sample number, imagine it does not provide any useful
-
-264
-00:17:17,000 --> 00:17:18,000
- information.
-
-265
-00:17:18,000 --> 00:17:22,000
- So, then we have some data data which looks like the following.
-
-266
-00:17:22,000 --> 00:17:23,000
- Okay.
-
-267
-00:17:24,000 --> 00:17:31,000
- We call this entire table the training set.
-
-268
-00:17:31,000 --> 00:17:36,000
- And if you noted it, I have labeled them in different colors.
-
-269
-00:17:36,000 --> 00:17:41,000
- Anyone wants to tell why you are looking for?
-
-270
-00:17:41,000 --> 00:17:42,000
- Okay.
-
-271
-00:17:42,000 --> 00:17:45,000
- And put an output as a very technical term.
-
 272
-00:17:45,000 --> 00:17:47,000
- Any other term you could talk?
+00:16:58,000 --> 00:17:03,000
+ But then this could be the same example as we saw in the last lecture, where more ice cream
 
 273
-00:17:47,000 --> 00:17:56,000
- There are about these two paths of the so far way.
+00:17:03,000 --> 00:17:06,000
+ means more sharper than ice.
 
 274
-00:17:56,000 --> 00:17:59,000
- So, this is the second way to explain it.
+00:17:06,000 --> 00:17:10,000
+ They were some correlation, but there was no confusion.
 
 275
-00:17:59,000 --> 00:18:01,000
- Experience and performance.
+00:17:10,000 --> 00:17:17,000
+ So, we have thus discussed that the sample number is likely or unlikely to be a good feature
 
 276
-00:18:01,000 --> 00:18:04,000
- So, the condition is not very good performance.
+00:17:17,000 --> 00:17:20,000
+ depending on how we model the whole process.
 
 277
-00:18:04,000 --> 00:18:11,000
- The condition is the annotation or the label or the output assigned to this particular item.
+00:17:20,000 --> 00:17:24,000
+ So, for now, let's ignore the sample number.
 
 278
-00:18:11,000 --> 00:18:14,000
- So, this is one parameter.
+00:17:24,000 --> 00:17:27,000
+ Imagine it does not provide any useful information.
 
 279
-00:18:14,000 --> 00:18:16,000
- The next one is one parameter.
+00:17:27,000 --> 00:17:32,000
+ So, then we have some data table which looks like the following.
 
 280
-00:18:16,000 --> 00:18:20,000
- It's not very good performance.
+00:17:32,000 --> 00:17:37,000
+ We will call this entire table the training set.
 
 281
-00:18:20,000 --> 00:18:25,000
- We call these things as features, item codes, or code gates.
+00:17:37,000 --> 00:17:42,000
+ And if you noted, I have labeled them in different columns.
 
 282
-00:18:25,000 --> 00:18:30,000
- If we go back, let's look at the equation which I was asking.
+00:17:42,000 --> 00:17:45,000
+ Anyone wants to tell why you are looking for?
 
 283
-00:18:30,000 --> 00:18:33,000
- What features do you think will be used?
+00:17:45,000 --> 00:17:53,000
+ Okay, and put an output as a very technical down any other term you could talk about.
 
 284
-00:18:33,000 --> 00:18:34,000
- Make sense?
+00:17:53,000 --> 00:17:56,000
+ These two paths are so far weighted.
 
 285
-00:18:34,000 --> 00:18:36,000
- These things are called features.
+00:17:56,000 --> 00:17:58,000
+ So, this looks like a weighted sweep.
 
 286
-00:18:36,000 --> 00:18:40,000
- The first three columns in the table are called features.
+00:17:58,000 --> 00:18:06,000
+ So, the condition is not very new performance.
 
 287
-00:18:40,000 --> 00:18:43,000
- They are telling us something useful about the termatum.
+00:18:06,000 --> 00:18:13,000
+ The condition is the annotation or the label or the output assigned to this particular item.
 
 288
-00:18:43,000 --> 00:18:47,000
- And then, what is the fourth feature that we have?
+00:18:13,000 --> 00:18:15,000
+ So, this is one parameter.
 
 289
-00:18:47,000 --> 00:18:52,000
- It's also the first, where features happen with OVA, if you're all used anonymously.
+00:18:15,000 --> 00:18:17,000
+ The extra is one parameter.
 
 290
-00:18:52,000 --> 00:18:54,000
- But you can generally use features that are handy.
+00:18:17,000 --> 00:18:21,000
+ It's not very new performance.
 
 291
-00:18:54,000 --> 00:18:58,000
- OVA is generally used in some of the features.
+00:18:21,000 --> 00:18:26,000
+ We call these things as features, item keys or code gates.
 
 292
-00:18:58,000 --> 00:19:04,000
- And the output of the condition in this case is called the output of the response label.
+00:18:26,000 --> 00:18:31,000
+ If we go back, let's look at the equation which I was asking.
 
 293
-00:19:04,000 --> 00:19:09,000
- What is the response once you've observed some features?
+00:18:31,000 --> 00:18:34,000
+ What features do you think will be used?
 
 294
-00:19:09,000 --> 00:19:13,000
- Everyone, here, till now.
+00:18:34,000 --> 00:18:35,000
+ Make sense?
 
 295
-00:19:13,000 --> 00:19:17,000
- Now, we call this a trading set.
+00:18:35,000 --> 00:18:37,000
+ These things are called features.
 
 296
-00:19:17,000 --> 00:19:19,000
- And for now, it produces a bit of populism.
+00:18:37,000 --> 00:18:40,000
+ The first three columns in the table are called features.
 
 297
-00:19:19,000 --> 00:19:25,000
- We call this entire matrix as D.
+00:18:40,000 --> 00:18:44,000
+ They are telling us something useful about the tomato.
 
 298
-00:19:25,000 --> 00:19:28,000
- We call this feature matrix.
+00:18:44,000 --> 00:18:47,000
+ What is the fourth feature that I'm asking?
 
 299
-00:19:28,000 --> 00:19:31,000
- It contains N samples.
+00:18:47,000 --> 00:18:53,000
+ So, it's also the first, while the features are happening with oboe, if you're not using synonymously.
 
 300
-00:19:31,000 --> 00:19:33,000
- What is N?
+00:18:53,000 --> 00:18:55,000
+ We will generally use features that are happening.
 
 301
-00:19:33,000 --> 00:19:36,000
- N equal to four samples.
+00:18:55,000 --> 00:18:59,000
+ Obedience is generally used in some of the features.
 
 302
+00:18:59,000 --> 00:19:05,000
+ And the output of the condition in this case is called the output of the response variable.
+
+303
+00:19:05,000 --> 00:19:10,000
+ What is the response once you've observed some features?
+
+304
+00:19:10,000 --> 00:19:14,000
+ Everyone, here, now.
+
+305
+00:19:14,000 --> 00:19:17,000
+ Now, we call this a training set.
+
+306
+00:19:17,000 --> 00:19:20,000
+ And let's, for now, introduce a bit of populism.
+
+307
+00:19:20,000 --> 00:19:24,000
+ We call this entire matrix as D.
+
+308
+00:19:24,000 --> 00:19:29,000
+ We call this feature matrix.
+
+309
+00:19:29,000 --> 00:19:31,000
+ It contains N samples.
+
+310
+00:19:31,000 --> 00:19:36,000
+ What is N equal to four samples?
+
+311
 00:19:36,000 --> 00:19:41,000
  And what is the features in this?
 
-303
-00:19:41,000 --> 00:19:45,000
- The number of features is color, size, and texture, which is three features.
+312
+00:19:41,000 --> 00:19:46,000
+ There are a number of features that are colored sides in the picture, which is P features.
 
-304
-00:19:45,000 --> 00:19:55,000
- So the matrix X shown in the shader pane is four rows of three columns matrix.
+313
+00:19:46,000 --> 00:19:56,000
+ So, the matrix X shown in the shader pane is four rows of these columns matrix.
 
-305
-00:19:55,000 --> 00:20:00,000
- It contains N samples with a RPM, right?
+314
+00:19:56,000 --> 00:20:00,000
+ It contains N samples with the Rp and Mm.
 
-306
-00:20:00,000 --> 00:20:06,000
- And we can write an individual sample as something like this.
+315
+00:20:00,000 --> 00:20:07,000
+ We can write an individual sample as something like this.
 
-307
-00:20:06,000 --> 00:20:11,000
+316
+00:20:07,000 --> 00:20:13,000
  Like X1, we can write as orange, small, smooth.
 
-308
-00:20:11,000 --> 00:20:13,000
- Or a small, smooth.
-
-309
+317
 00:20:13,000 --> 00:20:20,000
  Does anyone want to tell you why X1 is written in a column format where in this particular matrix,
 
-310
+318
 00:20:20,000 --> 00:20:23,000
  X1 appears in a row?
 
-311
+319
 00:20:23,000 --> 00:20:24,000
- Why?
+ Y.
 
-312
+320
 00:20:24,000 --> 00:20:26,000
  That is the operation.
 
-313
-00:20:26,000 --> 00:20:33,000
- So typically, when you consider the features, or you consider a particular sample, you consider
+321
+00:20:26,000 --> 00:20:27,000
+ Yes.
 
-314
-00:20:33,000 --> 00:20:35,000
- that to be a column vector, right?
+322
+00:20:27,000 --> 00:20:35,000
+ So, typically when you consider the features, or you consider a particular sample, you consider that to be a form vector.
 
-315
-00:20:35,000 --> 00:20:40,000
- So this is where now we started to produce a little bit of annotations.
+323
+00:20:35,000 --> 00:20:36,000
+ Right?
 
-316
-00:20:40,000 --> 00:20:46,000
- Each sample is a column vector, which is what I'm interested on.
+324
+00:20:36,000 --> 00:20:41,000
+ So, this is where now we started to produce a little bit of annotations.
 
-317
+325
+00:20:41,000 --> 00:20:46,000
+ Each sample is a column vector, which is what I am using now.
+
+326
 00:20:46,000 --> 00:20:48,000
  What is the dimension of this?
 
-318
-00:20:48,000 --> 00:20:53,000
- P is equal to three in this case, orange, small, smooth, smooth, smooth, right?
-
-319
-00:20:54,000 --> 00:21:00,000
- That's candidate X as XI transpose where I use from one to n, right?
-
-320
-00:21:00,000 --> 00:21:10,000
- This is X1 transpose, this is X2 transpose, the third row is, can in fact, the third row is X3 transpose
-
-321
-00:21:10,000 --> 00:21:12,000
- and X4 transpose, right?
-
-322
-00:21:12,000 --> 00:21:19,000
- So we are able to now write the matrix X in terms of the individual elements.
-
-323
-00:21:19,000 --> 00:21:43,000
- So when we have an output vector Y, now this is going to be Y non-
-
-324
-00:21:43,000 --> 00:21:50,000
- XI transpose, right?
-
-325
-00:21:50,000 --> 00:22:01,000
- So this way we are able to create this entire training set, the reference size format depending on the Ix sample.
-
-326
-00:22:01,000 --> 00:22:08,000
- So again, XI belongs to, it's a B M integral vector and Y is an integral vector.
-
 327
-00:22:08,000 --> 00:22:12,000
- Everyone clear the spot?
+00:20:48,000 --> 00:20:54,000
+ P is equal to P in this case, orange, small, smooth, P.
 
 328
-00:22:12,000 --> 00:22:19,000
- Now, the prediction task, this is where machine learning lens is usually right?
+00:20:54,000 --> 00:21:00,000
+ That's camera X as Xi transpose where I use from one to one.
 
 329
-00:22:19,000 --> 00:22:23,000
- If we only had trained set, there is no access used for it.
-
-330
-00:22:23,000 --> 00:22:28,000
- What you wanted to do was for unseen samples of our scheme for these samples,
-
-331
-00:22:28,000 --> 00:22:33,000
- for which a human has not yet annotated as a good commit or bad commit.
-
-332
-00:22:33,000 --> 00:22:40,000
- You want them to be fast in the seminary and the computer vision approach, which there is some camera,
-
-333
-00:22:40,000 --> 00:22:46,000
- which is looking at these tomatoes, you want to tell what the condition is for them, right?
-
-334
-00:22:46,000 --> 00:22:48,000
- This is a goal clear to everyone.
-
-335
-00:22:48,000 --> 00:22:55,000
- So for future unseen tomatoes, of which you don't have a human annotated answer,
-
-336
-00:22:55,000 --> 00:23:00,000
- you want to tell whether the condition is better bad and then you want to accordingly process.
-
-337
-00:23:00,000 --> 00:23:07,000
- So we have for these unseen samples that I would draw a line to set very good route.
-
-338
-00:23:07,000 --> 00:23:10,000
- For these unseen samples, we still observe the input features.
-
-339
-00:23:10,000 --> 00:23:17,000
- We still observe the color, size and texture as given by the computer vision system, right?
-
-340
-00:23:17,000 --> 00:23:21,000
- But we don't know the condition. That is what we're trying to do.
-
-341
-00:23:21,000 --> 00:23:23,000
- Yeah?
-
-342
-00:23:23,000 --> 00:23:28,000
- We now break this whole matrix into two subsets.
-
-343
-00:23:28,000 --> 00:23:35,000
- The first we've already discussed is the training set, which we said was the matrix D.
-
-344
-00:23:35,000 --> 00:23:42,000
- And now we have the test set where we have these specific entities on the condition as unknown,
-
-345
-00:23:42,000 --> 00:23:44,000
- which we're trying to estimate today.
-
-346
-00:23:44,000 --> 00:23:45,000
+00:21:00,000 --> 00:21:01,000
  Right?
 
+330
+00:21:01,000 --> 00:21:02,000
+ This is X1 transpose.
+
+331
+00:21:02,000 --> 00:21:03,000
+ This is X2 transpose.
+
+332
+00:21:03,000 --> 00:21:10,000
+ The third row is, can in fact, the third row is X3 transpose
+
+333
+00:21:10,000 --> 00:21:11,000
+ and X4 transpose.
+
+334
+00:21:11,000 --> 00:21:12,000
+ Right?
+
+335
+00:21:12,000 --> 00:21:18,000
+ So, we are able to now write the matrix X in terms of the individual elements.
+
+336
+00:21:18,000 --> 00:21:25,000
+ So, when we have an output vector Y, now this is going to be Y number.
+
+337
+00:21:25,000 --> 00:21:26,000
+ Right?
+
+338
+00:21:26,000 --> 00:21:30,000
+ Because for now, for the simple example, we have a single output.
+
+339
+00:21:30,000 --> 00:21:36,000
+ Single output variable or response variable, which is going to be Rn.
+
+340
+00:21:36,000 --> 00:21:37,000
+ Right?
+
+341
+00:21:37,000 --> 00:21:39,000
+ Because we have any examples.
+
+342
+00:21:39,000 --> 00:21:49,000
+ Can we thus write this training set D as a set where we have Xi transpose from a binary
+
+343
+00:21:49,000 --> 00:21:51,000
+ and I release from one to one.
+
+344
+00:21:51,000 --> 00:21:52,000
+ Right?
+
+345
+00:21:52,000 --> 00:21:56,000
+ So, this way we are able to create this entire training set.
+
+346
+00:21:56,000 --> 00:22:01,000
+ It can size comma depending on the Ix sample.
+
 347
-00:23:45,000 --> 00:23:52,000
- So the testing set will be very similar to the training set, but it does not indicate the labels for the output variable.
+00:22:01,000 --> 00:22:02,000
+ Right?
 
 348
+00:22:02,000 --> 00:22:09,000
+ So, when Xi belongs to, is a B M integral vector and Y is an integral vector.
+
+349
+00:22:09,000 --> 00:22:13,000
+ Everyone clear the spot?
+
+350
+00:22:13,000 --> 00:22:20,000
+ Now, the prediction tasks, this is where machine learning lengths usually.
+
+351
+00:22:20,000 --> 00:22:21,000
+ Right?
+
+352
+00:22:21,000 --> 00:22:25,000
+ If we only have trained set, there is no access used for it.
+
+353
+00:22:25,000 --> 00:22:30,000
+ What we wanted to do was for unseen samples of our scheme for these samples, for which
+
+354
+00:22:30,000 --> 00:22:34,000
+ a human has not yet annotated as a good familiar vector.
+
+355
+00:22:34,000 --> 00:22:41,000
+ We wanted to be fast in the seminary and compute the vision approach which there is on camera,
+
+356
+00:22:41,000 --> 00:22:46,000
+ which is looking at these, the videos you want to take, or the field conditions for them.
+
+357
+00:22:46,000 --> 00:22:47,000
+ Right?
+
+358
+00:22:47,000 --> 00:22:49,000
+ This is a goal clear to everyone.
+
+359
+00:22:49,000 --> 00:22:56,000
+ So, for future unseen tomatoes, of which you do not have a human annotated answer,
+
+360
+00:22:56,000 --> 00:23:00,000
+ you want to tell whether the condition is better bad, and then you want to accordingly
+
+361
+00:23:00,000 --> 00:23:01,000
+ process.
+
+362
+00:23:01,000 --> 00:23:08,000
+ So, we have for these unseen samples that I would draw a line to separate these out.
+
+363
+00:23:08,000 --> 00:23:11,000
+ For these unseen samples, we still observe the input features.
+
+364
+00:23:11,000 --> 00:23:17,000
+ We still observe the color, size, and texture as given by the computer vision system.
+
+365
+00:23:17,000 --> 00:23:18,000
+ Right?
+
+366
+00:23:18,000 --> 00:23:20,000
+ But we do not know the condition.
+
+367
+00:23:20,000 --> 00:23:22,000
+ That is what we are trying to do.
+
+368
+00:23:22,000 --> 00:23:23,000
+ Yeah?
+
+369
+00:23:24,000 --> 00:23:29,000
+ We now break this whole matrix into two subsets.
+
+370
+00:23:29,000 --> 00:23:36,000
+ The first we have already discussed is the training set, which we set as the matrix D.
+
+371
+00:23:36,000 --> 00:23:43,000
+ And now we have the test set where we have these specific entries on the condition as unknown,
+
+372
+00:23:43,000 --> 00:23:45,000
+ which we are drawing in the estimate today.
+
+373
+00:23:45,000 --> 00:23:46,000
+ Right?
+
+374
+00:23:46,000 --> 00:23:51,000
+ So, testing set will be very similar to the training set, but it does not mean the labels
+
+375
+00:23:51,000 --> 00:23:52,000
+ or the output variable.
+
+376
 00:23:52,000 --> 00:23:53,000
  Right?
 
-349
-00:23:53,000 --> 00:23:55,000
+377
+00:23:53,000 --> 00:23:56,000
  Everyone clear the distinction between training and testing?
 
-350
-00:23:55,000 --> 00:23:56,000
- Right?
-
-351
-00:23:59,000 --> 00:24:00,000
- Okay.
-
-352
-00:24:00,000 --> 00:24:10,000
- So given the background that we have thus far, could we now tell what we're trying to do from this example in a more succinct fashion?
-
-353
-00:24:10,000 --> 00:24:15,000
- What do we hope to do given the training set, given the test set?
-
-354
-00:24:15,000 --> 00:24:19,000
- And we have to have some learning component.
-
-355
-00:24:19,000 --> 00:24:23,000
- It's the relating line.
-
-356
-00:24:23,000 --> 00:24:29,000
- How do you relate the input to the output?
-
-357
-00:24:29,000 --> 00:24:33,000
- I don't need a precise answer, but you can relate.
-
-358
-00:24:33,000 --> 00:24:39,000
- You can write the output as some function of the input.
-
-359
-00:24:39,000 --> 00:24:42,000
- Thus far, we don't know what kind of function is this.
-
-360
-00:24:42,000 --> 00:24:46,000
- And the three algorithms we have are different functions relating the output to the input.
-
-361
-00:24:46,000 --> 00:24:53,000
- But we want to be able to predict the output using some function from let's say for now.
-
-362
-00:24:53,000 --> 00:24:56,000
- And where do we learn this F from?
-
-363
-00:24:56,000 --> 00:24:58,000
- This function F from?
-
-364
-00:24:58,000 --> 00:24:59,000
- It is.
-
-365
-00:24:59,000 --> 00:25:00,000
- From the training set.
-
-366
-00:25:00,000 --> 00:25:04,000
- And where do we apply this function F on?
-
-367
-00:25:04,000 --> 00:25:07,000
- On the testing set.
-
-368
-00:25:07,000 --> 00:25:15,000
- So that given this, for this particular sample, given the inputs red, red, and red, you want to predict the condition.
-
-369
-00:25:15,000 --> 00:25:16,000
- Right?
-
-370
-00:25:16,000 --> 00:25:21,000
- And the general rule would be that we're able to do this accurately, otherwise it does not make any sense.
-
-371
-00:25:21,000 --> 00:25:22,000
- Right?
-
-372
-00:25:23,000 --> 00:25:27,000
- Okay, now a big question.
-
-373
-00:25:27,000 --> 00:25:33,000
- Is predicting on the test set enough to say that the model is invalidating?
-
-374
-00:25:33,000 --> 00:25:37,000
- Why or why not?
-
-375
-00:25:37,000 --> 00:25:44,000
- The test set now is missing out the outliers.
-
-376
-00:25:44,000 --> 00:25:45,000
- Okay?
-
-377
-00:25:45,000 --> 00:25:48,000
- So we will say that if test set mind is missing out the outliers,
-
 378
-00:25:48,000 --> 00:25:52,000
- so we can add a little more weight rate.
+00:23:56,000 --> 00:23:57,000
+ Right?
 
 379
-00:25:52,000 --> 00:25:53,000
+00:23:57,000 --> 00:23:58,000
  Okay.
 
 380
-00:25:53,000 --> 00:25:54,000
- Okay.
+00:23:58,000 --> 00:24:06,000
+ So, given the background that we have thus far, could we now tell what we are trying to
 
 381
-00:25:54,000 --> 00:25:55,000
- Okay.
+00:24:06,000 --> 00:24:09,000
+ do from this example in a more succinct fashion?
 
 382
-00:25:55,000 --> 00:25:56,000
- Okay.
+00:24:09,000 --> 00:24:16,000
+ What do we hope to do given the training set, given the test set?
 
 383
-00:25:56,000 --> 00:26:01,000
- So the answer is the answer that he is giving is that they could be some exceptions.
+00:24:17,000 --> 00:24:26,000
+ And we have to have some learning output.
 
 384
-00:26:01,000 --> 00:26:03,000
- They could be some outliers.
+00:24:26,000 --> 00:24:31,000
+ How do you relate the input to the output?
 
 385
-00:26:03,000 --> 00:26:06,000
- But that is getting to the right answer.
+00:24:31,000 --> 00:24:39,000
+ I do not need a precise answer, but you can relate, you can write the output as some function
 
 386
-00:26:06,000 --> 00:26:08,000
- You need to make a movement.
+00:24:39,000 --> 00:24:40,000
+ of the input.
 
 387
-00:26:08,000 --> 00:26:11,000
- The case that not the accurate is missing.
+00:24:40,000 --> 00:24:43,000
+ Thus far, we do not know what kind of function is this.
 
 388
-00:26:11,000 --> 00:26:14,000
- The case that it does not have annotations.
+00:24:43,000 --> 00:24:48,000
+ And different algorithms we have with different functions, predicting the output of the input.
 
 389
-00:26:14,000 --> 00:26:16,000
- So what will it be?
+00:24:48,000 --> 00:24:54,000
+ But we want to be able to predict the output using some functional form, let us say, for
 
 390
-00:26:16,000 --> 00:26:17,000
- What will it be?
+00:24:54,000 --> 00:24:55,000
+ an answer.
 
 391
-00:26:17,000 --> 00:26:19,000
- How will you predict the accuracy?
+00:24:55,000 --> 00:24:57,000
+ And where do we learn this F from?
 
 392
-00:26:19,000 --> 00:26:21,000
- How will we check the accuracy?
+00:24:57,000 --> 00:24:59,000
+ This function F from?
 
 393
-00:26:21,000 --> 00:26:23,000
- How will we check the accuracy?
+00:24:59,000 --> 00:25:00,000
+ It is.
 
 394
-00:26:23,000 --> 00:26:25,000
- How will we check the accuracy?
+00:25:00,000 --> 00:25:01,000
+ From the training set.
 
 395
-00:26:25,000 --> 00:26:26,000
- How will we check the accuracy?
+00:25:01,000 --> 00:25:06,000
+ And where do we apply this function F on?
 
 396
-00:26:26,000 --> 00:26:27,000
- Yeah, so we'll come to that.
+00:25:06,000 --> 00:25:08,000
+ On the testing set.
 
 397
-00:26:27,000 --> 00:26:28,000
- Bye-bye.
+00:25:08,000 --> 00:25:15,000
+ So, that given this, for this particular sample, given the inputs red, red, and red, you want
 
 398
-00:26:28,000 --> 00:26:29,000
- Yes, yes.
+00:25:15,000 --> 00:25:16,000
+ to predict the condition.
 
 399
-00:26:29,000 --> 00:26:30,000
- Okay.
+00:25:16,000 --> 00:25:17,000
+ Right?
 
 400
-00:26:30,000 --> 00:26:41,000
- The test set may be a subset of the brain set and your answer was that the test set might have some outliers.
+00:25:17,000 --> 00:25:21,000
+ And the general rule would be that we are able to do this accurately otherwise it does not
 
 401
-00:26:41,000 --> 00:26:44,000
- Both of you are really there.
+00:25:21,000 --> 00:25:22,000
+ make any sense.
 
 402
-00:26:44,000 --> 00:26:46,000
- Can we do some?
+00:25:22,000 --> 00:25:23,000
+ Right?
 
 403
-00:26:46,000 --> 00:26:47,000
- Over-thinking.
+00:25:23,000 --> 00:25:24,000
+ Okay.
 
 404
-00:26:47,000 --> 00:26:48,000
- Let's do.
+00:25:24,000 --> 00:25:27,000
+ Now, a big question.
 
 405
-00:26:48,000 --> 00:26:51,000
- So we have not thus introduced it on the cooperate.
+00:25:27,000 --> 00:25:34,000
+ Is predicting on the test set enough to say that the model is invalidating?
 
 406
-00:26:51,000 --> 00:26:56,000
- Can we use some simpler numbers we have seen thus far?
+00:25:35,000 --> 00:25:40,000
+ Why or why not?
 
 407
-00:26:56,000 --> 00:27:05,000
- Think of sometimes you might have covered in some probability codes.
+00:25:40,000 --> 00:25:42,000
+ The test set, now you can.
 
 408
-00:27:05,000 --> 00:27:06,000
- Okay.
+00:25:42,000 --> 00:25:43,000
+ Missing out the outliers.
 
 409
-00:27:06,000 --> 00:27:07,000
- Okay.
+00:25:43,000 --> 00:25:44,000
+ Missing out the outliers.
 
 410
-00:27:07,000 --> 00:27:08,000
+00:25:44,000 --> 00:25:45,000
  Okay.
 
 411
-00:27:08,000 --> 00:27:09,000
- Okay.
+00:25:45,000 --> 00:25:49,000
+ So, we are saying that the test set, why you can be missing out the outliers.
 
 412
-00:27:09,000 --> 00:27:10,000
- Okay.
+00:25:49,000 --> 00:25:53,000
+ So, we can add a little more weight rate.
 
 413
-00:27:11,000 --> 00:27:17,000
- So the ideal thing that we want to do is to be predicting where all possible inputs.
+00:25:53,000 --> 00:25:54,000
+ Okay.
 
 414
-00:27:17,000 --> 00:27:18,000
- Right?
+00:25:54,000 --> 00:25:55,000
+ Okay.
 
 415
-00:27:18,000 --> 00:27:21,000
- The emphasis on all possible inputs.
+00:25:55,000 --> 00:25:56,000
+ Okay.
 
 416
-00:27:21,000 --> 00:27:24,000
- But can we test that?
+00:25:56,000 --> 00:26:02,000
+ So, the answer is, the answer that he is giving is that there could be some exceptions.
 
 417
-00:27:24,000 --> 00:27:28,000
- Can the test set be all possible inputs?
+00:26:02,000 --> 00:26:04,000
+ They could be some outliers.
 
 418
-00:27:28,000 --> 00:27:38,000
- Maybe an ideal case, yes, but in a more practical case, no, you will never be able to enumerate all possible test cases.
+00:26:04,000 --> 00:26:07,000
+ But that is getting to the right answer.
 
 419
-00:27:39,000 --> 00:27:44,000
- And now relating to the answer, which some of you have already given.
+00:26:07,000 --> 00:26:12,000
+ But you need to make a movement.
 
 420
-00:27:44,000 --> 00:27:50,000
- So one way to put it would be that the test set is only a sample for all possible inputs.
+00:26:12,000 --> 00:26:16,000
+ The case that, it does not have annotations.
 
 421
-00:27:50,000 --> 00:27:51,000
- Right?
+00:26:16,000 --> 00:26:17,000
+ So, what will be?
 
 422
-00:27:51,000 --> 00:27:56,000
- So this now answers or this now relates to the answer we're talking about how high it is.
+00:26:17,000 --> 00:26:19,000
+ How will you take the accuracy?
 
 423
-00:27:56,000 --> 00:28:02,000
- You could end up choosing a test set which is a very expensive case, a lot of how high it is.
+00:26:19,000 --> 00:26:20,000
+ How will we take the accuracy?
 
 424
-00:28:02,000 --> 00:28:16,000
- But what can take out why it's which might be present in all possible inputs and also relates to your specific answer that the test set could be a part of the brain set because it's now a sample for all possible inputs.
+00:26:20,000 --> 00:26:21,000
+ How will we take the accuracy?
 
 425
-00:28:16,000 --> 00:28:31,000
- More generally we have something very simple because there are some or there are some generating process which generates the brain data which I'm calling there as the empirical data sample.
+00:26:21,000 --> 00:26:25,000
+ So, we come to the specific question of how we do we take the accuracy.
 
 426
-00:28:31,000 --> 00:28:34,000
- And I've written a technical term here, I do.
+00:26:25,000 --> 00:26:26,000
+ Right?
 
 427
-00:28:34,000 --> 00:28:37,000
- So this is identity and independence distributed.
+00:26:26,000 --> 00:26:27,000
+ Yeah.
 
 428
-00:28:37,000 --> 00:28:44,000
- If I would recommend that if you don't know this term again, go back and study some of the great records mentioned.
+00:26:27,000 --> 00:26:28,000
+ So, we come to that.
 
 429
-00:28:44,000 --> 00:29:00,000
- You sample from the hidden proof or you generate data from the computer process, you're able to get some free data which you'll learn, you'll get a model which in a previous case was some functioned net that we will learn.
+00:26:28,000 --> 00:26:29,000
+ Right?
 
 430
-00:29:00,000 --> 00:29:08,000
- Once you've learned by constantly you predict using unseen data, you predict another sample.
+00:26:29,000 --> 00:26:30,000
+ Yes.
 
 431
-00:29:08,000 --> 00:29:18,000
- So that sample is again also coming from the same data set, from the same underlying distribution of the same generating process by both the data.
+00:26:31,000 --> 00:26:32,000
+ Okay.
 
 432
-00:29:18,000 --> 00:29:25,000
- So what now we get is that the training set and the effort of samples are from the hidden proof distribution.
+00:26:32,000 --> 00:26:37,000
+ The test set may be a subset of the brain set.
 
 433
-00:29:25,000 --> 00:29:28,000
- Sometimes it's also known as population.
+00:26:37,000 --> 00:26:42,000
+ And your answer was that the test set might have some outliers.
 
 434
-00:29:28,000 --> 00:29:31,000
- You're getting some samples from the population.
+00:26:42,000 --> 00:26:44,000
+ Both of you are really there.
 
 435
-00:29:31,000 --> 00:29:35,000
- So the test set will not contain all the samples.
+00:26:44,000 --> 00:26:45,000
+ Come, take us some.
 
 436
-00:29:35,000 --> 00:29:43,000
- In order to say that our model generalizes perfectly, we would have had to see the entire population, which is never the case.
+00:26:45,000 --> 00:26:46,000
+ All right.
 
 437
-00:29:43,000 --> 00:29:54,000
- And we have much more deeper differences between the test set and the group population.
+00:26:46,000 --> 00:26:47,000
+ Over-thinking.
 
 438
-00:29:54,000 --> 00:30:01,000
- Once we study biasing the sample switch, hopefully it will come from the next lecture.
+00:26:47,000 --> 00:26:48,000
+ That's good.
 
 439
-00:30:01,000 --> 00:30:04,000
- Everyone clear the line?
+00:26:48,000 --> 00:26:51,000
+ So, we have not thus introduced it on that over-thinking.
 
 440
-00:30:05,000 --> 00:30:16,000
- Okay, so we have last part seen one particular type of machine learning task, where you're trying to classify whether the object or whether the particular the meters would have had.
+00:26:51,000 --> 00:26:56,000
+ Can you use some simpler numbers we have seen thus far?
 
 441
-00:30:16,000 --> 00:30:19,000
- We now look at a very different example.
+00:26:57,000 --> 00:27:02,000
+ Think of sometimes you might have covered in some probability code.
 
 442
-00:30:19,000 --> 00:30:24,000
- We want to predict the analytical data of IT on the other campus.
+00:27:13,000 --> 00:27:19,000
+ So, the ideal thing that we want to do is to be creating well of all possible inputs.
 
 443
-00:30:24,000 --> 00:30:26,000
- So again same exercise.
+00:27:19,000 --> 00:27:20,000
+ Right?
 
 444
-00:30:26,000 --> 00:30:31,000
- What factors do you think the energy consumption should depends on?
+00:27:20,000 --> 00:27:23,000
+ The emphasis on all possible inputs.
 
 445
-00:30:32,000 --> 00:30:34,000
- Can you quantify that?
+00:27:24,000 --> 00:27:25,000
+ But can you test that?
 
 446
-00:30:34,000 --> 00:30:37,000
- Because whether it's again one specific aspect of IT.
+00:27:25,000 --> 00:27:28,000
+ Can the test set be all possible inputs?
 
 447
-00:30:37,000 --> 00:30:40,000
- Humanity temperature, okay.
+00:27:28,000 --> 00:27:31,000
+ Maybe an ideal case.
 
 448
-00:30:40,000 --> 00:30:43,000
- What is the humidity is more?
+00:27:31,000 --> 00:27:32,000
+ Yes.
 
 449
-00:30:43,000 --> 00:30:46,000
- Do you think the energy is more or less?
+00:27:32,000 --> 00:27:38,000
+ But in a more practical case, you know, you will never be able to enumerate all possible test
 
 450
-00:30:46,000 --> 00:30:47,000
- More?
+00:27:38,000 --> 00:27:39,000
+ cases.
 
 451
-00:30:47,000 --> 00:30:50,000
- Okay, more or more temperature?
+00:27:39,000 --> 00:27:45,000
+ And now relating to the answer which some of you have already given.
 
 452
-00:30:50,000 --> 00:30:54,000
- Temperature is more, what energy do you want?
+00:27:45,000 --> 00:27:51,000
+ So, one way to put it would be that the test set is only a sample for all possible inputs.
 
 453
-00:30:54,000 --> 00:30:55,000
- Fine.
+00:27:51,000 --> 00:27:52,000
+ Right?
 
 454
-00:30:55,000 --> 00:30:56,000
- More and additional cost.
+00:27:52,000 --> 00:27:57,000
+ So, this now relates to the answer we are talking about outliers.
 
 455
-00:30:56,000 --> 00:31:01,000
- Okay, what are the other factors the capital energy to depend on?
+00:27:57,000 --> 00:28:03,000
+ You could end up using a test set which is a very, which contains a lot of outliers, but
 
 456
-00:31:01,000 --> 00:31:02,000
- Energy.
+00:28:03,000 --> 00:28:07,000
+ does not contain outliers which might be present in all possible inputs.
 
 457
-00:31:02,000 --> 00:31:03,000
- Energy.
+00:28:07,000 --> 00:28:13,000
+ And also, it's to your specific answer that the test set would be a part of the brain set
 
 458
-00:31:03,000 --> 00:31:04,000
- Energy.
+00:28:13,000 --> 00:28:17,000
+ because it's now a sample for all possible inputs.
 
 459
-00:31:04,000 --> 00:31:05,000
- Okay.
+00:28:17,000 --> 00:28:24,000
+ So, we have to think, let's think of it as some origin or there is some generating process
 
 460
-00:31:05,000 --> 00:31:06,000
- Then?
+00:28:24,000 --> 00:28:31,000
+ which generates the brain data which I am calling there as the empirical data sample.
 
 461
-00:31:06,000 --> 00:31:07,000
- Okay.
+00:28:31,000 --> 00:28:34,000
+ And I have written a technical term here, IID.
 
 462
-00:31:07,000 --> 00:31:08,000
- Okay, number of people, number of occupants.
+00:28:34,000 --> 00:28:37,000
+ So, this is identity and independence distributed.
 
 463
-00:31:08,000 --> 00:31:12,000
- And if there are more occupants, do you expect more energy to happen?
+00:28:37,000 --> 00:28:44,000
+ If I would recommend that if you don't know this term again, go back and study some of
 
 464
-00:31:12,000 --> 00:31:14,000
- Generally yes.
+00:28:44,000 --> 00:28:46,000
+ the greedy rooters.
 
 465
-00:31:14,000 --> 00:31:15,000
- Any other factor?
+00:28:46,000 --> 00:28:53,000
+ You sample from the greedy root or you generate data from the key process, you are able to
 
 466
-00:31:15,000 --> 00:31:16,000
- No.
+00:28:53,000 --> 00:29:00,000
+ get some free data which you learn, you get a model which in a previous case was some
 
 467
-00:31:16,000 --> 00:31:17,000
- Sorry.
+00:29:00,000 --> 00:29:02,000
+ function S that we will learn in.
 
 468
-00:31:17,000 --> 00:31:18,000
- No.
+00:29:02,000 --> 00:29:09,000
+ Once you've learned by function you predict using unseen data, you predict another sample.
 
 469
-00:31:18,000 --> 00:31:19,000
- Okay.
+00:29:09,000 --> 00:29:15,000
+ So, that sample is again also coming from the same data set, from same underlying distributed
 
 470
-00:31:20,000 --> 00:31:21,000
- Okay.
+00:29:15,000 --> 00:29:20,000
+ or same generating process by both of you.
 
 471
-00:31:21,000 --> 00:31:27,000
- On the side of the airport, there are some other aspects of a campus energy they don't manage.
+00:29:20,000 --> 00:29:25,000
+ So, what now we get is that the gradient set and the test set of samples are from the
 
 472
-00:31:27,000 --> 00:31:28,000
- Right.
+00:29:25,000 --> 00:29:26,000
+ identity distribution.
 
 473
-00:31:28,000 --> 00:31:30,000
- We call this a quality term.
+00:29:26,000 --> 00:29:33,000
+ Sometimes it is also known as population, you are getting some samples from the population.
 
 474
-00:31:30,000 --> 00:31:31,000
- Some of them.
+00:29:33,000 --> 00:29:36,000
+ So, the test set will not contain all the samples.
 
 475
-00:31:31,000 --> 00:31:32,000
- Okay.
+00:29:36,000 --> 00:29:43,000
+ In order to say that our model generalizes perfectly, we would have had to see the entire
 
 476
-00:31:32,000 --> 00:31:33,000
- What are the assets?
+00:29:43,000 --> 00:29:46,000
+ population which is never the same.
 
 477
-00:31:33,000 --> 00:31:34,000
- It's the energy.
+00:29:46,000 --> 00:29:55,000
+ And you have much more deeper differences between the test set and the root population.
 
 478
-00:31:34,000 --> 00:31:35,000
- It's the energy.
+00:29:56,000 --> 00:30:03,000
+ Once we study biasing values for some topics which hopefully we will just come to the next lecture.
 
 479
-00:31:35,000 --> 00:31:36,000
- It's the energy.
+00:30:03,000 --> 00:30:08,000
+ Everyone clear the line?
 
 480
-00:31:36,000 --> 00:31:37,000
- It's the energy.
+00:30:08,000 --> 00:30:13,000
+ So, we have last part seen one particular type of machine learning task where you will
 
 481
-00:31:37,000 --> 00:31:38,000
- It's the energy.
+00:30:13,000 --> 00:30:18,000
+ try to classify whether the object or whether the particular the meters would have had.
 
 482
-00:31:38,000 --> 00:31:39,000
- It's the energy.
+00:30:18,000 --> 00:30:21,000
+ But now we can a very different example.
 
 483
-00:31:39,000 --> 00:31:40,000
- It's the energy.
+00:30:21,000 --> 00:30:26,000
+ We want to predict the identity because after all I take on the other campus.
 
 484
-00:31:40,000 --> 00:31:41,000
- It's the energy.
+00:30:26,000 --> 00:30:28,000
+ So, again same exercise.
 
 485
-00:31:41,000 --> 00:31:42,000
- It's the energy.
+00:30:28,000 --> 00:30:33,000
+ What factors do you think the identity consumption should be based on?
 
 486
-00:31:42,000 --> 00:31:43,000
- It's the energy.
+00:30:33,000 --> 00:30:39,000
+ By telling or quantifying that, because whether it is again one specific aspect of a game,
 
 487
-00:31:43,000 --> 00:31:44,000
- It's the energy.
+00:30:39,000 --> 00:30:47,000
+ humanity temperature, what you expect the humidity is more, do you think the energy is more or less?
 
 488
-00:31:44,000 --> 00:31:45,000
- It's the energy.
+00:30:48,000 --> 00:30:51,000
+ Or, what are the temperatures?
 
 489
-00:31:45,000 --> 00:31:46,000
- It's the energy.
+00:30:51,000 --> 00:30:55,000
+ Temperature is more, what energy do you want?
 
 490
-00:31:46,000 --> 00:31:47,000
- It's the energy.
+00:30:55,000 --> 00:30:58,000
+ 5, more energy distance costs.
 
 491
-00:31:47,000 --> 00:31:48,000
- It's the energy.
+00:30:58,000 --> 00:31:03,000
+ What are the other factors in opportunity to develop out?
 
 492
-00:31:48,000 --> 00:31:49,000
- That's the energy.
+00:31:03,000 --> 00:31:13,000
+ Then, okay number of people, number of occupants and if there are more occupants do you expect more energy to happen?
 
 493
-00:31:49,000 --> 00:31:50,000
- It's the energy.
+00:31:13,000 --> 00:31:17,000
+ Generally yes. Any other factor?
 
 494
-00:31:50,000 --> 00:31:51,000
- It's the energy.
+00:31:17,000 --> 00:31:20,000
+ No, it's not.
 
 495
-00:31:51,000 --> 00:31:52,000
- It's the energy.
+00:31:20,000 --> 00:31:27,000
+ Okay, on some idea of an afterthought, you know there are some other aspects of a campus
 
 496
-00:31:52,000 --> 00:31:53,000
- It's the energy.
+00:31:27,000 --> 00:31:32,000
+ energy they develop as well as in whether it's some of the energy.
 
 497
-00:31:53,000 --> 00:31:54,000
- It's the energy.
+00:31:32,000 --> 00:31:35,000
+ What are the assets?
 
 498
-00:31:54,000 --> 00:31:55,000
- It's the energy.
+00:31:36,000 --> 00:31:45,000
+ Lab switches, let's say, machinery or let's say ID.
 
 499
-00:31:55,000 --> 00:31:56,000
- We can make the parts.
+00:31:45,000 --> 00:31:48,000
+ The number of computers would be one example.
 
 500
-00:31:56,000 --> 00:31:59,000
- We can make them, but that is in some sense captured by the governments.
+00:31:48,000 --> 00:31:52,000
+ The more the computers, the more the servers will generate strength more energy.
 
 501
-00:31:59,000 --> 00:32:00,000
- Right.
+00:31:52,000 --> 00:31:55,000
+ Any other factor you could think about?
 
 502
-00:32:00,000 --> 00:32:09,000
- So we want to explicitly write whether something can or we can.
+00:31:55,000 --> 00:32:01,000
+ We can make them, but that is sometimes captured by the number of occupants.
 
 503
-00:32:09,000 --> 00:32:13,000
- How does that include the population?
+00:32:01,000 --> 00:32:06,000
+ So, we not like to explicitly write whether some people are awakened.
 
 504
-00:32:13,000 --> 00:32:14,000
- Okay.
+00:32:06,000 --> 00:32:13,000
+ How does that include population?
 
 505
-00:32:14,000 --> 00:32:17,000
- So the question is how does we can relate with the population?
+00:32:13,000 --> 00:32:18,000
+ Okay, so the question is how does we can or we can relate to the population?
 
 506
-00:32:17,000 --> 00:32:23,000
- So I am saying that in some sense when it is a beacon you would assume that many of the
+00:32:18,000 --> 00:32:28,000
+ So, I am saying that in some sense, when it's awakened, you would assume that many of the people are, let's say, not in an atmosphere.
 
 507
-00:32:23,000 --> 00:32:30,000
- people are let us say not in the maps, but there is a population automatically reduced.
+00:32:28,000 --> 00:32:34,000
+ So, we say that an awakened population would be lesser and the weekend would be lesser.
 
 508
-00:32:30,000 --> 00:32:33,000
- So we say to be beacon population would be lesser than the beacon.
+00:32:34,000 --> 00:32:36,000
+ Yes, why you say?
 
 509
-00:32:33,000 --> 00:32:36,000
- Yes, why you are there?
+00:32:36,000 --> 00:32:38,000
+ We can see it.
 
 510
-00:32:36,000 --> 00:32:44,000
- So you could always come up with some counter events, yes.
+00:32:38,000 --> 00:32:40,000
+ Do you play with any people?
 
 511
-00:32:44,000 --> 00:32:51,000
- But there will be some people who would be leaving, some people who would be coming.
+00:32:40,000 --> 00:32:41,000
+ Okay, okay.
 
 512
-00:32:51,000 --> 00:32:55,000
- They and I, we can all meet different people.
+00:32:41,000 --> 00:32:45,000
+ So, you could always come up with some counter-events.
 
 513
-00:32:55,000 --> 00:32:59,000
- Okay, so he is saying that the hour of the day is also an important factor.
+00:32:45,000 --> 00:32:46,000
+ Yes.
 
 514
-00:32:59,000 --> 00:33:04,000
- How can you gain tellers which are expected more than a different option?
+00:32:46,000 --> 00:32:49,000
+ But there may be some people who would be awakened, some people who would be coming.
 
 515
-00:33:04,000 --> 00:33:09,000
- So in the end you are keeping, you are taking an objective and you are keeping an end.
+00:32:49,000 --> 00:32:51,000
+ They are not like very good.
 
 516
-00:33:09,000 --> 00:33:16,000
- So we can assume that for now let us assume that the numbers are 9 people have to 3 x as well.
+00:32:51,000 --> 00:32:52,000
+ They are not.
 
 517
-00:33:16,000 --> 00:33:21,000
- So in the night time you generally see the lot to be low, at least in the relative comfort
+00:32:52,000 --> 00:32:55,000
+ I mean, these are, I mean, different.
 
 518
-00:33:21,000 --> 00:33:26,000
- this is very fair graph.
+00:32:56,000 --> 00:33:00,000
+ Okay, so he is saying that the hour of the day is also an important factor.
 
 519
-00:33:26,000 --> 00:33:31,000
- So more people generally more energy, higher temperature, generally higher energy.
+00:33:00,000 --> 00:33:04,000
+ How can you gain tellers which are expected more energy consumption?
 
 520
-00:33:31,000 --> 00:33:34,000
- Again it can be constructed in a table like this now.
+00:33:04,000 --> 00:33:14,000
+ So, in the night we are keeping, even on the 10th time we are keeping an
 
 521
-00:33:34,000 --> 00:33:38,000
- We have people temperature and just for the purpose of the illustration there are only two factors.
+00:33:14,000 --> 00:33:18,000
+ imagined, but we not have, fine.
 
 522
-00:33:38,000 --> 00:33:42,000
- People and temperature and energy in kilohertz, if you are having some other unit also.
+00:33:18,000 --> 00:33:23,000
+ For now, let's assume that, 24th time, people have to keep it as well hard.
 
 523
-00:33:42,000 --> 00:33:47,000
- You could use tools but you know rather more generally, I am certain later.
+00:33:23,000 --> 00:33:31,000
+ So, more people generally more energy,onday I meet, like this now.
 
 524
-00:33:47,000 --> 00:33:50,000
- Now what is the training center?
+00:33:31,000 --> 00:33:34,000
+ We have people temperature.
 
 525
-00:33:50,000 --> 00:33:56,000
- The first three rows and the considered as prenatured because they have the labels,
+00:33:34,000 --> 00:33:40,000
+ And just for the purpose of the transportation Oh, Bhappas, people are critical and energy
 
 526
-00:33:56,000 --> 00:34:00,000
- also mentioned the output variable or response variable also maintenance.
+00:33:40,000 --> 00:33:43,000
+ can occur, because the work is essential.
 
 527
-00:34:00,000 --> 00:34:08,000
- Whereas the set shown below of the last two samples becomes a test set where the labels or the response variable
+00:33:43,000 --> 00:33:48,000
+ We could use Jules, but we might have more simple beer and drink.
 
 528
-00:34:08,000 --> 00:34:14,000
- or the target level of the function has not been mentioned and this is what you are trying to write.
+00:33:48,000 --> 00:33:52,000
+ Now, what is the training that we .
 
 529
-00:34:14,000 --> 00:34:22,000
- So you have thus far seen two different kinds of examples.
+00:33:52,000 --> 00:33:57,000
+ the first way rows and they consider them as plain inside because they have the labels
 
 530
-00:34:22,000 --> 00:34:29,000
- Let us try and make a little more abstractly because of two specific classes of problems.
+00:33:57,000 --> 00:34:01,000
+ also mentioned the output variable or response variable also maintenance.
 
 531
-00:34:29,000 --> 00:34:33,000
- I am going to write the first class of problems as classification.
+00:34:01,000 --> 00:34:08,000
+ Whereas the set shown below of the last two samples becomes a test set where the labels
 
 532
-00:34:33,000 --> 00:34:37,000
- Here in the output variable of concern is discrete in nature.
+00:34:08,000 --> 00:34:15,000
+ or the response variable or the target variable has not been mentioned and this is what you
 
 533
-00:34:37,000 --> 00:34:41,000
- Does everyone here understand what is discrete?
+00:34:15,000 --> 00:34:23,000
+ can do. So you have thus far seen two different kinds of examples.
 
 534
-00:34:41,000 --> 00:34:45,000
- So discrete means it could be one of few classes.
+00:34:23,000 --> 00:34:28,000
+ Let us try and make a little more abstractly because of two specific classes of problems.
 
 535
-00:34:45,000 --> 00:34:50,000
- It could either be a, so one of the examples of discrete is binary whether it is on or off.
+00:34:28,000 --> 00:34:35,000
+ I am going to write the first class of problems as classification. Here the output variable
 
 536
-00:34:50,000 --> 00:34:53,000
- It could also be done to be one of three classes.
+00:34:35,000 --> 00:34:42,000
+ of concern is discrete in nature right. There is a number here I understand what is discrete.
 
 537
-00:34:53,000 --> 00:34:56,000
- It could also be minor in the middle of the graph.
+00:34:42,000 --> 00:34:47,000
+ So discrete means it could be one of few classes. It could either be a, so this one
 
 538
-00:34:56,000 --> 00:35:04,000
- Both formerly they say that why I belong to a set from one to see where we have seen classes.
+00:34:47,000 --> 00:34:52,000
+ of the examples of discrete is binary whether it is on or off. It could also be done to
 
 539
-00:35:04,000 --> 00:35:10,000
- We have seen one example can I even tell you more examples of classification task in my new version.
+00:34:52,000 --> 00:34:58,000
+ be one of three classes. It could also be multiple classes right.
 
 540
-00:35:10,000 --> 00:35:17,000
- We have seen that in our state, we have to get the three, three, three.
+00:34:58,000 --> 00:35:04,000
+ Both formerly they say that why I belong to a set from one to C where we are C classes.
 
 541
-00:35:17,000 --> 00:35:19,000
- Sorry, we have to get in.
+00:35:04,000 --> 00:35:08,000
+ We have seen one example can even tell you more examples of classification tasks you
 
 542
-00:35:19,000 --> 00:35:21,000
- We need to go to the normal thing.
+00:35:08,000 --> 00:35:09,000
+ can do.
 
 543
-00:35:21,000 --> 00:35:23,000
- Who will then?
+00:35:09,000 --> 00:35:31,000
+ So the example that is given is given is you want to predict Google when right. So in
 
 544
-00:35:24,000 --> 00:35:29,000
- So the example that is given is you want to predict who will win.
+00:35:31,000 --> 00:35:37,000
+ fact this reminds me of some very interesting simulation. So I think there is a very nice
 
 545
-00:35:29,000 --> 00:35:34,000
- So in fact this reminds me of some very interesting simulation.
+00:35:37,000 --> 00:35:39,000
+ example of the
 
 546
-00:35:34,000 --> 00:35:38,000
- So I think there is a very nice log by a late silver.
+00:35:39,000 --> 00:35:44,000
+ one that I have seen in the last class. So I think that is the first class of the class
 
 547
-00:35:38,000 --> 00:35:45,000
- Those of you who follow sports as well as data, I think should be really looking into that.
+00:35:44,000 --> 00:35:51,000
+ of the class. So I think that is the first class of the class of the class of the class
 
 548
-00:35:45,000 --> 00:35:50,000
- And some of these logs is fact greatly winners of the football champions,
+00:35:51,000 --> 00:35:58,000
+ of the class of the class of the class of the class of the class of the class of the class
 
 549
-00:35:50,000 --> 00:35:52,000
- the NBA, etc.
+00:35:58,000 --> 00:36:04,000
+ of the class of the class of the class of the class of the class of the class of the
 
 550
-00:35:52,000 --> 00:35:54,000
- You look over the masses.
+00:36:04,000 --> 00:36:06,000
+ class of the class of the class of the class of the class of the class of the class of
 
 551
-00:35:54,000 --> 00:36:00,000
- And they have some confidence with the same who is going to win the league, etc.
+00:36:06,000 --> 00:36:08,000
+ the class of the class of the class of the class of the class of the class.
 
 552
-00:36:00,000 --> 00:36:03,000
- So what are the kinds of results you have?
+00:36:08,000 --> 00:36:19,000
+ So this is the first class of the class and what you can do is you can also take a
 
 553
-00:36:03,000 --> 00:36:07,000
- Let's focus on how something is going to happen.
+00:36:19,000 --> 00:36:22,000
+ and everyone else can also take this from out there.
 
 554
-00:36:07,000 --> 00:36:11,000
- When you also have time, you are going to have to offer a particular basis.
+00:36:22,000 --> 00:36:26,000
+ So if you want to predict whether India and Sri Lanka are playing that,
 
 555
-00:36:11,000 --> 00:36:13,000
- So this is not full class.
+00:36:26,000 --> 00:36:29,000
+ it will be 20 Google games.
 
 556
-00:36:13,000 --> 00:36:19,000
- And what kind of record features do you think you have to get?
+00:36:29,000 --> 00:36:32,000
+ So how would you describe that?
 
 557
-00:36:19,000 --> 00:36:22,000
- And everyone else can also take this one out.
-
-558
-00:36:22,000 --> 00:36:29,000
- So if you want to predict whether India and Sri Lanka are playing that, we do not do who will win.
-
-559
-00:36:29,000 --> 00:36:32,000
- So how will you decide that?
-
-560
 00:36:32,000 --> 00:36:34,000
  Playing 11th.
 
+558
+00:36:34,000 --> 00:36:38,000
+ Playing 11th, playing 11th, playing 11th, playing 11th, playing 11th,
+
+559
+00:36:38,000 --> 00:36:40,000
+ so you know, by playing 11th, you mean the names?
+
+560
+00:36:40,000 --> 00:36:41,000
+ 20th.
+
 561
-00:36:34,000 --> 00:36:35,000
- Playing 11th?
+00:36:41,000 --> 00:36:42,000
+ Probably not.
 
 562
-00:36:35,000 --> 00:36:36,000
- Playing 11th?
+00:36:42,000 --> 00:36:44,000
+ So some notion of the ratings, right?
 
 563
-00:36:36,000 --> 00:36:37,000
- Playing 11th?
+00:36:44,000 --> 00:36:48,000
+ All the having said that, only yesterday I had read about the very interesting article.
 
 564
-00:36:37,000 --> 00:36:40,000
- So you know, by playing 11th, you mean the names?
+00:36:48,000 --> 00:36:53,000
+ So there was some research paper which mentioned that some of those
 
 565
-00:36:40,000 --> 00:36:41,000
- How do you not?
+00:36:53,000 --> 00:36:56,000
+ really chess playing as a play over natural language process,
 
 566
-00:36:41,000 --> 00:36:44,000
- So some notion of their ratings, right?
+00:36:56,000 --> 00:37:02,000
+ a natural language processing game, and not looking at the inherent notion of what both means.
 
 567
-00:36:44,000 --> 00:36:48,000
- All the having said that, only yesterday I read about the very interesting article.
+00:37:02,000 --> 00:37:05,000
+ So they just gave it a specific easy code, et cetera,
 
 568
-00:36:48,000 --> 00:36:59,000
- So there was some research paper which mentioned that some of those really chess playing as a play of natural language processing game.
+00:37:05,000 --> 00:37:08,000
+ and that was also a little bit of a comedy level test task.
 
 569
-00:36:59,000 --> 00:37:03,000
- And not looking at the inherent notion of what both means.
+00:37:08,000 --> 00:37:13,000
+ So those of bellboards where they might find this very interesting and shocking.
 
 570
-00:37:03,000 --> 00:37:06,000
- So they just gave it a specific, easy, poor, etc.
-
-571
-00:37:06,000 --> 00:37:09,000
- And that was overly important for all really well-used tasks.
-
-572
-00:37:09,000 --> 00:37:13,000
- Those of well-wards where they might find this very interesting and frothy.
-
-573
 00:37:13,000 --> 00:37:14,000
  Okay.
 
-574
+571
 00:37:14,000 --> 00:37:17,000
  For cricket, maybe we are looking at the player ratings.
 
+572
+00:37:17,000 --> 00:37:22,000
+ Maybe the player ratings, maybe the fitness level is something on that start.
+
+573
+00:37:22,000 --> 00:37:23,000
+ Sorry?
+
+574
+00:37:23,000 --> 00:37:25,000
+ So it's a blast phase.
+
 575
-00:37:17,000 --> 00:37:23,000
- Maybe the player age, maybe if it does develop something on that start.
-
-576
-00:37:23,000 --> 00:37:26,000
- So it's a class case.
-
-577
-00:37:26,000 --> 00:37:27,000
+00:37:25,000 --> 00:37:26,000
  Yes.
 
+576
+00:37:26,000 --> 00:37:35,000
+ If there are home losses away, and in fact, if any of you play games like T by NAR,
+
+577
+00:37:35,000 --> 00:37:36,000
+ what do you do?
+
 578
-00:37:27,000 --> 00:37:31,000
- If there are, yeah, home versus away.
+00:37:36,000 --> 00:37:41,000
+ They take you to the concentration domain and they're able to simulate both seasons.
 
 579
-00:37:31,000 --> 00:37:37,000
- And in fact, if any of you play games like T by Naj, the more you will go that,
-
-580
-00:37:37,000 --> 00:37:42,000
- they take you to the concentration of the game and they are able to simulate both seasons.
-
-581
-00:37:42,000 --> 00:37:43,000
+00:37:41,000 --> 00:37:42,000
  Okay.
 
+580
+00:37:42,000 --> 00:37:45,000
+ Any other task, talk application, talk you can think of.
+
+581
+00:37:45,000 --> 00:37:46,000
+ Inaudible.
+
 582
-00:37:43,000 --> 00:37:47,000
- Any other tasks, documentation, topic and think of?
+00:37:46,000 --> 00:37:47,000
+ Inaudible.
 
 583
-00:37:47,000 --> 00:37:49,000
- End of.
+00:37:47,000 --> 00:37:48,000
+ Inaudible.
 
 584
-00:37:49,000 --> 00:37:50,000
- End of the scene.
+00:37:48,000 --> 00:37:49,000
+ Inaudible.
 
 585
+00:37:49,000 --> 00:37:50,000
+ Inaudible.
+
+586
 00:37:50,000 --> 00:37:51,000
  Okay.
 
-586
-00:37:51,000 --> 00:37:53,000
- So some of us take an image.
-
 587
-00:37:53,000 --> 00:37:57,000
- You want to classify whether it's an image or it's an university, it's a round-level thing.
+00:37:51,000 --> 00:37:56,000
+ So as data and image, you want to classify whether it's an image or it's an inverse inverse
 
 588
-00:37:57,000 --> 00:38:00,000
- You have not two output classes.
+00:37:56,000 --> 00:37:57,000
+ that's a round new thing.
 
 589
-00:38:00,000 --> 00:38:05,000
- And what is the input that you have given?
+00:37:57,000 --> 00:38:03,000
+ You have not two output classes, and what is the input that you're given?
 
 590
-00:38:05,000 --> 00:38:07,000
- No, the input would be an image.
+00:38:03,000 --> 00:38:04,000
+ Inaudible.
 
 591
+00:38:04,000 --> 00:38:07,000
+ No, the input would be an image.
+
+592
 00:38:07,000 --> 00:38:08,000
  Right?
 
-592
-00:38:08,000 --> 00:38:11,000
- Input now would be an image of some items embedded.
-
 593
-00:38:11,000 --> 00:38:17,000
- So, what previously we looked, the kinds of inputs that we had were fitting into the matrix.
+00:38:08,000 --> 00:38:11,000
+ Input now would be an image of some item somewhere.
 
 594
-00:38:17,000 --> 00:38:22,000
- So each sample was corresponding to only, you know, let's say P readers.
+00:38:12,000 --> 00:38:17,000
+ So for the previous, if you look, the kinds of inputs that we have are fitting into the
 
 595
-00:38:22,000 --> 00:38:26,000
- But now you have a, let's say P cross Q matrix.
+00:38:17,000 --> 00:38:18,000
+ matrix.
 
 596
-00:38:26,000 --> 00:38:31,000
- So again, you have to figure out how to import the P cross Q matrix into that particular scheme.
+00:38:18,000 --> 00:38:23,000
+ So in sample, most corresponding to only, you know, let's say p readers, but now you have
 
 597
-00:38:31,000 --> 00:38:32,000
- Okay.
+00:38:23,000 --> 00:38:26,000
+ a, let's say p cross q matrix.
 
 598
-00:38:33,000 --> 00:38:35,000
- Okay. Any other example?
+00:38:26,000 --> 00:38:31,000
+ So again, you have to figure out earlier, you'll put the p cross q matrix into that particular
 
 599
+00:38:31,000 --> 00:38:33,000
+ scheme which we have.
+
+600
+00:38:33,000 --> 00:38:34,000
+ Okay.
+
+601
+00:38:34,000 --> 00:38:35,000
+ Any other example?
+
+602
 00:38:35,000 --> 00:38:36,000
  Okay.
 
-600
-00:38:36,000 --> 00:38:43,000
- Shouldn't we, will it be, will it be trained to follow or it be taught or it will be developed?
-
-601
-00:38:43,000 --> 00:38:44,000
- Okay.
-
-602
-00:38:44,000 --> 00:38:46,000
- Will I get a loan or not?
-
 603
-00:38:46,000 --> 00:38:51,000
- Depending on some, some idea, will I pass the machine or reports or not?
+00:38:36,000 --> 00:38:42,000
+ Shouldn't we, will it be, will it be, will it be, will it be, will it be, will it be,
 
 604
-00:38:51,000 --> 00:38:54,000
- Will I remain away from the kind of lecture or not?
+00:38:42,000 --> 00:38:45,000
+ or it will be, will it be, will it be, will it be, will it be, will it be, will it be,
 
 605
-00:38:54,000 --> 00:38:56,000
- What is the quality of food?
+00:38:45,000 --> 00:38:46,000
+ okay.
 
 606
-00:38:56,000 --> 00:38:57,000
- Good, bad.
+00:38:46,000 --> 00:38:47,000
+ Will I get a loan or not?
 
 607
-00:38:57,000 --> 00:39:00,000
- I think I have multiple such classes.
+00:38:47,000 --> 00:38:51,000
+ Depending on some, some idea, will I pass the machine or reports or not?
 
 608
-00:39:01,000 --> 00:39:03,000
- What grade line in this class?
+00:38:51,000 --> 00:38:54,000
+ Will I remain away from the, like, end of lecture or not?
 
 609
-00:39:03,000 --> 00:39:06,000
- A, B, C, E, all of the specific question of grade.
+00:38:54,000 --> 00:38:56,000
+ What is the quality of code, good, bad?
 
 610
-00:39:06,000 --> 00:39:08,000
- This becomes a very interesting topic.
+00:38:56,000 --> 00:38:59,000
+ And you can have multiple such classes.
 
 611
+00:38:59,000 --> 00:39:02,000
+ What data do I get in this class?
+
+612
+00:39:02,000 --> 00:39:08,000
+ A, B, C, E, all of the specific version of blade, this becomes a very interesting topic.
+
+613
 00:39:08,000 --> 00:39:10,000
  We'll talk about this later.
 
-612
-00:39:10,000 --> 00:39:15,000
- There is also some notion of ordering associated with grades.
-
-613
-00:39:15,000 --> 00:39:19,000
- Sometimes you want to provide the data and what.
-
 614
-00:39:19,000 --> 00:39:22,000
- We're not going to be able to perform.
+00:39:10,000 --> 00:39:15,000
+ There is also some notion of ordering associated with blades.
 
 615
-00:39:22,000 --> 00:39:26,000
- The second example that we saw fits into something known as regression.
+00:39:15,000 --> 00:39:19,000
+ Sometimes quantified, these data are involved.
 
 616
-00:39:27,000 --> 00:39:30,000
- They output variables and t-s in nature, right?
+00:39:19,000 --> 00:39:22,000
+ We're not going to be able to back up.
 
 617
-00:39:30,000 --> 00:39:32,000
- To a large extent, we can assume that.
+00:39:22,000 --> 00:39:27,000
+ The second example that we saw fits into something known as regression.
 
 618
-00:39:32,000 --> 00:39:35,000
- So we can write yi is a real number.
+00:39:27,000 --> 00:39:31,000
+ They output variables, continuous and nature, right, to large extent.
 
 619
-00:39:35,000 --> 00:39:36,000
- Okay.
+00:39:31,000 --> 00:39:36,000
+ So, we can write yi is a real number.
 
 620
-00:39:36,000 --> 00:39:38,000
- Give me some examples of regression.
-
-621
-00:39:38,000 --> 00:39:39,000
+00:39:36,000 --> 00:39:37,000
  Okay.
 
+621
+00:39:37,000 --> 00:39:42,000
+ Give me some examples of regression.
+
 622
-00:39:39,000 --> 00:39:43,000
+00:39:42,000 --> 00:39:44,000
  You want to predict a real number.
 
 623
-00:39:43,000 --> 00:39:46,000
- The amount of grades for the data.
+00:39:44,000 --> 00:39:46,000
+ Number of blades will be.
 
 624
 00:39:46,000 --> 00:39:48,000
- The amount of grades for the data.
+ The number of blades will be.
 
 625
 00:39:48,000 --> 00:39:50,000
- The amount of grades for the data.
+ The amount of brain caused.
 
 626
 00:39:50,000 --> 00:39:52,000
- So that's the reason.
+ So, that's the reason.
 
 627
-00:39:53,000 --> 00:39:55,000
- I think I have the same.
+00:39:52,000 --> 00:39:55,000
+ I have to say, that I have to say.
 
 628
 00:39:55,000 --> 00:39:56,000
- It's a lot of money.
+ Stop market.
 
 629
 00:39:56,000 --> 00:39:57,000
  Stop market.
 
 630
-00:39:57,000 --> 00:39:59,000
+00:39:57,000 --> 00:39:58,000
  What do you want to predict?
 
 631
-00:39:59,000 --> 00:40:02,000
+00:39:58,000 --> 00:40:01,000
  The price of a particular class.
 
 632
-00:40:02,000 --> 00:40:03,000
+00:40:01,000 --> 00:40:02,000
  Okay.
 
 633
-00:40:03,000 --> 00:40:04,000
+00:40:02,000 --> 00:40:03,000
  Any other example?
 
 634
-00:40:04,000 --> 00:40:05,000
- That's four.
+00:40:03,000 --> 00:40:06,000
+ That's the fourth part of the video.
 
 635
-00:40:05,000 --> 00:40:06,000
- Sorry.
+00:40:06,000 --> 00:40:07,000
+ Okay.
 
 636
-00:40:06,000 --> 00:40:08,000
- How many grants of food?
+00:40:07,000 --> 00:40:08,000
+ How many runs of course?
 
 637
 00:40:08,000 --> 00:40:09,000
@@ -2548,187 +2548,187 @@
 
 638
 00:40:09,000 --> 00:40:10,000
- How many grants with our teams?
+ How many runs with our teams?
 
 639
-00:40:10,000 --> 00:40:13,000
- Again, very interesting points of grades of them.
+00:40:10,000 --> 00:40:12,000
+ Again, very interesting points of data.
 
 640
-00:40:13,000 --> 00:40:17,000
- Because again, if you look at all those foods, people have already come up with some foods of the family.
+00:40:12,000 --> 00:40:17,000
+ Because again, if you look at all the sports, people have already come up with some rules of the family.
 
 641
-00:40:17,000 --> 00:40:19,000
- You are only three back to down.
+00:40:17,000 --> 00:40:21,000
+ You are only three back to the down and predict after 30 years of the year.
 
 642
-00:40:19,000 --> 00:40:22,000
- You can get half of the tea, which is never.
+00:40:21,000 --> 00:40:27,000
+ You can always verify those rules.
 
 643
-00:40:22,000 --> 00:40:27,000
- You can always verify those foods.
+00:40:27,000 --> 00:40:34,000
+ And before we get into the actual algorithms, I wanted to talk about the performance measure P, which we discussed in the lecture.
 
 644
-00:40:27,000 --> 00:40:35,000
- And before we get into the actual algorithms, I wanted to talk about the performance measure fee, which we discussed in the definition.
+00:40:34,000 --> 00:40:40,000
+ We talked about experience P, task P, and performance measure P.
 
 645
-00:40:35,000 --> 00:40:40,000
- We talked about experience fee, task fee, and performance measure fee.
-
-646
 00:40:40,000 --> 00:40:45,000
  I thought it's more important to first understand what different metrics mean.
 
-647
+646
 00:40:45,000 --> 00:40:49,000
- And what does it mean that we have done for a job in the machine learning or not?
+ And what does it mean that we have done a good job in machine learning or not?
+
+647
+00:40:49,000 --> 00:40:52,000
+ We started with some metrics of graph education.
 
 648
-00:40:49,000 --> 00:40:52,000
- We started with some metrics for class application.
+00:40:52,000 --> 00:40:56,000
+ Let's assume that we had a ground growth y.
 
 649
-00:40:52,000 --> 00:40:57,000
- Let's assume that we had a ground growth Y.
-
-650
-00:40:57,000 --> 00:41:00,000
+00:40:56,000 --> 00:41:00,000
  So ground growth means the correct labels that we've got.
 
+650
+00:41:00,000 --> 00:41:04,000
+ Let's say we had a particular set of two meters.
+
 651
-00:41:00,000 --> 00:41:05,000
- Let's say we had a particular set of milliliters.
+00:41:04,000 --> 00:41:08,000
+ For the first meter, we know that it was good.
 
 652
-00:41:05,000 --> 00:41:08,000
- Or the first meter, we know that it was good.
-
-653
 00:41:08,000 --> 00:41:10,000
  Some human and a different.
 
-654
+653
 00:41:10,000 --> 00:41:13,000
- Second meter, some unsighted is good and the other three, some unsighted.
+ Second to meter, some unsighted is good and the other three some unsighted.
+
+654
+00:41:13,000 --> 00:41:15,000
+ Some export label that was bad.
 
 655
-00:41:13,000 --> 00:41:16,000
- Some exodial then is bad.
-
-656
-00:41:16,000 --> 00:41:20,000
+00:41:15,000 --> 00:41:20,000
  And then there is some algorithm, some function F that we've learned.
 
-657
+656
 00:41:20,000 --> 00:41:25,000
- That means of predicting good, good, good, good, good and bad.
+ That ends up predicting, good, good, good, good, good and bad.
+
+657
+00:41:25,000 --> 00:41:29,000
+ And we call this vector as y-hat.
 
 658
-00:41:25,000 --> 00:41:29,000
- And we call this vector as Y-Add.
+00:41:29,000 --> 00:41:33,000
+ So we'll use this hat a lot in machine learning.
 
 659
-00:41:29,000 --> 00:41:33,000
- So we'll use this add a lot of machine learning.
+00:41:33,000 --> 00:41:36,000
+ hat generally signifies an estimate.
 
 660
-00:41:33,000 --> 00:41:36,000
- Add generally signifies an estimate.
+00:41:36,000 --> 00:41:41,000
+ What is your estimate of these labels of the vectors?
 
 661
-00:41:36,000 --> 00:41:41,000
- What is your estimate of these status of the parameters?
+00:41:41,000 --> 00:41:42,000
+ Right?
 
 662
-00:41:41,000 --> 00:41:44,000
- So it is Y-Add.
+00:41:42,000 --> 00:41:44,000
+ So it is y-hat.
 
 663
-00:41:44,000 --> 00:41:49,000
- And normal class of the actual running set, for now, that's the thing we have.
+00:41:44,000 --> 00:41:47,000
+ And normal comes from the actual premise set.
 
 664
-00:41:49,000 --> 00:41:51,000
- Some of them have been demonstrated.
+00:41:47,000 --> 00:41:50,000
+ For now, this is something we have some of, we've never predicted it comes from.
 
 665
-00:41:51,000 --> 00:41:52,000
- Some of them know the example.
+00:41:50,000 --> 00:41:52,000
+ We know the example.
 
 666
 00:41:52,000 --> 00:41:55,000
  And the prediction is made by the model.
 
 667
-00:41:55,000 --> 00:42:03,000
- So what are the different metrics we could use to tell whether we have done a good job in predicting?
+00:41:55,000 --> 00:41:56,000
+ Right?
 
 668
-00:42:03,000 --> 00:42:06,000
- Perhaps we don't have to answer it.
+00:41:56,000 --> 00:42:00,000
+ So what are the different metrics we could use to tell the real system that I am good at?
 
 669
-00:42:06,000 --> 00:42:09,000
- So, let's start off.
+00:42:00,000 --> 00:42:03,000
+ What did we have in another good job in predicting?
 
 670
-00:42:09,000 --> 00:42:12,000
- Okay, how many things are you going to do?
+00:42:03,000 --> 00:42:06,000
+ What has been on the bad, how is it?
 
 671
+00:42:06,000 --> 00:42:09,000
+ Sad job.
+
+672
+00:42:09,000 --> 00:42:12,000
+ Okay, how many times you have done good?
+
+673
 00:42:12,000 --> 00:42:15,000
  Okay, why?
 
-672
-00:42:15,000 --> 00:42:17,000
- I think we're going to repeat it.
-
-673
-00:42:17,000 --> 00:42:20,000
- Sorry.
-
 674
-00:42:20,000 --> 00:42:24,000
- Depends on the answer.
+00:42:15,000 --> 00:42:17,000
+ I think we're in the three times.
 
 675
-00:42:24,000 --> 00:42:31,000
- The answer is depends on the state of the art, which is a very valid answer because what is fine to say is that we want to then
+00:42:17,000 --> 00:42:20,000
+ Sorry?
 
 676
-00:42:31,000 --> 00:42:36,000
- recognize the accuracy of the metric that we put up on it.
+00:42:20,000 --> 00:42:23,000
+ Depends on the answer.
 
 677
-00:42:36,000 --> 00:42:41,000
- Just say, I have 80% accurate, that's not mean-edge.
+00:42:23,000 --> 00:42:29,000
+ The answer is depends on the state of the art, which is a very valid answer because what
 
 678
-00:42:41,000 --> 00:42:49,000
- Only if the best report thus far was 60% and 80% accuracy means a lot.
+00:42:29,000 --> 00:42:36,000
+ is fine to say is that you want to penalize the accuracy of the metric that we put up on it.
 
 679
-00:42:49,000 --> 00:42:54,000
- We first look at a very simple metric on the accuracy,
+00:42:36,000 --> 00:42:40,000
+ Just say 80% accurate does not mean it.
 
 680
-00:42:54,000 --> 00:43:00,000
- which basically tells us that how many you look at the accuracy across,
+00:42:40,000 --> 00:42:49,000
+ Only if the best report thus far was 60% and 80% accuracy means a lot.
 
 681
-00:43:00,000 --> 00:43:04,000
- why we look at the predictions across specific rows and lists,
+00:42:49,000 --> 00:42:57,000
+ We first look at a very simple metric on the accuracy, which basically tells us that how many
 
 682
-00:43:04,000 --> 00:43:07,000
- and how many times is why I have equal to y,
+00:42:57,000 --> 00:43:04,000
+ you look at the accuracy across y-app, you look at the predictions across specific rows and
 
 683
-00:43:07,000 --> 00:43:10,000
- divided by the length of y-acron.
+00:43:04,000 --> 00:43:10,000
+ this and how many times is y-app equal to y, divided by the length of y-app or y.
 
 684
 00:43:10,000 --> 00:43:11,000
@@ -2736,167 +2736,167 @@
 
 685
 00:43:11,000 --> 00:43:16,000
- So how many times have we accurately or correctly predicted the label?
+ So how many times have we accurately or correctly predicted the linear?
 
 686
-00:43:16,000 --> 00:43:23,000
+00:43:16,000 --> 00:43:22,000
  The accuracy in this case is in terms of proportion is 0.6 in terms of percentage is 60%.
 
 687
-00:43:23,000 --> 00:43:24,000
+00:43:22,000 --> 00:43:23,000
  Right?
 
 688
-00:43:24,000 --> 00:43:26,000
- So it tells you one specific number.
+00:43:23,000 --> 00:43:28,000
+ So it tells you one specific number, but this is often not enough.
 
 689
-00:43:26,000 --> 00:43:28,000
- Well, this is often not enough.
+00:43:28,000 --> 00:43:32,000
+ And there are different cases in which we need to again contextualize with.
 
 690
-00:43:28,000 --> 00:43:32,000
- And there are different cases in which we need to again contextualize.
+00:43:32,000 --> 00:43:38,000
+ Let's look at some specific types of data to motivate our metric.
 
 691
-00:43:32,000 --> 00:43:38,000
- Let's look at some specific types of data to motivate the algorithm.
+00:43:38,000 --> 00:43:41,000
+ Let's imagine that we have one zero one samples.
 
 692
-00:43:38,000 --> 00:43:42,000
- Let's imagine that we have 1.01 samples.
+00:43:41,000 --> 00:43:45,000
+ And you're predicting something which is not a scale of either, which is either word or
 
 693
-00:43:42,000 --> 00:43:46,000
- I know you're predicting something which is not a scale of either, which is either word or line.
+00:43:45,000 --> 00:43:46,000
+ not.
 
 694
-00:43:46,000 --> 00:43:54,000
- And we have, and for examples where the ground growth or the actual samples are good, right?
+00:43:46,000 --> 00:43:53,000
+ And we have, and for examples where the norm of all the actual samples are good.
 
 695
-00:43:54,000 --> 00:44:02,000
- And one sample where the actual quality is bad, right?
+00:43:53,000 --> 00:43:54,000
+ Right?
 
 696
-00:44:02,000 --> 00:44:08,000
- Now, there could be multiple cases in which such kind of data-specific.
+00:43:54,000 --> 00:44:01,000
+ And one sample where the actual quality is bad.
 
 697
-00:44:08,000 --> 00:44:14,000
- For example, the cancer screening, you would hope that in most cases,
+00:44:01,000 --> 00:44:02,000
+ Right?
 
 698
-00:44:14,000 --> 00:44:19,000
- cancer screening, we will have people's health as well.
+00:44:02,000 --> 00:44:08,000
+ Now, they could be multiple cases when it's such kind of a data-specific.
 
 699
-00:44:19,000 --> 00:44:20,000
- They don't have cancer.
+00:44:08,000 --> 00:44:17,000
+ For example, the cancer strain, you would hope that in most cases, cancer strain, we will have people's
 
 700
-00:44:20,000 --> 00:44:23,000
- Unfortunately, in a very small case, we will be cancer.
+00:44:17,000 --> 00:44:18,000
+ helpers good.
 
 701
-00:44:23,000 --> 00:44:28,000
- But in general, if we look at some data, we will expect it to look something like this.
+00:44:18,000 --> 00:44:19,000
+ They don't have cancer.
 
 702
-00:44:28,000 --> 00:44:31,000
- We will go to good growth cancer, look cancer, look cancer.
+00:44:19,000 --> 00:44:22,000
+ Unfortunately for very small they will be cancelled.
 
 703
+00:44:22,000 --> 00:44:27,000
+ But in general, if we look at some data, we will expect it to look something like this.
+
+704
+00:44:27,000 --> 00:44:30,000
+ Go to good, go to good, go cancel, go cancel, go cancel, go cancel.
+
+705
+00:44:30,000 --> 00:44:31,000
+ Right?
+
+706
 00:44:31,000 --> 00:44:32,000
  Right?
 
-704
-00:44:32,000 --> 00:44:35,000
- So you end up with an imbalance dataset.
-
-705
-00:44:35,000 --> 00:44:42,000
- And maybe even with a client-ident, someone is trying to detect problems on imagery or on some means.
-
-706
-00:44:42,000 --> 00:44:46,000
- Most of the clients will have no client-group-on-group-on-group-on-group-art
-
 707
-00:44:46,000 --> 00:44:54,000
- or otherwise, you know, people will be getting over twice a period of time.
+00:44:32,000 --> 00:44:35,000
+ So you end up with an imbalance data set.
 
 708
-00:44:54,000 --> 00:44:59,000
- Now, let's look at a different metric now.
+00:44:35,000 --> 00:44:47,000
+ And maybe even if I'm a data-specific, someone is trying to detect forms of imagery or forms of speech, most of the time you should have no bad code and code and code and code and some class.
 
 709
-00:44:59,000 --> 00:45:00,000
- It is called precision.
+00:44:47,000 --> 00:44:53,000
+ Otherwise, people will be getting over twice a period of time.
 
 710
-00:45:00,000 --> 00:45:06,000
- Let's look at any ground growth, the same table aspect of earlier.
+00:44:53,000 --> 00:44:58,000
+ Now, let's look at a different metric now.
 
 711
-00:45:06,000 --> 00:45:12,000
- Now, before looking at this slide, can someone tell you what you understand very strong precision?
+00:44:58,000 --> 00:45:00,000
+ It is one precision.
 
 712
-00:45:13,000 --> 00:45:16,000
- In general, in this concern, layman comes.
+00:45:00,000 --> 00:45:05,000
+ Let's look at any number of the same paper as picture earlier.
 
 713
-00:45:16,000 --> 00:45:18,000
- If it is a particular case.
+00:45:05,000 --> 00:45:12,000
+ Now, before looking at this slide, I'm going to tell you what you understand very strong precision.
 
 714
+00:45:12,000 --> 00:45:15,000
+ In general, it is a different layman process.
+
+715
+00:45:15,000 --> 00:45:18,000
+ If it's a probability of it.
+
+716
 00:45:18,000 --> 00:45:19,000
  Sorry.
 
-715
-00:45:19,000 --> 00:45:20,000
- If it is ability or if it is not.
-
-716
-00:45:20,000 --> 00:45:22,000
- If it is ability, okay.
-
 717
-00:45:22,000 --> 00:45:25,000
- What does it mean to be very preferred?
+00:45:19,000 --> 00:45:20,000
+ If it's a probability of it.
 
 718
-00:45:25,000 --> 00:45:26,000
- If it is.
+00:45:20,000 --> 00:45:21,000
+ Reputability, okay.
 
 719
-00:45:26,000 --> 00:45:27,000
- It is.
+00:45:21,000 --> 00:45:24,000
+ What does it mean to be very precise?
 
 720
-00:45:27,000 --> 00:45:30,000
- It means less, okay.
+00:45:24,000 --> 00:45:27,000
+ It can be a difference.
 
 721
-00:45:30,000 --> 00:45:35,000
- Any other, or what does it mean to be preferred?
+00:45:27,000 --> 00:45:28,000
+ It can be a difference.
 
 722
-00:45:35,000 --> 00:45:36,000
- Sorry.
+00:45:28,000 --> 00:45:29,000
+ It can be a difference.
 
 723
-00:45:37,000 --> 00:45:38,000
- Sir.
+00:45:30,000 --> 00:45:35,000
+ Any other, what does it mean to be precise?
 
 724
 00:45:41,000 --> 00:45:44,000
- What do you mean by when someone asks, can you speak of the client-group?
+ What do you mean by when someone asks, can you speak of precise?
 
 725
 00:45:44,000 --> 00:45:47,000
- Or can you write down the term of the product?
+ Or can you write down the term of the position of the mark?
 
 726
 00:45:47,000 --> 00:45:48,000
@@ -2904,1753 +2904,1697 @@
 
 727
 00:45:48,000 --> 00:45:49,000
- Do you think of.
+ To the mark?
 
 728
-00:45:49,000 --> 00:45:59,000
- Do you think of precision in terms of whatever you are writing or whatever you are predicting or how to that you mean?
+00:45:49,000 --> 00:45:50,000
+ To the mark?
 
 729
-00:45:59,000 --> 00:46:01,000
- How true that is.
+00:45:50,000 --> 00:45:51,000
+ Okay.
 
 730
-00:46:01,000 --> 00:46:03,000
- Or how much sense that does mean.
+00:45:52,000 --> 00:45:57,000
+ What do you think of precision in terms of whatever you're writing or whatever you're
 
 731
-00:46:03,000 --> 00:46:11,000
- So, more English terms, I mean, layman does it mean that how much sense does it mean what you are writing.
+00:45:57,000 --> 00:45:59,000
+ predicting or how to that you mean?
 
 732
-00:46:11,000 --> 00:46:20,000
- So, now, when you work on the definition, you look at the times you predicted good, right.
+00:45:59,000 --> 00:46:01,000
+ How true that is?
 
 733
-00:46:20,000 --> 00:46:24,000
- You predicted how many times, 1, 2, 3 and 4.
+00:46:01,000 --> 00:46:03,000
+ Or how much sense that does mean?
 
 734
-00:46:24,000 --> 00:46:27,000
- Out of these, 4 times you predicted good.
+00:46:03,000 --> 00:46:10,000
+ So, more English terms in layman terms might mean that how much sense does it mean what
 
 735
-00:46:27,000 --> 00:46:29,000
- How many times were you actually good?
+00:46:10,000 --> 00:46:12,000
+ you're writing, right?
 
 736
-00:46:29,000 --> 00:46:32,000
- Or was the ground growth also sense good, right?
+00:46:12,000 --> 00:46:18,000
+ So, now, coming to the word, profit definition, you look at the times you predicted good,
 
 737
+00:46:18,000 --> 00:46:19,000
+ right?
+
+738
+00:46:20,000 --> 00:46:22,000
+ You predicted good how many times?
+
+739
+00:46:22,000 --> 00:46:23,000
+ 1, 2, 3 and 4.
+
+740
+00:46:23,000 --> 00:46:26,000
+ Out of these, 4 times is predicted good.
+
+741
+00:46:26,000 --> 00:46:29,000
+ How many times would you actually go?
+
+742
+00:46:29,000 --> 00:46:32,000
+ Or was the ground truth or the sense of it, right?
+
+743
 00:46:32,000 --> 00:46:38,000
  So, you predicted good 4 times, but you will not predict precise in predicting good.
 
-738
+744
 00:46:38,000 --> 00:46:45,000
- Your precision was thus far, thus, 2 or 4, which is where you are going to find.
+ Your position was thus far, thus 2 or 4, which is where you are going to find, right?
 
-739
-00:46:45,000 --> 00:46:46,000
- Right.
+745
+00:46:45,000 --> 00:46:47,000
+ There's everyone getting the definition.
 
-740
-00:46:46,000 --> 00:46:48,000
- There is everyone getting a definition.
-
-741
+746
 00:46:48,000 --> 00:46:52,000
- Our precise are you in predicting a particular class.
+ How precise are you in predicting a particular class?
 
-742
+747
 00:46:52,000 --> 00:46:56,000
  Now, precision can be defined in terms of the specific part.
 
-743
-00:46:56,000 --> 00:46:59,000
- You could also define precision for that.
-
-744
-00:46:59,000 --> 00:47:00,000
- Right.
-
-745
-00:47:00,000 --> 00:47:02,000
- What is the precision for that?
-
-746
-00:47:02,000 --> 00:47:10,000
- You have predicted bad once, but for that specific time it was actually not bad.
-
-747
-00:47:10,000 --> 00:47:14,000
- So, you have got 0 precision in predicting bad.
-
 748
-00:47:14,000 --> 00:47:17,000
- So, precision for bad could then be 0 or 1 to be 0.
+00:46:56,000 --> 00:46:59,000
+ You could also define precision for math, right?
 
 749
-00:47:17,000 --> 00:47:19,000
- Precision for bad is now 2 or 4.
+00:46:59,000 --> 00:47:02,000
+ What is the precision for math?
 
 750
-00:47:19,000 --> 00:47:20,000
- Right.
+00:47:02,000 --> 00:47:09,000
+ You predicted bad once, but for that specific time it was actually not bad.
 
 751
-00:47:20,000 --> 00:47:26,000
- Or more technically you would write a fraction of relevant expenses amongst the derivatives.
+00:47:09,000 --> 00:47:13,000
+ So, you have got real precision in predicting bad.
 
 752
-00:47:26,000 --> 00:47:27,000
- Right.
+00:47:13,000 --> 00:47:20,000
+ So, precision for math could then be 0 or 1, it could be 0, precision for better, now
 
 753
-00:47:28,000 --> 00:47:36,000
- Now, we come to another method called the recon, which is of failure is the mirror notion.
+00:47:20,000 --> 00:47:21,000
+ 2 or 4, right?
 
 754
-00:47:36,000 --> 00:47:38,000
- Now, what is the word English?
+00:47:21,000 --> 00:47:26,000
+ Or what technically you would write in fraction of relevant expenses amongst the refugees,
 
 755
-00:47:38,000 --> 00:47:41,000
- What is the English word?
+00:47:26,000 --> 00:47:27,000
+ right?
 
 756
-00:47:41,000 --> 00:47:44,000
- What is the English word?
+00:47:27,000 --> 00:47:35,000
+ Now, we come to another method called the Re-God, which is of fairly similar notion.
 
 757
-00:47:44,000 --> 00:47:48,000
- What is the mean that person X has the very good regard?
+00:47:35,000 --> 00:47:38,000
+ Now, what is the word English?
 
 758
-00:47:48,000 --> 00:47:49,000
- Right.
+00:47:38,000 --> 00:47:40,000
+ What is the English word, Re-God?
 
 759
-00:47:49,000 --> 00:47:50,000
- Right.
+00:47:41,000 --> 00:47:47,000
+ What does it mean that person X has the very good Re-God?
 
 760
-00:47:50,000 --> 00:47:51,000
- Right.
+00:47:47,000 --> 00:47:54,000
+ A, B to the member, right?
 
 761
-00:47:51,000 --> 00:47:52,000
- Right.
+00:47:54,000 --> 00:47:55,000
+ One thing on that mind.
 
 762
-00:47:52,000 --> 00:47:56,000
- You are able to remember, right, something on that line.
+00:47:55,000 --> 00:48:01,000
+ So, the definition of Re-God is how many times it was actually good?
 
 763
-00:47:56,000 --> 00:48:01,000
- So, the definition of the equal is how many times it was actually good?
+00:48:01,000 --> 00:48:06,000
+ How much of the, how much of that you were able to re-
 
 764
-00:48:01,000 --> 00:48:06,000
- How much of the, how much of that you were able to recall in a prediction?
+00:48:06,000 --> 00:48:08,000
+ solve in a prediction, right?
 
 765
-00:48:06,000 --> 00:48:07,000
- Right.
+00:48:08,000 --> 00:48:14,000
+ So, it was good, here, here and here, I have, you showed it to the Apple.
 
 766
-00:48:07,000 --> 00:48:10,000
- So, it was good, fair, fair, and fair.
+00:48:14,000 --> 00:48:18,000
+ We have been able to re-
 
 767
-00:48:10,000 --> 00:48:13,000
- I'll, you showed it to the Apple.
+00:48:18,000 --> 00:48:19,000
+ solve these three.
 
 768
-00:48:13,000 --> 00:48:17,000
- We have been able to recall two of these three.
+00:48:19,000 --> 00:48:22,000
+ So, three times the definition of the meter was good.
 
 769
-00:48:17,000 --> 00:48:21,000
- So, three times the definition of the mirror was good.
+00:48:22,000 --> 00:48:24,000
+ We have been able to re- solve two times.
 
 770
-00:48:21,000 --> 00:48:23,000
- We have been able to recall two times.
+00:48:24,000 --> 00:48:27,000
+ That's the goal is to do with the 60 times over.
 
 771
-00:48:23,000 --> 00:48:26,000
- That's the equal is true at the 60 times the
+00:48:27,000 --> 00:48:28,000
+ Right?
 
 772
-00:48:26,000 --> 00:48:27,000
- right.
+00:48:28,000 --> 00:48:30,000
+ We see the difference between precision and Re-God.
 
 773
-00:48:27,000 --> 00:48:34,000
- We see a little bit of precision and we got everyone on the P.E. to listen.
+00:48:30,000 --> 00:48:35,000
+ Everyone will be able to listen.
 
 774
-00:48:34,000 --> 00:48:36,000
- Apple again.
+00:48:35,000 --> 00:48:42,000
+ We are trying to predict whether it issues cancerous or not.
 
 775
-00:48:36,000 --> 00:48:41,000
- We are trying to predict whether tissues cancer does or not.
-
-776
-00:48:41,000 --> 00:48:49,000
+00:48:42,000 --> 00:48:49,000
  In the ground truth, we see that we have 100 samples out of which only one of them has
 
-777
+776
 00:48:49,000 --> 00:48:54,000
- been the answer, which is the last sample, which is shown over here.
+ cancer, which is the last sample, which is shown over here.
+
+777
+00:48:54,000 --> 00:49:02,000
+ And when we are predicting, we predict 99 times that the person or the specific sample is
 
 778
-00:48:54,000 --> 00:49:01,000
- And when we are predicting, we predict 99 times that the person or the specific
+00:49:02,000 --> 00:49:03,000
+ not cancerous.
 
 779
-00:49:01,000 --> 00:49:03,000
- sample is not cancerous.
+00:49:03,000 --> 00:49:07,000
+ And one time, this is the first sample we predicted to be cancerous.
 
 780
-00:49:03,000 --> 00:49:07,000
- And one time, which is the first sample, we predict it to be cancerous.
+00:49:07,000 --> 00:49:08,000
+ Right?
 
 781
-00:49:07,000 --> 00:49:08,000
- Right.
+00:49:08,000 --> 00:49:15,000
+ So, now let's try and understand the precision and recall for this set of predictions.
 
 782
-00:49:08,000 --> 00:49:13,000
- So, now let's try and understand the precision and recall for this set of
-
-783
-00:49:13,000 --> 00:49:15,000
- predictions.
-
-784
-00:49:15,000 --> 00:49:18,000
+00:49:15,000 --> 00:49:19,000
  The accuracy of the system is fairly good.
 
-785
-00:49:18,000 --> 00:49:23,000
+783
+00:49:19,000 --> 00:49:23,000
  Out of the total hundred times, we were accurate 98 times.
 
+784
+00:49:23,000 --> 00:49:28,000
+ The only two times we are getting wrong is one, the time, the first sample when we are
+
+785
+00:49:28,000 --> 00:49:33,000
+ predicting it to be cancerous, viral, in ground truth, it is not cancerous.
+
 786
-00:49:23,000 --> 00:49:25,000
- The only two times we're getting wrong is one.
+00:49:33,000 --> 00:49:37,000
+ And the other time we are getting it wrong is when we are predicting it to be not cancerous
 
 787
-00:49:25,000 --> 00:49:29,000
- The time, the first sample when we're predicting it to be cancerous,
+00:49:37,000 --> 00:49:40,000
+ and the ground truth says it is cancerous, which is the last sample.
 
 788
-00:49:29,000 --> 00:49:32,000
- viral, in ground truth, it is not cancerous.
-
-789
-00:49:32,000 --> 00:49:36,000
- And the other time we're getting it wrong is when we're predicting it to be not
-
-790
-00:49:36,000 --> 00:49:37,000
- cancerous.
-
-791
-00:49:37,000 --> 00:49:40,000
- And the ground truth says it is cancerous, which is the last sample.
-
-792
 00:49:40,000 --> 00:49:42,000
  So, the accuracy is 98 times.
 
+789
+00:49:42,000 --> 00:49:45,000
+ You have correctly identified one of the hundred times.
+
+790
+00:49:45,000 --> 00:49:48,000
+ Now, let's look at the Re-God.
+
+791
+00:49:48,000 --> 00:49:55,000
+ Out of the times, the ground truth was true, which is the hundred sample, only a single
+
+792
+00:49:55,000 --> 00:49:56,000
+ sample.
+
 793
-00:49:42,000 --> 00:49:44,000
- You've correctly identified one of the hundred times.
-
-794
-00:49:44,000 --> 00:49:46,000
- Now, let's look at the recall.
-
-795
-00:49:46,000 --> 00:49:53,000
- Out of the times, the ground truth was true, which is the hundred sample,
-
-796
-00:49:53,000 --> 00:49:55,000
- only a single sample.
-
-797
-00:49:55,000 --> 00:50:01,000
+00:49:56,000 --> 00:50:02,000
  Do we predict it to be cancerous in our prediction system?
 
-798
-00:50:01,000 --> 00:50:02,000
+794
+00:50:02,000 --> 00:50:03,000
  No.
+
+795
+00:50:03,000 --> 00:50:09,000
+ Out of one time where it was actually cancerous, we are not able to recall that prediction
+
+796
+00:50:09,000 --> 00:50:10,000
+ correctly.
+
+797
+00:50:10,000 --> 00:50:13,000
+ Thus, the recall is 0 over 1, which is 0.
+
+798
+00:50:13,000 --> 00:50:16,000
+ Let's look at the prediction, the precision now.
 
 799
-00:50:02,000 --> 00:50:07,000
- Sort of one time where it was actually cancerous, we are not able to recall
+00:50:16,000 --> 00:50:22,000
+ Out of the one time which we are predicting the tissue to be cancerous, was it actually
 
 800
-00:50:07,000 --> 00:50:09,000
- that prediction correctly.
+00:50:22,000 --> 00:50:23,000
+ cancerous?
 
 801
-00:50:09,000 --> 00:50:12,000
- That's the recall is 0 or 1, which is 0.
+00:50:23,000 --> 00:50:26,000
+ No, in the ground truth, it was not cancerous.
 
 802
-00:50:12,000 --> 00:50:15,000
- Let's look at the precision now.
+00:50:26,000 --> 00:50:29,000
+ Thus the precision is 0 over 1, which is 0.
 
 803
-00:50:15,000 --> 00:50:21,000
- Out of the one time which we are predicting the tissue to be cancerous,
+00:50:30,000 --> 00:50:39,000
+ There is another way to look at the previous example, which is known as confusion matrix.
 
 804
-00:50:21,000 --> 00:50:23,000
- was it actually cancerous?
-
-805
-00:50:23,000 --> 00:50:24,000
- No.
-
-806
-00:50:24,000 --> 00:50:26,000
- In the ground truth, it was not cancerous.
-
-807
-00:50:26,000 --> 00:50:29,000
- Thus, the precision is 0 over 1, which is 0.
-
-808
-00:50:29,000 --> 00:50:35,000
- There is another way to look at the previous example,
-
-809
-00:50:35,000 --> 00:50:38,000
- which is known as confusion matrix.
-
-810
-00:50:38,000 --> 00:50:41,000
+00:50:39,000 --> 00:50:42,000
  We have four entries in this confusion matrix.
 
-811
-00:50:41,000 --> 00:50:46,000
+805
+00:50:42,000 --> 00:50:46,000
  The ground truth could be either yes or no, which is cancerous or not cancerous.
 
-812
-00:50:46,000 --> 00:50:51,000
+806
+00:50:46,000 --> 00:50:53,000
  And similarly, we could predict to be either cancerous or not cancerous.
 
+807
+00:50:53,000 --> 00:51:03,000
+ We saw previously that out of the hundred instances, 98 times when the ground truth was
+
+808
+00:51:03,000 --> 00:51:07,000
+ not cancerous, we were also able to predict it as not cancerous.
+
+809
+00:51:07,000 --> 00:51:12,000
+ Thus, the entry corresponding to predicted equal to no and ground truth equal to no is
+
+810
+00:51:12,000 --> 00:51:13,000
+ 98.
+
+811
+00:51:13,000 --> 00:51:20,000
+ For one instance, if you look at the first sample, the prediction is yes, but the ground
+
+812
+00:51:20,000 --> 00:51:22,000
+ truth was no.
+
 813
-00:50:51,000 --> 00:50:59,000
- We saw previously that out of the 90, out of the hundred instances,
+00:51:22,000 --> 00:51:28,000
+ So the prediction is yes, the ground truth is no, which is the first row and the second
 
 814
-00:50:59,000 --> 00:51:04,000
- 98 times when the ground truth was not cancerous,
+00:51:28,000 --> 00:51:29,000
+ column.
 
 815
-00:51:04,000 --> 00:51:06,000
- we were also able to predict it as not cancerous.
+00:51:29,000 --> 00:51:34,000
+ And then if we go back, we thought there was one sample where the ground truth was yes,
 
 816
-00:51:06,000 --> 00:51:14,000
- Thus, the entry corresponding to predicted equal to no and ground truth equal to no is 98.
-
-817
-00:51:14,000 --> 00:51:19,000
- For one instance, if you look at the first sample, the prediction is yes,
-
-818
-00:51:19,000 --> 00:51:21,000
- but the ground truth was no.
-
-819
-00:51:21,000 --> 00:51:28,000
- So, the prediction is yes, the ground truth is no, which is the first row and the second column.
-
-820
-00:51:28,000 --> 00:51:33,000
- And then if we go back, we saw that there was one sample where the ground truth was yes,
-
-821
-00:51:33,000 --> 00:51:35,000
+00:51:34,000 --> 00:51:36,000
  but the prediction was no.
 
-822
-00:51:35,000 --> 00:51:39,000
- So, one sample where the ground truth was yes, the prediction was no,
+817
+00:51:36,000 --> 00:51:41,000
+ So one sample where the ground truth was yes, the prediction was no, which is the first
 
-823
-00:51:39,000 --> 00:51:42,000
- which is the first column and the second row.
+818
+00:51:41,000 --> 00:51:44,000
+ column and the second row.
 
-824
-00:51:42,000 --> 00:51:51,000
- Now, can you think about precision and recall in terms of these quantities or in terms of the confusion matrix?
+819
+00:51:44,000 --> 00:51:50,000
+ Now can you think about precision and recall in terms of these quantities or in terms of
 
-825
-00:51:51,000 --> 00:51:57,000
+820
+00:51:50,000 --> 00:51:53,000
+ the confusion matrix?
+
+821
+00:51:53,000 --> 00:51:59,000
  But before we do that, let us make the confusion matrix more generalizable.
 
+822
+00:51:59,000 --> 00:52:02,000
+ So we now have four quantities.
+
+823
+00:52:02,000 --> 00:52:06,000
+ We have four numbers which are written as true positive, false positive, false negative
+
+824
+00:52:06,000 --> 00:52:07,000
+ and true negative.
+
+825
+00:52:07,000 --> 00:52:12,000
+ Let's try and understand how do we remember these four names.
+
 826
-00:51:58,000 --> 00:52:01,000
- So, we now have four quantities.
+00:52:12,000 --> 00:52:15,000
+ Let's look at the first true positive.
 
 827
-00:52:01,000 --> 00:52:07,000
- We have four numbers which are written as true positive, false positive, false negative and true negative.
+00:52:15,000 --> 00:52:20,000
+ The ground truth was positive and we're predicting it to be true.
 
 828
-00:52:07,000 --> 00:52:12,000
- Let us try and understand how do we remember these four names.
+00:52:20,000 --> 00:52:22,000
+ We're truly predicting it to be positive.
 
 829
-00:52:12,000 --> 00:52:14,000
- Let us look at the first true positive.
+00:52:22,000 --> 00:52:25,000
+ Thus it is truly predicted as positive.
 
 830
-00:52:14,000 --> 00:52:19,000
- The ground truth was positive and we are predicting it to be true,
+00:52:25,000 --> 00:52:26,000
+ That's true positive.
 
 831
-00:52:19,000 --> 00:52:21,000
- we are truly predicting it to be positive.
-
-832
-00:52:21,000 --> 00:52:24,000
- Thus, it is truly predicted as positive.
-
-833
-00:52:24,000 --> 00:52:26,000
- That is true positive.
-
-834
-00:52:26,000 --> 00:52:30,000
+00:52:26,000 --> 00:52:31,000
  The first one in the second column is false positive.
 
-835
-00:52:30,000 --> 00:52:37,000
- So, the ground truth was not positive, but we are falsely predicting it to be positive.
+832
+00:52:31,000 --> 00:52:38,000
+ So the ground truth was not positive, but we are falsely predicting it to be positive.
 
-836
-00:52:37,000 --> 00:52:39,000
- Thus, false positive.
+833
+00:52:38,000 --> 00:52:40,000
+ Thus false positive.
 
-837
-00:52:39,000 --> 00:52:42,000
+834
+00:52:40,000 --> 00:52:42,000
  The third element is false negative.
 
-838
+835
 00:52:42,000 --> 00:52:49,000
- The ground truth was yes or positive, but we falsely predicting it to be negative.
+ The ground truth was yes or positive, but we're falsely predicting it to be negative.
 
-839
-00:52:49,000 --> 00:52:53,000
- So, it is a false negative and the last entry is a true negative.
+836
+00:52:49,000 --> 00:52:54,000
+ So it is a false negative and the last entry is a true negative.
 
-840
+837
 00:52:54,000 --> 00:52:57,000
  The ground truth was a negative and the prediction was also negative.
 
+838
+00:52:57,000 --> 00:53:03,000
+ Thus you truly predicting it to be negative.
+
+839
+00:53:03,000 --> 00:53:08,000
+ Now let's come back to the definitions of recall and precision and try to write them
+
+840
+00:53:08,000 --> 00:53:15,000
+ in terms of the four quantities from the confusion matrix that we have just seen.
+
 841
-00:52:57,000 --> 00:53:01,000
- Thus, you are truly predicting it to be negative.
+00:53:15,000 --> 00:53:21,000
+ So when we talk about precision, we spoke about how correct we are when we predicted
 
 842
-00:53:03,000 --> 00:53:14,000
- Now, let us come back to the definitions of recall and precision and try to write them in terms of the four quantities from the confusion matrix that we have just seen.
+00:53:21,000 --> 00:53:23,000
+ to be the positive class.
 
 843
-00:53:15,000 --> 00:53:23,000
- So, when we talk about precision, we spoke about how correct we are when we predict it to be the positive class.
+00:53:23,000 --> 00:53:26,000
+ Let's say yes in this case.
 
 844
-00:53:23,000 --> 00:53:25,000
- Let us say yes in this case.
-
-845
-00:53:25,000 --> 00:53:30,000
+00:53:26,000 --> 00:53:30,000
  Out of the total number of times we predicted it to yes, how accurate we were.
 
+845
+00:53:30,000 --> 00:53:36,000
+ So the first row corresponds to the total number of times we predicted it to yes.
+
 846
-00:53:30,000 --> 00:53:35,000
- So, the first row corresponds to the total number of times we predict it to yes.
+00:53:36,000 --> 00:53:42,000
+ This becomes a denominator which is true positive plus false positive and the portion
 
 847
-00:53:35,000 --> 00:53:39,000
- This becomes a denominator which is true positive plus false positive.
+00:53:42,000 --> 00:53:44,000
+ where we correct is the true positive.
 
 848
-00:53:40,000 --> 00:53:43,000
- And the portion where we correct is the true positive.
+00:53:44,000 --> 00:53:50,000
+ Where we were predicting it to be positive or yes when it is actually yes.
 
 849
-00:53:43,000 --> 00:53:48,000
- Where we were predicting it to be positive or yes, when it is actually yes.
+00:53:50,000 --> 00:53:53,000
+ Thus the numerator becomes true positive.
 
 850
-00:53:48,000 --> 00:53:51,000
- Thus, the numerator becomes true positive.
+00:53:53,000 --> 00:54:00,000
+ Thus the precision is given by true positive over true positive plus false positive.
 
 851
-00:53:51,000 --> 00:53:58,000
- Thus, the precision is given by true positive over true positive plus false positive.
+00:54:00,000 --> 00:54:04,000
+ Actually let's think about recall.
 
 852
-00:53:58,000 --> 00:54:02,000
- Similarly, let us think about recall.
+00:54:04,000 --> 00:54:11,000
+ For recall we said that out of the instances which were true in the ground truth, how many
 
 853
-00:54:02,000 --> 00:54:12,000
- For recall, we said that out of the instances which were true in the ground growth, how many are we able to recall?
+00:54:11,000 --> 00:54:13,000
+ are we able to recall.
 
 854
-00:54:12,000 --> 00:54:24,000
- So, thus, the instances which were true in the ground growth becomes a denominator which is the first column of this matrix which corresponds to true positive plus false negative.
+00:54:13,000 --> 00:54:20,000
+ So thus the instances which were true in the ground truth becomes a denominator which is
 
 855
-00:54:25,000 --> 00:54:30,000
- And the fraction which is identified correctly is the true positive.
+00:54:20,000 --> 00:54:26,000
+ the first column of this matrix which corresponds to true positive plus false negative and the
 
 856
-00:54:30,000 --> 00:54:33,000
- Or what we are able to recall is the true positive.
+00:54:26,000 --> 00:54:32,000
+ fraction which is identified correctly is the true positive or what we are able to recall
 
 857
-00:54:33,000 --> 00:54:39,000
- Thus, the recall becomes true positive over true positive plus false negative.
+00:54:32,000 --> 00:54:34,000
+ is the true positive.
 
 858
-00:54:41,000 --> 00:54:48,000
- We have another metric called the F score which combines the precision and recall in the following ways.
+00:54:34,000 --> 00:54:42,000
+ Thus the recall becomes true positive over true positive plus false negative.
 
 859
-00:54:49,000 --> 00:54:56,000
- So, the definition is given by the formula is given by twice precision times recall divided by precision plus recall.
+00:54:42,000 --> 00:54:48,000
+ We have another metric called the F score which combines the precision and recall in
 
 860
-00:54:56,000 --> 00:55:01,000
- It is sometimes useful to give a single number instead of giving a precision and a recall.
+00:54:48,000 --> 00:54:49,000
+ the following way.
 
 861
-00:55:04,000 --> 00:55:08,000
- There is another interesting metric called Matthew's correlation coefficient.
+00:54:49,000 --> 00:54:54,000
+ So the definition is given by the formula is given by twice precision times recall divided
 
 862
-00:55:08,000 --> 00:55:13,000
- The formula looks fairly complicated at this point of time if you see.
+00:54:54,000 --> 00:54:59,000
+ by a precision plus recall it's sometimes useful to give a single number instead of
 
 863
-00:55:14,000 --> 00:55:19,000
- But there is one particular reason why this coefficient is very useful.
+00:54:59,000 --> 00:55:05,000
+ giving a precision and a recall.
 
 864
-00:55:19,000 --> 00:55:24,000
- And to see that specific reason, let us try to work out a simple example now.
+00:55:05,000 --> 00:55:09,000
+ There is another interesting metric called Matthew's correlation coefficient.
 
 865
-00:55:27,000 --> 00:55:34,000
- For the data that you have given below where the ground growth positive and predicted positive is the largest number 90.
+00:55:09,000 --> 00:55:15,000
+ The formula looks fairly complicated at this point of time if you see but there is one
 
 866
-00:55:34,000 --> 00:55:39,000
- And the other three entries are also in the field in the matrix and fusion matrix.
+00:55:15,000 --> 00:55:22,000
+ particular reason why this coefficient is very useful and to see that specific reason
 
 867
-00:55:40,000 --> 00:55:44,000
- Can you calculate the precision recall at score and Matthew's coefficient?
+00:55:22,000 --> 00:55:27,000
+ let's try to work out a simple example now.
 
 868
-00:55:48,000 --> 00:55:50,000
- Okay, let us talk about precision for now.
+00:55:27,000 --> 00:55:32,000
+ For the data that you have given below where the ground truth positive and predicted positive
 
 869
-00:55:50,000 --> 00:55:55,000
- The precision is out of the times you are predicting it to be positive how correct you are.
+00:55:32,000 --> 00:55:39,000
+ is the largest number 90 and the other three entries are also in the field in the matrix
 
 870
-00:55:55,000 --> 00:56:01,000
- For that we look at the row corresponding to predicted positive that becomes a denominator.
+00:55:39,000 --> 00:55:40,000
+ and fusion matrix.
 
 871
-00:56:01,000 --> 00:56:05,000
- Thus the total entries are 90 plus 4 which is 94.
+00:55:40,000 --> 00:55:45,000
+ Can you calculate the precision recall F score and Matthew's coefficient?
 
 872
-00:56:06,000 --> 00:56:09,000
- And how many of them are we correctly identifying that is 90.
+00:55:45,000 --> 00:55:51,000
+ Okay let's talk about precision for now.
 
 873
-00:56:09,000 --> 00:56:13,000
- Thus precision becomes 90 over 94.
+00:55:51,000 --> 00:55:55,000
+ The precision is out of the times you are predicting it to be positive how correct you
 
 874
-00:56:15,000 --> 00:56:23,000
- Similarly, if you look for recall out of the entries which were positive in the ground growth that becomes a first column.
+00:55:55,000 --> 00:55:56,000
+ are.
 
 875
-00:56:23,000 --> 00:56:26,000
- That is 90 plus 1 which is 91 entries.
+00:55:56,000 --> 00:56:02,000
+ For that we look at the row corresponding to predictive positive that becomes a denominator
 
 876
-00:56:26,000 --> 00:56:30,000
- How many are we able to recall correctly? That is 90.
+00:56:02,000 --> 00:56:08,000
+ thus the total entries are 90 plus 4 which is 94 and how many of them are we correctly
 
 877
-00:56:30,000 --> 00:56:33,000
- Thus recall becomes 90 over 91.
+00:56:08,000 --> 00:56:10,000
+ identifying that is 90.
 
 878
-00:56:34,000 --> 00:56:40,000
- And we can calculate the F score by twice precision times recall divided by precision plus recall.
+00:56:10,000 --> 00:56:15,000
+ Thus precision becomes 90 over 94.
 
 879
-00:56:40,000 --> 00:56:47,000
- Now all of these numbers are giving an indication that we have done a very good job by identification or prediction.
+00:56:15,000 --> 00:56:22,000
+ And if you look for recall out of the entries which were positive in the ground truth that
 
 880
-00:56:47,000 --> 00:56:50,000
- But does this seem to be a problem?
+00:56:22,000 --> 00:56:28,000
+ becomes the first column that is 90 plus 1 which is 91 entries how many are we able
 
 881
-00:56:52,000 --> 00:56:59,000
- Yes, so the problem is that this was a very very easy problem for classification.
+00:56:28,000 --> 00:56:30,000
+ to recall correctly that is 90.
 
 882
-00:56:59,000 --> 00:57:03,000
- Because most of the instances were positive in the ground growth.
+00:56:30,000 --> 00:56:38,000
+ Thus recall becomes 90 over 91 and we can calculate the F score by twice precision times
 
 883
-00:57:03,000 --> 00:57:10,000
- So if you predicted everything to be positive you will have a fairly high precision and recall and accuracy and F score.
+00:56:38,000 --> 00:56:41,000
+ recall divided by precision plus recall.
 
 884
-00:57:10,000 --> 00:57:14,000
- But the math use coefficient comes out to be fairly low.
+00:56:41,000 --> 00:56:46,000
+ All of these numbers are giving an indication that we have done a very good job by identification
 
 885
-00:57:14,000 --> 00:57:19,000
- What this is telling us is that you are not doing a substantially good job
+00:56:46,000 --> 00:56:48,000
+ or a prediction.
 
 886
-00:57:19,000 --> 00:57:24,000
- identifying or predicting in such a case because the problem itself was fairly simple.
+00:56:48,000 --> 00:56:51,000
+ But does this seem to be a problem?
 
 887
-00:57:25,000 --> 00:57:31,000
- So this is where we need to take all the metrics and all the results with the salt of grain because
+00:56:51,000 --> 00:57:00,000
+ Yes, so the problem is that this was a very very easy problem for classification because
 
 888
-00:57:31,000 --> 00:57:40,000
- it is important to look at how easy or difficult it was when you could have predicted the most occurring class.
+00:57:00,000 --> 00:57:03,000
+ most of the instances were positive in the ground truth.
 
 889
-00:57:41,000 --> 00:57:47,000
- I, Grampus has a vector of B number and the prediction will also be a vector of B number.
+00:57:03,000 --> 00:57:08,000
+ So if you predicted everything to be positive you will have a fairly high precision and
 
 890
-00:57:47,000 --> 00:57:48,000
- Right?
+00:57:08,000 --> 00:57:10,000
+ recall and accuracy and F score.
 
 891
-00:57:48,000 --> 00:57:52,000
- We first met with which we look at is called the main squared error.
+00:57:10,000 --> 00:57:15,000
+ But the Matthew's coefficient comes out to be fairly low.
 
 892
-00:57:52,000 --> 00:57:58,000
- The way to remember this is to compose the three jobs, main squared error and then we put it in reverse back.
+00:57:15,000 --> 00:57:20,000
+ What this is telling us is that you are not doing a substantially good job identifying
 
 893
-00:57:58,000 --> 00:58:06,000
- We first compute the error which is y i hat minus y i.
+00:57:20,000 --> 00:57:25,000
+ or at predicting in such a case because the problem itself was fairly simple.
 
 894
-00:58:06,000 --> 00:58:07,000
- Right?
+00:57:25,000 --> 00:57:30,000
+ So this is where we need to take all the metrics and all the results with the salt of grain
 
 895
-00:58:07,000 --> 00:58:09,000
- Predicted minus ground for the i x sample.
+00:57:30,000 --> 00:57:38,000
+ because it is important to look at how easy or difficult it was when you could have predicted
 
 896
-00:58:09,000 --> 00:58:14,000
- You have computed the error and also shown the corresponding error.
+00:57:38,000 --> 00:57:40,000
+ the most occurring class.
 
 897
-00:58:19,000 --> 00:58:22,000
- Can you see the different colors now?
+00:58:38,000 --> 00:58:43,000
+ So we have to take the main over the end sample.
 
 898
-00:58:22,000 --> 00:58:28,000
- So y i minus y, y i minus y i tells you the error term.
+00:58:43,000 --> 00:58:49,000
+ Main squared error is the error squared at the main and a term is generally then used
 
 899
-00:58:28,000 --> 00:58:30,000
- Then you have a squared term.
+00:58:49,000 --> 00:58:56,000
+ in the root means squared error which is the root of the main squared error.
 
 900
-00:58:30,000 --> 00:58:33,000
- So y i minus y i hat minus y i.
+00:58:56,000 --> 00:59:00,000
+ There are numbers of many similar metrics called the main absolute error.
 
 901
-00:58:33,000 --> 00:58:35,000
- For example, you squared the error.
+00:59:00,000 --> 00:59:05,000
+ Again it starts with the inside the first calculate the error yi hat and yi.
 
 902
-00:58:35,000 --> 00:58:36,000
- Right?
+00:59:05,000 --> 00:59:09,000
+ If you have a maximum of values of it then you can do it.
 
 903
-00:58:36,000 --> 00:58:40,000
- And then you can find it in the main over it which is the main over the end sample.
+00:59:09,000 --> 00:59:14,000
+ You can also come with a metric called the main error which is first compute error at
 
 904
-00:58:40,000 --> 00:58:41,000
- Right?
+00:59:14,000 --> 00:59:15,000
+ the main value.
 
 905
-00:58:41,000 --> 00:58:42,000
- Main squared error.
-
-906
-00:58:42,000 --> 00:58:45,000
- First the error squared is 18 v.
-
-907
-00:58:46,000 --> 00:58:53,000
- And a term is generally then used in a vector of order group, main squared error which is the root of the main squared error.
-
-908
-00:58:53,000 --> 00:58:54,000
- Right?
-
-909
-00:58:54,000 --> 00:58:59,000
- There are another very similar method called the main absolute error.
-
-910
-00:58:59,000 --> 00:59:04,000
- Again, it starts with the inside the first calculate the error y i hat and y i.
-
-911
-00:59:04,000 --> 00:59:07,000
- The absolute values of it then take the u.
-
-912
-00:59:07,000 --> 00:59:08,000
- Right?
-
-913
-00:59:08,000 --> 00:59:11,000
- We can also come with a vector called the main error.
-
-914
-00:59:12,000 --> 00:59:15,000
- We just first compute the error and a main over it.
-
-915
-00:59:15,000 --> 00:59:16,000
+00:59:15,000 --> 00:59:17,000
  Why is that a parameter?
 
-916
-00:59:16,000 --> 00:59:18,000
+906
+00:59:17,000 --> 00:59:18,000
  You use it as a metric.
 
-917
+907
 00:59:18,000 --> 00:59:21,000
- They would cancel each other out.
+ They will cancel each other out.
+
+908
+00:59:21,000 --> 00:59:29,000
+ If you could have a prediction imagine the number of 0 0 0 0 0 or you have a four example
+
+909
+00:59:29,000 --> 00:59:32,000
+ of 0 and you have predicted as plus and minus and plus and minus.
+
+910
+00:59:32,000 --> 00:59:34,000
+ What is the main error in this case?
+
+911
+00:59:35,000 --> 00:59:37,000
+ The main error is 0.
+
+912
+00:59:37,000 --> 00:59:40,000
+ What is the main absolute error?
+
+913
+00:59:40,000 --> 00:59:41,000
+ What is the main?
+
+914
+00:59:41,000 --> 00:59:42,000
+ What is the main?
+
+915
+00:59:42,000 --> 00:59:43,000
+ What is the main?
+
+916
+00:59:43,000 --> 00:59:45,000
+ I will see you in a little bit more.
+
+917
+00:59:45,000 --> 00:59:47,000
+ What is the main error?
 
 918
-00:59:21,000 --> 00:59:26,000
- If you could have a prediction imagine the number of all 0 0 0 0 0.
+00:59:47,000 --> 00:59:50,000
+ So this is why it is also what it is known what is the metrics.
 
 919
-00:59:26,000 --> 00:59:29,000
- Or you have a 4 example of all 0.
+00:59:50,000 --> 00:59:53,000
+ You are trying to optimize.
 
 920
-00:59:29,000 --> 00:59:32,000
- And I have predicted as plus and minus and plus and minus.
+00:59:53,000 --> 01:00:01,000
+ And remember why you might want to use main squared error or main absolute error times?
 
 921
-00:59:32,000 --> 00:59:34,000
- What is the mean error in this case?
+01:00:02,000 --> 01:00:03,000
+ Yes.
 
 922
-00:59:34,000 --> 00:59:36,000
- It's mean error is 0.
+01:00:03,000 --> 01:00:07,000
+ There is something more familiar.
 
 923
-00:59:36,000 --> 00:59:38,000
- What is the mean absolute error?
+01:00:07,000 --> 01:00:08,000
+ Sorry.
 
 924
-00:59:39,000 --> 00:59:41,000
- What is the mean for?
+01:00:08,000 --> 01:00:15,000
+ It is something even bigger than that.
 
 925
-00:59:41,000 --> 00:59:42,000
- Yeah.
+01:00:15,000 --> 01:00:28,000
+ Can you tell me how does the RMSC, if Viya in hat is very far away from Viya, which is
 
 926
-00:59:42,000 --> 00:59:46,000
- I will see you do not want to gain capital.
+01:00:28,000 --> 01:00:31,000
+ going to produce more error?
 
 927
-00:59:46,000 --> 00:59:49,000
- So this is why it is also what you know what is the metrics.
+01:00:31,000 --> 01:00:45,000
+ So can you say that squared errors tend to penalize bad predictions much more than
 
 928
-00:59:49,000 --> 00:59:52,000
- You are trying to optimize them.
+01:00:45,000 --> 01:00:48,000
+ the regular?
 
 929
-00:59:52,000 --> 01:00:00,000
- And even if you why you might want to use mean squared error or mean absolute error times.
+01:00:48,000 --> 01:00:52,000
+ Let us quickly get into the first algorithm for today.
 
 930
-01:00:00,000 --> 01:00:01,000
- Right?
-
-931
-01:00:01,000 --> 01:00:03,000
- There is many things.
-
-932
-01:00:03,000 --> 01:00:11,000
- There is something more previous, sorry.
-
-933
-01:00:11,000 --> 01:00:13,000
- It is something even previous.
-
-934
-01:00:13,000 --> 01:00:18,000
- And you just get a sense of how we use mean squared error.
-
-935
-01:00:18,000 --> 01:00:21,000
- Okay, so can you tell me how does the RMSC.
-
-936
-01:00:21,000 --> 01:00:26,000
- So if if by eye hat is very far away from by eye.
-
-937
-01:00:26,000 --> 01:00:30,000
- Which is going to produce more error.
-
-938
-01:00:30,000 --> 01:00:37,000
- So, can you say that square others tend to penalize bad predictions much more than the
-
-939
-01:00:37,000 --> 01:00:42,000
- regular.
-
-940
-01:00:42,000 --> 01:00:51,000
- So, now let us quickly get into the first algorithm for today.
-
-941
-01:00:52,000 --> 01:00:58,000
+01:00:52,000 --> 01:00:55,000
  We are going to talk about decision trees.
 
-942
-01:00:58,000 --> 01:01:13,000
- We are again now solving a classification problem using a quasi-
+931
+01:00:55,000 --> 01:01:08,000
+ We are in now solving a classification problem using our first evaluation contribution
 
-943
-01:01:13,000 --> 01:01:20,000
- tree tree.
+932
+01:01:08,000 --> 01:01:09,000
+ tree.
 
-944
-01:01:20,000 --> 01:01:27,000
- We are the algorithm of whether it is sunny or hot or hot or hot, or humidity or the wind.
+933
+01:01:09,000 --> 01:01:14,000
+ So we have some training data where we have different days from D1 to D14.
 
-945
-01:01:27,000 --> 01:01:30,000
- And whether or not we play it.
+934
+01:01:14,000 --> 01:01:21,000
+ Should the day be included as an attribute of a path?
 
-946
-01:01:30,000 --> 01:01:35,000
- So, now you try to predict whether I should or learn a function between data and some of
+935
+01:01:21,000 --> 01:01:22,000
+ That is the other assignment.
 
-947
-01:01:35,000 --> 01:01:38,000
+936
+01:01:22,000 --> 01:01:25,000
+ We have the output of whether it is sunny or hot, etc. or hot, etc.
+
+937
+01:01:25,000 --> 01:01:26,000
+ The humidity and the wind.
+
+938
+01:01:26,000 --> 01:01:28,000
+ And whether or not we played it.
+
+939
+01:01:28,000 --> 01:01:34,000
+ So now you are trying to predict whether I should or learn the function between data and
+
+940
+01:01:34,000 --> 01:01:39,000
  the attributes of concern.
 
-948
-01:01:38,000 --> 01:01:44,000
- These are, as we described in the computer, COVID attributes and the output variable.
+941
+01:01:39,000 --> 01:01:45,000
+ So we are having to come in for future, co-weave attributes and the output variable.
 
-949
-01:01:44,000 --> 01:01:49,000
- And this is profit equation because the output variable of concern is discrete.
+942
+01:01:45,000 --> 01:01:50,000
+ And this is a practical equation because the output variable of concern is just great.
 
-950
-01:01:49,000 --> 01:01:54,000
- In this case, it is only in yes or no.
+943
+01:01:50,000 --> 01:01:54,000
+ In this case it is only a yes or no.
 
-951
-01:01:54,000 --> 01:01:59,000
- And because I have also used decision trees to follow regression here.
+944
+01:01:54,000 --> 01:02:01,000
+ And we can also use decision trees to follow regression here where we try to predict the
 
-952
-01:01:59,000 --> 01:02:04,000
- Maybe try to predict the house price given these two properties and each other.
+945
+01:02:01,000 --> 01:02:04,000
+ house price given these two properties and each of them.
 
-953
+946
 01:02:04,000 --> 01:02:07,000
  Let us get back to the example which we were discussing.
 
-954
+947
 01:02:07,000 --> 01:02:12,000
  I am not going to talk about this for now.
 
-955
+948
 01:02:12,000 --> 01:02:16,000
- So, one of the reasons why I am talking about different trees is started.
+ So one of the reasons why I am about to put different trees started.
 
-956
-01:02:16,000 --> 01:02:21,000
- We remember last time we were discussing things like over and test the crashes.
+949
+01:02:16,000 --> 01:02:22,000
+ We remember last time we were discussing things like over and test the patches.
 
-957
-01:02:21,000 --> 01:02:25,000
- Imagine if we are very, very complicated machine learning algorithms.
+950
+01:02:22,000 --> 01:02:25,000
+ Imagine if we are very very complicated machinaling the bottom.
 
-958
+951
 01:02:25,000 --> 01:02:28,000
- Let us say some new rental technical problems.
+ Let us say some new little bit of the properties.
 
-959
+952
 01:02:28,000 --> 01:02:32,000
  There is often a very, there is often a case of very hard to do,
 
-960
-01:02:32,000 --> 01:02:38,000
- but it is not really to understand what the model is done.
+953
+01:02:32,000 --> 01:02:35,000
+ but we are going to be strategically for these models.
 
-961
-01:02:38,000 --> 01:02:45,000
- But the shift trees being one of the very simple models are very, very suited for such cases.
+954
+01:02:35,000 --> 01:02:40,000
+ It is not really to understand what the model is done, but the shift rays being one of the
 
-962
+955
+01:02:40,000 --> 01:02:45,000
+ very simple models are very very suited for such cases.
+
+956
 01:02:45,000 --> 01:02:48,000
  Where you want the model to be educated.
 
-963
+957
 01:02:48,000 --> 01:02:51,000
- Now, imagine if you go to a doctor, right?
+ Now imagine if we go to a doctor, right?
+
+958
+01:02:51,000 --> 01:02:55,000
+ We want to build an application, we want to build a machine learning, let us say,
+
+959
+01:02:55,000 --> 01:02:58,000
+ it adds a screen application for an author.
+
+960
+01:02:58,000 --> 01:03:03,000
+ When the doctor tries that, I will find, it is ignored and relo and some
+
+961
+01:03:03,000 --> 01:03:08,000
+ fluency maps and I have done some attention and 20 other technical terms.
+
+962
+01:03:08,000 --> 01:03:09,000
+ And even it works.
+
+963
+01:03:09,000 --> 01:03:12,000
+ All they will say are, come up with a set of rules.
 
 964
-01:02:51,000 --> 01:02:54,000
- You want to build an application, you want to build a machine learning,
+01:03:12,000 --> 01:03:19,000
+ If the patient has, you know, decaying cell function and the patient has some swelling, etc.
 
 965
-01:02:54,000 --> 01:02:57,000
- let us say, it adds a screen application for a doctor.
+01:03:19,000 --> 01:03:21,000
+ Then the patient is like you have to ask them.
 
 966
-01:02:58,000 --> 01:03:05,000
- When the doctor tries that, I will provide sigmoid and relu and some phalancy maps
+01:03:21,000 --> 01:03:23,000
+ Which of them do you think they will talk about?
 
 967
-01:03:05,000 --> 01:03:09,000
- and I have done some attention and 20 other technical terms in the event it works.
+01:03:23,000 --> 01:03:25,000
+ Let me show you a couple of things.
 
 968
-01:03:09,000 --> 01:03:12,000
- Or let us say that I have come up with a set of rules.
-
-969
-01:03:12,000 --> 01:03:19,000
- If the patient has, you know, decaying cell function and patient has some swelling etc.
-
-970
-01:03:19,000 --> 01:03:23,000
- Then the patient is like you have to ask them, which of them do you think is a doctor?
-
-971
-01:03:23,000 --> 01:03:26,000
- Let me show you a couple.
-
-972
 01:03:26,000 --> 01:03:28,000
  Probably the second one, right?
 
+969
+01:03:28,000 --> 01:03:29,000
+ Because that is good and you are critical.
+
+970
+01:03:29,000 --> 01:03:32,000
+ This is also about million percent.
+
+971
+01:03:32,000 --> 01:03:39,000
+ If we go back to this example and if you think in your life, if you were to play this,
+
+972
+01:03:39,000 --> 01:03:41,000
+ what is this kind of guy you are going to play?
+
 973
-01:03:28,000 --> 01:03:32,000
- Because that is called interpretive. This is also about many of those things, right?
+01:03:43,000 --> 01:03:45,000
+ One, the other one is just not the question of the code,
 
 974
-01:03:32,000 --> 01:03:38,000
- If we go back to this example and if you think in your life, if you were to play tennis,
+01:03:45,000 --> 01:03:47,000
+ say where you get someone to play with.
 
 975
-01:03:38,000 --> 01:03:42,000
- what does this kind of guy in here is very clear.
+01:03:47,000 --> 01:03:48,000
+ You cannot play with them.
 
 976
-01:03:42,000 --> 01:03:47,000
- One, I don't know if it is just not clear, it is a very clear thing.
+01:03:48,000 --> 01:03:53,000
+ But then of course you not want to play with it, that is very hot.
 
 977
-01:03:47,000 --> 01:03:49,000
- It cannot play against the world.
+01:03:53,000 --> 01:03:56,000
+ You not want to play with it, that is very humid.
 
 978
-01:03:49,000 --> 01:03:53,000
- But then of course, you not want to play with this very hard.
+01:03:56,000 --> 01:04:03,000
+ Looking at this, playing a meetup of a specific example, can you tell me some of the times
 
 979
-01:03:53,000 --> 01:03:56,000
- You not want to play with it very human.
+01:04:03,000 --> 01:04:05,000
+ you will definitely play an operator.
 
 980
-01:03:56,000 --> 01:04:01,000
- Looking at this, playing a meetup of a specific example,
-
-981
-01:04:01,000 --> 01:04:05,000
- can you tell me some of the times you will definitely play an operator.
-
-982
 01:04:11,000 --> 01:04:13,000
  As I have played in the overcast, I will always play.
 
-983
+981
 01:04:13,000 --> 01:04:15,000
  I mean, tell me something like that.
 
+982
+01:04:16,000 --> 01:04:23,000
+ Okay, in fact, when it is overcast, you see, you are not here always play.
+
+983
+01:04:23,000 --> 01:04:26,000
+ Just look at these specific rules.
+
 984
-01:04:15,000 --> 01:04:23,000
- Okay, in fact, when it is overcast, you see, you are not clear always playing, right?
+01:04:26,000 --> 01:04:29,000
+ So can you come up with these simple kind of rules?
 
 985
-01:04:23,000 --> 01:04:26,000
- Just look at these specific roles.
-
-986
-01:04:26,000 --> 01:04:29,000
- So can you tell me how the taste and pull kind of rules?
-
-987
 01:04:29,000 --> 01:04:31,000
  If it is overcast, I will definitely play.
 
-988
+986
 01:04:31,000 --> 01:04:34,000
  If it is not overcast, it is semi.
 
-989
+987
 01:04:34,000 --> 01:04:38,000
  And let's say that the temperature is mild, then I will also play.
 
-990
+988
 01:04:38,000 --> 01:04:39,000
  Right?
 
+989
+01:04:39,000 --> 01:04:42,000
+ This is how we find to play it really abstracted.
+
+990
+01:04:42,000 --> 01:04:44,000
+ This is the idea of the resolution.
+
 991
-01:04:39,000 --> 01:04:44,000
- This is how we find to play a real structure, which is the idea of output of the difference between people.
+01:04:44,000 --> 01:04:51,000
+ So this is what we both learned from machine learning, as well as in quality.
 
 992
-01:04:45,000 --> 01:04:51,000
- So this is what we both learned from machine learning, as well as called different languages.
+01:04:51,000 --> 01:04:53,000
+ Now this is our tree.
 
 993
-01:04:51,000 --> 01:04:53,000
- So there are three.
-
-994
 01:04:53,000 --> 01:04:58,000
  You can see you have some rules, you have some branches, and you have some rules.
 
-995
+994
 01:04:58,000 --> 01:05:01,000
  These are also telling you what is different.
 
+995
+01:05:01,000 --> 01:05:07,000
+ I will be stopping you, if it is overcast, you will always play with this.
+
 996
-01:05:01,000 --> 01:05:06,000
- I will be stopping you, basically, if it is overcast, you will always play against.
+01:05:07,000 --> 01:05:11,000
+ If we are overcast, you play in it.
 
 997
-01:05:06,000 --> 01:05:11,000
- If it is, if the output is overcast, you play against.
+01:05:11,000 --> 01:05:16,000
+ But if we are overcast, semi, and the humidity is lower, it is still clear.
 
 998
-01:05:11,000 --> 01:05:16,000
- But if the output is semi, and the humidity is lower, it is still clear.
-
-999
 01:05:16,000 --> 01:05:22,000
  It is only when the humidity is high, and the output is sunny, I will not only play.
 
-1000
-01:05:22,000 --> 01:05:26,000
+999
+01:05:22,000 --> 01:05:27,000
  Similarly, if the output is raining, but the wind is weak, I can still play.
 
-1001
-01:05:26,000 --> 01:05:30,000
+1000
+01:05:27,000 --> 01:05:31,000
  But if the wind is strong, maybe I will not be able to play.
 
-1002
-01:05:30,000 --> 01:05:32,000
+1001
+01:05:31,000 --> 01:05:33,000
  Or this specific example.
 
+1002
+01:05:34,000 --> 01:05:38,000
+ So this is what we hope to learn using a remote.
+
 1003
-01:05:32,000 --> 01:05:33,000
- Right?
+01:05:38,000 --> 01:05:45,000
+ We have data, we have some performance measures, what the accuracy fields and the results are.
 
 1004
-01:05:33,000 --> 01:05:38,000
- So this is what we hope to learn using our own model.
+01:05:45,000 --> 01:05:48,000
+ And we have experience coming from this data.
 
 1005
-01:05:38,000 --> 01:05:45,000
- We have data, we have some performance images, what the accuracy of the fields are, and we
-
-1006
-01:05:45,000 --> 01:05:50,000
- have experience coming from this data.
-
-1007
-01:05:50,000 --> 01:05:56,000
+01:05:51,000 --> 01:05:56,000
  So interestingly, what is an optimum decision tree that we can learn?
 
-1008
+1006
 01:05:56,000 --> 01:05:58,000
  So what is the optimum tree that we can learn?
 
-1009
+1007
 01:05:58,000 --> 01:06:00,000
  We have learned one such tree.
 
+1008
+01:06:00,000 --> 01:06:03,000
+ Could we have learned many such trees?
+
+1009
+01:06:03,000 --> 01:06:09,000
+ Could we have learned tree where the above tree appears, above one tree appears below?
+
 1010
-01:06:00,000 --> 01:06:02,000
- Could you have learned many such trees?
-
-1011
-01:06:02,000 --> 01:06:07,000
- Could you have learned tree where the output appears above one of the attributes appears
-
-1012
-01:06:07,000 --> 01:06:08,000
- below?
-
-1013
-01:06:08,000 --> 01:06:11,000
+01:06:09,000 --> 01:06:11,000
  So there is a very old table.
 
-1014
+1011
 01:06:11,000 --> 01:06:13,000
  Does everyone recognize the same?
 
-1015
+1012
 01:06:13,000 --> 01:06:15,000
- Rather, M is the best.
+ Rodder and N.
 
-1016
+1013
 01:06:15,000 --> 01:06:17,000
  Where have you started?
 
+1014
+01:06:17,000 --> 01:06:23,000
+ Ciala, Cial, R.S., which is your regarding book, is by the same author.
+
+1015
+01:06:23,000 --> 01:06:26,000
+ This was published in the 19th century.
+
+1016
+01:06:27,000 --> 01:06:31,000
+ Where the measure of the first starting optimal binding decision tree is simply complete.
+
 1017
-01:06:17,000 --> 01:06:21,000
- Cial, Cial, R is, which is your regarding book.
+01:06:31,000 --> 01:06:39,000
+ Which means that we can have so many different trees, we do not want to tell which is the best decision we can learn.
 
 1018
-01:06:21,000 --> 01:06:26,000
- It is by the same author of this clause, published in the 19th century.
+01:06:39,000 --> 01:06:43,000
+ In such cases, what do you typically do?
 
 1019
-01:06:26,000 --> 01:06:30,000
- Where the measure of constructing optimum binding to this tree is NP-complete.
+01:06:47,000 --> 01:06:49,000
+ When I talk about the possible tree tree.
 
 1020
-01:06:30,000 --> 01:06:36,000
- Which means that we can have so many different trees, we don't, it is non-driven to tell
+01:06:49,000 --> 01:06:53,000
+ And it is all the possible tree and the tree tree.
 
 1021
-01:06:36,000 --> 01:06:37,000
- which is the best.
+01:06:53,000 --> 01:07:00,000
+ So my answer is a concern for all the possible tree trees, but that operation is going to be complete.
 
 1022
-01:06:37,000 --> 01:07:00,000
- This is a
+01:07:00,000 --> 01:07:04,000
+ For now, for the purpose of the tree, let us say that cannot be done.
 
 1023
-01:07:00,000 --> 01:07:04,000
- one of the purpose of the specific, let's say that kind of data.
+01:07:04,000 --> 01:07:07,000
+ It cannot be done primitive.
 
 1024
-01:07:04,000 --> 01:07:07,000
- It cannot be done primarily.
-
-1025
 01:07:07,000 --> 01:07:10,000
  So we need some of the solution to tell which is a good tree.
 
-1026
+1025
 01:07:10,000 --> 01:07:13,000
- That is the objective to end up creating good tree.
+ That is the objective to end up creating a good tree.
+
+1026
+01:07:14,000 --> 01:07:19,000
+ And which is good in this end, it is able to classify or it is able to predict after it.
 
 1027
-01:07:13,000 --> 01:07:18,000
- And which is good in the same way to classify or it is able to predict after it.
+01:07:19,000 --> 01:07:22,000
+ But we cannot enumerate all possible trees.
 
 1028
-01:07:18,000 --> 01:07:22,000
- But we cannot enumerate all those things.
+01:07:23,000 --> 01:07:26,000
+ So we end up using something called the greedy algorithm.
 
 1029
-01:07:22,000 --> 01:07:26,000
- So we end up using something called say, greedy algorithm.
-
-1030
-01:07:26,000 --> 01:07:28,000
+01:07:26,000 --> 01:07:29,000
  So greedy means literally greedy.
 
+1030
+01:07:29,000 --> 01:07:37,000
+ And the intuition is that at each level of the tree, we choose an attribute that gives us the biggest estimated performance.
+
 1031
-01:07:28,000 --> 01:07:33,000
- And the intuition is that at each level of the tree, we choose an attribute that gives us
+01:07:38,000 --> 01:07:40,000
+ We are looking at the performance type.
 
 1032
-01:07:33,000 --> 01:07:36,000
- the biggest estimated performance gain.
+01:07:40,000 --> 01:07:46,000
+ We want something which is given as the best performance game, but we are only able to estimate it.
 
 1033
-01:07:36,000 --> 01:07:39,000
- We are looking at some performance standards.
+01:07:46,000 --> 01:07:51,000
+ We are not getting the entire accurate performance game.
 
 1034
-01:07:39,000 --> 01:07:45,000
- We want something which is given as the best performance gain, but we are only able to
+01:07:51,000 --> 01:07:52,000
+ We cannot get that.
 
 1035
-01:07:45,000 --> 01:07:46,000
- estimate it.
-
-1036
-01:07:46,000 --> 01:07:51,000
- We are not getting the entire accurate performance gain, we cannot get that.
-
-1037
-01:07:52,000 --> 01:07:55,000
+01:07:53,000 --> 01:07:55,000
  But greedy algorithms can be really bad.
 
+1036
+01:07:55,000 --> 01:07:59,000
+ Imagine that this is you.
+
+1037
+01:07:59,000 --> 01:08:04,000
+ You want to now, you want to reach them early, you are very complete.
+
 1038
-01:07:55,000 --> 01:08:01,000
- Imagine that this is you, you want to now, you know, you are very impatient.
+01:08:04,000 --> 01:08:07,000
+ You see that there is no car over there.
 
 1039
-01:08:01,000 --> 01:08:04,000
- You want to reach them early, you are very concrete.
+01:08:08,000 --> 01:08:11,000
+ You try and take a left.
 
 1040
-01:08:04,000 --> 01:08:07,000
- You see that there is no car over here.
+01:08:11,000 --> 01:08:17,000
+ And then you, because you have only seen the same spot, you are not able to see these huge tracks.
 
 1041
-01:08:07,000 --> 01:08:11,000
- You try and over there, you try and take a left.
+01:08:17,000 --> 01:08:23,000
+ You take a left over here and then you perpetuate the caught behind these various global graphs.
 
 1042
-01:08:11,000 --> 01:08:16,000
- And then you, because you have only seen the same spot, you are not able to see this, these
-
-1043
-01:08:16,000 --> 01:08:17,000
- huge tracks.
-
-1044
-01:08:18,000 --> 01:08:23,000
- You take a left over here and then you perpetually caught behind these various global interactions.
-
-1045
 01:08:23,000 --> 01:08:25,000
  They are moving at 30 degrees.
 
-1046
-01:08:25,000 --> 01:08:29,000
- It will have been better if you have just stayed at this point, right, in the long run.
+1043
+01:08:25,000 --> 01:08:28,000
+ It will have been better if you have just stayed at this point.
 
-1047
-01:08:29,000 --> 01:08:33,000
+1044
+01:08:28,000 --> 01:08:30,000
+ In the long run.
+
+1045
+01:08:30,000 --> 01:08:33,000
  So what we have done here is to take a very greedy position.
 
-1048
-01:08:33,000 --> 01:08:34,000
- Right?
-
-1049
+1046
 01:08:34,000 --> 01:08:39,000
  We have not considered the global picture or we have not seen very much into the future.
 
-1050
-01:08:39,000 --> 01:08:43,000
- We have just seen what is the best I can do right now, which is just take a left and then
+1047
+01:08:39,000 --> 01:08:46,000
+ We have just seen what is the best I can do right now, which is just take a left and then I will be caught in these global graphs.
 
-1051
-01:08:43,000 --> 01:08:45,000
- I will be caught in these global tracks.
+1048
+01:08:46,000 --> 01:08:50,000
+ So this is just to show that the variation is not up there.
 
-1052
-01:08:46,000 --> 01:08:49,000
- So this is just to show that media is not off there.
-
-1053
-01:08:51,000 --> 01:08:53,000
+1049
+01:08:52,000 --> 01:08:54,000
  Now we come up with the first algorithm.
 
-1054
-01:08:53,000 --> 01:09:01,000
- This particular algorithm is called IDP of some of the variations of this particular algorithm.
+1050
+01:08:54,000 --> 01:09:02,000
+ This particular algorithm is called ideally some of the variations of this particular algorithm.
 
-1055
-01:09:02,000 --> 01:09:05,000
- We have created three specific arguments.
+1051
+01:09:03,000 --> 01:09:06,000
+ We have three specific arguments.
 
-1056
-01:09:05,000 --> 01:09:08,000
- The first is examples, target attribute and arguments.
+1052
+01:09:06,000 --> 01:09:09,000
+ The first is examples target attribute and attributes.
 
-1057
-01:09:08,000 --> 01:09:12,000
+1053
+01:09:09,000 --> 01:09:13,000
  Can anyone tell me what you think the target attribute is?
 
+1054
+01:09:13,000 --> 01:09:16,000
+ Outboard.
+
+1055
+01:09:16,000 --> 01:09:23,000
+ So the target attribute is what the response variable or the output variable will actually tell us somehow.
+
+1056
+01:09:23,000 --> 01:09:26,000
+ What do you think are the attributes?
+
+1057
+01:09:27,000 --> 01:09:33,000
+ The features here which were outlook, event, humidity, etc. are those specific features.
+
 1058
-01:09:13,000 --> 01:09:14,000
- The output.
-
-1059
-01:09:14,000 --> 01:09:21,000
- So the output, how we target it is what the response variable or the output variable will actually
-
-1060
-01:09:21,000 --> 01:09:22,000
- tell us somehow.
-
-1061
-01:09:22,000 --> 01:09:24,000
- What do you think are the outputs?
-
-1062
-01:09:26,000 --> 01:09:32,000
- The features here, which were outlook, invent, mutation or those specific features.
-
-1063
-01:09:32,000 --> 01:09:33,000
+01:09:33,000 --> 01:09:34,000
  What are the examples?
 
+1059
+01:09:35,000 --> 01:09:45,000
+ Examples are the set of examples are basically the matrix that we have, which contains the target attribute suddenly and it is not.
+
+1060
+01:09:46,000 --> 01:09:49,000
+ We will start with a global by grading root node.
+
+1061
+01:09:49,000 --> 01:09:53,000
+ So in the previous case, we do not know the first cause outcome.
+
+1062
+01:09:53,000 --> 01:09:57,000
+ We will first of all this in sample data with an empty root node.
+
+1063
+01:09:58,000 --> 01:10:04,000
+ So say that if all the examples are positive or negative or yes or no, then return the root of the label class and yes.
+
 1064
-01:09:34,000 --> 01:09:40,000
- Examples are the set of, examples are basically the matrix that we have.
+01:10:04,000 --> 01:10:06,000
+ That does make sense to you.
 
 1065
-01:09:41,000 --> 01:09:44,000
- Which contains the target attribute, sample and arguments.
-
-1066
-01:09:45,000 --> 01:09:48,000
- We will start with the algorithm by grading root node.
-
-1067
-01:09:48,000 --> 01:09:52,000
- In the previous case, we wrote the first cause outcome.
-
-1068
-01:09:52,000 --> 01:09:56,000
- We will first of all this in Sanskrit with an empty root node.
-
-1069
-01:09:57,000 --> 01:10:01,000
- So say that if all the examples are positive or negative or yes or no,
-
-1070
-01:10:01,000 --> 01:10:05,000
- then return the root to the label class and make it as clear.
-
-1071
-01:10:07,000 --> 01:10:08,000
+01:10:07,000 --> 01:10:09,000
  You understand what this means.
 
-1072
-01:10:09,000 --> 01:10:18,000
- So if all of the examples, if all of the examples were yes or no, do we need a
+1066
+01:10:09,000 --> 01:10:22,000
+ So if all of the examples, if all of the examples were yes or no, do we need a decision to read or can we directly or just read it to be a yes or no?
 
-1073
-01:10:18,000 --> 01:10:21,000
- decision to be a candidate or a candidate to be a decimal?
+1067
+01:10:22,000 --> 01:10:26,000
+ We can always read it to be a yes or no, there is no decision involved.
 
-1074
-01:10:21,000 --> 01:10:23,000
- You can always predict it to be yes or no.
+1068
+01:10:26,000 --> 01:10:29,000
+ There are no specific attributes with the standard you need.
 
-1075
-01:10:23,000 --> 01:10:25,000
- There is no decision involved.
+1069
+01:10:29,000 --> 01:10:30,000
+ You are all this limited.
 
-1076
-01:10:25,000 --> 01:10:29,000
- There is no specific attribute to this telling you any, you are all this limited.
+1070
+01:10:33,000 --> 01:10:42,000
+ If all the examples, if the attributes is empty, then return root with the most common value of target attribute in examples.
 
-1077
-01:10:29,000 --> 01:10:39,000
- If all the examples, if the attributes is empty, then return root to the most common
-
-1078
-01:10:39,000 --> 01:10:41,000
- value of target attribute and examples.
-
-1079
-01:10:41,000 --> 01:10:42,000
+1071
+01:10:42,000 --> 01:10:44,000
  We will come to this later.
 
+1072
+01:10:44,000 --> 01:10:46,000
+ But for now, let us look at the recursive procedure.
+
+1073
+01:10:46,000 --> 01:10:51,000
+ This is a very nice intuitive algorithm which can work with the recursive.
+
+1074
+01:10:51,000 --> 01:10:57,000
+ You first pick up an attribute A which best classifies the example.
+
+1075
+01:10:57,000 --> 01:11:02,000
+ Now if we go back to this tree, we will fit the first attribute that is output.
+
+1076
+01:11:02,000 --> 01:11:17,000
+ So the inclusion of an outlook will help us get the best estimated performance gain or does the best attribute for classifying these elements.
+
+1077
+01:11:17,000 --> 01:11:21,000
+ How does the inclusion of best coming will look at an outlook?
+
+1078
+01:11:21,000 --> 01:11:28,000
+ Now the outlook A was chosen as the attribute output was chosen as A.
+
+1079
+01:11:28,000 --> 01:11:31,000
+ What are the values that they attribute output for the table?
+
 1080
-01:10:43,000 --> 01:10:45,000
- But for now, let's look at the recursive procedure.
+01:11:31,000 --> 01:11:37,000
+ Sunny over task or writing.
 
 1081
-01:10:45,000 --> 01:10:49,000
- This is a very nice, intuitive algorithm which can work with the algorithm.
+01:11:37,000 --> 01:11:43,000
+ Now for each of these attributes, can it all be the same concept because of any of them?
 
 1082
-01:10:50,000 --> 01:10:56,000
- You first pick up an attribute, a, which best classifies the example.
+01:11:44,000 --> 01:11:51,000
+ That is the simple inclusion tree algorithm. At each level, you keep on taking the same position.
 
 1083
-01:10:57,000 --> 01:11:01,000
- Now if you go back to this tree, we pick the first attribute that's output.
+01:11:51,000 --> 01:11:53,000
+ Let us...
 
 1084
-01:11:02,000 --> 01:11:08,000
- So the inclusion for that outlook will help us get the best estimated performance gain
+01:11:55,000 --> 01:12:10,000
+ So we set the root to be K and for each value of A, which was sunny over task and you then add new pre-launch.
 
 1085
-01:11:08,000 --> 01:11:16,000
- or does the best attribute, does the best attribute for classifying the examples.
+01:12:11,000 --> 01:12:14,000
+ And you also reduce your number of examples from now on.
 
 1086
-01:11:16,000 --> 01:11:20,000
- How does the notion of best coming will look at an adventure?
+01:12:14,000 --> 01:12:21,000
+ You restrict the set of examples where the attribute A was the particular value of B.
 
 1087
-01:11:21,000 --> 01:11:27,000
- Now the output A was chosen as, the attribute output was chosen as A.
+01:12:21,000 --> 01:12:28,000
+ And if the example is empty, you add B to the label of most common value of the parameter.
 
 1088
-01:11:27,000 --> 01:11:31,000
- What are the values that they are, attribute output, output, take?
+01:12:30,000 --> 01:12:39,000
+ Otherwise, you call the same procedure. After having removed the set of add-to's on the remaining subset of the query.
 
 1089
-01:11:31,000 --> 01:11:36,000
- Sunny, sunny over task or rain, right?
+01:12:39,000 --> 01:12:45,000
+ So this is how we configure just code on the limit. We will get into the details of it.
 
 1090
-01:11:36,000 --> 01:11:42,000
- Now for each of these attributes, can it call the same concept because of any time?
+01:12:45,000 --> 01:12:52,000
+ But before that, we had talked about giving the best estimated performance gain rate.
 
 1091
-01:11:43,000 --> 01:11:47,000
- That is the simple solution to the algorithm.
-
-1092
-01:11:47,000 --> 01:11:50,000
- At each level, you keep on taking the same variable.
-
-1093
-01:11:51,000 --> 01:12:06,000
- That's, so we set the root to be K and for each value of A, which was sunny, sunny, over task and rain,
-
-1094
-01:12:06,000 --> 01:12:14,000
- you then add new pre-branch and you also reduce your number of examples from now, right?
-
-1095
-01:12:14,000 --> 01:12:20,000
- You restrict the set of examples where the attitude A was the particular value of B.
-
-1096
-01:12:21,000 --> 01:12:27,000
- And the examples is empty, you add B to the label of most common value of content.
-
-1097
-01:12:29,000 --> 01:12:32,000
- Otherwise you call the same procedure.
-
-1098
-01:12:32,000 --> 01:12:38,000
- After having removed the set of attitudes on the remaining subset of the way.
-
-1099
-01:12:39,000 --> 01:12:45,000
- So this is how we complicated just code on commit, we'll get into the details of it.
-
-1100
-01:12:45,000 --> 01:12:52,000
- But before that, we had talked about having the best estimated performance gain, right?
-
-1101
 01:12:52,000 --> 01:12:54,000
  How do we quantify that?
 
-1102
+1092
 01:12:54,000 --> 01:12:59,000
- So we come up with a metric of the common with the side-style measure known as entropy.
+ So we come up with a metric of the common with the set of still measure monas entry.
 
-1103
-01:13:00,000 --> 01:13:02,000
- What do you think entropy means in general?
+1093
+01:12:59,000 --> 01:13:05,000
+ What do you think entropy means in general? You would have started from the grammar.
 
-1104
-01:13:02,000 --> 01:13:04,000
- You would have started from the phenomenon.
+1094
+01:13:06,000 --> 01:13:15,000
+ Randomness or some impurity in sample. If you see a set like this, can you tell me what is the entropy of this?
 
-1105
-01:13:05,000 --> 01:13:09,000
- So randomness or some impurity in sample.
+1095
+01:13:15,000 --> 01:13:23,000
+ Randomness or disorder or the amount of unclarative?
 
-1106
-01:13:10,000 --> 01:13:15,000
- If you see a set like this, can I tell you what is the entropy of this?
+1096
+01:13:27,000 --> 01:13:30,000
+ Do you know the formula? Have you studied the formula entropy?
 
-1107
-01:13:15,000 --> 01:13:22,000
- Randomness or disorder or the amount of unclarity?
+1097
+01:13:30,000 --> 01:13:41,000
+ The definition of entropy is given. You have five rows and nine rows.
 
-1108
-01:13:26,000 --> 01:13:29,000
- Do you know the formula? Have you studied the formula of entropy?
+1098
+01:13:41,000 --> 01:13:48,000
+ Imagine all of these ODEs were yes. We have an disorder in the system.
 
-1109
-01:13:34,000 --> 01:13:40,000
- The definition of entropy is given, you have five rows and nine rows, right?
-
-1110
-01:13:41,000 --> 01:13:45,000
- Imagine all of these ODEs were yes, right?
-
-1111
-01:13:45,000 --> 01:13:47,000
- We have an disorder in the system.
-
-1112
-01:13:48,000 --> 01:13:50,000
+1099
+01:13:48,000 --> 01:13:51,000
  You have anything which is uncertain.
 
+1100
+01:13:51,000 --> 01:13:55,000
+ So then in such cases, we will say the entropy is zero.
+
+1101
+01:13:55,000 --> 01:14:02,000
+ If the answer was seven, yes, and seven rows, what would you think is the entropy?
+
+1102
+01:14:02,000 --> 01:14:08,000
+ It would be very high. Because you are very unsure about whether it should be a yes or a no.
+
+1103
+01:14:08,000 --> 01:14:16,000
+ So if formula is given in terms of minus p log, in summation minus p log p, for the different classes,
+
+1104
+01:14:16,000 --> 01:14:23,000
+ we had probability of no as 5 by 14. We had 14 examples, 5 of which were no.
+
+1105
+01:14:23,000 --> 01:14:28,000
+ And nine of them are yes and log base to probability of no.
+
+1106
+01:14:28,000 --> 01:14:34,000
+ So if you do this calculation, it comes out to be 0.9. This is a daily 9.
+
+1107
+01:14:34,000 --> 01:14:42,000
+ We also get a curve by this. So the probability of yes was zero. The entropy is zero.
+
+1108
+01:14:42,000 --> 01:14:46,000
+ This means that there is no disorder in all the examples negative.
+
+1109
+01:14:46,000 --> 01:14:52,000
+ And if you look at the other extreme, the probability of loss or yes is one.
+
+1110
+01:14:52,000 --> 01:14:55,000
+ Then again, no entropy because there is no uncertainty.
+
+1111
+01:14:55,000 --> 01:15:02,000
+ The maximum uncertainty or ability happens when the probability of loss is the same as probability of loss.
+
+1112
+01:15:02,000 --> 01:15:08,000
+ So we will start with calculating an entropy of a set.
+
 1113
-01:13:50,000 --> 01:13:53,000
- No. So then in such cases we will say the entropy is zero.
+01:15:08,000 --> 01:15:15,000
+ And now what it is to whose attitude A, which is able to give us the biggest performance gain.
 
 1114
-01:13:54,000 --> 01:14:00,000
- Right? If the answer was seven, yes, and seven rows, what could you think is the entropy?
-
-1115
-01:14:01,000 --> 01:14:03,000
- So it would be very high, right?
-
-1116
-01:14:03,000 --> 01:14:07,000
- Because you are very unsure about whether it should be a yes or a no.
-
-1117
-01:14:08,000 --> 01:14:15,000
- So the formula is given in terms of minus p log, in salvation minus p log p, for the different classes.
-
-1118
-01:14:16,000 --> 01:14:22,000
- We had probability of no as 5 by 14, we had 14 examples, 5 of which were no.
-
-1119
-01:14:23,000 --> 01:14:27,000
- And I know that they were yes, and log base two probability of no.
-
-1120
-01:14:27,000 --> 01:14:31,000
- So if you do this calculation, it comes out to be 0.9.
-
-1121
-01:14:31,000 --> 01:14:33,000
- This is the daily high number.
-
-1122
-01:14:34,000 --> 01:14:36,000
- We also get a curve by this.
-
-1123
-01:14:36,000 --> 01:14:40,000
- So the probability of yes was zero, the entropy is zero.
-
-1124
-01:14:41,000 --> 01:14:45,000
- Right? So this means that there is no disorder in all the examples in the data.
-
-1125
-01:14:45,000 --> 01:14:52,000
- And if you look at the other extreme, the probability of class or yes is one, there is again no entropy
-
-1126
-01:14:52,000 --> 01:14:54,000
- because there is no uncertainty in the system.
-
-1127
-01:14:55,000 --> 01:15:01,000
- The maximum uncertainty or ability happens when the probability of class is the same as probability of no.
-
-1128
-01:15:02,000 --> 01:15:07,000
- Right? So we will start up with calculating an entropy of a set.
-
-1129
-01:15:08,000 --> 01:15:14,000
- And we now what it is to use an attribute A, which is able to give us the biggest performance gain.
-
-1130
-01:15:15,000 --> 01:15:19,000
+01:15:15,000 --> 01:15:20,000
  So can you think of in terms of starting with entropy as a starting point?
 
-1131
-01:15:20,000 --> 01:15:26,000
+1115
+01:15:21,000 --> 01:15:28,000
  What manipulation or what are the statistical measures we need to tell this is the best attribute?
 
-1132
-01:15:34,000 --> 01:15:38,000
- Okay, but how do you calculate the entropy of an entropy?
+1116
+01:15:35,000 --> 01:15:39,000
+ How do you calculate the entropy of an entropy?
 
-1133
-01:15:40,000 --> 01:15:43,000
- So again, to think of it in terms of we have to choose an attribute.
+1117
+01:15:39,000 --> 01:15:44,000
+ For me, to think of it in terms of we have to choose an attribute.
 
-1134
-01:15:44,000 --> 01:15:50,000
- So before it is started up with the elementary learning, you have several examples.
+1118
+01:15:44,000 --> 01:15:51,000
+ So before it is started up with the entropy learning, you have several examples.
 
-1135
-01:15:51,000 --> 01:15:53,000
+1119
+01:15:51,000 --> 01:15:54,000
  You can calculate the entropy of that sample.
 
-1136
-01:15:53,000 --> 01:15:57,000
+1120
+01:15:54,000 --> 01:15:59,000
  Now you want to choose an attribute which will lower the entropy.
 
-1137
-01:15:58,000 --> 01:16:03,000
- Right? So basically if we go at this point.
+1121
+01:15:59,000 --> 01:16:04,000
+ So basically we go at this point.
 
-1138
-01:16:03,000 --> 01:16:07,000
- So we said that there was a lot of uncertainty in whether I will break into some more.
+1122
+01:16:04,000 --> 01:16:08,000
+ So we said that there was a lot of uncertainty in whether I will break into one more.
 
-1139
-01:16:07,000 --> 01:16:09,000
- Right? Which means that there is a lot of memory.
+1123
+01:16:08,000 --> 01:16:10,000
+ Which means that there is a lot of memory.
 
-1140
-01:16:09,000 --> 01:16:15,000
- But if I choose output as over class, I know that I will get an entropy in later.
+1124
+01:16:10,000 --> 01:16:16,000
+ But if I choose output as overpass, I know that I will get an entropy in later.
 
-1141
-01:16:16,000 --> 01:16:20,000
- So there is no element of entropy involved there for those specific examples.
+1125
+01:16:16,000 --> 01:16:22,000
+ So there is no element of entropy in order for those specific examples.
 
-1142
-01:16:21,000 --> 01:16:25,000
+1126
+01:16:22,000 --> 01:16:27,000
  So we will now see that we are trying to choose an attribute.
 
-1143
-01:16:26,000 --> 01:16:30,000
- Subject will choose an image. The entropy becomes lower.
+1127
+01:16:27,000 --> 01:16:29,000
+ Subject will choose an image.
 
-1144
-01:16:31,000 --> 01:16:33,000
- Right? There is a disorder in this system.
+1128
+01:16:29,000 --> 01:16:32,000
+ The entropy becomes lower.
 
-1145
-01:16:34,000 --> 01:16:37,000
+1129
+01:16:32,000 --> 01:16:35,000
+ There is a disorder in this system.
+
+1130
+01:16:35,000 --> 01:16:39,000
  So that concept is known as information gain.
 
-1146
-01:16:38,000 --> 01:16:41,000
+1131
+01:16:39,000 --> 01:16:42,000
  I just look at the, I just show the formula.
 
-1147
-01:16:47,000 --> 01:16:53,000
- Information gain is known as the formula is given in terms of regression entropy.
+1132
+01:16:48,000 --> 01:16:54,000
+ Information gain is known as the formula is given in terms of production entropy.
 
-1148
-01:16:54,000 --> 01:16:58,000
- By partitioning a set of examples, S on an attribute.
+1133
+01:16:54,000 --> 01:16:59,000
+ By partitioning a set of examples, S on an attribute gain.
 
-1149
-01:16:58,000 --> 01:17:00,000
- So an attribute is taken from different values.
+1134
+01:16:59,000 --> 01:17:02,000
+ So an attribute gain would have taken different values.
 
-1150
-01:17:01,000 --> 01:17:05,000
- For example, the output traffic in sunny, rainy or over class.
+1135
+01:17:02,000 --> 01:17:06,000
+ For example, the output parameters in semi-radio overpass.
 
-1151
-01:17:06,000 --> 01:17:10,000
- We then write the gain on a set of examples S.
+1136
+01:17:07,000 --> 01:17:15,000
+ We then write the gain on a set of examples S subject to an attribute A as defined by the entropy
 
-1152
-01:17:11,000 --> 01:17:16,000
- Subject on an attribute A as defined by the entropy which is the initial system.
+1137
+01:17:15,000 --> 01:17:17,000
+ which is the initial system.
 
-1153
-01:17:16,000 --> 01:17:24,000
- Of all the examples, minus the weighted entropy is weighted by the number of samples we have for the particular value.
+1138
+01:17:17,000 --> 01:17:25,000
+ Of all the examples, minus the weighted entropy, weighted by the number of samples we have for a particular value.
 
-1154
-01:17:25,000 --> 01:17:28,000
- But in fact, in the entropy of the subsets that we have written.
+1139
+01:17:25,000 --> 01:17:29,000
+ But in fact, in the entropy of the subsets that we have created.
 
-1155
-01:17:29,000 --> 01:17:34,000
- Right? I will not go into the details but now let us assume that at this point of time
+1140
+01:17:29,000 --> 01:17:30,000
+ Right?
 
-1156
-01:17:34,000 --> 01:17:35,000
- we have four days examples.
+1141
+01:17:30,000 --> 01:17:34,000
+ I will not go into the details but now let us assume that at this point of time
 
-1157
-01:17:36,000 --> 01:17:38,000
+1142
+01:17:34,000 --> 01:17:36,000
+ we have four data examples.
+
+1143
+01:17:36,000 --> 01:17:39,000
  We choose an output as the first known.
 
-1158
-01:17:39,000 --> 01:17:41,000
+1144
+01:17:39,000 --> 01:17:42,000
  The entropy of this set is zero.
 
-1159
-01:17:42,000 --> 01:17:43,000
+1145
+01:17:42,000 --> 01:17:44,000
  The weighted entropy of this set is also zero.
 
-1160
-01:17:44,000 --> 01:17:45,000
+1146
+01:17:44,000 --> 01:17:46,000
  This side will have some weighted entropy.
 
-1161
-01:17:47,000 --> 01:17:49,000
- Let us stop at this point with the input.
+1147
+01:17:46,000 --> 01:17:49,000
+ So let us stop at this point with the input.
 
-1162
-01:17:49,000 --> 01:17:54,000
- We have to understand that we are trying to choose an attribute which reduces the entropy.
+1148
+01:17:49,000 --> 01:17:55,000
+ We are understanding that we are trying to choose an attribute which reduces the entropy.
 
-1163
-01:17:55,000 --> 01:17:58,000
- Let us speed at 11am on our pattern.
+1149
+01:17:55,000 --> 01:17:59,000
+ Let us see it at 11am on our target.
 
-1164
+1150
 01:18:04,000 --> 01:18:05,000
  .
 

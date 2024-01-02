@@ -50,48 +50,12 @@ $z = f(x,y) = x^{2}$\\
 
 $z = f(x,y) = |x|+|y|$\\
 
-\begin{columns}
-	\pause \begin{column}{0.6\textwidth}
-		\begin{adjustbox}{max totalsize={\textwidth},center}
-			
-			\begin{tikzpicture}
-			\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
-			\addplot3[
-			surf,
-			]
-			{abs(x)+abs(y)};
-			\end{axis}
-			\end{tikzpicture}
-		\end{adjustbox}
-		
-	\end{column}
-	\pause \begin{column}{0.5\textwidth}
-		\begin{adjustbox}{max totalsize={\textwidth},center}
-			\begin{tikzpicture}
-			\begin{axis}
-			[
-			title={Contour plot, view from top},
-			view={0}{90},
-			xlabel=$x$,
-			ylabel=$y$,
-			axis x line*=bottom,
-			axis y line*=left,
-			xtick align=outside,
-			ytick align=outside,
-			unit vector ratio*=1 1 1,
-			]
-			\addplot3[
-			contour gnuplot={number=14,}
-			]
-			{abs(x)+abs(y)};
-			\end{axis}
-			\end{tikzpicture}
-		\end{adjustbox}
-	\end{column}
-\end{columns}
-
-Then plot $f(x,y)=K$ for varying K.
-
+\begin{figure}[htp]
+	\centering
+	\begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/contour.html}
+	  \includegraphics[width=\linewidth]{../figures/mml/contour-mod_x_plus_mod_y.pdf}
+	\end{notebookbox}
+  \end{figure}
 
 \end{frame}
 
@@ -99,47 +63,12 @@ Then plot $f(x,y)=K$ for varying K.
 
 $z = f(x,y) = (x^2)*y$\\
 
-\begin{columns}
-	\pause \begin{column}{0.6\textwidth}
-		\begin{adjustbox}{max totalsize={\textwidth},center}
-			
-			\begin{tikzpicture}
-			\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
-			\addplot3[
-			surf,
-			]
-			{(x^2)*y};
-			\end{axis}
-			\end{tikzpicture}
-		\end{adjustbox}
-		
-	\end{column}
-	\pause \begin{column}{0.5\textwidth}
-		\begin{adjustbox}{max totalsize={\textwidth},center}
-			\begin{tikzpicture}
-			\begin{axis}
-			[
-			title={Contour plot, view from top},
-			view={0}{90},
-			xlabel=$x$,
-			ylabel=$y$,
-			axis x line*=bottom,
-			axis y line*=left,
-			xtick align=outside,
-			ytick align=outside,
-			unit vector ratio*=1 1 1,
-			]
-			\addplot3[
-			contour gnuplot={number=14,}
-			]
-			{(x^2)*y};
-			\end{axis}
-			\end{tikzpicture}
-		\end{adjustbox}
-	\end{column}
-\end{columns}
-
-Then plot $f(x,y)=K$ for varying K.
+\begin{figure}[htp]
+	\centering
+	\begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/contour.html}
+	  \includegraphics[width=\linewidth]{../figures/mml/contour-x_square_times_y.pdf}
+	\end{notebookbox}
+  \end{figure}
 
 
 \end{frame}
@@ -149,48 +78,12 @@ Then plot $f(x,y)=K$ for varying K.
 
 $z = f(x,y) = xy$\\
 
-\begin{columns}
-	\pause \begin{column}{0.6\textwidth}
-		\begin{adjustbox}{max totalsize={\textwidth},center}
-			
-			\begin{tikzpicture}
-			\begin{axis}[colorbar,xlabel=$x$, ylabel=$y$, zlabel=$z$,title={Surface Plot}]
-			\addplot3[
-			surf,
-			]
-			{x*y};
-			\end{axis}
-			\end{tikzpicture}
-		\end{adjustbox}
-		
-	\end{column}
-	\pause \begin{column}{0.5\textwidth}
-		\begin{adjustbox}{max totalsize={\textwidth},center}
-			\begin{tikzpicture}
-			\begin{axis}
-			[
-			title={Contour plot, view from top},
-			view={0}{90},
-			xlabel=$x$,
-			ylabel=$y$,
-			axis x line*=bottom,
-			axis y line*=left,
-			xtick align=outside,
-			ytick align=outside,
-			unit vector ratio*=1 1 1,
-			]
-			\addplot3[
-			contour gnuplot={number=14,}
-			]
-			{x*y};
-			\end{axis}
-			\end{tikzpicture}
-		\end{adjustbox}
-	\end{column}
-\end{columns}
-
-Then plot $f(x,y)=K$ for varying K.
-
+\begin{figure}[htp]
+	\centering
+	\begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/contour.html}
+	  \includegraphics[width=\linewidth]{../figures/mml/contour-x_times_y.pdf}
+	\end{notebookbox}
+  \end{figure}
 
 \end{frame}
 
