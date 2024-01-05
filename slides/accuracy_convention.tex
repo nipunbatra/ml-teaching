@@ -1,4 +1,3 @@
-% !TeX program = lualatex
 \documentclass[usenames,dvipsnames]{beamer}
 \usepackage{mycommonstyle}
 
@@ -24,23 +23,30 @@
   
 
  
+  \begin{frame}{Revision: What is Machine Learning}
+	 ``Field of study that give computers the ability to learn
+		without being explicitly programmed'' - Arthur Samuel
+		[1959]
+
+		\pause Let us work on digit recognition problem.
+
+		\begin{figure}[htp]
+			\centering
+			\begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/rule-based-vs-ml.html}
+			  \includegraphics[scale=0.45]{../figures/mnist.pdf}
+			\end{notebookbox}
+		  \end{figure}
+		
+
+
+	\end{frame}
+		
+	
 
 \begin{frame}{Revision: What is Machine Learning}
 	\begin{itemize}
-		\item \pause ``Field of study that give computers the ability to learn
-		without being explicitly programmed'' - Arthur Samuel
-		[1959]
-		\begin{figure}
-			\centering
-			\includegraphics[width=0.25\linewidth]{../diagrams/mnist}
-			\caption{}\vspace{-20pt}
-			\label{fig:mnist}
-			\vspace{-20pt}
-		\end{figure}
 	
-
-	
-	\item \pause How would you program to recognise digits? Start with 4.
+	\item How would you program to recognise digits? Start with 4.
 	
 	\item \pause Maybe 4 can be thought of as: $\bm{|}$ + $\bm{\rule[0.5ex]{1em}{.95pt}}$ + $\bm{|}$ + another vertically down $\bm{|}$
 	
@@ -56,32 +62,6 @@
   
  
 
-\begin{frame}{Revision: What is Machine Learning}
-
-	\pause``Field of study that give computers the ability to learn
-	without being explicitly programmed'' - Arthur Samuel
-	[1959]
-	\vspace{-10pt}
-	\pause \begin{figure}
-		\centering
-		\includegraphics[width=0.25\linewidth]{../diagrams/mnist}
-		\caption{}\vspace{-20pt}
-		\label{fig:mnist}
-	\end{figure}
-	\vspace{-20pt}
-	\pause How would you program to recognise digits? Start with 4.
-	
-	\pause Maybe 4 can be thought of as: ``|'' + ``\_\_''  + ``|'' + another vertically down ``|''
-	
-	\pause The heights of each of the ``|'' need to be similar within tolerance
-	
-	\pause Each of the ``|'' can be slightly slanted. Similarly the horizontal line can be slanted.
-	\pause There can be some cases of 4 where the first ``|'' is at 45 degrees
-	\pause There can be some cases of 4 where the width of each stroke is different
-	
-
-
-\end{frame}	
 
 
 
@@ -910,6 +890,21 @@ F-Score = 0.9524 \\
 Matthew's Coeff. = 0.14
 \end{frame}
 
+
+\begin{frame}{Confusion Matrix for multi-class classification}
+	\begin{figure}[htp]
+		\centering
+		\begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/confusion-mnist.html}
+		  \includegraphics[scale=0.6]{../figures/mnist-cm.png}
+		\end{notebookbox}
+	  \end{figure}
+	
+\end{frame}
+
+\begin{frame}
+	\begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/dummy-baselines.html}
+	  \end{notebookbox}
+\end{frame}
 
 
 
