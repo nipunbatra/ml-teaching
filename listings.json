@@ -1,9 +1,5 @@
 [
   {
-    "listing": "/slides.html",
-    "items": []
-  },
-  {
     "listing": "/notebooks.html",
     "items": [
       "/notebooks/Gradient Descent-2d.html",
@@ -15,6 +11,7 @@
       "/notebooks/autograd.html",
       "/notebooks/contour.html",
       "/notebooks/decision-tree-discrete-input-discrete-output.html",
+      "/notebooks/imbalanced-dataset.html",
       "/notebooks/decision-tree-real-input-discrete-output.html",
       "/notebooks/decision-tree-real-output.html",
       "/notebooks/entropy.html",
@@ -32,5 +29,9 @@
       "/notebooks/anscombe.html",
       "/notebooks/transcript.html"
     ]
+  },
+  {
+    "listing": "/slides.html",
+    "items": []
   }
 ]
