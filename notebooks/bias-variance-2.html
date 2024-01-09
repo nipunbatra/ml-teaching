@@ -184,139 +184,367 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<div class="cell" data-execution_count="43">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_format <span class="op">=</span> <span class="st">'retina'</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> latexify <span class="im">import</span> latexify, format_axes</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ipywidgets <span class="im">as</span> widgets</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="44">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>latexify(columns<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x_overall <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>f_x <span class="op">=</span> <span class="fl">0.1</span><span class="op">*</span>np.sin(x_overall) <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>x_overall <span class="op">-</span> <span class="fl">0.01</span><span class="op">*</span>x_overall<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> <span class="fl">0.001</span><span class="op">*</span>x_overall<span class="op">**</span><span class="dv">3</span></span>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x_overall <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>f_x <span class="op">=</span> <span class="fl">0.3</span><span class="op">*</span>np.sin(x_overall) <span class="op">+</span> <span class="fl">0.3</span><span class="op">*</span>np.cos(<span class="dv">2</span><span class="op">*</span>x_overall)<span class="op">+</span> <span class="fl">0.6</span><span class="op">*</span>x_overall <span class="op">-</span> <span class="fl">0.01</span><span class="op">*</span>x_overall<span class="op">**</span><span class="dv">2</span> <span class="op">-</span> <span class="fl">0.001</span><span class="op">*</span>x_overall<span class="op">**</span><span class="dv">3</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">100</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">50</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>y_overall <span class="op">=</span> f_x <span class="op">+</span> eps</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.plot(x_overall, f_x, label <span class="op">=</span> <span class="st">'True function'</span>)</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(x_overall, y_overall, s<span class="op">=</span><span class="dv">10</span>, c<span class="op">=</span><span class="st">'r'</span>, label <span class="op">=</span> <span class="st">'Noisy data'</span>)</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="54">
-<pre><code>&lt;matplotlib.legend.Legend at 0x7f47e4994190&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>&lt;matplotlib.legend.Legend at 0x7f0d67d8a940&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="bias-variance-2_files/figure-html/cell-4-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="94">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit_plot_tree(x, y, depth<span class="op">=</span><span class="dv">1</span>, extra<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    dt <span class="op">=</span> DecisionTreeRegressor(max_depth<span class="op">=</span>depth)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    dt.fit(x.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>), y)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> dt.predict(x.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    plt.plot(x_overall, f_x, label <span class="op">=</span> <span class="vs">r'$f_</span><span class="sc">{true}</span><span class="vs">$'</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#plt.scatter(x, y, s=10, c='r', label = 'Noisy data')</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    label <span class="op">=</span> <span class="vs">r"$f_{\theta}$"</span> <span class="cf">if</span> <span class="kw">not</span> extra <span class="cf">else</span> <span class="vs">fr"$f^</span><span class="ch">{{</span><span class="sc">{</span>extra<span class="sc">}</span><span class="ch">}}</span><span class="vs">_</span><span class="ch">{{</span><span class="vs">\theta</span><span class="ch">}}</span><span class="vs">$"</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    plt.figure()</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    plt.plot(x_overall, f_x, label <span class="op">=</span> <span class="vs">r'$f_</span><span class="sc">{true}</span><span class="vs">$'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    plt.scatter(x_overall, y_overall, s<span class="op">=</span><span class="dv">10</span>, c<span class="op">=</span><span class="st">'r'</span>, label <span class="op">=</span> <span class="st">'Noisy data'</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    label <span class="op">=</span> <span class="vs">r"$\hat</span><span class="sc">{f}</span><span class="vs">$"</span> <span class="cf">if</span> <span class="kw">not</span> extra <span class="cf">else</span> <span class="vs">fr"$\hat</span><span class="ch">{{</span><span class="vs">f</span><span class="ch">}}</span><span class="vs">_</span><span class="ch">{{</span><span class="sc">{</span>extra<span class="sc">}</span><span class="ch">}}</span><span class="vs">$"</span></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(label)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    plt.plot(x, y_pred, label <span class="op">=</span> label)</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    format_axes(plt.gca())</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    plt.plot(x, y_pred, label <span class="op">=</span> label, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    format_axes(plt.gca())</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="ss">f"Depth = </span><span class="sc">{</span>depth<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="95">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> fit_plot_tree(x_overall, y_overall, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>$f_{\theta}$</code></pre>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">10</span>):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    fit_plot_tree(x_overall, y_overall, i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="bias-variance-2_files/figure-html/cell-6-output-2.png" class="img-fluid"></p>
 </div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-6-output-3.png" class="img-fluid"></p>
 </div>
-<div class="cell" data-execution_count="96">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dts_1 <span class="op">=</span> []</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> np.random.choice(<span class="dv">100</span>, <span class="dv">60</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># sort index</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    idx.sort()</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    plt.figure()</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    dts_1.append(fit_plot_tree(x_overall[idx].reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>), y_overall[idx], <span class="dv">1</span>, i))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-6-output-4.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-6-output-5.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-6-output-6.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-6-output-7.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-6-output-8.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-6-output-9.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_depth(depth<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    dts <span class="op">=</span> []</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        idx <span class="op">=</span> np.random.choice(<span class="dv">50</span>, <span class="dv">20</span>, replace<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># sort index</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        idx.sort()</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">#plt.figure()</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        dts.append(fit_plot_tree(x_overall[idx].reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>), y_overall[idx], depth, i))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        plt.scatter(x_overall[idx], y_overall[idx], s<span class="op">=</span><span class="dv">50</span>, c<span class="op">=</span><span class="st">'b'</span>, label <span class="op">=</span> <span class="st">'Sample'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dts <span class="op">=</span> {}</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> depth <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">8</span>):</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(depth)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    dts[depth] <span class="op">=</span> plot_depth(depth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>$f_{\theta}$
-$f^{1}_{\theta}$
-$f^{2}_{\theta}$
-$f^{3}_{\theta}$
-$f^{4}_{\theta}$
-$f^{5}_{\theta}$
-$f^{6}_{\theta}$
-$f^{7}_{\theta}$
-$f^{8}_{\theta}$
-$f^{9}_{\theta}$</code></pre>
+<pre><code>1
+2
+3
+4
+5
+6
+7</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_1810641/1352185668.py:5: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`).
+  plt.figure()</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="bias-variance-2_files/figure-html/cell-7-output-2.png" class="img-fluid"></p>
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-3.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="bias-variance-2_files/figure-html/cell-7-output-3.png" class="img-fluid"></p>
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-4.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="bias-variance-2_files/figure-html/cell-7-output-4.png" class="img-fluid"></p>
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-5.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="bias-variance-2_files/figure-html/cell-7-output-5.png" class="img-fluid"></p>
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-6.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="bias-variance-2_files/figure-html/cell-7-output-6.png" class="img-fluid"></p>
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-7.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="bias-variance-2_files/figure-html/cell-7-output-7.png" class="img-fluid"></p>
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-8.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="bias-variance-2_files/figure-html/cell-7-output-8.png" class="img-fluid"></p>
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-9.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="bias-variance-2_files/figure-html/cell-7-output-9.png" class="img-fluid"></p>
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-10.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="bias-variance-2_files/figure-html/cell-7-output-10.png" class="img-fluid"></p>
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-11.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="bias-variance-2_files/figure-html/cell-7-output-11.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="101">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Finding mean and variance of the predictions</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> np.zeros((<span class="dv">10</span>, <span class="dv">100</span>))</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    y_pred[i] <span class="op">=</span> dts_1[i].predict(x_test.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>y_pred_mean <span class="op">=</span> np.mean(y_pred, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>y_pred_var <span class="op">=</span> np.var(y_pred, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>plt.plot(x_overall, f_x, label <span class="op">=</span> <span class="vs">r'$f_</span><span class="sc">{true}</span><span class="vs">$'</span>)</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>plt.plot(x_test, y_pred_mean, label <span class="op">=</span> <span class="vs">r'$f_{\bar{\theta</span><span class="sc">}}</span><span class="vs">$'</span>)</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="101">
-<pre><code>&lt;matplotlib.legend.Legend at 0x7f47c2394580&gt;</code></pre>
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-12.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="bias-variance-2_files/figure-html/cell-8-output-2.png" class="img-fluid"></p>
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-13.png" class="img-fluid"></p>
 </div>
-</div>
-<div class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill between mean and true function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="bias-variance-2_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-14.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-15.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-16.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-17.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-18.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-19.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-20.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-21.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-22.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-23.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-24.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-25.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-26.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-27.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-28.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-29.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-30.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-31.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-32.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-33.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-34.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-35.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-36.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-37.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-38.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-39.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-40.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-41.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-42.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-43.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-44.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-45.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-46.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-47.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-48.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-49.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-50.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-51.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-52.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-53.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-54.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-55.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-56.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-57.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-58.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-59.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-60.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-61.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-62.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-63.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-64.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-65.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-66.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-67.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-68.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-69.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-70.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-71.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-8-output-72.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_bias(dts):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    x_test <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> np.zeros((<span class="dv">10</span>, <span class="dv">50</span>))</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>        y_pred[i] <span class="op">=</span> dts[i].predict(x_test.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    y_pred_mean <span class="op">=</span> np.mean(y_pred, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    y_pred_var <span class="op">=</span> np.var(y_pred, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    plt.plot(x_overall, f_x, label <span class="op">=</span> <span class="vs">r'$f_</span><span class="sc">{true}</span><span class="vs">$'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#plt.scatter(x_overall, y_overall, s=10, c='r', label = 'Noisy data')</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    plt.plot(x_test, y_pred_mean, label <span class="op">=</span> <span class="vs">r'$\bar</span><span class="sc">{f}</span><span class="vs">$'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    plt.fill_between(x_test, y_pred_mean, f_x, alpha<span class="op">=</span><span class="fl">0.2</span>, color<span class="op">=</span><span class="st">'green'</span>, label <span class="op">=</span> <span class="st">'Bias'</span>)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plot_bias(dts[<span class="dv">6</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_variance(dts):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    x_test <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> np.zeros((<span class="dv">10</span>, <span class="dv">50</span>))</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        y_pred[i] <span class="op">=</span> dts[i].predict(x_test.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    y_pred_mean <span class="op">=</span> np.mean(y_pred, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    y_pred_var <span class="op">=</span> np.var(y_pred, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    plt.plot(x_overall, f_x, label <span class="op">=</span> <span class="vs">r'$f_</span><span class="sc">{true}</span><span class="vs">$'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#plt.scatter(x_overall, y_overall, s=10, c='r', label = 'Noisy data')</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    plt.plot(x_test, y_pred_mean, label <span class="op">=</span> <span class="vs">r'$\bar</span><span class="sc">{f}</span><span class="vs">$'</span>, lw<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    plt.fill_between(x_test, y_pred_mean <span class="op">-</span> y_pred_var, y_pred_mean <span class="op">+</span> y_pred_var, alpha<span class="op">=</span><span class="fl">0.2</span>, color<span class="op">=</span><span class="st">'red'</span>, label <span class="op">=</span> <span class="st">'Variance'</span>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plot_variance(dts[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="bias-variance-2_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 
