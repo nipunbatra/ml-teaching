@@ -8,7 +8,7 @@ def has_github_and_colab_badges(notebook):
         return True
     return False
 
-def insert_github_and_colab_badges(notebook_path, gh_path,colab_path, dry_run=False):
+def insert_github_and_colab_badges(notebook_path, gh_path, colab_path, dry_run=False):
     # Read the notebook
     with open(notebook_path, 'r', encoding='utf-8') as nb_file:
         notebook = read(nb_file, as_version=NO_CONVERT)
@@ -24,7 +24,7 @@ def insert_github_and_colab_badges(notebook_path, gh_path,colab_path, dry_run=Fa
         cell = {'cell_type': 'markdown', 'metadata': {}, 'source': badges_md}
 
         # Print the action to be taken
-        print(f"Action to be taken in {notebook_path}:\nInserting GitHub and Colab badges in the last cell")
+        print(f"Action to be taken in {notebook_path}:\nInserting GitHub and Colab badges as the last cell")
 
         # Print the modified markdown cell
         print(f"\nModified Cell:\n{cell['source']}")
@@ -34,7 +34,7 @@ def insert_github_and_colab_badges(notebook_path, gh_path,colab_path, dry_run=Fa
 
         # If it's not a dry run, modify the notebook
         if not dry_run:
-            # Insert the cell in the last position
+            # Insert the cell as the last cell
             notebook['cells'].append(cell)
 
             # Write the modified notebook back
@@ -47,10 +47,10 @@ def dry_run_add_github_and_colab_badges(folder_path, github_repo_link):
         for file in files:
             if file.endswith('.ipynb'):
                 notebook_path = os.path.join(root, file)
-                
+
                 # Calculate GitHub path for Colab link
-                github_path = f"{github_repo_link}/blob/master/notebooks/{os.path.relpath(notebook_path, folder_path)}"
-                colab_path = f"https://colab.research.google.com/github/{username}/{repo_name}/blob/master/notebooks/{os.path.relpath(notebook_path, folder_path)}"
+                github_path = f"{github_repo_link}/blob/main/{os.path.relpath(notebook_path, folder_path)}"
+                colab_path = f"https://colab.research.google.com/github/{username}/{repo_name}/blob/main/{os.path.relpath(notebook_path, folder_path)}"
                 # Perform a dry run
                 insert_github_and_colab_badges(notebook_path, github_path, colab_path, dry_run=dry_run)
 
