@@ -1,35 +1,7 @@
-\documentclass{beamer}
-\usepackage{tcolorbox}
-\usepackage{hyperref}
-\usepackage{booktabs}
-\usepackage{siunitx}
-\usepackage{tikz}
-\usepackage{forest}
-\usetikzlibrary{positioning}
-\newdimen\nodeDist
-\nodeDist=33mm
-\usepackage{pgfplots}
-\pgfplotsset{width=6cm,compat=1.9}
-\usepackage{subfig}
+\documentclass[usenames,dvipsnames]{beamer}
+\usepackage{mycommonstyle}
 
-
-
-
-
-
-
-%\beamerdefaultoverlayspecification{<+->}
-% \newcommand{\data}{\mathcal{D}}
-% \newcommand\Item[1][]{%
-% 	\ifx\relax#1\relax  \item \else \item[#1] \fi
-% 	\abovedisplayskip=0pt\abovedisplayshortskip=0pt~\vspace*{-\baselineskip}}
-
-\graphicspath{ {imgs/} }
-
-\usetheme{metropolis}           % Use metropolis theme
-
-
-\title{Decision Trees II and Bias/Variance and Cross-Validation}
+\title{Bias/Variance and Cross-Validation}
 \date{\today}
 \author{Nipun Batra and teaching staff}
 \institute{IIT Gandhinagar}
@@ -38,8 +10,6 @@
 	\maketitle
 	
 	
-
-
 
 	\begin{frame}{A Question!}
 What would be the decision boundary of a decision tree classifier? 
