@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/slides.html",
+    "items": []
+  },
+  {
     "listing": "/notebooks.html",
     "items": [
       "/notebooks/Gradient Descent-2d.html",
@@ -11,6 +15,7 @@
       "/notebooks/autograd.html",
       "/notebooks/contour.html",
       "/notebooks/decision-tree-discrete-input-discrete-output.html",
+      "/notebooks/bias-variance-2.html",
       "/notebooks/confusion-mnist.html",
       "/notebooks/dummy-baselines.html",
       "/notebooks/rule-based-vs-ml.html",
@@ -31,9 +36,5 @@
       "/notebooks/anscombe.html",
       "/notebooks/transcript.html"
     ]
-  },
-  {
-    "listing": "/slides.html",
-    "items": []
   }
 ]
