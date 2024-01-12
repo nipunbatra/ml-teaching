@@ -20,11 +20,24 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{K-Fold cross-validation: Utilise full dataset for testing}
-\includegraphics[width = \textwidth]{../diagrams/cross-validation/cross-validation-train-test}
+\begin{frame}{How to use the full dataset for training?}
+\begin{itemize}
+	\item \pause Over multiple iterations, use different parts of the dataset for training and testing.
+	\item \pause Typically done via different random splits of the dataset.
+	\item \pause Challenge?
+	\item \pause May not use every data point for training or testing
+	\item \pause May be computationally expensive
+
+\end{itemize}
+	
 \end{frame}
 
-\begin{frame}{The Validation Set}
+\begin{frame}{K-Fold cross-validation: Utilise full dataset for testing}
+\includegraphics[width = \textwidth]{../diagrams/cross-validation/cross-validation-train-test}
+\pause Each data point is used for testing exactly once.
+\end{frame}
+
+\begin{frame}{Optimizing hyperparameters via the Validation Set}
 \includegraphics[width = \textwidth]{../diagrams/cross-validation/validation-workflow}
 \end{frame}
 
