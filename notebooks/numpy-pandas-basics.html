@@ -160,11 +160,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#code-clarity" id="toc-code-clarity" class="nav-link" data-scroll-target="#code-clarity">Code clarity</a></li>
   <li><a href="#reading-csv-file-using-numpy" id="toc-reading-csv-file-using-numpy" class="nav-link" data-scroll-target="#reading-csv-file-using-numpy">Reading CSV file using Numpy</a></li>
   <li><a href="#reading-csv-file-using-pandas" id="toc-reading-csv-file-using-pandas" class="nav-link" data-scroll-target="#reading-csv-file-using-pandas">Reading CSV file using Pandas</a></li>
-  <li><a href="#common-stats-using-pandas" id="toc-common-stats-using-pandas" class="nav-link" data-scroll-target="#common-stats-using-pandas">Common stats using Pandas</a></li>
-  <li><a href="#indexing-including-binary-masks-akin-to-filter" id="toc-indexing-including-binary-masks-akin-to-filter" class="nav-link" data-scroll-target="#indexing-including-binary-masks-akin-to-filter">Indexing including binary masks [akin to filter]</a></li>
-  <li><a href="#named-axis-operations" id="toc-named-axis-operations" class="nav-link" data-scroll-target="#named-axis-operations">Named axis operations</a></li>
-  <li><a href="#groupby" id="toc-groupby" class="nav-link" data-scroll-target="#groupby">GroupBy</a></li>
-  <li><a href="#value-counts" id="toc-value-counts" class="nav-link" data-scroll-target="#value-counts">Value Counts</a></li>
   </ul>
 </nav>
     </div>
@@ -204,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<div class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importing necessary libraries</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -215,12 +210,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="lists" class="level1">
 <h1>Lists</h1>
-<div class="cell" data-execution_count="15">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating lists</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>list_a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>list_b <span class="op">=</span> [<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="16">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Operations on lists</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding lists</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>list_sum <span class="op">=</span> [a <span class="op">+</span> b <span class="cf">for</span> a, b <span class="kw">in</span> <span class="bu">zip</span>(list_a, list_b)]</span>
@@ -237,12 +232,12 @@ Vector Product: [6, 14, 24, 36, 50]</code></pre>
 </section>
 <section id="numpy-array" class="level1">
 <h1>Numpy Array</h1>
-<div class="cell" data-execution_count="17">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating numpy arrays</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>numpy_array_a <span class="op">=</span> np.array(list_a)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>numpy_array_b <span class="op">=</span> np.array(list_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="18">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Operations on numpy arrays</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding numpy arrays</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>numpy_sum <span class="op">=</span> numpy_array_a <span class="op">+</span> numpy_array_b</span>
@@ -256,16 +251,16 @@ Vector Product: [6, 14, 24, 36, 50]</code></pre>
 Numpy Vector Product: [ 6 14 24 36 50]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="19">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>np.allclose(list_sum, numpy_sum), np.allclose(vector_product, numpy_vector_product)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="19">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>(True, True)</code></pre>
 </div>
 </div>
 </section>
 <section id="time-comparison-between-list-and-numpy-array" class="level1">
 <h1>Time comparison between list and numpy array</h1>
-<div class="cell" data-execution_count="20">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating large arrays and lists for time comparison</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>numpy_array_a <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">100</span>, size<span class="op">=</span><span class="dv">10000</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>numpy_array_b <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">100</span>, size<span class="op">=</span><span class="dv">10000</span>)</span>
@@ -273,19 +268,19 @@ Numpy Vector Product: [ 6 14 24 36 50]</code></pre>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>list_a <span class="op">=</span> <span class="bu">list</span>(numpy_array_a)</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>list_b <span class="op">=</span> <span class="bu">list</span>(numpy_array_b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="21">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>timeit_add_list <span class="op">=</span> <span class="op">%</span>timeit <span class="op">-</span>o [a <span class="op">+</span> b <span class="cf">for</span> a, b <span class="kw">in</span> <span class="bu">zip</span>(list_a, list_b)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>605 µs ± 2.46 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
+<pre><code>537 µs ± 672 ns per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="22">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>timeit_add_numpy <span class="op">=</span> <span class="op">%</span>timeit <span class="op">-</span>o numpy_array_a <span class="op">+</span> numpy_array_b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>3.14 µs ± 3.31 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)</code></pre>
+<pre><code>3.01 µs ± 3.07 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Time for list addition</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> time.time()</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
@@ -300,11 +295,11 @@ Numpy Vector Product: [ 6 14 24 36 50]</code></pre>
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>end_time <span class="op">=</span> time.time()</span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Time taken for numpy addition:"</span>, end_time <span class="op">-</span> start_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time taken for lists addition: 0.6483831405639648
-Time taken for numpy addition: 0.0</code></pre>
+<pre><code>Time taken for lists addition: 0.5457706451416016
+Time taken for numpy addition: 0.0037784576416015625</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Time for list vector product</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>start_time <span class="op">=</span> time.time()</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10000</span>):</span>
@@ -321,14 +316,14 @@ Time taken for numpy addition: 0.0</code></pre>
 <span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>end_time <span class="op">=</span> time.time()</span>
 <span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Time taken for numpy vector product:"</span>, end_time <span class="op">-</span> start_time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Time taken for list vector product: 6.146199464797974
-Time taken for numpy vector product: 0.08333706855773926</code></pre>
+<pre><code>Time taken for list vector product: 5.352280139923096
+Time taken for numpy vector product: 0.04065513610839844</code></pre>
 </div>
 </div>
 </section>
 <section id="code-clarity" class="level1">
 <h1>Code clarity</h1>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Numpy code is often more concise and readable than list comprehensions</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Calculate the element-wise product of two lists</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>list_product <span class="op">=</span> [a <span class="op">*</span> b <span class="cf">for</span> a, b <span class="kw">in</span> <span class="bu">zip</span>(list_a, list_b)]</span>
@@ -337,7 +332,7 @@ Time taken for numpy vector product: 0.08333706855773926</code></pre>
 </section>
 <section id="reading-csv-file-using-numpy" class="level1">
 <h1>Reading CSV file using Numpy</h1>
-<div class="cell" data-execution_count="34">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>head ..<span class="op">/</span>datasets<span class="op">/</span>tennis<span class="op">-</span>discrete<span class="op">-</span>output.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Day,Outlook,Temp,Humidity,Windy,Play
@@ -352,10 +347,10 @@ D8,Sunny,Mild,High,Weak,No
 D9,Sunny,Cool,Normal,Weak,Yes</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="35">
+<div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.genfromtxt(<span class="st">'../datasets/tennis-discrete-output.csv'</span>, delimiter<span class="op">=</span><span class="st">','</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="35">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>array([[nan, nan, nan, nan, nan, nan],
        [nan, nan, nan, nan, nan, nan],
        [nan, nan, nan, nan, nan, nan],
@@ -374,10 +369,10 @@ D9,Sunny,Cool,Normal,Weak,Yes</code></pre>
 </div>
 </div>
 <p>Wait! What happened?</p>
-<div class="cell" data-execution_count="38">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.genfromtxt(<span class="st">'../datasets/tennis-discrete-output.csv'</span>, delimiter<span class="op">=</span><span class="st">','</span>, dtype<span class="op">=</span><span class="bu">str</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="38">
+<div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>array([['Day', 'Outlook', 'Temp', 'Humidity', 'Windy', 'Play'],
        ['D1', 'Sunny', 'Hot', 'High', 'Weak', 'No'],
        ['D2', 'Sunny', 'Hot', 'High', 'Strong', 'No'],
@@ -396,34 +391,34 @@ D9,Sunny,Cool,Normal,Weak,Yes</code></pre>
 </div>
 </div>
 <p>Question: Find the outlook on D11</p>
-<div class="cell" data-execution_count="46">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> np.argwhere(data[:, <span class="dv">0</span>] <span class="op">==</span> <span class="st">'D11'</span>)[<span class="dv">0</span>, <span class="dv">0</span>]</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>idx</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="46">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>11</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="47">
+<div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>data[idx]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="47">
+<div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>array(['D11', 'Sunny', 'Mild', 'Normal', 'Strong', 'Yes'], dtype='&lt;U8')</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="48">
+<div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>data[idx][<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="48">
+<div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>'Sunny'</code></pre>
 </div>
 </div>
 </section>
 <section id="reading-csv-file-using-pandas" class="level1">
 <h1>Reading CSV file using Pandas</h1>
-<div class="cell" data-execution_count="50">
+<div class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../datasets/tennis-discrete-output.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="51">
+<div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="51">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <div>
 
 
@@ -572,41 +567,41 @@ D9,Sunny,Cool,Normal,Weak,Yes</code></pre>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="52">
+<div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">'Day == "D11"'</span>)[<span class="st">'Outlook'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="52">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>10    Sunny
 Name: Outlook, dtype: object</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="53">
+<div class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="53">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>(14, 6)</code></pre>
 </div>
 </div>
 <p>Question. How many times do we play v/s not play tennis</p>
-<div class="cell" data-execution_count="56">
+<div class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Play'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="56">
+<div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>Play
 Yes    9
 No     5
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="57">
+<div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df.groupby(<span class="st">'Play'</span>).size()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="57">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>Play
 No     5
 Yes    9
 dtype: int64</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="61">
+<div class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index<span class="op">=</span>df[<span class="st">'Play'</span>], columns<span class="op">=</span><span class="st">'count'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="61">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 
 
@@ -637,13 +632,13 @@ dtype: int64</code></pre>
 </div>
 </div>
 <p>What is the distribution of any given attribute?</p>
-<div class="cell" data-execution_count="64">
+<div class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> distribution(df, attribute):</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df[attribute].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="65">
+<div class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>distribution(df, <span class="st">'Outlook'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="65">
+<div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>Outlook
 Sunny       5
 Rain        5
@@ -651,9 +646,9 @@ Overcast    4
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="67">
+<div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>distribution(df, <span class="st">'Temp'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="67">
+<div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>Temp
 Mild    6
 Hot     4
@@ -662,13 +657,13 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>Finding entropy for target variable</p>
-<div class="cell" data-execution_count="90">
+<div class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>target_attribute <span class="op">=</span> <span class="st">'Play'</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>dist_target <span class="op">=</span> distribution(df, target_attribute)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="91">
+<div class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>dist_target</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="91">
+<div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>Play
 Yes    9
 No     5
@@ -676,29 +671,29 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>Normalize distribution</p>
-<div class="cell" data-execution_count="94">
+<div class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>dist_target<span class="op">/</span>dist_target.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="94">
+<div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>Play
 Yes    0.642857
 No     0.357143
 Name: count, dtype: float64</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="95">
+<div class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Play'</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="95">
+<div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>Play
 Yes    0.642857
 No     0.357143
 Name: proportion, dtype: float64</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="96">
+<div class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>normalized_dist_target <span class="op">=</span> dist_target<span class="op">/</span>dist_target.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For loop way of calculating entropy</p>
-<div class="cell" data-execution_count="100">
+<div class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> <span class="fl">0.0</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value, p <span class="kw">in</span> normalized_dist_target.items():</span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    e <span class="op">=</span> e <span class="op">-</span> p <span class="op">*</span> np.log2(p <span class="op">+</span> <span class="fl">1e-6</span>) <span class="co"># 1e-6 is added to avoid log(0)</span></span>
@@ -707,129 +702,16 @@ Name: proportion, dtype: float64</code></pre>
 <pre><code>0.9402830732836911</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="105">
+<div class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>normalized_dist_target.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="op">-</span>x <span class="op">*</span> np.log2(x <span class="op">+</span> <span class="fl">1e-6</span>)).<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="105">
+<div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>0.9402830732836911</code></pre>
 </div>
 </div>
 <p>More on crosstab</p>
-<div class="cell" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Signature:
-pd.crosstab(
-    index,
-    columns,
-    values=None,
-    rownames=None,
-    colnames=None,
-    aggfunc=None,
-    margins: 'bool' = False,
-    margins_name: 'Hashable' = 'All',
-    dropna: 'bool' = True,
-    normalize: 'bool' = False,
-) -&gt; 'DataFrame'
-Docstring:
-Compute a simple cross tabulation of two (or more) factors.
-
-By default, computes a frequency table of the factors unless an
-array of values and an aggregation function are passed.
-
-Parameters
-----------
-index : array-like, Series, or list of arrays/Series
-    Values to group by in the rows.
-columns : array-like, Series, or list of arrays/Series
-    Values to group by in the columns.
-values : array-like, optional
-    Array of values to aggregate according to the factors.
-    Requires `aggfunc` be specified.
-rownames : sequence, default None
-    If passed, must match number of row arrays passed.
-colnames : sequence, default None
-    If passed, must match number of column arrays passed.
-aggfunc : function, optional
-    If specified, requires `values` be specified as well.
-margins : bool, default False
-    Add row/column margins (subtotals).
-margins_name : str, default 'All'
-    Name of the row/column that will contain the totals
-    when margins is True.
-dropna : bool, default True
-    Do not include columns whose entries are all NaN.
-normalize : bool, {'all', 'index', 'columns'}, or {0,1}, default False
-    Normalize by dividing all values by the sum of values.
-
-    - If passed 'all' or `True`, will normalize over all values.
-    - If passed 'index' will normalize over each row.
-    - If passed 'columns' will normalize over each column.
-    - If margins is `True`, will also normalize margin values.
-
-Returns
--------
-DataFrame
-    Cross tabulation of the data.
-
-See Also
---------
-DataFrame.pivot : Reshape data based on column values.
-pivot_table : Create a pivot table as a DataFrame.
-
-Notes
------
-Any Series passed will have their name attributes used unless row or column
-names for the cross-tabulation are specified.
-
-Any input passed containing Categorical data will have **all** of its
-categories included in the cross-tabulation, even if the actual data does
-not contain any instances of a particular category.
-
-In the event that there aren't overlapping indexes an empty DataFrame will
-be returned.
-
-Reference :ref:`the user guide &lt;reshaping.crosstabulations&gt;` for more examples.
-
-Examples
---------
-&gt;&gt;&gt; a = np.array(["foo", "foo", "foo", "foo", "bar", "bar",
-...               "bar", "bar", "foo", "foo", "foo"], dtype=object)
-&gt;&gt;&gt; b = np.array(["one", "one", "one", "two", "one", "one",
-...               "one", "two", "two", "two", "one"], dtype=object)
-&gt;&gt;&gt; c = np.array(["dull", "dull", "shiny", "dull", "dull", "shiny",
-...               "shiny", "dull", "shiny", "shiny", "shiny"],
-...              dtype=object)
-&gt;&gt;&gt; pd.crosstab(a, [b, c], rownames=['a'], colnames=['b', 'c'])
-b   one        two
-c   dull shiny dull shiny
-a
-bar    1     2    1     0
-foo    2     2    1     2
-
-Here 'c' and 'f' are not represented in the data and will not be
-shown in the output because dropna is True by default. Set
-dropna=False to preserve categories with no data.
-
-&gt;&gt;&gt; foo = pd.Categorical(['a', 'b'], categories=['a', 'b', 'c'])
-&gt;&gt;&gt; bar = pd.Categorical(['d', 'e'], categories=['d', 'e', 'f'])
-&gt;&gt;&gt; pd.crosstab(foo, bar)
-col_0  d  e
-row_0
-a      1  0
-b      0  1
-&gt;&gt;&gt; pd.crosstab(foo, bar, dropna=False)
-col_0  d  e  f
-row_0
-a      1  0  0
-b      0  1  0
-c      0  0  0
-File:      ~/miniforge3/lib/python3.9/site-packages/pandas/core/reshape/pivot.py
-Type:      function</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index<span class="op">=</span>df[<span class="st">'Outlook'</span>], columns<span class="op">=</span>df[<span class="st">'Play'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="76">
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index<span class="op">=</span>df[<span class="st">'Outlook'</span>], columns<span class="op">=</span>df[<span class="st">'Play'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
 <div>
 
 
@@ -868,9 +750,9 @@ Type:      function</code></pre>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="78">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index<span class="op">=</span>df[<span class="st">'Outlook'</span>], columns<span class="op">=</span>df[<span class="st">'Play'</span>]).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="78">
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index<span class="op">=</span>df[<span class="st">'Outlook'</span>], columns<span class="op">=</span>df[<span class="st">'Play'</span>]).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
 <div>
 
 
@@ -908,10 +790,10 @@ Type:      function</code></pre>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="107">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>df_attr <span class="op">=</span> pd.crosstab(index<span class="op">=</span>df[<span class="st">'Play'</span>], columns<span class="op">=</span>df[<span class="st">'Outlook'</span>], normalize<span class="op">=</span><span class="st">'columns'</span>)</span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>df_attr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="107">
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>df_attr <span class="op">=</span> pd.crosstab(index<span class="op">=</span>df[<span class="st">'Play'</span>], columns<span class="op">=</span>df[<span class="st">'Outlook'</span>], normalize<span class="op">=</span><span class="st">'columns'</span>)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>df_attr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
 <div>
 
 
@@ -949,9 +831,115 @@ Type:      function</code></pre>
 </div>
 </div>
 </div>
+<p>Using groupby</p>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>df.groupby([<span class="st">'Play'</span>, <span class="st">'Outlook'</span>]).size()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>Play  Outlook 
+No    Rain        2
+      Sunny       3
+Yes   Overcast    4
+      Rain        3
+      Sunny       2
+dtype: int64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>df.groupby([<span class="st">'Play'</span>, <span class="st">'Outlook'</span>]).size().index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>MultiIndex([( 'No',     'Rain'),
+            ( 'No',    'Sunny'),
+            ('Yes', 'Overcast'),
+            ('Yes',     'Rain'),
+            ('Yes',    'Sunny')],
+           names=['Play', 'Outlook'])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>df.groupby([<span class="st">'Play'</span>, <span class="st">'Outlook'</span>]).size().unstack(<span class="st">'Outlook'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Outlook</th>
+<th data-quarto-table-cell-role="th">Overcast</th>
+<th data-quarto-table-cell-role="th">Rain</th>
+<th data-quarto-table-cell-role="th">Sunny</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Play</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">No</td>
+<td>NaN</td>
+<td>2.0</td>
+<td>3.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Yes</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>2.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>df_attr_groupby <span class="op">=</span> df.groupby([<span class="st">'Play'</span>, <span class="st">'Outlook'</span>]).size().unstack(<span class="st">'Outlook'</span>).fillna(<span class="dv">0</span>)</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>df_attr_groupby</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Outlook</th>
+<th data-quarto-table-cell-role="th">Overcast</th>
+<th data-quarto-table-cell-role="th">Rain</th>
+<th data-quarto-table-cell-role="th">Sunny</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Play</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">No</td>
+<td>0.0</td>
+<td>2.0</td>
+<td>3.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Yes</td>
+<td>4.0</td>
+<td>3.0</td>
+<td>2.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Apply</p>
 <div class="cell" data-execution_count="109">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>neg_plogp <span class="op">=</span> df_attr.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="op">-</span>x <span class="op">*</span> np.log2(x <span class="op">+</span> <span class="fl">1e-6</span>), axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>neg_plogp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>neg_plogp <span class="op">=</span> df_attr.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="op">-</span>x <span class="op">*</span> np.log2(x <span class="op">+</span> <span class="fl">1e-6</span>), axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>neg_plogp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="109">
 <div>
 
@@ -991,7 +979,7 @@ Type:      function</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="111">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>neg_plogp.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>).sort_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>neg_plogp.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>).sort_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="111">
 <pre><code>Outlook
 Overcast   -0.000001
@@ -1001,9 +989,9 @@ dtype: float64</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="113">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>df_attr_dist <span class="op">=</span> distribution(df, <span class="st">'Outlook'</span>)</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>norm_attr_dist <span class="op">=</span> df_attr_dist<span class="op">/</span>df_attr_dist.<span class="bu">sum</span>()</span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>norm_attr_dist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>df_attr_dist <span class="op">=</span> distribution(df, <span class="st">'Outlook'</span>)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>norm_attr_dist <span class="op">=</span> df_attr_dist<span class="op">/</span>df_attr_dist.<span class="bu">sum</span>()</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>norm_attr_dist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="113">
 <pre><code>Outlook
 Sunny       0.357143
@@ -1013,192 +1001,9 @@ Name: count, dtype: float64</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="115">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>(norm_attr_dist<span class="op">*</span>neg_plogp.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>).sort_index()).<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>(norm_attr_dist<span class="op">*</span>neg_plogp.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>).sort_index()).<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="115">
 <pre><code>0.6935336657070463</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a sample CSV file</span></span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>csv_data <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="st">Name,Age,Salary</span></span>
-<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="st">John, 25, 50000</span></span>
-<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="st">Alice, 30, 60000</span></span>
-<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="st">Bob, 28, 55000</span></span>
-<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a><span class="st">Vizz, 35, 65000</span></span>
-<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a><span class="st">Kate, 35, 65000</span></span>
-<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a><span class="st">Alex, 35, 25000</span></span>
-<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a><span class="st">Uma, 25, 90000</span></span>
-<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"../data/sample.csv"</span>, <span class="st">"w"</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(csv_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reading CSV into a Pandas DataFrame</span></span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../data/sample.csv"</span>)</span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Name</th>
-<th data-quarto-table-cell-role="th">Age</th>
-<th data-quarto-table-cell-role="th">Salary</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>John</td>
-<td>25</td>
-<td>50000</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>Alice</td>
-<td>30</td>
-<td>60000</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>Bob</td>
-<td>28</td>
-<td>55000</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>Vizz</td>
-<td>35</td>
-<td>65000</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>Kate</td>
-<td>35</td>
-<td>65000</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>Alex</td>
-<td>35</td>
-<td>25000</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>Uma</td>
-<td>25</td>
-<td>90000</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Salary'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>0    50000
-1    60000
-2    55000
-3    65000
-4    65000
-5    25000
-6    90000
-Name: Salary, dtype: int64</code></pre>
-</div>
-</div>
-</section>
-<section id="common-stats-using-pandas" class="level1">
-<h1>Common stats using Pandas</h1>
-<div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean</span></span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>mean_salary <span class="op">=</span> df[<span class="st">'Salary'</span>].mean()</span>
-<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Mean Salary:"</span>, mean_salary)</span>
-<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Mode</span></span>
-<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a>mode_age <span class="op">=</span> df[<span class="st">'Age'</span>].mode().values[<span class="dv">0</span>]</span>
-<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Mode Age:"</span>, mode_age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Mean Salary: 58571.42857142857
-Mode Age: 35</code></pre>
-</div>
-</div>
-</section>
-<section id="indexing-including-binary-masks-akin-to-filter" class="level1">
-<h1>Indexing including binary masks [akin to filter]</h1>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering data based on a condition</span></span>
-<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="op">=</span> df[df[<span class="st">'Age'</span>] <span class="op">&gt;</span> <span class="dv">30</span>]</span>
-<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Filtered Data:"</span>)</span>
-<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(filtered_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Filtered Data:
-   Name  Age  Salary
-3  Vizz   35   65000
-4  Kate   35   65000
-5  Alex   35   25000</code></pre>
-</div>
-</div>
-</section>
-<section id="named-axis-operations" class="level1">
-<h1>Named axis operations</h1>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding a new column to the DataFrame</span></span>
-<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Bonus'</span>] <span class="op">=</span> df[<span class="st">'Salary'</span>] <span class="op">*</span> <span class="fl">0.1</span>  <span class="co"># Adding a bonus column (10% of salary)</span></span>
-<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"DataFrame with Bonus:"</span>)</span>
-<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>DataFrame with Bonus:
-    Name  Age  Salary   Bonus
-0   John   25   50000  5000.0
-1  Alice   30   60000  6000.0
-2    Bob   28   55000  5500.0
-3   Vizz   35   65000  6500.0
-4   Kate   35   65000  6500.0
-5   Alex   35   25000  2500.0
-6    Uma   25   90000  9000.0</code></pre>
-</div>
-</div>
-</section>
-<section id="groupby" class="level1">
-<h1>GroupBy</h1>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grouping data by Age and calculating mean salary for each group</span></span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>grouped_data <span class="op">=</span> df.groupby(<span class="st">'Age'</span>)[<span class="st">'Salary'</span>].mean().reset_index()</span>
-<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Grouped Data:"</span>)</span>
-<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(grouped_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Grouped Data:
-   Age        Salary
-0   25  70000.000000
-1   28  55000.000000
-2   30  60000.000000
-3   35  51666.666667</code></pre>
-</div>
-</div>
-</section>
-<section id="value-counts" class="level1">
-<h1>Value Counts</h1>
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Counting the occurrences of each age in the DataFrame</span></span>
-<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>age_counts <span class="op">=</span> df[<span class="st">'Age'</span>].value_counts()</span>
-<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Age Counts:"</span>)</span>
-<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(age_counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Age Counts:
-Age
-35    3
-25    2
-30    1
-28    1
-Name: count, dtype: int64</code></pre>
 </div>
 </div>
 
