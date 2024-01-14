@@ -1,9 +1,5 @@
 [
   {
-    "listing": "/slides.html",
-    "items": []
-  },
-  {
     "listing": "/notebooks.html",
     "items": [
       "/notebooks/Gradient Descent-2d.html",
@@ -12,6 +8,7 @@
       "/notebooks/Maths for ML-2.html",
       "/notebooks/SFS_and_BFS.html",
       "/notebooks/cost-iteration-notebook.html",
+      "/notebooks/dt_weighted.html",
       "/notebooks/autograd.html",
       "/notebooks/contour.html",
       "/notebooks/decision-tree-discrete-input-discrete-output.html",
@@ -38,5 +35,9 @@
       "/notebooks/cross-validation-diagrams.html",
       "/notebooks/transcript.html"
     ]
+  },
+  {
+    "listing": "/slides.html",
+    "items": []
   }
 ]
