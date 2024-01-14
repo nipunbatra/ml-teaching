@@ -1,9 +1,9 @@
 \documentclass{beamer}
-\usepackage{tcolorbox}
 \usepackage{hyperref}
-\usepackage{../notation}
 \usepackage{pgfplots}
 \usepgfplotslibrary{fillbetween}
+\usepackage{mycommonstyle}
+
 
 
 %\beamerdefaultoverlayspecification{<+->}
@@ -54,39 +54,67 @@
 
 
 \begin{frame}{Intuition}
+  \pause Based on \hyperlink{https://web.engr.oregonstate.edu/~tgd/publications/mcs-ensembles.pdf}{Ensemble methods in ML by Dietterich}
 
   Three reasons why ensembles make sense:
 
-  \pause 1) Statistical: Sometimes if data is less, many competing hypothesis can be learnt.
+  \pause 1) Statistical: Sometimes if \textbf{data is less, many competing hypothesis can be learnt} all giving same accuracy on training data.
 
-  \pause Eg. Depending on criteria and initialisation, we can learn many decision trees for the same data.
+  \pause Eg. We can learn many decision trees for the same data giving same accuracy.
 
-  \pause 2) Computational: Some classifiers/regressors can get stuck in local optima. Computationally learning the ``best'' hypothesis can be non-trivial.
+  \includegraphics[scale=0.2]{../diagrams/ensemble/statistical.jpg}
+
+\end{frame}
+  
+\begin{frame}{Intuition}
+
+  \pause 2) Computational: Even if data is enough, some \textbf{classifiers/regressors can get stuck in local optima/apply greedy strategies}. Computationally learning the ``best'' hypothesis can be non-trivial.
 
   \pause Eg. Decision Trees employ greedy critera
 
-  \pause 3) Representational: Some classifiers/regressors can not learn the true form/representation.
+  \includegraphics[scale=0.2]{../diagrams/ensemble/computational.jpg}
+
+\end{frame}
+  
+
+\begin{frame}{Intuition}
+
+  \pause 3) Representational: Some \textbf{classifiers/regressors can not learn the true form/representation.}
+
+  \pause Eg. Decision Trees can only learn axis-parallel splits.
+
+  \includegraphics[scale=0.2]{../diagrams/ensemble/representational.jpg}
+
 
 \end{frame}
 
 \begin{frame}{Representation of Limited Depth DTs vs RFs}
-  \begin{figure}
-    \includegraphics[scale=0.7]{1-representation.pdf}
-  \end{figure}
-\end{frame}
 
-\begin{frame}{Representation of Limited Depth DTs vs RFs}
-  \begin{figure}
-    \includegraphics[scale=0.7]{2-representation.pdf}
-  \end{figure}
+\begin{figure}[htp]
+  \centering
+  \begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/ensemble-representation.html}
+    \includegraphics[scale=0.6]{1-representation.pdf}
+  \end{notebookbox}
+\end{figure}
+
 \end{frame}
+\begin{frame}{Representation of Limited Depth DTs vs RFs}
+
+  \begin{figure}[htp]
+    \centering
+    \begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/ensemble-representation.html}
+      \includegraphics[scale=0.6]{2-representation.pdf}
+    \end{notebookbox}
+  \end{figure}
+  
+  \end{frame}
 
 
 
 
 \begin{frame}{Necessary and Sufficient Conditions}
-  \pause 1)A necessary and sufficient condition for an ensemble of classiers to be more
-  accurate than any of its individual members is if the classiers are accurate and
+  \pause 1) A necessary and sufficient condition for an ensemble of classifiers to be more
+  accurate than any of its individual members is if the classifiers are accurate and
   diverse.
 
   \pause 2) An accurate classier: \pause  is one that has an
