@@ -14,7 +14,9 @@
 
 \newcommand*{\Comb}[2]{{}^{#1}C_{#2}}%
 
-\graphicspath{ {imgs/} }
+% \graphicspath{ {../figures/ensemble/} }
+
+\graphicspath{{../figures/ensemble/}{../diagrams/ensemble/}}
 
 \usetheme{metropolis}           % Use metropolis theme
 
@@ -116,11 +118,11 @@
 \end{frame}
 
 \begin{frame}{Some calculations}
-  \input{test-0.3.tex}
+  \input{../diagrams/ensemble/test-0.3.tex}
 \end{frame}
 
 \begin{frame}{Some calculations}
-  \input{test-0.6.tex}
+  \input{../diagrams/ensemble/test-0.6.tex}
 \end{frame}
 \begin{frame}{Ensemble Methods}
   \only<1->{
@@ -174,7 +176,7 @@
   }
 \end{frame}
 
-\begin{frame}{Bagging : Classification Example}
+\begin{frame}{Bagging : Classification Example}     % remiaining - start
   Consider the dataset below. Points (3,3) and (5,8) are anomalies.\\
   \vspace{0.5cm}
   \centering
