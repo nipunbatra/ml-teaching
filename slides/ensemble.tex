@@ -1,10 +1,6 @@
 \documentclass{beamer}
-\usepackage{hyperref}
-\usepackage{pgfplots}
-\usepgfplotslibrary{fillbetween}
 \usepackage{mycommonstyle}
-
-
+\usepackage{forloop}
 
 %\beamerdefaultoverlayspecification{<+->}
 % \newcommand{\data}{\mathcal{D}}
@@ -692,19 +688,21 @@
 \begin{frame}{Intuition behind weight update formula}
   \begin{columns}
     \pause \begin{column}{0.5\textwidth}
-      \begin{figure}
-        \centering
-        \includegraphics[scale=0.7]{alpha-boosting.pdf}
 
-        \label{fig:alpha-boosting}
+      \begin{figure}[htp]
+        \centering
+        \begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/boosting-explanation.ipynb}
+          % \includegraphics[scale=0.8]{../figures/decision-trees/entropy.pdf}
+          \includegraphics[scale=0.55]{../figures/ensemble/alpha-boosting.pdf}
+        \end{notebookbox}
       \end{figure}
     \end{column}
     \pause \begin{column}{0.5\textwidth}
-      \begin{figure}
+      \begin{figure}[htp]
         \centering
-        \includegraphics[scale=0.7]{alpha-boosting-weight.pdf}
-
-        \label{fig:alpha-boosting}
+        \begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/boosting-explanation.ipynb}
+          \includegraphics[scale=0.55]{../figures/ensemble/alpha-boosting-weight.pdf}
+        \end{notebookbox}
       \end{figure}
     \end{column}
   \end{columns}
@@ -748,20 +746,6 @@ There are 3 parameters while training a random forest number of trees, number of
 
 \end{frame}
 
-% \begin{frame}
-	
-
-% \begin{itemize}
-%   \item for $tree$ in $[1, \dots,$ $number$ $of$ $trees$ $]$
-%         \begin{itemize}
-%           \item For each split, select $m$ features from total available $M$ features and train a decision tree on selected features
-
-%         \end{itemize}
-% \end{itemize}
-
-% \end{frame}
-
-
 \begin{frame}{Dataset }
   \includegraphics[scale=0.5]{dataset-iris.png}
 \end{frame}
@@ -784,74 +768,21 @@ There are 3 parameters while training a random forest number of trees, number of
 % \end{frame}
 
 
-\begin{frame}{Decision Tree \# 0}
-  \begin{figure}
-    \includegraphics[scale=0.7]{tree-0.pdf}
-  \end{figure}
-\end{frame}
 
+\newcounter{tree}
+\forloop{tree}{0}{\value{tree} < 10}{
+  \begin{frame}{Decision Tree \# \thetree}
+    \begin{figure}
+      % \includegraphics[scale=0.25]{../figures/ensemble/feature-imp-\thetree.pdf}
+      \centering
+      \begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/ensemble-feature-importance.ipynb}
+        \includegraphics[scale=0.25]{../figures/ensemble/feature-imp-\thetree.pdf}
+        
+      \end{notebookbox}
+    \end{figure}
+  \end{frame}
+}
 
-\begin{frame}{Decision Tree \# 1}
-  \begin{figure}
-    \includegraphics[scale=0.7]{tree-1.pdf}
-  \end{figure}
-\end{frame}
-
-
-\begin{frame}{Decision Tree \# 2}
-  \begin{figure}
-    \includegraphics[scale=0.7]{tree-2.pdf}
-  \end{figure}
-\end{frame}
-
-
-\begin{frame}{Decision Tree \# 3}
-  \begin{figure}
-    \includegraphics[scale=0.7]{tree-3.pdf}
-  \end{figure}
-\end{frame}
-
-
-\begin{frame}{Decision Tree \# 4}
-  \begin{figure}
-    \includegraphics[scale=0.7]{tree-4.pdf}
-  \end{figure}
-\end{frame}
-
-
-\begin{frame}{Decision Tree \# 5}
-  \begin{figure}
-    \includegraphics[scale=0.7]{tree-5.pdf}
-  \end{figure}
-\end{frame}
-
-
-\begin{frame}{Decision Tree \# 6}
-  \begin{figure}
-    \includegraphics[scale=0.7]{tree-6.pdf}
-  \end{figure}
-\end{frame}
-
-
-\begin{frame}{Decision Tree \# 7}
-  \begin{figure}
-    \includegraphics[scale=0.7]{tree-7.pdf}
-  \end{figure}
-\end{frame}
-
-
-\begin{frame}{Decision Tree \# 8}
-  \begin{figure}
-    \includegraphics[scale=0.7]{tree-8.pdf}
-  \end{figure}
-\end{frame}
-
-
-\begin{frame}{Decision Tree \# 9}
-  \begin{figure}
-    \includegraphics[scale=0.7]{tree-9.pdf}
-  \end{figure}
-\end{frame}
 
 \begin{frame}{Feature Importance\footnotemark}
   \begin{figure}
@@ -871,7 +802,13 @@ There are 3 parameters while training a random forest number of trees, number of
 
 
 \begin{frame}{Computed Feature Importance}
-  \includegraphics[scale=0.6]{feature-importance.pdf}
+  \begin{figure}[htp]
+    \centering
+    \begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/ensemble-feature-importance.ipynb}
+      \includegraphics[scale=0.8]{../figures/ensemble/feature-imp-forest.pdf}
+    \end{notebookbox}
+\end{figure}
+  % \includegraphics[scale=0.6]{feature-importance.pdf}
 \end{frame}
 
 \end{document}
