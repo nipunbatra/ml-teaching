@@ -1,9 +1,5 @@
 [
   {
-    "listing": "/slides.html",
-    "items": []
-  },
-  {
     "listing": "/notebooks.html",
     "items": [
       "/notebooks/Gradient Descent-2d.html",
@@ -17,6 +13,7 @@
       "/notebooks/autograd.html",
       "/notebooks/contour.html",
       "/notebooks/decision-tree-discrete-input-discrete-output.html",
+      "/notebooks/meshgrid.html",
       "/notebooks/ensemble-feature-importance.html",
       "/notebooks/ensemble-representation.html",
       "/notebooks/hyperparams-experiments.html",
@@ -42,5 +39,9 @@
       "/notebooks/cross-validation-diagrams.html",
       "/notebooks/transcript.html"
     ]
+  },
+  {
+    "listing": "/slides.html",
+    "items": []
   }
 ]
