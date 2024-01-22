@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/slides.html",
+    "items": []
+  },
+  {
     "listing": "/notebooks.html",
     "items": [
       "/notebooks/Gradient Descent-2d.html",
@@ -10,6 +14,7 @@
       "/notebooks/boosting-explanation.html",
       "/notebooks/cost-iteration-notebook.html",
       "/notebooks/dt_weighted.html",
+      "/notebooks/basis.html",
       "/notebooks/autograd.html",
       "/notebooks/contour.html",
       "/notebooks/decision-tree-discrete-input-discrete-output.html",
@@ -39,9 +44,5 @@
       "/notebooks/cross-validation-diagrams.html",
       "/notebooks/transcript.html"
     ]
-  },
-  {
-    "listing": "/slides.html",
-    "items": []
   }
 ]
