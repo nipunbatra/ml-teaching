@@ -158,64 +158,6 @@
 
 
 
-\begin{frame}{Variable Transformation}
-    Transform the data, by including the higher power terms in the feature space. 
-    
-       
-    \begin{center}
- \begin{tabular}{||c c||} 
- \hline
- t  & s \\ [0.5ex] 
- \hline\hline
- 0 & 0 \\
- 1 & 6 \\
- 3 & 24 \\
- 4 & 36 \\
- \hline
-\end{tabular}
-\end{center}
-
-The above table represents the data before transformation
-\end{frame}
-
-
-\begin{frame}{Variable Transformation}
-Add the higher degree features to the previous table
-    
-       
-    \begin{center}
- \begin{tabular}{||c c c||} 
- \hline
- t  & $t^{2}$ & s \\ [0.5ex] 
- \hline\hline
- 0 & 0&0 \\
- 1 & 1&6 \\
- 3 & 9&24 \\
- 4 & 16&36 \\
- \hline
-\end{tabular}
-\end{center}
-
-\pause The above table represents the data after transformation \\
-\pause Now, we can write $\hat{s}=f(t, t^2)$ \\
-\pause Other transformations: $\log(x), x_1\times x_2$
-\end{frame}
-
-\begin{frame}{A big caveat: Linear in what?!\footnotemark}
-\begin{enumerate}[<+->]
-	\item $\hat{s}=\theta_0 + \theta_1*t$
-	 is linear
-	 \item Is $\hat{s}=\theta_0 + \theta_1*t + \theta_2*t^2$
-	 linear?
-	 \item Is $\hat{s}=\theta_0 + \theta_1*t + \theta_2*t^2 + \theta_3*\cos(t^3)$
-	 linear?
-	\item Is $\hat{s}=\theta_0 + \theta_1*t + {\rm e}^{\theta_2}*t$
-	linear?
-	\item All except \#4 are linear models! 
-	\item Linear refers to the relationship between the parameters that you are estimating ($\theta$) and the outcome 
-\end{enumerate}
-\footnotetext[1]{\url{https://stats.stackexchange.com/questions/8689/what-does-linear-stand-for-in-linear-regression}}
-\end{frame}
 
 
 \begin{frame}{Class Exercise}
