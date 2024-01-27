@@ -1,9 +1,5 @@
 [
   {
-    "listing": "/slides.html",
-    "items": []
-  },
-  {
     "listing": "/notebooks.html",
     "items": [
       "/notebooks/Gradient Descent-2d.html",
@@ -14,6 +10,7 @@
       "/notebooks/boosting-explanation.html",
       "/notebooks/cost-iteration-notebook.html",
       "/notebooks/dt_weighted.html",
+      "/notebooks/dummy-variables-multi-colinearity.html",
       "/notebooks/geometric-linear-regression.html",
       "/notebooks/basis.html",
       "/notebooks/basis2.html",
@@ -46,5 +43,9 @@
       "/notebooks/cross-validation-diagrams.html",
       "/notebooks/transcript.html"
     ]
+  },
+  {
+    "listing": "/slides.html",
+    "items": []
   }
 ]
