@@ -34,7 +34,7 @@
   \section{Introduction}
 
   \begin{frame}{Optimization algorithms}
-    \begin{itemize}
+    \begin{itemize}[<+->]
         \item We often want to minimize/maximize a function
         \item We wanted to minimize the cost function:
         \begin{equation}
@@ -45,7 +45,7 @@
   \end{frame}
 
   \begin{frame}{Optimization algorithms}
-    \begin{itemize}
+    \begin{itemize}[<+->]
         \item In general, we have following components:
         \item Maximize or Minimize a function subject to some constraints
         \item Today, we will focus on unconstrained optimization (no constraints)
@@ -59,7 +59,7 @@
   \end{frame}
   
 \begin{frame}{Introduction}
-    \begin{itemize}
+    \begin{itemize}[<+->]
     \item Gradient descent is an optimization algorithm
     \item It is used to find the minimum of a function in unconstrained settings
     \item It is an iterative algorithm
@@ -71,7 +71,7 @@
 
 
 \begin{frame}{Gradient Descent Algorithm} 
-    \begin{enumerate}
+    \begin{enumerate}[<+->]
         \item Initialize $\theta$ to some random value
         \item Compute the gradient of the cost function at $\theta$, $\nabla f(\theta)$
         \item For Iteration $i$ ($i = 1,2,\ldots$) or until convergence:
@@ -86,7 +86,7 @@
   
 \section{Taylor's Series}
 \begin{frame}{Taylor's Series}
-    \begin{itemize}
+    \begin{itemize}[<+->]
         \item Taylor's series is a way to approximate a function $f(x)$ around a point $x_0$ using a polynomial
         \item The polynomial is given by
         \begin{equation}
@@ -101,7 +101,7 @@
 \end{frame}
 
     \begin{frame}{Taylor's Series}
-        \begin{itemize}
+        \begin{itemize}[<+->]
             \item Let us consider $f(x) = \cos(x)$ and $x_0 = 0$
             \item Then, we have:
             \item $f(x_0) = \cos(0) = 1$
@@ -115,7 +115,7 @@
 
     
     \begin{frame}{Taylor's series}
-        \begin{itemize}
+        \begin{itemize}[<+->]
             \item Let us consider another example: $f(x) = x^2 + 2$ and $x_0 = 2$
             \item Question: How does the first order Taylor's series approximation look like?
             \item First order Taylor's series approximation is given by:
@@ -127,7 +127,7 @@
 
 
   \begin{frame}{Taylor's Series (Alternative form)}
-    \begin{itemize}
+    \begin{itemize}[<+->]
     \item We have:
         \begin{equation}
             f(x) = f(x_0) + \frac{f'(x_0)}{1!}(x-x_0) + \frac{f''(x_0)}{2!}(x-x_0)^2 + \ldots
@@ -149,7 +149,7 @@
   \end{frame}
 
   \begin{frame}{Taylor's Series  to Gradient Descent}
-    \begin{itemize}
+    \begin{itemize}[<+->]
     \item Then, we have:
     $f(x_0 + \Delta x) \approx f(x_0) + \frac{f'(x_0)}{1!}\Delta x$
     \item Or, in vector form:
