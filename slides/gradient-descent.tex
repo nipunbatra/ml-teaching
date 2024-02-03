@@ -163,7 +163,25 @@
   \end{frame}
 
   \begin{frame}{Effect of learning rate}
+    Low learning rate $\alpha=0.01$ : Converges slowly
+    \includegraphics[scale=0.8]{../figures/mml/gd-lr-0.01.pdf}
   \end{frame}
+
+  \begin{frame}{Effect of learning rate}
+    High learning rate $\alpha=0.8$: Converges quickly, but might overshoot
+    \includegraphics[scale=0.8]{../figures/mml/gd-lr-0.8.pdf}
+  \end{frame}
+
+    \begin{frame}{Effect of learning rate}
+        Very high learning rate $\alpha=1.01$: Diverges
+        \includegraphics[scale=0.8]{../figures/mml/gd-lr-1.01.pdf}
+    \end{frame}
+
+
+    \begin{frame}{Effect of learning rate}
+        Appropriate learning rate $\alpha=0.1$
+        \includegraphics[scale=0.8]{../figures/mml/gd-lr-0.1.pdf}
+      \end{frame}
 
   \section{Gradient Descent for linear regression}
   \begin{frame}{Some commonly confused terms}
@@ -226,6 +244,261 @@
         
         
         \end{frame}
+
+        \begin{frame}{Gradient Descent : Example}
+            $\dfrac{\partial MSE}{\partial \theta_0} = \dfrac{2\sum\limits_i \left( y_i - \theta_0 -\theta_1x_i \right)\left(-1\right)}{N} = \dfrac{2\sum\limits_i \epsilon_i\left(-1\right)}{N}$  
+            
+            \vspace{2cm}
+            $\dfrac{\partial MSE}{\partial \theta_1} = \dfrac{2\sum\limits_i \left( y_i - \theta_0 -\theta_1x_i \right)\left(-x_i\right)}{N} = \dfrac{2\sum\limits_i \epsilon_i\left(-x_i\right)}{N}$ 
+            \end{frame}
+            
+            \begin{frame}{Gradient Descent : Example}
+            \textbf{Iteration 1}\\
+            \vspace{0.5cm}
+            $\theta_0 = \theta_0 - \alpha\dfrac{\partial MSE}{\partial \theta_0}$\\ 
+            \vspace{0.5cm}
+            \only<2->{
+            $\theta_0 = 4 - 0.2\frac{\left( (1 - (4 + 0))(-1) + (2 - (4 + 0))(-1) +  (3 - (4 + 0))(-1)  \right)}{3}$\\
+            
+            \vspace{0.5cm}
+            $\theta_0 = 3.6$
+            \vspace{0.5cm}
+            }
+            
+            $\theta_1 = \theta_1 - \alpha\dfrac{\partial MSE}{\partial \theta_1}$\\ 
+            \vspace{0.5cm}
+            \only<3->{
+            $\theta_1	 = 0 - 0.2\frac{\left( (1 - (4 + 0))(-1) + (2 - (4 + 0))(-2) +  (3 - (4 + 0))(-3)  \right)}{3} $\\
+            \vspace{0.5cm}
+            $\theta_1 = -0.67$
+            }
+            \end{frame}
+
+            \begin{frame}{Gradient Descent : Example}
+                \textbf{Iteration 2}\\
+                \vspace{0.5cm}
+                $\theta_0 = \theta_0 - \alpha\dfrac{\partial MSE}{\partial \theta_0}$\\ 
+                \vspace{0.5cm}
+                \only<2->{
+                $\theta_0 = 3.6 - 0.2\frac{\left( (1 - (3.6  - 0.67))(-1) + (2 - (3.6  - 0.67\times 2))(-1) +  (3 - (3.6  - 0.67\times3))(-1)  \right)}{3}$\\ 
+                \vspace{0.5cm}
+                $\theta_0 = 3.54$\\
+                }
+                
+                \vspace{0.5cm}
+                
+                $\theta_1 = \theta_1 - \alpha\dfrac{\partial MSE}{\partial \theta_1}$\\ 
+                \vspace{0.5cm}
+                \only<3->{
+                $\theta_0 = 3.6 - 0.2\frac{\left( (1 - (3.6  - 0.67))(-1) + (2 - (3.6  - 0.67\times 2))(-2) +  (3 - (3.6  - 0.67\times3))(-3)  \right)}{3}$\\ 
+                \vspace{0.5cm}
+                $\theta_0 = -0.55$\\
+                }
+                
+                \end{frame}
+                
+                    \foreach \i in {0,2,...,40}{
+                        \begin{frame}{Gradient Descent : Example (Iteraion \i)}
+                            \begin{figure}
+                                \includegraphics[scale=0.7]{../figures/mml/gradient-descent-\i.pdf}
+                            \end{figure}
+                        \end{frame}
+                    }
+
+                    \begin{frame}{Iteration v/s Epcohs for gradient descent}
+                        \begin{itemize}[<+->]
+                            \item Iteration: Each time you update the parameters of the model
+                            \item Epoch: Each time you have seen all the set of examples
+                        \end{itemize}
+                    \end{frame}
+                    
+                        \begin{frame}{Gradient Descent (GD)}
+                        \begin{itemize}
+                            \item Dataset: $D = \{(X, y)\}$ of size $N$
+                            \item Initialize $\theta$
+                            \item For epoch $e$ in $[1, E]$
+                            \begin{itemize}
+                                \item Predict $\hat{y} = pred(X, \theta)$
+                                \item Compute loss: $J(\theta) = loss(y, \hat{y})$
+                                \item Compute gradient: $\nabla J(\theta) = grad(J)(\theta)$
+                                \item Update: $\theta = \theta - \alpha \nabla J(\theta)$
+                            \end{itemize}
+                        \end{itemize}
+                    \end{frame}
+                    
+                    \begin{frame}{Stochastic Gradient Descent (SGD)}
+                        \begin{itemize}
+                            \item Dataset: $D = \{(X, y)\}$ of size $N$
+                            \item Initialize $\theta$
+                            \item For epoch $e$ in $[1, E]$
+                            \begin{itemize}
+                                \item Shuffle $D$
+                                \item For $i$ in $[1, N]$
+                                \begin{itemize}
+                                    \item Predict $\hat{y_i} = pred(X_i, \theta)$
+                                    \item Compute loss: $J(\theta) = loss(y_i, \hat{y_i})$
+                                    \item Compute gradient: $\nabla J(\theta) = grad(J)(\theta)$
+                                    \item Update: $\theta = \theta - \alpha \nabla J(\theta)$
+                                \end{itemize}
+                            \end{itemize}
+                        \end{itemize}
+                    \end{frame}
+                    
+                    \begin{frame}{Mini-Batch Gradient Descent (MBGD)}
+                        \begin{itemize}
+                            \item Dataset: $D = \{(X, y)\}$ of size $N$
+                            \item Initialize $\theta$
+                            \item For epoch $e$ in $[1, E]$
+                            \begin{itemize}
+                                \item Shuffle $D$
+                                \item $Batches = make\_batches(D, B)$
+                                \item For b in $Batches$
+                                \begin{itemize}
+                                    \item $X\_b, y\_b = b$
+                                    \item Predict $\hat{y\_b} = pred(X\_b, \theta)$
+                                    \item Compute loss: $J(\theta) = loss(y\_b, \hat{y\_b})$
+                                    \item Compute gradient: $\nabla J(\theta) = grad(J)(\theta)$
+                                    \item Update: $\theta = \theta - \alpha \nabla J(\theta)$
+                                \end{itemize}
+                            \end{itemize}
+                        \end{itemize}
+                    \end{frame}
+                        
+                        
+                    
+                        
+                    
+                        
+                        \begin{frame}{Gradient Descent vs SGD}
+                    
+                        
+                        
+                        
+                        Vanilla Gradient Descent
+                        \begin{itemize}[<+->]
+                            \item 
+                            in Vanilla (Batch) gradient descent: We update params after going through all the data 
+                            \item Smooth curve for Iteration vs Cost
+                            \item For a single update, it needs to compute the gradient over all the samples. Hence takes more time
+                            
+                        \end{itemize}
+                        
+                        \pause Stochastic Gradient Descent
+                        \begin{itemize}[<+->]
+                            \item In SGD, we update parameters after seeing each each point
+                            \item Noisier curve for iteration vs cost 
+                            \item  For a single update, it computes the gradient over one example. Hence lesser time
+                        \end{itemize}
+                        
+                        
+                    \end{frame}
+                    
+                    \begin{frame}{Stochastic Gradient Descent : Example}
+                        Learn $y = \theta_0 + \theta_1 x$ on following dataset, using SGD where initially $(\theta_0, \theta_1) = (4,0)$ and step-size, $\alpha  = 0.1$, for 1 epoch (3 iterations). 
+                        \begin{table}[]
+                            \centering
+                            \label{tab:my-table}
+                            \begin{tabular}{|c|c|}
+                                \hline
+                                \textbf{x} & \textbf{y} \\ \hline
+                                2 & 2 \\ \hline
+                                3 & 3 \\ \hline
+                                1 & 1 \\ \hline
+                            \end{tabular}
+                        \end{table}
+                        \end{frame}
+                        
+                        \begin{frame}{Stochastic Gradient Descent : Example}
+                        Our predictor, $\hat{y} = \theta_0 + \theta_1x$\\
+                        \vspace{1cm}
+                        Error for $i^{th}$ datapoint, $e_i = y_i - \hat{y_i}$\\
+                        
+                        $\epsilon_1 = 2 - \theta_0 - 2\theta_1$ \\
+                        $\epsilon_2 = 3 - \theta_0 - 3\theta_1$ \\
+                        $\epsilon_3 = 1 - \theta_0 - \theta_1$ \\
+                        
+                        \vspace{1cm}
+                        While using SGD, we compute the MSE using only 1 datapoint per iteration. \\
+                        So MSE is $\epsilon_1^2$ for iteration 1 and $\epsilon_2^2$ for iteration 2.
+                        \end{frame}
+                        
+                        
+                        \begin{frame}{Stochastic Gradient Descent : Example}
+                        \textbf{For Iteration $i$}\\
+                        \vspace{1cm}
+                        $\dfrac{\partial MSE}{\partial \theta_0} = 2\left( y_i - \theta_0 -\theta_1x_i \right)\left(-1\right) = 2\epsilon_i\left(-1\right)$ \\
+                        \vspace{2cm}
+                        $\dfrac{\partial MSE}{\partial \theta_1} = 2\left( y_i - \theta_0 -\theta_1x_i \right)\left(-x_i\right) = 2\epsilon_i\left(-x_i\right)$ 
+                        \end{frame}
+                        
+                        \begin{frame}{Stochastic Gradient Descent : Example}
+                        \textbf{Iteration 1}\\
+                        \vspace{0.5cm}
+                        $\theta_0 = \theta_0 - \alpha\dfrac{\partial MSE}{\partial \theta_0}$\\ 
+                        \vspace{0.5cm}
+                        \only<2->{
+                        $\theta_0 = 4 - 0.1 \times 2 \times \left( 2 - (4 + 0) \right)(-1)$\\
+                        
+                        \vspace{0.5cm}
+                        $\theta_0 = 3.6$
+                        \vspace{0.5cm}
+                        }
+                        
+                        $\theta_1 = \theta_1 - \alpha\dfrac{\partial MSE}{\partial \theta_1}$\\ 
+                        \vspace{0.5cm}
+                        \only<3->{
+                        $\theta_1 = 0 - 0.1 \times 2 \times \left( 2 - (4 + 0) \right)(-2)$\\
+                        \vspace{0.5cm}
+                        $\theta_1 = -0.8$
+                        }
+                        \end{frame}
+                        
+                        \begin{frame}{Stochastic Gradient Descent : Example}
+                        \textbf{Iteration 2}\\
+                        \vspace{0.5cm}
+                        $\theta_0 = \theta_0 - \alpha\dfrac{\partial MSE}{\partial \theta_0}$\\ 
+                        \vspace{0.5cm}
+                        \only<2->{
+                        $\theta_0 = 3.6 - 0.1 \times 2 \times \left( 3 - (3.6 - 0.8 \times 3 )\right)(-1) $\\
+                        
+                        \vspace{0.5cm}
+                        $\theta_0 = 3.96$
+                        \vspace{0.5cm}
+                        }
+                        
+                        $\theta_1 = \theta_1 - \alpha\dfrac{\partial MSE}{\partial \theta_1}$\\ 
+                        \vspace{0.5cm}
+                        \only<3->{
+                        $\theta_0 = -0.8 - 0.1 \times 2 \times \left( 3 - (3.6 - 0.8 \times 3 ) \right)(-3)$\\
+                        \vspace{0.5cm}
+                        $\theta_1 = 0.28$
+                        }
+                        \end{frame}
+                        
+                        \begin{frame}{Stochastic Gradient Descent : Example}
+                        \textbf{Iteration 3}\\
+                        \vspace{0.5cm}
+                        $\theta_0 = \theta_0 - \alpha\dfrac{\partial MSE}{\partial \theta_0}$\\ 
+                        \vspace{0.5cm}
+                        \only<2->{
+                        $\theta_0 = 3.96 - 0.1 \times 2 \times \left( 1 - (3.96 + 0.28 \times 1 )\right)(-1) $\\
+                        
+                        \vspace{0.5cm}
+                        $\theta_0 = 3.312$
+                        \vspace{0.5cm}
+                        }
+                        
+                        $\theta_1 = \theta_1 - \alpha\dfrac{\partial MSE}{\partial \theta_1}$\\ 
+                        \vspace{0.5cm}
+                        \only<3->{
+                        $\theta_0 = 0.28 - 0.1 \times 2 \times \left( 1 - (3.96 + 0.28 \times 1 )\right)(-1) $\\
+                        \vspace{0.5cm}
+                        $\theta_1 = -0.368$
+                        }
+                        \end{frame}
+                                               
+                
+
   
 
  
