@@ -575,47 +575,52 @@ Epoch 1400 loss: 0.020670</code></pre>
 <span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> rff.fit_transform(X)</span>
 <span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> torch.tensor(X, dtype<span class="op">=</span>torch.float32).to(device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-29" class="cell" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>X_rff <span class="op">=</span> create_rff_features(dog_X_scaled, <span class="dv">13500</span>, <span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-29" class="cell" data-execution_count="84">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>X_rff <span class="op">=</span> create_rff_features(dog_X_scaled, <span class="dv">27500</span>, <span class="fl">0.008</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-30" class="cell" data-execution_count="69">
+<div id="cell-30" class="cell" data-execution_count="85">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>X_rff.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="69">
-<pre><code>torch.Size([90000, 13500])</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="85">
+<pre><code>torch.Size([90000, 27500])</code></pre>
 </div>
 </div>
-<div id="cell-31" class="cell" data-execution_count="70">
+<div id="cell-31" class="cell" data-execution_count="86">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>net <span class="op">=</span> LinearModel(X_rff.shape[<span class="dv">1</span>], <span class="dv">3</span>)</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>net.to(device)</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>train(net, <span class="fl">0.005</span>, X_rff, dog_Y, <span class="dv">2000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>train(net, <span class="fl">0.005</span>, X_rff, dog_Y, <span class="dv">2500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 0 loss: 0.369463
-Epoch 100 loss: 0.048293
-Epoch 200 loss: 0.012143
-Epoch 300 loss: 0.007160
-Epoch 400 loss: 0.004945
-Epoch 500 loss: 0.003543
-Epoch 600 loss: 0.002600
-Epoch 700 loss: 0.001951
-Epoch 800 loss: 0.001500
-Epoch 900 loss: 0.001188
-Epoch 1000 loss: 0.000974
-Epoch 1100 loss: 0.000828
-Epoch 1200 loss: 0.000731
-Epoch 1300 loss: 0.000668
-Epoch 1400 loss: 0.000627
-Epoch 1500 loss: 0.000600
-Epoch 1600 loss: 0.000583
-Epoch 1700 loss: 0.000572
-Epoch 1800 loss: 0.000565
-Epoch 1900 loss: 0.000560</code></pre>
+<pre><code>Epoch 0 loss: 0.372604
+Epoch 100 loss: 0.050480
+Epoch 200 loss: 0.012413
+Epoch 300 loss: 0.006596
+Epoch 400 loss: 0.004079
+Epoch 500 loss: 0.002611
+Epoch 600 loss: 0.001716
+Epoch 700 loss: 0.001163
+Epoch 800 loss: 0.000821
+Epoch 900 loss: 0.000609
+Epoch 1000 loss: 0.000477
+Epoch 1100 loss: 0.000396
+Epoch 1200 loss: 0.000346
+Epoch 1300 loss: 0.000314
+Epoch 1400 loss: 0.000295
+Epoch 1500 loss: 0.000283
+Epoch 1600 loss: 0.000276
+Epoch 1700 loss: 0.000271
+Epoch 1800 loss: 0.000268
+Epoch 1900 loss: 0.000266
+Epoch 2000 loss: 0.000265
+Epoch 2100 loss: 0.000264
+Epoch 2200 loss: 0.000263
+Epoch 2300 loss: 0.000262
+Epoch 2400 loss: 0.000262</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="70">
-<pre><code>0.0005566991749219596</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="86">
+<pre><code>0.0002612035896163434</code></pre>
 </div>
 </div>
-<div id="cell-32" class="cell" data-execution_count="71">
+<div id="cell-32" class="cell" data-execution_count="87">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>plot_reconstructed_and_original_image(crop, net, X_rff, title<span class="op">=</span><span class="st">"Reconstructed Image with RFF Features"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).</code></pre>
