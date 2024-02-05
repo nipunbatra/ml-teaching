@@ -1,6 +1,8 @@
 \documentclass[usenames,dvipsnames]{beamer}
 \usepackage{mycommonstyle}
 \usepackage{amsmath}
+\usepackage{pdfpages}
+
 
 
 \title{Gradient Descent}
@@ -519,6 +521,58 @@
             $$loss(f(x_i, \theta), y_i) = (f(x_i, \theta) - y_i)^2$$
         \end{itemize}
     \end{frame}
+
+    \begin{frame}{True Gradient}
+        \begin{itemize}[<+->]
+            \item The true gradient of the loss function is given by:
+            $$
+            \begin{aligned}
+                \nabla L & =\nabla \frac{1}{n} \sum_{i=1}^n \operatorname{loss}\left(f\left(x_i\right), y_i\right) \\
+                & =\frac{1}{n} \sum_{i=1}^n \nabla \operatorname{loss}\left(f\left(x_i\right), y_i\right)
+                \end{aligned}
+            $$
+            \item The above is a consequence of linearity of the gradient operator.
+        \end{itemize}
+            
+        
+    \end{frame}
+
+    \begin{frame}{Estimator for the true gradient}
+        \begin{itemize}[<+->]
+            \item In practice, we do not have access to the true gradient
+            \item We can only estimate the true gradient using a subset of the data
+            \item For SGD, we use a single example to estimate the true gradient, for mini-batch gradient descent, we use a mini-batch of examples to estimate the true gradient
+            \item Let us say we have a sample: (x, y)
+            \item The estimated gradient is given by:
+            $$\nabla \tilde{L}=\nabla \operatorname{loss}(f(x), y)$$
+        \end{itemize}
+        
+    \end{frame}
+
+    \begin{frame}{Bias of the estimator}
+        \begin{itemize}[<+->]
+            \item One measure for the quality of an estimator $\tilde{X}$ is its bias or how far off its estimate is on average from the true value $X$ :
+            $$
+            \operatorname{bias}(X)=\mathbb{E}[\tilde{X}]-X
+            $$
+           
+            \item Using the rules of expectation, we can show that the expected value of the estimated gradient is the true gradient:
+            $$
+            \begin{aligned}
+                \mathbb{E}[\nabla \tilde{L}] & =\sum_{i=1}^n \frac{1}{n} \nabla \operatorname{loss}\left(f\left(x_i\right), y_i\right) \\
+                & =\frac{1}{n} \nabla \sum_{i=1}^n \operatorname{loss}\left(f\left(x_i\right), y_i\right) \\
+                & =\nabla L
+                \end{aligned}
+                $$
+                \item Thus, the estimated gradient is an unbiased estimator of the true gradient
+        \end{itemize}
+        
+    \end{frame}
+
+    {
+\setbeamercolor{background canvas}{bg=}
+\includepdf[pages=1-]{SGD.pdf}
+}
                 
 
   \section{Time Complexity: Gradient Descent v/s Normal Equation for Linear Regression}
