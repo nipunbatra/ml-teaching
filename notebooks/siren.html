@@ -345,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>torch.Size([12, 2])</code></pre>
 </div>
 </div>
-<div id="cell-14" class="cell" data-execution_count="14">
+<div id="cell-14" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_coordinate_map(img):</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">    img: torch.Tensor of shape (num_channels, height, width)</span></span>
@@ -372,15 +372,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>    Y <span class="op">=</span> rearrange(img, <span class="st">'c h w -&gt; (h w) c'</span>).<span class="bu">float</span>()</span>
 <span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> X, Y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="15">
+<div id="cell-15" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dog_X, dog_Y <span class="op">=</span> create_coordinate_map(crop)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>dog_X.shape, dog_Y.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="55">
 <pre><code>(torch.Size([90000, 2]), torch.Size([90000, 3]))</code></pre>
 </div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="16">
+<div id="cell-16" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MinMaxScaler from -1 to 1</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>scaler_X <span class="op">=</span> preprocessing.MinMaxScaler(feature_range<span class="op">=</span>(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)).fit(dog_X.cpu())</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -393,7 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Set to dtype float32</span></span>
 <span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>dog_X_scaled <span class="op">=</span> dog_X_scaled.<span class="bu">float</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-17" class="cell" data-execution_count="17">
+<div id="cell-17" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LinearModel(nn.Module):</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, in_features, out_features):</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(LinearModel, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
@@ -403,16 +403,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.linear(x)</span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="18">
+<div id="cell-18" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>net <span class="op">=</span> LinearModel(<span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>net.to(device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div class="cell-output cell-output-display" data-execution_count="58">
 <pre><code>LinearModel(
   (linear): Linear(in_features=2, out_features=3, bias=True)
 )</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="19">
+<div id="cell-19" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train(net, lr, X, Y, epochs, verbose<span class="op">=</span><span class="va">True</span>):</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">    net: torch.nn.Module</span></span>
@@ -435,13 +435,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Epoch </span><span class="sc">{</span>epoch<span class="sc">}</span><span class="ss"> loss: </span><span class="sc">{</span>loss<span class="sc">.</span>item()<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
 <span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> loss.item()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="20">
+<div id="cell-20" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>train(net, <span class="fl">0.01</span>, dog_X_scaled, dog_Y, <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 0 loss: 0.968414
-Epoch 100 loss: 0.104663
-Epoch 200 loss: 0.038212
-Epoch 300 loss: 0.036829
+<pre><code>Epoch 0 loss: 0.504670
+Epoch 100 loss: 0.046783
+Epoch 200 loss: 0.036839
+Epoch 300 loss: 0.036823
 Epoch 400 loss: 0.036823
 Epoch 500 loss: 0.036823
 Epoch 600 loss: 0.036823
@@ -449,11 +449,11 @@ Epoch 700 loss: 0.036823
 Epoch 800 loss: 0.036823
 Epoch 900 loss: 0.036823</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="20">
-<pre><code>0.036822546273469925</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="60">
+<pre><code>0.03682254999876022</code></pre>
 </div>
 </div>
-<div id="cell-21" class="cell" data-execution_count="21">
+<div id="cell-21" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_reconstructed_and_original_image(original_img, net, X, title<span class="op">=</span><span class="st">""</span>):</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">    net: torch.nn.Module</span></span>
@@ -486,7 +486,7 @@ Epoch 900 loss: 0.036823</code></pre>
 <span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>    fig.suptitle(title, y<span class="op">=</span><span class="fl">0.9</span>)</span>
 <span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-22" class="cell" data-execution_count="22">
+<div id="cell-22" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plot_reconstructed_and_original_image(crop, net, dog_X_scaled, title<span class="op">=</span><span class="st">"Reconstructed Image"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -496,7 +496,7 @@ Epoch 900 loss: 0.036823</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-23" class="cell" data-execution_count="23">
+<div id="cell-23" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use polynomial features of degree "d"</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> poly_features(X, degree):</span>
@@ -515,45 +515,45 @@ Epoch 900 loss: 0.036823</code></pre>
 <span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> poly.fit_transform(X.cpu())</span>
 <span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> torch.tensor(X, dtype<span class="op">=</span>torch.float32).to(device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-24" class="cell" data-execution_count="24">
+<div id="cell-24" class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>dog_X_scaled_poly <span class="op">=</span> poly_features(dog_X_scaled, <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-25" class="cell" data-execution_count="25">
+<div id="cell-25" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>dog_X_scaled_poly.dtype, dog_X_scaled_poly.shape, dog_Y.shape, dog_Y.dtype</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>(torch.float32,
  torch.Size([90000, 1326]),
  torch.Size([90000, 3]),
  torch.float32)</code></pre>
 </div>
 </div>
-<div id="cell-26" class="cell" data-execution_count="26">
+<div id="cell-26" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>net <span class="op">=</span> LinearModel(dog_X_scaled_poly.shape[<span class="dv">1</span>], <span class="dv">3</span>)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>net.to(device)</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>train(net, <span class="fl">0.005</span>, dog_X_scaled_poly, dog_Y, <span class="dv">1500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 0 loss: 0.385782
-Epoch 100 loss: 0.028904
-Epoch 200 loss: 0.025280
-Epoch 300 loss: 0.024292
-Epoch 400 loss: 0.023620
-Epoch 500 loss: 0.023090
-Epoch 600 loss: 0.022655
-Epoch 700 loss: 0.022281
-Epoch 800 loss: 0.021952
-Epoch 900 loss: 0.021661
-Epoch 1000 loss: 0.021408
-Epoch 1100 loss: 0.021173
-Epoch 1200 loss: 0.020964
-Epoch 1300 loss: 0.020775
-Epoch 1400 loss: 0.020625</code></pre>
+<pre><code>Epoch 0 loss: 0.353235
+Epoch 100 loss: 0.028444
+Epoch 200 loss: 0.025136
+Epoch 300 loss: 0.024183
+Epoch 400 loss: 0.023526
+Epoch 500 loss: 0.023012
+Epoch 600 loss: 0.022591
+Epoch 700 loss: 0.022229
+Epoch 800 loss: 0.021912
+Epoch 900 loss: 0.021658
+Epoch 1000 loss: 0.021389
+Epoch 1100 loss: 0.021166
+Epoch 1200 loss: 0.020970
+Epoch 1300 loss: 0.020785
+Epoch 1400 loss: 0.020631</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="26">
-<pre><code>0.020452233031392097</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="66">
+<pre><code>0.020467281341552734</code></pre>
 </div>
 </div>
-<div id="cell-27" class="cell" data-execution_count="27">
+<div id="cell-27" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plot_reconstructed_and_original_image(crop, net, dog_X_scaled_poly, title<span class="op">=</span><span class="st">"Reconstructed Image with Polynomial Features"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).</code></pre>
@@ -566,7 +566,7 @@ Epoch 1400 loss: 0.020625</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-28" class="cell" data-execution_count="28">
+<div id="cell-28" class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create RFF features</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_rff_features(X, num_features, sigma):</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> sklearn.kernel_approximation <span class="im">import</span> RBFSampler</span>
@@ -575,52 +575,52 @@ Epoch 1400 loss: 0.020625</code></pre>
 <span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> rff.fit_transform(X)</span>
 <span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> torch.tensor(X, dtype<span class="op">=</span>torch.float32).to(device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-29" class="cell" data-execution_count="40">
+<div id="cell-29" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>X_rff <span class="op">=</span> create_rff_features(dog_X_scaled, <span class="dv">37500</span>, <span class="fl">0.008</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-30" class="cell" data-execution_count="41">
+<div id="cell-30" class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>X_rff.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="41">
+<div class="cell-output cell-output-display" data-execution_count="70">
 <pre><code>torch.Size([90000, 37500])</code></pre>
 </div>
 </div>
-<div id="cell-31" class="cell" data-execution_count="42">
+<div id="cell-31" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>net <span class="op">=</span> LinearModel(X_rff.shape[<span class="dv">1</span>], <span class="dv">3</span>)</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>net.to(device)</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>train(net, <span class="fl">0.005</span>, X_rff, dog_Y, <span class="dv">2500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Epoch 0 loss: 0.373236
-Epoch 100 loss: 0.046793
-Epoch 200 loss: 0.009401
-Epoch 300 loss: 0.004224
-Epoch 400 loss: 0.002236
-Epoch 500 loss: 0.001218
-Epoch 600 loss: 0.000698
-Epoch 700 loss: 0.000439
-Epoch 800 loss: 0.000315
-Epoch 900 loss: 0.000257
-Epoch 1000 loss: 0.000231
-Epoch 1100 loss: 0.000218
-Epoch 1200 loss: 0.000212
-Epoch 1300 loss: 0.000209
-Epoch 1400 loss: 0.000207
-Epoch 1500 loss: 0.000205
-Epoch 1600 loss: 0.000204
-Epoch 1700 loss: 0.000203
-Epoch 1800 loss: 0.000202
-Epoch 1900 loss: 0.000201
-Epoch 2000 loss: 0.000201
-Epoch 2100 loss: 0.000200
-Epoch 2200 loss: 0.000199
-Epoch 2300 loss: 0.000199
-Epoch 2400 loss: 0.000199</code></pre>
+<pre><code>Epoch 0 loss: 0.375324
+Epoch 100 loss: 0.047630
+Epoch 200 loss: 0.009158
+Epoch 300 loss: 0.003941
+Epoch 400 loss: 0.002057
+Epoch 500 loss: 0.001118
+Epoch 600 loss: 0.000640
+Epoch 700 loss: 0.000404
+Epoch 800 loss: 0.000292
+Epoch 900 loss: 0.000241
+Epoch 1000 loss: 0.000218
+Epoch 1100 loss: 0.000208
+Epoch 1200 loss: 0.000204
+Epoch 1300 loss: 0.000201
+Epoch 1400 loss: 0.000200
+Epoch 1500 loss: 0.000199
+Epoch 1600 loss: 0.000198
+Epoch 1700 loss: 0.000197
+Epoch 1800 loss: 0.000196
+Epoch 1900 loss: 0.000195
+Epoch 2000 loss: 0.000195
+Epoch 2100 loss: 0.000194
+Epoch 2200 loss: 0.000194
+Epoch 2300 loss: 0.000193
+Epoch 2400 loss: 0.000193</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="42">
-<pre><code>0.00019816236454062164</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="71">
+<pre><code>0.00019248582248110324</code></pre>
 </div>
 </div>
-<div id="cell-32" class="cell" data-execution_count="43">
+<div id="cell-32" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>plot_reconstructed_and_original_image(crop, net, X_rff, title<span class="op">=</span><span class="st">"Reconstructed Image with RFF Features"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).</code></pre>
@@ -633,40 +633,75 @@ Epoch 2400 loss: 0.000199</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-33" class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Train on a subset of the cropped image </span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> torch.randperm(dog_X_scaled.shape[<span class="dv">0</span>])[:<span class="dv">10000</span>]</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>X_rff_subset <span class="op">=</span> X_rff[idx]</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>y_subset <span class="op">=</span> dog_Y[idx]</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>net <span class="op">=</span> LinearModel(X_rff_subset.shape[<span class="dv">1</span>], <span class="dv">3</span>)</span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>net.to(device)</span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>train(net, <span class="fl">0.005</span>, X_rff_subset, y_subset, <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Epoch 0 loss: 0.372553
-Epoch 100 loss: 0.004028
-Epoch 200 loss: 0.000298
-Epoch 300 loss: 0.000057
-Epoch 400 loss: 0.000014</code></pre>
+<div id="cell-33" class="cell" data-execution_count="84">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>scale<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>torch.arange(<span class="dv">0</span>, w, <span class="dv">1</span><span class="op">/</span>scale)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="84">
+<pre><code>tensor([ 0.0000,  0.5000,  1.0000,  1.5000,  2.0000,  2.5000,  3.0000,  3.5000,
+         4.0000,  4.5000,  5.0000,  5.5000,  6.0000,  6.5000,  7.0000,  7.5000,
+         8.0000,  8.5000,  9.0000,  9.5000, 10.0000, 10.5000, 11.0000, 11.5000,
+        12.0000, 12.5000, 13.0000, 13.5000, 14.0000, 14.5000, 15.0000, 15.5000,
+        16.0000, 16.5000, 17.0000, 17.5000, 18.0000, 18.5000, 19.0000, 19.5000,
+        20.0000, 20.5000, 21.0000, 21.5000, 22.0000, 22.5000, 23.0000, 23.5000,
+        24.0000, 24.5000, 25.0000, 25.5000, 26.0000, 26.5000, 27.0000, 27.5000,
+        28.0000, 28.5000, 29.0000, 29.5000, 30.0000, 30.5000, 31.0000, 31.5000,
+        32.0000, 32.5000, 33.0000, 33.5000, 34.0000, 34.5000, 35.0000, 35.5000,
+        36.0000, 36.5000, 37.0000, 37.5000, 38.0000, 38.5000, 39.0000, 39.5000,
+        40.0000, 40.5000, 41.0000, 41.5000, 42.0000, 42.5000, 43.0000, 43.5000,
+        44.0000, 44.5000, 45.0000, 45.5000, 46.0000, 46.5000, 47.0000, 47.5000,
+        48.0000, 48.5000, 49.0000, 49.5000, 50.0000, 50.5000, 51.0000, 51.5000,
+        52.0000, 52.5000, 53.0000, 53.5000, 54.0000, 54.5000, 55.0000, 55.5000,
+        56.0000, 56.5000, 57.0000, 57.5000, 58.0000, 58.5000, 59.0000, 59.5000,
+        60.0000, 60.5000, 61.0000, 61.5000, 62.0000, 62.5000, 63.0000, 63.5000,
+        64.0000, 64.5000, 65.0000, 65.5000, 66.0000, 66.5000, 67.0000, 67.5000,
+        68.0000, 68.5000, 69.0000, 69.5000, 70.0000, 70.5000, 71.0000, 71.5000,
+        72.0000, 72.5000, 73.0000, 73.5000, 74.0000, 74.5000, 75.0000, 75.5000,
+        76.0000, 76.5000, 77.0000, 77.5000, 78.0000, 78.5000, 79.0000, 79.5000,
+        80.0000, 80.5000, 81.0000, 81.5000, 82.0000, 82.5000, 83.0000, 83.5000,
+        84.0000, 84.5000, 85.0000, 85.5000, 86.0000, 86.5000, 87.0000, 87.5000,
+        88.0000, 88.5000, 89.0000, 89.5000, 90.0000, 90.5000, 91.0000, 91.5000,
+        92.0000, 92.5000, 93.0000, 93.5000, 94.0000, 94.5000, 95.0000, 95.5000,
+        96.0000, 96.5000, 97.0000, 97.5000, 98.0000, 98.5000, 99.0000, 99.5000])</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="50">
-<pre><code>4.303753030399093e-06</code></pre>
+</div>
+<div id="cell-34" class="cell" data-execution_count="91">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_coordinate_map(img, scale<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co">    img: torch.Tensor of shape (num_channels, height, width)</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="co">    return: tuple of torch.Tensor of shape (height * width, 2) and torch.Tensor of shape (height * width, num_channels)</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>    num_channels, height, width <span class="op">=</span> img.shape</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a 2D grid of (x,y) coordinates (h, w)</span></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># width values change faster than height values</span></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>    w_coords <span class="op">=</span> torch.arange(<span class="dv">0</span>, width,  <span class="dv">1</span><span class="op">/</span>scale).repeat(<span class="bu">int</span>(height<span class="op">*</span>scale), <span class="dv">1</span>)</span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>    h_coords <span class="op">=</span> torch.arange(<span class="dv">0</span>, height, <span class="dv">1</span><span class="op">/</span>scale).repeat(<span class="bu">int</span>(width<span class="op">*</span>scale), <span class="dv">1</span>).t()</span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>    w_coords <span class="op">=</span> w_coords.reshape(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>    h_coords <span class="op">=</span> h_coords.reshape(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Combine the x and y coordinates into a single tensor</span></span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> torch.stack([h_coords, w_coords], dim<span class="op">=</span><span class="dv">1</span>).<span class="bu">float</span>()</span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Move X to GPU if available</span></span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> X.to(device)</span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Reshape the image to (h * w, num_channels)</span></span>
+<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a>    Y <span class="op">=</span> rearrange(img, <span class="st">'c h w -&gt; (h w) c'</span>).<span class="bu">float</span>()</span>
+<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> X, Y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-35" class="cell" data-execution_count="92">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>create_coordinate_map(crop, scale<span class="op">=</span><span class="dv">2</span>)[<span class="dv">0</span>].shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="92">
+<pre><code>torch.Size([360000, 2])</code></pre>
 </div>
 </div>
-<div id="cell-34" class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>plot_reconstructed_and_original_image(crop, net, X_rff, title<span class="op">=</span><span class="st">"Reconstructed Image with RFF Features on a Subset"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="siren_files/figure-html/cell-35-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<div id="cell-36" class="cell" data-execution_count="93">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>create_coordinate_map(crop, scale<span class="op">=</span><span class="dv">1</span>)[<span class="dv">0</span>].shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="93">
+<pre><code>torch.Size([90000, 2])</code></pre>
 </div>
 </div>
 
