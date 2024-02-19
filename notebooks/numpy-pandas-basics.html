@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -675,6 +675,7 @@ Type:      function</code></pre>
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <div>
+<div>
 
 
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
@@ -822,6 +823,7 @@ Type:      function</code></pre>
 </div>
 </div>
 </div>
+</div>
 <div id="cell-35" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Day'</span>] <span class="op">==</span> <span class="st">'D11'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
@@ -845,6 +847,7 @@ Name: Day, dtype: bool</code></pre>
 <div id="cell-36" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>df[df[<span class="st">'Day'</span>] <span class="op">==</span> <span class="st">'D11'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
+<div>
 <div>
 
 
@@ -873,6 +876,7 @@ Name: Day, dtype: bool</code></pre>
 </tbody>
 </table>
 
+</div>
 </div>
 </div>
 </div>
@@ -964,6 +968,7 @@ dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index<span class="op">=</span>df[<span class="st">'Play'</span>], columns<span class="op">=</span><span class="st">'count'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
 <div>
+<div>
 
 
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
@@ -989,6 +994,7 @@ dtype: int64</code></pre>
 </tbody>
 </table>
 
+</div>
 </div>
 </div>
 </div>
@@ -1104,6 +1110,7 @@ Name: count, dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index<span class="op">=</span>df[<span class="st">'Outlook'</span>], columns<span class="op">=</span>df[<span class="st">'Play'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <div>
+<div>
 
 
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
@@ -1141,9 +1148,11 @@ Name: count, dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <div id="cell-70" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(index<span class="op">=</span>df[<span class="st">'Outlook'</span>], columns<span class="op">=</span>df[<span class="st">'Play'</span>]).T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
+<div>
 <div>
 
 
@@ -1181,10 +1190,12 @@ Name: count, dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <div id="cell-71" class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>df_attr <span class="op">=</span> pd.crosstab(index<span class="op">=</span>df[<span class="st">'Play'</span>], columns<span class="op">=</span>df[<span class="st">'Outlook'</span>], normalize<span class="op">=</span><span class="st">'columns'</span>)</span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>df_attr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="70">
+<div>
 <div>
 
 
@@ -1222,6 +1233,7 @@ Name: count, dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>Using groupby</p>
 <div id="cell-73" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>df.groupby([<span class="st">'Play'</span>, <span class="st">'Outlook'</span>]).size()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1249,6 +1261,7 @@ dtype: int64</code></pre>
 <div id="cell-75" class="cell" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>df.groupby([<span class="st">'Play'</span>, <span class="st">'Outlook'</span>]).size().unstack(<span class="st">'Outlook'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="73">
+<div>
 <div>
 
 
@@ -1286,10 +1299,12 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <div id="cell-76" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>df_attr_groupby <span class="op">=</span> df.groupby([<span class="st">'Play'</span>, <span class="st">'Outlook'</span>]).size().unstack(<span class="st">'Outlook'</span>).fillna(<span class="dv">0</span>)</span>
 <span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>df_attr_groupby</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="74">
+<div>
 <div>
 
 
@@ -1327,11 +1342,13 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>Apply</p>
 <div id="cell-78" class="cell" data-execution_count="75">
 <div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>neg_plogp <span class="op">=</span> df_attr.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="op">-</span>x <span class="op">*</span> np.log2(x <span class="op">+</span> <span class="fl">1e-6</span>), axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>neg_plogp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="75">
+<div>
 <div>
 
 
@@ -1366,6 +1383,7 @@ dtype: int64</code></pre>
 </tbody>
 </table>
 
+</div>
 </div>
 </div>
 </div>

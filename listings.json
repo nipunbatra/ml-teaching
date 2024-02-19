@@ -1,19 +1,16 @@
 [
   {
-    "listing": "/slides.html",
-    "items": []
-  },
-  {
     "listing": "/notebooks.html",
     "items": [
       "/notebooks/Gradient Descent-2d.html",
       "/notebooks/Gradient Descent.html",
       "/notebooks/Linear Regression Notebook.html",
       "/notebooks/Maths for ML-2.html",
+      "/notebooks/Ridge.html",
       "/notebooks/SFS_and_BFS.html",
       "/notebooks/boosting-explanation.html",
       "/notebooks/cost-iteration-notebook.html",
-      "/notebooks/dt_weighted.html",
+      "/notebooks/Sklearn_on_GPU.html",
       "/notebooks/movie-recommendation-knn-mf.html",
       "/notebooks/dummy-variables-multi-colinearity.html",
       "/notebooks/taylor.html",
@@ -28,6 +25,7 @@
       "/notebooks/ensemble-feature-importance.html",
       "/notebooks/ensemble-representation.html",
       "/notebooks/hyperparams-experiments.html",
+      "/notebooks/dt_weighted.html",
       "/notebooks/bias-variance.html",
       "/notebooks/confusion-mnist.html",
       "/notebooks/dummy-baselines.html",
@@ -50,5 +48,9 @@
       "/notebooks/cross-validation-diagrams.html",
       "/notebooks/transcript.html"
     ]
+  },
+  {
+    "listing": "/slides.html",
+    "items": []
   }
 ]

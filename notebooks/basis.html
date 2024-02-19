@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -293,6 +293,7 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
+<div>
 
 
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
@@ -438,6 +439,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
+</div>
 <div id="cell-4" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.index <span class="op">=</span> pd.to_datetime(df[[<span class="st">'year'</span>, <span class="st">'month'</span>]].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'</span><span class="sc">{}</span><span class="st">-</span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(x[<span class="dv">0</span>], x[<span class="dv">1</span>]), axis<span class="op">=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -501,6 +503,7 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"x"</span>:X.flatten(), <span class="st">"transformed"</span>:X_norm.flatten()})</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
+<div>
 <div>
 
 
@@ -575,10 +578,12 @@ window.Quarto = {
 </div>
 </div>
 </div>
+</div>
 <div id="cell-11" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"re-transformed"</span>] <span class="op">=</span> s1.inverse_transform(df[<span class="st">"transformed"</span>].values.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
+<div>
 <div>
 
 
@@ -662,6 +667,7 @@ window.Quarto = {
 </table>
 
 <p>759 rows × 3 columns</p>
+</div>
 </div>
 </div>
 </div>
@@ -995,6 +1001,7 @@ dtype: float64</code></pre>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>errors_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
 <div>
+<div>
 
 
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
@@ -1064,6 +1071,7 @@ dtype: float64</code></pre>
 </tbody>
 </table>
 
+</div>
 </div>
 </div>
 </div>
@@ -2048,88 +2056,6 @@ Subclasses:     </code></pre>
 <div class="sourceCode cell-code" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="84">
 <div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">x</th>
-<th data-quarto-table-cell-role="th">y</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>6.255330</td>
-<td>-0.020070</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>10.804867</td>
-<td>-0.920032</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>0.001716</td>
-<td>0.024965</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>4.534989</td>
-<td>-0.916051</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>2.201338</td>
-<td>0.776696</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">195</td>
-<td>13.979581</td>
-<td>1.115462</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">196</td>
-<td>0.209274</td>
-<td>0.163526</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">197</td>
-<td>3.515431</td>
-<td>-0.332839</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">198</td>
-<td>9.251675</td>
-<td>0.161240</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">199</td>
-<td>14.235245</td>
-<td>0.996049</td>
-</tr>
-</tbody>
-</table>
-
-<p>200 rows × 2 columns</p>
-</div>
-</div>
-</div>
-<div id="cell-111" class="cell" data-execution_count="85">
-<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>df.index <span class="op">=</span> pd.to_datetime(df[[<span class="st">'year'</span>, <span class="st">'month'</span>]].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'</span><span class="sc">{}</span><span class="st">-</span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(x[<span class="dv">0</span>], x[<span class="dv">1</span>]), axis<span class="op">=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>KeyError: "None of [Index(['year', 'month'], dtype='object')] are in the [columns]"</code></pre>
-</div>
-</div>
-<div id="cell-112" class="cell">
-<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="192">
 <div>
 
 
@@ -2201,6 +2127,92 @@ Subclasses:     </code></pre>
 </table>
 
 <p>200 rows × 2 columns</p>
+</div>
+</div>
+</div>
+</div>
+<div id="cell-111" class="cell" data-execution_count="85">
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a>df.index <span class="op">=</span> pd.to_datetime(df[[<span class="st">'year'</span>, <span class="st">'month'</span>]].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'</span><span class="sc">{}</span><span class="st">-</span><span class="sc">{}</span><span class="st">'</span>.<span class="bu">format</span>(x[<span class="dv">0</span>], x[<span class="dv">1</span>]), axis<span class="op">=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>KeyError: "None of [Index(['year', 'month'], dtype='object')] are in the [columns]"</code></pre>
+</div>
+</div>
+<div id="cell-112" class="cell">
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="192">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x</th>
+<th data-quarto-table-cell-role="th">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>6.255330</td>
+<td>-0.020070</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>10.804867</td>
+<td>-0.920032</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.001716</td>
+<td>0.024965</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4.534989</td>
+<td>-0.916051</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2.201338</td>
+<td>0.776696</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">195</td>
+<td>13.979581</td>
+<td>1.115462</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">196</td>
+<td>0.209274</td>
+<td>0.163526</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">197</td>
+<td>3.515431</td>
+<td>-0.332839</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">198</td>
+<td>9.251675</td>
+<td>0.161240</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">199</td>
+<td>14.235245</td>
+<td>0.996049</td>
+</tr>
+</tbody>
+</table>
+
+<p>200 rows × 2 columns</p>
+</div>
 </div>
 </div>
 </div>

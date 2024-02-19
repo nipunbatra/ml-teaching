@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -326,6 +326,7 @@ X.T @ X =
 <span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div>
+<div>
 
 
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
@@ -429,6 +430,7 @@ X.T @ X =
 </div>
 </div>
 </div>
+</div>
 <div id="cell-16" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit_data(df, X, y):</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
@@ -461,6 +463,7 @@ X.T @ X =
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>df2[<span class="st">'direction'</span>] <span class="op">=</span> enc.fit_transform(df[[<span class="st">'direction'</span>]]).flatten()</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
+<div>
 <div>
 
 
@@ -565,6 +568,7 @@ X.T @ X =
 </div>
 </div>
 </div>
+</div>
 <div id="cell-21" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>fit_data(df2, df2[df2.columns[:<span class="op">-</span><span class="dv">1</span>]], df2[<span class="st">'pollution'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
@@ -612,6 +616,7 @@ dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>direction_ohe_df <span class="op">=</span> pd.DataFrame(direction_ohe, columns<span class="op">=</span>col_names_ohe)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>direction_ohe_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
+<div>
 <div>
 
 
@@ -716,6 +721,7 @@ dtype: int64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <div id="cell-27" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Confirm that we can write Is it W? as a linear combination of the other columns</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="op">-</span>direction_ohe_df[[<span class="st">"Is it N?"</span>, <span class="st">"Is it S?"</span>, <span class="st">"Is it E?"</span>]].<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>) <span class="op">-</span> direction_ohe_df[<span class="st">"Is it W?"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -790,6 +796,7 @@ dtype: float64</code></pre>
 <div id="cell-34" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(X_aug.T <span class="op">@</span> X_aug)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
+<div>
 <div>
 
 
@@ -883,6 +890,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <div id="cell-35" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>ohe <span class="op">=</span> OneHotEncoder(sparse_output<span class="op">=</span><span class="va">False</span>, drop<span class="op">=</span><span class="st">'first'</span>)</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>ohe.fit_transform(df[[<span class="st">'direction'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -907,6 +915,7 @@ dtype: float64</code></pre>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>df_ohe_n_1 <span class="op">=</span> pd.DataFrame(direction_ohe_n_1, columns<span class="op">=</span>col_names_ohe_n_1)</span>
 <span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>df_ohe_n_1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
+<div>
 <div>
 
 
@@ -995,6 +1004,7 @@ dtype: float64</code></pre>
 </tbody>
 </table>
 
+</div>
 </div>
 </div>
 </div>
