@@ -33,7 +33,7 @@ with st.sidebar:
     degree = st.slider("Degree", 1, 15, 1)
 
     # Create a slider for alpha (common parameter for both Ridge and Lasso)
-    alpha = st.slider("Alpha", 0.0, 10.0, 0.0)
+    alpha = st.slider("Alpha", 0.0, 1000.0, 0.0)
 
     # Create a dropdown for regression type
     regression_type = st.selectbox("Regression Type", ["Ridge", "Lasso"])
@@ -67,8 +67,8 @@ st.write("The model is:")
 intercept = model.steps[1][1].intercept_
 coefficients = model.steps[1][1].coef_
 latex_eq = (
-    f"y = {intercept:.3f}"
-    + "".join([f" + {'-' if c < 0 else ''} {abs(c):.3f}x^{{{i}}}" for i, c in enumerate(coefficients, start=1)])
+    f"y = {intercept:.10f}"
+    + "".join([f" + {'-' if c < 0 else ''} {abs(c):.10f}x^{{{i}}}" for i, c in enumerate(coefficients, start=1)])
 )
 
 latex_eq = latex_eq.replace("x^{1}", "x")
