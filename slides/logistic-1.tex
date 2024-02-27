@@ -20,6 +20,8 @@
 \institute{IIT Gandhinagar}
 \begin{document}
 	\maketitle
+
+	\section{Problem Setup}
 	
 	\begin{frame}{Classification Technique}
 	%\vspace{5cm}
@@ -111,6 +113,8 @@ Question. Can we still use Linear Regression? \\
 Answer. Yes! Transform $\hat{y} \rightarrow [0, 1]$
 \end{frame}
 
+\section{Logistic/Sigmoid function}
+
 \begin{frame}{Logistic / Sigmoid Function}
 $\hat{y} \in (-\infty, \infty)$ \\
 $\phi =$ Sigmoid / Logistic Function $(\sigma)$ \\
@@ -190,6 +194,8 @@ Answer: No (Non-Convex) \\ \hspace{1.2cm} (See Jupyter Notebook)
 \end{frame}
 
 
+\section{Deriving Cost Function via Maximum Likelihood Estimation}
+
 \begin{frame}{Cost function convexity}
 \begin{columns}
 	\begin{column}{0.5\textwidth}
@@ -221,9 +227,9 @@ P(y | X, \theta) &= \prod_{i=1}^{n} P(y_{i} | x_{i}, \theta) \\ &= \prod_{i=1}^{
 \end{frame}
 
 
-\begin{frame}{Likelihood Visualisation}
-\includegraphics{../figures/logistic-regression/logistic-likelihood.pdf}
-\end{frame}
+%\begin{frame}{Likelihood Visualisation}
+%\includegraphics{../figures/logistic-regression/logistic-likelihood.pdf}
+%\end{frame}
 
 \begin{frame}{Aside on Bernoulli Likelihood}
 \begin{itemize}[<+->]
@@ -253,6 +259,7 @@ P(y | X, \theta) &= \prod_{i=1}^{n} P(y_{i} | x_{i}, \theta) \\ &= \prod_{i=1}^{
 
 \end{frame}
 
+\section{Cross Entropy Cost Function}
 \begin{frame}{Learning Parameters}
 \begin{align*}
 J(\theta) &= -\log \bigg\{\prod_{i=1}^{n} \Big\{\frac{1}{1 + e^{-x_{i}^T\theta}}\Big\}^{y_{i}}\Big\{1 - \frac{1}{1 + e^{-x_{i}^T\theta}}\Big\}^{1 - y_{i}}\bigg\}\\
@@ -274,6 +281,10 @@ J(\theta) &= -\bigg\{\sum_{i=1}^{n} y_{i} \log(\sigma_{\theta}(x_{i})) + (1 - y_
 	\includegraphics[scale=0.7]{../figures/logistic-regression/logistic-cross-cost-0}
 
 
+\end{frame}
+
+\begin{frame}
+	Notebook: logits-usage
 \end{frame}
 
 \begin{frame}{Interpretation of Cross-Entropy Cost Function}\pause What is the interpretation of the cost function?
