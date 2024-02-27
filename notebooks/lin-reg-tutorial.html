@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Nipun Batra">
+<meta name="dcterms.date" content="2024-02-13">
 
-<title>Machine Learning Resources - Slides</title>
+<title>Machine Learning Resources - Some practice problems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +22,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,35 +104,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-filename','listing-file-modified','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-filename","listing-file-modified","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -135,11 +140,11 @@ window.Quarto = {
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Machine Learning Resources</span>
     </a>
   </div>
@@ -154,15 +159,15 @@ window.Quarto = {
 <span class="menu-text">Instructor Homepage</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notebooks.html"> 
+    <a class="nav-link" href="../notebooks.html"> 
 <span class="menu-text">Notebooks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./slides.html" aria-current="page"> 
+    <a class="nav-link" href="../slides.html"> 
 <span class="menu-text">Slides</span></a>
   </li>  
 </ul>
@@ -174,361 +179,205 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Slides</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(21)</span></div></div></div>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Some practice problems</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">ML</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Nipun Batra </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 13, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="cell-1" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Retina mode</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_format <span class="op">=</span> <span class="st">'retina'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-2" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression()</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create some data</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">100</span>).reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>f_x <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> x <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> np.random.randn(<span class="dv">100</span>, <span class="dv">1</span>)<span class="op">*</span><span class="fl">0.5</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> f_x <span class="op">+</span> eps</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.scatter(x, y, label<span class="op">=</span><span class="st">'Data'</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.plot(x, f_x, <span class="st">'r'</span>, label<span class="op">=</span><span class="st">'True function'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lin-reg-tutorial_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-3" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>penalty_matrix <span class="op">=</span> np.diag(np.eye(x.shape[<span class="dv">0</span>]))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>penalty_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,
+       1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.])</code></pre>
+</div>
+</div>
+<div id="cell-4" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lr.fit(x, y, sample_weight<span class="op">=</span>penalty_matrix)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>lr.coef_, lr.intercept_</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x, lr.predict(x), <span class="st">'g'</span>, label<span class="op">=</span><span class="st">'Fitted model'</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plt.plot(x, f_x, <span class="st">'r'</span>, label<span class="op">=</span><span class="st">'True function'</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(x, y, label<span class="op">=</span><span class="st">'Data'</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lin-reg-tutorial_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-5" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>lr.fit(x, y)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lr.coef_, lr.intercept_)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.plot(x, lr.predict(x), <span class="st">'g'</span>, label<span class="op">=</span><span class="st">'Fitted model'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.plot(x, f_x, <span class="st">'r'</span>, label<span class="op">=</span><span class="st">'True function'</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(x, y, label<span class="op">=</span><span class="st">'Data'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1.9804156]] [1.05585787]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lin-reg-tutorial_files/figure-html/cell-6-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>penalty_matrix <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">100</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression()</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>lr.fit(x, y, sample_weight<span class="op">=</span>penalty_matrix)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lr.coef_, lr.intercept_)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>plt.plot(x, lr.predict(x), <span class="st">'g'</span>, label<span class="op">=</span><span class="st">'Fitted model'</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.plot(x, f_x, <span class="st">'r'</span>, label<span class="op">=</span><span class="st">'True function'</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>plt.scatter(x, y, label<span class="op">=</span><span class="st">'Data'</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1.94435821]] [1.08001753]</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lin-reg-tutorial_files/figure-html/cell-7-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-7" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> np.diag(penalty_matrix)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(R)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[0.         0.         0.         ... 0.         0.         0.        ]
+ [0.         0.01010101 0.         ... 0.         0.         0.        ]
+ [0.         0.         0.02020202 ... 0.         0.         0.        ]
+ ...
+ [0.         0.         0.         ... 0.97979798 0.         0.        ]
+ [0.         0.         0.         ... 0.         0.98989899 0.        ]
+ [0.         0.         0.         ... 0.         0.         1.        ]]</code></pre>
+</div>
+</div>
+<div id="cell-8" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x_aug <span class="op">=</span> np.hstack([np.ones_like(x), x])</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>theta_hat<span class="op">=</span> np.linalg.inv(x_aug.T <span class="op">@</span> R <span class="op">@</span> x_aug) <span class="op">@</span> x_aug.T <span class="op">@</span> R <span class="op">@</span> y</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(theta_hat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1.08001753]
+ [1.94435821]]</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(\hat{y} = x^T\theta\)</span></p>
+<div id="cell-10" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression(fit_intercept<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>lr.fit(x, y)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lr.coef_, lr.intercept_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[3.55624367]] 0.0</code></pre>
+</div>
+</div>
+<div id="cell-11" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>sum_x_y <span class="op">=</span> np.<span class="bu">sum</span>(x <span class="op">*</span> y)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>sum_x_x <span class="op">=</span> np.<span class="bu">sum</span>(x <span class="op">*</span> x)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>sum_x_y<span class="op">/</span>sum_x_x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>3.5562436711266945</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(\hat{y} = \theta\)</span></p>
+<div id="cell-13" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> LinearRegression(fit_intercept<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>lr.fit(np.ones_like(y), y)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lr.coef_, lr.intercept_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[2.04606567]] 0.0</code></pre>
+</div>
+</div>
+<div id="cell-14" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>np.mean(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>2.0460656658200334</code></pre>
+</div>
+</div>
 
 
 
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1709009861404">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/1-introduction-ml.pdf" class="no-external"></a></p><a href="./slides/1-introduction-ml.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-1-introduction-ml.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1709009861428">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/MovieRecommendation.pdf" class="no-external"></a></p><a href="./slides/MovieRecommendation.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-MovieRecommendation.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1709009861448">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/SGD.pdf" class="no-external"></a></p><a href="./slides/SGD.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-SGD.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1709009861452">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/accuracy_convention.pdf" class="no-external"></a></p><a href="./slides/accuracy_convention.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-accuracy_convention.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1709009861456">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/bias-variance.pdf" class="no-external"></a></p><a href="./slides/bias-variance.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-bias-variance.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1709009861456">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/convexity.pdf" class="no-external"></a></p><a href="./slides/convexity.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-convexity.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-file-modified-sort="1709009861456">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/cross-validation.pdf" class="no-external"></a></p><a href="./slides/cross-validation.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-cross-validation.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-listing-file-modified-sort="1709009861464">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/decision-trees.pdf" class="no-external"></a></p><a href="./slides/decision-trees.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-decision-trees.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-listing-file-modified-sort="1709009861476">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/ensemble.pdf" class="no-external"></a></p><a href="./slides/ensemble.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-ensemble.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-listing-file-modified-sort="1709009861480">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/find-widths.pdf" class="no-external"></a></p><a href="./slides/find-widths.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-find-widths.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="10" data-listing-file-modified-sort="1709009861492">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/gradient-descent.pdf" class="no-external"></a></p><a href="./slides/gradient-descent.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-gradient-descent.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="11" data-listing-file-modified-sort="1709009861496">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/guest-lecture.pdf" class="no-external"></a></p><a href="./slides/guest-lecture.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-guest-lecture.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="12" data-listing-file-modified-sort="1709009861504">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/lasso-regression.pdf" class="no-external"></a></p><a href="./slides/lasso-regression.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-lasso-regression.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="13" data-listing-file-modified-sort="1709009861504">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/linear-regression.pdf" class="no-external"></a></p><a href="./slides/linear-regression.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-linear-regression.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="14" data-listing-file-modified-sort="1709009861512">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/logistic-1.pdf" class="no-external"></a></p><a href="./slides/logistic-1.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-logistic-1.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="15" data-listing-file-modified-sort="1709009861512">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/misc.pdf" class="no-external"></a></p><a href="./slides/misc.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-misc.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="16" data-listing-file-modified-sort="1709009861512">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/ml-maths-2-contour.pdf" class="no-external"></a></p><a href="./slides/ml-maths-2-contour.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-ml-maths-2-contour.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="17" data-listing-file-modified-sort="1709009861516">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/ml-maths.pdf" class="no-external"></a></p><a href="./slides/ml-maths.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-ml-maths.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="18" data-listing-file-modified-sort="1709009861516">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/mock-quiz.pdf" class="no-external"></a></p><a href="./slides/mock-quiz.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-mock-quiz.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="19" data-listing-file-modified-sort="1709009861528">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/ridge-regression.pdf" class="no-external"></a></p><a href="./slides/ridge-regression.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-ridge-regression.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="20" data-listing-file-modified-sort="1709009861528">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/time_complexity.pdf" class="no-external"></a></p><a href="./slides/time_complexity.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-time_complexity.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 4:57:41 AM
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
