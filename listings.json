@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/slides.html",
+    "items": []
+  },
+  {
     "listing": "/notebooks.html",
     "items": [
       "/notebooks/Gradient Descent-2d.html",
@@ -11,6 +15,7 @@
       "/notebooks/autoregressive_model.html",
       "/notebooks/boosting-explanation.html",
       "/notebooks/cost-iteration-notebook.html",
+      "/notebooks/logits-usage.html",
       "/notebooks/lin-reg-tutorial.html",
       "/notebooks/Sklearn_on_GPU.html",
       "/notebooks/movie-recommendation-knn-mf.html",
@@ -51,9 +56,5 @@
       "/notebooks/cross-validation-diagrams.html",
       "/notebooks/transcript.html"
     ]
-  },
-  {
-    "listing": "/slides.html",
-    "items": []
   }
 ]

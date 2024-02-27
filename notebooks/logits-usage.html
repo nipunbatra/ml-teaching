@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Nipun Batra">
+<meta name="dcterms.date" content="2024-02-27">
 
-<title>Machine Learning Resources - Slides</title>
+<title>Machine Learning Resources - Why use logits</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +22,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,76 +104,22 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
-    const options = {
-      valueNames: ['listing-filename','listing-file-modified','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-filename","listing-file-modified","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Machine Learning Resources</span>
     </a>
   </div>
@@ -154,15 +134,15 @@ window.Quarto = {
 <span class="menu-text">Instructor Homepage</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notebooks.html"> 
+    <a class="nav-link" href="../notebooks.html"> 
 <span class="menu-text">Notebooks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./slides.html" aria-current="page"> 
+    <a class="nav-link" href="../slides.html"> 
 <span class="menu-text">Slides</span></a>
   </li>  
 </ul>
@@ -174,361 +154,190 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Slides</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(21)</span></div></div></div>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Why use logits</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">ML</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Nipun Batra </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 27, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="cell-1" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> latexify <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_format <span class="op">=</span> <span class="st">'retina'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-2" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn.functional <span class="im">as</span> F</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ipywidgets <span class="im">as</span> widgets</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ipywidgets <span class="im">import</span> interactive</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Example ground truth probabilities</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>ground_truth_probs <span class="op">=</span> torch.tensor([<span class="fl">0.3</span>, <span class="fl">0.7</span>])</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Example model predictions (logits)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>model_logits <span class="op">=</span> torch.tensor([<span class="op">-</span><span class="fl">2.0</span>, <span class="fl">2.0</span>])</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Applying softmax to logits to get probabilities</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>model_probs <span class="op">=</span> F.sigmoid(model_logits)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-entropy loss using probabilities</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>loss_probs <span class="op">=</span> F.binary_cross_entropy(model_probs, ground_truth_probs)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-entropy loss using logits</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>loss_logits <span class="op">=</span> F.binary_cross_entropy_with_logits(model_logits, ground_truth_probs)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Loss using probabilities:"</span>, loss_probs.item())</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Loss using logits:"</span>, loss_logits.item())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Loss using probabilities: 0.7269279956817627
+Loss using logits: 0.7269280552864075</code></pre>
+</div>
+</div>
+<div id="cell-3" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>l1 <span class="op">=</span> widgets.FloatSlider(value<span class="op">=</span><span class="fl">0.3</span>, <span class="bu">min</span><span class="op">=-</span><span class="dv">300</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">300</span>, step<span class="op">=</span><span class="fl">0.01</span>, description<span class="op">=</span><span class="st">'Logits ex 1'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>l2 <span class="op">=</span> widgets.FloatSlider(value<span class="op">=</span><span class="fl">0.7</span>, <span class="bu">min</span><span class="op">=-</span><span class="dv">300</span>, <span class="bu">max</span><span class="op">=</span><span class="dv">300</span>, step<span class="op">=</span><span class="fl">0.01</span>, description<span class="op">=</span><span class="st">'Logits ex 2'</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>box <span class="op">=</span> widgets.VBox([l1, l2])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-4" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_loss_using_both_methods(l1, l2):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> torch.tensor([l1, l2])</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    probs <span class="op">=</span> F.sigmoid(logits)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    loss_probs <span class="op">=</span> F.binary_cross_entropy(probs, ground_truth_probs)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    loss_logits <span class="op">=</span> F.binary_cross_entropy_with_logits(logits, ground_truth_probs)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Loss using probabilities:"</span>, loss_probs.item())</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Loss using logits:"</span>, loss_logits.item())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-5" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add interactivity</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>interactive(print_loss_using_both_methods, l1<span class="op">=</span>l1, l2<span class="op">=</span>l2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"cef93bcfaf874980a62b8fefeb340808","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>print_loss_using_both_methods(l1.value, l2.value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Loss using probabilities: 8.003093719482422
+Loss using logits: 8.003093719482422</code></pre>
+</div>
+</div>
+<div id="cell-7" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> our_sigmoid(z):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>torch.exp(<span class="op">-</span>z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-8" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>our_sigmoid(torch.tensor(<span class="op">-</span><span class="fl">90.</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>tensor(0.)</code></pre>
+</div>
+</div>
+<div id="cell-9" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>F.binary_cross_entropy_with_logits?</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Signature:
+F.binary_cross_entropy_with_logits(
+    input: torch.Tensor,
+    target: torch.Tensor,
+    weight: Optional[torch.Tensor] = None,
+    size_average: Optional[bool] = None,
+    reduce: Optional[bool] = None,
+    reduction: str = 'mean',
+    pos_weight: Optional[torch.Tensor] = None,
+) -&gt; torch.Tensor
+Docstring:
+Calculate Binary Cross Entropy between target and input logits.
+
+See :class:`~torch.nn.BCEWithLogitsLoss` for details.
+
+Args:
+    input: Tensor of arbitrary shape as unnormalized scores (often referred to as logits).
+    target: Tensor of the same shape as input with values between 0 and 1
+    weight (Tensor, optional): a manual rescaling weight
+        if provided it's repeated to match input tensor shape
+    size_average (bool, optional): Deprecated (see :attr:`reduction`). By default,
+        the losses are averaged over each loss element in the batch. Note that for
+        some losses, there multiple elements per sample. If the field :attr:`size_average`
+        is set to ``False``, the losses are instead summed for each minibatch. Ignored
+        when reduce is ``False``. Default: ``True``
+    reduce (bool, optional): Deprecated (see :attr:`reduction`). By default, the
+        losses are averaged or summed over observations for each minibatch depending
+        on :attr:`size_average`. When :attr:`reduce` is ``False``, returns a loss per
+        batch element instead and ignores :attr:`size_average`. Default: ``True``
+    reduction (str, optional): Specifies the reduction to apply to the output:
+        ``'none'`` | ``'mean'`` | ``'sum'``. ``'none'``: no reduction will be applied,
+        ``'mean'``: the sum of the output will be divided by the number of
+        elements in the output, ``'sum'``: the output will be summed. Note: :attr:`size_average`
+        and :attr:`reduce` are in the process of being deprecated, and in the meantime,
+        specifying either of those two args will override :attr:`reduction`. Default: ``'mean'``
+    pos_weight (Tensor, optional): a weight of positive examples to be broadcasted with target.
+        Must be a tensor with equal size along the class dimension to the number of classes.
+        Pay close attention to PyTorch's broadcasting semantics in order to achieve the desired
+        operations. For a target of size [B, C, H, W] (where B is batch size) pos_weight of
+        size [B, C, H, W] will apply different pos_weights to each element of the batch or
+        [C, H, W] the same pos_weights across the batch. To apply the same positive weight
+        along all spacial dimensions for a 2D multi-class target [C, H, W] use: [C, 1, 1].
+        Default: ``None``
+
+Examples::
+
+     &gt;&gt;&gt; input = torch.randn(3, requires_grad=True)
+     &gt;&gt;&gt; target = torch.empty(3).random_(2)
+     &gt;&gt;&gt; loss = F.binary_cross_entropy_with_logits(input, target)
+     &gt;&gt;&gt; loss.backward()
+File:      ~/miniconda3/envs/ml/lib/python3.11/site-packages/torch/nn/functional.py
+Type:      function</code></pre>
+</div>
+</div>
 
 
 
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1709019014225">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/1-introduction-ml.pdf" class="no-external"></a></p><a href="./slides/1-introduction-ml.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-1-introduction-ml.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1709019014249">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/MovieRecommendation.pdf" class="no-external"></a></p><a href="./slides/MovieRecommendation.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-MovieRecommendation.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1709019014269">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/SGD.pdf" class="no-external"></a></p><a href="./slides/SGD.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-SGD.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1709019014273">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/accuracy_convention.pdf" class="no-external"></a></p><a href="./slides/accuracy_convention.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-accuracy_convention.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1709019014273">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/bias-variance.pdf" class="no-external"></a></p><a href="./slides/bias-variance.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-bias-variance.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1709019014273">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/convexity.pdf" class="no-external"></a></p><a href="./slides/convexity.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-convexity.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-file-modified-sort="1709019014273">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/cross-validation.pdf" class="no-external"></a></p><a href="./slides/cross-validation.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-cross-validation.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-listing-file-modified-sort="1709019014281">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/decision-trees.pdf" class="no-external"></a></p><a href="./slides/decision-trees.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-decision-trees.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-listing-file-modified-sort="1709019014297">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/ensemble.pdf" class="no-external"></a></p><a href="./slides/ensemble.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-ensemble.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-listing-file-modified-sort="1709019014297">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/find-widths.pdf" class="no-external"></a></p><a href="./slides/find-widths.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-find-widths.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="10" data-listing-file-modified-sort="1709019014309">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/gradient-descent.pdf" class="no-external"></a></p><a href="./slides/gradient-descent.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-gradient-descent.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="11" data-listing-file-modified-sort="1709019014313">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/guest-lecture.pdf" class="no-external"></a></p><a href="./slides/guest-lecture.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-guest-lecture.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="12" data-listing-file-modified-sort="1709019014321">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/lasso-regression.pdf" class="no-external"></a></p><a href="./slides/lasso-regression.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-lasso-regression.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="13" data-listing-file-modified-sort="1709019014325">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/linear-regression.pdf" class="no-external"></a></p><a href="./slides/linear-regression.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-linear-regression.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="14" data-listing-file-modified-sort="1709019014329">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/logistic-1.pdf" class="no-external"></a></p><a href="./slides/logistic-1.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-logistic-1.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="15" data-listing-file-modified-sort="1709019014329">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/misc.pdf" class="no-external"></a></p><a href="./slides/misc.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-misc.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="16" data-listing-file-modified-sort="1709019014333">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/ml-maths-2-contour.pdf" class="no-external"></a></p><a href="./slides/ml-maths-2-contour.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-ml-maths-2-contour.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="17" data-listing-file-modified-sort="1709019014333">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/ml-maths.pdf" class="no-external"></a></p><a href="./slides/ml-maths.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-ml-maths.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="18" data-listing-file-modified-sort="1709019014333">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/mock-quiz.pdf" class="no-external"></a></p><a href="./slides/mock-quiz.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-mock-quiz.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="19" data-listing-file-modified-sort="1709019014345">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/ridge-regression.pdf" class="no-external"></a></p><a href="./slides/ridge-regression.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-ridge-regression.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="20" data-listing-file-modified-sort="1709019014345">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/time_complexity.pdf" class="no-external"></a></p><a href="./slides/time_complexity.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-time_complexity.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-2/27/24, 7:30:14 AM
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
