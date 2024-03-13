@@ -215,10 +215,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Torch version</span></span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>torch.__version__</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>'2.1.2'</code></pre>
+<pre><code>'2.0.1'</code></pre>
 </div>
 </div>
-<div id="cell-2" class="cell" data-execution_count="13">
+<div id="cell-2" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Derviatives using numerical differentiation</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
@@ -231,11 +231,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (f(x <span class="op">+</span> h) <span class="op">-</span> f(x <span class="op">-</span> h)) <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> h)</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.tensor(<span class="fl">2.0</span>, requires_grad<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'f</span><span class="ch">\'</span><span class="ss">(2) = </span><span class="sc">{</span>numerical_derivative_single_side(f, x, <span class="fl">0.001</span>)<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'f</span><span class="ch">\'</span><span class="ss">(2) = </span><span class="sc">{</span>numerical_derivative_double_side(f, x, <span class="fl">0.001</span>)<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'f</span><span class="ch">\'</span><span class="ss">(2) = </span><span class="sc">{</span>numerical_derivative_single_side(f, x, <span class="fl">0.00001</span>)<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'f</span><span class="ch">\'</span><span class="ss">(2) = </span><span class="sc">{</span>numerical_derivative_double_side(f, x, <span class="fl">0.00001</span>)<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>f'(2) = 14.001845359802246
-f'(2) = 13.998984336853027</code></pre>
+<pre><code>f'(2) = 14.1143798828125
+f'(2) = 14.1143798828125</code></pre>
 </div>
 </div>
 <div id="cell-3" class="cell" data-execution_count="19">
@@ -260,7 +260,7 @@ f'(2) = 13.998984336853027</code></pre>
 <div id="cell-4" class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Above method is very expensive and not practical for large number of parameters</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="2">
+<div id="cell-5" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>theta_0 <span class="op">=</span> torch.tensor(<span class="fl">1.0</span>, requires_grad<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>theta_1 <span class="op">=</span> torch.tensor(<span class="fl">1.0</span>, requires_grad<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>theta_2 <span class="op">=</span> torch.tensor(<span class="fl">2.0</span>, requires_grad<span class="op">=</span><span class="va">True</span>)</span>
@@ -294,7 +294,7 @@ f'(2) = 13.998984336853027</code></pre>
 <span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> node <span class="kw">in</span> all_nodes.values():</span>
 <span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    node.retain_grad()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="3">
+<div id="cell-6" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print out the function evaluation for all nodes along with name of the node</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, node <span class="kw">in</span> all_nodes.items():</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>node<span class="sc">.</span>item()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -314,7 +314,7 @@ f9: -0.0024756414350122213
 L: 0.0024756414350122213</code></pre>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="4">
+<div id="cell-7" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>L.backward()</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Print out the gradient for all nodes along with name of the node</span></span>
