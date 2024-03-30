@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.552">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Nipun Batra">
+<meta name="dcterms.date" content="2024-04-01">
+
+<title>Machine Learning Resources - Reinforcement Learning 1 Gym Environments</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Machine Learning Resources</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://nipunbatra.github.io"> 
+<span class="menu-text">Instructor Homepage</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../notebooks.html"> 
+<span class="menu-text">Notebooks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../slides.html"> 
+<span class="menu-text">Slides</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#basic-imports" id="toc-basic-imports" class="nav-link active" data-scroll-target="#basic-imports">Basic Imports</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Reinforcement Learning 1 Gym Environments</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">ML</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Nipun Batra </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 1, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Reference</p>
+<ol type="1">
+<li><a href="https://www.youtube.com/watch?v=KMjQmG5Uzis">Detailed Explanation and Python Implementation of Q-Learning Algorithm in OpenAI Gym (Cart-Pole)</a></li>
+</ol>
+<section id="basic-imports" class="level3">
+<h3 class="anchored" data-anchor-id="basic-imports">Basic Imports</h3>
+<p>https://www.gymlibrary.dev/environments/classic_control/mountain_car/</p>
+<div id="f41ca63d" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> gymnasium <span class="im">as</span> gym</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ImportError</span>:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">%</span>pip install gymnasium[classic<span class="op">-</span>control] <span class="op">-</span>q</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> gymnasium <span class="im">as</span> gym</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_format<span class="op">=</span><span class="st">'retina'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-5" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of environments</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(gym.envs.registry.keys())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>['CartPole-v0',
+ 'CartPole-v1',
+ 'MountainCar-v0',
+ 'MountainCarContinuous-v0',
+ 'Pendulum-v1',
+ 'Acrobot-v1',
+ 'phys2d/CartPole-v0',
+ 'phys2d/CartPole-v1',
+ 'phys2d/Pendulum-v0',
+ 'LunarLander-v2',
+ 'LunarLanderContinuous-v2',
+ 'BipedalWalker-v3',
+ 'BipedalWalkerHardcore-v3',
+ 'CarRacing-v2',
+ 'Blackjack-v1',
+ 'FrozenLake-v1',
+ 'FrozenLake8x8-v1',
+ 'CliffWalking-v0',
+ 'Taxi-v3',
+ 'tabular/Blackjack-v0',
+ 'tabular/CliffWalking-v0',
+ 'Reacher-v2',
+ 'Reacher-v4',
+ 'Pusher-v2',
+ 'Pusher-v4',
+ 'InvertedPendulum-v2',
+ 'InvertedPendulum-v4',
+ 'InvertedDoublePendulum-v2',
+ 'InvertedDoublePendulum-v4',
+ 'HalfCheetah-v2',
+ 'HalfCheetah-v3',
+ 'HalfCheetah-v4',
+ 'Hopper-v2',
+ 'Hopper-v3',
+ 'Hopper-v4',
+ 'Swimmer-v2',
+ 'Swimmer-v3',
+ 'Swimmer-v4',
+ 'Walker2d-v2',
+ 'Walker2d-v3',
+ 'Walker2d-v4',
+ 'Ant-v2',
+ 'Ant-v3',
+ 'Ant-v4',
+ 'Humanoid-v2',
+ 'Humanoid-v3',
+ 'Humanoid-v4',
+ 'HumanoidStandup-v2',
+ 'HumanoidStandup-v4',
+ 'GymV21Environment-v0',
+ 'GymV26Environment-v0']</code></pre>
+</div>
+</div>
+<div id="812894e3" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>env <span class="op">=</span> gym.make(<span class="st">'MountainCar-v0'</span>, render_mode<span class="op">=</span><span class="st">'human'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="3c8f48da" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>observation, info <span class="op">=</span> env.reset(seed<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="e9a97e3b" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>observation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>array([-0.4452088,  0.       ], dtype=float32)</code></pre>
+</div>
+</div>
+<div id="c0af7b05" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>{}</code></pre>
+</div>
+</div>
+<div id="1005ca41" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>env</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>&lt;TimeLimit&lt;OrderEnforcing&lt;PassiveEnvChecker&lt;MountainCarEnv&lt;MountainCar-v0&gt;&gt;&gt;&gt;&gt;</code></pre>
+</div>
+</div>
+<div id="f9fed8a5" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>env.action_space</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>Discrete(3)</code></pre>
+</div>
+</div>
+<div id="d7629ce1" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>env.action_space.n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>3</code></pre>
+</div>
+</div>
+<div id="b70e31b3" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>env.reward_range</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>(-inf, inf)</code></pre>
+</div>
+</div>
+<div id="b56d2e6f" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i, env.action_space.sample())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0 0
+1 1
+2 1
+3 0
+4 2
+5 0
+6 2
+7 0
+8 1
+9 1</code></pre>
+</div>
+</div>
+<div id="bfa88156" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>env.observation_space  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>Box([-1.2  -0.07], [0.6  0.07], (2,), float32)</code></pre>
+</div>
+</div>
+<div id="ca0bc3b7" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>env.observation_space.high</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>array([0.6 , 0.07], dtype=float32)</code></pre>
+</div>
+</div>
+<div id="c1f937db" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>env.observation_space.sample()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>array([-0.2961844, -0.034966 ], dtype=float32)</code></pre>
+</div>
+</div>
+<div id="72a743a9" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>env.reset(seed<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    env.render()</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    action <span class="op">=</span> env.action_space.sample()</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    observation, reward, terminated, truncated, info <span class="op">=</span> env.step(action)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i, observation, reward, terminated, truncated, info)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> terminated:</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0 [-4.4479132e-01  4.1747934e-04] -1.0 False False {}
+1 [-0.4439594   0.00083191] -1.0 False False {}
+2 [-4.4371912e-01  2.4028514e-04] -1.0 False False {}
+3 [-0.4450722  -0.00135309] -1.0 False False {}
+4 [-0.4480088  -0.00293661] -1.0 False False {}
+5 [-0.45050752 -0.00249869] -1.0 False False {}
+6 [-0.45355    -0.00304249] -1.0 False False {}
+7 [-0.456114 -0.002564] -1.0 False False {}
+8 [-0.45918068 -0.00306668] -1.0 False False {}
+9 [-0.4637275  -0.00454682] -1.0 False False {}
+10 [-0.46772096 -0.00399344] -1.0 False False {}
+11 [-0.47213152 -0.00441057] -1.0 False False {}
+12 [-0.47692657 -0.00479504] -1.0 False False {}
+13 [-0.48207048 -0.00514394] -1.0 False False {}
+14 [-0.4885251 -0.0064546] -1.0 False False {}
+15 [-0.49624225 -0.00771716] -1.0 False False {}
+16 [-0.50316435 -0.00692211] -1.0 False False {}
+17 [-0.51123965 -0.00807527] -1.0 False False {}
+18 [-0.52040756 -0.00916794] -1.0 False False {}
+19 [-0.5295994  -0.00919187] -1.0 False False {}
+20 [-0.5377463  -0.00814687] -1.0 False False {}
+21 [-0.5447871 -0.0070408] -1.0 False False {}
+22 [-0.5506691  -0.00588199] -1.0 False False {}
+23 [-0.5573483  -0.00667919] -1.0 False False {}
+24 [-0.56377476 -0.0064265 ] -1.0 False False {}
+25 [-0.5699007  -0.00612591] -1.0 False False {}
+26 [-0.57568043 -0.00577976] -1.0 False False {}
+27 [-0.5810712  -0.00539073] -1.0 False False {}
+28 [-0.58703303 -0.00596182] -1.0 False False {}
+29 [-0.5915219  -0.00448893] -1.0 False False {}
+30 [-0.596505   -0.00498303] -1.0 False False {}
+31 [-0.60094553 -0.00444058] -1.0 False False {}
+32 [-0.6048112  -0.00386567] -1.0 False False {}
+33 [-0.6070738  -0.00226259] -1.0 False False {}
+34 [-0.60771686 -0.00064305] -1.0 False False {}
+35 [-0.6067357   0.00098116] -1.0 False False {}
+36 [-6.0613745e-01  5.9824740e-04] -1.0 False False {}
+37 [-0.6039265   0.00221098] -1.0 False False {}
+38 [-0.6001188   0.00380762] -1.0 False False {}
+39 [-0.59474236  0.0053765 ] -1.0 False False {}
+40 [-0.5878363   0.00690603] -1.0 False False {}
+41 [-0.57945144  0.00838484] -1.0 False False {}
+42 [-0.5696497   0.00980178] -1.0 False False {}
+43 [-0.56050366  0.00914606] -1.0 False False {}
+44 [-0.55208135  0.00842228] -1.0 False False {}
+45 [-0.5444457   0.00763564] -1.0 False False {}
+46 [-0.5356538   0.00879189] -1.0 False False {}
+47 [-0.52677155  0.00888228] -1.0 False False {}
+48 [-0.51686543  0.00990608] -1.0 False False {}
+49 [-0.50700986  0.00985558] -1.0 False False {}
+50 [-0.49827865  0.00873122] -1.0 False False {}
+51 [-0.48873717  0.0095415 ] -1.0 False False {}
+52 [-0.47845665  0.01028051] -1.0 False False {}
+53 [-0.46851367  0.00994298] -1.0 False False {}
+54 [-0.45998195  0.00853172] -1.0 False False {}
+55 [-0.45092446  0.00905749] -1.0 False False {}
+56 [-0.44140774  0.00951674] -1.0 False False {}
+57 [-0.4325012   0.00890653] -1.0 False False {}
+58 [-0.42326942  0.00923177] -1.0 False False {}
+59 [-0.4137788   0.00949061] -1.0 False False {}
+60 [-0.40509704  0.00868178] -1.0 False False {}
+61 [-0.3972854   0.00781162] -1.0 False False {}
+62 [-0.39039862  0.00688678] -1.0 False False {}
+63 [-0.38348448  0.00691416] -1.0 False False {}
+64 [-0.3785905   0.00489397] -1.0 False False {}
+65 [-0.3757501   0.00284039] -1.0 False False {}
+66 [-0.3729826   0.00276753] -1.0 False False {}
+67 [-0.37030664  0.00267595] -1.0 False False {}
+68 [-0.36974028  0.00056636] -1.0 False False {}
+69 [-0.37128732 -0.00154704] -1.0 False False {}
+70 [-0.37393734 -0.00265004] -1.0 False False {}
+71 [-0.3776725  -0.00373516] -1.0 False False {}
+72 [-0.3814675  -0.00379498] -1.0 False False {}
+73 [-0.38529643 -0.00382896] -1.0 False False {}
+74 [-0.38913316 -0.00383672] -1.0 False False {}
+75 [-0.39295125 -0.00381808] -1.0 False False {}
+76 [-0.39672428 -0.00377305] -1.0 False False {}
+77 [-0.4004261  -0.00370179] -1.0 False False {}
+78 [-0.4060308  -0.00560471] -1.0 False False {}
+79 [-0.4134991 -0.0074683] -1.0 False False {}
+80 [-0.4217782  -0.00827911] -1.0 False False {}
+81 [-0.43080917 -0.00903095] -1.0 False False {}
+82 [-0.44152707 -0.01071792] -1.0 False False {}
+83 [-0.45285434 -0.01132725] -1.0 False False {}
+84 [-0.4647082  -0.01185386] -1.0 False False {}
+85 [-0.47600144 -0.01129325] -1.0 False False {}
+86 [-0.48865047 -0.01264902] -1.0 False False {}
+87 [-0.5025611  -0.01391065] -1.0 False False {}
+88 [-0.51662946 -0.01406833] -1.0 False False {}
+89 [-0.53075004 -0.01412059] -1.0 False False {}
+90 [-0.544817   -0.01406696] -1.0 False False {}
+91 [-0.55772495 -0.01290793] -1.0 False False {}
+92 [-0.57037735 -0.01265243] -1.0 False False {}
+93 [-0.5816801  -0.01130275] -1.0 False False {}
+94 [-0.59154946 -0.00986934] -1.0 False False {}
+95 [-0.6019127  -0.01036323] -1.0 False False {}
+96 [-0.61269397 -0.01078126] -1.0 False False {}
+97 [-0.6218149  -0.00912098] -1.0 False False {}
+98 [-0.6312099  -0.00939497] -1.0 False False {}
+99 [-0.6388117  -0.00760183] -1.0 False False {}</code></pre>
+</div>
+</div>
+<div id="c8e9bb21" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Does it help to always go right?</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>env.reset(seed<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    env.render()</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    action <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    observation, reward, terminated, truncated, info <span class="op">=</span> env.step(action)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i, observation, reward, terminated, truncated, info)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> terminated:</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0 [-4.4479132e-01  4.1747934e-04] -1.0 False False {}
+1 [-0.4439594   0.00083191] -1.0 False False {}
+2 [-0.4427191   0.00124029] -1.0 False False {}
+3 [-0.4410795   0.00163962] -1.0 False False {}
+4 [-0.43905246  0.00202703] -1.0 False False {}
+5 [-0.43665275  0.00239971] -1.0 False False {}
+6 [-0.43389776  0.00275498] -1.0 False False {}
+7 [-0.43080744  0.00309032] -1.0 False False {}
+8 [-0.4274041   0.00340333] -1.0 False False {}
+9 [-0.42371225  0.00369185] -1.0 False False {}
+10 [-0.4197584   0.00395386] -1.0 False False {}
+11 [-0.41557083  0.00418759] -1.0 False False {}
+12 [-0.41117933  0.00439149] -1.0 False False {}
+13 [-0.40661508  0.00456424] -1.0 False False {}
+14 [-0.40191033  0.00470476] -1.0 False False {}
+15 [-0.3970981   0.00481224] -1.0 False False {}
+16 [-0.392212    0.00488609] -1.0 False False {}
+17 [-0.38728598  0.00492601] -1.0 False False {}
+18 [-0.38235408  0.00493192] -1.0 False False {}
+19 [-0.37745008  0.004904  ] -1.0 False False {}
+20 [-0.3726074   0.00484267] -1.0 False False {}
+21 [-0.36785883  0.00474856] -1.0 False False {}
+22 [-0.36323628  0.00462255] -1.0 False False {}
+23 [-0.3587706   0.00446569] -1.0 False False {}
+24 [-0.35449135  0.00427925] -1.0 False False {}
+25 [-0.3504267   0.00406465] -1.0 False False {}
+26 [-0.3466032  0.0038235] -1.0 False False {}
+27 [-0.34304565  0.00355754] -1.0 False False {}
+28 [-0.33977702  0.00326864] -1.0 False False {}
+29 [-0.33681822  0.0029588 ] -1.0 False False {}
+30 [-0.3341881   0.00263011] -1.0 False False {}
+31 [-0.33190334  0.00228476] -1.0 False False {}
+32 [-0.32997838  0.00192499] -1.0 False False {}
+33 [-0.32842523  0.00155313] -1.0 False False {}
+34 [-0.3272537   0.00117154] -1.0 False False {}
+35 [-0.32647103  0.00078265] -1.0 False False {}
+36 [-0.32608217  0.00038887] -1.0 False False {}
+37 [-3.2608950e-01 -7.3227225e-06] -1.0 False False {}
+38 [-0.32649297 -0.00040347] -1.0 False False {}
+39 [-0.3272901  -0.00079711] -1.0 False False {}
+40 [-0.32847586 -0.00118578] -1.0 False False {}
+41 [-0.3300429  -0.00156705] -1.0 False False {}
+42 [-0.33198142 -0.0019385 ] -1.0 False False {}
+43 [-0.33427918 -0.00229778] -1.0 False False {}
+44 [-0.33692175 -0.00264256] -1.0 False False {}
+45 [-0.33989236 -0.00297059] -1.0 False False {}
+46 [-0.34317204 -0.0032797 ] -1.0 False False {}
+47 [-0.34673983 -0.00356778] -1.0 False False {}
+48 [-0.35057268 -0.00383286] -1.0 False False {}
+49 [-0.35464573 -0.00407306] -1.0 False False {}
+50 [-0.35893238 -0.00428664] -1.0 False False {}
+51 [-0.3634044  -0.00447202] -1.0 False False {}
+52 [-0.36803216 -0.00462776] -1.0 False False {}
+53 [-0.37278476 -0.00475261] -1.0 False False {}
+54 [-0.3776303  -0.00484552] -1.0 False False {}
+55 [-0.3825359  -0.00490563] -1.0 False False {}
+56 [-0.38746822 -0.0049323 ] -1.0 False False {}
+57 [-0.39239335 -0.00492514] -1.0 False False {}
+58 [-0.39727733 -0.00488397] -1.0 False False {}
+59 [-0.40208617 -0.00480886] -1.0 False False {}
+60 [-0.40678635 -0.00470015] -1.0 False False {}
+61 [-0.41134477 -0.00455843] -1.0 False False {}
+62 [-0.41572928 -0.00438451] -1.0 False False {}
+63 [-0.41990876 -0.00417948] -1.0 False False {}
+64 [-0.42385343 -0.00394468] -1.0 False False {}
+65 [-0.4275351  -0.00368165] -1.0 False False {}
+66 [-0.43092728 -0.0033922 ] -1.0 False False {}
+67 [-0.4340056  -0.00307832] -1.0 False False {}
+68 [-0.4367478 -0.0027422] -1.0 False False {}
+69 [-0.43913403 -0.00238624] -1.0 False False {}
+70 [-0.441147   -0.00201297] -1.0 False False {}
+71 [-0.4427721  -0.00162507] -1.0 False False {}
+72 [-0.4439974  -0.00122535] -1.0 False False {}
+73 [-0.44481412 -0.0008167 ] -1.0 False False {}
+74 [-4.452162e-01 -4.020977e-04] -1.0 False False {}
+75 [-4.4520080e-01  1.5435844e-05] -1.0 False False {}
+76 [-4.4476792e-01  4.3285682e-04] -1.0 False False {}
+77 [-0.44392082  0.00084712] -1.0 False False {}
+78 [-0.4426656   0.00125521] -1.0 False False {}
+79 [-0.44101143  0.00165416] -1.0 False False {}
+80 [-0.43897036  0.00204107] -1.0 False False {}
+81 [-0.4365572   0.00241315] -1.0 False False {}
+82 [-0.4337895   0.00276774] -1.0 False False {}
+83 [-0.4306872   0.00310229] -1.0 False False {}
+84 [-0.42727277  0.00341444] -1.0 False False {}
+85 [-0.42357075  0.00370201] -1.0 False False {}
+86 [-0.41960773  0.003963  ] -1.0 False False {}
+87 [-0.41541207  0.00419566] -1.0 False False {}
+88 [-0.41101363  0.00439843] -1.0 False False {}
+89 [-0.40644366  0.00457001] -1.0 False False {}
+90 [-0.40173432  0.00470932] -1.0 False False {}
+91 [-0.39691874  0.00481556] -1.0 False False {}
+92 [-0.3920306   0.00488817] -1.0 False False {}
+93 [-0.38710377  0.00492683] -1.0 False False {}
+94 [-0.38217226  0.00493149] -1.0 False False {}
+95 [-0.37726995  0.00490233] -1.0 False False {}
+96 [-0.37243018  0.00483977] -1.0 False False {}
+97 [-0.3676857   0.00474447] -1.0 False False {}
+98 [-0.3630684  0.0046173] -1.0 False False {}
+99 [-0.35860908  0.00445932] -1.0 False False {}</code></pre>
+</div>
+</div>
+<div id="a0282aa2" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Go left first K iterations and then go right N - K iterations</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>env.reset(seed<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">250</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    env.render()</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    action <span class="op">=</span> <span class="dv">0</span> <span class="cf">if</span> i <span class="op">&lt;</span> K <span class="cf">else</span> <span class="dv">2</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    observation, reward, terminated, truncated, info <span class="op">=</span> env.step(action)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i, observation, reward, terminated, truncated, info)</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> terminated:</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0 [-0.44679132 -0.00158252] -1.0 False False {}
+1 [-0.4499448  -0.00315349] -1.0 False False {}
+2 [-0.45464623 -0.00470141] -1.0 False False {}
+3 [-0.4608611  -0.00621488] -1.0 False False {}
+4 [-0.46854374 -0.00768264] -1.0 False False {}
+5 [-0.4776374  -0.00909367] -1.0 False False {}
+6 [-0.4880747  -0.01043729] -1.0 False False {}
+7 [-0.4997779  -0.01170322] -1.0 False False {}
+8 [-0.51265967 -0.01288173] -1.0 False False {}
+9 [-0.52662337 -0.01396375] -1.0 False False {}
+10 [-0.54156446 -0.01494107] -1.0 False False {}
+11 [-0.55737084 -0.01580639] -1.0 False False {}
+12 [-0.5739244  -0.01655353] -1.0 False False {}
+13 [-0.59110194 -0.01717752] -1.0 False False {}
+14 [-0.6087766 -0.0176747] -1.0 False False {}
+15 [-0.62681943 -0.0180428 ] -1.0 False False {}
+16 [-0.64510036 -0.01828096] -1.0 False False {}
+17 [-0.6634901  -0.01838974] -1.0 False False {}
+18 [-0.6818612  -0.01837108] -1.0 False False {}
+19 [-0.7000894  -0.01822821] -1.0 False False {}
+20 [-0.71805495 -0.01796552] -1.0 False False {}
+21 [-0.7356433  -0.01758842] -1.0 False False {}
+22 [-0.7527465 -0.0171032] -1.0 False False {}
+23 [-0.7692633  -0.01651679] -1.0 False False {}
+24 [-0.7851     -0.01583663] -1.0 False False {}
+25 [-0.8001704  -0.01507044] -1.0 False False {}
+26 [-0.8143965  -0.01422609] -1.0 False False {}
+27 [-0.82770795 -0.01331142] -1.0 False False {}
+28 [-0.840042   -0.01233409] -1.0 False False {}
+29 [-0.8513436  -0.01130153] -1.0 False False {}
+30 [-0.86156434 -0.01022079] -1.0 False False {}
+31 [-0.87066287 -0.00909855] -1.0 False False {}
+32 [-0.87860394 -0.00794103] -1.0 False False {}
+33 [-0.885358   -0.00675404] -1.0 False False {}
+34 [-0.8909009  -0.00554296] -1.0 False False {}
+35 [-0.8952137  -0.00431278] -1.0 False False {}
+36 [-0.8982819  -0.00306818] -1.0 False False {}
+37 [-0.9000954  -0.00181353] -1.0 False False {}
+38 [-9.006485e-01 -5.530463e-04] -1.0 False False {}
+39 [-8.9993924e-01  7.0920831e-04] -1.0 False False {}
+40 [-0.8979701   0.00196919] -1.0 False False {}
+41 [-0.8947472   0.00322283] -1.0 False False {}
+42 [-0.8902813   0.00446589] -1.0 False False {}
+43 [-0.88458735  0.00569396] -1.0 False False {}
+44 [-0.877685    0.00690234] -1.0 False False {}
+45 [-0.86959904  0.00808598] -1.0 False False {}
+46 [-0.8603596   0.00923946] -1.0 False False {}
+47 [-0.85000265  0.01035692] -1.0 False False {}
+48 [-0.8385706   0.01143206] -1.0 False False {}
+49 [-0.82611245  0.01245818] -1.0 False False {}
+50 [-0.81068426  0.01542816] -1.0 False False {}
+51 [-0.7923595   0.01832481] -1.0 False False {}
+52 [-0.77123034  0.02112911] -1.0 False False {}
+53 [-0.7474102   0.02382017] -1.0 False False {}
+54 [-0.72103477  0.02637544] -1.0 False False {}
+55 [-0.6922636   0.02877113] -1.0 False False {}
+56 [-0.66128075  0.03098283] -1.0 False False {}
+57 [-0.62829447  0.03298633] -1.0 False False {}
+58 [-0.5935357  0.0347587] -1.0 False False {}
+59 [-0.55725634  0.03627939] -1.0 False False {}
+60 [-0.51972497  0.03753139] -1.0 False False {}
+61 [-0.48122263  0.03850234] -1.0 False False {}
+62 [-0.44203725  0.03918537] -1.0 False False {}
+63 [-0.4024575   0.03957975] -1.0 False False {}
+64 [-0.36276644  0.03969106] -1.0 False False {}
+65 [-0.32323536  0.03953107] -1.0 False False {}
+66 [-0.28411815  0.03911722] -1.0 False False {}
+67 [-0.24564646  0.03847169] -1.0 False False {}
+68 [-0.2080261   0.03762037] -1.0 False False {}
+69 [-0.17143448  0.03659161] -1.0 False False {}
+70 [-0.13601945  0.03541502] -1.0 False False {}
+71 [-0.10189916  0.03412029] -1.0 False False {}
+72 [-0.06916296  0.0327362 ] -1.0 False False {}
+73 [-0.03787315  0.03128982] -1.0 False False {}
+74 [-0.00806721  0.02980594] -1.0 False False {}
+75 [0.02023946 0.02830667] -1.0 False False {}
+76 [0.04705074 0.02681128] -1.0 False False {}
+77 [0.07238688 0.02533614] -1.0 False False {}
+78 [0.09628174 0.02389486] -1.0 False False {}
+79 [0.11878016 0.02249843] -1.0 False False {}
+80 [0.13993563 0.02115547] -1.0 False False {}
+81 [0.15980819 0.01987256] -1.0 False False {}
+82 [0.1784626 0.0186544] -1.0 False False {}
+83 [0.19596682 0.01750423] -1.0 False False {}
+84 [0.21239078 0.01642396] -1.0 False False {}
+85 [0.22780529 0.01541451] -1.0 False False {}
+86 [0.24228124 0.01447596] -1.0 False False {}
+87 [0.255889   0.01360777] -1.0 False False {}
+88 [0.26869795 0.01280894] -1.0 False False {}
+89 [0.28077608 0.01207813] -1.0 False False {}
+90 [0.2921899  0.01141381] -1.0 False False {}
+91 [0.30300424 0.01081433] -1.0 False False {}
+92 [0.31328225 0.01027802] -1.0 False False {}
+93 [0.3230855  0.00980324] -1.0 False False {}
+94 [0.33247393 0.00938846] -1.0 False False {}
+95 [0.34150624 0.00903228] -1.0 False False {}
+96 [0.35023972 0.00873351] -1.0 False False {}
+97 [0.35873088 0.00849114] -1.0 False False {}
+98 [0.3670353  0.00830443] -1.0 False False {}
+99 [0.37520823 0.00817291] -1.0 False False {}
+100 [0.3833046  0.00809638] -1.0 False False {}
+101 [0.39137957 0.00807496] -1.0 False False {}
+102 [0.3994887  0.00810912] -1.0 False False {}
+103 [0.40768832 0.00819965] -1.0 False False {}
+104 [0.41603607 0.00834773] -1.0 False False {}
+105 [0.424591   0.00855494] -1.0 False False {}
+106 [0.43341425 0.00882325] -1.0 False False {}
+107 [0.44256935 0.00915509] -1.0 False False {}
+108 [0.4521227  0.00955334] -1.0 False False {}
+109 [0.46214405 0.01002137] -1.0 False False {}
+110 [0.47270712 0.01056306] -1.0 False False {}
+111 [0.48388997 0.01118286] -1.0 False False {}
+112 [0.49577573 0.01188574] -1.0 False False {}
+113 [0.508453   0.01267731] -1.0 True False {}</code></pre>
+</div>
+</div>
+<div id="3bd54112" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>env.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/nipunbatra\.github\.io\/ml-teaching\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
