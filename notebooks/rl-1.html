@@ -766,7 +766,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a><span class="co"># leave out the first three and last three variables</span></span>
-<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>var_consider <span class="op">=</span> variables[<span class="dv">3</span>:<span class="op">-</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>var_consider <span class="op">=</span> variables[<span class="dv">3</span>:<span class="op">-</span><span class="dv">3</span>]</span>
+<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a>q_table_np <span class="op">=</span> np.zeros([n_bins] <span class="op">*</span> <span class="bu">len</span>(var_consider) <span class="op">+</span> [env.action_space.n])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
