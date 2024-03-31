@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/slides.html",
+    "items": []
+  },
+  {
     "listing": "/notebooks.html",
     "items": [
       "/notebooks/Gradient Descent-2d.html",
@@ -13,6 +17,7 @@
       "/notebooks/cost-iteration-notebook.html",
       "/notebooks/nn_vectorization_with_vmap_jaxtyping_and_beartype_zeel.html",
       "/notebooks/rl-1.html",
+      "/notebooks/rl-3.html",
       "/notebooks/rl-2.html",
       "/notebooks/names.html",
       "/notebooks/logistic-regression-torch.html",
@@ -58,9 +63,5 @@
       "/notebooks/curse-dimensionality.html",
       "/notebooks/autodiff.html"
     ]
-  },
-  {
-    "listing": "/slides.html",
-    "items": []
   }
 ]
