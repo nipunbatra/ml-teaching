@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Nipun Batra">
+<meta name="dcterms.date" content="2023-04-04">
+<meta name="description" content="1d CNN">
 
-<title>Machine Learning Resources - Slides</title>
+<title>Machine Learning Resources - 1d CNN</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,29 +23,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,77 +105,18 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-filename','listing-file-modified','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      page: 25,
-    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
-      searchColumns: ["listing-filename","listing-file-modified","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Machine Learning Resources</span>
     </a>
   </div>
@@ -155,15 +131,15 @@ window.Quarto = {
 <span class="menu-text">Instructor Homepage</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notebooks.html"> 
+    <a class="nav-link" href="../notebooks.html"> 
 <span class="menu-text">Notebooks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./slides.html" aria-current="page"> 
+    <a class="nav-link" href="../slides.html"> 
 <span class="menu-text">Slides</span></a>
   </li>  
 </ul>
@@ -175,529 +151,172 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Slides</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(32)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">1d CNN</h1>
+</div>
+
+<div>
+  <div class="description">
+    1d CNN
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Nipun Batra </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 4, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="cell-1" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn.functional <span class="im">as</span> F</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.optim <span class="im">as</span> optim</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader, TensorDataset</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_format <span class="op">=</span> <span class="st">'retina'</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Set random seed for reproducibility</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">0</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Torch version</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>torch.__version__</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>'2.0.0+cu118'</code></pre>
+</div>
+</div>
+<div id="cell-2" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple 1d dataset</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.Tensor([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>])</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.arange(<span class="dv">0</span>, <span class="bu">len</span>(y))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y, <span class="st">'o-'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1d-cnn_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-3" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter 1 (detect silence)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.no_grad():</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    f1 <span class="op">=</span> nn.Conv1d(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, padding<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    f1.weight.data <span class="op">=</span> torch.Tensor([[[<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>]]])</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    f1.bias.data <span class="op">=</span> torch.Tensor([<span class="dv">0</span>])</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    y1 <span class="op">=</span> F.relu(f1(y.view(<span class="dv">1</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>))).view(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">'original'</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y1, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">'filtered f1 (silence)'</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1d-cnn_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-4" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter 2 (detect falling edge)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.no_grad():</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    f2 <span class="op">=</span> nn.Conv1d(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, padding<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    f2.weight.data <span class="op">=</span> torch.Tensor([[[<span class="dv">1</span>, <span class="dv">0</span>, <span class="op">-</span><span class="dv">1</span>]]])</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    f2.bias.data <span class="op">=</span> torch.Tensor([<span class="dv">0</span>])</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    y2 <span class="op">=</span> F.relu(f2(y.view(<span class="dv">1</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>))).view(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">'original'</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y2, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">'filtered f2 (falling edge)'</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1d-cnn_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-5" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter 3 (detect rising edge)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.no_grad():</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    f3 <span class="op">=</span> nn.Conv1d(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, padding<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    f3.weight.data <span class="op">=</span> torch.Tensor([[[<span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>]]])</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    f3.bias.data <span class="op">=</span> torch.Tensor([<span class="dv">0</span>])</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    y3 <span class="op">=</span> F.relu(f3(y.view(<span class="dv">1</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>))).view(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">'original'</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y3, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">'filtered f3 (rising edge)'</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1d-cnn_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter 4 (detect high amplitude)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.no_grad():</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    f4 <span class="op">=</span> nn.Conv1d(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, padding<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    f4.weight.data <span class="op">=</span> torch.Tensor([[[<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>]]])</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    f4.bias.data <span class="op">=</span> torch.Tensor([<span class="dv">0</span>])</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    y4 <span class="op">=</span> F.relu(f4(y.view(<span class="dv">1</span>, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>))).view(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">'original'</span>) </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y4, <span class="st">'o-'</span>, label<span class="op">=</span><span class="st">'filtered f4 (high amplitude)'</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="1d-cnn_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 
-
-
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1712642047912">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/1-introduction-ml.pdf" class="no-external"></a></p><a href="./slides/1-introduction-ml.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-1-introduction-ml.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:07 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1712642047928">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/1d-cnn.pdf" class="no-external"></a></p><a href="./slides/1d-cnn.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-1d-cnn.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:07 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1712642047936">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/CNN.pdf" class="no-external"></a></p><a href="./slides/CNN.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-CNN.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:07 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1712642047984">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/KNN-approx.pdf" class="no-external"></a></p><a href="./slides/KNN-approx.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-KNN-approx.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:07 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1712642047992">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/Logistic-vectorisation.pdf" class="no-external"></a></p><a href="./slides/Logistic-vectorisation.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-Logistic-vectorisation.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:07 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1712642048012">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/MovieRecommendation.pdf" class="no-external"></a></p><a href="./slides/MovieRecommendation.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-MovieRecommendation.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-file-modified-sort="1712642048032">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/SGD.pdf" class="no-external"></a></p><a href="./slides/SGD.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-SGD.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-listing-file-modified-sort="1712642048036">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/accuracy_convention.pdf" class="no-external"></a></p><a href="./slides/accuracy_convention.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-accuracy_convention.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-listing-file-modified-sort="1712642048080">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/autograd.pdf" class="no-external"></a></p><a href="./slides/autograd.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-autograd.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-listing-file-modified-sort="1712642048084">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/bias-variance.pdf" class="no-external"></a></p><a href="./slides/bias-variance.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-bias-variance.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="10" data-listing-file-modified-sort="1712642048084">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/convexity.pdf" class="no-external"></a></p><a href="./slides/convexity.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-convexity.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="11" data-listing-file-modified-sort="1712642048084">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/cross-validation.pdf" class="no-external"></a></p><a href="./slides/cross-validation.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-cross-validation.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="12" data-listing-file-modified-sort="1712642048092">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/decision-trees.pdf" class="no-external"></a></p><a href="./slides/decision-trees.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-decision-trees.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="13" data-listing-file-modified-sort="1712642048108">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/ensemble.pdf" class="no-external"></a></p><a href="./slides/ensemble.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-ensemble.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="14" data-listing-file-modified-sort="1712642048108">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/find-widths.pdf" class="no-external"></a></p><a href="./slides/find-widths.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-find-widths.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="15" data-listing-file-modified-sort="1712642048120">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/gradient-descent.pdf" class="no-external"></a></p><a href="./slides/gradient-descent.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-gradient-descent.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="16" data-listing-file-modified-sort="1712642048124">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/guest-lecture.pdf" class="no-external"></a></p><a href="./slides/guest-lecture.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-guest-lecture.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="17" data-listing-file-modified-sort="1712642048132">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/lasso-regression.pdf" class="no-external"></a></p><a href="./slides/lasso-regression.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-lasso-regression.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="18" data-listing-file-modified-sort="1712642048132">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/linear-regression.pdf" class="no-external"></a></p><a href="./slides/linear-regression.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-linear-regression.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="19" data-listing-file-modified-sort="1712642048144">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/logistic-1.pdf" class="no-external"></a></p><a href="./slides/logistic-1.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-logistic-1.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="20" data-listing-file-modified-sort="1712642048144">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/misc.pdf" class="no-external"></a></p><a href="./slides/misc.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-misc.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="21" data-listing-file-modified-sort="1712642048148">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/ml-maths-2-contour.pdf" class="no-external"></a></p><a href="./slides/ml-maths-2-contour.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-ml-maths-2-contour.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="22" data-listing-file-modified-sort="1712642048148">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/ml-maths.pdf" class="no-external"></a></p><a href="./slides/ml-maths.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-ml-maths.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="23" data-listing-file-modified-sort="1712642048180">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/mlp.pdf" class="no-external"></a></p><a href="./slides/mlp.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-mlp.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="24" data-listing-file-modified-sort="1712642048196">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/mock-quiz-2-solution.pdf" class="no-external"></a></p><a href="./slides/mock-quiz-2-solution.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-mock-quiz-2-solution.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="25" data-listing-file-modified-sort="1712642048196">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/mock-quiz-2.pdf" class="no-external"></a></p><a href="./slides/mock-quiz-2.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-mock-quiz-2.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="26" data-listing-file-modified-sort="1712642048196">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/mock-quiz.pdf" class="no-external"></a></p><a href="./slides/mock-quiz.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-mock-quiz.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="27" data-listing-file-modified-sort="1712642048216">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/next-token.pdf" class="no-external"></a></p><a href="./slides/next-token.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-next-token.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="28" data-listing-file-modified-sort="1712642048228">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/ridge-regression.pdf" class="no-external"></a></p><a href="./slides/ridge-regression.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-ridge-regression.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="29" data-listing-file-modified-sort="1712642048356">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/rl.pdf" class="no-external"></a></p><a href="./slides/rl.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-rl.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="30" data-listing-file-modified-sort="1712642048356">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/time_complexity.pdf" class="no-external"></a></p><a href="./slides/time_complexity.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-time_complexity.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="31" data-listing-file-modified-sort="1712642048364">
-<div class="body">
-
-</div>
-<div class="metadata">
-<p><a href="./slides/unsupervised.pdf" class="no-external"></a></p><a href="./slides/unsupervised.pdf" class="no-external">
-<div class="metadata-value listing-filename">
-unsupervised.pdf
-</div>
-<div class="metadata-value listing-file-modified">
-4/9/24, 5:54:08 AM
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-<nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
-  <ul class="pagination"></ul>
-</nav>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

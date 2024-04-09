@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/slides.html",
+    "items": []
+  },
+  {
     "listing": "/notebooks.html",
     "items": [
       "/notebooks/Gradient Descent-2d.html",
@@ -59,11 +63,10 @@
       "/notebooks/cross-validation-diagrams.html",
       "/notebooks/transcript.html",
       "/notebooks/curse-dimensionality.html",
-      "/notebooks/autodiff.html"
+      "/notebooks/1d-cnn.html",
+      "/notebooks/autodiff.html",
+      "/notebooks/cnn.html",
+      "/notebooks/cnn-edge.html"
     ]
-  },
-  {
-    "listing": "/slides.html",
-    "items": []
   }
 ]
