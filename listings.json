@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/slides.html",
+    "items": []
+  },
+  {
     "listing": "/notebooks.html",
     "items": [
       "/notebooks/Gradient Descent-2d.html",
@@ -13,6 +17,7 @@
       "/notebooks/cost-iteration-notebook.html",
       "/notebooks/nn_vectorization_with_vmap_jaxtyping_and_beartype_zeel.html",
       "/notebooks/svm-cvxopt.html",
+      "/notebooks/svm-kernel-understanding.html",
       "/notebooks/pca.html",
       "/notebooks/knn-variants.html",
       "/notebooks/rl-1.html",
@@ -69,9 +74,5 @@
       "/notebooks/cnn.html",
       "/notebooks/cnn-edge.html"
     ]
-  },
-  {
-    "listing": "/slides.html",
-    "items": []
   }
 ]
