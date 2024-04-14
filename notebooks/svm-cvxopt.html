@@ -224,6 +224,8 @@ window.Quarto = {
 
 
 <p>This post is pretty much borrowed with slight modifications from this excellent <a href="https://gist.github.com/mblondel/586753">blog post</a> from Matthieu Blondel</p>
+<section id="general-qp-problem" class="level3">
+<h3 class="anchored" data-anchor-id="general-qp-problem">General QP problem</h3>
 <p>A general QP problem can be formulated as follows:</p>
 <p><span class="math display">\[
 \begin{align*}
@@ -232,6 +234,9 @@ window.Quarto = {
 &amp; A x = b
 \end{align*}
 \]</span></p>
+</section>
+<section id="solving-in-dual" class="level3">
+<h3 class="anchored" data-anchor-id="solving-in-dual">Solving in Dual</h3>
 <p>In dual in hard margin SVM, the dual problem is formulated as follows:</p>
 <p><span class="math display">\[
 \begin{align*}
@@ -269,31 +274,39 @@ b &amp; = 0
 \end{align*}
 \]</span></p>
 <p>where <span class="math inline">\(I\)</span> is the identity matrix.</p>
-<div id="cell-3" class="cell" data-execution_count="84">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install cvxopt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Collecting cvxopt
-  Downloading cvxopt-1.3.2-cp310-cp310-macosx_11_0_arm64.whl (11.1 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.1/11.1 MB 2.6 MB/s eta 0:00:0000:0100:01
-Installing collected packages: cvxopt
-Successfully installed cvxopt-1.3.2
-Note: you may need to restart the kernel to use updated packages.</code></pre>
+<div id="cell-3" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>: </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> cvxopt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> cvxopt.solvers</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span>:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">%</span>pip install cvxopt</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> cvxopt</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> cvxopt.solvers</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_blobs</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_format <span class="op">=</span> <span class="st">'retina'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="cell-4" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_kernel(x1, x2):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.dot(x1, x2)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> polynomial_kernel(x, y, p<span class="op">=</span><span class="dv">3</span>):</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (<span class="dv">1</span> <span class="op">+</span> np.dot(x, y)) <span class="op">**</span> p</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gaussian_kernel(x, y, sigma<span class="op">=</span><span class="fl">5.0</span>):</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.exp(<span class="op">-</span>np.linalg.norm(x<span class="op">-</span>y)<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> (sigma <span class="op">**</span> <span class="dv">2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="88">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_blobs</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cvxopt</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cvxopt.solvers</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_kernel(x1, x2):</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.dot(x1, x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-5" class="cell" data-execution_count="120">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> make_blobs(n_samples<span class="op">=</span><span class="dv">40</span>, centers<span class="op">=</span><span class="dv">2</span>, n_features<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>y[y <span class="op">==</span> <span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, s<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span>plt.cm.Paired)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-5" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> make_blobs(n_samples<span class="op">=</span><span class="dv">40</span>, centers<span class="op">=</span><span class="dv">2</span>, n_features<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>y[y <span class="op">==</span> <span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span><span class="fl">1.0</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, s<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span>plt.cm.Paired)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -302,41 +315,40 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="129">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-6" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n_samples, n_features <span class="op">=</span> X.shape</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>kernel <span class="op">=</span> linear_kernel</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Gram matrix</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> np.zeros((n_samples, n_samples))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_samples):</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n_samples):</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        K[i,j] <span class="op">=</span> kernel(X[i], X[j])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="130">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>n_samples, n_features <span class="op">=</span> X.shape</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>kernel <span class="op">=</span> linear_kernel</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Gram matrix</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> np.zeros((n_samples, n_samples))</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_samples):</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n_samples):</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        K[i,j] <span class="op">=</span> kernel(X[i], X[j])</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> cvxopt.matrix(np.outer(y,y) <span class="op">*</span> K)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> cvxopt.matrix(np.ones(n_samples) <span class="op">*</span> <span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> cvxopt.matrix(y, (<span class="dv">1</span>,n_samples))</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> cvxopt.matrix(<span class="fl">0.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-7" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># QP problem formulation</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> cvxopt.matrix(np.outer(y, y) <span class="op">*</span> K)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> cvxopt.matrix(<span class="op">-</span>np.ones(n_samples))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> cvxopt.matrix(y, (<span class="dv">1</span>, n_samples), <span class="st">'d'</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> cvxopt.matrix(<span class="fl">0.0</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> cvxopt.matrix(<span class="op">-</span>np.eye(n_samples))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> cvxopt.matrix(np.zeros(n_samples))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="131">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>K.shape, P.size, q.size, A.size, b.size</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="131">
-<pre><code>((40, 40), (40, 40), (40, 1), (1, 40), (1, 1))</code></pre>
+<div id="cell-8" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> {<span class="st">"P"</span>: P, <span class="st">"q"</span>: q, <span class="st">"A"</span>: A, <span class="st">"b"</span>: b, <span class="st">"G"</span>: G, <span class="st">"h"</span>: h}</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, val <span class="kw">in</span> dictionary.items():</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(key, val.size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>P (40, 40)
+q (40, 1)
+A (1, 40)
+b (1, 1)
+G (40, 40)
+h (40, 1)</code></pre>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="132">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># QP problem formulation</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> cvxopt.matrix(np.outer(y, y) <span class="op">*</span> K)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> cvxopt.matrix(<span class="op">-</span>np.ones(n_samples))</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> cvxopt.matrix(y, (<span class="dv">1</span>, n_samples), <span class="st">'d'</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> cvxopt.matrix(<span class="fl">0.0</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> cvxopt.matrix(<span class="op">-</span>np.eye(n_samples))</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> cvxopt.matrix(np.zeros(n_samples))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-10" class="cell" data-execution_count="133">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>solution <span class="op">=</span> cvxopt.solvers.qp(P, q, G, h, A, b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-9" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>solution <span class="op">=</span> cvxopt.solvers.qp(P, q, G, h, A, b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     pcost       dcost       gap    pres   dres
  0: -1.4386e+00 -2.2358e+00  8e+01  8e+00  2e+00
@@ -351,10 +363,10 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 Optimal solution found.</code></pre>
 </div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="134">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>alphas_sol <span class="op">=</span> np.array(solution[<span class="st">'x'</span>]).flatten()</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>alphas_sol</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="134">
+<div id="cell-10" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>alphas_sol <span class="op">=</span> np.array(solution[<span class="st">'x'</span>]).flatten()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>alphas_sol</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>array([4.81116795e-11, 5.57561687e-11, 4.14022254e-11, 5.64570278e-11,
        3.19971594e-11, 1.13766765e-09, 1.10946709e-10, 5.43328120e-02,
        9.43563733e-11, 3.59644883e-11, 2.72365634e-11, 1.78702226e-08,
@@ -367,82 +379,142 @@ Optimal solution found.</code></pre>
        3.77950852e-11, 5.47202347e-11, 5.02000180e-11, 5.43328313e-02])</code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="136">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>alphas_sol[alphas_sol <span class="op">&gt;</span> <span class="fl">1e-5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="136">
+<div id="cell-11" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>alphas_sol[alphas_sol <span class="op">&gt;</span> <span class="fl">1e-5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>array([0.05433281, 0.05433283])</code></pre>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="141">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Support vectors have non zero lagrange multipliers</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>sv <span class="op">=</span> alphas_sol <span class="op">&gt;</span> <span class="fl">1e-5</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>ind <span class="op">=</span> np.arange(<span class="bu">len</span>(alphas_sol))[sv]</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> alphas_sol[sv]</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>sv_x <span class="op">=</span> X[sv]</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>sv_y <span class="op">=</span> y[sv]</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the support vectors</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, s<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span>plt.cm.Paired)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Mark the support vectors with thick black circles</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>plt.scatter(sv_x[:, <span class="dv">0</span>], sv_x[:, <span class="dv">1</span>], c<span class="op">=</span>sv_y, s<span class="op">=</span><span class="dv">100</span>, cmap<span class="op">=</span>plt.cm.Paired, marker<span class="op">=</span><span class="st">'o'</span>, edgecolors<span class="op">=</span><span class="st">'k'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-12" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Support vectors have non zero lagrange multipliers</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>sv <span class="op">=</span> alphas_sol <span class="op">&gt;</span> <span class="fl">1e-5</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>ind <span class="op">=</span> np.arange(<span class="bu">len</span>(alphas_sol))[sv]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> alphas_sol[sv]</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>sv_x <span class="op">=</span> X[sv]</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>sv_y <span class="op">=</span> y[sv]</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the support vectors</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, s<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span>plt.cm.Paired)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Mark the support vectors with thick black circles</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>plt.scatter(sv_x[:, <span class="dv">0</span>], sv_x[:, <span class="dv">1</span>], c<span class="op">=</span>sv_y, s<span class="op">=</span><span class="dv">100</span>, cmap<span class="op">=</span>plt.cm.Paired, marker<span class="op">=</span><span class="st">'o'</span>, edgecolors<span class="op">=</span><span class="st">'k'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="svm-cvxopt_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="svm-cvxopt_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-14" class="cell" data-execution_count="142">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">*</span> sv_y[:, <span class="va">None</span>] <span class="op">*</span> sv_x, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>w</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="142">
+<div id="cell-13" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">*</span> sv_y[:, <span class="va">None</span>] <span class="op">*</span> sv_x, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>w</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>array([ 0.23474316, -0.23143308])</code></pre>
 </div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="143">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.<span class="bu">sum</span>(sv_y <span class="op">-</span> np.dot(sv_x, w)) <span class="op">/</span> <span class="bu">len</span>(sv_y)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="143">
+<div id="cell-14" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.<span class="bu">sum</span>(sv_y <span class="op">-</span> np.dot(sv_x, w)) <span class="op">/</span> <span class="bu">len</span>(sv_y)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>1.1726593683601716</code></pre>
 </div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="146">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the decision boundary and margins</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, s<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span>plt.cm.Paired)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(sv_x[:, <span class="dv">0</span>], sv_x[:, <span class="dv">1</span>], c<span class="op">=</span>sv_y, s<span class="op">=</span><span class="dv">100</span>, cmap<span class="op">=</span>plt.cm.Paired, marker<span class="op">=</span><span class="st">'o'</span>, edgecolors<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>x_min <span class="op">=</span> np.<span class="bu">min</span>(X[:, <span class="dv">0</span>])</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>x_max <span class="op">=</span> np.<span class="bu">max</span>(X[:, <span class="dv">0</span>])</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>y_min <span class="op">=</span> (<span class="op">-</span>w[<span class="dv">0</span>] <span class="op">*</span> x_min <span class="op">-</span> b) <span class="op">/</span> w[<span class="dv">1</span>]</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>y_max <span class="op">=</span> (<span class="op">-</span>w[<span class="dv">0</span>] <span class="op">*</span> x_max <span class="op">-</span> b) <span class="op">/</span> w[<span class="dv">1</span>]</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>plt.plot([x_min, x_max], [y_min, y_max], <span class="st">'k-'</span>)</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Margin 1</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>y_min <span class="op">=</span> (<span class="op">-</span>w[<span class="dv">0</span>] <span class="op">*</span> x_min <span class="op">-</span> b <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> w[<span class="dv">1</span>]</span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>y_max <span class="op">=</span> (<span class="op">-</span>w[<span class="dv">0</span>] <span class="op">*</span> x_max <span class="op">-</span> b <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> w[<span class="dv">1</span>]</span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>plt.plot([x_min, x_max], [y_min, y_max], <span class="st">'k--'</span>)</span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Margin 2</span></span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>y_min <span class="op">=</span> (<span class="op">-</span>w[<span class="dv">0</span>] <span class="op">*</span> x_min <span class="op">-</span> b <span class="op">-</span> <span class="dv">1</span>) <span class="op">/</span> w[<span class="dv">1</span>]</span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>y_max <span class="op">=</span> (<span class="op">-</span>w[<span class="dv">0</span>] <span class="op">*</span> x_max <span class="op">-</span> b <span class="op">-</span> <span class="dv">1</span>) <span class="op">/</span> w[<span class="dv">1</span>]</span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>plt.plot([x_min, x_max], [y_min, y_max], <span class="st">'k--'</span>)</span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-15" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the decision boundary and margins</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, s<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span>plt.cm.Paired)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(sv_x[:, <span class="dv">0</span>], sv_x[:, <span class="dv">1</span>], c<span class="op">=</span>sv_y, s<span class="op">=</span><span class="dv">100</span>, cmap<span class="op">=</span>plt.cm.Paired, marker<span class="op">=</span><span class="st">'o'</span>, edgecolors<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>x_min <span class="op">=</span> np.<span class="bu">min</span>(X[:, <span class="dv">0</span>])</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>x_max <span class="op">=</span> np.<span class="bu">max</span>(X[:, <span class="dv">0</span>])</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>y_min <span class="op">=</span> (<span class="op">-</span>w[<span class="dv">0</span>] <span class="op">*</span> x_min <span class="op">-</span> b) <span class="op">/</span> w[<span class="dv">1</span>]</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>y_max <span class="op">=</span> (<span class="op">-</span>w[<span class="dv">0</span>] <span class="op">*</span> x_max <span class="op">-</span> b) <span class="op">/</span> w[<span class="dv">1</span>]</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>plt.plot([x_min, x_max], [y_min, y_max], <span class="st">'k-'</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Margin 1</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>y_min <span class="op">=</span> (<span class="op">-</span>w[<span class="dv">0</span>] <span class="op">*</span> x_min <span class="op">-</span> b <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> w[<span class="dv">1</span>]</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>y_max <span class="op">=</span> (<span class="op">-</span>w[<span class="dv">0</span>] <span class="op">*</span> x_max <span class="op">-</span> b <span class="op">+</span> <span class="dv">1</span>) <span class="op">/</span> w[<span class="dv">1</span>]</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>plt.plot([x_min, x_max], [y_min, y_max], <span class="st">'k--'</span>)</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Margin 2</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>y_min <span class="op">=</span> (<span class="op">-</span>w[<span class="dv">0</span>] <span class="op">*</span> x_min <span class="op">-</span> b <span class="op">-</span> <span class="dv">1</span>) <span class="op">/</span> w[<span class="dv">1</span>]</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>y_max <span class="op">=</span> (<span class="op">-</span>w[<span class="dv">0</span>] <span class="op">*</span> x_max <span class="op">-</span> b <span class="op">-</span> <span class="dv">1</span>) <span class="op">/</span> w[<span class="dv">1</span>]</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>plt.plot([x_min, x_max], [y_min, y_max], <span class="st">'k--'</span>)</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="svm-cvxopt_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="svm-cvxopt_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
+</section>
+<section id="solving-in-primal" class="level3">
+<h3 class="anchored" data-anchor-id="solving-in-primal">Solving in Primal</h3>
+<p><span class="math display">\[\begin{align*}
+\text{minimize} \quad &amp; \frac{1}{2} ||w||^2 \\
+\text{subject to} \quad &amp; y_i(w^T x_i + b) \geq 1 \quad \text{for all} \quad i = 1, 2, \ldots, m
+\end{align*}\]</span></p>
+<p>The QP problem can be written as:</p>
+<p><span class="math display">\[\begin{align*}
+\text{minimize} \quad &amp; \frac{1}{2} \begin{pmatrix} w \\ b \end{pmatrix}^T \begin{pmatrix} I &amp; 0 \\ 0 &amp; 0 \end{pmatrix} \begin{pmatrix} w \\ b \end{pmatrix} \\
+\text{subject to} \quad &amp; -\begin{pmatrix} \text{diag}(\mathbf{y}) \cdot X &amp; \mathbf{y} \end{pmatrix} \begin{pmatrix} w \\ b \end{pmatrix} \leq -\mathbf{1}
+\end{align*}\]</span></p>
+<p>where <span class="math inline">\(I\)</span> is the identity matrix, <span class="math inline">\(\mathbf{y}\)</span> is the vector of labels, <span class="math inline">\(X\)</span> is the matrix of data points, and <span class="math inline">\(\mathbf{1}\)</span> is a vector of ones.</p>
+<div id="cell-17" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of features</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>n_features <span class="op">=</span> X.shape[<span class="dv">1</span>]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Identity matrix</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> cvxopt.matrix(np.block([[np.eye(n_features), np.zeros((n_features, <span class="dv">1</span>))], [np.zeros((<span class="dv">1</span>, n_features <span class="op">+</span> <span class="dv">1</span>))]]))</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Inequality constraints matrix</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> cvxopt.matrix(<span class="op">-</span>np.block([np.diag(y) <span class="op">@</span> X, y.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)]))</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Inequality constraints bounds</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> cvxopt.matrix(<span class="op">-</span>np.ones(X.shape[<span class="dv">0</span>]))</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve the QP problem</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>solution <span class="op">=</span> cvxopt.solvers.qp(P, cvxopt.matrix(np.zeros(n_features <span class="op">+</span> <span class="dv">1</span>)), G, h)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract optimized w and b values</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>w_opt <span class="op">=</span> np.array(solution[<span class="st">'x'</span>][:<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>b_opt <span class="op">=</span> np.array(solution[<span class="st">'x'</span>][<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     pcost       dcost       gap    pres   dres
+ 0:  1.9726e-02  3.3304e+00  8e+01  2e+00  3e+02
+ 1:  1.2482e-01 -5.6113e+00  6e+00  1e-01  2e+01
+ 2:  1.3362e-01 -3.5560e-03  1e-01  4e-16  5e-15
+ 3:  5.5490e-02  3.7579e-02  2e-02  3e-16  3e-16
+ 4:  5.6104e-02  5.0978e-02  5e-03  2e-16  1e-16
+ 5:  5.4359e-02  5.4114e-02  2e-04  2e-16  1e-16
+ 6:  5.4336e-02  5.4321e-02  1e-05  2e-16  2e-15
+ 7:  5.4333e-02  5.4333e-02  1e-07  3e-16  2e-16
+ 8:  5.4333e-02  5.4333e-02  1e-09  2e-16  3e-16
+Optimal solution found.</code></pre>
+</div>
+</div>
+<div id="cell-18" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>w_opt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>array([[ 0.23474325],
+       [-0.23143308]])</code></pre>
+</div>
+</div>
+<div id="cell-19" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>b_opt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<pre><code>array(1.17265942)</code></pre>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
