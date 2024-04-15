@@ -743,7 +743,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
        [ 6.49868019, -7.13530714]])</code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="120">
+<div id="cell-12" class="cell" data-execution_count="136">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, s<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span>plt.cm.Paired)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># plot scatter with black edge color for support vectors</span></span>
@@ -767,8 +767,10 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'alpha_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> * y_</span><span class="sc">{</span>clf<span class="sc">.</span>support_<span class="sc">}</span><span class="ss">[</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">] * K(x_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">, x_test) = </span><span class="sc">{</span>out_i<span class="sc">}</span><span class="ss">'</span>)</span>
 <span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>        decision_function <span class="op">+=</span> out_i</span>
 <span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"---"</span><span class="op">*</span><span class="dv">10</span>)</span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>    decision_function <span class="op">+=</span> clf.intercept_</span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> decision_function</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"b = </span><span class="sc">{</span>clf<span class="sc">.</span>intercept_<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Decision function: </span><span class="sc">{</span>decision_function <span class="op">+</span> clf<span class="sc">.</span>intercept_<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span>decision_function<span class="sc">}</span><span class="ss"> + </span><span class="sc">{</span>clf<span class="sc">.</span>intercept_<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>    decision_function <span class="op">+=</span> clf.intercept_</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> decision_function</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -777,13 +779,13 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="121">
+<div id="cell-13" class="cell" data-execution_count="137">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>clf.dual_coef_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="121">
+<div class="cell-output cell-output-display" data-execution_count="137">
 <pre><code>array([[-0.341651,  0.341651]])</code></pre>
 </div>
 </div>
-<div id="cell-14" class="cell" data-execution_count="123">
+<div id="cell-14" class="cell" data-execution_count="138">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>test_point <span class="op">=</span> np.array([[<span class="fl">7.0</span>, <span class="op">-</span><span class="fl">8.0</span>]])</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>decision_function_test(clf, test_point)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -801,9 +803,11 @@ alpha_1 = 0.3416510021250007
 y_[48 31][1] = 1
 K(x_1, x_test) = 102.57321844738127
 alpha_1 * y_[48 31][1] * K(x_1, x_test) = 35.04424287373442
-------------------------------</code></pre>
+------------------------------
+b = [-2.87610651]
+Decision function: [1.54520958] = 4.42131609452688 + [-2.87610651]</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="123">
+<div class="cell-output cell-output-display" data-execution_count="138">
 <pre><code>array([1.54520958])</code></pre>
 </div>
 </div>
