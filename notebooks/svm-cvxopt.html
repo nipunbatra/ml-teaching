@@ -274,7 +274,7 @@ b &amp; = 0
 \end{align*}
 \]</span></p>
 <p>where <span class="math inline">\(I\)</span> is the identity matrix.</p>
-<div id="cell-3" class="cell" data-execution_count="6">
+<div id="cell-3" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>: </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> cvxopt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> cvxopt.solvers</span>
@@ -290,7 +290,7 @@ b &amp; = 0
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_format <span class="op">=</span> <span class="st">'retina'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="7">
+<div id="cell-4" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_kernel(x1, x2):</span>
@@ -302,7 +302,7 @@ b &amp; = 0
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> gaussian_kernel(x, y, sigma<span class="op">=</span><span class="fl">5.0</span>):</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.exp(<span class="op">-</span>np.linalg.norm(x<span class="op">-</span>y)<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> (sigma <span class="op">**</span> <span class="dv">2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="28">
+<div id="cell-5" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> make_blobs(n_samples<span class="op">=</span><span class="dv">40</span>, centers<span class="op">=</span><span class="dv">2</span>, n_features<span class="op">=</span><span class="dv">2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>y[y <span class="op">==</span> <span class="dv">0</span>] <span class="op">=</span> <span class="op">-</span><span class="fl">1.0</span></span>
@@ -315,7 +315,7 @@ b &amp; = 0
 </div>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="29">
+<div id="cell-6" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n_samples, n_features <span class="op">=</span> X.shape</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>kernel <span class="op">=</span> linear_kernel</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -325,7 +325,7 @@ b &amp; = 0
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(n_samples):</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        K[i,j] <span class="op">=</span> kernel(X[i], X[j])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="30">
+<div id="cell-7" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># QP problem formulation</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> cvxopt.matrix(np.outer(y, y) <span class="op">*</span> K)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>q <span class="op">=</span> cvxopt.matrix(<span class="op">-</span>np.ones(n_samples))</span>
@@ -334,7 +334,7 @@ b &amp; = 0
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> cvxopt.matrix(<span class="op">-</span>np.eye(n_samples))</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> cvxopt.matrix(np.zeros(n_samples))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="31">
+<div id="cell-8" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dictionary <span class="op">=</span> {<span class="st">"P"</span>: P, <span class="st">"q"</span>: q, <span class="st">"A"</span>: A, <span class="st">"b"</span>: b, <span class="st">"G"</span>: G, <span class="st">"h"</span>: h}</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, val <span class="kw">in</span> dictionary.items():</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(key, val.size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -347,7 +347,7 @@ G (40, 40)
 h (40, 1)</code></pre>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="32">
+<div id="cell-9" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>solution <span class="op">=</span> cvxopt.solvers.qp(P, q, G, h, A, b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     pcost       dcost       gap    pres   dres
@@ -363,10 +363,10 @@ h (40, 1)</code></pre>
 Optimal solution found.</code></pre>
 </div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="33">
+<div id="cell-10" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>alphas_sol <span class="op">=</span> np.array(solution[<span class="st">'x'</span>]).flatten()</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>alphas_sol</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="33">
+<div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>array([4.81116795e-11, 5.57561687e-11, 4.14022254e-11, 5.64570278e-11,
        3.19971594e-11, 1.13766765e-09, 1.10946709e-10, 5.43328120e-02,
        9.43563733e-11, 3.59644883e-11, 2.72365634e-11, 1.78702226e-08,
@@ -379,13 +379,13 @@ Optimal solution found.</code></pre>
        3.77950852e-11, 5.47202347e-11, 5.02000180e-11, 5.43328313e-02])</code></pre>
 </div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="34">
+<div id="cell-11" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>alphas_sol[alphas_sol <span class="op">&gt;</span> <span class="fl">1e-5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="34">
+<div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>array([0.05433281, 0.05433283])</code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="35">
+<div id="cell-12" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Support vectors have non zero lagrange multipliers</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>sv <span class="op">=</span> alphas_sol <span class="op">&gt;</span> <span class="fl">1e-5</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>ind <span class="op">=</span> np.arange(<span class="bu">len</span>(alphas_sol))[sv]</span>
@@ -406,21 +406,21 @@ Optimal solution found.</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="36">
+<div id="cell-13" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">*</span> sv_y[:, <span class="va">None</span>] <span class="op">*</span> sv_x, axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>w</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
+<div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>array([ 0.23474316, -0.23143308])</code></pre>
 </div>
 </div>
-<div id="cell-14" class="cell" data-execution_count="37">
+<div id="cell-14" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.<span class="bu">sum</span>(sv_y <span class="op">-</span> np.dot(sv_x, w)) <span class="op">/</span> <span class="bu">len</span>(sv_y)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
+<div class="cell-output cell-output-display" data-execution_count="55">
 <pre><code>1.1726593683601716</code></pre>
 </div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="38">
+<div id="cell-15" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the decision boundary and margins</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, s<span class="op">=</span><span class="dv">30</span>, cmap<span class="op">=</span>plt.cm.Paired)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(sv_x[:, <span class="dv">0</span>], sv_x[:, <span class="dv">1</span>], c<span class="op">=</span>sv_y, s<span class="op">=</span><span class="dv">100</span>, cmap<span class="op">=</span>plt.cm.Paired, marker<span class="op">=</span><span class="st">'o'</span>, edgecolors<span class="op">=</span><span class="st">'k'</span>)</span>
@@ -454,37 +454,62 @@ Optimal solution found.</code></pre>
 </div>
 </div>
 </section>
-<section id="solving-in-primal" class="level3">
-<h3 class="anchored" data-anchor-id="solving-in-primal">Solving in Primal</h3>
-<p><span class="math display">\[\begin{align*}
-\text{minimize} \quad &amp; \frac{1}{2} ||w||^2 \\
-\text{subject to} \quad &amp; y_i(w^T x_i + b) \geq 1 \quad \text{for all} \quad i = 1, 2, \ldots, m
-\end{align*}\]</span></p>
-<p>The QP problem can be written as:</p>
-<p><span class="math display">\[\begin{align*}
-\text{minimize} \quad &amp; \frac{1}{2} \begin{pmatrix} w \\ b \end{pmatrix}^T \begin{pmatrix} I &amp; 0 \\ 0 &amp; 0 \end{pmatrix} \begin{pmatrix} w \\ b \end{pmatrix} \\
-\text{subject to} \quad &amp; -\begin{pmatrix} \text{diag}(\mathbf{y}) \cdot X &amp; \mathbf{y} \end{pmatrix} \begin{pmatrix} w \\ b \end{pmatrix} \leq -\mathbf{1}
-\end{align*}\]</span></p>
-<p>where <span class="math inline">\(I\)</span> is the identity matrix, <span class="math inline">\(\mathbf{y}\)</span> is the vector of labels, <span class="math inline">\(X\)</span> is the matrix of data points, and <span class="math inline">\(\mathbf{1}\)</span> is a vector of ones.</p>
-<div id="cell-17" class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of features</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>n_features <span class="op">=</span> X.shape[<span class="dv">1</span>]</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Identity matrix</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> cvxopt.matrix(np.block([[np.eye(n_features), np.zeros((n_features, <span class="dv">1</span>))], [np.zeros((<span class="dv">1</span>, n_features <span class="op">+</span> <span class="dv">1</span>))]]))</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Inequality constraints matrix</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> cvxopt.matrix(<span class="op">-</span>np.block([np.diag(y) <span class="op">@</span> X, y.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)]))</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Inequality constraints bounds</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> cvxopt.matrix(<span class="op">-</span>np.ones(X.shape[<span class="dv">0</span>]))</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve the QP problem</span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>solution <span class="op">=</span> cvxopt.solvers.qp(P, cvxopt.matrix(np.zeros(n_features <span class="op">+</span> <span class="dv">1</span>)), G, h)</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract optimized w and b values</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>w_opt <span class="op">=</span> np.array(solution[<span class="st">'x'</span>][:<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>b_opt <span class="op">=</span> np.array(solution[<span class="st">'x'</span>][<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="using-cvxpy" class="level3">
+<h3 class="anchored" data-anchor-id="using-cvxpy">Using cvxpy</h3>
+<div id="cell-17" class="cell" data-execution_count="103">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cvxpy <span class="im">as</span> cp</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> cp.Variable(n_samples)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>inequality_constraints <span class="op">=</span> [alpha <span class="op">&gt;=</span> <span class="dv">0</span>]</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>equality_constraints <span class="op">=</span> [cp.multiply(alpha, y) <span class="op">==</span> <span class="dv">0</span>]</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>overall_constraints <span class="op">=</span> inequality_constraints <span class="op">+</span> equality_constraints</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>P_numpy <span class="op">=</span> np.outer(y, y)<span class="op">*</span> K   <span class="op">+</span> <span class="fl">3e-8</span> <span class="op">*</span> np.eye(n_samples)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>objective <span class="op">=</span> cp.Maximize(cp.<span class="bu">sum</span>(alpha) <span class="op">-</span> <span class="fl">0.5</span> <span class="op">*</span> cp.quad_form(alpha, P_numpy))</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>prob <span class="op">=</span> cp.Problem(objective, overall_constraints)</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> prob.solve()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-18" class="cell" data-execution_count="107">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>prob.status</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>alpha.value.sort()</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>alpha.value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="107">
+<pre><code>array([-1.49664286e-08, -7.86036073e-09, -7.48959975e-09, -4.95631234e-09,
+       -4.80337014e-09, -4.21382858e-09, -4.17627547e-09, -3.60319297e-09,
+       -2.54786233e-09, -1.86476801e-09, -1.28264318e-09, -6.50572915e-10,
+       -3.44845584e-10, -4.45332158e-11,  2.50213529e-10,  2.67913419e-10,
+        8.79522453e-10,  8.82710270e-10,  9.50098303e-10,  1.82268844e-09,
+        2.74355414e-09,  3.45032195e-09,  4.95527787e-09,  5.02308218e-09,
+        5.34165002e-09,  6.71939414e-09,  6.94177696e-09,  7.06890144e-09,
+        9.38395895e-09,  9.49925189e-09,  9.72666606e-09,  1.15208492e-08,
+        1.18351650e-08,  1.20920336e-08,  1.22215620e-08,  1.69516039e-08,
+        2.28584041e-08,  3.45155480e-08,  5.49049991e-08,  1.01339280e-07])</code></pre>
+</div>
+</div>
+</section>
+<section id="primal-using-cvxopt" class="level3">
+<h3 class="anchored" data-anchor-id="primal-using-cvxopt">Primal using cvxopt</h3>
+<div id="cell-20" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of features</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>n_features <span class="op">=</span> X.shape[<span class="dv">1</span>]</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Identity matrix</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> cvxopt.matrix(np.block([[np.eye(n_features), np.zeros((n_features, <span class="dv">1</span>))], [np.zeros((<span class="dv">1</span>, n_features <span class="op">+</span> <span class="dv">1</span>))]]))</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Inequality constraints matrix</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> cvxopt.matrix(<span class="op">-</span>np.block([np.diag(y) <span class="op">@</span> X, y.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)]))</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Inequality constraints bounds</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> cvxopt.matrix(<span class="op">-</span>np.ones(X.shape[<span class="dv">0</span>]))</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve the QP problem</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>solution <span class="op">=</span> cvxopt.solvers.qp(P, cvxopt.matrix(np.zeros(n_features <span class="op">+</span> <span class="dv">1</span>)), G, h)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract optimized w and b values</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>w_opt <span class="op">=</span> np.array(solution[<span class="st">'x'</span>][:<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>b_opt <span class="op">=</span> np.array(solution[<span class="st">'x'</span>][<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     pcost       dcost       gap    pres   dres
  0:  1.9726e-02  3.3304e+00  8e+01  2e+00  3e+02
@@ -499,15 +524,15 @@ Optimal solution found.</code></pre>
 Optimal solution found.</code></pre>
 </div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>w_opt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-21" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>w_opt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>array([[ 0.23474325],
        [-0.23143308]])</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>b_opt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-22" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>b_opt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
 <pre><code>array(1.17265942)</code></pre>
 </div>
