@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Kalash Kankaria">
-<meta name="dcterms.date" content="2024-02-12">
 
-<title>Sklearn on GPU – Machine Learning Resources</title>
+<title>tips – Machine Learning Resources</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -153,293 +151,112 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#references" id="toc-references" class="nav-link active" data-scroll-target="#references">References:</a></li>
-  <li><a href="#install-the-latest-version-of-scikit-learn-library" id="toc-install-the-latest-version-of-scikit-learn-library" class="nav-link" data-scroll-target="#install-the-latest-version-of-scikit-learn-library">Install the latest version of scikit-learn library</a></li>
-  <li><a href="#install-array-api-compat-library-that-supports-array-api" id="toc-install-array-api-compat-library-that-supports-array-api" class="nav-link" data-scroll-target="#install-array-api-compat-library-that-supports-array-api">Install array-api-compat library that supports Array API</a></li>
-  <li><a href="#imports" id="toc-imports" class="nav-link" data-scroll-target="#imports">Imports</a></li>
-  <li><a href="#create-classification-data" id="toc-create-classification-data" class="nav-link" data-scroll-target="#create-classification-data">Create Classification Data</a></li>
-  <li><a href="#globally-set-configuration" id="toc-globally-set-configuration" class="nav-link" data-scroll-target="#globally-set-configuration">Globally set configuration</a></li>
-  <li><a href="#lineardiscriminantanalysis" id="toc-lineardiscriminantanalysis" class="nav-link" data-scroll-target="#lineardiscriminantanalysis">LinearDiscriminantAnalysis</a>
-  <ul class="collapse">
-  <li><a href="#sklearn-performance-on-cpu" id="toc-sklearn-performance-on-cpu" class="nav-link" data-scroll-target="#sklearn-performance-on-cpu">Sklearn Performance on CPU</a></li>
-  <li><a href="#sklearn-performance-on-gpu" id="toc-sklearn-performance-on-gpu" class="nav-link" data-scroll-target="#sklearn-performance-on-gpu">Sklearn Performance on GPU</a></li>
-  </ul></li>
-  <li><a href="#train-model-on-gpu-and-transfer-to-cpu-for-deployment" id="toc-train-model-on-gpu-and-transfer-to-cpu-for-deployment" class="nav-link" data-scroll-target="#train-model-on-gpu-and-transfer-to-cpu-for-deployment">Train model on GPU and transfer to CPU for deployment</a></li>
-  <li><a href="#pca-decomposition" id="toc-pca-decomposition" class="nav-link" data-scroll-target="#pca-decomposition">PCA Decomposition</a>
-  <ul class="collapse">
-  <li><a href="#sklearn-performance-on-cpu-1" id="toc-sklearn-performance-on-cpu-1" class="nav-link" data-scroll-target="#sklearn-performance-on-cpu-1">Sklearn Performance on CPU</a></li>
-  <li><a href="#sklearn-performance-on-gpu-1" id="toc-sklearn-performance-on-gpu-1" class="nav-link" data-scroll-target="#sklearn-performance-on-gpu-1">Sklearn Performance on GPU</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Sklearn on GPU</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">ML</div>
-    <div class="quarto-category">Tutorial</div>
-  </div>
-  </div>
 
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Kalash Kankaria </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">February 12, 2024</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References:</h2>
-<p>https://scikit-learn.org/stable/modules/array_api.html</p>
-<p>https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html#sklearn.decomposition.PCA</p>
-<p>https://github.com/data-apis/array-api-compat</p>
-<p>https://labs.quansight.org/blog/array-api-support-scikit-learn</p>
-</section>
-<section id="install-the-latest-version-of-scikit-learn-library" class="level1">
-<h1>Install the latest version of scikit-learn library</h1>
-<div id="cell-3" class="cell" data-outputid="aba1fc05-12d6-4698-9e6e-ef113632067b">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip install scikit<span class="op">-</span>learn<span class="op">==</span><span class="fl">1.4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Collecting scikit-learn==1.4
-  Downloading scikit_learn-1.4.0-1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.1 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.1/12.1 MB 57.9 MB/s eta 0:00:00
-Requirement already satisfied: numpy&lt;2.0,&gt;=1.19.5 in /usr/local/lib/python3.10/dist-packages (from scikit-learn==1.4) (1.23.5)
-Requirement already satisfied: scipy&gt;=1.6.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn==1.4) (1.11.4)
-Requirement already satisfied: joblib&gt;=1.2.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn==1.4) (1.3.2)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from scikit-learn==1.4) (3.2.0)
-Installing collected packages: scikit-learn
-  Attempting uninstall: scikit-learn
-    Found existing installation: scikit-learn 1.2.2
-    Uninstalling scikit-learn-1.2.2:
-      Successfully uninstalled scikit-learn-1.2.2
-Successfully installed scikit-learn-1.4.0</code></pre>
+<p><a href="https://colab.research.google.com/github/nipunbatra/ml-teaching/blob/master/notebooks/tips.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<div id="cell-1" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_format<span class="op">=</span><span class="st">'retina'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-display">
-<pre><code>Unable to display output for mime type(s): application/vnd.colab-display-data+json</code></pre>
+<div id="cell-2" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>M, N, K <span class="op">=</span> <span class="dv">40</span>, <span class="dv">30</span>, <span class="dv">20</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>A_np <span class="op">=</span> np.random.randn(M, K)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>B_np <span class="op">=</span> np.random.randn(K, N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</section>
-<section id="install-array-api-compat-library-that-supports-array-api" class="level1">
-<h1>Install array-api-compat library that supports Array API</h1>
-<div id="cell-5" class="cell" data-outputid="530a0724-d38b-4455-c404-0ca40fabe900">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>python <span class="op">-</span>m pip install array<span class="op">-</span>api<span class="op">-</span>compat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Collecting array-api-compat
-  Downloading array_api_compat-1.4.1-py3-none-any.whl (30 kB)
-Installing collected packages: array-api-compat
-Successfully installed array-api-compat-1.4.1</code></pre>
-</div>
-</div>
-</section>
-<section id="imports" class="level1">
-<h1>Imports</h1>
-<div id="cell-7" class="cell" data-outputid="158d8e8d-85cd-4a0e-e91e-f1038bc0c8ca">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.discriminant_analysis <span class="im">import</span> LinearDiscriminantAnalysis</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_classification</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sklearn.__version__)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>1.4.0</code></pre>
-</div>
-</div>
-</section>
-<section id="create-classification-data" class="level1">
-<h1>Create Classification Data</h1>
-<div id="cell-9" class="cell" data-outputid="b8631186-97ad-4d54-a041-de1ecbd35b12">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>X_np, y_np <span class="op">=</span> make_classification(random_state<span class="op">=</span><span class="dv">0</span>, n_samples<span class="op">=</span><span class="dv">500_000</span>, n_features<span class="op">=</span><span class="dv">300</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>X_np, y_np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-3" class="cell" data-outputid="c1e8eecd-a7ea-4581-f521-e78b5f69fa16" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>A_np.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>(array([[-1.81619458, -1.85550544,  1.0407837 , ...,  0.05972718,
-         -0.78920817, -1.17862744],
-        [-0.81112283,  1.22246367,  0.5230838 , ...,  0.34797711,
-         -0.96876649, -1.09807831],
-        [ 0.2102088 ,  1.78862513,  0.19437414, ...,  1.05634817,
-         -1.71915482,  0.09357639],
-        ...,
-        [ 0.41402928,  0.89958434,  0.98362959, ..., -0.80880198,
-          0.27123176, -0.52871488],
-        [-0.87256303,  1.32778686, -0.97017018, ...,  0.22443048,
-         -0.80234779,  0.78283347],
-        [ 0.50504494, -0.39312103,  1.56072382, ...,  2.01801143,
-         -0.34582501, -0.71471391]]),
- array([0, 1, 1, ..., 0, 1, 0]))</code></pre>
+<pre><code>(40, 20)</code></pre>
 </div>
 </div>
-</section>
-<section id="globally-set-configuration" class="level1">
-<h1>Globally set configuration</h1>
-<div id="cell-11" class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sklearn.set_config(array_api_dispatch<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="lineardiscriminantanalysis" class="level1">
-<h1>LinearDiscriminantAnalysis</h1>
-<section id="sklearn-performance-on-cpu" class="level3">
-<h3 class="anchored" data-anchor-id="sklearn-performance-on-cpu">Sklearn Performance on CPU</h3>
-<div id="cell-14" class="cell" data-outputid="28b3f184-a7a1-43d3-a49c-b52cab986849">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> time.perf_counter()</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>X_torch_cpu, y_torch_cpu <span class="op">=</span> torch.asarray(X_np), torch.asarray(y_np)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>lda_torch_cpu <span class="op">=</span> LinearDiscriminantAnalysis()</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>lda_torch_cpu.fit(X_torch_cpu, y_torch_cpu)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> lda_torch_cpu.predict(X_torch_cpu)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(predictions.device)</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(predictions))</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>t2 <span class="op">=</span> time.perf_counter()</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'time taken to run:'</span>,t2<span class="op">-</span>t1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-4" class="cell" data-outputid="67b626d4-d9f9-4f63-b648-207f4c614abd" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tic <span class="op">=</span> time.time()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>C_np <span class="op">=</span> A_np<span class="op">@</span>B_np</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>toc <span class="op">=</span> time.time()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(toc<span class="op">-</span>tic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>cpu
-&lt;class 'torch.Tensor'&gt;
-time taken to run: 30.194514389999767</code></pre>
+<pre><code>0.0016055107116699219</code></pre>
 </div>
 </div>
-</section>
-<section id="sklearn-performance-on-gpu" class="level3">
-<h3 class="anchored" data-anchor-id="sklearn-performance-on-gpu">Sklearn Performance on GPU</h3>
-<div id="cell-16" class="cell" data-outputid="1063222d-53e0-43a8-b5a2-f61fdeae37a3">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>X_torch_cuda <span class="op">=</span> torch.asarray(X_np, device<span class="op">=</span><span class="st">"cuda"</span>, dtype<span class="op">=</span>torch.float32)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>y_torch_cuda <span class="op">=</span> torch.asarray(y_np, device<span class="op">=</span><span class="st">"cuda"</span>, dtype<span class="op">=</span>torch.float32)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(X_torch_cuda))</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(y_torch_cuda))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'torch.Tensor'&gt;
-&lt;class 'torch.Tensor'&gt;</code></pre>
+<div id="cell-5" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> time_function(func, args<span class="op">=</span>(), n_iter<span class="op">=</span><span class="dv">10</span>):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Measures the execution time of a function over multiple iterations.</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">    func (callable): The function to be timed.</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">    args (tuple): The arguments to pass to the function.</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">    n_iter (int): The number of iterations to run the function.</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">    np.ndarray: An array of execution times per iteration in seconds.</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    timings <span class="op">=</span> np.zeros(n_iter)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_iter):</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        start_time <span class="op">=</span> time.time()</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        func(<span class="op">*</span>args)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        end_time <span class="op">=</span> time.time()</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        timings[i] <span class="op">=</span> end_time <span class="op">-</span> start_time</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> timings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-6" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mm(A, B):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> A<span class="op">@</span>B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-7" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>A_np <span class="op">=</span> np.random.randn(<span class="dv">1000</span>, <span class="dv">1000</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>B_np <span class="op">=</span> np.random.randn(<span class="dv">1000</span>, <span class="dv">1000</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>timings_numpy <span class="op">=</span> time_function(mm, args<span class="op">=</span>(A_np, B_np), n_iter<span class="op">=</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-8" class="cell" data-outputid="f6f94905-aeb3-4337-f839-0b0b9058d867" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>timings_numpy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>array([0.06902885, 0.06130481, 0.05841994, 0.06095314, 0.06095123,
+       0.07098603, 0.06089568, 0.0622189 , 0.05695796, 0.0617106 ,
+       0.05860353, 0.05850339, 0.05895162, 0.06389976, 0.06038809,
+       0.07844472, 0.0644033 , 0.06124926, 0.05879545, 0.05876684,
+       0.06040025, 0.06864452, 0.06189322, 0.06328011, 0.0574863 ,
+       0.0629921 , 0.06044507, 0.06110716, 0.06040001, 0.06056356,
+       0.06146955, 0.08096695, 0.06768394, 0.0587852 , 0.06017113,
+       0.05689692, 0.05897546, 0.05870986, 0.0598135 , 0.06069469,
+       0.06748033, 0.05999517, 0.06259775, 0.0593214 , 0.05901718,
+       0.05943084, 0.05896354, 0.05983829, 0.07283139, 0.0717628 ,
+       0.0584321 , 0.06632876, 0.05979753, 0.06100178, 0.06079507,
+       0.06269598, 0.05676365, 0.05924749, 0.06369615, 0.06634593,
+       0.05809116, 0.05889082, 0.05860853, 0.05887246, 0.06108665,
+       0.07490563, 0.06755495, 0.05657053, 0.05829453, 0.05973697,
+       0.06191349, 0.05972981, 0.05738997, 0.05762219, 0.06181145,
+       0.06153488, 0.05729938, 0.06270266, 0.05902267, 0.06124568,
+       0.06451917, 0.07001424, 0.07687068, 0.10886049, 0.09720993,
+       0.10890317, 0.11773968, 0.10777354, 0.11932421, 0.12223411,
+       0.11712456, 0.1443994 , 0.11418533, 0.10785556, 0.11380267,
+       0.11752391, 0.11377001, 0.11117578, 0.11258173, 0.11538911])</code></pre>
 </div>
 </div>
-<div id="cell-17" class="cell" data-outputid="86455395-e299-44b1-8a06-b440f0ca9a93">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> time.perf_counter()</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>lda_torch_cuda <span class="op">=</span> LinearDiscriminantAnalysis()</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>lda_torch_cuda.fit(X_torch_cuda, y_torch_cuda)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>predictions <span class="op">=</span> lda_torch_cuda.predict(X_torch_cuda)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(predictions.device)</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(predictions))</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>t2 <span class="op">=</span> time.perf_counter()</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'time taken to run:'</span>,t2<span class="op">-</span>t1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>cuda:0
-&lt;class 'torch.Tensor'&gt;
-time taken to run: 0.5633445190001112</code></pre>
+<div id="cell-9" class="cell" data-outputid="cf92788d-36a7-4467-e0c3-cb462d29d1ec" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plt.plot(timings_numpy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="tips_files/figure-html/cell-10-output-1.png" width="556" height="413" class="figure-img"></p>
+</figure>
 </div>
-</div>
-<div id="cell-18" class="cell" data-outputid="f2bd2bc1-daaa-4695-b586-9e09ce5403ac">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(predictions))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'torch.Tensor'&gt;</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="train-model-on-gpu-and-transfer-to-cpu-for-deployment" class="level1">
-<h1>Train model on GPU and transfer to CPU for deployment</h1>
-<div id="cell-20" class="cell" data-outputid="d4a7d4e0-c2c9-4e86-b13b-375038188e3c">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.utils._array_api <span class="im">import</span> _estimator_with_converted_arrays</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>tensor_to_ndarray <span class="op">=</span> <span class="kw">lambda</span> array : array.cpu().numpy()</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>lda_np <span class="op">=</span> _estimator_with_converted_arrays(lda_torch_cuda, tensor_to_ndarray)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>X_trans <span class="op">=</span> lda_np.transform(X_np)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(X_np))</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(X_trans))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>&lt;class 'numpy.ndarray'&gt;
-&lt;class 'numpy.ndarray'&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="pca-decomposition" class="level1">
-<h1>PCA Decomposition</h1>
-<div id="cell-22" class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>X_np <span class="op">=</span> np.random.rand(<span class="dv">1000000</span>, <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="sklearn-performance-on-cpu-1" class="level3">
-<h3 class="anchored" data-anchor-id="sklearn-performance-on-cpu-1">Sklearn Performance on CPU</h3>
-<div id="cell-24" class="cell" data-outputid="be06bad3-7aa5-49d9-fc56-457d8caf3d5b">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>X_torch_cpu <span class="op">=</span> torch.asarray(X_np)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> time.perf_counter()</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>pca_cpu <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">2</span>, svd_solver<span class="op">=</span><span class="st">'full'</span>)</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>pca_cpu.fit(X_torch_cpu)</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pca_cpu.explained_variance_ratio_)</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pca_cpu.singular_values_)</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>t2 <span class="op">=</span> time.perf_counter()</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'time taken to run:'</span>,t2<span class="op">-</span>t1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>tensor([0.0102, 0.0102], dtype=torch.float64)
-tensor([291.4060, 291.3705], dtype=torch.float64)
-time taken to run: 10.91760363100002</code></pre>
-</div>
-</div>
-</section>
-<section id="sklearn-performance-on-gpu-1" class="level3">
-<h3 class="anchored" data-anchor-id="sklearn-performance-on-gpu-1">Sklearn Performance on GPU</h3>
-<div id="cell-26" class="cell" data-outputid="2015ae59-ef8f-459f-da5c-d8949aa1b347">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>X_torch_cuda <span class="op">=</span> torch.asarray(X_np, device<span class="op">=</span><span class="st">"cuda"</span>, dtype<span class="op">=</span>torch.float32)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>t1 <span class="op">=</span> time.perf_counter()</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>pca_cuda <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">2</span>, svd_solver<span class="op">=</span><span class="st">'full'</span>)</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>pca_cuda.fit(X_torch_cuda)</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pca_cuda.explained_variance_ratio_)</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pca_cuda.singular_values_)</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>t2 <span class="op">=</span> time.perf_counter()</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'time taken to run:'</span>,t2<span class="op">-</span>t1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>tensor([0.0102, 0.0102], device='cuda:0')
-tensor([291.4084, 291.3728], device='cuda:0')
-time taken to run: 0.278887709999708</code></pre>
 </div>
 </div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

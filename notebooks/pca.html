@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Nipun Batra">
 <meta name="dcterms.date" content="2024-04-06">
 
-<title>Machine Learning Resources - PCA</title>
+<title>PCA – Machine Learning Resources</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -143,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
@@ -153,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
         
     </div>
 <!-- main -->
@@ -216,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="pca_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="pca_files/figure-html/cell-3-output-1.png" width="546" height="190" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -263,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="pca_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="pca_files/figure-html/cell-9-output-1.png" width="546" height="190" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -281,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="pca_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="pca_files/figure-html/cell-11-output-1.png" width="568" height="413" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -291,50 +291,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>sorted_indices <span class="op">=</span> torch.argsort(eigenvalues[:, <span class="dv">0</span>], descending<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>sorted_eigenvectors <span class="op">=</span> eigenvectors[:, sorted_indices]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>IndexError: too many indices for tensor of dimension 1</code></pre>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">IndexError</span>                                Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[93], line 2</span>
+<span class="ansi-green-fg ansi-bold">      1</span> <span style="font-style:italic;color:rgb(95,135,135)"># Step 4: Sort eigenvectors based on eigenvalues</span>
+<span class="ansi-green-fg">----&gt; 2</span> sorted_indices <span style="color:rgb(98,98,98)">=</span> torch<span style="color:rgb(98,98,98)">.</span>argsort(<span class="ansi-yellow-bg">eigenvalues</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">0</span><span class="ansi-yellow-bg">]</span>, descending<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">True</span>)
+<span class="ansi-green-fg ansi-bold">      3</span> sorted_eigenvectors <span style="color:rgb(98,98,98)">=</span> eigenvectors[:, sorted_indices]
+
+<span class="ansi-red-fg">IndexError</span>: too many indices for tensor of dimension 1</pre>
+</div>
 </div>
 </div>
 <div id="cell-12" class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sorted</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-13" class="cell" data-execution_count="104">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>X.mean(dim<span class="op">=</span><span class="dv">0</span>), X.var(dim<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>X.mean(dim<span class="op">=</span><span class="dv">0</span>), X.var(dim<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="104">
 <pre><code>(tensor([-5.7220e-09,  0.0000e+00]), tensor([1.9740, 0.2127]))</code></pre>
 </div>
 </div>
 <div id="cell-14" class="cell" data-execution_count="105">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">1</span>  <span class="co"># Number of principal components</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> nn.Parameter(torch.randn(D, k))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">1</span>  <span class="co"># Number of principal components</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> nn.Parameter(torch.randn(D, k))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-15" class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>B.shape, X.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>B.shape, X.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="106">
 <pre><code>(torch.Size([2, 1]), torch.Size([500, 2]))</code></pre>
 </div>
 </div>
 <div id="cell-16" class="cell" data-execution_count="107">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>mse_loss <span class="op">=</span> nn.MSELoss()</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> optim.Adam([B], lr<span class="op">=</span><span class="fl">0.001</span>) </span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>num_epochs <span class="op">=</span> <span class="dv">2000</span>  <span class="co"># Number of optimization epochs</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(num_epochs):</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    optimizer.zero_grad()</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Project data onto the current projection matrix</span></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> torch.matmul(X, B)</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    x_reconstructed <span class="op">=</span> torch.matmul(z, B.t())</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute reconstruction loss</span></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> mse_loss(x_reconstructed, X)</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Perform backpropagation and optimization step</span></span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>    optimizer.step()</span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (epoch <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'Epoch [</span><span class="sc">{</span>epoch <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>num_epochs<span class="sc">}</span><span class="ss">], Loss: </span><span class="sc">{</span>loss<span class="sc">.</span>item()<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mse_loss <span class="op">=</span> nn.MSELoss()</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> optim.Adam([B], lr<span class="op">=</span><span class="fl">0.001</span>) </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>num_epochs <span class="op">=</span> <span class="dv">2000</span>  <span class="co"># Number of optimization epochs</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(num_epochs):</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    optimizer.zero_grad()</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Project data onto the current projection matrix</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> torch.matmul(X, B)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    x_reconstructed <span class="op">=</span> torch.matmul(z, B.t())</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute reconstruction loss</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> mse_loss(x_reconstructed, X)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Perform backpropagation and optimization step</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    optimizer.step()</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (epoch <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'Epoch [</span><span class="sc">{</span>epoch <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>num_epochs<span class="sc">}</span><span class="ss">], Loss: </span><span class="sc">{</span>loss<span class="sc">.</span>item()<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Epoch [100/2000], Loss: 0.7209210395812988
 Epoch [200/2000], Loss: 0.6048457026481628
@@ -359,11 +368,11 @@ Epoch [2000/2000], Loss: 0.039823081344366074</code></pre>
 </div>
 </div>
 <div id="cell-17" class="cell" data-execution_count="108">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Project data onto the learned projection matrix</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> torch.matmul(X, B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Project data onto the learned projection matrix</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> torch.matmul(X, B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-18" class="cell" data-execution_count="110">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="110">
 <pre><code>Parameter containing:
 tensor([[-0.9645],
@@ -371,73 +380,73 @@ tensor([[-0.9645],
 </div>
 </div>
 <div id="cell-19" class="cell" data-execution_count="202">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_linear_autoencoder(X, K<span class="op">=</span><span class="dv">2</span>, lr<span class="op">=</span><span class="fl">0.001</span>, num_epochs<span class="op">=</span><span class="dv">2000</span>):</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> X.size(<span class="dv">1</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    B <span class="op">=</span> nn.Parameter(torch.randn(D, K))</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    mse_loss <span class="op">=</span> nn.MSELoss()</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    optimizer <span class="op">=</span> optim.Adam([B], lr<span class="op">=</span>lr)</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    num_epochs <span class="op">=</span> num_epochs</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(num_epochs):</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>        optimizer.zero_grad()</span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> torch.matmul(X, B)</span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>        x_reconstructed <span class="op">=</span> torch.sigmoid(torch.matmul(z, B.t()))</span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> mse_loss(x_reconstructed, X)</span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>        loss.backward()</span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>        optimizer.step()</span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (epoch <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f'Epoch [</span><span class="sc">{</span>epoch <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>num_epochs<span class="sc">}</span><span class="ss">], Loss: </span><span class="sc">{</span>loss<span class="sc">.</span>item()<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> train_linear_autoencoder(X, K<span class="op">=</span><span class="dv">2</span>, lr<span class="op">=</span><span class="fl">0.001</span>, num_epochs<span class="op">=</span><span class="dv">2000</span>):</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    D <span class="op">=</span> X.size(<span class="dv">1</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    B <span class="op">=</span> nn.Parameter(torch.randn(D, K))</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    mse_loss <span class="op">=</span> nn.MSELoss()</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    optimizer <span class="op">=</span> optim.Adam([B], lr<span class="op">=</span>lr)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    num_epochs <span class="op">=</span> num_epochs</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(num_epochs):</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>        optimizer.zero_grad()</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>        z <span class="op">=</span> torch.matmul(X, B)</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>        x_reconstructed <span class="op">=</span> torch.sigmoid(torch.matmul(z, B.t()))</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> mse_loss(x_reconstructed, X)</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>        loss.backward()</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>        optimizer.step()</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (epoch <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f'Epoch [</span><span class="sc">{</span>epoch <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>num_epochs<span class="sc">}</span><span class="ss">], Loss: </span><span class="sc">{</span>loss<span class="sc">.</span>item()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-20" class="cell" data-execution_count="203">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get MNIST data</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision <span class="im">import</span> datasets</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.transforms <span class="im">import</span> ToTensor</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>mnist_train <span class="op">=</span> datasets.MNIST(root<span class="op">=</span><span class="st">'~/.datasets'</span>, train<span class="op">=</span><span class="va">True</span>, transform<span class="op">=</span>ToTensor(), download<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get MNIST data</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision <span class="im">import</span> datasets</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision.transforms <span class="im">import</span> ToTensor</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>mnist_train <span class="op">=</span> datasets.MNIST(root<span class="op">=</span><span class="st">'~/.datasets'</span>, train<span class="op">=</span><span class="va">True</span>, transform<span class="op">=</span>ToTensor(), download<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-21" class="cell" data-execution_count="204">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> mnist_train.data.<span class="bu">float</span>()</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X.view(X.size(<span class="dv">0</span>), <span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X <span class="op">/</span> <span class="fl">255.0</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>X.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> mnist_train.data.<span class="bu">float</span>()</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X.view(X.size(<span class="dv">0</span>), <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X <span class="op">/</span> <span class="fl">255.0</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>X.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="204">
 <pre><code>torch.Size([60000, 784])</code></pre>
 </div>
 </div>
 <div id="cell-22" class="cell" data-execution_count="205">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Work with first 1000 samples</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X[:<span class="dv">3000</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Work with first 1000 samples</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X[:<span class="dv">3000</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-23" class="cell" data-execution_count="207">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">min</span>(), X.<span class="bu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">min</span>(), X.<span class="bu">max</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="207">
 <pre><code>(tensor(0.), tensor(1.))</code></pre>
 </div>
 </div>
 <div id="cell-24" class="cell" data-execution_count="208">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the first 10 images</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">10</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">1</span>))</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    ax[i].imshow(X[i].view(<span class="dv">28</span>, <span class="dv">28</span>).numpy(), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    ax[i].axis(<span class="st">'off'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the first 10 images</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">10</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">1</span>))</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    ax[i].imshow(X[i].view(<span class="dv">28</span>, <span class="dv">28</span>).numpy(), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    ax[i].axis(<span class="st">'off'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="pca_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="pca_files/figure-html/cell-25-output-1.png" width="794" height="85" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <div id="cell-25" class="cell" data-execution_count="221">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> train_linear_autoencoder(X, K<span class="op">=</span><span class="dv">5</span>, lr<span class="op">=</span><span class="fl">0.001</span>, num_epochs<span class="op">=</span><span class="dv">2000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> train_linear_autoencoder(X, K<span class="op">=</span><span class="dv">5</span>, lr<span class="op">=</span><span class="fl">0.001</span>, num_epochs<span class="op">=</span><span class="dv">2000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Epoch [100/2000], Loss: 0.4135352075099945
 Epoch [200/2000], Loss: 0.3644017279148102
@@ -462,85 +471,170 @@ Epoch [2000/2000], Loss: 0.17811761796474457</code></pre>
 </div>
 </div>
 <div id="cell-26" class="cell" data-execution_count="222">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>B.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>B.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="222">
 <pre><code>torch.Size([784, 5])</code></pre>
 </div>
 </div>
 <div id="cell-27" class="cell" data-execution_count="223">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Project data onto the 2d space</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.no_grad():</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> torch.matmul(X, B)</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    X_reconstructed <span class="op">=</span> torch.sigmoid(torch.matmul(Z, B.t()))</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Project data onto the 2d space</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.no_grad():</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> torch.matmul(X, B)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    X_reconstructed <span class="op">=</span> torch.sigmoid(torch.matmul(Z, B.t()))</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-28" class="cell" data-execution_count="224">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the first 10 images and their reconstructions</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">10</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">2</span>))</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">0</span>, i].imshow(X[i].view(<span class="dv">28</span>, <span class="dv">28</span>).numpy(), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">0</span>, i].axis(<span class="st">'off'</span>)</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">1</span>, i].imshow(X_reconstructed[i].view(<span class="dv">28</span>, <span class="dv">28</span>).numpy(), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">1</span>, i].axis(<span class="st">'off'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the first 10 images and their reconstructions</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">10</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">2</span>))</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">0</span>, i].imshow(X[i].view(<span class="dv">28</span>, <span class="dv">28</span>).numpy(), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">0</span>, i].axis(<span class="st">'off'</span>)</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">1</span>, i].imshow(X_reconstructed[i].view(<span class="dv">28</span>, <span class="dv">28</span>).numpy(), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">1</span>, i].axis(<span class="st">'off'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="pca_files/figure-html/cell-29-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="pca_files/figure-html/cell-29-output-1.png" width="794" height="169" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <div id="cell-29" class="cell" data-execution_count="229">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">32</span>)</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>Z_pca <span class="op">=</span> pca.fit_transform(X.numpy())</span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>X_reconstructed_pca <span class="op">=</span> pca.inverse_transform(Z_pca)</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the first 10 images and their reconstructions</span></span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">10</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">2</span>))</span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">0</span>, i].imshow(X[i].view(<span class="dv">28</span>, <span class="dv">28</span>).numpy(), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">0</span>, i].axis(<span class="st">'off'</span>)</span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">1</span>, i].imshow(X_reconstructed_pca[i].reshape(<span class="dv">28</span>, <span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">1</span>, i].axis(<span class="st">'off'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">32</span>)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>Z_pca <span class="op">=</span> pca.fit_transform(X.numpy())</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>X_reconstructed_pca <span class="op">=</span> pca.inverse_transform(Z_pca)</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the first 10 images and their reconstructions</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">10</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">2</span>))</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">0</span>, i].imshow(X[i].view(<span class="dv">28</span>, <span class="dv">28</span>).numpy(), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">0</span>, i].axis(<span class="st">'off'</span>)</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">1</span>, i].imshow(X_reconstructed_pca[i].reshape(<span class="dv">28</span>, <span class="dv">28</span>), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">1</span>, i].axis(<span class="st">'off'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="pca_files/figure-html/cell-30-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="pca_files/figure-html/cell-30-output-1.png" width="794" height="169" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <div id="cell-31" class="cell" data-execution_count="230">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"X"</span>: X[<span class="dv">0</span>], <span class="st">"X_reconstructed"</span>: X_reconstructed[<span class="dv">0</span>], <span class="st">"X_reconstructed_pca"</span>: X_reconstructed_pca[<span class="dv">0</span>]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"X"</span>: X[<span class="dv">0</span>], <span class="st">"X_reconstructed"</span>: X_reconstructed[<span class="dv">0</span>], <span class="st">"X_reconstructed_pca"</span>: X_reconstructed_pca[<span class="dv">0</span>]})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-32" class="cell" data-execution_count="231">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>df.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="pca_files/figure-html/cell-33-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="pca_files/figure-html/cell-33-output-1.png" width="559" height="413" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <div id="cell-33" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the original data and the projected data</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">6</span>))</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:,<span class="dv">0</span>], X[:,<span class="dv">1</span>], label<span class="op">=</span><span class="st">'Original data'</span>)</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(Z[:,<span class="dv">0</span>], Z[:,<span class="dv">0</span>], label<span class="op">=</span><span class="st">'Projected data'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the original data and the projected data</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">6</span>))</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:,<span class="dv">0</span>], X[:,<span class="dv">1</span>], label<span class="op">=</span><span class="st">'Original data'</span>)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(Z[:,<span class="dv">0</span>], Z[:,<span class="dv">0</span>], label<span class="op">=</span><span class="st">'Projected data'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>RuntimeError: Can't call numpy() on Tensor that requires grad. Use tensor.detach().numpy() instead.</code></pre>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">RuntimeError</span>                              Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[25], line 4</span>
+<span class="ansi-green-fg ansi-bold">      2</span> plt<span style="color:rgb(98,98,98)">.</span>figure(figsize<span style="color:rgb(98,98,98)">=</span>(<span style="color:rgb(98,98,98)">6</span>, <span style="color:rgb(98,98,98)">6</span>))
+<span class="ansi-green-fg ansi-bold">      3</span> plt<span style="color:rgb(98,98,98)">.</span>scatter(X[:,<span style="color:rgb(98,98,98)">0</span>], X[:,<span style="color:rgb(98,98,98)">1</span>], label<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">Original data</span><span style="color:rgb(175,0,0)">'</span>)
+<span class="ansi-green-fg">----&gt; 4</span> <span class="ansi-yellow-bg">plt</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">scatter</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">Z</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg">,</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">0</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">Z</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg">,</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">0</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">label</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">Projected data</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/miniconda3/lib/python3.9/site-packages/matplotlib/pyplot.py:3684</span>, in <span class="ansi-cyan-fg">scatter</span><span class="ansi-blue-fg">(x, y, s, c, marker, cmap, norm, vmin, vmax, alpha, linewidths, edgecolors, plotnonfinite, data, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">   3665</span> <span style="color:rgb(175,0,255)">@_copy_docstring_and_deprecators</span>(Axes<span style="color:rgb(98,98,98)">.</span>scatter)
+<span class="ansi-green-fg ansi-bold">   3666</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">scatter</span>(
+<span class="ansi-green-fg ansi-bold">   3667</span>     x: <span style="color:rgb(0,135,0)">float</span> <span style="color:rgb(98,98,98)">|</span> ArrayLike,
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">   3682</span>     <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs,
+<span class="ansi-green-fg ansi-bold">   3683</span> ) <span style="color:rgb(98,98,98)">-</span><span style="color:rgb(98,98,98)">&gt;</span> PathCollection:
+<span class="ansi-green-fg">-&gt; 3684</span>     __ret <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">gca</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">scatter</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">   3685</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   3686</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">y</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   3687</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">s</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">s</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   3688</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">c</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">c</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   3689</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">marker</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">marker</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   3690</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">cmap</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">cmap</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   3691</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">norm</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">norm</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   3692</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">vmin</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">vmin</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   3693</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">vmax</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">vmax</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   3694</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">alpha</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">alpha</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   3695</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">linewidths</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">linewidths</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   3696</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">edgecolors</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">edgecolors</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   3697</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">plotnonfinite</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">plotnonfinite</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   3698</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">{</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">data</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">}</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">if</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(175,0,255)" class="ansi-yellow-bg">is</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(175,0,255)" class="ansi-yellow-bg">not</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">None</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">else</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">{</span><span class="ansi-yellow-bg">}</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   3699</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   3700</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">   3701</span>     sci(__ret)
+<span class="ansi-green-fg ansi-bold">   3702</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> __ret
+
+File <span class="ansi-green-fg">~/miniconda3/lib/python3.9/site-packages/matplotlib/__init__.py:1465</span>, in <span class="ansi-cyan-fg">_preprocess_data.&lt;locals&gt;.inner</span><span class="ansi-blue-fg">(ax, data, *args, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">   1462</span> <span style="color:rgb(175,0,255)">@functools</span><span style="color:rgb(98,98,98)">.</span>wraps(func)
+<span class="ansi-green-fg ansi-bold">   1463</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">inner</span>(ax, <span style="color:rgb(98,98,98)">*</span>args, data<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">None</span>, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs):
+<span class="ansi-green-fg ansi-bold">   1464</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> data <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">-&gt; 1465</span>         <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">func</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">ax</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">map</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">sanitize_sequence</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">   1467</span>     bound <span style="color:rgb(98,98,98)">=</span> new_sig<span style="color:rgb(98,98,98)">.</span>bind(ax, <span style="color:rgb(98,98,98)">*</span>args, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)
+<span class="ansi-green-fg ansi-bold">   1468</span>     auto_label <span style="color:rgb(98,98,98)">=</span> (bound<span style="color:rgb(98,98,98)">.</span>arguments<span style="color:rgb(98,98,98)">.</span>get(label_namer)
+<span class="ansi-green-fg ansi-bold">   1469</span>                   <span style="font-weight:bold;color:rgb(175,0,255)">or</span> bound<span style="color:rgb(98,98,98)">.</span>kwargs<span style="color:rgb(98,98,98)">.</span>get(label_namer))
+
+File <span class="ansi-green-fg">~/miniconda3/lib/python3.9/site-packages/matplotlib/axes/_axes.py:4649</span>, in <span class="ansi-cyan-fg">Axes.scatter</span><span class="ansi-blue-fg">(self, x, y, s, c, marker, cmap, norm, vmin, vmax, alpha, linewidths, edgecolors, plotnonfinite, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">   4646</span> x, y <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_process_unit_info([(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">x</span><span style="color:rgb(175,0,0)">"</span>, x), (<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">y</span><span style="color:rgb(175,0,0)">"</span>, y)], kwargs)
+<span class="ansi-green-fg ansi-bold">   4647</span> <span style="font-style:italic;color:rgb(95,135,135)"># np.ma.ravel yields an ndarray, not a masked array,</span>
+<span class="ansi-green-fg ansi-bold">   4648</span> <span style="font-style:italic;color:rgb(95,135,135)"># unless its argument is a masked array.</span>
+<span class="ansi-green-fg">-&gt; 4649</span> x <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">np</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">ma</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">ravel</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">   4650</span> y <span style="color:rgb(98,98,98)">=</span> np<span style="color:rgb(98,98,98)">.</span>ma<span style="color:rgb(98,98,98)">.</span>ravel(y)
+<span class="ansi-green-fg ansi-bold">   4651</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> x<span style="color:rgb(98,98,98)">.</span>size <span style="color:rgb(98,98,98)">!=</span> y<span style="color:rgb(98,98,98)">.</span>size:
+
+File <span class="ansi-green-fg">~/miniconda3/lib/python3.9/site-packages/numpy/ma/core.py:6773</span>, in <span class="ansi-cyan-fg">_frommethod.__call__</span><span class="ansi-blue-fg">(self, a, *args, **params)</span>
+<span class="ansi-green-fg ansi-bold">   6770</span>     args <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">list</span>(args)
+<span class="ansi-green-fg ansi-bold">   6771</span>     a, args[<span style="color:rgb(98,98,98)">0</span>] <span style="color:rgb(98,98,98)">=</span> args[<span style="color:rgb(98,98,98)">0</span>], a
+<span class="ansi-green-fg">-&gt; 6773</span> marr <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">asanyarray</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">a</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">   6774</span> method_name <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span><span style="color:rgb(0,0,135)">__name__</span>
+<span class="ansi-green-fg ansi-bold">   6775</span> method <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">getattr</span>(<span style="color:rgb(0,135,0)">type</span>(marr), method_name, <span style="font-weight:bold;color:rgb(0,135,0)">None</span>)
+
+File <span class="ansi-green-fg">~/miniconda3/lib/python3.9/site-packages/numpy/ma/core.py:8005</span>, in <span class="ansi-cyan-fg">asanyarray</span><span class="ansi-blue-fg">(a, dtype)</span>
+<span class="ansi-green-fg ansi-bold">   8003</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(a, MaskedArray) <span style="font-weight:bold;color:rgb(175,0,255)">and</span> (dtype <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span> <span style="font-weight:bold;color:rgb(175,0,255)">or</span> dtype <span style="color:rgb(98,98,98)">==</span> a<span style="color:rgb(98,98,98)">.</span>dtype):
+<span class="ansi-green-fg ansi-bold">   8004</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> a
+<span class="ansi-green-fg">-&gt; 8005</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">masked_array</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">a</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">dtype</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">dtype</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">copy</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">False</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">keep_mask</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">True</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">subok</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">True</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/miniconda3/lib/python3.9/site-packages/numpy/ma/core.py:2826</span>, in <span class="ansi-cyan-fg">MaskedArray.__new__</span><span class="ansi-blue-fg">(cls, data, mask, dtype, copy, subok, ndmin, fill_value, keep_mask, hard_mask, shrink, order)</span>
+<span class="ansi-green-fg ansi-bold">   2817</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
+<span class="ansi-green-fg ansi-bold">   2818</span> <span style="font-style:italic;color:rgb(175,0,0)">Create a new masked array from scratch.</span>
+<span class="ansi-green-fg ansi-bold">   2819</span> 
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">   2823</span> 
+<span class="ansi-green-fg ansi-bold">   2824</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
+<span class="ansi-green-fg ansi-bold">   2825</span> <span style="font-style:italic;color:rgb(95,135,135)"># Process data.</span>
+<span class="ansi-green-fg">-&gt; 2826</span> _data <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">np</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">array</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">dtype</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">dtype</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">copy</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">copy</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   2827</span> <span class="ansi-yellow-bg">                 </span><span class="ansi-yellow-bg">order</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">order</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">subok</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">True</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">ndmin</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">ndmin</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">   2828</span> _baseclass <span style="color:rgb(98,98,98)">=</span> <span style="color:rgb(0,135,0)">getattr</span>(data, <span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">_baseclass</span><span style="color:rgb(175,0,0)">'</span>, <span style="color:rgb(0,135,0)">type</span>(_data))
+<span class="ansi-green-fg ansi-bold">   2829</span> <span style="font-style:italic;color:rgb(95,135,135)"># Check that we're not erasing the mask.</span>
+
+File <span class="ansi-green-fg">~/miniconda3/lib/python3.9/site-packages/torch/_tensor.py:1030</span>, in <span class="ansi-cyan-fg">Tensor.__array__</span><span class="ansi-blue-fg">(self, dtype)</span>
+<span class="ansi-green-fg ansi-bold">   1028</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> handle_torch_function(Tensor<span style="color:rgb(98,98,98)">.</span>__array__, (<span style="color:rgb(0,135,0)">self</span>,), <span style="color:rgb(0,135,0)">self</span>, dtype<span style="color:rgb(98,98,98)">=</span>dtype)
+<span class="ansi-green-fg ansi-bold">   1029</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> dtype <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">-&gt; 1030</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">numpy</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">   1031</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg ansi-bold">   1032</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>numpy()<span style="color:rgb(98,98,98)">.</span>astype(dtype, copy<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">False</span>)
+
+<span class="ansi-red-fg">RuntimeError</span>: Can't call numpy() on Tensor that requires grad. Use tensor.detach().numpy() instead.</pre>
+</div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="pca_files/figure-html/cell-34-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="pca_files/figure-html/cell-34-output-2.png" width="515" height="505" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -728,18 +822,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -771,7 +854,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/nipunbatra\.github\.io\/ml-teaching\/");
@@ -779,7 +884,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

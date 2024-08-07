@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2024-03-31">
 <meta name="description" content="Generating names">
 
-<title>Machine Learning Resources - Generating names using MLPs</title>
+<title>Generating names using MLPs – Machine Learning Resources</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -36,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -121,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -144,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
@@ -44753,7 +44753,7 @@ tensor([[ 0.7694, -0.0425,  0.4451, -0.5473],
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="names_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="names_files/figure-html/cell-18-output-1.png" width="559" height="413" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -44856,26 +44856,111 @@ _orig_mod.lin2.bias torch.Size([27])</code></pre>
 500 2.127420425415039</code></pre>
 </div>
 <div class="cell-output cell-output-error">
-<pre><code>KeyboardInterrupt: </code></pre>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[93], line 17</span>
+<span class="ansi-green-fg ansi-bold">     15</span> y_pred <span style="color:rgb(98,98,98)">=</span> model(x)
+<span class="ansi-green-fg ansi-bold">     16</span> loss <span style="color:rgb(98,98,98)">=</span> loss_fn(y_pred, y)
+<span class="ansi-green-fg">---&gt; 17</span> <span class="ansi-yellow-bg">loss</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">backward</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">     18</span> opt<span style="color:rgb(98,98,98)">.</span>step()
+<span class="ansi-green-fg ansi-bold">     19</span> opt<span style="color:rgb(98,98,98)">.</span>zero_grad()
+
+File <span class="ansi-green-fg">~/mambaforge/lib/python3.10/site-packages/torch/_tensor.py:487</span>, in <span class="ansi-cyan-fg">Tensor.backward</span><span class="ansi-blue-fg">(self, gradient, retain_graph, create_graph, inputs)</span>
+<span class="ansi-green-fg ansi-bold">    477</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> has_torch_function_unary(<span style="color:rgb(0,135,0)">self</span>):
+<span class="ansi-green-fg ansi-bold">    478</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> handle_torch_function(
+<span class="ansi-green-fg ansi-bold">    479</span>         Tensor<span style="color:rgb(98,98,98)">.</span>backward,
+<span class="ansi-green-fg ansi-bold">    480</span>         (<span style="color:rgb(0,135,0)">self</span>,),
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-fg ansi-bold">    485</span>         inputs<span style="color:rgb(98,98,98)">=</span>inputs,
+<span class="ansi-green-fg ansi-bold">    486</span>     )
+<span class="ansi-green-fg">--&gt; 487</span> <span class="ansi-yellow-bg">torch</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">autograd</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">backward</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">    488</span> <span class="ansi-yellow-bg">    </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">gradient</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">retain_graph</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">create_graph</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">inputs</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">inputs</span>
+<span class="ansi-green-fg ansi-bold">    489</span> <span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/mambaforge/lib/python3.10/site-packages/torch/autograd/__init__.py:200</span>, in <span class="ansi-cyan-fg">backward</span><span class="ansi-blue-fg">(tensors, grad_tensors, retain_graph, create_graph, grad_variables, inputs)</span>
+<span class="ansi-green-fg ansi-bold">    195</span>     retain_graph <span style="color:rgb(98,98,98)">=</span> create_graph
+<span class="ansi-green-fg ansi-bold">    197</span> <span style="font-style:italic;color:rgb(95,135,135)"># The reason we repeat same the comment below is that</span>
+<span class="ansi-green-fg ansi-bold">    198</span> <span style="font-style:italic;color:rgb(95,135,135)"># some Python versions print out the first line of a multi-line function</span>
+<span class="ansi-green-fg ansi-bold">    199</span> <span style="font-style:italic;color:rgb(95,135,135)"># calls in the traceback and some print out the last line</span>
+<span class="ansi-green-fg">--&gt; 200</span> <span class="ansi-yellow-bg">Variable</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_execution_engine</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">run_backward</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">  </span><span style="font-style:italic;color:rgb(95,135,135)" class="ansi-yellow-bg"># Calls into the C++ engine to run the backward pass</span>
+<span class="ansi-green-fg ansi-bold">    201</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">tensors</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">grad_tensors_</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">retain_graph</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">create_graph</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">inputs</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">    202</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">allow_unreachable</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">True</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">accumulate_grad</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">True</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/mambaforge/lib/python3.10/site-packages/torch/autograd/function.py:274</span>, in <span class="ansi-cyan-fg">BackwardCFunction.apply</span><span class="ansi-blue-fg">(self, *args)</span>
+<span class="ansi-green-fg ansi-bold">    270</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">RuntimeError</span>(<span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Implementing both </span><span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">backward</span><span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)"> and </span><span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">vjp</span><span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)"> for a custom </span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">    271</span>                        <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Function is not allowed. You should only implement one </span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">    272</span>                        <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">of them.</span><span style="color:rgb(175,0,0)">"</span>)
+<span class="ansi-green-fg ansi-bold">    273</span> user_fn <span style="color:rgb(98,98,98)">=</span> vjp_fn <span style="font-weight:bold;color:rgb(0,135,0)">if</span> vjp_fn <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(175,0,255)">not</span> Function<span style="color:rgb(98,98,98)">.</span>vjp <span style="font-weight:bold;color:rgb(0,135,0)">else</span> backward_fn
+<span class="ansi-green-fg">--&gt; 274</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">user_fn</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">)</span>
+
+File <span class="ansi-green-fg">~/mambaforge/lib/python3.10/site-packages/torch/_functorch/aot_autograd.py:2365</span>, in <span class="ansi-cyan-fg">aot_dispatch_autograd.&lt;locals&gt;.CompiledFunction.backward</span><span class="ansi-blue-fg">(ctx, *flat_args)</span>
+<span class="ansi-green-fg ansi-bold">   2363</span>     out <span style="color:rgb(98,98,98)">=</span> CompiledFunctionBackward<span style="color:rgb(98,98,98)">.</span>apply(<span style="color:rgb(98,98,98)">*</span>all_args)
+<span class="ansi-green-fg ansi-bold">   2364</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">-&gt; 2365</span>     out <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">call_compiled_backward</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">   2366</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> out
+
+File <span class="ansi-green-fg">~/mambaforge/lib/python3.10/site-packages/torch/_functorch/aot_autograd.py:2341</span>, in <span class="ansi-cyan-fg">aot_dispatch_autograd.&lt;locals&gt;.CompiledFunction.backward.&lt;locals&gt;.call_compiled_backward</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg ansi-bold">   2336</span>         CompiledFunction<span style="color:rgb(98,98,98)">.</span>compiled_bw <span style="color:rgb(98,98,98)">=</span> aot_config<span style="color:rgb(98,98,98)">.</span>bw_compiler(
+<span class="ansi-green-fg ansi-bold">   2337</span>             bw_module, all_args
+<span class="ansi-green-fg ansi-bold">   2338</span>         )
+<span class="ansi-green-fg ansi-bold">   2340</span> ctx<span style="color:rgb(98,98,98)">.</span>maybe_clear_saved_tensors()
+<span class="ansi-green-fg">-&gt; 2341</span> out <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">call_func_with_args</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg ansi-bold">   2342</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">CompiledFunction</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">compiled_bw</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   2343</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">all_args</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   2344</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">steal_args</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">True</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   2345</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">disable_amp</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">disable_amp</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg ansi-bold">   2346</span> <span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">   2348</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">tuple</span>(out)
+
+File <span class="ansi-green-fg">~/mambaforge/lib/python3.10/site-packages/torch/_functorch/aot_autograd.py:1249</span>, in <span class="ansi-cyan-fg">call_func_with_args</span><span class="ansi-blue-fg">(f, args, steal_args, disable_amp)</span>
+<span class="ansi-green-fg ansi-bold">   1247</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg ansi-bold">   1248</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">hasattr</span>(f, <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">_boxed_call</span><span style="color:rgb(175,0,0)">"</span>):
+<span class="ansi-green-fg">-&gt; 1249</span>         out <span style="color:rgb(98,98,98)">=</span> normalize_as_list(<span class="ansi-yellow-bg">f</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">)</span>)
+<span class="ansi-green-fg ansi-bold">   1250</span>     <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg ansi-bold">   1251</span>         <span style="font-style:italic;color:rgb(95,135,135)"># TODO: Please remove soon</span>
+<span class="ansi-green-fg ansi-bold">   1252</span>         <span style="font-style:italic;color:rgb(95,135,135)"># https://github.com/pytorch/pytorch/pull/83137#issuecomment-1211320670</span>
+<span class="ansi-green-fg ansi-bold">   1253</span>         warnings<span style="color:rgb(98,98,98)">.</span>warn(
+<span class="ansi-green-fg ansi-bold">   1254</span>             <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Your compiler for AOTAutograd is returning a a function that doesn</span><span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">t take boxed arguments. </span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">   1255</span>             <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Please wrap it with functorch.compile.make_boxed_func or handle the boxed arguments yourself. </span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">   1256</span>             <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">See https://github.com/pytorch/pytorch/pull/83137#issuecomment-1211320670 for rationale.</span><span style="color:rgb(175,0,0)">"</span>
+<span class="ansi-green-fg ansi-bold">   1257</span>         )
+
+File <span class="ansi-green-fg">~/mambaforge/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py:209</span>, in <span class="ansi-cyan-fg">_TorchDynamoContext.__call__.&lt;locals&gt;._fn</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-fg ansi-bold">    207</span> dynamic_ctx<span style="color:rgb(98,98,98)">.</span><span style="color:rgb(0,0,255)">__enter__</span>()
+<span class="ansi-green-fg ansi-bold">    208</span> <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
+<span class="ansi-green-fg">--&gt; 209</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">fn</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    210</span> <span style="font-weight:bold;color:rgb(0,135,0)">finally</span>:
+<span class="ansi-green-fg ansi-bold">    211</span>     set_eval_frame(prior)
+
+File <span class="ansi-green-fg">/var/folders/z8/gpvqr8mn3w9_f38byxhnsk780000gn/T/torchinductor_nipun/h3/ch3fylbuu2ex65gy5b7bcllk7mkpc2lapogbiq7w5cagi5jq2m2u.py:127</span>, in <span class="ansi-cyan-fg">call</span><span class="ansi-blue-fg">(args)</span>
+<span class="ansi-green-fg ansi-bold">    125</span> buf2 <span style="color:rgb(98,98,98)">=</span> empty_strided((<span style="color:rgb(98,98,98)">1</span>, <span style="color:rgb(98,98,98)">27</span>), (<span style="color:rgb(98,98,98)">27</span>, <span style="color:rgb(98,98,98)">1</span>), device<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">cpu</span><span style="color:rgb(175,0,0)">'</span>, dtype<span style="color:rgb(98,98,98)">=</span>torch<span style="color:rgb(98,98,98)">.</span>float32)
+<span class="ansi-green-fg ansi-bold">    126</span> buf3 <span style="color:rgb(98,98,98)">=</span> buf0; <span style="font-weight:bold;color:rgb(0,135,0)">del</span> buf0  <span style="font-style:italic;color:rgb(95,135,135)"># reuse</span>
+<span class="ansi-green-fg">--&gt; 127</span> <span class="ansi-yellow-bg">kernel_cpp_0</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">c_void_p</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">buf3</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">data_ptr</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">c_void_p</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">tangents_1</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">data_ptr</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">c_void_p</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">addmm</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">data_ptr</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">c_void_p</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">buf2</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">data_ptr</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg ansi-bold">    128</span> <span style="font-weight:bold;color:rgb(0,135,0)">del</span> addmm
+<span class="ansi-green-fg ansi-bold">    129</span> <span style="font-weight:bold;color:rgb(0,135,0)">del</span> tangents_1
+
+<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
+</div>
 </div>
 </div>
 <div id="cell-22" class="cell" data-execution_count="85">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the embedding</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>plot_emb(model.emb, itos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the embedding</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>plot_emb(model.emb, itos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="names_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="names_files/figure-html/cell-23-output-1.png" width="559" height="413" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <div id="cell-23" class="cell" data-execution_count="94">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate names from trained model</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(generate_name(model, itos, stoi, block_size))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate names from trained model</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(generate_name(model, itos, stoi, block_size))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>koyani
 mantit
@@ -45078,18 +45163,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -45121,7 +45195,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/nipunbatra\.github\.io\/ml-teaching\/");
@@ -45129,7 +45225,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

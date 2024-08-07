@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Machine Learning Resources</title>
+<title>gradient-descent-2d – Machine Learning Resources</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -141,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
@@ -289,20 +289,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a><span class="st">    \end</span><span class="sc">{frame}</span></span>
 <span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span> <span class="op">%</span>(i, i, i, i, i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>ValueError: unsupported format character 'p' (0x70) at index 793</code></pre>
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-10-3f4f6db3ccf0&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg ansi-bold">     71</span> 
+<span class="ansi-green-fg ansi-bold">     72</span>     <span class="ansi-red-fg">\</span>end<span class="ansi-blue-fg">{</span>frame<span class="ansi-blue-fg">}</span>
+<span class="ansi-green-fg">---&gt; 73</span><span class="ansi-red-fg">     """ %(i, i, i, i, i)
+</span>
+<span class="ansi-red-fg">ValueError</span>: unsupported format character 'p' (0x70) at index 793</pre>
+</div>
 </div>
 </div>
 <div id="cell-10" class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">""</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"</span><span class="ch">\\</span><span class="st">begin</span><span class="sc">{frame}</span><span class="st">{Gradient Descent}</span><span class="ch">\n</span><span class="st">"</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"  </span><span class="ch">\\</span><span class="st">begin</span><span class="sc">{center}</span><span class="ch">\n</span><span class="st">"</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"       \includegraphics[totalheight=6cm]{gradient-descent/iteration-"</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">".eps}</span><span class="ch">\n</span><span class="st">"</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"   \end</span><span class="sc">{center}</span><span class="ch">\n</span><span class="st">"</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"\end</span><span class="sc">{frame}</span><span class="ch">\n\n</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"</span><span class="ch">\\</span><span class="st">begin</span><span class="sc">{frame}</span><span class="st">{Gradient Descent}</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"  </span><span class="ch">\\</span><span class="st">begin</span><span class="sc">{center}</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"       \includegraphics[totalheight=6cm]{gradient-descent/iteration-"</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">".eps}</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"   \end</span><span class="sc">{center}</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"\end</span><span class="sc">{frame}</span><span class="ch">\n\n</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-11" class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>\begin{frame}{Gradient Descent}
   \begin{center}
@@ -428,34 +437,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-12" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fl">8.2</span><span class="op">*</span><span class="fl">4.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fl">8.2</span><span class="op">*</span><span class="fl">4.1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>33.62</code></pre>
 </div>
 </div>
 <div id="cell-13" class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> func(x):</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.sin(x) <span class="op">+</span> np.sin(x<span class="op">/</span><span class="dv">2</span>) <span class="op">+</span> np.sin(x<span class="op">/</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> func(x):</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.sin(x) <span class="op">+</span> np.sin(x<span class="op">/</span><span class="dv">2</span>) <span class="op">+</span> np.sin(x<span class="op">/</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-14" class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> x[x<span class="op">&lt;=</span><span class="dv">0</span>]</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> func(x)</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>latexify()</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>val <span class="op">=</span> <span class="op">-</span><span class="fl">7.2</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>plt.scatter([val],func(np.array([val])), color<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>ax.annotate(<span class="st">'Local minima'</span>, xy<span class="op">=</span>(val, func(val)), xytext<span class="op">=</span>(val, <span class="dv">1</span>),</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>            arrowprops<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">'grey'</span>, shrink<span class="op">=</span><span class="fl">0.0001</span>))</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>plt.xticks([])</span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>plt.yticks([])</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y, color<span class="op">=</span><span class="st">'grey'</span>)</span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"x"</span>)</span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"y=f(x)"</span>)</span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../gradient-descent/local-minima.eps"</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'eps'</span>,transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">100</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> x[x<span class="op">&lt;=</span><span class="dv">0</span>]</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> func(x)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>latexify()</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>val <span class="op">=</span> <span class="op">-</span><span class="fl">7.2</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>plt.scatter([val],func(np.array([val])), color<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>ax.annotate(<span class="st">'Local minima'</span>, xy<span class="op">=</span>(val, func(val)), xytext<span class="op">=</span>(val, <span class="dv">1</span>),</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>            arrowprops<span class="op">=</span><span class="bu">dict</span>(facecolor<span class="op">=</span><span class="st">'grey'</span>, shrink<span class="op">=</span><span class="fl">0.0001</span>))</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>plt.xticks([])</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>plt.yticks([])</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y, color<span class="op">=</span><span class="st">'grey'</span>)</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"x"</span>)</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"y=f(x)"</span>)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../gradient-descent/local-minima.eps"</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'eps'</span>,transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -465,33 +474,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-15" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">"../"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">"../"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-16" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> latexify <span class="im">import</span> format_axes, latexify</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> latexify <span class="im">import</span> format_axes, latexify</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-17" class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">1000</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">4.1</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.95</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>iterations <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>latexify()</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co"># for i in range(10):</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    plt.figure()</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    plt.plot(x,y,<span class="st">'k'</span>)</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    prev <span class="op">=</span> p</span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> p <span class="op">-</span> (alpha<span class="op">*</span><span class="dv">2</span><span class="op">*</span>p)</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    plt.arrow(prev,prev<span class="op">**</span><span class="dv">2</span>,p<span class="op">-</span>prev,p<span class="op">**</span><span class="dv">2</span><span class="op">-</span>prev<span class="op">**</span><span class="dv">2</span>,head_width<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'grey'</span>)</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    plt.scatter([prev],[prev<span class="op">**</span><span class="dv">2</span>],s<span class="op">=</span><span class="dv">40</span>, color<span class="op">=</span><span class="st">'grey'</span>)</span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"x"</span>)</span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"y"</span>)</span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"Iteration "</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">" (lr: "</span><span class="op">+</span><span class="bu">str</span>(alpha)<span class="op">+</span><span class="st">")"</span>)</span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>    format_axes(plt.gca())</span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="st">"../gradient-descent/overshooting-"</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">".eps"</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'eps'</span>,transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">1000</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">4.1</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.95</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>iterations <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>latexify()</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co"># for i in range(10):</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    plt.figure()</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    plt.plot(x,y,<span class="st">'k'</span>)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    prev <span class="op">=</span> p</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> p <span class="op">-</span> (alpha<span class="op">*</span><span class="dv">2</span><span class="op">*</span>p)</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    plt.arrow(prev,prev<span class="op">**</span><span class="dv">2</span>,p<span class="op">-</span>prev,p<span class="op">**</span><span class="dv">2</span><span class="op">-</span>prev<span class="op">**</span><span class="dv">2</span>,head_width<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'grey'</span>)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    plt.scatter([prev],[prev<span class="op">**</span><span class="dv">2</span>],s<span class="op">=</span><span class="dv">40</span>, color<span class="op">=</span><span class="st">'grey'</span>)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"x"</span>)</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"y"</span>)</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"Iteration "</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">" (lr: "</span><span class="op">+</span><span class="bu">str</span>(alpha)<span class="op">+</span><span class="st">")"</span>)</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    format_axes(plt.gca())</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="st">"../gradient-descent/overshooting-"</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">".eps"</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'eps'</span>,transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -564,16 +573,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-18" class="cell" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">""</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"</span><span class="ch">\\</span><span class="st">begin</span><span class="sc">{frame}{Overshooting}</span><span class="ch">\n</span><span class="st">"</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"  </span><span class="ch">\\</span><span class="st">begin</span><span class="sc">{center}</span><span class="ch">\n</span><span class="st">"</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"       \includegraphics[totalheight=6cm]{gradient-descent/overshooting-"</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">".eps}</span><span class="ch">\n</span><span class="st">"</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"   \end</span><span class="sc">{center}</span><span class="ch">\n</span><span class="st">"</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"\end</span><span class="sc">{frame}</span><span class="ch">\n\n</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"</span><span class="ch">\\</span><span class="st">begin</span><span class="sc">{frame}{Overshooting}</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"  </span><span class="ch">\\</span><span class="st">begin</span><span class="sc">{center}</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"       \includegraphics[totalheight=6cm]{gradient-descent/overshooting-"</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">".eps}</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"   \end</span><span class="sc">{center}</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"\end</span><span class="sc">{frame}</span><span class="ch">\n\n</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-19" class="cell" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>\begin{frame}{Overshooting}
   \begin{center}
@@ -639,27 +648,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-20" class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">1000</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">4.1</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">.01</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>iterations <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>latexify()</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co"># for i in range(10):</span></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    plt.figure()</span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    plt.plot(x,y,<span class="st">'k'</span>)</span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    prev <span class="op">=</span> p</span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> p <span class="op">-</span> (alpha<span class="op">*</span><span class="dv">2</span><span class="op">*</span>p)</span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    plt.arrow(prev,prev<span class="op">**</span><span class="dv">2</span>,p<span class="op">-</span>prev,p<span class="op">**</span><span class="dv">2</span><span class="op">-</span>prev<span class="op">**</span><span class="dv">2</span>,head_width<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>    plt.scatter([prev],[prev<span class="op">**</span><span class="dv">2</span>],s<span class="op">=</span><span class="dv">40</span>, color<span class="op">=</span><span class="st">'grey'</span>)</span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"x"</span>)</span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"y"</span>)</span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"Iteration "</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">" (lr: "</span><span class="op">+</span><span class="bu">str</span>(alpha)<span class="op">+</span><span class="st">")"</span>)</span>
-<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>    format_axes(plt.gca())</span>
-<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="st">"../gradient-descent/undershooting-"</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">".eps"</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'eps'</span>,transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">1000</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">4.1</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">.01</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>iterations <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>latexify()</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># for i in range(10):</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    plt.figure()</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    plt.plot(x,y,<span class="st">'k'</span>)</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    prev <span class="op">=</span> p</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> p <span class="op">-</span> (alpha<span class="op">*</span><span class="dv">2</span><span class="op">*</span>p)</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    plt.arrow(prev,prev<span class="op">**</span><span class="dv">2</span>,p<span class="op">-</span>prev,p<span class="op">**</span><span class="dv">2</span><span class="op">-</span>prev<span class="op">**</span><span class="dv">2</span>,head_width<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>    plt.scatter([prev],[prev<span class="op">**</span><span class="dv">2</span>],s<span class="op">=</span><span class="dv">40</span>, color<span class="op">=</span><span class="st">'grey'</span>)</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"x"</span>)</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"y"</span>)</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"Iteration "</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">" (lr: "</span><span class="op">+</span><span class="bu">str</span>(alpha)<span class="op">+</span><span class="st">")"</span>)</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>    format_axes(plt.gca())</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="st">"../gradient-descent/undershooting-"</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">".eps"</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'eps'</span>,transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -732,16 +741,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-21" class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">""</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"</span><span class="ch">\\</span><span class="st">begin</span><span class="sc">{frame}</span><span class="st">{Slow Convergence}</span><span class="ch">\n</span><span class="st">"</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"  </span><span class="ch">\\</span><span class="st">begin</span><span class="sc">{center}</span><span class="ch">\n</span><span class="st">"</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"       \includegraphics[totalheight=6cm]{gradient-descent/undershooting-"</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">".eps}</span><span class="ch">\n</span><span class="st">"</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"   \end</span><span class="sc">{center}</span><span class="ch">\n</span><span class="st">"</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"\end</span><span class="sc">{frame}</span><span class="ch">\n\n</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"</span><span class="ch">\\</span><span class="st">begin</span><span class="sc">{frame}</span><span class="st">{Slow Convergence}</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"  </span><span class="ch">\\</span><span class="st">begin</span><span class="sc">{center}</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"       \includegraphics[totalheight=6cm]{gradient-descent/undershooting-"</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">".eps}</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"   \end</span><span class="sc">{center}</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    s<span class="op">+=</span><span class="st">"\end</span><span class="sc">{frame}</span><span class="ch">\n\n</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-22" class="cell" data-scrolled="true" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (s)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>\begin{frame}{Slow Convergence}
   \begin{center}
@@ -807,42 +816,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="cell-23" class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">1000</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">4.1</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">.01</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>iterations <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>latexify()</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="co"># for i in range(10):</span></span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    plt.figure()</span>
-<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>    plt.plot(x,y,<span class="st">'k'</span>)</span>
-<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    prev <span class="op">=</span> p</span>
-<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> p <span class="op">-</span> (alpha<span class="op">*</span><span class="dv">2</span><span class="op">*</span>p)</span>
-<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>    plt.arrow(prev,prev<span class="op">**</span><span class="dv">2</span>,p<span class="op">-</span>prev,p<span class="op">**</span><span class="dv">2</span><span class="op">-</span>prev<span class="op">**</span><span class="dv">2</span>,head_width<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>    plt.scatter([prev],[prev<span class="op">**</span><span class="dv">2</span>],s<span class="op">=</span><span class="dv">40</span>, color<span class="op">=</span><span class="st">'grey'</span>)</span>
-<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"x"</span>)</span>
-<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"y"</span>)</span>
-<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"Iteration "</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">" (lr: "</span><span class="op">+</span><span class="bu">str</span>(alpha)<span class="op">+</span><span class="st">")"</span>)</span>
-<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>    format_axes(plt.gca())</span>
-<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="st">"../gradient-descent/undershooting-"</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">".eps"</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'eps'</span>,transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">1000</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">4.1</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">.01</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>iterations <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>latexify()</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co"># for i in range(10):</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>    plt.figure()</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    plt.plot(x,y,<span class="st">'k'</span>)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    prev <span class="op">=</span> p</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> p <span class="op">-</span> (alpha<span class="op">*</span><span class="dv">2</span><span class="op">*</span>p)</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    plt.arrow(prev,prev<span class="op">**</span><span class="dv">2</span>,p<span class="op">-</span>prev,p<span class="op">**</span><span class="dv">2</span><span class="op">-</span>prev<span class="op">**</span><span class="dv">2</span>,head_width<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    plt.scatter([prev],[prev<span class="op">**</span><span class="dv">2</span>],s<span class="op">=</span><span class="dv">40</span>, color<span class="op">=</span><span class="st">'grey'</span>)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"x"</span>)</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"y"</span>)</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"Iteration "</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">" (lr: "</span><span class="op">+</span><span class="bu">str</span>(alpha)<span class="op">+</span><span class="st">")"</span>)</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>    format_axes(plt.gca())</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="st">"../gradient-descent/undershooting-"</span><span class="op">+</span><span class="bu">str</span>(i<span class="op">+</span><span class="dv">1</span>)<span class="op">+</span><span class="st">".eps"</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'eps'</span>,transparent<span class="op">=</span><span class="va">True</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-24" class="cell" data-execution_count="87">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">100</span>)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>x</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>plt.plot(y,label<span class="op">=</span><span class="st">"GD"</span>)</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>noise <span class="op">=</span> np.random.random((<span class="bu">len</span>(x)))</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>noise[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>noise[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>noise[<span class="dv">2</span>] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>plt.plot(y<span class="op">+</span><span class="fl">0.2</span><span class="op">*</span>(noise<span class="op">-</span><span class="fl">0.5</span>),label<span class="op">=</span><span class="st">"SGD"</span>)</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Iterations vs Cost"</span>)</span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Iteration"</span>)</span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Cost"</span>)</span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"gd-sgd.eps"</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'eps'</span>,transparent<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">100</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>x</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>plt.plot(y,label<span class="op">=</span><span class="st">"GD"</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>noise <span class="op">=</span> np.random.random((<span class="bu">len</span>(x)))</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>noise[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>noise[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>noise[<span class="dv">2</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>plt.plot(y<span class="op">+</span><span class="fl">0.2</span><span class="op">*</span>(noise<span class="op">-</span><span class="fl">0.5</span>),label<span class="op">=</span><span class="st">"SGD"</span>)</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Iterations vs Cost"</span>)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Iteration"</span>)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Cost"</span>)</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"gd-sgd.eps"</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'eps'</span>,transparent<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.
 The PostScript backend does not support transparency; partially transparent artists will be rendered opaque.</code></pre>
@@ -856,12 +865,12 @@ The PostScript backend does not support transparency; partially transparent arti
 </div>
 </div>
 <div id="cell-25" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>val <span class="op">=</span> <span class="fl">4.1</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    val <span class="op">=</span> val <span class="op">-</span> alpha <span class="op">*</span> <span class="dv">2</span><span class="op">*</span> val</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span> (val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>val <span class="op">=</span> <span class="fl">4.1</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.05</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    val <span class="op">=</span> val <span class="op">-</span> alpha <span class="op">*</span> <span class="dv">2</span><span class="op">*</span> val</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span> (val)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>3.6899999999999995
 3.3209999999999997
@@ -1058,18 +1067,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1101,7 +1099,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/nipunbatra\.github\.io\/ml-teaching\/");
@@ -1109,7 +1129,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
