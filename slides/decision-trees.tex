@@ -759,13 +759,136 @@ node/.style={%
 		D6           & 90                   & No                  \\ \bottomrule
 	\end{tabular}
 \end{table}
-\begin{itemize}
+\begin{itemize}[<+->]
 	\item How do you find splits?
 	\item Sort by attribute
-	\item Find attribute values where changes happen
-	\item For example, splits are: Temp $>$ (48+60)/2 and Temp $>$ (80+90)/2
+	\item Find potential split points (midpoints). 
+	\item For the above example, we have 5 potential splits: 44, 54, 66, 76, 85
+	\item Calculate the weighted impurity for each split
+	\item Choose the split with the lowest impurity
 \end{itemize}
 \end{frame}
+
+\begin{frame}{Finding splits}
+	\begin{table}[]
+		\begin{tabular}{@{}lrr@{}}
+			\toprule
+			\textbf{Day} & \textbf{Temperature} & \textbf{PlayTennis} \\ \midrule
+			D1           & 40                   & No                  \\
+			D2           & 48                   & No                  \\
+			D3           & 60                   & Yes                 \\
+			D4           & 72                   & Yes                 \\
+			D5           & 80                   & Yes                 \\
+			D6           & 90                   & No                  \\ \bottomrule
+		\end{tabular}
+	\end{table}
+	\begin{itemize}
+		\item Consider split at 44
+		\item LHS has 1 No and 0 Yes; RHS has 3 Yes and 2 No
+		\item Entropy for LHS = 0, Entropy for RHS = 0.971
+		\item Weighted Entropy = 0.971*5/6 = 0.808
+	\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Finding splits}
+		\begin{table}[]
+			\begin{tabular}{@{}lrr@{}}
+				\toprule
+				\textbf{Day} & \textbf{Temperature} & \textbf{PlayTennis} \\ \midrule
+				D1           & 40                   & No                  \\
+				D2           & 48                   & No                  \\
+				D3           & 60                   & Yes                 \\
+				D4           & 72                   & Yes                 \\
+				D5           & 80                   & Yes                 \\
+				D6           & 90                   & No                  \\ \bottomrule
+			\end{tabular}
+		\end{table}
+		\begin{itemize}
+			\item Consider split at 54
+			\item LHS has 2 No and 0 Yes; RHS has 3 Yes and 1 No
+			\item Entropy for LHS = 0, Entropy for RHS = 0.811
+			\item Weighted Entropy = 0.811*4/6 = 0.541
+		\end{itemize}
+		\end{frame}
+
+		\begin{frame}{Finding splits}
+			\begin{table}[]
+				\begin{tabular}{@{}lrr@{}}
+					\toprule
+					\textbf{Day} & \textbf{Temperature} & \textbf{PlayTennis} \\ \midrule
+					D1           & 40                   & No                  \\
+					D2           & 48                   & No                  \\
+					D3           & 60                   & Yes                 \\
+					D4           & 72                   & Yes                 \\
+					D5           & 80                   & Yes                 \\
+					D6           & 90                   & No                  \\ \bottomrule
+				\end{tabular}
+			\end{table}
+			\begin{itemize}
+				\item Consider split at 66
+				\item LHS has 2 No and 1 Yes; RHS has 2 Yes and 1 No
+				\item Entropy for LHS = 0.918, Entropy for RHS = 0.918
+				\item Weighted Entropy = 0.918*3/6 + 0.918*3/6 = 0.918
+			\end{itemize}
+			\end{frame}
+
+
+		\begin{frame}{Finding splits}
+			\begin{table}[]
+				\begin{tabular}{@{}lrr@{}}
+					\toprule
+					\textbf{Day} & \textbf{Temperature} & \textbf{PlayTennis} \\ \midrule
+					D1           & 40                   & No                  \\
+					D2           & 48                   & No                  \\
+					D3           & 60                   & Yes                 \\
+					D4           & 72                   & Yes                 \\
+					D5           & 80                   & Yes                 \\
+					D6           & 90                   & No                  \\ \bottomrule
+				\end{tabular}
+			\end{table}
+			\begin{itemize}
+				\item Consider split at 76
+				\item LHS has 2 No and 2 Yes; RHS has 1 Yes and 1 No
+				\item Entropy for LHS = 1, Entropy for RHS = 1
+				\item Weighted Entropy = 1*4/6 + 1*2/6 = 1
+			\end{itemize}
+			\end{frame}
+
+			\begin{frame}{Finding splits}
+				\begin{table}[]
+					\begin{tabular}{@{}lrr@{}}
+						\toprule
+						\textbf{Day} & \textbf{Temperature} & \textbf{PlayTennis} \\ \midrule
+						D1           & 40                   & No                  \\
+						D2           & 48                   & No                  \\
+						D3           & 60                   & Yes                 \\
+						D4           & 72                   & Yes                 \\
+						D5           & 80                   & Yes                 \\
+						D6           & 90                   & No                  \\ \bottomrule
+					\end{tabular}
+				\end{table}
+				\begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/decision-tree-real-input-discrete-output.html}
+					\includegraphics[scale=0.3]{../figures/decision-trees/real-ip-1.pdf}
+				\end{notebookbox}
+				\end{frame}
+
+				\begin{frame}{Finding splits}
+					\begin{table}[]
+						\begin{tabular}{@{}lrr@{}}
+							\toprule
+							\textbf{Day} & \textbf{Temperature} & \textbf{PlayTennis} \\ \midrule
+							D1           & 40                   & No                  \\
+							D2           & 48                   & No                  \\
+							D3           & 60                   & Yes                 \\
+							D4           & 72                   & Yes                 \\
+							D5           & 80                   & Yes                 \\
+							D6           & 90                   & No                  \\ \bottomrule
+						\end{tabular}
+					\end{table}
+					\begin{notebookbox}{https://nipunbatra.github.io/ml-teaching/notebooks/decision-tree-real-input-discrete-output.html}
+						\includegraphics[scale=0.25]{../figures/decision-trees/real-ip-2.pdf}
+					\end{notebookbox}
+					\end{frame}
 
 \foreach \i in {1,...,9} {
 \begin{frame}{Example (DT of depth \i)}
