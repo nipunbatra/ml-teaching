@@ -194,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="18">
+<div id="cell-1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -205,7 +205,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>FIG_WIDTH <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>FIG_HEIGHT <span class="op">=</span> <span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-2" class="cell" data-execution_count="19">
+<div id="cell-2" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create dataset</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>])</span>
@@ -223,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="20">
+<div id="cell-3" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Depth 0 tree</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Average of all y values</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> np.mean(y)</span>
@@ -243,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="21">
+<div id="cell-4" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_DT_Regressor(x, y, depth, filename):</span>
@@ -263,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dt</span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="22">
+<div id="cell-5" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dt_one <span class="op">=</span> create_DT_Regressor(x, y, <span class="dv">1</span>, <span class="st">"ri-ro-depth-1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -273,7 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="23">
+<div id="cell-6" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> export_graphviz</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> graphviz</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_graph(dt, filename, feature_names<span class="op">=</span>[<span class="st">'x'</span>]):</span>
@@ -283,9 +283,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    graph.render(<span class="ss">f"../figures/decision-trees/</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> graph</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="24">
+<div id="cell-7" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>create_graph(dt_one, <span class="st">"ri-ro-depth-1-sklearn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 <figure class="figure">
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-8-output-1.svg" class="img-fluid figure-img"></p>
@@ -293,7 +293,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="25">
+<div id="cell-8" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dt_two <span class="op">=</span> create_DT_Regressor(x, y, <span class="dv">2</span>, <span class="st">"ri-ro-depth-2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -303,9 +303,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="26">
+<div id="cell-9" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>create_graph(dt_two, <span class="st">"ri-ro-depth-2-sklearn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 <figure class="figure">
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-10-output-1.svg" class="img-fluid figure-img"></p>
@@ -313,11 +313,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="27">
+<div id="cell-10" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dt_three <span class="op">=</span> create_DT_Regressor(x, y, <span class="dv">3</span>, <span class="st">"ri-ro-depth-3"</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>create_graph(dt_three, <span class="st">"ri-ro-depth-3-sklearn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 <figure class="figure">
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-11-output-1.svg" class="img-fluid figure-img"></p>
@@ -333,7 +333,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Sine Dataset</p>
-<div id="cell-12" class="cell" data-execution_count="28">
+<div id="cell-12" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Sine daatset</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">200</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.sin(x)</span>
@@ -350,7 +350,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="29">
+<div id="cell-13" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dt_sine_one <span class="op">=</span> create_DT_Regressor(x, y, <span class="dv">1</span>, <span class="st">"sine-depth-1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -360,15 +360,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-14" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>np.mean(y), np.linalg.norm(y <span class="op">-</span> np.mean(y))<span class="op">/</span><span class="bu">len</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="34">
-<pre><code>(0.0, 0.04987484335815001)</code></pre>
+<div id="cell-14" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mean_y <span class="op">=</span> np.mean(y)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>error_vector <span class="op">=</span> y <span class="op">-</span> mean_y</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>squared_error <span class="op">=</span> np.<span class="bu">sum</span>(error_vector<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>mean_squared_error <span class="op">=</span> squared_error <span class="op">/</span> <span class="bu">len</span>(y)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean squared error: </span><span class="sc">{</span>mean_squared_error<span class="sc">:0.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean squared error: 0.4975</code></pre>
 </div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="30">
+<div id="cell-15" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>create_graph(dt_sine_one, <span class="st">"sine-depth-1-sklearn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="30">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 <figure class="figure">
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-15-output-1.svg" class="img-fluid figure-img"></p>
@@ -376,171 +380,183 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dt_sine_four <span class="op">=</span> create_DT_Regressor(x, y, <span class="dv">4</span>, <span class="st">"sine-depth-4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-16" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>split <span class="op">=</span> np.pi</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>left <span class="op">=</span> y[x <span class="op">&lt;</span> split]</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>right <span class="op">=</span> y[x <span class="op">&gt;=</span> split]</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>mean_left <span class="op">=</span> np.mean(left)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>mean_right <span class="op">=</span> np.mean(right)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>error_vector_left <span class="op">=</span> left <span class="op">-</span> mean_left</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>error_vector_right <span class="op">=</span> right <span class="op">-</span> mean_right</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>squared_error_left <span class="op">=</span> np.<span class="bu">sum</span>(error_vector_left<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>squared_error_right <span class="op">=</span> np.<span class="bu">sum</span>(error_vector_right<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>mean_squared_error_left <span class="op">=</span> squared_error_left <span class="op">/</span> <span class="bu">len</span>(left)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>mean_squared_error_right <span class="op">=</span> squared_error_right <span class="op">/</span> <span class="bu">len</span>(right)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean squared error left: </span><span class="sc">{</span>mean_squared_error_left<span class="sc">:0.4f}</span><span class="ss">"</span>)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean value left: </span><span class="sc">{</span>mean_left<span class="sc">:0.4f}</span><span class="ss">"</span>)  </span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of samples in left: </span><span class="sc">{</span><span class="bu">len</span>(left)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"---"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean squared error right: </span><span class="sc">{</span>mean_squared_error_right<span class="sc">:0.4f}</span><span class="ss">"</span>)</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mean value right: </span><span class="sc">{</span>mean_right<span class="sc">:0.4f}</span><span class="ss">"</span>)</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Number of samples in right: </span><span class="sc">{</span><span class="bu">len</span>(right)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>weighted_error <span class="op">=</span> <span class="bu">len</span>(left) <span class="op">/</span> <span class="bu">len</span>(y) <span class="op">*</span> mean_squared_error_left <span class="op">+</span> <span class="bu">len</span>(right) <span class="op">/</span> <span class="bu">len</span>(y) <span class="op">*</span> mean_squared_error_right</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"---"</span><span class="op">*</span><span class="dv">20</span>)</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Weighted error: </span><span class="sc">{</span>weighted_error<span class="sc">:0.4f}</span><span class="ss">"</span>)</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>reduction <span class="op">=</span> mean_squared_error <span class="op">-</span> weighted_error</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Reduction: </span><span class="sc">{</span>reduction<span class="sc">:0.4f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean squared error left: 0.0963
+Mean value left: 0.6334
+Number of samples in left: 100
+------------------------------------------------------------
+Mean squared error right: 0.0963
+Mean value right: -0.6334
+Number of samples in right: 100
+------------------------------------------------------------
+Weighted error: 0.0963
+Reduction: 0.4012</code></pre>
+</div>
+</div>
+<div id="cell-17" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dt_sine_two <span class="op">=</span> create_DT_Regressor(x, y, <span class="dv">2</span>, <span class="st">"sine-depth-2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-16-output-1.png" width="368" height="232" class="figure-img"></p>
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-17-output-1.png" width="368" height="232" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-18" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>create_graph(dt_sine_two, <span class="st">"sine-depth-2-sklearn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<div>
+<figure class="figure">
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-18-output-1.svg" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-19" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dt_sine_four <span class="op">=</span> create_DT_Regressor(x, y, <span class="dv">4</span>, <span class="st">"sine-depth-4"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-19-output-1.png" width="368" height="232" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Bias-Variance Tradeoff - Dataset I</p>
-<div id="cell-18" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Dataset for showing bias-variance tradeoff</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">1</span>],[<span class="dv">2</span>, <span class="dv">1</span>],[<span class="dv">3</span>, <span class="dv">1</span>],[<span class="dv">5</span>, <span class="dv">1</span>],</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">6</span>, <span class="dv">1</span>],[<span class="dv">7</span>, <span class="dv">1</span>],[<span class="dv">1</span>, <span class="dv">2</span>],[<span class="dv">2</span>, <span class="dv">2</span>],</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">6</span>, <span class="dv">2</span>],[<span class="dv">7</span>, <span class="dv">2</span>],[<span class="dv">1</span>, <span class="dv">4</span>],[<span class="dv">7</span>, <span class="dv">4</span>]])</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span> ,<span class="dv">0</span>, <span class="dv">1</span>])</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"$x_1$"</span>)</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"$x_2$"</span>)</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-dataset.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-21" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Dataset for showing bias-variance tradeoff</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">1</span>],[<span class="dv">2</span>, <span class="dv">1</span>],[<span class="dv">3</span>, <span class="dv">1</span>],[<span class="dv">5</span>, <span class="dv">1</span>],</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">6</span>, <span class="dv">1</span>],[<span class="dv">7</span>, <span class="dv">1</span>],[<span class="dv">1</span>, <span class="dv">2</span>],[<span class="dv">2</span>, <span class="dv">2</span>],</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>              [<span class="dv">6</span>, <span class="dv">2</span>],[<span class="dv">7</span>, <span class="dv">2</span>],[<span class="dv">1</span>, <span class="dv">4</span>],[<span class="dv">7</span>, <span class="dv">4</span>]])</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span> ,<span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"$x_1$"</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"$x_2$"</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-dataset.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-17-output-1.png" width="364" height="250" class="figure-img"></p>
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-20-output-1.png" width="364" height="250" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_DT_Classifier(X,y,depth,filename):</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    dt <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span>depth)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    dt.fit(X, y)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Predict in entire 2d space and contour plot</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    x1 <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">100</span>)</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    x2 <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">100</span>)</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    X1, X2 <span class="op">=</span> np.meshgrid(x1, x2)</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    X_test <span class="op">=</span> np.stack([X1.flatten(), X2.flatten()], axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    y_test <span class="op">=</span> dt.predict(X_test)</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    plt.contourf(X1, X2, y_test.reshape(X1.shape), alpha<span class="op">=</span><span class="fl">0.1</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>)</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    format_axes(plt.gca())</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="ss">f"../figures/decision-trees/</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">.pdf"</span>)</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-22" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_DT_Classifier(X,y,depth,filename):</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    dt <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span>depth)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    dt.fit(X, y)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Predict in entire 2d space and contour plot</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    x1 <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">100</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    x2 <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">100</span>)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    X1, X2 <span class="op">=</span> np.meshgrid(x1, x2)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    X_test <span class="op">=</span> np.stack([X1.flatten(), X2.flatten()], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    y_test <span class="op">=</span> dt.predict(X_test)</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    plt.contourf(X1, X2, y_test.reshape(X1.shape), alpha<span class="op">=</span><span class="fl">0.1</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    format_axes(plt.gca())</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="ss">f"../figures/decision-trees/</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">.pdf"</span>)</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dt_bias_variance_one <span class="op">=</span> create_DT_Classifier(X, y, <span class="dv">1</span>, <span class="st">"bias-variance-depth-1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-23" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dt_bias_variance_one <span class="op">=</span> create_DT_Classifier(X, y, <span class="dv">1</span>, <span class="st">"bias-variance-depth-1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-19-output-1.png" width="350" height="236" class="figure-img"></p>
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-22-output-1.png" width="350" height="236" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-21" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>create_graph(dt_bias_variance_one, <span class="st">"bias-variance-depth-1-sklearn"</span>, feature_names<span class="op">=</span>[<span class="st">'x1'</span>, <span class="st">'x2'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-24" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>create_graph(dt_bias_variance_one, <span class="st">"bias-variance-depth-1-sklearn"</span>, feature_names<span class="op">=</span>[<span class="st">'x1'</span>, <span class="st">'x2'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 <figure class="figure">
-<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-20-output-1.svg" class="img-fluid figure-img"></p>
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-23-output-1.svg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-22" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dt_bias_variance_full_depth <span class="op">=</span> create_DT_Classifier(X, y, <span class="va">None</span>, <span class="st">"bias-variance-full-depth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-25" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>dt_bias_variance_full_depth <span class="op">=</span> create_DT_Classifier(X, y, <span class="va">None</span>, <span class="st">"bias-variance-full-depth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-21-output-1.png" width="350" height="236" class="figure-img"></p>
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-24-output-1.png" width="350" height="236" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-23" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>create_graph(dt_bias_variance_full_depth, <span class="st">"bias-variance-full-depth-sklearn"</span>, feature_names<span class="op">=</span>[<span class="st">'x1'</span>, <span class="st">'x2'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-26" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>create_graph(dt_bias_variance_full_depth, <span class="st">"bias-variance-full-depth-sklearn"</span>, feature_names<span class="op">=</span>[<span class="st">'x1'</span>, <span class="st">'x2'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <div>
 <figure class="figure">
-<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-22-output-1.svg" class="img-fluid figure-img"></p>
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-25-output-1.svg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Bias-Variance Tradeoff - Dataset II</p>
-<div id="cell-25" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bias variance dataset 2</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># X is all integers from (1, 1) to (6, 6)</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[i, j] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>) <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>)])</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.zeros(<span class="bu">len</span>(X), dtype<span class="op">=</span><span class="bu">int</span>)</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>y[(<span class="dv">2</span> <span class="op">&lt;=</span> X[:, <span class="dv">0</span>]) <span class="op">&amp;</span> (X[:, <span class="dv">0</span>] <span class="op">&lt;=</span> <span class="dv">5</span>) <span class="op">&amp;</span> (<span class="dv">2</span> <span class="op">&lt;=</span> X[:, <span class="dv">1</span>]) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">&lt;=</span> <span class="dv">5</span>)] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-28" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bias variance dataset 2</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># X is all integers from (1, 1) to (6, 6)</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.array([[i, j] <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>) <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>)])</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.zeros(<span class="bu">len</span>(X), dtype<span class="op">=</span><span class="bu">int</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>y[(<span class="dv">2</span> <span class="op">&lt;=</span> X[:, <span class="dv">0</span>]) <span class="op">&amp;</span> (X[:, <span class="dv">0</span>] <span class="op">&lt;=</span> <span class="dv">5</span>) <span class="op">&amp;</span> (<span class="dv">2</span> <span class="op">&lt;=</span> X[:, <span class="dv">1</span>]) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">&lt;=</span> <span class="dv">5</span>)] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-23-output-1.png" width="346" height="232" class="figure-img"></p>
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-26-output-1.png" width="346" height="232" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-26" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>special_condition <span class="op">=</span> (X[:, <span class="dv">0</span>] <span class="op">==</span> <span class="dv">3</span>) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">==</span> <span class="dv">3</span>) <span class="op">|</span> (X[:, <span class="dv">0</span>] <span class="op">==</span> <span class="dv">4</span>) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">==</span> <span class="dv">4</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>y[special_condition] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y) </span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-dataset-2.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-24-output-1.png" width="346" height="232" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="cell-27" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># X_test random uniform frmo (1, 1) to (6, 6) of size 1000</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> np.random.uniform(<span class="dv">1</span>, <span class="dv">6</span>, size<span class="op">=</span>(<span class="dv">1000</span>, <span class="dv">2</span>))</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> np.zeros(<span class="bu">len</span>(X_test), dtype<span class="op">=</span><span class="bu">int</span>)</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>y_test[(<span class="dv">2</span> <span class="op">&lt;=</span> X_test[:, <span class="dv">0</span>]) <span class="op">&amp;</span> (X_test[:, <span class="dv">0</span>] <span class="op">&lt;=</span> <span class="dv">5</span>) <span class="op">&amp;</span> (<span class="dv">2</span> <span class="op">&lt;=</span> X_test[:, <span class="dv">1</span>]) <span class="op">&amp;</span> (X_test[:, <span class="dv">1</span>] <span class="op">&lt;=</span> <span class="dv">5</span>)] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_test[:, <span class="dv">0</span>], X_test[:, <span class="dv">1</span>], c<span class="op">=</span>y_test, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-dataset-2-test.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-25-output-1.png" width="346" height="232" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="cell-28" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_DT_Classifier_with_graph(X,y,depth,filename):</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    dt <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span>depth)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    dt.fit(X, y)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Predict in entire 2d space and contour plot</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    x1 <span class="op">=</span> np.linspace(<span class="fl">0.5</span>, <span class="fl">6.5</span>, <span class="dv">100</span>)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    x2 <span class="op">=</span> np.linspace(<span class="fl">0.5</span>, <span class="fl">6.5</span>, <span class="dv">100</span>)</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    X1, X2 <span class="op">=</span> np.meshgrid(x1, x2)</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    X_contour <span class="op">=</span> np.stack([X1.flatten(), X2.flatten()], axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    y_contour <span class="op">=</span> dt.predict(X_contour)</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    plt.contourf(X1, X2, y_contour.reshape(X1.shape), alpha<span class="op">=</span><span class="fl">0.1</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>)</span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    format_axes(plt.gca())</span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="ss">f"../figures/decision-trees/</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">.pdf"</span>)</span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Export tree</span></span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>    dot_data <span class="op">=</span> export_graphviz(dt, out_file<span class="op">=</span><span class="va">None</span>, feature_names<span class="op">=</span>[<span class="st">'x1'</span>, <span class="st">'x2'</span>], filled<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>    graph <span class="op">=</span> graphviz.Source(dot_data)</span>
-<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>    graph.<span class="bu">format</span> <span class="op">=</span> <span class="st">'pdf'</span></span>
-<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>    graph.render(<span class="ss">f"../figures/decision-trees/</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">-sklearn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-29" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Underfitting</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>create_DT_Classifier_with_graph(X, y, <span class="dv">2</span>, <span class="st">"bias-variance-depth-2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-29" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>special_condition <span class="op">=</span> (X[:, <span class="dv">0</span>] <span class="op">==</span> <span class="dv">3</span>) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">==</span> <span class="dv">3</span>) <span class="op">|</span> (X[:, <span class="dv">0</span>] <span class="op">==</span> <span class="dv">4</span>) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">==</span> <span class="dv">4</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>y[special_condition] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y) </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-dataset-2.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -549,9 +565,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-30" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Overfitting</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>create_DT_Classifier_with_graph(X, y, <span class="va">None</span>, <span class="st">"bias-variance-full-depth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-30" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># X_test random uniform frmo (1, 1) to (6, 6) of size 1000</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> np.random.uniform(<span class="dv">1</span>, <span class="dv">6</span>, size<span class="op">=</span>(<span class="dv">1000</span>, <span class="dv">2</span>))</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> np.zeros(<span class="bu">len</span>(X_test), dtype<span class="op">=</span><span class="bu">int</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>y_test[(<span class="dv">2</span> <span class="op">&lt;=</span> X_test[:, <span class="dv">0</span>]) <span class="op">&amp;</span> (X_test[:, <span class="dv">0</span>] <span class="op">&lt;=</span> <span class="dv">5</span>) <span class="op">&amp;</span> (<span class="dv">2</span> <span class="op">&lt;=</span> X_test[:, <span class="dv">1</span>]) <span class="op">&amp;</span> (X_test[:, <span class="dv">1</span>] <span class="op">&lt;=</span> <span class="dv">5</span>)] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_test[:, <span class="dv">0</span>], X_test[:, <span class="dv">1</span>], c<span class="op">=</span>y_test, alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-dataset-2-test.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -560,36 +582,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-31" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Good Fit</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>create_DT_Classifier_with_graph(X, y, <span class="dv">4</span>, <span class="st">"bias-variance-good-fit"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-31" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_DT_Classifier_with_graph(X,y,depth,filename):</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    dt <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span>depth)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    dt.fit(X, y)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Predict in entire 2d space and contour plot</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    x1 <span class="op">=</span> np.linspace(<span class="fl">0.5</span>, <span class="fl">6.5</span>, <span class="dv">100</span>)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    x2 <span class="op">=</span> np.linspace(<span class="fl">0.5</span>, <span class="fl">6.5</span>, <span class="dv">100</span>)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    X1, X2 <span class="op">=</span> np.meshgrid(x1, x2)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    X_contour <span class="op">=</span> np.stack([X1.flatten(), X2.flatten()], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    y_contour <span class="op">=</span> dt.predict(X_contour)</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    plt.contourf(X1, X2, y_contour.reshape(X1.shape), alpha<span class="op">=</span><span class="fl">0.1</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>)</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    format_axes(plt.gca())</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="ss">f"../figures/decision-trees/</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">.pdf"</span>)</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Export tree</span></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>    dot_data <span class="op">=</span> export_graphviz(dt, out_file<span class="op">=</span><span class="va">None</span>, feature_names<span class="op">=</span>[<span class="st">'x1'</span>, <span class="st">'x2'</span>], filled<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>    graph <span class="op">=</span> graphviz.Source(dot_data)</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>    graph.<span class="bu">format</span> <span class="op">=</span> <span class="st">'pdf'</span></span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>    graph.render(<span class="ss">f"../figures/decision-trees/</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">-sklearn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-32" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Underfitting</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>create_DT_Classifier_with_graph(X, y, <span class="dv">2</span>, <span class="st">"bias-variance-depth-2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-29-output-1.png" width="346" height="232" class="figure-img"></p>
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-30-output-1.png" width="346" height="232" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-33" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Overfitting</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>create_DT_Classifier_with_graph(X, y, <span class="va">None</span>, <span class="st">"bias-variance-full-depth"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-31-output-1.png" width="346" height="232" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-34" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Good Fit</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>create_DT_Classifier_with_graph(X, y, <span class="dv">4</span>, <span class="st">"bias-variance-good-fit"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-32-output-1.png" width="346" height="232" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Test Accuracies</p>
-<div id="cell-33" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">### Train and test accuracy vs depth</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>depths <span class="op">=</span> np.arange(<span class="dv">2</span>, <span class="dv">10</span>)</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>train_accs <span class="op">=</span> {}</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>test_accs <span class="op">=</span> {}</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> depth <span class="kw">in</span> depths:</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    dt <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span>depth)</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    dt.fit(X, y)</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    train_accs[depth] <span class="op">=</span> accuracy_score(y, dt.predict(X))</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    test_accs[depth] <span class="op">=</span> accuracy_score(y_test, dt.predict(X_test))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-36" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co">### Train and test accuracy vs depth</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>depths <span class="op">=</span> np.arange(<span class="dv">2</span>, <span class="dv">10</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>train_accs <span class="op">=</span> {}</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>test_accs <span class="op">=</span> {}</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> depth <span class="kw">in</span> depths:</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    dt <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span>depth)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    dt.fit(X, y)</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    train_accs[depth] <span class="op">=</span> accuracy_score(y, dt.predict(X))</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    test_accs[depth] <span class="op">=</span> accuracy_score(y_test, dt.predict(X_test))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-34" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>train_accs <span class="op">=</span> pd.Series(train_accs)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>test_accs <span class="op">=</span> pd.Series(test_accs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-37" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>train_accs <span class="op">=</span> pd.Series(train_accs)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>test_accs <span class="op">=</span> pd.Series(test_accs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-35" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>train_accs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-38" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>train_accs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>2    0.722222
 3    0.833333
@@ -602,66 +670,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-36" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> train_accs.plot(label<span class="op">=</span><span class="st">'Train'</span>)</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>test_accs.plot(label<span class="op">=</span><span class="st">'Test'</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Depth"</span>)</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Accuracy"</span>)</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="fl">1.1</span>)</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-accuracy-vs-depth.pdf"</span>)</span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlight area of underfitting (depth &lt; 4) fill with green </span></span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>plt.fill_between(depths, <span class="dv">0</span>, <span class="dv">1</span>, where<span class="op">=</span>depths <span class="op">&lt;=</span> <span class="dv">4</span>, color<span class="op">=</span><span class="st">'g'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>, label<span class="op">=</span><span class="st">'Underfitting'</span>)</span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-accuracy-vs-depth-underfitting.pdf"</span>)</span>
-<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlight area of overfitting (depth &gt;7 4) fill with red</span></span>
-<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>plt.fill_between(depths, <span class="dv">0</span>, <span class="dv">1</span>, where<span class="op">=</span>depths <span class="op">&gt;=</span> <span class="dv">7</span>, color<span class="op">=</span><span class="st">'r'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>, label<span class="op">=</span><span class="st">'Overfitting'</span>)</span>
-<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-accuracy-vs-depth-overfitting.pdf"</span>)</span>
-<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlight good fit area (4 &lt; depth &lt; 7) fill with blue</span></span>
-<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a>plt.fill_between(depths, <span class="dv">0</span>, <span class="dv">1</span>, where<span class="op">=</span>(depths <span class="op">&gt;=</span> <span class="dv">4</span>) <span class="op">&amp;</span> (depths <span class="op">&lt;=</span> <span class="dv">7</span>), color<span class="op">=</span><span class="st">'b'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>, label<span class="op">=</span><span class="st">'Good fit'</span>)</span>
-<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-accuracy-vs-depth-good-fit.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-39" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> train_accs.plot(label<span class="op">=</span><span class="st">'Train'</span>)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>test_accs.plot(label<span class="op">=</span><span class="st">'Test'</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Depth"</span>)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Accuracy"</span>)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="fl">1.1</span>)</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-accuracy-vs-depth.pdf"</span>)</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlight area of underfitting (depth &lt; 4) fill with green </span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>plt.fill_between(depths, <span class="dv">0</span>, <span class="dv">1</span>, where<span class="op">=</span>depths <span class="op">&lt;=</span> <span class="dv">4</span>, color<span class="op">=</span><span class="st">'g'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>, label<span class="op">=</span><span class="st">'Underfitting'</span>)</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-accuracy-vs-depth-underfitting.pdf"</span>)</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlight area of overfitting (depth &gt;7 4) fill with red</span></span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>plt.fill_between(depths, <span class="dv">0</span>, <span class="dv">1</span>, where<span class="op">=</span>depths <span class="op">&gt;=</span> <span class="dv">7</span>, color<span class="op">=</span><span class="st">'r'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>, label<span class="op">=</span><span class="st">'Overfitting'</span>)</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-accuracy-vs-depth-overfitting.pdf"</span>)</span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlight good fit area (4 &lt; depth &lt; 7) fill with blue</span></span>
+<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>plt.fill_between(depths, <span class="dv">0</span>, <span class="dv">1</span>, where<span class="op">=</span>(depths <span class="op">&gt;=</span> <span class="dv">4</span>) <span class="op">&amp;</span> (depths <span class="op">&lt;=</span> <span class="dv">7</span>), color<span class="op">=</span><span class="st">'b'</span>, alpha<span class="op">=</span><span class="fl">0.1</span>, label<span class="op">=</span><span class="st">'Good fit'</span>)</span>
+<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-accuracy-vs-depth-good-fit.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-33-output-1.png" width="375" height="250" class="figure-img"></p>
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-36-output-1.png" width="375" height="250" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-37" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Slight variation of the dataset leads to a completely different tree</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.zeros(<span class="bu">len</span>(X), dtype<span class="op">=</span><span class="bu">int</span>)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>y[(<span class="dv">2</span> <span class="op">&lt;=</span> X[:, <span class="dv">0</span>]) <span class="op">&amp;</span> (X[:, <span class="dv">0</span>] <span class="op">&lt;=</span> <span class="dv">5</span>) <span class="op">&amp;</span> (<span class="dv">2</span> <span class="op">&lt;=</span> X[:, <span class="dv">1</span>]) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">&lt;=</span> <span class="dv">5</span>)] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>special_condition <span class="op">=</span> (X[:, <span class="dv">0</span>] <span class="op">==</span> <span class="dv">3</span>) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">==</span> <span class="dv">3</span>) <span class="op">|</span> (X[:, <span class="dv">0</span>] <span class="op">==</span> <span class="dv">4</span>) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">==</span> <span class="dv">3</span>)</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>y[special_condition] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-dataset-2-2.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-40" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Slight variation of the dataset leads to a completely different tree</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.zeros(<span class="bu">len</span>(X), dtype<span class="op">=</span><span class="bu">int</span>)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>y[(<span class="dv">2</span> <span class="op">&lt;=</span> X[:, <span class="dv">0</span>]) <span class="op">&amp;</span> (X[:, <span class="dv">0</span>] <span class="op">&lt;=</span> <span class="dv">5</span>) <span class="op">&amp;</span> (<span class="dv">2</span> <span class="op">&lt;=</span> X[:, <span class="dv">1</span>]) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">&lt;=</span> <span class="dv">5</span>)] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>special_condition <span class="op">=</span> (X[:, <span class="dv">0</span>] <span class="op">==</span> <span class="dv">3</span>) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">==</span> <span class="dv">3</span>) <span class="op">|</span> (X[:, <span class="dv">0</span>] <span class="op">==</span> <span class="dv">4</span>) <span class="op">&amp;</span> (X[:, <span class="dv">1</span>] <span class="op">==</span> <span class="dv">3</span>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>y[special_condition] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y)</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"../figures/decision-trees/bias-variance-dataset-2-2.pdf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-34-output-1.png" width="346" height="232" class="figure-img"></p>
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-37-output-1.png" width="346" height="232" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-38" class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>create_DT_Classifier_with_graph(X, y, <span class="va">None</span>, <span class="st">"bias-variance-full-depth-2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-41" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>create_DT_Classifier_with_graph(X, y, <span class="va">None</span>, <span class="st">"bias-variance-full-depth-2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-35-output-1.png" width="346" height="232" class="figure-img"></p>
+<p><img src="decision-tree-real-input-real-output_files/figure-html/cell-38-output-1.png" width="346" height="232" class="figure-img"></p>
 </figure>
 </div>
 </div>
