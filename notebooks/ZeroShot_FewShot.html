@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -266,17 +266,17 @@ Successfully installed SQLAlchemy-2.0.32 aiohappyeyeballs-2.3.5 aiohttp-3.10.3 a
 Note: you may need to restart the kernel to use updated packages.</code></pre>
 </div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="5">
+<div id="cell-3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> langchain_groq.chat_models <span class="im">import</span> ChatGroq</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="14">
+<div id="cell-4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"../secrets.json"</span>) <span class="im">as</span> f:</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    secrets <span class="op">=</span> json.load(f)   </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>Groq_Token <span class="op">=</span> secrets[<span class="st">"groq"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="15">
+<div id="cell-5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Groq API and Models </span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>groq_models <span class="op">=</span> {<span class="st">"llama3-70b"</span>: <span class="st">"llama3-70b-8192"</span>, <span class="st">"mixtral"</span>: <span class="st">"mixtral-8x7b-32768"</span>, <span class="st">"gemma-7b"</span>: <span class="st">"gemma-7b-it"</span>,<span class="st">"llama3.1-70b"</span>:<span class="st">"llama-3.1-70b-versatile"</span>,<span class="st">"llama3-8b"</span>:<span class="st">"llama3-8b-8192"</span>,<span class="st">"llama3.1-8b"</span>:<span class="st">"llama-3.1-8b-instant"</span>,<span class="st">"gemma-9b"</span>:<span class="st">"gemma2-9b-it"</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -285,7 +285,7 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 <p>Always do a sanity check before committing the code to github. If the key is found in the code, you will be penalized with a 0.5 marks deduction.</p>
 <section id="zero-shot" class="level1">
 <h1>Zero Shot</h1>
-<div id="cell-8" class="cell" data-execution_count="18">
+<div id="cell-8" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Statement </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sentence <span class="op">=</span> <span class="st">"The product quality is amazing but the delivery was delayed. However I am happy with the customer service."</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -296,7 +296,7 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ss">* Your task is to analyze the sentiment expressed in the given text and classify it as 'positive', 'negative', or 'neutral'. </span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="ss">* Provide the sentiment label and, if necessary, a brief explanation of your reasoning.</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ss">Sentence: </span><span class="sc">{</span>sentence_2<span class="sc">}</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ss">Sentence: </span><span class="sc">{</span>sentence<span class="sc">}</span></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ss">"""</span> </span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
@@ -307,15 +307,15 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(answer.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Sentiment Label: Positive
+<pre><code>Sentiment label: Neutral
 
-Explanation: The sentence expresses a positive sentiment because it uses words and phrases with positive connotations such as "amazing", "happy", and "not delayed". The sentence also explicitly states that the customer is satisfied with the product quality, delivery, and customer service, which further reinforces the positive sentiment. Overall, the tone of the sentence is upbeat and enthusiastic, indicating a positive sentiment.</code></pre>
+Explanation: The sentence expresses mixed sentiments. The words "amazing" and "happy" convey a positive sentiment, indicating satisfaction with the product quality and customer service. However, the phrase "delivery was delayed" expresses a negative sentiment, indicating dissatisfaction with the delivery experience. Overall, the positive and negative sentiments balance each other out, resulting in a neutral sentiment label.</code></pre>
 </div>
 </div>
 </section>
 <section id="few-shot" class="level1">
 <h1>Few Shot</h1>
-<div id="cell-10" class="cell" data-execution_count="19">
+<div id="cell-10" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Statement </span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sentence <span class="op">=</span> <span class="st">"The product quality is amazing but the delivery was delayed. However I am happy with the customer service."</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>

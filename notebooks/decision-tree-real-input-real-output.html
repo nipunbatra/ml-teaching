@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -380,8 +380,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>split <span class="op">=</span> np.pi</span>
+<div id="cell-16" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>split <span class="op">=</span> np.pi </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>left <span class="op">=</span> y[x <span class="op">&lt;</span> split]</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>right <span class="op">=</span> y[x <span class="op">&gt;=</span> split]</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -424,7 +424,7 @@ Weighted error: 0.0963
 Reduction: 0.4012</code></pre>
 </div>
 </div>
-<div id="cell-17" class="cell" data-execution_count="22">
+<div id="cell-17" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dt_sine_two <span class="op">=</span> create_DT_Regressor(x, y, <span class="dv">2</span>, <span class="st">"sine-depth-2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -434,9 +434,9 @@ Reduction: 0.4012</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="23">
+<div id="cell-18" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>create_graph(dt_sine_two, <span class="st">"sine-depth-2-sklearn"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="35">
 <div>
 <figure class="figure">
 <p><img src="decision-tree-real-input-real-output_files/figure-html/cell-18-output-1.svg" class="img-fluid figure-img"></p>

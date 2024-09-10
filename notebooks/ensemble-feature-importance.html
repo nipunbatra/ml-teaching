@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -235,7 +235,7 @@ window.Quarto = {
 </header>
 
 
-<div id="cell-1" class="cell" data-execution_count="1">
+<div id="cell-1" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -260,11 +260,11 @@ window.Quarto = {
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>config InlineBackend.figure_format <span class="op">=</span> <span class="st">'retina'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-2" class="cell" data-execution_count="2">
+<div id="cell-2" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load IRIS dataset from Seaborn</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> sns.load_dataset(<span class="st">'iris'</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>iris</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 
 
@@ -375,16 +375,16 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="3">
+<div id="cell-3" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># classes</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>iris.species.unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>array(['setosa', 'versicolor', 'virginica'], dtype=object)</code></pre>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="69">
+<div id="cell-4" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.hist(iris.sepal_width, bins<span class="op">=</span><span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="69">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>(array([ 1.,  3.,  4.,  3.,  8., 14., 14., 10., 26., 11., 19., 12.,  6.,
          4.,  9.,  2.,  1.,  1.,  1.,  1.]),
  array([2.  , 2.12, 2.24, 2.36, 2.48, 2.6 , 2.72, 2.84, 2.96, 3.08, 3.2 ,
@@ -399,294 +399,39 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="66">
+<div id="cell-5" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(data<span class="op">=</span>iris, x<span class="op">=</span><span class="st">"sepal_length"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [66]</span>, in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">sns</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">kdeplot</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">iris</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">x</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">sepal_length</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/seaborn/distributions.py:1701</span>, in <span class="ansi-cyan-fg">kdeplot</span><span class="ansi-blue-fg">(data, x, y, hue, weights, palette, hue_order, hue_norm, color, fill, multiple, common_norm, common_grid, cumulative, bw_method, bw_adjust, warn_singular, log_scale, levels, thresh, gridsize, cut, clip, legend, cbar, cbar_ax, cbar_kws, ax, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">   1697</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> p<span style="color:rgb(98,98,98)">.</span>univariate:
-<span class="ansi-green-fg ansi-bold">   1699</span>     plot_kws <span style="color:rgb(98,98,98)">=</span> kwargs<span style="color:rgb(98,98,98)">.</span>copy()
-<span class="ansi-green-fg">-&gt; 1701</span>     <span class="ansi-yellow-bg">p</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">plot_univariate_density</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg ansi-bold">   1702</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">multiple</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">multiple</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">   1703</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">common_norm</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">common_norm</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">   1704</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">common_grid</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">common_grid</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">   1705</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">fill</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">fill</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">   1706</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">color</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">color</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">   1707</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">legend</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">legend</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">   1708</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">warn_singular</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">warn_singular</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">   1709</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">estimate_kws</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">estimate_kws</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">   1710</span> <span class="ansi-yellow-bg">        </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">plot_kws</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg ansi-bold">   1711</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">   1713</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-<span class="ansi-green-fg ansi-bold">   1715</span>     p<span style="color:rgb(98,98,98)">.</span>plot_bivariate_density(
-<span class="ansi-green-fg ansi-bold">   1716</span>         common_norm<span style="color:rgb(98,98,98)">=</span>common_norm,
-<span class="ansi-green-fg ansi-bold">   1717</span>         fill<span style="color:rgb(98,98,98)">=</span>fill,
-<span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-fg ansi-bold">   1727</span>         <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs,
-<span class="ansi-green-fg ansi-bold">   1728</span>     )
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/seaborn/distributions.py:991</span>, in <span class="ansi-cyan-fg">_DistributionPlotter.plot_univariate_density</span><span class="ansi-blue-fg">(self, multiple, common_norm, common_grid, warn_singular, fill, color, legend, estimate_kws, **plot_kws)</span>
-<span class="ansi-green-fg ansi-bold">    988</span>     artist <span style="color:rgb(98,98,98)">=</span> ax<span style="color:rgb(98,98,98)">.</span>fill_between(support, fill_from, density, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>artist_kws)
-<span class="ansi-green-fg ansi-bold">    990</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-<span class="ansi-green-fg">--&gt; 991</span>     artist, <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">ax</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">plot</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">support</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">density</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">artist_kws</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    993</span> artist<span style="color:rgb(98,98,98)">.</span>sticky_edges<span style="color:rgb(98,98,98)">.</span>x[:] <span style="color:rgb(98,98,98)">=</span> sticky_support
-<span class="ansi-green-fg ansi-bold">    994</span> artist<span style="color:rgb(98,98,98)">.</span>sticky_edges<span style="color:rgb(98,98,98)">.</span>y[:] <span style="color:rgb(98,98,98)">=</span> sticky_density
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/matplotlib/axes/_axes.py:1632</span>, in <span class="ansi-cyan-fg">Axes.plot</span><span class="ansi-blue-fg">(self, scalex, scaley, data, *args, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">   1390</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
-<span class="ansi-green-fg ansi-bold">   1391</span> <span style="font-style:italic;color:rgb(175,0,0)">Plot y versus x as lines and/or markers.</span>
-<span class="ansi-green-fg ansi-bold">   1392</span> 
-<span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-fg ansi-bold">   1629</span> <span style="font-style:italic;color:rgb(175,0,0)">(``'green'``) or hex strings (``'#008000'``).</span>
-<span class="ansi-green-fg ansi-bold">   1630</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
-<span class="ansi-green-fg ansi-bold">   1631</span> kwargs <span style="color:rgb(98,98,98)">=</span> cbook<span style="color:rgb(98,98,98)">.</span>normalize_kwargs(kwargs, mlines<span style="color:rgb(98,98,98)">.</span>Line2D)
-<span class="ansi-green-fg">-&gt; 1632</span> lines <span style="color:rgb(98,98,98)">=</span> [<span style="color:rgb(98,98,98)">*</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_get_lines(<span style="color:rgb(98,98,98)">*</span>args, data<span style="color:rgb(98,98,98)">=</span>data, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)]
-<span class="ansi-green-fg ansi-bold">   1633</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> line <span style="font-weight:bold;color:rgb(175,0,255)">in</span> lines:
-<span class="ansi-green-fg ansi-bold">   1634</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>add_line(line)
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/matplotlib/axes/_base.py:312</span>, in <span class="ansi-cyan-fg">_process_plot_var_args.__call__</span><span class="ansi-blue-fg">(self, data, *args, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">    310</span>     this <span style="color:rgb(98,98,98)">+</span><span style="color:rgb(98,98,98)">=</span> args[<span style="color:rgb(98,98,98)">0</span>],
-<span class="ansi-green-fg ansi-bold">    311</span>     args <span style="color:rgb(98,98,98)">=</span> args[<span style="color:rgb(98,98,98)">1</span>:]
-<span class="ansi-green-fg">--&gt; 312</span> <span style="font-weight:bold;color:rgb(0,135,0)">yield from</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_plot_args</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">this</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/matplotlib/axes/_base.py:487</span>, in <span class="ansi-cyan-fg">_process_plot_var_args._plot_args</span><span class="ansi-blue-fg">(self, tup, kwargs, return_kwargs)</span>
-<span class="ansi-green-fg ansi-bold">    484</span>         kw[prop_name] <span style="color:rgb(98,98,98)">=</span> val
-<span class="ansi-green-fg ansi-bold">    486</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">len</span>(xy) <span style="color:rgb(98,98,98)">==</span> <span style="color:rgb(98,98,98)">2</span>:
-<span class="ansi-green-fg">--&gt; 487</span>     x <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">_check_1d</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">xy</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">0</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    488</span>     y <span style="color:rgb(98,98,98)">=</span> _check_1d(xy[<span style="color:rgb(98,98,98)">1</span>])
-<span class="ansi-green-fg ansi-bold">    489</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/matplotlib/cbook/__init__.py:1327</span>, in <span class="ansi-cyan-fg">_check_1d</span><span class="ansi-blue-fg">(x)</span>
-<span class="ansi-green-fg ansi-bold">   1321</span> <span style="font-weight:bold;color:rgb(0,135,0)">with</span> warnings<span style="color:rgb(98,98,98)">.</span>catch_warnings(record<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">True</span>) <span style="font-weight:bold;color:rgb(0,135,0)">as</span> w:
-<span class="ansi-green-fg ansi-bold">   1322</span>     warnings<span style="color:rgb(98,98,98)">.</span>filterwarnings(
-<span class="ansi-green-fg ansi-bold">   1323</span>         <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">always</span><span style="color:rgb(175,0,0)">"</span>,
-<span class="ansi-green-fg ansi-bold">   1324</span>         category<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(215,95,95)">Warning</span>,
-<span class="ansi-green-fg ansi-bold">   1325</span>         message<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">Support for multi-dimensional indexing</span><span style="color:rgb(175,0,0)">'</span>)
-<span class="ansi-green-fg">-&gt; 1327</span>     ndim <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">None</span><span class="ansi-yellow-bg">]</span><span style="color:rgb(98,98,98)">.</span>ndim
-<span class="ansi-green-fg ansi-bold">   1328</span>     <span style="font-style:italic;color:rgb(95,135,135)"># we have definitely hit a pandas index or series object</span>
-<span class="ansi-green-fg ansi-bold">   1329</span>     <span style="font-style:italic;color:rgb(95,135,135)"># cast to a numpy array.</span>
-<span class="ansi-green-fg ansi-bold">   1330</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">len</span>(w) <span style="color:rgb(98,98,98)">&gt;</span> <span style="color:rgb(98,98,98)">0</span>:
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/pandas/core/indexes/base.py:5385</span>, in <span class="ansi-cyan-fg">Index.__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
-<span class="ansi-green-fg ansi-bold">   5383</span> <span style="font-style:italic;color:rgb(95,135,135)"># Because we ruled out integer above, we always get an arraylike here</span>
-<span class="ansi-green-fg ansi-bold">   5384</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> result<span style="color:rgb(98,98,98)">.</span>ndim <span style="color:rgb(98,98,98)">&gt;</span> <span style="color:rgb(98,98,98)">1</span>:
-<span class="ansi-green-fg">-&gt; 5385</span>     <span class="ansi-yellow-bg">disallow_ndim_indexing</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">result</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">   5387</span> <span style="font-style:italic;color:rgb(95,135,135)"># NB: Using _constructor._simple_new would break if MultiIndex</span>
-<span class="ansi-green-fg ansi-bold">   5388</span> <span style="font-style:italic;color:rgb(95,135,135)">#  didn't override __getitem__</span>
-<span class="ansi-green-fg ansi-bold">   5389</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_constructor<span style="color:rgb(98,98,98)">.</span>_simple_new(result, name<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_name)
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/pandas/core/indexers/utils.py:341</span>, in <span class="ansi-cyan-fg">disallow_ndim_indexing</span><span class="ansi-blue-fg">(result)</span>
-<span class="ansi-green-fg ansi-bold">    333</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
-<span class="ansi-green-fg ansi-bold">    334</span> <span style="font-style:italic;color:rgb(175,0,0)">Helper function to disallow multi-dimensional indexing on 1D Series/Index.</span>
-<span class="ansi-green-fg ansi-bold">    335</span> 
-<span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-fg ansi-bold">    338</span> <span style="font-style:italic;color:rgb(175,0,0)">in GH#30588.</span>
-<span class="ansi-green-fg ansi-bold">    339</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
-<span class="ansi-green-fg ansi-bold">    340</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> np<span style="color:rgb(98,98,98)">.</span>ndim(result) <span style="color:rgb(98,98,98)">&gt;</span> <span style="color:rgb(98,98,98)">1</span>:
-<span class="ansi-green-fg">--&gt; 341</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(
-<span class="ansi-green-fg ansi-bold">    342</span>         <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Multi-dimensional indexing (e.g. `obj[:, None]`) is no longer </span><span style="color:rgb(175,0,0)">"</span>
-<span class="ansi-green-fg ansi-bold">    343</span>         <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">supported. Convert to a numpy array before indexing instead.</span><span style="color:rgb(175,0,0)">"</span>
-<span class="ansi-green-fg ansi-bold">    344</span>     )
-
-<span class="ansi-red-fg">ValueError</span>: Multi-dimensional indexing (e.g. `obj[:, None]`) is no longer supported. Convert to a numpy array before indexing instead.</pre>
-</div>
-</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ensemble-feature-importance_files/figure-html/cell-6-output-2.png" width="366" height="236" class="figure-img"></p>
+<p><img src="ensemble-feature-importance_files/figure-html/cell-6-output-1.png" width="375" height="250" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="64">
+<div id="cell-6" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.displot(iris.sepal_length.values, kind<span class="op">=</span><span class="st">'kde'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [64]</span>, in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">sns</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">displot</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">iris</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">sepal_length</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">values</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">kind</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">kde</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/seaborn/distributions.py:2218</span>, in <span class="ansi-cyan-fg">displot</span><span class="ansi-blue-fg">(data, x, y, hue, row, col, weights, kind, rug, rug_kws, log_scale, legend, palette, hue_order, hue_norm, color, col_wrap, row_order, col_order, height, aspect, facet_kws, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">   2215</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> p<span style="color:rgb(98,98,98)">.</span>univariate:
-<span class="ansi-green-fg ansi-bold">   2217</span>     _assign_default_kwargs(kde_kws, p<span style="color:rgb(98,98,98)">.</span>plot_univariate_density, kdeplot)
-<span class="ansi-green-fg">-&gt; 2218</span>     <span class="ansi-yellow-bg">p</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">plot_univariate_density</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kde_kws</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">   2220</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-<span class="ansi-green-fg ansi-bold">   2222</span>     _assign_default_kwargs(kde_kws, p<span style="color:rgb(98,98,98)">.</span>plot_bivariate_density, kdeplot)
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/seaborn/distributions.py:991</span>, in <span class="ansi-cyan-fg">_DistributionPlotter.plot_univariate_density</span><span class="ansi-blue-fg">(self, multiple, common_norm, common_grid, warn_singular, fill, color, legend, estimate_kws, **plot_kws)</span>
-<span class="ansi-green-fg ansi-bold">    988</span>     artist <span style="color:rgb(98,98,98)">=</span> ax<span style="color:rgb(98,98,98)">.</span>fill_between(support, fill_from, density, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>artist_kws)
-<span class="ansi-green-fg ansi-bold">    990</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-<span class="ansi-green-fg">--&gt; 991</span>     artist, <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">ax</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">plot</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">support</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">density</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">artist_kws</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    993</span> artist<span style="color:rgb(98,98,98)">.</span>sticky_edges<span style="color:rgb(98,98,98)">.</span>x[:] <span style="color:rgb(98,98,98)">=</span> sticky_support
-<span class="ansi-green-fg ansi-bold">    994</span> artist<span style="color:rgb(98,98,98)">.</span>sticky_edges<span style="color:rgb(98,98,98)">.</span>y[:] <span style="color:rgb(98,98,98)">=</span> sticky_density
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/matplotlib/axes/_axes.py:1632</span>, in <span class="ansi-cyan-fg">Axes.plot</span><span class="ansi-blue-fg">(self, scalex, scaley, data, *args, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">   1390</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
-<span class="ansi-green-fg ansi-bold">   1391</span> <span style="font-style:italic;color:rgb(175,0,0)">Plot y versus x as lines and/or markers.</span>
-<span class="ansi-green-fg ansi-bold">   1392</span> 
-<span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-fg ansi-bold">   1629</span> <span style="font-style:italic;color:rgb(175,0,0)">(``'green'``) or hex strings (``'#008000'``).</span>
-<span class="ansi-green-fg ansi-bold">   1630</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
-<span class="ansi-green-fg ansi-bold">   1631</span> kwargs <span style="color:rgb(98,98,98)">=</span> cbook<span style="color:rgb(98,98,98)">.</span>normalize_kwargs(kwargs, mlines<span style="color:rgb(98,98,98)">.</span>Line2D)
-<span class="ansi-green-fg">-&gt; 1632</span> lines <span style="color:rgb(98,98,98)">=</span> [<span style="color:rgb(98,98,98)">*</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_get_lines(<span style="color:rgb(98,98,98)">*</span>args, data<span style="color:rgb(98,98,98)">=</span>data, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)]
-<span class="ansi-green-fg ansi-bold">   1633</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> line <span style="font-weight:bold;color:rgb(175,0,255)">in</span> lines:
-<span class="ansi-green-fg ansi-bold">   1634</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>add_line(line)
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/matplotlib/axes/_base.py:312</span>, in <span class="ansi-cyan-fg">_process_plot_var_args.__call__</span><span class="ansi-blue-fg">(self, data, *args, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">    310</span>     this <span style="color:rgb(98,98,98)">+</span><span style="color:rgb(98,98,98)">=</span> args[<span style="color:rgb(98,98,98)">0</span>],
-<span class="ansi-green-fg ansi-bold">    311</span>     args <span style="color:rgb(98,98,98)">=</span> args[<span style="color:rgb(98,98,98)">1</span>:]
-<span class="ansi-green-fg">--&gt; 312</span> <span style="font-weight:bold;color:rgb(0,135,0)">yield from</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_plot_args</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">this</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/matplotlib/axes/_base.py:487</span>, in <span class="ansi-cyan-fg">_process_plot_var_args._plot_args</span><span class="ansi-blue-fg">(self, tup, kwargs, return_kwargs)</span>
-<span class="ansi-green-fg ansi-bold">    484</span>         kw[prop_name] <span style="color:rgb(98,98,98)">=</span> val
-<span class="ansi-green-fg ansi-bold">    486</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">len</span>(xy) <span style="color:rgb(98,98,98)">==</span> <span style="color:rgb(98,98,98)">2</span>:
-<span class="ansi-green-fg">--&gt; 487</span>     x <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">_check_1d</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">xy</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">0</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    488</span>     y <span style="color:rgb(98,98,98)">=</span> _check_1d(xy[<span style="color:rgb(98,98,98)">1</span>])
-<span class="ansi-green-fg ansi-bold">    489</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/matplotlib/cbook/__init__.py:1327</span>, in <span class="ansi-cyan-fg">_check_1d</span><span class="ansi-blue-fg">(x)</span>
-<span class="ansi-green-fg ansi-bold">   1321</span> <span style="font-weight:bold;color:rgb(0,135,0)">with</span> warnings<span style="color:rgb(98,98,98)">.</span>catch_warnings(record<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">True</span>) <span style="font-weight:bold;color:rgb(0,135,0)">as</span> w:
-<span class="ansi-green-fg ansi-bold">   1322</span>     warnings<span style="color:rgb(98,98,98)">.</span>filterwarnings(
-<span class="ansi-green-fg ansi-bold">   1323</span>         <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">always</span><span style="color:rgb(175,0,0)">"</span>,
-<span class="ansi-green-fg ansi-bold">   1324</span>         category<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(215,95,95)">Warning</span>,
-<span class="ansi-green-fg ansi-bold">   1325</span>         message<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">Support for multi-dimensional indexing</span><span style="color:rgb(175,0,0)">'</span>)
-<span class="ansi-green-fg">-&gt; 1327</span>     ndim <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">None</span><span class="ansi-yellow-bg">]</span><span style="color:rgb(98,98,98)">.</span>ndim
-<span class="ansi-green-fg ansi-bold">   1328</span>     <span style="font-style:italic;color:rgb(95,135,135)"># we have definitely hit a pandas index or series object</span>
-<span class="ansi-green-fg ansi-bold">   1329</span>     <span style="font-style:italic;color:rgb(95,135,135)"># cast to a numpy array.</span>
-<span class="ansi-green-fg ansi-bold">   1330</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">len</span>(w) <span style="color:rgb(98,98,98)">&gt;</span> <span style="color:rgb(98,98,98)">0</span>:
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/pandas/core/indexes/base.py:5385</span>, in <span class="ansi-cyan-fg">Index.__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
-<span class="ansi-green-fg ansi-bold">   5383</span> <span style="font-style:italic;color:rgb(95,135,135)"># Because we ruled out integer above, we always get an arraylike here</span>
-<span class="ansi-green-fg ansi-bold">   5384</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> result<span style="color:rgb(98,98,98)">.</span>ndim <span style="color:rgb(98,98,98)">&gt;</span> <span style="color:rgb(98,98,98)">1</span>:
-<span class="ansi-green-fg">-&gt; 5385</span>     <span class="ansi-yellow-bg">disallow_ndim_indexing</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">result</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">   5387</span> <span style="font-style:italic;color:rgb(95,135,135)"># NB: Using _constructor._simple_new would break if MultiIndex</span>
-<span class="ansi-green-fg ansi-bold">   5388</span> <span style="font-style:italic;color:rgb(95,135,135)">#  didn't override __getitem__</span>
-<span class="ansi-green-fg ansi-bold">   5389</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_constructor<span style="color:rgb(98,98,98)">.</span>_simple_new(result, name<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_name)
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/pandas/core/indexers/utils.py:341</span>, in <span class="ansi-cyan-fg">disallow_ndim_indexing</span><span class="ansi-blue-fg">(result)</span>
-<span class="ansi-green-fg ansi-bold">    333</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
-<span class="ansi-green-fg ansi-bold">    334</span> <span style="font-style:italic;color:rgb(175,0,0)">Helper function to disallow multi-dimensional indexing on 1D Series/Index.</span>
-<span class="ansi-green-fg ansi-bold">    335</span> 
-<span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-fg ansi-bold">    338</span> <span style="font-style:italic;color:rgb(175,0,0)">in GH#30588.</span>
-<span class="ansi-green-fg ansi-bold">    339</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
-<span class="ansi-green-fg ansi-bold">    340</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> np<span style="color:rgb(98,98,98)">.</span>ndim(result) <span style="color:rgb(98,98,98)">&gt;</span> <span style="color:rgb(98,98,98)">1</span>:
-<span class="ansi-green-fg">--&gt; 341</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(
-<span class="ansi-green-fg ansi-bold">    342</span>         <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Multi-dimensional indexing (e.g. `obj[:, None]`) is no longer </span><span style="color:rgb(175,0,0)">"</span>
-<span class="ansi-green-fg ansi-bold">    343</span>         <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">supported. Convert to a numpy array before indexing instead.</span><span style="color:rgb(175,0,0)">"</span>
-<span class="ansi-green-fg ansi-bold">    344</span>     )
-
-<span class="ansi-red-fg">ValueError</span>: Multi-dimensional indexing (e.g. `obj[:, None]`) is no longer supported. Convert to a numpy array before indexing instead.</pre>
-</div>
-</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ensemble-feature-importance_files/figure-html/cell-7-output-2.png" width="489" height="490" class="figure-img"></p>
+<p><img src="ensemble-feature-importance_files/figure-html/cell-7-output-1.png" width="490" height="490" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="62">
+<div id="cell-7" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sns.displot(data<span class="op">=</span>iris, x<span class="op">=</span><span class="st">"sepal_length"</span>, kind<span class="op">=</span><span class="st">'kde'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-Input <span class="ansi-green-fg">In [62]</span>, in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">sns</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">displot</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">iris</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">x</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">sepal_length</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">"</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">kind</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">kde</span><span style="color:rgb(175,0,0)" class="ansi-yellow-bg">'</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/seaborn/distributions.py:2218</span>, in <span class="ansi-cyan-fg">displot</span><span class="ansi-blue-fg">(data, x, y, hue, row, col, weights, kind, rug, rug_kws, log_scale, legend, palette, hue_order, hue_norm, color, col_wrap, row_order, col_order, height, aspect, facet_kws, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">   2215</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> p<span style="color:rgb(98,98,98)">.</span>univariate:
-<span class="ansi-green-fg ansi-bold">   2217</span>     _assign_default_kwargs(kde_kws, p<span style="color:rgb(98,98,98)">.</span>plot_univariate_density, kdeplot)
-<span class="ansi-green-fg">-&gt; 2218</span>     <span class="ansi-yellow-bg">p</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">plot_univariate_density</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kde_kws</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">   2220</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-<span class="ansi-green-fg ansi-bold">   2222</span>     _assign_default_kwargs(kde_kws, p<span style="color:rgb(98,98,98)">.</span>plot_bivariate_density, kdeplot)
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/seaborn/distributions.py:991</span>, in <span class="ansi-cyan-fg">_DistributionPlotter.plot_univariate_density</span><span class="ansi-blue-fg">(self, multiple, common_norm, common_grid, warn_singular, fill, color, legend, estimate_kws, **plot_kws)</span>
-<span class="ansi-green-fg ansi-bold">    988</span>     artist <span style="color:rgb(98,98,98)">=</span> ax<span style="color:rgb(98,98,98)">.</span>fill_between(support, fill_from, density, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>artist_kws)
-<span class="ansi-green-fg ansi-bold">    990</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-<span class="ansi-green-fg">--&gt; 991</span>     artist, <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">ax</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">plot</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">support</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">density</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">artist_kws</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    993</span> artist<span style="color:rgb(98,98,98)">.</span>sticky_edges<span style="color:rgb(98,98,98)">.</span>x[:] <span style="color:rgb(98,98,98)">=</span> sticky_support
-<span class="ansi-green-fg ansi-bold">    994</span> artist<span style="color:rgb(98,98,98)">.</span>sticky_edges<span style="color:rgb(98,98,98)">.</span>y[:] <span style="color:rgb(98,98,98)">=</span> sticky_density
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/matplotlib/axes/_axes.py:1632</span>, in <span class="ansi-cyan-fg">Axes.plot</span><span class="ansi-blue-fg">(self, scalex, scaley, data, *args, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">   1390</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
-<span class="ansi-green-fg ansi-bold">   1391</span> <span style="font-style:italic;color:rgb(175,0,0)">Plot y versus x as lines and/or markers.</span>
-<span class="ansi-green-fg ansi-bold">   1392</span> 
-<span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-fg ansi-bold">   1629</span> <span style="font-style:italic;color:rgb(175,0,0)">(``'green'``) or hex strings (``'#008000'``).</span>
-<span class="ansi-green-fg ansi-bold">   1630</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
-<span class="ansi-green-fg ansi-bold">   1631</span> kwargs <span style="color:rgb(98,98,98)">=</span> cbook<span style="color:rgb(98,98,98)">.</span>normalize_kwargs(kwargs, mlines<span style="color:rgb(98,98,98)">.</span>Line2D)
-<span class="ansi-green-fg">-&gt; 1632</span> lines <span style="color:rgb(98,98,98)">=</span> [<span style="color:rgb(98,98,98)">*</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_get_lines(<span style="color:rgb(98,98,98)">*</span>args, data<span style="color:rgb(98,98,98)">=</span>data, <span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">*</span>kwargs)]
-<span class="ansi-green-fg ansi-bold">   1633</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> line <span style="font-weight:bold;color:rgb(175,0,255)">in</span> lines:
-<span class="ansi-green-fg ansi-bold">   1634</span>     <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>add_line(line)
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/matplotlib/axes/_base.py:312</span>, in <span class="ansi-cyan-fg">_process_plot_var_args.__call__</span><span class="ansi-blue-fg">(self, data, *args, **kwargs)</span>
-<span class="ansi-green-fg ansi-bold">    310</span>     this <span style="color:rgb(98,98,98)">+</span><span style="color:rgb(98,98,98)">=</span> args[<span style="color:rgb(98,98,98)">0</span>],
-<span class="ansi-green-fg ansi-bold">    311</span>     args <span style="color:rgb(98,98,98)">=</span> args[<span style="color:rgb(98,98,98)">1</span>:]
-<span class="ansi-green-fg">--&gt; 312</span> <span style="font-weight:bold;color:rgb(0,135,0)">yield from</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_plot_args</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">this</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/matplotlib/axes/_base.py:487</span>, in <span class="ansi-cyan-fg">_process_plot_var_args._plot_args</span><span class="ansi-blue-fg">(self, tup, kwargs, return_kwargs)</span>
-<span class="ansi-green-fg ansi-bold">    484</span>         kw[prop_name] <span style="color:rgb(98,98,98)">=</span> val
-<span class="ansi-green-fg ansi-bold">    486</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">len</span>(xy) <span style="color:rgb(98,98,98)">==</span> <span style="color:rgb(98,98,98)">2</span>:
-<span class="ansi-green-fg">--&gt; 487</span>     x <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">_check_1d</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">xy</span><span class="ansi-yellow-bg">[</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">0</span><span class="ansi-yellow-bg">]</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">    488</span>     y <span style="color:rgb(98,98,98)">=</span> _check_1d(xy[<span style="color:rgb(98,98,98)">1</span>])
-<span class="ansi-green-fg ansi-bold">    489</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/matplotlib/cbook/__init__.py:1327</span>, in <span class="ansi-cyan-fg">_check_1d</span><span class="ansi-blue-fg">(x)</span>
-<span class="ansi-green-fg ansi-bold">   1321</span> <span style="font-weight:bold;color:rgb(0,135,0)">with</span> warnings<span style="color:rgb(98,98,98)">.</span>catch_warnings(record<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(0,135,0)">True</span>) <span style="font-weight:bold;color:rgb(0,135,0)">as</span> w:
-<span class="ansi-green-fg ansi-bold">   1322</span>     warnings<span style="color:rgb(98,98,98)">.</span>filterwarnings(
-<span class="ansi-green-fg ansi-bold">   1323</span>         <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">always</span><span style="color:rgb(175,0,0)">"</span>,
-<span class="ansi-green-fg ansi-bold">   1324</span>         category<span style="color:rgb(98,98,98)">=</span><span style="font-weight:bold;color:rgb(215,95,95)">Warning</span>,
-<span class="ansi-green-fg ansi-bold">   1325</span>         message<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(175,0,0)">'</span><span style="color:rgb(175,0,0)">Support for multi-dimensional indexing</span><span style="color:rgb(175,0,0)">'</span>)
-<span class="ansi-green-fg">-&gt; 1327</span>     ndim <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-bg">:</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">None</span><span class="ansi-yellow-bg">]</span><span style="color:rgb(98,98,98)">.</span>ndim
-<span class="ansi-green-fg ansi-bold">   1328</span>     <span style="font-style:italic;color:rgb(95,135,135)"># we have definitely hit a pandas index or series object</span>
-<span class="ansi-green-fg ansi-bold">   1329</span>     <span style="font-style:italic;color:rgb(95,135,135)"># cast to a numpy array.</span>
-<span class="ansi-green-fg ansi-bold">   1330</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">len</span>(w) <span style="color:rgb(98,98,98)">&gt;</span> <span style="color:rgb(98,98,98)">0</span>:
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/pandas/core/indexes/base.py:5385</span>, in <span class="ansi-cyan-fg">Index.__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
-<span class="ansi-green-fg ansi-bold">   5383</span> <span style="font-style:italic;color:rgb(95,135,135)"># Because we ruled out integer above, we always get an arraylike here</span>
-<span class="ansi-green-fg ansi-bold">   5384</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> result<span style="color:rgb(98,98,98)">.</span>ndim <span style="color:rgb(98,98,98)">&gt;</span> <span style="color:rgb(98,98,98)">1</span>:
-<span class="ansi-green-fg">-&gt; 5385</span>     <span class="ansi-yellow-bg">disallow_ndim_indexing</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">result</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg ansi-bold">   5387</span> <span style="font-style:italic;color:rgb(95,135,135)"># NB: Using _constructor._simple_new would break if MultiIndex</span>
-<span class="ansi-green-fg ansi-bold">   5388</span> <span style="font-style:italic;color:rgb(95,135,135)">#  didn't override __getitem__</span>
-<span class="ansi-green-fg ansi-bold">   5389</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_constructor<span style="color:rgb(98,98,98)">.</span>_simple_new(result, name<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(0,135,0)">self</span><span style="color:rgb(98,98,98)">.</span>_name)
-
-File <span class="ansi-green-fg">~/miniforge3/lib/python3.9/site-packages/pandas/core/indexers/utils.py:341</span>, in <span class="ansi-cyan-fg">disallow_ndim_indexing</span><span class="ansi-blue-fg">(result)</span>
-<span class="ansi-green-fg ansi-bold">    333</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
-<span class="ansi-green-fg ansi-bold">    334</span> <span style="font-style:italic;color:rgb(175,0,0)">Helper function to disallow multi-dimensional indexing on 1D Series/Index.</span>
-<span class="ansi-green-fg ansi-bold">    335</span> 
-<span class="ansi-green-fg">   (...)</span>
-<span class="ansi-green-fg ansi-bold">    338</span> <span style="font-style:italic;color:rgb(175,0,0)">in GH#30588.</span>
-<span class="ansi-green-fg ansi-bold">    339</span> <span style="font-style:italic;color:rgb(175,0,0)">"""</span>
-<span class="ansi-green-fg ansi-bold">    340</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> np<span style="color:rgb(98,98,98)">.</span>ndim(result) <span style="color:rgb(98,98,98)">&gt;</span> <span style="color:rgb(98,98,98)">1</span>:
-<span class="ansi-green-fg">--&gt; 341</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(
-<span class="ansi-green-fg ansi-bold">    342</span>         <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">Multi-dimensional indexing (e.g. `obj[:, None]`) is no longer </span><span style="color:rgb(175,0,0)">"</span>
-<span class="ansi-green-fg ansi-bold">    343</span>         <span style="color:rgb(175,0,0)">"</span><span style="color:rgb(175,0,0)">supported. Convert to a numpy array before indexing instead.</span><span style="color:rgb(175,0,0)">"</span>
-<span class="ansi-green-fg ansi-bold">    344</span>     )
-
-<span class="ansi-red-fg">ValueError</span>: Multi-dimensional indexing (e.g. `obj[:, None]`) is no longer supported. Convert to a numpy array before indexing instead.</pre>
-</div>
-</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ensemble-feature-importance_files/figure-html/cell-8-output-2.png" width="489" height="490" class="figure-img"></p>
+<p><img src="ensemble-feature-importance_files/figure-html/cell-8-output-1.png" width="490" height="490" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="73">
+<div id="cell-8" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>iris.groupby(<span class="st">"species"</span>)[<span class="st">"petal_length"</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="73">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>species
 setosa        1.462
 versicolor    4.260
@@ -694,7 +439,7 @@ virginica     5.552
 Name: petal_length, dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="4">
+<div id="cell-9" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pairplot</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>sns.pairplot(iris, hue<span class="op">=</span><span class="st">"species"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -705,17 +450,421 @@ Name: petal_length, dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="14">
+<div id="cell-10" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide dataset into X and y</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> iris.iloc[:, :<span class="op">-</span><span class="dv">1</span>], iris.iloc[:, <span class="op">-</span><span class="dv">1</span>]</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">10</span>,random_state<span class="op">=</span><span class="dv">0</span>, criterion<span class="op">=</span><span class="st">'entropy'</span>, bootstrap<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>rf.fit(X, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
-<style>#sk-container-id-3 {color: black;}#sk-container-id-3 pre{padding: 0;}#sk-container-id-3 div.sk-toggleable {background-color: white;}#sk-container-id-3 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-3 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-3 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-3 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-3 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-3 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-3 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-3 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-3 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-3 div.sk-item {position: relative;z-index: 1;}#sk-container-id-3 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-3 div.sk-item::before, #sk-container-id-3 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-3 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-3 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-3 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-3 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-3 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-3 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-3 div.sk-label-container {text-align: center;}#sk-container-id-3 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-3 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>RandomForestClassifier(criterion='entropy', n_estimators=10, random_state=0)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" checked=""><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">RandomForestClassifier</label><div class="sk-toggleable__content"><pre>RandomForestClassifier(criterion='entropy', n_estimators=10, random_state=0)</pre></div></div></div></div></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<style>#sk-container-id-3 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-3 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-3 pre {
+  padding: 0;
+}
+
+#sk-container-id-3 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-3 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-3 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-3 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-3 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-3 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-3 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-3 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-3 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-3 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-3 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-3 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-3 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-3 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-3 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-3 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-3 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-3 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-3 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-3 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-3 div.sk-label label.sk-toggleable__label,
+#sk-container-id-3 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-3 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-3 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-3 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-3 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-3 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-3 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-3 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-3 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-3 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-3 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-3 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</a></style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>RandomForestClassifier(criterion='entropy', n_estimators=10, random_state=0)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" checked=""><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;RandomForestClassifier<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.ensemble.RandomForestClassifier.html">?<span>Documentation for RandomForestClassifier</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>RandomForestClassifier(criterion='entropy', n_estimators=10, random_state=0)</pre></div> </div></div></div></div>
 </div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize each tree in the Random Forest</span></span>
+<div id="cell-11" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize ``each tree in the Random Forest</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, tree <span class="kw">in</span> <span class="bu">enumerate</span>(rf.estimators_):</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create DOT data for the i-th tree</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    dot_data <span class="op">=</span> export_graphviz(tree, out_file<span class="op">=</span><span class="va">None</span>, </span>
@@ -733,15 +882,21 @@ Name: petal_length, dtype: float64</code></pre>
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    graph.render(filename<span class="op">=</span><span class="ss">f'../figures/ensemble/feature-imp-</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">'</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'pdf'</span>, cleanup<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    graph.render(filename<span class="op">=</span><span class="ss">f'../figures/ensemble/feature-imp-</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">'</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'png'</span>, cleanup<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="16">
+<div id="cell-12" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the tree</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>Image(filename<span class="op">=</span><span class="st">'../figures/ensemble/feature-imp-0.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="18">
 <div>
 <figure class="figure">
 <p><img src="ensemble-feature-importance_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
+</div>
+</div>
+<div id="cell-13" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>rf.feature_importances_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>array([0.09864748, 0.03396026, 0.32312193, 0.54427033])</code></pre>
 </div>
 </div>
 <ul>
@@ -773,62 +928,80 @@ Name: petal_length, dtype: float64</code></pre>
 <p><span class="math display">\[\begin{equation*}
   \text{Imp}(X_j) = \frac{1}{M} \sum_{m=1}^M \sum_{t \in \varphi_{m}} 1(j_t = j) \Big[ p(t) \Delta i(t) \Big]
 \end{equation*}\]</span></p>
-<div id="cell-14" class="cell" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="op">-</span><span class="dv">1</span><span class="op">/</span>np.e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-15" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="op">-</span><span class="dv">1</span><span class="op">/</span>np.e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>0.6321205588285577</code></pre>
 </div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">150</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="op">-</span><span class="dv">1</span><span class="op">/</span>np.e)<span class="op">*</span>N</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-16" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">150</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="op">-</span><span class="dv">1</span><span class="op">/</span>np.e)<span class="op">*</span>N</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>94.81808382428365</code></pre>
 </div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>rf.feature_importances_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="42">
+<div id="cell-17" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>rf.feature_importances_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>array([0.09864748, 0.03396026, 0.32312193, 0.54427033])</code></pre>
 </div>
 </div>
-<div id="cell-17" class="cell" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> []</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tree <span class="kw">in</span> rf.estimators_:</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    s.append(tree.feature_importances_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-18" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>list_of_trees_in_rf <span class="op">=</span> rf.estimators_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>np.array(s).mean(axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="44">
+<div id="cell-19" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>tree_0 <span class="op">=</span> list_of_trees_in_rf[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-20" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>tree_0.feature_importances_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>array([0.00397339, 0.01375245, 0.35802357, 0.6242506 ])</code></pre>
+</div>
+</div>
+<div id="cell-21" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> []</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> tree <span class="kw">in</span> rf.estimators_:</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    s.append(tree.feature_importances_)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-22" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>np.array(s).mean(axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>array([0.09864748, 0.03396026, 0.32312193, 0.54427033])</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>tree_0 <span class="op">=</span> rf.estimators_[<span class="dv">0</span>]</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>tree_0.feature_importances_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-23" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>rf.feature_importances_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>array([0.09864748, 0.03396026, 0.32312193, 0.54427033])</code></pre>
+</div>
+</div>
+<div id="cell-24" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>tree_0 <span class="op">=</span> rf.estimators_[<span class="dv">0</span>]</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>tree_0.feature_importances_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>array([0.00397339, 0.01375245, 0.35802357, 0.6242506 ])</code></pre>
 </div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take one tree </span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>tree <span class="op">=</span> rf.estimators_[<span class="dv">0</span>].tree_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-25" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># take one tree </span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>tree <span class="op">=</span> rf.estimators_[<span class="dv">0</span>].tree_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-21" class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>tree.feature</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-26" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>tree.feature</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>array([ 3, -2,  2,  3, -2,  1, -2, -2,  0, -2,  2, -2, -2], dtype=int64)</code></pre>
 </div>
 </div>
-<div id="cell-22" class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a mapping of feature names to the feature indices</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {<span class="op">-</span><span class="dv">2</span>: <span class="st">'Leaf'</span>, <span class="dv">0</span>: <span class="st">'sepal_length'</span>, <span class="dv">1</span>: <span class="st">'sepal_width'</span>, <span class="dv">2</span>: <span class="st">'petal_length'</span>, <span class="dv">3</span>: <span class="st">'petal_width'</span>}</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co"># print the node number along with the corresponding feature name</span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> node <span class="kw">in</span> <span class="bu">range</span>(tree.node_count):</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Node </span><span class="sc">{</span>node<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>mapping[tree.feature[node]]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-27" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a mapping of feature names to the feature indices</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>mapping <span class="op">=</span> {<span class="op">-</span><span class="dv">2</span>: <span class="st">'Leaf'</span>, <span class="dv">0</span>: <span class="st">'sepal_length'</span>, <span class="dv">1</span>: <span class="st">'sepal_width'</span>, <span class="dv">2</span>: <span class="st">'petal_length'</span>, <span class="dv">3</span>: <span class="st">'petal_width'</span>}</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="co"># print the node number along with the corresponding feature name</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> node <span class="kw">in</span> <span class="bu">range</span>(tree.node_count):</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Node </span><span class="sc">{</span>node<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>mapping[tree.feature[node]]<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Node 0: petal_width
 Node 1: Leaf
@@ -845,95 +1018,95 @@ Node 11: Leaf
 Node 12: Leaf</code></pre>
 </div>
 </div>
-<div id="cell-23" class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span> <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>tree.children_left[<span class="bu">id</span>], tree.children_right[<span class="bu">id</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-28" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span> <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>tree.children_left[<span class="bu">id</span>], tree.children_right[<span class="bu">id</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
 <pre><code>(3, 8)</code></pre>
 </div>
 </div>
-<div id="cell-24" class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_child_id(tree, node):</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Prints the child node ids of a given node.</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co">    tree: tree object</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">    node: int</span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># check if leaf</span></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    l, r <span class="op">=</span> tree.children_left[node], tree.children_right[node]</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> l <span class="op">==</span> <span class="op">-</span><span class="dv">1</span> <span class="kw">and</span> r <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>:</span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span>, <span class="va">None</span></span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tree.children_left[node], tree.children_right[node]</span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>print_child_id(tree, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-29" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_child_id(tree, node):</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Prints the child node ids of a given node.</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co">    tree: tree object</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co">    node: int</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># check if leaf</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    l, r <span class="op">=</span> tree.children_left[node], tree.children_right[node]</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> l <span class="op">==</span> <span class="op">-</span><span class="dv">1</span> <span class="kw">and</span> r <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span>, <span class="va">None</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tree.children_left[node], tree.children_right[node]</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>print_child_id(tree, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
 <pre><code>(1, 2)</code></pre>
 </div>
 </div>
-<div id="cell-25" class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>tree.impurity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-30" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>tree.impurity</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>array([1.57310798, 0.        , 0.98464683, 0.34781691, 0.        ,
        0.81127812, 0.        , 0.        , 0.12741851, 0.        ,
        0.2108423 , 0.        , 0.        ])</code></pre>
 </div>
 </div>
-<div id="cell-26" class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> all_data(tree, node):</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns all the data required to calculate the information gain.</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get the child nodes</span></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    left, right <span class="op">=</span> print_child_id(tree, node)</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># check if leaf, then return None</span></span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> left <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get the data</span></span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    entropy_node <span class="op">=</span> tree.impurity[node]</span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    entropy_left <span class="op">=</span> tree.impurity[left]</span>
-<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>    entropy_right <span class="op">=</span> tree.impurity[right]</span>
-<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># N = total number of samples considered during bagging, therefore, it is equal to the number of samples at the root node</span></span>
-<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> tree.n_node_samples[<span class="dv">0</span>]</span>
-<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># n_l = number of samples at the left child node</span></span>
-<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>    n_l <span class="op">=</span> tree.n_node_samples[left]</span>
-<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># n_r = number of samples at the right child node</span></span>
-<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>    n_r <span class="op">=</span> tree.n_node_samples[right]</span>
-<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># n_t = total number of samples at the node</span></span>
-<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a>    n_t <span class="op">=</span> n_l <span class="op">+</span> n_r</span>
-<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a>    feature <span class="op">=</span> mapping[tree.feature[node]]</span>
-<span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb38-32"><a href="#cb38-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate the information gain</span></span>
-<span id="cb38-33"><a href="#cb38-33" aria-hidden="true" tabindex="-1"></a>    info_gain_t <span class="op">=</span> entropy_node <span class="op">-</span> (n_l<span class="op">/</span>n_t <span class="op">*</span> entropy_left <span class="op">+</span> n_r<span class="op">/</span>n_t <span class="op">*</span> entropy_right)</span>
-<span id="cb38-34"><a href="#cb38-34" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb38-35"><a href="#cb38-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> info_gain_t, N, n_l, n_r, n_t, feature</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-31" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> all_data(tree, node):</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns all the data required to calculate the information gain.</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get the child nodes</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    left, right <span class="op">=</span> print_child_id(tree, node)</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># check if leaf, then return None</span></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> left <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get the data</span></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>    entropy_node <span class="op">=</span> tree.impurity[node]</span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a>    entropy_left <span class="op">=</span> tree.impurity[left]</span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>    entropy_right <span class="op">=</span> tree.impurity[right]</span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># N = total number of samples considered during bagging, therefore, it is equal to the number of samples at the root node</span></span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> tree.n_node_samples[<span class="dv">0</span>]</span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># n_l = number of samples at the left child node</span></span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>    n_l <span class="op">=</span> tree.n_node_samples[left]</span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># n_r = number of samples at the right child node</span></span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>    n_r <span class="op">=</span> tree.n_node_samples[right]</span>
+<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># n_t = total number of samples at the node</span></span>
+<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a>    n_t <span class="op">=</span> n_l <span class="op">+</span> n_r</span>
+<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a>    feature <span class="op">=</span> mapping[tree.feature[node]]</span>
+<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate the information gain</span></span>
+<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a>    info_gain_t <span class="op">=</span> entropy_node <span class="op">-</span> (n_l<span class="op">/</span>n_t <span class="op">*</span> entropy_left <span class="op">+</span> n_r<span class="op">/</span>n_t <span class="op">*</span> entropy_right)</span>
+<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> info_gain_t, N, n_l, n_r, n_t, feature</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-27" class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the importance of each features using the information gain for a tree</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> {}</span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> node <span class="kw">in</span> <span class="bu">range</span>(tree.node_count):</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add the information gain of the node to the dictionary if it is not a leaf node</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>        ig, N, n_l, n_r, n_t, feature <span class="op">=</span> all_data(tree, node)</span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>        p_t <span class="op">=</span> n_t <span class="op">/</span> N</span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>        scores[feature] <span class="op">=</span> scores.get(feature, <span class="dv">0</span>) <span class="op">+</span> p_t <span class="op">*</span> ig</span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Skip if it is a leaf node</span></span>
-<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
-<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>ser <span class="op">=</span> pd.Series(scores) </span>
-<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>info_gain_tree <span class="op">=</span> ser<span class="op">/</span>ser.<span class="bu">sum</span>()</span>
-<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>info_gain_tree.sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-32" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the importance of each features using the information gain for a tree</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> {}</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> node <span class="kw">in</span> <span class="bu">range</span>(tree.node_count):</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add the information gain of the node to the dictionary if it is not a leaf node</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>        ig, N, n_l, n_r, n_t, feature <span class="op">=</span> all_data(tree, node)</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>        p_t <span class="op">=</span> n_t <span class="op">/</span> N</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>        scores[feature] <span class="op">=</span> scores.get(feature, <span class="dv">0</span>) <span class="op">+</span> p_t <span class="op">*</span> ig</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Skip if it is a leaf node</span></span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>ser <span class="op">=</span> pd.Series(scores) </span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>info_gain_tree <span class="op">=</span> ser<span class="op">/</span>ser.<span class="bu">sum</span>()</span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>info_gain_tree.sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>petal_width     0.639307
 petal_length    0.340335
@@ -942,10 +1115,10 @@ sepal_length    0.003899
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-28" class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Feature importance using sklearn for a tree</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>sklearn_imp <span class="op">=</span> tree.compute_feature_importances()</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>pd.Series(sklearn_imp, index<span class="op">=</span>iris.columns[:<span class="op">-</span><span class="dv">1</span>]).sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-33" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Feature importance using sklearn for a tree</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>sklearn_imp <span class="op">=</span> tree.compute_feature_importances()</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>pd.Series(sklearn_imp, index<span class="op">=</span>iris.columns[:<span class="op">-</span><span class="dv">1</span>]).sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="54">
 <pre><code>petal_width     0.624251
 petal_length    0.358024
@@ -954,10 +1127,10 @@ sepal_length    0.003973
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-29" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Feature importance using sklearn for the forest</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>sklearn_imp_forest <span class="op">=</span> np.array([x.tree_.compute_feature_importances() <span class="cf">for</span> x <span class="kw">in</span> rf.estimators_]).mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>pd.Series(sklearn_imp_forest, index<span class="op">=</span>iris.columns[:<span class="op">-</span><span class="dv">1</span>]).sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-34" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Feature importance using sklearn for the forest</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>sklearn_imp_forest <span class="op">=</span> np.array([x.tree_.compute_feature_importances() <span class="cf">for</span> x <span class="kw">in</span> rf.estimators_]).mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>pd.Series(sklearn_imp_forest, index<span class="op">=</span>iris.columns[:<span class="op">-</span><span class="dv">1</span>]).sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>petal_width     0.544270
 petal_length    0.323122
@@ -966,15 +1139,15 @@ sepal_width     0.033960
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-30" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>ser <span class="op">=</span> pd.Series(sklearn_imp_forest, index<span class="op">=</span>iris.columns[:<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>ser.plot(kind<span class="op">=</span><span class="st">'bar'</span>, rot<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'../figures/ensemble/feature-imp-forest.pdf'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-35" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>ser <span class="op">=</span> pd.Series(sklearn_imp_forest, index<span class="op">=</span>iris.columns[:<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>ser.plot(kind<span class="op">=</span><span class="st">'bar'</span>, rot<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>format_axes(plt.gca())</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'../figures/ensemble/feature-imp-forest.pdf'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="ensemble-feature-importance_files/figure-html/cell-30-output-1.png" width="357" height="232" class="figure-img"></p>
+<p><img src="ensemble-feature-importance_files/figure-html/cell-35-output-1.png" width="357" height="232" class="figure-img"></p>
 </figure>
 </div>
 </div>
