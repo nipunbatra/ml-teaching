@@ -237,22 +237,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>log_reg <span class="op">=</span> LogisticRegression(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-7" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict with the model</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> predict_plot_grid(model):</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    XX, YY <span class="op">=</span> torch.meshgrid(torch.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">100</span>), torch.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">100</span>))</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    X_grid <span class="op">=</span> torch.cat([XX.unsqueeze(<span class="op">-</span><span class="dv">1</span>), YY.unsqueeze(<span class="op">-</span><span class="dv">1</span>)], dim<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> model(X_grid)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    probs <span class="op">=</span> torch.sigmoid(logits).reshape(<span class="dv">100</span>, <span class="dv">100</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    plt.contourf(XX, YY, probs.detach().numpy(), levels<span class="op">=</span>[<span class="fl">0.0</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>,<span class="fl">0.3</span>, <span class="fl">0.4</span>,<span class="fl">0.5</span>, <span class="fl">0.6</span>,<span class="fl">0.7</span>, <span class="fl">0.8</span>,<span class="fl">0.9</span>, <span class="fl">1.0</span>], </span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                 cmap<span class="op">=</span>plt.cm.Spectral, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    plt.colorbar()</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, cmap<span class="op">=</span>plt.cm.Spectral)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>predict_plot_grid(log_reg)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>log_reg.linear.weight, log_reg.linear.bias</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>(Parameter containing:
+ tensor([[ 4.4356e-01, -2.6494e-04]], requires_grad=True),
+ Parameter containing:
+ tensor([0.3300], requires_grad=True))</code></pre>
+</div>
+</div>
+<div id="cell-8" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>log_reg(torch.tensor([<span class="dv">1</span>, <span class="fl">0.0</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>tensor([0.7736], grad_fn=&lt;AddBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-9" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict with the model</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> predict_plot_grid(model):</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    XX, YY <span class="op">=</span> torch.meshgrid(torch.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">100</span>), torch.linspace(<span class="op">-</span><span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">100</span>))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    X_grid <span class="op">=</span> torch.cat([XX.unsqueeze(<span class="op">-</span><span class="dv">1</span>), YY.unsqueeze(<span class="op">-</span><span class="dv">1</span>)], dim<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> model(X_grid)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    probs <span class="op">=</span> torch.sigmoid(logits).reshape(<span class="dv">100</span>, <span class="dv">100</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    plt.contourf(XX, YY, probs.detach().numpy(), levels<span class="op">=</span>[<span class="fl">0.0</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>,<span class="fl">0.3</span>, <span class="fl">0.4</span>,<span class="fl">0.5</span>, <span class="fl">0.6</span>,<span class="fl">0.7</span>, <span class="fl">0.8</span>,<span class="fl">0.9</span>, <span class="fl">1.0</span>], </span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                 cmap<span class="op">=</span>plt.cm.Spectral, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    plt.colorbar()</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, cmap<span class="op">=</span>plt.cm.Spectral)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>predict_plot_grid(log_reg)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/Users/nipun/mambaforge/lib/python3.10/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /Users/runner/work/pytorch/pytorch/pytorch/aten/src/ATen/native/TensorShape.cpp:3484.)
   return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]</code></pre>
@@ -260,300 +275,271 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="logistic-regression-torch_files/figure-html/cell-8-output-2.png" width="535" height="418" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="cell-8" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>opt <span class="op">=</span> torch.optim.Adam(log_reg.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>converged <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>prev_loss <span class="op">=</span> <span class="fl">1e8</span> </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="kw">not</span> converged:</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    opt.zero_grad()</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> log_reg(torch.tensor(X, dtype<span class="op">=</span>torch.float32))</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> nn.BCEWithLogitsLoss()(logits, torch.tensor(y, dtype<span class="op">=</span>torch.float32).view(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    opt.step()</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i<span class="op">%</span><span class="dv">10</span><span class="op">==</span><span class="dv">0</span>:</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(i, loss.item())</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.<span class="bu">abs</span>(prev_loss <span class="op">-</span> loss.item()) <span class="op">&lt;</span> <span class="fl">1e-5</span>:</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        converged <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    prev_loss <span class="op">=</span> loss.item() </span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>0 0.9349006414413452
-10 0.8724980354309082
-20 0.817572832107544
-30 0.7688440084457397
-40 0.7244434952735901
-50 0.6841480731964111
-60 0.648054838180542
-70 0.6158449053764343
-80 0.5871520638465881
-90 0.5616370439529419
-100 0.5389482378959656
-110 0.5187534093856812
-120 0.5007484555244446
-130 0.48465821146965027
-140 0.4702383279800415
-150 0.4572741687297821
-160 0.4455784261226654
-170 0.434988796710968
-180 0.4253652095794678
-190 0.4165867269039154
-200 0.4085492193698883
-210 0.4011631906032562
-220 0.3943515419960022
-230 0.3880476653575897
-240 0.38219425082206726
-250 0.3767416477203369
-260 0.37164685130119324
-270 0.36687251925468445
-280 0.36238619685173035
-290 0.3581596612930298
-300 0.3541681170463562
-310 0.3503900170326233
-320 0.34680625796318054
-330 0.3434002697467804
-340 0.340157151222229
-350 0.33706405758857727
-360 0.3341093361377716
-370 0.3312827944755554
-380 0.32857537269592285
-390 0.3259788155555725
-400 0.3234858810901642
-410 0.32109004259109497
-420 0.3187854290008545
-430 0.3165667653083801
-440 0.3144291937351227
-450 0.3123684227466583
-460 0.31038039922714233
-470 0.3084614872932434
-480 0.30660852789878845
-490 0.30481836199760437
-500 0.30308809876441956
-510 0.30141526460647583
-520 0.2997974157333374
-530 0.2982322573661804
-540 0.29671770334243774
-550 0.2952517569065094
-560 0.2938326597213745
-570 0.29245856404304504
-580 0.29112792015075684
-590 0.2898390293121338
-600 0.28859052062034607
-610 0.2873808741569519
-620 0.2862089276313782
-630 0.2850732207298279
-640 0.2839725613594055
-650 0.28290584683418274
-660 0.28187182545661926
-670 0.28086957335472107
-680 0.2798978090286255
-690 0.27895569801330566
-700 0.278042197227478
-710 0.2771564722061157
-720 0.2762974798679352
-730 0.2754644453525543
-740 0.2746565043926239
-750 0.27387282252311707
-760 0.2731126844882965
-770 0.2723752558231354
-780 0.27165982127189636
-790 0.27096569538116455
-800 0.270292192697525
-810 0.26963862776756287
-820 0.2690044343471527
-830 0.26838886737823486
-840 0.2677914798259735
-850 0.2672116458415985
-860 0.2666487991809845
-870 0.2661023437976837
-880 0.26557186245918274
-890 0.2650567889213562
-900 0.2645567059516907
-910 0.26407110691070557
-920 0.2635995149612427
-930 0.26314154267311096
-940 0.2626967132091522
-950 0.2622646987438202
-960 0.26184508204460144
-970 0.26143744587898254
-980 0.26104146242141724
-990 0.2606567442417145
-1000 0.260282963514328
-1010 0.25991976261138916
-1020 0.25956690311431885
-1030 0.259223997592926
-1040 0.2588907480239868
-1050 0.2585669755935669
-1060 0.25825226306915283
-1070 0.2579464018344879
-1080 0.2576490640640259
-1090 0.25736016035079956
-1100 0.25707927346229553
-1110 0.25680628418922424
-1120 0.25654086470603943
-1130 0.25628283619880676
-1140 0.2560320496559143
-1150 0.2557882070541382
-1160 0.25555115938186646
-1170 0.25532066822052
-1180 0.25509655475616455
-1190 0.2548786997795105
-1200 0.25466686487197876
-1210 0.254460871219635
-1220 0.2542605996131897
-1230 0.2540658116340637
-1240 0.2538764476776123
-1250 0.2536923289299011
-1260 0.25351327657699585
-1270 0.25333911180496216
-1280 0.25316980481147766
-1290 0.25300514698028564
-1300 0.25284504890441895
-1310 0.25268933176994324
-1320 0.25253793597221375
-1330 0.25239071249961853
-1340 0.25224751234054565
-1350 0.25210827589035034
-1360 0.25197288393974304
-1370 0.2518412172794342
-1380 0.25171321630477905
-1390 0.25158870220184326
-1400 0.25146764516830444
-1410 0.25134992599487305
-1420 0.2512354850769043
-1430 0.25112417340278625
-1440 0.25101593136787415
-1450 0.2509107291698456
-1460 0.2508084177970886</code></pre>
-</div>
-</div>
-<div id="cell-9" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>predict_plot_grid(log_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="logistic-regression-torch_files/figure-html/cell-10-output-1.png" width="535" height="418" class="figure-img"></p>
+<p><img src="logistic-regression-torch_files/figure-html/cell-10-output-2.png" width="535" height="418" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <div id="cell-10" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iris dataset</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> load_iris()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>opt <span class="op">=</span> torch.optim.Adam(log_reg.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>converged <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>prev_loss <span class="op">=</span> <span class="fl">1e8</span> </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="kw">not</span> converged:</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    opt.zero_grad()</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> log_reg(torch.tensor(X, dtype<span class="op">=</span>torch.float32))</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> nn.BCEWithLogitsLoss()(logits, torch.tensor(y, dtype<span class="op">=</span>torch.float32).view(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    opt.step()</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i<span class="op">%</span><span class="dv">10</span><span class="op">==</span><span class="dv">0</span>:</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(i, loss.item())</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.<span class="bu">abs</span>(prev_loss <span class="op">-</span> loss.item()) <span class="op">&lt;</span> <span class="fl">1e-5</span>:</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        converged <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    prev_loss <span class="op">=</span> loss.item() </span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0 0.6356857419013977
+10 0.594046413898468
+20 0.5578780174255371
+30 0.5273130536079407
+40 0.5019742846488953
+50 0.4811658561229706
+60 0.46408790349960327
+70 0.4499843716621399
+80 0.43821147084236145
+90 0.4282519817352295
+100 0.41970330476760864
+110 0.41225600242614746
+120 0.4056738317012787
+130 0.3997761607170105
+140 0.39442503452301025
+150 0.38951483368873596
+160 0.38496479392051697
+170 0.3807127773761749
+180 0.3767113983631134
+190 0.37292394042015076
+200 0.3693225383758545
+210 0.36588576436042786
+220 0.36259689927101135
+230 0.35944312810897827
+240 0.3564144968986511
+250 0.35350313782691956
+260 0.3507026731967926
+270 0.3480079174041748
+280 0.34541457891464233
+290 0.3429188132286072
+300 0.3405173122882843
+310 0.33820685744285583
+320 0.3359847366809845
+330 0.3338480293750763
+340 0.33179405331611633
+350 0.3298201858997345
+360 0.3279236853122711
+370 0.326102077960968
+380 0.3243526518344879
+390 0.3226730227470398
+400 0.3210606873035431
+410 0.3195130228996277
+420 0.3180277347564697
+430 0.3166024684906006
+440 0.3152349293231964
+450 0.3139227330684662
+460 0.3126639127731323
+470 0.31145623326301575
+480 0.3102976083755493
+490 0.3091861307621002
+500 0.30811992287635803
+510 0.30709704756736755
+520 0.30611586570739746
+530 0.3051745593547821
+540 0.30427151918411255
+550 0.30340519547462463
+560 0.3025740385055542
+570 0.30177661776542664
+580 0.3010115325450897
+590 0.3002774715423584
+600 0.2995731830596924
+610 0.298897385597229
+620 0.29824888706207275
+630 0.2976265847682953
+640 0.29702943563461304
+650 0.2964564263820648
+660 0.2959064245223999
+670 0.29537859559059143
+680 0.29487207531929016
+690 0.2943858802318573
+700 0.29391926527023315
+710 0.29347139596939087
+720 0.29304152727127075
+730 0.2926288843154907
+740 0.29223284125328064
+750 0.2918526232242584
+760 0.2914877235889435
+770 0.2911374270915985
+780 0.29080113768577576
+790 0.29047834873199463
+800 0.29016852378845215
+810 0.28987109661102295
+820 0.28958556056022644
+830 0.2893114984035492
+840 0.289048433303833
+850 0.28879591822624207
+860 0.28855353593826294
+870 0.2883208990097046
+880 0.2880975604057312
+890 0.2878831923007965
+900 0.28767746686935425
+910 0.28748005628585815
+920 0.2872906029224396
+930 0.28710871934890747
+940 0.2869342267513275
+950 0.28676676750183105
+960 0.286606103181839
+970 0.28645193576812744
+980 0.28630396723747253
+990 0.2861621081829071
+1000 0.2860259413719177
+1010 0.28589537739753723
+1020 0.285770058631897
+1030 0.28564995527267456
+1040 0.28553470969200134
+1050 0.28542420268058777
+1060 0.28531819581985474
+1070 0.2852165997028351</code></pre>
+</div>
 </div>
 <div id="cell-11" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> iris.data</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> iris.target</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>predict_plot_grid(log_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="logistic-regression-torch_files/figure-html/cell-12-output-1.png" width="535" height="418" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <div id="cell-12" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, cmap<span class="op">=</span>plt.cm.Spectral)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Sepal length'</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Sepal width'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iris dataset</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> load_iris()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-13" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> iris.data</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> iris.target</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-14" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, cmap<span class="op">=</span>plt.cm.Spectral)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Sepal length'</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Sepal width'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>Text(0, 0.5, 'Sepal width')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="logistic-regression-torch_files/figure-html/cell-13-output-2.png" width="568" height="435" class="figure-img"></p>
+<p><img src="logistic-regression-torch_files/figure-html/cell-15-output-2.png" width="568" height="435" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ThreeClassLogisticRegression(nn.Module):</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim):</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(ThreeClassLogisticRegression, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear1 <span class="op">=</span> nn.Linear(input_dim, <span class="dv">1</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear2 <span class="op">=</span> nn.Linear(input_dim, <span class="dv">1</span>)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear3 <span class="op">=</span> nn.Linear(input_dim, <span class="dv">1</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        logits1 <span class="op">=</span> <span class="va">self</span>.linear1(x)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        logits2 <span class="op">=</span> <span class="va">self</span>.linear2(x)</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        logits3 <span class="op">=</span> <span class="va">self</span>.linear3(x)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> torch.cat([logits1, logits2, logits3], dim<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MultiClassLogisticRegression(nn.Module):</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim, num_classes):</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(MultiClassLogisticRegression, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear <span class="op">=</span> nn.Linear(input_dim, num_classes)</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>        logits <span class="op">=</span> <span class="va">self</span>.linear(x)</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> logits</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-15" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ThreeClassLogisticRegression(nn.Module):</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim):</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(ThreeClassLogisticRegression, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear1 <span class="op">=</span> nn.Linear(input_dim, <span class="dv">1</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear2 <span class="op">=</span> nn.Linear(input_dim, <span class="dv">1</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear3 <span class="op">=</span> nn.Linear(input_dim, <span class="dv">1</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>        logits1 <span class="op">=</span> <span class="va">self</span>.linear1(x) <span class="co">#x^T theta_1</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>        logits2 <span class="op">=</span> <span class="va">self</span>.linear2(x) <span class="co"># x^T theta_2</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>        logits3 <span class="op">=</span> <span class="va">self</span>.linear3(x) <span class="co"># x^T theta_3</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> torch.cat([logits1, logits2, logits3], dim<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MultiClassLogisticRegression(nn.Module):</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim, num_classes):</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(MultiClassLogisticRegression, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear <span class="op">=</span> nn.Linear(input_dim, num_classes)</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>        logits <span class="op">=</span> <span class="va">self</span>.linear(x)</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> logits</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-14" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mlr <span class="op">=</span> ThreeClassLogisticRegression(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-16" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mlr <span class="op">=</span> ThreeClassLogisticRegression(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>X_tensor <span class="op">=</span> torch.tensor(X, dtype<span class="op">=</span>torch.float32)[:,:<span class="dv">2</span>]</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>y_tensor <span class="op">=</span> torch.tensor(y, dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-17" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>X_tensor <span class="op">=</span> torch.tensor(X, dtype<span class="op">=</span>torch.float32)[:,:<span class="dv">2</span>]</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>y_tensor <span class="op">=</span> torch.tensor(y, dtype<span class="op">=</span>torch.<span class="bu">long</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mlr(X_tensor).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div id="cell-18" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mlr(X_tensor).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>torch.Size([150, 3])</code></pre>
 </div>
 </div>
-<div id="cell-17" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mlr_efficient <span class="op">=</span> MultiClassLogisticRegression(<span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>mlr_efficient(X_tensor).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
+<div id="cell-19" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>mlr_efficient <span class="op">=</span> MultiClassLogisticRegression(<span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>mlr_efficient(X_tensor).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>torch.Size([150, 3])</code></pre>
 </div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mlr_efficient(X_tensor[:<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>tensor([[-0.4276,  2.0524, -1.1928],
-        [-0.4378,  1.7861, -1.3077],
-        [-0.4070,  1.8339, -1.1492],
-        [-0.4033,  1.7681, -1.1480],
-        [-0.4122,  2.0762, -1.1135]], grad_fn=&lt;AddmmBackward0&gt;)</code></pre>
+<div id="cell-20" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mlr_efficient(X_tensor[:<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>tensor([[-1.0483, -4.8033,  1.9511],
+        [-1.0942, -4.4552,  1.9622],
+        [-0.9808, -4.4023,  1.8450],
+        [-0.9696, -4.2915,  1.8230],
+        [-0.9916, -4.7768,  1.8925]], grad_fn=&lt;AddmmBackward0&gt;)</code></pre>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>nn.Softmax(dim<span class="op">=-</span><span class="dv">1</span>)(mlr_efficient(X_tensor[:<span class="dv">5</span>])).<span class="bu">sum</span>(dim<span class="op">=-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-21" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>nn.Softmax(dim<span class="op">=-</span><span class="dv">1</span>)(mlr_efficient(X_tensor[:<span class="dv">5</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>tensor([[0.0474, 0.0011, 0.9515],
+        [0.0449, 0.0016, 0.9536],
+        [0.0558, 0.0018, 0.9423],
+        [0.0576, 0.0021, 0.9403],
+        [0.0529, 0.0012, 0.9459]], grad_fn=&lt;SoftmaxBackward0&gt;)</code></pre>
+</div>
+</div>
+<div id="cell-22" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>nn.Softmax(dim<span class="op">=-</span><span class="dv">1</span>)(mlr_efficient(X_tensor[:<span class="dv">5</span>])).<span class="bu">sum</span>(dim<span class="op">=-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>tensor([1.0000, 1.0000, 1.0000, 1.0000, 1.0000], grad_fn=&lt;SumBackward1&gt;)</code></pre>
 </div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_most_probable_class(model):</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    XX, YY <span class="op">=</span> torch.meshgrid(torch.linspace(<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">100</span>), torch.linspace(<span class="fl">1.5</span>, <span class="fl">4.5</span>, <span class="dv">100</span>))</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    X_grid <span class="op">=</span> torch.cat([XX.unsqueeze(<span class="op">-</span><span class="dv">1</span>), YY.unsqueeze(<span class="op">-</span><span class="dv">1</span>)], dim<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> model(X_grid)</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    predicted_class <span class="op">=</span> torch.argmax(logits, dim<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    plt.contourf(XX, YY, predicted_class.reshape(<span class="dv">100</span>, <span class="dv">100</span>).detach().numpy(), levels<span class="op">=</span>[<span class="op">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">1.5</span>, <span class="fl">2.5</span>], </span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                 cmap<span class="op">=</span>plt.cm.Spectral, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    plt.colorbar()</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, cmap<span class="op">=</span>plt.cm.Spectral)</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>plot_most_probable_class(mlr_efficient)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-23" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_most_probable_class(model):</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    XX, YY <span class="op">=</span> torch.meshgrid(torch.linspace(<span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">100</span>), torch.linspace(<span class="fl">1.5</span>, <span class="fl">4.5</span>, <span class="dv">100</span>))</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    X_grid <span class="op">=</span> torch.cat([XX.unsqueeze(<span class="op">-</span><span class="dv">1</span>), YY.unsqueeze(<span class="op">-</span><span class="dv">1</span>)], dim<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> model(X_grid)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    predicted_class <span class="op">=</span> torch.argmax(logits, dim<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    plt.contourf(XX, YY, predicted_class.reshape(<span class="dv">100</span>, <span class="dv">100</span>).detach().numpy(), levels<span class="op">=</span>[<span class="op">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="fl">1.5</span>, <span class="fl">2.5</span>], </span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>                 cmap<span class="op">=</span>plt.cm.Spectral, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    plt.colorbar()</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, cmap<span class="op">=</span>plt.cm.Spectral)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>plot_most_probable_class(mlr_efficient)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="logistic-regression-torch_files/figure-html/cell-21-output-1.png" width="535" height="418" class="figure-img"></p>
+<p><img src="logistic-regression-torch_files/figure-html/cell-24-output-1.png" width="535" height="418" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-21" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>logits <span class="op">=</span> mlr_efficient(X_tensor)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>nn.Softmax(dim<span class="op">=-</span><span class="dv">1</span>)(logits[:<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-24" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>logits <span class="op">=</span> mlr_efficient(X_tensor)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>nn.Softmax(dim<span class="op">=-</span><span class="dv">1</span>)(logits[:<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>tensor([[0.0746, 0.8907, 0.0347],
         [0.0938, 0.8669, 0.0393],
@@ -562,394 +548,554 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         [0.0739, 0.8895, 0.0366]], grad_fn=&lt;SoftmaxBackward0&gt;)</code></pre>
 </div>
 </div>
-<div id="cell-22" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>opt <span class="op">=</span> torch.optim.Adam(mlr_efficient.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>converged <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>prev_loss <span class="op">=</span> <span class="fl">1e8</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="kw">not</span> converged:</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    opt.zero_grad()</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> mlr_efficient(X_tensor)</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> F.cross_entropy(logits, y_tensor)</span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>    opt.step()</span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i<span class="op">%</span><span class="dv">10</span><span class="op">==</span><span class="dv">0</span>:</span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(i, loss.item())</span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.<span class="bu">abs</span>(prev_loss <span class="op">-</span> loss.item()) <span class="op">&lt;</span> <span class="fl">1e-5</span>:</span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>        converged <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>    prev_loss <span class="op">=</span> loss.item() </span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-25" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>y_tensor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 2, 2, 2])</code></pre>
+</div>
+</div>
+<div id="cell-26" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>opt <span class="op">=</span> torch.optim.Adam(mlr_efficient.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>converged <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>prev_loss <span class="op">=</span> <span class="fl">1e8</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="kw">not</span> converged:</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    opt.zero_grad()</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> mlr_efficient(X_tensor)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> F.cross_entropy(logits, y_tensor)</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    opt.step()</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i<span class="op">%</span><span class="dv">10</span><span class="op">==</span><span class="dv">0</span>:</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(i, loss.item())</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.<span class="bu">abs</span>(prev_loss <span class="op">-</span> loss.item()) <span class="op">&lt;</span> <span class="fl">1e-5</span>:</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>        converged <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>    prev_loss <span class="op">=</span> loss.item() </span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0 2.2876317501068115
-10 1.4277923107147217
-20 1.1896789073944092
-30 1.173270583152771
-40 1.1399130821228027
-50 1.1091488599777222
-60 1.0889300107955933
-70 1.065254807472229
-80 1.0434192419052124
-90 1.0214812755584717
-100 1.0000522136688232
-110 0.9791292548179626
-120 0.9588465094566345
-130 0.9392611980438232
-140 0.9204307794570923
-150 0.9023836255073547
-160 0.885133683681488
-170 0.8686791062355042
-180 0.8530094027519226
-190 0.8381044268608093
-200 0.8239390254020691
-210 0.8104835748672485
-220 0.797706127166748
-230 0.7855730056762695
-240 0.7740503549575806
-250 0.7631040811538696
-260 0.7527009844779968
-270 0.7428091168403625
-280 0.733397364616394
-290 0.7244365811347961
-300 0.7158986330032349
-310 0.7077574729919434
-320 0.6999881863594055
-330 0.6925678849220276
-340 0.685474693775177
-350 0.6786885261535645
-360 0.6721901893615723
-370 0.6659626960754395
-380 0.6599892973899841
-390 0.6542547345161438
-400 0.6487451791763306
-410 0.6434471607208252
-420 0.6383485794067383
-430 0.633437991142273
-440 0.628704845905304
-450 0.624139130115509
-460 0.6197317242622375
-470 0.6154740452766418
-480 0.611358106136322
-490 0.6073764562606812
-500 0.6035220623016357
-510 0.5997886061668396
-520 0.5961697101593018
-530 0.5926598906517029
-540 0.5892537236213684
-550 0.5859463214874268
-560 0.5827329754829407
-570 0.5796091556549072
-580 0.5765710473060608
-590 0.5736144781112671
-600 0.5707359313964844
-610 0.56793212890625
-620 0.565199613571167
-630 0.5625355243682861
-640 0.5599370002746582
-650 0.5574012994766235
-660 0.5549259781837463
-670 0.5525084137916565
-680 0.5501465797424316
-690 0.5478382110595703
-700 0.5455812811851501
-710 0.5433740019798279
-720 0.5412144660949707
-730 0.5391008257865906
-740 0.5370318293571472
-750 0.535005509853363
-760 0.5330204963684082
-770 0.5310754179954529
-780 0.5291690826416016
-790 0.527300238609314
-800 0.5254673957824707
-810 0.5236696004867554
-820 0.5219057202339172
-830 0.5201747417449951
-840 0.5184756517410278
-850 0.5168076157569885
-860 0.5151694416999817
-870 0.5135605335235596
-880 0.5119800567626953
-890 0.5104270577430725
-900 0.5089008212089539
-910 0.5074005722999573
-920 0.5059257745742798
-930 0.5044757723808289
-940 0.5030497908592224
-950 0.5016472935676575
-960 0.5002675652503967
-970 0.49891015887260437
-980 0.49757450819015503
-990 0.4962601363658905
-1000 0.49496641755104065
-1010 0.4936929941177368
-1020 0.4924393594264984
-1030 0.49120497703552246
-1040 0.4899895191192627
-1050 0.4887924790382385
-1060 0.4876135289669037
-1070 0.48645222187042236
-1080 0.48530831933021545
-1090 0.4841812551021576
-1100 0.4830707311630249
-1110 0.4819765090942383
-1120 0.4808981418609619
-1130 0.4798354208469391
-1140 0.478787899017334
-1150 0.47775542736053467
-1160 0.4767375588417053
-1170 0.4757342040538788
-1180 0.47474488615989685
-1190 0.4737694263458252
-1200 0.4728076756000519
-1210 0.47185924649238586
-1220 0.47092387080192566
-1230 0.4700014293193817
-1240 0.4690915048122406
-1250 0.4681941270828247
-1260 0.467308908700943
-1270 0.4664357006549835
-1280 0.4655742347240448
-1290 0.4647243618965149
-1300 0.4638858437538147
-1310 0.46305856108665466
-1320 0.4622422754764557
-1330 0.4614367187023163
-1340 0.4606419801712036
-1350 0.4598575830459595
-1360 0.45908355712890625
-1370 0.45831960439682007
-1380 0.457565575838089
-1390 0.45682138204574585
-1400 0.4560868740081787
-1410 0.455361932516098
-1420 0.4546462893486023
-1430 0.45393991470336914
-1440 0.4532424509525299
-1450 0.4525540769100189
-1460 0.45187443494796753
-1470 0.4512034058570862
-1480 0.4505409896373749
-1490 0.44988682866096497
-1500 0.4492410719394684
-1510 0.44860342144966125
-1520 0.44797372817993164
-1530 0.44735199213027954
-1540 0.4467381238937378
-1550 0.4461318850517273
-1560 0.4455331563949585
-1570 0.444941908121109
-1580 0.4443580210208893
-1590 0.44378137588500977
-1600 0.4432118237018585
-1610 0.44264933466911316
-1620 0.44209375977516174
-1630 0.4415450394153595
-1640 0.44100311398506165
-1650 0.4404677450656891
-1660 0.4399389624595642
-1670 0.4394165575504303
-1680 0.43890058994293213
-1690 0.438390851020813
-1700 0.4378872811794281
-1710 0.4373898208141327
-1720 0.436898410320282
-1730 0.4364128112792969
-1740 0.43593311309814453
-1750 0.4354592263698578
-1760 0.43499094247817993
-1770 0.4345283508300781
-1780 0.4340711832046509
-1790 0.4336196482181549
-1800 0.43317320942878723
-1810 0.4327322244644165
-1820 0.432296484708786
-1830 0.4318659007549286
-1840 0.4314402639865875
-1850 0.43101978302001953
-1860 0.4306041896343231
-1870 0.4301934838294983
-1880 0.42978763580322266
-1890 0.4293864071369171
-1900 0.4289900064468384
-1910 0.4285980761051178
-1920 0.4282107651233673
-1930 0.427827924489975
-1940 0.4274495542049408
-1950 0.4270755648612976
-1960 0.4267057776451111
-1970 0.4263403117656708
-1980 0.42597898840904236
-1990 0.4256218671798706
-2000 0.4252687394618988
-2010 0.4249196946620941
-2020 0.4245745837688446
-2030 0.42423343658447266
-2040 0.42389607429504395
-2050 0.42356255650520325
-2060 0.423232764005661
-2070 0.4229067265987396
-2080 0.42258426547050476
-2090 0.42226549983024597
-2100 0.42195025086402893
-2110 0.42163845896720886
-2120 0.42133021354675293
-2130 0.42102527618408203
-2140 0.4207237660884857
-2150 0.4204255938529968
-2160 0.4201306700706482
-2170 0.41983893513679504
-2180 0.41955047845840454
-2190 0.41926509141921997
-2200 0.4189828038215637
-2210 0.4187036156654358
-2220 0.41842740774154663
-2230 0.41815415024757385
-2240 0.41788384318351746
-2250 0.41761642694473267
-2260 0.4173519015312195
-2270 0.41709014773368835
-2280 0.41683119535446167
-2290 0.4165749251842499
-2300 0.41632139682769775
-2310 0.41607049107551575
-2320 0.41582220792770386
-2330 0.41557666659355164
-2340 0.41533347964286804
-2350 0.41509291529655457
-2360 0.41485482454299927
-2370 0.41461917757987976
-2380 0.41438594460487366
-2390 0.4141550362110138
-2400 0.4139265716075897
-2410 0.4137003421783447
-2420 0.41347646713256836
-2430 0.41325485706329346
-2440 0.41303539276123047
-2450 0.41281819343566895
-2460 0.41260311007499695
-2470 0.41239017248153687
-2480 0.41217929124832153
-2490 0.4119705855846405
-2500 0.4117638170719147
-2510 0.411559134721756
-2520 0.4113563895225525
-2530 0.41115570068359375
-2540 0.41095682978630066
-2550 0.4107598662376404
-2560 0.4105648696422577
-2570 0.41037166118621826
-2580 0.4101802706718445
-2590 0.40999075770378113
-2600 0.40980294346809387
-2610 0.4096169173717499
-2620 0.40943264961242676
-2630 0.40925002098083496
-2640 0.40906909108161926
-2650 0.4088898301124573
-2660 0.4087121784687042
-2670 0.4085361659526825
-2680 0.4083617031574249
-2690 0.4081888198852539
-2700 0.40801751613616943
-2710 0.40784770250320435
-2720 0.40767937898635864
-2730 0.4075125753879547
-2740 0.407347172498703
-2750 0.4071832001209259
-2760 0.4070206582546234
-2770 0.40685951709747314
-2780 0.4066997766494751
-2790 0.4065413773059845
-2800 0.40638434886932373
-2810 0.40622857213020325
-2820 0.4060741662979126
-2830 0.40592101216316223
-2840 0.40576907992362976
-2850 0.40561842918395996
-2860 0.40546900033950806
-2870 0.40532082319259644
-2880 0.40517380833625793
-2890 0.40502792596817017
-2900 0.4048832654953003
-2910 0.40473973751068115
-2920 0.40459728240966797
-2930 0.4044559895992279
-2940 0.4043157994747162
-2950 0.40417665243148804
-2960 0.40403860807418823
-2970 0.403901606798172
-2980 0.40376555919647217
-2990 0.40363067388534546
-3000 0.40349671244621277
-3010 0.40336373448371887
-3020 0.40323179960250854
-3030 0.40310072898864746
-3040 0.40297067165374756
-3050 0.4028415381908417
-3060 0.4027132987976074
-3070 0.4025859832763672
-3080 0.40245962142944336
-3090 0.4023340940475464
-3100 0.40220946073532104
-3110 0.4020856022834778
-3120 0.40196263790130615
-3130 0.4018405079841614
-3140 0.40171927213668823
-3150 0.40159881114959717
-3160 0.401479035615921
-3170 0.4013602137565613
-3180 0.40124207735061646
-3190 0.4011247456073761
-3200 0.40100815892219543
-3210 0.40089231729507446
-3220 0.4007771611213684
-3230 0.4006628096103668
-3240 0.4005492031574249
-3250 0.400436133146286
-3260 0.40032392740249634
-3270 0.40021228790283203
-3280 0.40010136365890503
-3290 0.39999115467071533
-3300 0.3998815715312958
-3310 0.39977261424064636
-3320 0.3996643126010895
-3330 0.3995566666126251
-3340 0.39944958686828613
-3350 0.3993431627750397
-3360 0.3992373049259186
-3370 0.39913210272789
-3380 0.3990274667739868
-3390 0.398923397064209
-3400 0.3988198935985565
-3410 0.3987169563770294
-3420 0.3986146152019501
-3430 0.3985127806663513
-3440 0.39841151237487793</code></pre>
+<pre><code>0 3.512922763824463
+10 2.396028518676758
+20 1.7443147897720337
+30 1.3343197107315063
+40 1.0142916440963745
+50 0.9684472680091858
+60 0.9662931561470032
+70 0.9421321749687195
+80 0.932521641254425
+90 0.9219393134117126
+100 0.9116792678833008
+110 0.9015797972679138
+120 0.8915135860443115
+130 0.8814629912376404
+140 0.8714943528175354
+150 0.8616196513175964
+160 0.8518762588500977
+170 0.84228515625
+180 0.8328675031661987
+190 0.8236393928527832
+200 0.8146136999130249
+210 0.8057998418807983
+220 0.7972047328948975
+230 0.7888327836990356
+240 0.7806861400604248
+250 0.7727659344673157
+260 0.7650708556175232
+270 0.7575994729995728
+280 0.7503483891487122
+290 0.7433139681816101
+300 0.7364917397499084
+310 0.7298766374588013
+320 0.7234635949134827
+330 0.7172466516494751
+340 0.7112202048301697
+350 0.7053780555725098
+360 0.6997144222259521
+370 0.6942230463027954
+380 0.6888980865478516
+390 0.6837335228919983
+400 0.6787236928939819
+410 0.673862636089325
+420 0.6691449284553528
+430 0.6645650863647461
+440 0.6601179838180542
+450 0.6557983160018921
+460 0.6516013145446777
+470 0.6475222110748291
+480 0.6435563564300537
+490 0.6396994590759277
+500 0.6359471082687378
+510 0.6322956085205078
+520 0.628740668296814
+530 0.6252787709236145
+540 0.6219063997268677
+550 0.6186199188232422
+560 0.6154161095619202
+570 0.6122919917106628
+580 0.6092444062232971
+590 0.6062706112861633
+600 0.6033677458763123
+610 0.6005332469940186
+620 0.5977646708488464
+630 0.5950595140457153
+640 0.592415452003479
+650 0.5898305177688599
+660 0.5873023271560669
+670 0.5848291516304016
+680 0.5824088454246521
+690 0.5800397992134094
+700 0.5777201056480408
+710 0.5754480957984924
+720 0.5732222199440002
+730 0.5710409283638
+740 0.5689027905464172
+750 0.5668062567710876
+760 0.5647502541542053
+770 0.5627332329750061
+780 0.560754120349884
+790 0.5588116645812988
+800 0.5569047331809998
+810 0.5550323128700256
+820 0.553193211555481
+830 0.5513865947723389
+840 0.5496113300323486
+850 0.547866702079773
+860 0.5461516976356506
+870 0.5444655418395996
+880 0.5428073406219482
+890 0.5411763787269592
+900 0.5395719408988953
+910 0.5379931926727295
+920 0.5364394187927246
+930 0.5349101424217224
+940 0.5334045886993408
+950 0.5319221615791321
+960 0.5304622650146484
+970 0.5290243625640869
+980 0.5276078581809998
+990 0.526212215423584
+1000 0.5248369574546814
+1010 0.5234816074371338
+1020 0.5221456289291382
+1030 0.5208286643028259
+1040 0.5195301175117493
+1050 0.5182497501373291
+1060 0.5169870257377625
+1070 0.5157415270805359
+1080 0.5145129561424255
+1090 0.5133009552955627
+1100 0.5121050477027893
+1110 0.5109249949455261
+1120 0.5097604990005493
+1130 0.5086110830307007
+1140 0.5074764490127563
+1150 0.5063564777374268
+1160 0.5052507519721985
+1170 0.5041589140892029
+1180 0.5030808448791504
+1190 0.5020161867141724
+1200 0.5009647011756897
+1210 0.4999260902404785
+1220 0.49890023469924927
+1230 0.4978867471218109
+1240 0.4968855381011963
+1250 0.49589625000953674
+1260 0.4949187636375427
+1270 0.49395284056663513
+1280 0.4929983615875244
+1290 0.49205493927001953
+1300 0.49112263321876526
+1310 0.4902009665966034
+1320 0.4892899990081787
+1330 0.48838943243026733
+1340 0.4874991476535797
+1350 0.48661890625953674
+1360 0.4857485890388489
+1370 0.48488810658454895
+1380 0.48403722047805786
+1390 0.4831957519054413
+1400 0.4823637306690216
+1410 0.4815407693386078
+1420 0.48072683811187744
+1430 0.47992178797721863
+1440 0.47912561893463135
+1450 0.47833800315856934
+1460 0.4775589108467102
+1470 0.4767882227897644
+1480 0.47602584958076477
+1490 0.4752714931964874
+1500 0.4745253026485443
+1510 0.47378697991371155
+1520 0.473056435585022
+1530 0.4723336398601532
+1540 0.4716183543205261
+1550 0.4709106385707855
+1560 0.4702102541923523
+1570 0.4695172607898712
+1580 0.4688314199447632
+1590 0.46815255284309387
+1600 0.46748092770576477
+1610 0.4668160378932953
+1620 0.46615809202194214
+1630 0.46550679206848145
+1640 0.46486222743988037
+1650 0.4642241895198822
+1660 0.46359261870384216
+1670 0.46296748518943787
+1680 0.4623486399650574
+1690 0.4617359936237335
+1700 0.4611296057701111
+1710 0.46052926778793335
+1720 0.4599350094795227
+1730 0.45934662222862244
+1740 0.45876413583755493
+1750 0.458187460899353
+1760 0.4576164782047272
+1770 0.45705124735832214
+1780 0.4564915597438812
+1790 0.45593738555908203
+1800 0.45538878440856934
+1810 0.45484548807144165
+1820 0.454307496547699
+1830 0.4537748694419861
+1840 0.45324742794036865
+1850 0.4527251124382019
+1860 0.45220789313316345
+1870 0.4516957998275757
+1880 0.4511885941028595
+1890 0.45068639516830444
+1900 0.4501889944076538
+1910 0.44969651103019714
+1920 0.44920867681503296
+1930 0.4487256407737732
+1940 0.4482472240924835
+1950 0.44777342677116394
+1960 0.4473041296005249
+1970 0.4468393921852112
+1980 0.4463789761066437
+1990 0.44592320919036865
+2000 0.4454716444015503
+2010 0.44502437114715576
+2020 0.44458135962486267
+2030 0.44414255023002625
+2040 0.4437079429626465
+2050 0.4432775378227234
+2060 0.44285109639167786
+2070 0.44242867827415466
+2080 0.4420103430747986
+2090 0.44159582257270813
+2100 0.4411852955818176
+2110 0.4407786428928375
+2120 0.44037577509880066
+2130 0.43997669219970703
+2140 0.43958136439323425
+2150 0.439189612865448
+2160 0.43880173563957214
+2170 0.43841731548309326
+2180 0.4380365014076233
+2190 0.43765926361083984
+2200 0.43728557229042053
+2210 0.43691518902778625
+2220 0.4365483224391937
+2230 0.4361847937107086
+2240 0.43582475185394287
+2250 0.435467928647995
+2260 0.43511438369750977
+2270 0.43476414680480957
+2280 0.43441712856292725
+2290 0.43407317996025085
+2300 0.4337325096130371
+2310 0.4333948791027069
+2320 0.43306025862693787
+2330 0.43272876739501953
+2340 0.43240025639533997
+2350 0.43207478523254395
+2360 0.4317522644996643
+2370 0.4314326047897339
+2380 0.4311158359050751
+2390 0.43080195784568787
+2400 0.4304908812046051
+2410 0.43018263578414917
+2420 0.4298771023750305
+2430 0.4295743405818939
+2440 0.4292742908000946
+2450 0.428976833820343
+2460 0.4286821484565735
+2470 0.4283899962902069
+2480 0.42810049653053284
+2490 0.4278135299682617
+2500 0.4275290369987488
+2510 0.42724716663360596
+2520 0.42696771025657654
+2530 0.4266907274723053
+2540 0.42641615867614746
+2550 0.426144003868103
+2560 0.4258742332458496
+2570 0.4256068468093872
+2580 0.42534172534942627
+2590 0.42507895827293396
+2600 0.4248184561729431
+2610 0.4245601296424866
+2620 0.4243040978908539
+2630 0.42405030131340027
+2640 0.42379865050315857
+2650 0.4235491156578064
+2660 0.4233017563819885
+2670 0.4230565130710602
+2680 0.4228133261203766
+2690 0.42257219552993774
+2700 0.42233312129974365
+2710 0.42209604382514954
+2720 0.42186105251312256
+2730 0.421627938747406
+2740 0.42139682173728943
+2750 0.42116764187812805
+2760 0.4209402799606323
+2770 0.4207148849964142
+2780 0.42049136757850647
+2790 0.420269638299942
+2800 0.4200498163700104
+2810 0.4198317527770996
+2820 0.4196154773235321
+2830 0.4194009304046631
+2840 0.4191882312297821
+2850 0.41897717118263245
+2860 0.4187678396701813
+2870 0.4185602068901062
+2880 0.41835424304008484
+2890 0.4181499481201172
+2900 0.4179472029209137
+2910 0.4177462160587311
+2920 0.41754665970802307
+2930 0.41734886169433594
+2940 0.4171524941921234
+2950 0.41695767641067505
+2960 0.41676443815231323
+2970 0.4165726900100708
+2980 0.41638243198394775
+2990 0.4161936044692993
+3000 0.4160062074661255
+3010 0.41582033038139343
+3020 0.415635883808136
+3030 0.41545283794403076
+3040 0.415271133184433
+3050 0.4150908291339874
+3060 0.4149118959903717
+3070 0.41473427414894104
+3080 0.4145580530166626
+3090 0.4143831133842468
+3100 0.4142094552516937
+3110 0.4140370488166809
+3120 0.41386595368385315
+3130 0.4136960804462433
+3140 0.4135274887084961
+3150 0.4133600890636444
+3160 0.413193941116333
+3170 0.4130289852619171
+3180 0.4128651022911072
+3190 0.4127025008201599
+3200 0.4125410318374634
+3210 0.4123806655406952
+3220 0.4122214615345001
+3230 0.4120633602142334
+3240 0.411906361579895
+3250 0.4117504358291626
+3260 0.4115956723690033
+3270 0.4114418923854828
+3280 0.41128915548324585
+3290 0.4111374616622925
+3300 0.4109868109226227
+3310 0.41083717346191406
+3320 0.41068848967552185
+3330 0.4105408489704132
+3340 0.41039419174194336
+3350 0.41024842858314514
+3360 0.4101036787033081
+3370 0.4099598526954651
+3380 0.4098169803619385
+3390 0.4096750020980835
+3400 0.40953394770622253
+3410 0.4093937873840332
+3420 0.4092545211315155
+3430 0.40911605954170227
+3440 0.4089786112308502
+3450 0.4088418781757355
+3460 0.40870606899261475
+3470 0.4085709750652313
+3480 0.4084368348121643
+3490 0.40830346941947937
+3500 0.4081708788871765
+3510 0.4080391824245453
+3520 0.4079081416130066
+3530 0.40777796506881714
+3540 0.4076485335826874
+3550 0.4075198173522949
+3560 0.40739184617996216
+3570 0.4072646200656891
+3580 0.40713822841644287
+3590 0.4070124626159668
+3600 0.40688738226890564
+3610 0.4067629873752594
+3620 0.4066393971443176
+3630 0.406516432762146
+3640 0.4063941240310669
+3650 0.4062725305557251
+3660 0.40615156292915344
+3670 0.4060312509536743
+3680 0.40591153502464294
+3690 0.4057925343513489
+3700 0.4056740999221802
+3710 0.405556321144104
+3720 0.4054391384124756
+3730 0.4053225815296173
+3740 0.4052066206932068
+3750 0.405091255903244
+3760 0.4049764573574066
+3770 0.4048621952533722
+3780 0.40474849939346313
+3790 0.4046354293823242
+3800 0.4045228958129883
+3810 0.40441086888313293
+3820 0.40429946780204773
+3830 0.40418851375579834
+3840 0.4040781259536743
+3850 0.4039682447910309
+3860 0.40385884046554565
+3870 0.4037500321865082
+3880 0.4036416709423065
+3890 0.40353381633758545
+3900 0.40342646837234497
+3910 0.4033195674419403
+3920 0.40321317315101624
+3930 0.40310725569725037
+3940 0.40300169587135315
+3950 0.4028966724872589
+3960 0.40279218554496765
+3970 0.40268802642822266
+3980 0.40258437395095825
+3990 0.40248122811317444
+4000 0.4023783504962921
+4010 0.40227600932121277
+4020 0.40217405557632446
+4030 0.4020724892616272
+4040 0.4019714295864105
+4050 0.4018706679344177</code></pre>
 </div>
 </div>
-<div id="cell-23" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>mlr_efficient(X_tensor[:<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
-<pre><code>tensor([[ 3.3141, -2.0900, -3.7057],
-        [ 1.1409, -1.1217, -3.2703],
-        [ 3.4758, -1.6582, -4.0551],
-        [ 3.3553, -1.4965, -4.0989],
-        [ 4.4815, -2.3582, -4.0981]], grad_fn=&lt;AddmmBackward0&gt;)</code></pre>
+<div id="cell-27" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>mlr_efficient(X_tensor[:<span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>tensor([[ 3.5738, -1.9346, -3.4869],
+        [ 1.4138, -0.7382, -2.8186],
+        [ 3.6912, -1.3615, -3.6789],
+        [ 3.5621, -1.1532, -3.6723],
+        [ 4.7125, -2.2463, -3.9170]], grad_fn=&lt;AddmmBackward0&gt;)</code></pre>
 </div>
 </div>
-<div id="cell-24" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> F.softmax(mlr_efficient(X_tensor), dim<span class="op">=-</span><span class="dv">1</span>).detach().numpy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-28" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> F.softmax(mlr_efficient(X_tensor), dim<span class="op">=-</span><span class="dv">1</span>).detach().numpy()</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">0</th>
+<th data-quarto-table-cell-role="th">1</th>
+<th data-quarto-table-cell-role="th">2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.995113</td>
+<td>0.004033</td>
+<td>0.000854</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.884354</td>
+<td>0.102808</td>
+<td>0.012838</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.993027</td>
+<td>0.006347</td>
+<td>0.000625</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.990414</td>
+<td>0.008871</td>
+<td>0.000714</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0.998872</td>
+<td>0.000949</td>
+<td>0.000179</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">145</td>
+<td>0.000119</td>
+<td>0.309663</td>
+<td>0.690218</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">146</td>
+<td>0.000021</td>
+<td>0.511706</td>
+<td>0.488273</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">147</td>
+<td>0.000446</td>
+<td>0.381773</td>
+<td>0.617781</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">148</td>
+<td>0.092207</td>
+<td>0.416003</td>
+<td>0.491790</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">149</td>
+<td>0.019944</td>
+<td>0.605274</td>
+<td>0.374782</td>
+</tr>
+</tbody>
+</table>
+
+<p>150 rows × 3 columns</p>
 </div>
-<div id="cell-25" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-26" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(pred, columns<span class="op">=</span>iris.target_names)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"GT"</span>] <span class="op">=</span> iris.target</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+</div>
+<div id="cell-29" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-30" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(pred, columns<span class="op">=</span>iris.target_names)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"GT"</span>] <span class="op">=</span> iris.target</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
 <div>
 
 
@@ -966,37 +1112,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>0.994636</td>
-<td>0.004474</td>
-<td>0.000889</td>
+<td>0.995113</td>
+<td>0.004033</td>
+<td>0.000854</td>
 <td>0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>0.895877</td>
-<td>0.093246</td>
-<td>0.010877</td>
+<td>0.884354</td>
+<td>0.102808</td>
+<td>0.012838</td>
 <td>0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>0.993612</td>
-<td>0.005855</td>
-<td>0.000533</td>
+<td>0.993027</td>
+<td>0.006347</td>
+<td>0.000625</td>
 <td>0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>0.991676</td>
-<td>0.007750</td>
-<td>0.000574</td>
+<td>0.990414</td>
+<td>0.008871</td>
+<td>0.000714</td>
 <td>0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>0.998743</td>
-<td>0.001069</td>
-<td>0.000188</td>
+<td>0.998872</td>
+<td>0.000949</td>
+<td>0.000179</td>
 <td>0</td>
 </tr>
 <tr class="even">
@@ -1008,37 +1154,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">145</td>
-<td>0.000091</td>
-<td>0.306116</td>
-<td>0.693793</td>
+<td>0.000119</td>
+<td>0.309663</td>
+<td>0.690218</td>
 <td>2</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">146</td>
 <td>0.000021</td>
-<td>0.511070</td>
-<td>0.488909</td>
+<td>0.511706</td>
+<td>0.488273</td>
 <td>2</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">147</td>
-<td>0.000359</td>
-<td>0.380096</td>
-<td>0.619545</td>
+<td>0.000446</td>
+<td>0.381773</td>
+<td>0.617781</td>
 <td>2</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">148</td>
-<td>0.070860</td>
-<td>0.428247</td>
-<td>0.500893</td>
+<td>0.092207</td>
+<td>0.416003</td>
+<td>0.491790</td>
 <td>2</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">149</td>
-<td>0.018367</td>
-<td>0.611113</td>
-<td>0.370520</td>
+<td>0.019944</td>
+<td>0.605274</td>
+<td>0.374782</td>
 <td>2</td>
 </tr>
 </tbody>
@@ -1048,15 +1194,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-27" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find prediction</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> pred.argmax(axis<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Predicted Class"</span>] <span class="op">=</span> y_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-31" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find prediction</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> pred.argmax(axis<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Predicted Class"</span>] <span class="op">=</span> y_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-28" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="28">
+<div id="cell-32" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
 <div>
 
 
@@ -1074,41 +1220,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>0.994636</td>
-<td>0.004474</td>
-<td>0.000889</td>
+<td>0.995113</td>
+<td>0.004033</td>
+<td>0.000854</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>0.895877</td>
-<td>0.093246</td>
-<td>0.010877</td>
+<td>0.884354</td>
+<td>0.102808</td>
+<td>0.012838</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>0.993612</td>
-<td>0.005855</td>
-<td>0.000533</td>
+<td>0.993027</td>
+<td>0.006347</td>
+<td>0.000625</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>0.991676</td>
-<td>0.007750</td>
-<td>0.000574</td>
+<td>0.990414</td>
+<td>0.008871</td>
+<td>0.000714</td>
 <td>0</td>
 <td>0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>0.998743</td>
-<td>0.001069</td>
-<td>0.000188</td>
+<td>0.998872</td>
+<td>0.000949</td>
+<td>0.000179</td>
 <td>0</td>
 <td>0</td>
 </tr>
@@ -1122,41 +1268,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">145</td>
-<td>0.000091</td>
-<td>0.306116</td>
-<td>0.693793</td>
+<td>0.000119</td>
+<td>0.309663</td>
+<td>0.690218</td>
 <td>2</td>
 <td>2</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">146</td>
 <td>0.000021</td>
-<td>0.511070</td>
-<td>0.488909</td>
+<td>0.511706</td>
+<td>0.488273</td>
 <td>2</td>
 <td>1</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">147</td>
-<td>0.000359</td>
-<td>0.380096</td>
-<td>0.619545</td>
+<td>0.000446</td>
+<td>0.381773</td>
+<td>0.617781</td>
 <td>2</td>
 <td>2</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">148</td>
-<td>0.070860</td>
-<td>0.428247</td>
-<td>0.500893</td>
+<td>0.092207</td>
+<td>0.416003</td>
+<td>0.491790</td>
 <td>2</td>
 <td>2</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">149</td>
-<td>0.018367</td>
-<td>0.611113</td>
-<td>0.370520</td>
+<td>0.019944</td>
+<td>0.605274</td>
+<td>0.374782</td>
 <td>2</td>
 <td>1</td>
 </tr>
@@ -1167,191 +1313,235 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-29" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accuracy</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>(y_pred <span class="op">==</span> iris.target).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
+<div id="cell-33" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accuracy</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>(y_pred <span class="op">==</span> iris.target).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>0.8266666666666667</code></pre>
 </div>
 </div>
-<div id="cell-30" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>plot_most_probable_class(mlr_efficient)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-34" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>plot_most_probable_class(mlr_efficient)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="logistic-regression-torch_files/figure-html/cell-31-output-1.png" width="535" height="418" class="figure-img"></p>
+<p><img src="logistic-regression-torch_files/figure-html/cell-35-output-1.png" width="535" height="418" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-31" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add more features like x^2, xy, y^2</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> iris.data</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> iris.target</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.concatenate([X, X<span class="op">**</span><span class="dv">2</span>, X[:, [<span class="dv">0</span>]]<span class="op">*</span>X[:, [<span class="dv">1</span>]], X[:, [<span class="dv">1</span>]]<span class="op">**</span><span class="dv">2</span>], axis<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>X_tensor <span class="op">=</span> torch.tensor(X, dtype<span class="op">=</span>torch.float32)</span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>mlr_efficient <span class="op">=</span> MultiClassLogisticRegression(<span class="dv">10</span>, <span class="dv">3</span>)</span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>opt <span class="op">=</span> torch.optim.Adam(mlr_efficient.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span>
-<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>converged <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>prev_loss <span class="op">=</span> <span class="fl">1e8</span></span>
-<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="kw">not</span> converged:</span>
-<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>    opt.zero_grad()</span>
-<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> mlr_efficient(X_tensor)</span>
-<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> F.cross_entropy(logits, y_tensor)</span>
-<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
-<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>    opt.step()</span>
-<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i<span class="op">%</span><span class="dv">10</span><span class="op">==</span><span class="dv">0</span>:</span>
-<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(i, loss.item())</span>
-<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.<span class="bu">abs</span>(prev_loss <span class="op">-</span> loss.item()) <span class="op">&lt;</span> <span class="fl">1e-5</span>:</span>
-<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a>        converged <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>    prev_loss <span class="op">=</span> loss.item() </span>
-<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-35" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add more features like x^2, xy, y^2</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> iris.data</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> iris.target</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.concatenate([X, X<span class="op">**</span><span class="dv">2</span>, X[:, [<span class="dv">0</span>]]<span class="op">*</span>X[:, [<span class="dv">1</span>]], X[:, [<span class="dv">1</span>]]<span class="op">**</span><span class="dv">2</span>], axis<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>X_tensor <span class="op">=</span> torch.tensor(X, dtype<span class="op">=</span>torch.float32)</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>mlr_efficient <span class="op">=</span> MultiClassLogisticRegression(<span class="dv">10</span>, <span class="dv">3</span>)</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>opt <span class="op">=</span> torch.optim.Adam(mlr_efficient.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>converged <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a>prev_loss <span class="op">=</span> <span class="fl">1e8</span></span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="kw">not</span> converged:</span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>    opt.zero_grad()</span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> mlr_efficient(X_tensor)</span>
+<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> F.cross_entropy(logits, y_tensor)</span>
+<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
+<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a>    opt.step()</span>
+<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i<span class="op">%</span><span class="dv">10</span><span class="op">==</span><span class="dv">0</span>:</span>
+<span id="cb50-27"><a href="#cb50-27" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(i, loss.item())</span>
+<span id="cb50-28"><a href="#cb50-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.<span class="bu">abs</span>(prev_loss <span class="op">-</span> loss.item()) <span class="op">&lt;</span> <span class="fl">1e-5</span>:</span>
+<span id="cb50-29"><a href="#cb50-29" aria-hidden="true" tabindex="-1"></a>        converged <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb50-30"><a href="#cb50-30" aria-hidden="true" tabindex="-1"></a>    prev_loss <span class="op">=</span> loss.item() </span>
+<span id="cb50-31"><a href="#cb50-31" aria-hidden="true" tabindex="-1"></a>    i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb50-32"><a href="#cb50-32" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0 4.175729751586914
-10 0.7128309011459351
-20 0.42325228452682495
-30 0.35874807834625244
-40 0.2861122786998749
-50 0.24453814327716827
-60 0.21917879581451416
-70 0.19883905351161957
-80 0.18379421532154083
-90 0.17121852934360504
-100 0.16081109642982483
-110 0.15182484686374664
-120 0.14402928948402405
-130 0.13717801868915558
-140 0.13111360371112823
-150 0.125710129737854
-160 0.1208672821521759
-170 0.11650418490171432
-180 0.11255431920289993
-190 0.10896281152963638
-200 0.1056838408112526
-210 0.10267896950244904
-220 0.09991569072008133
-230 0.09736639261245728
-240 0.09500744193792343
-250 0.0928184986114502
-260 0.0907820537686348
-270 0.08888282626867294
-280 0.08710754662752151
-290 0.08544456958770752
-300 0.0838836133480072
-310 0.0824156403541565
-320 0.0810326412320137
-330 0.07972748577594757
-340 0.07849381864070892
-350 0.07732591778039932
-360 0.07621872425079346
-370 0.07516761124134064
-380 0.07416845113039017
-390 0.0732174664735794
-400 0.07231126725673676
-410 0.07144675403833389
-420 0.07062112540006638
-430 0.06983178853988647
-440 0.06907644867897034
-450 0.06835290044546127
-460 0.06765919178724289
-470 0.06699351221323013
-480 0.0663541629910469
-490 0.06573962420225143
-500 0.06514845788478851
-510 0.06457936018705368
-520 0.06403109431266785
-530 0.06350252777338028
-540 0.0629926398396492
-550 0.06250040978193283
-560 0.062024928629398346
-570 0.06156538799405098
-580 0.061120934784412384
-590 0.06069087237119675
-600 0.060274481773376465
-610 0.0598711334168911
-620 0.05948017165064812
-630 0.05910108610987663
-640 0.05873329937458038
-650 0.05837631970643997
-660 0.0580296628177166
-670 0.057692889124155045
-680 0.057365577667951584
-690 0.05704731494188309
-700 0.05673772841691971
-710 0.056436482816934586
-720 0.05614320933818817
-730 0.055857621133327484
-740 0.05557936802506447
-750 0.05530823394656181
-760 0.055043887346982956
-770 0.05478610843420029
-780 0.054534632712602615
-790 0.05428922176361084
-800 0.05404968187212944
-810 0.053815752267837524
-820 0.05358729138970375
-830 0.05336408689618111
-840 0.053145941346883774
-850 0.05293269827961922
-860 0.052724193781614304
-870 0.05252022668719292
-880 0.052320707589387894
-890 0.052125465124845505
-900 0.0519343726336956
-910 0.05174724757671356
-920 0.05156403407454491
-930 0.05138456076383591
-940 0.0512087419629097
-950 0.05103643983602524
-960 0.05086757242679596
-970 0.05070202797651291
-980 0.05053970590233803
-990 0.05038050189614296
-1000 0.05022436007857323
-1010 0.05007114261388779
-1020 0.04992081969976425
-1030 0.04977325350046158
-1040 0.049628421664237976
-1050 0.049486223608255386
-1060 0.04934656620025635
-1070 0.04920942336320877
-1080 0.0490746907889843
-1090 0.04894234612584114
-1100 0.04881228506565094
-1110 0.04868446663022041
-1120 0.048558831214904785
-1130 0.048435330390930176
-1140 0.04831390082836151
-1150 0.04819450154900551
-1160 0.0480770505964756
-1170 0.04796154424548149
-1180 0.0478479266166687
-1190 0.04773610457777977
-1200 0.04762609302997589
-1210 0.047517817467451096
-1220 0.04741125553846359
-1230 0.047306355088949203
-1240 0.04720309004187584
-1250 0.047101400792598724</code></pre>
+<pre><code>0 14.176704406738281
+10 3.6011011600494385
+20 2.2202305793762207
+30 1.1102030277252197
+40 0.7572755217552185
+50 0.5920207500457764
+60 0.4846627414226532
+70 0.42518150806427
+80 0.3840698003768921
+90 0.3463784456253052
+100 0.3159296214580536
+110 0.29051730036735535
+120 0.26877450942993164
+130 0.25018322467803955
+140 0.23417198657989502
+150 0.22026310861110687
+160 0.208110511302948
+170 0.19741976261138916
+180 0.1879548579454422
+190 0.17952509224414825
+200 0.1719748079776764
+210 0.16517652571201324
+220 0.1590253710746765
+230 0.15343450009822845
+240 0.1483314335346222
+250 0.14365535974502563
+260 0.1393551379442215
+270 0.13538718223571777
+280 0.1317143738269806
+290 0.1283048838376999
+300 0.12513123452663422
+310 0.12216956913471222
+320 0.11939921230077744
+330 0.11680207401514053
+340 0.11436217278242111
+350 0.11206554621458054
+360 0.10989975929260254
+370 0.10785383731126785
+380 0.10591793060302734
+390 0.10408329963684082
+400 0.10234205424785614
+410 0.100687175989151
+420 0.09911229461431503
+430 0.09761164337396622
+440 0.0961800143122673
+450 0.09481271356344223
+460 0.0935053601861
+470 0.09225409477949142
+480 0.09105528891086578
+490 0.08990570902824402
+500 0.08880224823951721
+510 0.08774220943450928
+520 0.08672299981117249
+530 0.0857422798871994
+540 0.08479787409305573
+550 0.08388775587081909
+560 0.08301006257534027
+570 0.08216307312250137
+580 0.08134514838457108
+590 0.08055480569601059
+600 0.07979065924882889
+610 0.07905137538909912
+620 0.07833576202392578
+630 0.07764269411563873
+640 0.07697104662656784
+650 0.0763198509812355
+660 0.0756881982088089
+670 0.0750751718878746
+680 0.07447994500398636
+690 0.07390176504850388
+700 0.07333985716104507
+710 0.07279356569051743
+720 0.07226220518350601
+730 0.07174517214298248
+740 0.07124187797307968
+750 0.07075177878141403
+760 0.07027437537908554
+770 0.06980910897254944
+780 0.0693555623292923
+790 0.06891326606273651
+800 0.06848182529211044
+810 0.06806080043315887
+820 0.06764982640743256
+830 0.06724855303764343
+840 0.06685658544301987
+850 0.06647367775440216
+860 0.06609942764043808
+870 0.06573358923196793
+880 0.06537587195634842
+890 0.06502598524093628
+900 0.06468366086483002
+910 0.06434867531061172
+920 0.0640207827091217
+930 0.06369974464178085
+940 0.06338536739349365
+950 0.0630773976445198
+960 0.06277567893266678
+970 0.06247999891638756
+980 0.062190182507038116
+990 0.061906032264232635
+1000 0.06162742152810097
+1010 0.0613541342318058
+1020 0.06108605116605759
+1030 0.060823000967502594
+1040 0.06056485325098038
+1050 0.060311462730169296
+1060 0.060062702745199203
+1070 0.059818439185619354
+1080 0.0595785453915596
+1090 0.05934292450547218
+1100 0.059111423790454865
+1110 0.05888395383954048
+1120 0.05866041034460068
+1130 0.058440666645765305
+1140 0.05822468549013138
+1150 0.05801228806376457
+1160 0.0578034408390522
+1170 0.05759802460670471
+1180 0.057395968586206436
+1190 0.057197194546461105
+1200 0.05700158327817917
+1210 0.05680910125374794
+1220 0.056619662791490555
+1230 0.056433189660310745
+1240 0.05624958500266075
+1250 0.05606883391737938
+1260 0.055890828371047974
+1270 0.05571554973721504
+1280 0.05554285645484924
+1290 0.05537276715040207
+1300 0.05520516261458397
+1310 0.05504004284739494
+1320 0.05487731471657753
+1330 0.05471692979335785
+1340 0.054558854550123215
+1350 0.05440303310751915
+1360 0.054249413311481476
+1370 0.05409794673323631
+1380 0.05394855514168739
+1390 0.05380124971270561
+1400 0.053655948489904404
+1410 0.05351264774799347
+1420 0.05337127670645714
+1430 0.05323179438710213
+1440 0.05309417098760605
+1450 0.052958354353904724
+1460 0.05282432958483696
+1470 0.052692074328660965
+1480 0.052561502903699875
+1490 0.05243263393640518
+1500 0.05230540409684181
+1510 0.05217977985739708
+1520 0.052055761218070984
+1530 0.05193326622247696
+1540 0.051812317222356796
+1550 0.051692862063646317
+1560 0.05157487466931343
+1570 0.051458317786455154
+1580 0.0513431578874588
+1590 0.05122942104935646
+1600 0.05111704766750336
+1610 0.0510060079395771
+1620 0.05089626833796501
+1630 0.05078782141208649
+1640 0.05068064481019974
+1650 0.050574686378240585
+1660 0.05047000199556351
+1670 0.05036647617816925
+1680 0.050264161080121994
+1690 0.05016299709677696</code></pre>
 </div>
 </div>
-<div id="cell-32" class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accuracy</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> F.softmax(mlr_efficient(X_tensor), dim<span class="op">=-</span><span class="dv">1</span>).detach().numpy()</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> pred.argmax(axis<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>(y_pred <span class="op">==</span> iris.target).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="32">
+<div id="cell-36" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accuracy</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> F.softmax(mlr_efficient(X_tensor), dim<span class="op">=-</span><span class="dv">1</span>).detach().numpy()</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> pred.argmax(axis<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>(y_pred <span class="op">==</span> iris.target).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>0.9866666666666667</code></pre>
 </div>
 </div>
