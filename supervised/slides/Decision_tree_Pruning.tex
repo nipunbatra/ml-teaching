@@ -1,0 +1,127 @@
+\documentclass[usenames,dvipsnames]{beamer}
+\usepackage{../../shared/styles/custom}
+\usepackage{../../shared/styles/conventions}
+
+\title{Decision Trees}
+\date{\today}
+\author{Nipun Batra and teaching staff}
+\institute{IIT Gandhinagar}
+
+\begin{document}
+
+\section{Pruning and Overfitting}
+
+\begin{frame}{The Problem: Overfitting in Decision Trees}
+\cleanitemize{
+    \item \textbf{Unpruned trees}: Can grow very deep and complex
+    \item \textbf{Perfect training accuracy}: Each leaf contains single training example
+    \item \textbf{But}: Poor generalization to new data
+    \item \textbf{Symptoms}:
+    \cleanitemize{
+        \item High training accuracy, low test accuracy
+        \item Very deep trees with many leaves
+        \item Rules that are too specific to training data
+    }
+    \item \textbf{Solution}: Pruning to control model complexity
+}
+\end{frame}
+
+\begin{frame}{Pre-pruning (Early Stopping)}
+\textbf{Stop growing tree before it becomes too complex}:
+\cleanitemize{
+    \item \textbf{Maximum depth}: Limit tree depth (e.g., max\_depth = 5)
+    \item \textbf{Minimum samples per split}: Don't split if node has < N samples
+    \item \textbf{Minimum samples per leaf}: Ensure each leaf has $\geq$ M samples
+    \item \textbf{Maximum features}: Consider only subset of features at each split
+    \item \textbf{Minimum impurity decrease}: Only split if improvement > threshold
+}
+\textbf{Advantages}: Simple, computationally efficient \\
+\textbf{Disadvantages}: May stop too early, miss good splits later
+\end{frame}
+
+\begin{frame}{Post-pruning (Tree Simplification)}
+\textbf{Grow full tree, then remove unnecessary branches}:
+\cleanitemize{
+    \item \textbf{Algorithm}:
+        \begin{enumerate}
+            \item Grow complete tree on training data
+            \item Use validation set to evaluate subtree performance
+            \item Remove branches that don't improve validation accuracy
+            \item Repeat until no beneficial removals remain
+        \end{enumerate}
+    \item \textbf{Cost Complexity Pruning}: Minimize $\text{Error} + \alpha \times \text{Tree Size}$
+    \item \textbf{Advantages}: More thorough, can recover from early stopping mistakes
+    \item \textbf{Disadvantages}: More computationally expensive
+}
+\end{frame}
+
+\begin{frame}{Cost Complexity Pruning Algorithm}
+\textbf{Systematic approach to find optimal tree size}:
+\cleanitemize{
+    \item \textbf{Cost function}: $R_\alpha(T) = R(T) + \alpha |T|$
+        \cleanitemize{
+            \item $R(T)$: Total impurity (training error)
+            \item $|T|$: Number of leaves
+            \item $\alpha$: Complexity penalty parameter
+        }
+    \item \textbf{Weakest Link}: At each pruning step, compute:
+        $$g(t) = \frac{R(t) - R(T_t)}{|T_t| - 1}$$
+        \cleanitemize{
+            \item $g(t)$: The $\alpha$ value at which subtree rooted at node $t$ should be pruned
+            \item $R(t)$: Impurity of node $t$, treating it as leaf node
+            \item $R(T_t)$: Total impurity of subtree rooted at node $t$
+            \item $|T_t|$: Number of leaves in subtree rooted at node $t$
+        }
+}
+\end{frame}
+
+\begin{frame}{Cost Complexity Pruning: Algorithm Steps}
+\textbf{Iterative pruning process}:
+\cleanitemize{
+    \item \textbf{Process}:
+        \begin{enumerate}
+            \item Start with full tree ($\alpha = 0$)
+            \item Compute $g(t)$ for all internal nodes
+            \item Prune node with smallest $g(t)$ (weakest link)
+            \item Repeat until only root remains
+            \item Use cross-validation to select optimal $\alpha$
+        \end{enumerate}
+}
+\end{frame}
+
+\begin{frame}{Bias-Variance Trade-off in Trees}
+\cleanitemize{
+    \item \textbf{Unpruned trees}:
+        \cleanitemize{
+            \item Low bias (can fit complex patterns)
+            \item High variance (sensitive to training data changes)
+            \item Prone to overfitting
+        }
+    \item \textbf{Heavily pruned trees}:
+        \cleanitemize{
+            \item High bias (may miss important patterns)
+            \item Low variance (more stable predictions)
+            \item Risk of underfitting
+        }
+    \item \textbf{Optimal pruning}: Balances bias and variance
+    \item \textbf{Cross-validation}: Essential for finding this balance
+}
+\end{frame}
+
+\begin{frame}{Practical Pruning Guidelines}
+\cleanitemize{
+    \item \textbf{Start simple}: Begin with restrictive pre-pruning parameters
+    \item \textbf{Cross-validation}: Always use CV to select pruning parameters
+    \item \textbf{Validation curves}: Plot training/validation error vs. tree complexity
+    \item \textbf{Common parameters} (sklearn):
+        \cleanitemize{
+            \item \texttt{max\_depth}: Start with 3-10
+            \item \texttt{min\_samples\_split}: Try 10-100
+            \item \texttt{min\_samples\_leaf}: Try 5-50
+            \item \texttt{ccp\_alpha}: Use for cost complexity pruning
+        }
+    \item \textbf{Domain knowledge}: Consider interpretability requirements
+}
+\end{frame}
+
+\end{document}
