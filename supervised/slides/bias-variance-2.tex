@@ -1,19 +1,16 @@
 \documentclass[10pt]{beamer}
 \usepackage{../../shared/styles/custom}
 \usepackage{../../shared/styles/conventions}
-
-% Remove navigation symbols
 \setbeamertemplate{navigation symbols}{}
-
-% Add fitpic for image fitting
 \newcommand{\fitpic}[1]{\begin{adjustbox}{max width=\linewidth, max totalheight=0.78\textheight}#1\end{adjustbox}}
-
 \graphicspath{ {../assets/bias-variance/figures/} }
 
 \title{The Bias-Variance Tradeoff: A Deep Dive}
-\date{\today}
+% \date{\today}
+\date{August 21, 2025}
 \author{Nipun Batra and teaching staff}
 \institute{IIT Gandhinagar}
+
 \begin{document}
 \maketitle
 
@@ -23,31 +20,43 @@
 
 \section{Understanding the Problem Setup}
 
+
 \begin{frame}{The Learning Problem: A Real-World Example}
+\footnotesize
 \begin{definitionbox}{Our Scenario}
+\raggedright
 \textbf{Goal:} Predict housing prices based on house area
 \end{definitionbox}
 
 \begin{examplebox}{The True Relationship}
+\raggedright
 \textbf{Unknown to us:} There exists a true function $f_{\theta_{\text{true}}}$ that perfectly relates area to price:
-$$y_t = f_{\theta_{\text{true}}}(x_t)$$
+% $$y_t = f_{\theta_{\text{true}}}(x_t)$$
+$$y_t = f_{\theta_{\text{true}}}(\mathbf{x}_t)$$
 \end{examplebox}
+\end{frame}
 
+\begin{frame}{The Learning Problem: A Real-World Example (contd.)}
+\footnotesize
 \begin{center}
-\fitpic{\includegraphics[width=0.7\textwidth]{../assets/bias-variance/figures/true.pdf}}
+\fitpic{\includegraphics[width=0.65\textwidth]{../assets/bias-variance/figures/true.pdf}}
 \end{center}
 
 \begin{keypointsbox}
+\raggedright
 \textbf{Key Challenge:} We never know $f_{\theta_{\text{true}}}$ - we must estimate it from data!
 \end{keypointsbox}
 \end{frame}
 
 \begin{frame}{The Three Sources of Prediction Error}
+\footnotesize
 \begin{alertbox}{Fundamental Question}
+\raggedright
 \textbf{Why do our predictions fail?} What causes the difference between our predictions and reality?
 \end{alertbox}
 
 \begin{definitionbox}{Three Universal Sources of Error}
+\raggedright
 \textbf{Every machine learning prediction suffers from:}
 \begin{enumerate}
 \item \textbf{Noise} - Irreducible randomness in the data
@@ -57,10 +66,15 @@ $$y_t = f_{\theta_{\text{true}}}(x_t)$$
 \end{definitionbox}
 
 \begin{keypointsbox}
+\raggedright
 \textbf{The Tradeoff:} We can often reduce bias OR variance, but not both simultaneously!
 \end{keypointsbox}
+\end{frame}
 
+\begin{frame}{Preview: Error Decomposition}
+\footnotesize
 \begin{examplebox}{Preview}
+\raggedright
 \textbf{Coming up:} We'll see exactly how these three components combine mathematically and how to balance them.
 \end{examplebox}
 \end{frame}
@@ -68,11 +82,14 @@ $$y_t = f_{\theta_{\text{true}}}(x_t)$$
 \section{Source 1: Noise - The Irreducible Error}
 
 \begin{frame}{Understanding Noise: The Fundamental Limitation}
+\small
 \begin{definitionbox}{What is Noise?}
+\raggedright
 \textbf{Noise} represents factors affecting the target that we cannot observe or control
 \end{definitionbox}
 
 \begin{examplebox}{Real-World Noise Sources}
+\raggedright
 \textbf{In housing prices:}
 \begin{itemize}
 \item House condition (hard to measure precisely)
@@ -83,7 +100,9 @@ $$y_t = f_{\theta_{\text{true}}}(x_t)$$
 \end{frame}
 
 \begin{frame}{Noise: Why It's Irreducible}
+\small
 \begin{examplebox}{More Noise Sources}
+\raggedright
 \textbf{Additional factors we cannot control:}
 \begin{itemize}
 \item Economic conditions on sale day
@@ -94,24 +113,29 @@ $$y_t = f_{\theta_{\text{true}}}(x_t)$$
 \end{examplebox}
 
 \begin{alertbox}{Key Insight}
+\raggedright
 \textbf{Irreducible Error:} No matter how sophisticated our model, noise cannot be eliminated!
 \end{alertbox}
 \end{frame}
 
 \begin{frame}{Noise: Mathematical Formulation}
-\begin{keypointsbox}{The Noisy Relationship}
+\small
+\begin{keypointsbox}{Under the Noisy conditions}
+\raggedright
 \textbf{True relationship becomes:}
 $$y_t = f_{\theta_{\text{true}}}(x_t) + \epsilon_t$$
 where $\epsilon_t \sim \mathcal{N}(0, \sigma^2)$ is the noise term
 \end{keypointsbox}
 
 \begin{center}
-\fitpic{\includegraphics[width=0.7\textwidth]{../assets/bias-variance/figures/data.pdf}}
+\fitpic{\includegraphics[width=0.65\textwidth]{../assets/bias-variance/figures/data.pdf}}
 \end{center}
 \end{frame}
 
 \begin{frame}{Noise: Mathematical Properties}
+\small
 \begin{definitionbox}{Key Properties of Noise}
+\raggedright
 \begin{itemize}
 \item \textbf{Zero mean:} $E[\epsilon_t] = 0$ (unbiased)
 \item \textbf{Constant variance:} $\text{Var}(\epsilon_t) = \sigma^2$
@@ -120,6 +144,7 @@ where $\epsilon_t \sim \mathcal{N}(0, \sigma^2)$ is the noise term
 \end{definitionbox}
 
 \begin{keypointsbox}{Why These Properties Matter}
+\raggedright
 \begin{itemize}
 \item \textbf{Zero mean:} Noise doesn't systematically bias our target
 \item \textbf{Constant variance:} Prediction uncertainty is consistent
@@ -128,12 +153,18 @@ where $\epsilon_t \sim \mathcal{N}(0, \sigma^2)$ is the noise term
 \end{keypointsbox}
 \end{frame}
 
-\begin{frame}{Visualizing Noise: Data Distribution}
-\begin{center}
-\fitpic{\includegraphics[width=0.8\textwidth]{../assets/bias-variance/figures/data_var.pdf}}
-\end{center}
 
+\begin{frame}{Visualizing Noise: Data Distribution}
+\footnotesize
+\begin{center}
+\fitpic{\includegraphics[width=0.75\textwidth]{../assets/bias-variance/figures/data-var.pdf}}
+\end{center}
+\end{frame}
+
+\begin{frame}{Visualizing Noise: Data Distribution (contd.)}
+\footnotesize
 \begin{keypointsbox}
+\raggedright
 \textbf{Key Observation:} 
 \begin{itemize}
 \item Data points scatter around the true function
@@ -143,6 +174,7 @@ where $\epsilon_t \sim \mathcal{N}(0, \sigma^2)$ is the noise term
 \end{keypointsbox}
 
 \begin{alertbox}{Implication for ML}
+\raggedright
 \textbf{Lower bound on error:} Any model will have at least $\sigma^2$ error due to noise
 \end{alertbox}
 \end{frame}
@@ -150,11 +182,14 @@ where $\epsilon_t \sim \mathcal{N}(0, \sigma^2)$ is the noise term
 \section{Source 2: Bias - Systematic Model Limitations}
 
 \begin{frame}{Understanding Bias: Model Flexibility}
+\small
 \begin{definitionbox}{What is Bias?}
+\raggedright
 \textbf{Bias} measures how well our model class can represent the true function
 \end{definitionbox}
 
 \begin{examplebox}{Extreme Example: Constant Function}
+\raggedright
 \textbf{Model choice:} $\hat{f}(x) = c$ (constant, regardless of house size)
 
 \textbf{Question:} Can this model capture the true price-size relationship?
@@ -163,20 +198,27 @@ where $\epsilon_t \sim \mathcal{N}(0, \sigma^2)$ is the noise term
 
 \begin{frame}{Bias: Visualizing the Problem}
 \begin{center}
-\fitpic{\includegraphics[width=0.8\textwidth]{../assets/bias-variance/figures/biasn_1.pdf}}
+\fitpic{\includegraphics[width=0.75\textwidth]{../assets/bias-variance/figures/biasn-2.pdf}}
 \end{center}
 
 \begin{alertbox}
+\raggedright
 \textbf{Obvious Problem:} A constant function cannot capture any relationship with house size!
 \end{alertbox}
 \end{frame}
 
-\begin{frame}{Bias: Fitting a Constant Model}
-\begin{center}
-\fitpic{\includegraphics[width=0.8\textwidth]{../assets/bias-variance/figures/biasn_2.pdf}}
-\end{center}
 
+% \begin{frame}{Bias: Fitting a Constant Model}
+% \footnotesize
+% \begin{center}
+% \fitpic{\includegraphics[width=0.75\textwidth]{../assets/bias-variance/figures/biasn_2_latexify.pdf}}
+% \end{center}
+% \end{frame}
+
+\begin{frame}{Bias: Fitting a Constant Model (contd.)}
+\footnotesize
 \begin{keypointsbox}
+\raggedright
 \textbf{Best Constant Fit:} 
 \begin{itemize}
 \item The optimal constant is the average of all prices
@@ -186,31 +228,46 @@ where $\epsilon_t \sim \mathcal{N}(0, \sigma^2)$ is the noise term
 \end{keypointsbox}
 \end{frame}
 
-\begin{frame}{Bias: Visualizing the Systematic Error}
-\begin{center}
-\fitpic{\includegraphics[width=0.8\textwidth]{../assets/bias-variance/figures/biasn_3.pdf}}
-\end{center}
 
+\begin{frame}{Bias: Visualizing the Systematic Error}
+\footnotesize
+\begin{center}
+\fitpic{\includegraphics[width=0.7\textwidth]{../assets/bias-variance/figures/biasn-3.pdf}}
+\end{center}
+\end{frame}
+
+\begin{frame}{Bias: Visualizing the Systematic Error (contd.)}
+\footnotesize
 \begin{definitionbox}{Bias Definition}
+\raggedright
 $$\text{Bias}(x) = f_{\theta_{\text{true}}}(x) - E[\hat{f}(x)]$$
-\textbf{The systematic difference between truth and average prediction}
+The systematic difference between truth and average prediction
 \end{definitionbox}
 
 \begin{alertbox}{Key Insight}
+\raggedright
 \textbf{High bias = Underfitting:} Model assumptions are too restrictive
 \end{alertbox}
 \end{frame}
 
+
+
 \begin{frame}{Multiple Datasets: Understanding Variability}
+\footnotesize
 \begin{keypointsbox}
+\raggedright
 \textbf{Crucial Insight:} Many different datasets are possible from the same true relationship!
 \end{keypointsbox}
 
 \begin{center}
-\fitpic{\includegraphics[width=0.95\textwidth]{../assets/bias-variance/figures/bias1.pdf}}
+\fitpic{\includegraphics[width=0.9\textwidth]{../assets/bias-variance/figures/bias1.pdf}}
 \end{center}
+\end{frame}
 
+\begin{frame}{Why Datasets Differ}
+\footnotesize
 \begin{examplebox}
+\raggedright
 \textbf{Same underlying relationship, different data points due to:}
 \begin{itemize}
 \item Random sampling of houses
@@ -222,24 +279,32 @@ $$\text{Bias}(x) = f_{\theta_{\text{true}}}(x) - E[\hat{f}(x)]$$
 
 \begin{frame}{Fitting Models to Different Datasets}
 \begin{center}
-\fitpic{\includegraphics[width=0.95\textwidth]{../assets/bias-variance/figures/bias2.pdf}}
+\fitpic{\includegraphics[width=0.9\textwidth]{../assets/bias-variance/figures/bias2.pdf}}
 \end{center}
 
 \begin{keypointsbox}
+\raggedright
 \textbf{Question:} If we fit the same model type (constant) to different datasets, what happens?
 \end{keypointsbox}
 \end{frame}
 
+
 \begin{frame}{Different Predictions from Different Datasets}
+\footnotesize
 \begin{center}
-\fitpic{\includegraphics[width=0.95\textwidth]{../assets/bias-variance/figures/bias3.pdf}}
+\fitpic{\includegraphics[width=0.9\textwidth]{../assets/bias-variance/figures/bias3.pdf}}
 \end{center}
 
 \begin{alertbox}
+\raggedright
 \textbf{Key Observation:} Even with the same model type, we get different predictions!
 \end{alertbox}
+\end{frame}
 
+\begin{frame}{Prediction Variability: Concepts}
+\footnotesize
 \begin{definitionbox}
+\raggedright
 \textbf{This variability leads us to two concepts:}
 \begin{itemize}
 \item \textbf{Average prediction:} What happens "on average" across all possible datasets
@@ -249,95 +314,73 @@ $$\text{Bias}(x) = f_{\theta_{\text{true}}}(x) - E[\hat{f}(x)]$$
 \end{frame}
 
 \begin{frame}{Many Datasets: The Full Picture}
+\footnotesize
 \begin{center}
-\fitpic{\includegraphics[width=0.8\textwidth]{../assets/bias-variance/figures/bias4.pdf}}
+\fitpic{\includegraphics[width=0.75\textwidth]{../assets/bias-variance/figures/bias4.pdf}}
 \end{center}
 
 \begin{keypointsbox}
+\raggedright
 \textbf{Multiple Datasets:} Each gives a slightly different constant fit
 \end{keypointsbox}
+\end{frame}
 
+\begin{frame}{Expected Prediction: The Big Question}
+\footnotesize
 \begin{examplebox}
+\raggedright
 \textbf{The Big Question:} What is the "typical" or "expected" prediction our model makes?
 \end{examplebox}
 \end{frame}
 
 \begin{frame}{The Average Model: Expected Prediction}
+\footnotesize
 \begin{center}
-\fitpic{\includegraphics[width=0.7\textwidth]{../assets/bias-variance/figures/bias5.pdf}}
+\fitpic{\includegraphics[width=0.65\textwidth]{../assets/bias-variance/figures/bias5.pdf}}
 \end{center}
+\end{frame}
 
+\begin{frame}{Expected Prediction: Definition}
+\footnotesize
 \begin{definitionbox}{Expected Prediction}
+\raggedright
 $$E[\hat{f}(x)] = \text{Average prediction across all possible training sets}$$
 \end{definitionbox}
 
 \begin{keypointsbox}
+\raggedright
 \textbf{For constant models:} The expected prediction is the expected value of the target variable
 \end{keypointsbox}
 \end{frame}
 
+
 \begin{frame}{Bias: The Final Definition}
+\small
 \begin{definitionbox}{Bias Formula}
+\raggedright
 $$\text{Bias}(x) = f_{\theta_{\text{true}}}(x) - E[\hat{f}(x)]$$
 \textbf{Difference between truth and expected prediction}
 \end{definitionbox}
 
 \begin{center}
-\fitpic{\includegraphics[width=0.7\textwidth]{../assets/bias-variance/figures/bias6.pdf}}
+\fitpic{\includegraphics[width=0.65\textwidth]{../assets/bias-variance/figures/bias6.pdf}}
 \end{center}
-
-\begin{keypointsbox}
-\textbf{Interpretation:}
-\begin{itemize}
-\item \textbf{Large bias:} Model class cannot represent truth well
-\item \textbf{Small bias:} Model class is flexible enough
-\item \textbf{Bias measures systematic error, not random error}
-\end{itemize}
-\end{keypointsbox}
 \end{frame}
 
 \begin{frame}{Model Complexity vs Bias: The Relationship}
 \begin{keypointsbox}
-\textbf{Universal Pattern:}
-\begin{itemize}
-\item \textbf{Increase complexity} → Model becomes more flexible
-\item \textbf{More flexible} → Can better approximate true function
-\item \textbf{Better approximation} → \textcolor{blue}{Bias decreases}
-\end{itemize}
+\textbf{Universal Pattern:} As model complexity increases, model become flexible enough  to  approximate true function , hence  bias decreases
+
 \end{keypointsbox}
 
 \begin{center}
 \fitpic{\includegraphics[width=0.95\textwidth]{../assets/bias-variance/figures/bias7.pdf}}
 \end{center}
 
-\begin{examplebox}
-\textbf{Progression:} Constant → Linear → Quadratic → Cubic ...
-\end{examplebox}
+
 \end{frame}
 
-\begin{frame}{High-Complexity Models: Near-Zero Bias}
-\begin{center}
-\fitpic{\includegraphics[width=0.95\textwidth]{../assets/bias-variance/figures/bias8.pdf}}
-\end{center}
-
-\begin{alertbox}
-\textbf{High-Degree Polynomials:} Can approximate almost any smooth function!
-\end{alertbox}
-
-\begin{definitionbox}
-\textbf{Bias-Complexity Relationship:}
-\begin{itemize}
-\item \textbf{Low complexity:} High bias (underfitting)
-\item \textbf{High complexity:} Low bias (but...)
-\end{itemize}
-\end{definitionbox}
-
-\begin{keypointsbox}
-\textbf{The "But":} Low bias comes at a cost - we'll see what next!
-\end{keypointsbox}
-\end{frame}
-
-\section{Source 3: Variance - Dataset Sensitivity}
+\section{Variance: Sensitivity to Data}
 
 \begin{frame}{From Bias to Variance: The Other Side}
 \begin{alertbox}
@@ -351,16 +394,11 @@ $$\text{Bias}(x) = f_{\theta_{\text{true}}}(x) - E[\hat{f}(x)]$$
 \end{definitionbox}
 
 \begin{keypointsbox}
-\textbf{Intuition:} 
-\begin{itemize}
-\item Simple models: Stable, consistent predictions
-\item Complex models: Highly sensitive to specific training data
-\end{itemize}
+\textbf{Intuition:} Simple models  are Stable, consistent predictions, while Complex models are highly sensitive to specific training data
+
 \end{keypointsbox}
 
-\begin{examplebox}{Coming Up}
-\textbf{We'll see:} As complexity increases, variance increases dramatically!
-\end{examplebox}
+
 \end{frame}
 
 \begin{frame}{Understanding Variance: Prediction Consistency}
@@ -373,32 +411,22 @@ $$\text{Var}(\hat{f}(x)) = E[(\hat{f}(x) - E[\hat{f}(x)])^2]$$
 \fitpic{\includegraphics[width=0.7\textwidth]{../assets/bias-variance/figures/var1.pdf}}
 \end{center}
 
-\begin{keypointsbox}
-\textbf{Key Concept:} Variance measures prediction instability
-\begin{itemize}
-\item \textbf{Low variance:} Consistent predictions across datasets
-\item \textbf{High variance:} Wildly different predictions across datasets
-\end{itemize}
-\end{keypointsbox}
+
 \end{frame}
 
 \begin{frame}{Low Complexity: Low Variance}
 \begin{keypointsbox}
-\textbf{Simple Models (e.g., linear):}
-\begin{itemize}
-\item Few parameters to estimate
-\item Robust to data variations
-\item Consistent predictions
-\end{itemize}
+\textbf{Simple Models (e.g., linear):} Simple model have few parameters to estimate which leads to consistent predictions across different training sets.
+
 \end{keypointsbox}
 
 \begin{center}
 \fitpic{\includegraphics[width=0.7\textwidth]{../assets/bias-variance/figures/var2.pdf}}
 \end{center}
 
-\begin{definitionbox}
-\textbf{Low Variance = Stability:} Predictions don't change much with different training sets
-\end{definitionbox}
+% \begin{definitionbox}
+% \textbf{Low Variance = Stability:} Predictions don't change much with different training sets
+% \end{definitionbox}
 \end{frame}
 
 \begin{frame}{High Complexity: The Variance Problem Emerges}
@@ -406,24 +434,13 @@ $$\text{Var}(\hat{f}(x)) = E[(\hat{f}(x) - E[\hat{f}(x)])^2]$$
 \fitpic{\includegraphics[width=0.7\textwidth]{../assets/bias-variance/figures/var3.pdf}}
 \end{center}
 
-\begin{alertbox}
-\textbf{Warning Signs:} 
-\begin{itemize}
-\item Models look very different across datasets
-\item Predictions becoming unreliable
-\item High sensitivity to specific data points
-\end{itemize}
-\end{alertbox}
+
 \end{frame}
 
 \begin{frame}{High Complexity: Extreme Variance}
 \begin{keypointsbox}
-\textbf{Complex Models (e.g., high-degree polynomials):}
-\begin{itemize}
-\item Many parameters to estimate
-\item Overfit to specific training data
-\item Dramatically different predictions
-\end{itemize}
+\textbf{Complex Models (e.g., high-degree polynomials):} Complex models have  many parameters to estimate which leads to dramatic different predictions across different training sets.
+
 \end{keypointsbox}
 
 \begin{center}
@@ -439,7 +456,8 @@ $$\text{Var}(\hat{f}(x)) = E[(\hat{f}(x) - E[\hat{f}(x)])^2]$$
 \begin{center}
 \fitpic{\includegraphics[width=0.95\textwidth]{../assets/bias-variance/figures/bv-2.pdf}}
 \end{center}
-
+\end{frame}
+\begin{frame}{The Bias-Variance Tradeoff: The Central Tension}
 \begin{alertbox}{The Fundamental Tradeoff}
 \begin{itemize}
 \item \textbf{Simple models:} High bias, low variance
@@ -453,137 +471,66 @@ $$\text{Var}(\hat{f}(x)) = E[(\hat{f}(x) - E[\hat{f}(x)])^2]$$
 \end{keypointsbox}
 \end{frame}
 
-\section{Mathematical Derivation: The Bias-Variance Decomposition}
+
+\section{Mathematical Decomposition}
 
 \begin{frame}{Why Mathematical Analysis Matters}
+\small
+
 \begin{definitionbox}{The Goal}
-\textbf{Question:} Can we mathematically prove that error = bias$^2$ + variance + noise?
+\raggedright
+Can we mathematically prove that prediction error can be expressed as a function of bias, variance, and noise?\\[1ex]
+Specifically, can we show:
+$$
+\text{error}= E\left[(y - \hat{f}(x))^2\right] = \text{function of bias, variance, and noise}
+$$
 \end{definitionbox}
 
 \begin{keypointsbox}{Why This Matters}
+\raggedright
 \begin{itemize}
-\item \textbf{Theoretical foundation:} Understand the fundamental nature of learning
-\item \textbf{Model selection:} Know exactly what we're trading off
-\item \textbf{Algorithm design:} Create methods that explicitly balance bias and variance
+\item Understand the fundamental limits of learning
+\item Make informed model and algorithm choices
+\item Explicitly balance bias and variance
 \end{itemize}
 \end{keypointsbox}
 
-\begin{examplebox}{Expected Error Across All Possible Datasets}
-$$E_{\mathcal{D}}[\text{Error}] = \text{Average error over all possible training sets } \mathcal{D}$$
-\end{examplebox}
 
-\begin{alertbox}
-\textbf{Key Insight:} We need to average over the randomness in training set selection
-\end{alertbox}
 \end{frame}
 
-\begin{frame}{Setting Up the Mathematical Framework}
+\begin{frame}{Bias-Variance Decomposition: The Goal}
+\small
 \begin{definitionbox}{What We Want to Prove}
-$$E[\text{Error}] = \text{Noise} + \text{Bias}^2 + \text{Variance}$$
+\raggedright
+% $$E[(y - \hat{f}(x))^2] = \text{Noise} + \text{Bias}^2 + \text{Variance}$$
+$$
+\text{error}= E\left[(y - \hat{f}(x))^2\right] = \text{function of bias, variance, and noise}
+$$
 \end{definitionbox}
 
-\begin{keypointsbox}{Our Approach}
+
+
+\begin{keypointsbox}{Strategy}
+\raggedright
 \begin{enumerate}
-\item Start with prediction error at a single point
-\item Use squared loss: $(y - \hat{f}(x))^2$
-\item Take expectation over all sources of randomness
-\item Apply algebraic manipulation to separate terms
+\item Start with squared error at a single point
+\item Take expectation over all randomness (training set and noise)
+\item Use algebraic tricks to separate terms
+\item Identify noise, bias, and variance
 \end{enumerate}
 \end{keypointsbox}
-
-\begin{examplebox}{Sources of Randomness}
-\begin{itemize}
-\item \textbf{Training set:} Which data points we observe
-\item \textbf{Noise:} Random variation in target values
-\end{itemize}
-\end{examplebox}
 \end{frame}
 
-\begin{frame}{Mathematical Setup: Defining the Components}
-\begin{definitionbox}{True Relationship with Noise}
-$$y = f_{\text{true}}(x) + \epsilon \quad \text{where } \epsilon \sim \mathcal{N}(0, \sigma^2)$$
-\end{definitionbox}
-
-\begin{keypointsbox}{Key Definitions}
-\begin{itemize}
-\item $f_{\text{true}}(x)$: The unknown true function
-\item $\hat{f}(x)$: Our model's prediction (depends on training data)
-\item $E[\hat{f}(x)]$: Expected prediction over all possible training sets
-\item $\epsilon$: Irreducible noise with variance $\sigma^2$
-\end{itemize}
-\end{keypointsbox}
-
-\begin{center}
-\fitpic{\includegraphics[width=0.6\textwidth]{../assets/bias-variance/figures/data_var.pdf}}
-\end{center}
-\end{frame}
-
-\begin{frame}{Formal Definitions: Bias and Variance}
-\begin{definitionbox}{Bias}
-$$\text{Bias}(x) = f_{\text{true}}(x) - E[\hat{f}(x)]$$
-\textbf{Systematic error:} Difference between truth and expected prediction
-\end{definitionbox}
-
-\begin{definitionbox}{Variance}
-$$\text{Variance}(x) = E[(\hat{f}(x) - E[\hat{f}(x)])^2]$$
-\textbf{Prediction instability:} Expected squared deviation from mean prediction
-\end{definitionbox}
-
-\begin{center}
-\fitpic{\includegraphics[width=0.6\textwidth]{../assets/bias-variance/figures/bias6.pdf}}
-\end{center}
-
-\begin{keypointsbox}
-\textbf{Note:} Both bias and variance are properties of the learning algorithm, not individual models
-\end{keypointsbox}
-\end{frame}
-
-\begin{frame}{The Main Theorem: Bias-Variance Decomposition}
-\begin{alertbox}{The Fundamental Result}
-\textbf{For any point $x$ and any learning algorithm:}
-$$E[(y - \hat{f}(x))^2] = \sigma^2 + [\text{Bias}(x)]^2 + \text{Variance}(x)$$
-\end{alertbox}
-
-\begin{definitionbox}{Component Interpretation}
-\begin{itemize}
-\item $\sigma^2$: \textbf{Irreducible error} (noise)
-\item $[\text{Bias}(x)]^2$: \textbf{Systematic error} (underfitting)
-\item $\text{Variance}(x)$: \textbf{Random error} (overfitting)
-\end{itemize}
-\end{definitionbox}
-
-\begin{keypointsbox}
-\textbf{Coming Up:} We'll prove this step-by-step using careful algebraic manipulation
-\end{keypointsbox}
-\end{frame}
-
-\begin{frame}{Starting the Proof: Expected Squared Error}
-\begin{definitionbox}{What We're Proving}
-$$E[(y - \hat{f}(x))^2] = \sigma^2 + [\text{Bias}(x)]^2 + \text{Variance}(x)$$
-\end{definitionbox}
-
-\begin{keypointsbox}{Our Strategy}
-\begin{enumerate}
-\item Start with squared error: $(y - \hat{f}(x))^2$
-\item Add and subtract strategic terms
-\item Expand and use linearity of expectation
-\item Show cross-terms cancel out
-\item Identify the three components
-\end{enumerate}
-\end{keypointsbox}
-
-\begin{examplebox}{Key Insight}
-\textbf{The "add and subtract" trick:} We'll add and subtract $f_{\text{true}}(x)$ and $E[\hat{f}(x)]$ to create the terms we need
-\end{examplebox}
-\end{frame}
-
-\begin{frame}{Step 1: Setting Up the Expectation}
-\begin{definitionbox}{Squared Loss at Point $x$}
-\textbf{Individual prediction error:} $(y - \hat{f}(x))^2$
+\begin{frame}{Step 1: The Squared Error}
+\small
+\begin{definitionbox}{Squared Loss at $x$}
+\raggedright
+\textbf{Prediction error:} $(y - \hat{f}(x))^2$
 \end{definitionbox}
 
 \begin{keypointsbox}{Taking Expectations}
-\textbf{Expected error over all randomness:}
+\raggedright
+\textbf{Expected error:}
 $$E_{\mathcal{D}, y}[(y - \hat{f}(x))^2]$$
 where:
 \begin{itemize}
@@ -591,385 +538,273 @@ where:
 \item $y$: Random target (includes noise)
 \end{itemize}
 \end{keypointsbox}
-
-\begin{examplebox}{Why Two Sources of Randomness?}
-\begin{itemize}
-\item \textbf{Training set randomness:} Which data points we see affects $\hat{f}$
-\item \textbf{Target randomness:} Noise affects the true $y$ value
-\end{itemize}
-\end{examplebox}
 \end{frame}
 
-\begin{frame}{Step 2: The Add-and-Subtract Trick}
-\begin{keypointsbox}{Starting Point}
-$$E[(y - \hat{f}(x))^2]$$
-\end{keypointsbox}
-
-\begin{examplebox}{Strategic Addition and Subtraction}
-\textbf{Add and subtract } $f_{\text{true}}(x)$:
+\begin{frame}{Step 2: Add and Subtract the True Function}
+\small
+\begin{examplebox}{The Trick}
+\raggedright
+Add and subtract $f_{\text{true}}(x)$ inside the square:
 $$E[(y - f_{\text{true}}(x) + f_{\text{true}}(x) - \hat{f}(x))^2]$$
 \end{examplebox}
 
-\begin{definitionbox}{Grouping Terms}
-$$E[\underbrace{(y - f_{\text{true}}(x))}_{\text{noise: } \epsilon} + \underbrace{(f_{\text{true}}(x) - \hat{f}(x))}_{\text{prediction error}}]^2$$
-\end{definitionbox}
-
-\begin{alertbox}
-\textbf{Key Insight:} We've separated the noise from the prediction error!
-\end{alertbox}
-\end{frame}
-
-\begin{frame}{Step 3A: Expanding the Square}
-\begin{keypointsbox}{Starting with Our Expression}
-$$E[\underbrace{(y - f_{\text{true}}(x))}_{\epsilon} + \underbrace{(f_{\text{true}}(x) - \hat{f}(x))}_{\text{prediction error}}]^2$$
+\begin{keypointsbox}{Earlier seen : Under Noisy conditions}
+\raggedright
+\textbf{True relationship becomes:}
+$$y_t = f_{\theta_{\text{true}}}(x_t) + \epsilon_t$$
 \end{keypointsbox}
-
-\begin{examplebox}{Apply $(a + b)^2 = a^2 + 2ab + b^2$}
-\textbf{Let:} $a = \epsilon$ and $b = (f_{\text{true}}(x) - \hat{f}(x))$
-
-\textbf{Then:} $(a + b)^2 = a^2 + 2ab + b^2$
-\end{examplebox}
+\begin{definitionbox}{Grouping Terms}
+\raggedright
+$$E\left[\underbrace{(y - f_{\text{true}}(x))}_{\epsilon} + \underbrace{(f_{\text{true}}(x) - \hat{f}(x))}_{\text{prediction error}}\right]^2$$
+\end{definitionbox}
 \end{frame}
 
-\begin{frame}{Step 3B: The Expanded Form}
-\begin{definitionbox}{After Expansion}
+\begin{frame}{Step 3: Expand the Square}
+\small
+\begin{examplebox}{Algebraic Expansion}
+\raggedright
+Let $a = \epsilon$, $b = f_{\text{true}}(x) - \hat{f}(x)$:
+$$(a + b)^2 = a^2 + 2ab + b^2$$
+So,
 $$E[\epsilon^2 + 2\epsilon(f_{\text{true}}(x) - \hat{f}(x)) + (f_{\text{true}}(x) - \hat{f}(x))^2]$$
-\end{definitionbox}
+\end{examplebox}
 
-\begin{keypointsbox}{Apply Linearity of Expectation}
+\begin{keypointsbox}{Linearity of Expectation}
+\raggedright
 $$E[\epsilon^2] + 2E[\epsilon(f_{\text{true}}(x) - \hat{f}(x))] + E[(f_{\text{true}}(x) - \hat{f}(x))^2]$$
 \end{keypointsbox}
 \end{frame}
 
-\begin{frame}{Step 3C: Naming the Three Terms}
-\begin{definitionbox}{Our Three Terms}
+\begin{frame}{Step 4: Identify the Three Terms}
+\small
+\begin{definitionbox}{Three Terms}
+\raggedright
 \begin{itemize}
-\item \textbf{Term 1:} $E[\epsilon^2]$ (the noise term)
+\item \textbf{Term 1:} $E[\epsilon^2]$ (noise)
 \item \textbf{Term 2:} $2E[\epsilon(f_{\text{true}}(x) - \hat{f}(x))]$ (cross-term)
 \item \textbf{Term 3:} $E[(f_{\text{true}}(x) - \hat{f}(x))^2]$ (prediction error)
 \end{itemize}
 \end{definitionbox}
 
-\begin{keypointsbox}{Our Strategy}
-\textbf{We'll analyze each term separately:}
-\begin{itemize}
-\item Term 1 → Noise ($\sigma^2$)
-\item Term 2 → Will be zero! 
-\item Term 3 → Bias$^2$ + Variance
-\end{itemize}
+\begin{keypointsbox}{Next Steps}
+\raggedright
+Analyze each term separately to reveal noise, bias, and variance.
 \end{keypointsbox}
 \end{frame}
 
-\begin{frame}{Step 4A: Analyzing Term 1 - Setup}
-\begin{definitionbox}{Term 1 Recall}
-$$\text{Term 1} = E[\epsilon^2]$$
-where $\epsilon = y - f_{\text{true}}(x)$ is the noise
+% --- Term 1: Noise ---
+% \begin{frame}{Step 5: Analyzing Term 1 (Noise)}
+% \small
+% \begin{definitionbox}{Term 1}
+% \raggedright
+% $\epsilon = y - f_{\text{true}}(x)$ is the noise.\\
+% \textbf We know that {Variance}  is defined as:
+% $$\text{Var}(\epsilon^2) = E[\epsilon^2] - (E[\epsilon])^2 $$ ,so here in this case, we can write:
+% $E[\epsilon^2] = \text{Var}(\epsilon) + (E[\epsilon])^2 = \sigma^2 + 0^2 = \sigma^2$
+% \end{definitionbox}
+\begin{frame}{Step 5: Analyzing Term 1 (Noise)}
+\small
+\begin{definitionbox}{Term 1}
+\raggedright
+$\epsilon = y - f_{\text{true}}(x)$ is the noise.\\[1ex]
+\textbf{Recall how variance is defined:}
+\begin{align*}
+\text{Var}(\epsilon)
+&= \mathbb{E}\left[(\epsilon - \mathbb{E}[\epsilon])^2\right] \\[6pt]
+&= \mathbb{E}\left[\epsilon^2 - 2\epsilon \, \mathbb{E}[\epsilon] + (\mathbb{E}[\epsilon])^2\right] \\[6pt]
+&= \mathbb{E}[\epsilon^2] - 2\mathbb{E}[\epsilon]\mathbb{E}[\epsilon] + (\mathbb{E}[\epsilon])^2 \\[6pt]
+&= \mathbb{E}[\epsilon^2] - (\mathbb{E}[\epsilon])^2
+\end{align*}
+So, \(\mathbb{E}[\epsilon^2] = \text{Var}(\epsilon) + \left(\mathbb{E}[\epsilon]\right)^2\). 
+\\For our noise, \(\mathbb{E}[\epsilon] = 0\) and \(\text{Var}(\epsilon) = \sigma^2\), so 
+\(\mathbb{E}[\epsilon^2] = \sigma^2 + 0^2 = \sigma^2\).
+ 
+$\boxed{\text{Term 1} = \sigma^2}$, \textbf{This is the irreducible error (noise)!}
+\end{definitionbox}
+
+% \begin{alertbox}{Result}
+% \raggedright
+% $\boxed{\text{Term 1} = \sigma^2}$, \textbf{This is the irreducible error (noise)!}
+% \end{alertbox}
+\end{frame}
+
+% \begin{alertbox}{Result}
+% \raggedright
+% $\boxed{\text{Term 1} = \sigma^2}$\\
+% \textbf{This is the irreducible error (noise)!}
+% \end{alertbox}
+% \end{frame}
+
+% --- Term 2: Cross-term ---
+\begin{frame}{Step 6: Analyzing Term 2 (Cross-Term)}
+\small
+\begin{definitionbox}{Term 2}
+\raggedright
+$2E[\epsilon(f_{\text{true}}(x) - \hat{f}(x))]$
 \end{definitionbox}
 
 \begin{keypointsbox}{Key Insight}
-\textbf{Independence:} The noise $\epsilon$ doesn't depend on our training set!
-\begin{itemize}
-\item Noise is a property of the data generation process
-\item Training set selection doesn't affect noise level
-\item Noise is the same regardless of which model we choose
-\end{itemize}
-\end{keypointsbox}
-\end{frame}
-
-\begin{frame}{Step 4B: Term 1 - The Calculation}
-\begin{examplebox}{By Definition of Noise}
-$$\epsilon = y - f_{\text{true}}(x) \sim \mathcal{N}(0, \sigma^2)$$
-\end{examplebox}
-
-\begin{keypointsbox}{Therefore}
-$$E[\epsilon^2] = \text{Var}(\epsilon) + (E[\epsilon])^2 = \sigma^2 + 0^2 = \sigma^2$$
+\raggedright
+$\epsilon$ (noise) is independent of $\hat{f}(x)$ (model prediction), so:
+$$E[\epsilon(f_{\text{true}}(x) - \hat{f}(x))] = E[\epsilon] \cdot E[f_{\text{true}}(x) - \hat{f}(x)] = 0$$
 \end{keypointsbox}
 
 \begin{alertbox}{Result}
-$$\boxed{\text{Term 1} = \sigma^2}$$
-\textbf{This is our irreducible error (noise)!}
+\raggedright
+$\boxed{\text{Term 2} = 0}$\\
+\textbf{The cross-term vanishes!}
 \end{alertbox}
 \end{frame}
 
-\begin{frame}{Step 5A: Analyzing Term 2 - Setup}
-\begin{definitionbox}{Term 2 Recall}
-$$\text{Term 2} = 2E[\epsilon(f_{\text{true}}(x) - \hat{f}(x))]$$
+% --- Term 3: Prediction Error ---
+\begin{frame}{Step 7: Analyzing Term 3 (Prediction Error)}
+\small
+\begin{definitionbox}{Term 3}
+\raggedright
+$E[(f_{\text{true}}(x) - \hat{f}(x))^2]$\\
+This is the mean squared error of the model's prediction.
 \end{definitionbox}
 
-\begin{keypointsbox}{Key Independence Property}
-\textbf{Crucial insight:} $\epsilon$ (noise) is independent of $\hat{f}(x)$ (our prediction)
-\begin{itemize}
-\item Noise occurs in nature, regardless of our model
-\item Our model $\hat{f}$ depends only on training data
-\item Training data and future noise are independent
-\end{itemize}
+\begin{keypointsbox}{Next Step}
+\raggedright
+Decompose this term into bias and variance using another add-and-subtract trick.
 \end{keypointsbox}
 \end{frame}
 
-\begin{frame}{Step 5B: Term 2 - Why Independence Matters}
-\begin{examplebox}{What Independence Means}
-\textbf{If $X$ and $Y$ are independent:} $E[XY] = E[X] \cdot E[Y]$
-
-\textbf{In our case:}
-\begin{itemize}
-\item $X = \epsilon$ (noise)
-\item $Y = f_{\text{true}}(x) - \hat{f}(x)$ (prediction error)
-\end{itemize}
-\end{examplebox}
-
-\begin{keypointsbox}{Apply Independence}
-$$E[\epsilon(f_{\text{true}}(x) - \hat{f}(x))] = E[\epsilon] \cdot E[f_{\text{true}}(x) - \hat{f}(x)]$$
-\end{keypointsbox}
-\end{frame}
-
-\begin{frame}{Step 5C: Term 2 - The Final Calculation}
-\begin{examplebox}{Using $E[\epsilon] = 0$}
-$$E[\epsilon(f_{\text{true}}(x) - \hat{f}(x))] = E[\epsilon] \cdot E[f_{\text{true}}(x) - \hat{f}(x)]$$
-$$= 0 \cdot E[f_{\text{true}}(x) - \hat{f}(x)] = 0$$
-\end{examplebox}
-
-\begin{alertbox}{Result}
-$$\boxed{\text{Term 2} = 2 \times 0 = 0}$$
-\textbf{The cross-term vanishes completely!}
-\end{alertbox}
-
-\begin{keypointsbox}{Why This Matters}
-Cross-terms often make math messy, but here they cancel out beautifully!
-\end{keypointsbox}
-\end{frame}
-
-\begin{frame}{Step 6: Analyzing Term 3 - The Prediction Error}
-\begin{definitionbox}{Term 3 Analysis}
-$$E[(f_{\text{true}}(x) - \hat{f}(x))^2]$$
-\end{definitionbox}
-
-\begin{keypointsbox}{Another Independence}
-\textbf{Key insight:} $(f_{\text{true}}(x) - \hat{f}(x))$ doesn't depend on the noise $\epsilon$
-\begin{itemize}
-\item $f_{\text{true}}(x)$ is deterministic
-\item $\hat{f}(x)$ depends only on training inputs/outputs (not future noise)
-\end{itemize}
-\end{keypointsbox}
-
-\begin{examplebox}{Simplification}
-$$E[(f_{\text{true}}(x) - \hat{f}(x))^2] = \text{MSE of prediction}$$
-\end{examplebox}
-
-\begin{alertbox}{Coming Up}
-\textbf{This MSE term is where bias and variance hide!} We need to decompose it further...
-\end{alertbox}
-\end{frame}
-
-\begin{frame}{Interim Summary: Progress So Far}
-\begin{definitionbox}{What We Have}
-$$E[(y - \hat{f}(x))^2] = \sigma^2 + 0 + E[(f_{\text{true}}(x) - \hat{f}(x))^2]$$
-$$= \sigma^2 + E[(f_{\text{true}}(x) - \hat{f}(x))^2]$$
-\end{definitionbox}
-
-\begin{keypointsbox}{Next Challenge}
-\textbf{Goal:} Decompose $E[(f_{\text{true}}(x) - \hat{f}(x))^2]$ into bias$^2$ + variance
-\end{keypointsbox}
-
-\begin{examplebox}{Strategy for Next Step}
-\textbf{Another add-and-subtract trick:} We'll add and subtract $E[\hat{f}(x)]$ inside the MSE term
-\end{examplebox}
-\end{frame}
-
-\begin{frame}{Step 7A: The Second Decomposition - Setup}
-\begin{keypointsbox}{Current Status}
-$$E[(y - \hat{f}(x))^2] = \sigma^2 + E[(f_{\text{true}}(x) - \hat{f}(x))^2]$$
-\end{keypointsbox}
-
-\begin{examplebox}{Our Next Challenge}
-\textbf{Goal:} Break down $E[(f_{\text{true}}(x) - \hat{f}(x))^2]$ into bias$^2$ + variance
-\end{examplebox}
-
-\begin{keypointsbox}{Strategy}
-\textbf{Another add-and-subtract trick!} We'll use $E[\hat{f}(x)]$ (the expected prediction)
-\end{keypointsbox}
-\end{frame}
-
-\begin{frame}{Step 7B: The Second Add-and-Subtract Trick}
-\begin{definitionbox}{Starting Point}
-$$E[(f_{\text{true}}(x) - \hat{f}(x))^2]$$
-\end{definitionbox}
-
-\begin{examplebox}{Add and Subtract $E[\hat{f}(x)]$}
+\begin{frame}{Step 8: Add and Subtract the Expected Prediction}
+\small
+\begin{examplebox}{The Trick}
+\raggedright
+Add and subtract $E[\hat{f}(x)]$:
 $$E[(f_{\text{true}}(x) - E[\hat{f}(x)] + E[\hat{f}(x)] - \hat{f}(x))^2]$$
 \end{examplebox}
 
-\begin{keypointsbox}{Grouping the Terms}
-$$E[\underbrace{(f_{\text{true}}(x) - E[\hat{f}(x)])}_{\text{bias}} + \underbrace{(E[\hat{f}(x)] - \hat{f}(x))}_{\text{variance deviation}}]^2$$
-\end{keypointsbox}
-
-\begin{alertbox}
-\textbf{Perfect!} We've separated bias and variance components
-\end{alertbox}
-\end{frame}
-
-\begin{frame}{Step 8A: Setting Up the Final Expansion}
-\begin{keypointsbox}{Our Current Expression}
-$$E[(\text{bias} + \text{variance deviation})^2]$$
-\end{keypointsbox}
-
-\begin{definitionbox}{Let's Define Clearly}
-\begin{itemize}
-\item $\alpha = f_{\text{true}}(x) - E[\hat{f}(x)]$ (the bias)
-\item $\beta = E[\hat{f}(x)] - \hat{f}(x)$ (deviation from expected prediction)
-\end{itemize}
-\end{definitionbox}
-
-\begin{keypointsbox}{What We're About to Do}
-Expand $(\alpha + \beta)^2$ and analyze each term separately
+\begin{keypointsbox}{Grouping}
+\raggedright
+$$(\text{bias}) + (\text{variance deviation})$$
 \end{keypointsbox}
 \end{frame}
 
-\begin{frame}{Step 8B: Expanding the Square}
-\begin{examplebox}{Using $(a + b)^2 = a^2 + 2ab + b^2$}
-$$E[(\alpha + \beta)^2] = E[\alpha^2 + 2\alpha\beta + \beta^2]$$
+\begin{frame}{Step 9: Expand and Separate Terms}
+\small
+\begin{examplebox}{Expand the Square}
+\raggedright
+Let $\alpha = f_{\text{true}}(x) - E[\hat{f}(x)]$ (bias)\\
+$\beta = E[\hat{f}(x)] - \hat{f}(x)$ (variance deviation)
+$$E[(\alpha + \beta)^2] = E[\alpha^2] + 2E[\alpha\beta] + E[\beta^2]$$
 \end{examplebox}
+\end{frame}
 
-\begin{keypointsbox}{Apply Linearity of Expectation}
-$$E[\alpha^2] + 2E[\alpha\beta] + E[\beta^2]$$
-\end{keypointsbox}
-
-\begin{definitionbox}{Three Terms to Analyze}
+\begin{frame}{Step 10: Analyze Each Term}
+\small
+\begin{definitionbox}{Three Terms}
+\raggedright
 \begin{itemize}
-\item \textbf{Term A:} $E[\alpha^2]$ 
-\item \textbf{Term B:} $2E[\alpha\beta]$ 
-\item \textbf{Term C:} $E[\beta^2]$ 
+\item $E[\alpha^2]$ (bias squared)
+\item $2E[\alpha\beta]$ (cross-term)
+\item $E[\beta^2]$ (variance)
 \end{itemize}
 \end{definitionbox}
 \end{frame}
 
-\begin{frame}{Step 9A: Analyzing Term A - The Bias Term}
-\begin{definitionbox}{Term A Recall}
-$$E[\alpha^2] = E[(f_{\text{true}}(x) - E[\hat{f}(x)])^2]$$
-where $\alpha = f_{\text{true}}(x) - E[\hat{f}(x)]$
-\end{definitionbox}
-
-\begin{keypointsbox}{Critical Insight}
+\begin{frame}{Step 11: Bias Squared}
+\small
+\begin{keypointsbox}{Bias Term}
+\raggedright
 \textbf{$\alpha$ is deterministic (not random)!}
 \begin{itemize}
 \item $f_{\text{true}}(x)$ is a fixed function value
-\item $E[\hat{f}(x)]$ is the expected prediction (a constant)
-\end{itemize}
-\end{keypointsbox}
-\end{frame}
-
-\begin{frame}{Step 9B: Why Deterministic Matters}
-\begin{examplebox}{When Something is Deterministic}
-\textbf{If $c$ is a constant:} $E[c] = c$
-
-\textbf{In our case:} $\alpha = f_{\text{true}}(x) - E[\hat{f}(x)]$ is constant
-\end{examplebox}
-
-\begin{keypointsbox}{Therefore}
-$$E[\alpha^2] = E[(f_{\text{true}}(x) - E[\hat{f}(x)])^2] = (f_{\text{true}}(x) - E[\hat{f}(x)])^2$$
+\item $E[\hat{f}(x)]$ is the expected prediction ( will become a constant after the distribution is defined)
+\end{itemize}    
+so $E[\alpha^2] = (f_{\text{true}}(x) - E[\hat{f}(x)])^2 = [\text{Bias}(x)]^2$
 \end{keypointsbox}
 
 \begin{alertbox}{Result}
-$$\boxed{E[\alpha^2] = [\text{Bias}(x)]^2}$$
-\textbf{First component: Bias squared!}
+\raggedright
+$\boxed{E[\alpha^2] = [\text{Bias}(x)]^2}$
 \end{alertbox}
 \end{frame}
+% \begin{frame}{Step 12: The Cross-Term}
+% \small
 
-\begin{frame}{Step 10A: Analyzing Term B - The Cross-Term}
-\begin{definitionbox}{Term B Recall}
-$$E[\alpha\beta] = E[(f_{\text{true}}(x) - E[\hat{f}(x)])(E[\hat{f}(x)] - \hat{f}(x))]$$
-\end{definitionbox}
+% \begin{keypointsbox}{When Something is Deterministic}
+% \textbf{If $c$ is a constant:} $E[c] = c$
 
-\begin{keypointsbox}{Key Insight}
-\textbf{$\alpha$ is deterministic:} $(f_{\text{true}}(x) - E[\hat{f}(x)])$ is a constant
-\begin{itemize}
-\item Can factor constants out of expectations
-\item $E[c \cdot X] = c \cdot E[X]$ when $c$ is constant
-\end{itemize}
-\end{keypointsbox}
-\end{frame}
+% \textbf{In our case:} $\alpha = f_{\text{true}}(x) - E[\hat{f}(x)]$ is constant
+% \end{keypointsbox}
 
-\begin{frame}{Step 10B: Factoring Out the Constant}
-\begin{examplebox}{Using the Constant Rule}
-$$E[\alpha\beta] = E[(f_{\text{true}}(x) - E[\hat{f}(x)])(E[\hat{f}(x)] - \hat{f}(x))]$$
-$$= (f_{\text{true}}(x) - E[\hat{f}(x)]) \cdot E[E[\hat{f}(x)] - \hat{f}(x)]$$
-\end{examplebox}
+% \end{frame}
+\begin{frame}{Step 12: Cross-Term}
+\small
 
-\begin{keypointsbox}{Simplifying the Expectation}
-$$E[E[\hat{f}(x)] - \hat{f}(x)] = E[\hat{f}(x)] - E[\hat{f}(x)] = 0$$
+\begin{keypointsbox}{Cross-Term}
+\raggedright
+$\alpha$ is constant, so $E[\alpha\beta] = \alpha \cdot E[\beta]$.\\
+But $E[\beta] = E[E[\hat{f}(x)] - \hat{f}(x)] = 0$,the expected deviation of a random variable from its mean is zero, so the cross-term is zero.
 \end{keypointsbox}
 
 \begin{alertbox}{Result}
-$$\boxed{E[\alpha\beta] = \text{bias} \times 0 = 0}$$
-\textbf{Cross-term vanishes again!}
+\raggedright
+$\boxed{2E[\alpha\beta] = 0}$ , the cross-term vanishes!
 \end{alertbox}
 \end{frame}
 
-\begin{frame}{Step 11A: Analyzing Term C - The Variance Term}
-\begin{definitionbox}{Term C Recall}
-$$E[\beta^2] = E[(E[\hat{f}(x)] - \hat{f}(x))^2]$$
-where $\beta = E[\hat{f}(x)] - \hat{f}(x)$
-\end{definitionbox}
-
-\begin{keypointsbox}{Does This Look Familiar?}
-\textbf{Compare with the definition of variance:}
-$$\text{Variance}(X) = E[(X - E[X])^2]$$
-\end{keypointsbox}
-\end{frame}
-
-\begin{frame}{Step 11B: Recognizing the Variance Formula}
-\begin{examplebox}{Rewriting Term C}
-$$E[\beta^2] = E[(E[\hat{f}(x)] - \hat{f}(x))^2]$$
-$$= E[(\hat{f}(x) - E[\hat{f}(x)])^2]$$
-\end{examplebox}
-
-\begin{keypointsbox}{This is Exactly...}
-$$\text{Variance}(\hat{f}(x)) = E[(\hat{f}(x) - E[\hat{f}(x)])^2]$$
+\begin{frame}{Step 13: Variance Term}
+\small
+\begin{keypointsbox}{Variance}
+\raggedright
+$E[\beta^2] = E[(E[\hat{f}(x)] - \hat{f}(x))^2] = E[(\hat{f}(x) - E[\hat{f}(x)])^2] = \text{Variance}(\hat{f}(x))$
 \end{keypointsbox}
 
 \begin{alertbox}{Result}
-$$\boxed{E[\beta^2] = \text{Variance}(\hat{f}(x))}$$
-\textbf{Final component: Variance!}
+\raggedright
+$\boxed{E[\beta^2] = \text{Variance}(\hat{f}(x))}$
 \end{alertbox}
 \end{frame}
 
-\begin{frame}{The Complete Bias-Variance Decomposition}
+\begin{frame}{Step 14: The Complete Decomposition}
+\small
 \begin{alertbox}{Putting It All Together}
-$$E[(y - \hat{f}(x))^2] = \sigma^2 + [\text{Bias}(x)]^2 + \text{Variance}(x)$$
+\raggedright
+$$\text{error}=  E[(y - \hat{f}(x))^2] = \sigma^2 + [\text{Bias}(x)]^2 + \text{Variance}(\hat{f}(x))$$
 \end{alertbox}
 
 \begin{definitionbox}{Component Summary}
+\raggedright
 \begin{itemize}
-\item $\sigma^2$ = \textbf{Irreducible error} (noise in data)
+\item $\sigma^2$ = \textbf{Irreducible error} (noise)
 \item $[\text{Bias}(x)]^2$ = \textbf{Systematic error} (model assumptions)
-\item $\text{Variance}(x)$ = \textbf{Random error} (training set sensitivity)
+\item $\text{Variance}(\hat{f}(x))$ = \textbf{Random error} (training set sensitivity)
 \end{itemize}
 \end{definitionbox}
+\end{frame}
 
+
+
+\begin{frame}{The Fundamental Tradeoff}
+\footnotesize
 \begin{keypointsbox}{The Fundamental Tradeoff}
+\raggedright
 \begin{itemize}
-\item \textbf{Reduce bias:} Use more complex models → Increase variance
-\item \textbf{Reduce variance:} Use simpler models → Increase bias
+\item \textbf{Reduce bias:} Use more complex models $\rightarrow$ Increase variance
+\item \textbf{Reduce variance:} Use simpler models $\rightarrow$ Increase bias
 \item \textbf{Optimal complexity:} Minimize bias$^2$ + variance
 \end{itemize}
 \end{keypointsbox}
-
-\begin{examplebox}{Practical Implications}
-\textbf{This decomposition explains:}
-\begin{itemize}
-\item Why cross-validation works
-\item How to choose model complexity
-\item The mathematics behind regularization
-\end{itemize}
-\end{examplebox}
 \end{frame}
 
+\section{Summary and Applications}
+
 \begin{frame}{Summary: The Bias-Variance Tradeoff}
+\small
 \begin{definitionbox}{What We've Proven}
+\raggedright
 \textbf{Every prediction error can be decomposed as:}
 $$\text{Total Error} = \text{Noise} + \text{Bias}^2 + \text{Variance}$$
 \end{definitionbox}
 
 \begin{keypointsbox}{Key Takeaways}
+\raggedright
 \begin{itemize}
 \item \textbf{Noise:} Cannot be reduced (irreducible)
 \item \textbf{Bias:} Reduced by increasing model complexity
@@ -977,8 +812,12 @@ $$\text{Total Error} = \text{Noise} + \text{Bias}^2 + \text{Variance}$$
 \item \textbf{Optimal model:} Balances bias and variance
 \end{itemize}
 \end{keypointsbox}
+\end{frame}
 
+\begin{frame}{Bias-Variance Tradeoff: Practical Applications}
+\small
 \begin{alertbox}{Practical Applications}
+\raggedright
 \begin{itemize}
 \item \textbf{Model selection:} Choose complexity to minimize total error
 \item \textbf{Ensemble methods:} Reduce variance while maintaining low bias
