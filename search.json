@@ -462,6 +462,83 @@
     "text": "We particularly acknowledge:\n\nLong-term Contributors: TAs who served across multiple years and iterations\nContent Creators: TAs who developed significant portions of the course materials\nInnovation Leaders: TAs who introduced new teaching methods and technologies\nQuality Champions: TAs who ensured high standards of educational content\n\n\nThe success of these Machine Learning courses is a testament to the collaborative effort of all faculty, Teaching Assistants, and students. We are grateful for everyone’s contributions to advancing machine learning education at IIT Gandhinagar.\nTotal Unique TAs: 36 individuals across 7 years (2019-2025)\n\nLast updated: January 2025"
   },
   {
+    "objectID": "apps.html",
+    "href": "apps.html",
+    "title": "Interactive Apps",
+    "section": "",
+    "text": "Interactive web apps provide visual, hands-on exploration of machine learning concepts through progressive complexity. All apps follow a simple → sophisticated learning path to build intuition gradually.\n\n\n\n\n\n\nNoteEducational Philosophy\n\n\n\nEach app starts with interpretable, simple features and progressively introduces more sophisticated techniques. This approach reveals a key insight: good features matter more than complex algorithms!\n\n\n\n\n\n\nFocus: Semantic image embeddings and similarity search\nLearn how pretrained CNNs create meaningful representations for clustering and search:\n\nFeatures: 512-D ResNet18 embeddings extracted from ImageNet-trained model\nClustering: K-Means, DBSCAN, Hierarchical algorithms\nVisualization: PCA, t-SNE, UMAP dimensionality reduction\nAnalysis: Cosine similarity, pairwise similarity matrices\nOptimization: Elbow method to find optimal number of clusters\n\nKey Concepts: - Extract semantic features before final classification layer - Cluster images by visual content, not just pixels - Similarity search for reverse image lookup - 45 diverse sample images included\n\n\n\n\n\n\nTipTry This\n\n\n\nUse the elbow curve to automatically find the optimal number of clusters, then explore how different images cluster together based on semantic content!\n\n\nRepository: apps/image-clustering/\n\n\n\n\nFocus: Understanding how feature choice affects clustering quality\nProgressive exploration from hand-crafted to learned features:\nTab 1: RGB Features (3D) - Cluster pixels by color similarity only - Simple, fast, interpretable - Problem: Ignores spatial information - similar colors anywhere group together\nTab 2: Position Features (2D) - Cluster pixels by X,Y location only - Creates spatially coherent regions - Problem: Ignores color - might group unrelated regions\nTab 3: RGB + Position (5D) - Combine color AND location - Adjustable weights to balance features - Better: Spatially coherent regions with similar colors\nTab 4: ResNet18 Dense Features (64-512D) - Extract CNN features at each spatial location - Bilinear upsampling to full resolution - Layer selection (layer1-4) trades resolution vs semantics - Best: Semantic understanding - recognizes objects, textures, patterns\nKey Learning: - Feature engineering matters enormously - Deep features capture semantics, not just statistics - Dense feature maps enable pixel-level understanding - 7 sample images with diverse content\n\n\n\n\n\n\nImportantKey Insight\n\n\n\nResNet18 features dramatically outperform hand-crafted features (RGB, position) because they capture semantic meaning, not just surface statistics. This is true across all clustering algorithms!\n\n\nRepository: apps/simple-clustering/\n\n\n\n\n\n\n\nFocus: Evolution of text representation from keywords to semantics\nProgressive exploration of NLP techniques:\nTab 1: Simple Statistical Features (6D) - Word count, sentence count, average word length - Punctuation, digits, uppercase counts - Clusters by: Document style (length, complexity) - Problem: Ignores content - technical papers on different topics group together\nTab 2: TF-IDF Vectors (50-200D) - Term Frequency × Inverse Document Frequency - Highlights important words per document - Clusters by: Shared vocabulary - Better: Captures topic keywords - Problem: Treats words independently - misses synonyms and context\nTab 3: BERT Embeddings (384D) - Sentence-BERT (all-MiniLM-L6-v2) pretrained transformer - Dense semantic representations - Clusters by: Actual meaning and topic - Best: Understands synonyms, context, paraphrasing - Shows cluster cohesion with cosine similarity\nKey Learning: - Simple features cluster by style, not meaning - TF-IDF captures keywords but treats words as independent tokens - BERT understands semantic content - “ML” = “machine learning” = “AI” - 19 sample documents across 4 categories (Tech, Health, Environment, Sports)\n\n\n\n\n\n\nTipExperiment\n\n\n\nCompare clustering results across tabs. Notice how simple features group documents incorrectly, while BERT accurately identifies topics!\n\n\nRepository: apps/document-clustering/"
+  },
+  {
+    "objectID": "apps.html#hands-on-learning-with-streamlit-apps",
+    "href": "apps.html#hands-on-learning-with-streamlit-apps",
+    "title": "Interactive Apps",
+    "section": "",
+    "text": "Interactive web apps provide visual, hands-on exploration of machine learning concepts through progressive complexity. All apps follow a simple → sophisticated learning path to build intuition gradually.\n\n\n\n\n\n\nNoteEducational Philosophy\n\n\n\nEach app starts with interpretable, simple features and progressively introduces more sophisticated techniques. This approach reveals a key insight: good features matter more than complex algorithms!\n\n\n\n\n\n\nFocus: Semantic image embeddings and similarity search\nLearn how pretrained CNNs create meaningful representations for clustering and search:\n\nFeatures: 512-D ResNet18 embeddings extracted from ImageNet-trained model\nClustering: K-Means, DBSCAN, Hierarchical algorithms\nVisualization: PCA, t-SNE, UMAP dimensionality reduction\nAnalysis: Cosine similarity, pairwise similarity matrices\nOptimization: Elbow method to find optimal number of clusters\n\nKey Concepts: - Extract semantic features before final classification layer - Cluster images by visual content, not just pixels - Similarity search for reverse image lookup - 45 diverse sample images included\n\n\n\n\n\n\nTipTry This\n\n\n\nUse the elbow curve to automatically find the optimal number of clusters, then explore how different images cluster together based on semantic content!\n\n\nRepository: apps/image-clustering/\n\n\n\n\nFocus: Understanding how feature choice affects clustering quality\nProgressive exploration from hand-crafted to learned features:\nTab 1: RGB Features (3D) - Cluster pixels by color similarity only - Simple, fast, interpretable - Problem: Ignores spatial information - similar colors anywhere group together\nTab 2: Position Features (2D) - Cluster pixels by X,Y location only - Creates spatially coherent regions - Problem: Ignores color - might group unrelated regions\nTab 3: RGB + Position (5D) - Combine color AND location - Adjustable weights to balance features - Better: Spatially coherent regions with similar colors\nTab 4: ResNet18 Dense Features (64-512D) - Extract CNN features at each spatial location - Bilinear upsampling to full resolution - Layer selection (layer1-4) trades resolution vs semantics - Best: Semantic understanding - recognizes objects, textures, patterns\nKey Learning: - Feature engineering matters enormously - Deep features capture semantics, not just statistics - Dense feature maps enable pixel-level understanding - 7 sample images with diverse content\n\n\n\n\n\n\nImportantKey Insight\n\n\n\nResNet18 features dramatically outperform hand-crafted features (RGB, position) because they capture semantic meaning, not just surface statistics. This is true across all clustering algorithms!\n\n\nRepository: apps/simple-clustering/\n\n\n\n\n\n\n\nFocus: Evolution of text representation from keywords to semantics\nProgressive exploration of NLP techniques:\nTab 1: Simple Statistical Features (6D) - Word count, sentence count, average word length - Punctuation, digits, uppercase counts - Clusters by: Document style (length, complexity) - Problem: Ignores content - technical papers on different topics group together\nTab 2: TF-IDF Vectors (50-200D) - Term Frequency × Inverse Document Frequency - Highlights important words per document - Clusters by: Shared vocabulary - Better: Captures topic keywords - Problem: Treats words independently - misses synonyms and context\nTab 3: BERT Embeddings (384D) - Sentence-BERT (all-MiniLM-L6-v2) pretrained transformer - Dense semantic representations - Clusters by: Actual meaning and topic - Best: Understands synonyms, context, paraphrasing - Shows cluster cohesion with cosine similarity\nKey Learning: - Simple features cluster by style, not meaning - TF-IDF captures keywords but treats words as independent tokens - BERT understands semantic content - “ML” = “machine learning” = “AI” - 19 sample documents across 4 categories (Tech, Health, Environment, Sports)\n\n\n\n\n\n\nTipExperiment\n\n\n\nCompare clustering results across tabs. Notice how simple features group documents incorrectly, while BERT accurately identifies topics!\n\n\nRepository: apps/document-clustering/"
+  },
+  {
+    "objectID": "apps.html#common-features-across-all-apps",
+    "href": "apps.html#common-features-across-all-apps",
+    "title": "Interactive Apps",
+    "section": "Common Features Across All Apps",
+    "text": "Common Features Across All Apps\n\nElbow Method Visualization\nEvery app includes elbow curve analysis:\n\nPlot: Within-Cluster Sum of Squares (WCSS) vs K\nAutomatic detection: Second derivative finds maximum curvature\nVisual marker: Red star and line indicate suggested K\nEducation: Learn when adding more clusters stops helping\n\n\n\nClustering Algorithms\n\nK-Means: Fast, assumes spherical clusters, requires specifying K\nDBSCAN: Density-based, finds arbitrary shapes (image apps)\nHierarchical: Agglomerative clustering (image apps)\n\n\n\nInteractive Controls\n\nAdjust number of clusters with sliders\nChoose dimensionality reduction method (PCA/t-SNE/UMAP)\nControl visualization parameters\nExpand/collapse educational explanations"
+  },
+  {
+    "objectID": "apps.html#running-apps-locally",
+    "href": "apps.html#running-apps-locally",
+    "title": "Interactive Apps",
+    "section": "Running Apps Locally",
+    "text": "Running Apps Locally\n\nPrerequisites\n# Install dependencies\ncd apps/&lt;app-name&gt;\npip install -r requirements.txt\n\n\nLaunch App\n# Start Streamlit server\nstreamlit run app.py\n\n# Or specify port\nstreamlit run app.py --server.port 8501\n\n\nSample Data Included\n\nImage Clustering: 45 diverse images\nSimple Clustering: 7 carefully selected images\nDocument Clustering: 19 documents across 4 categories"
+  },
+  {
+    "objectID": "apps.html#deployment-coming-soon",
+    "href": "apps.html#deployment-coming-soon",
+    "title": "Interactive Apps",
+    "section": "Deployment (Coming Soon)",
+    "text": "Deployment (Coming Soon)\nApps will be deployed on: - Hugging Face Spaces: Free hosting with GPU support - Streamlit Cloud: Official Streamlit platform\nDeployed links will be added here when available."
+  },
+  {
+    "objectID": "apps.html#pedagogical-approach",
+    "href": "apps.html#pedagogical-approach",
+    "title": "Interactive Apps",
+    "section": "Pedagogical Approach",
+    "text": "Pedagogical Approach\n\nProgressive Complexity\nAll apps follow this learning path:\n\nSimple: Start with interpretable features (RGB, word counts)\nIntermediate: Combine features or use TF-IDF\nAdvanced: Deep learning features (ResNet18, BERT)\n\n\n\nVisual Learning\n\nClear matplotlib visualizations\nSide-by-side comparisons\nAnnotated plots with explanations\n2D projections of high-dimensional data\n\n\n\nActive Exploration\n\nModify parameters and see instant updates\nSample data included - no setup needed\nFast iteration for experimentation\nExpandable “What’s happening?” sections\n\n\n\nCross-Domain Insights\nImages ↔︎ Documents Analogy:\n\n\n\nConcept\nImages\nDocuments\n\n\n\n\nSimple features\nPosition (X, Y)\nWord/sentence counts\n\n\nIntermediate\nRGB colors\nTF-IDF vectors\n\n\nDeep features\nResNet18 (512-D)\nBERT (384-D)\n\n\nSemantic space\nVisual similarity\nTopic similarity\n\n\n\nUniversal Lesson: Same clustering algorithms work everywhere - features are what matter!"
+  },
+  {
+    "objectID": "apps.html#learning-outcomes",
+    "href": "apps.html#learning-outcomes",
+    "title": "Interactive Apps",
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\nAfter using these apps, students will understand:\nConceptual: - How feature choice fundamentally affects clustering quality - Why deep learning features capture semantics - Progressive complexity reveals insights gradually - Trade-offs between speed and quality\nTechnical: - Extract features from pretrained models (ResNet18, BERT) - Apply clustering algorithms (K-Means, DBSCAN) - Use dimensionality reduction for visualization - Determine optimal K with elbow method\nPractical: - Build interactive ML visualizations - Deploy Streamlit apps - Process images and text with deep learning - Interpret high-dimensional embeddings"
+  },
+  {
+    "objectID": "apps.html#technical-stack",
+    "href": "apps.html#technical-stack",
+    "title": "Interactive Apps",
+    "section": "Technical Stack",
+    "text": "Technical Stack\nFramework: Streamlit ML Libraries: scikit-learn, PyTorch, sentence-transformers Visualization: matplotlib, numpy Models: - ResNet18 (torchvision) - 11M params, 512-D embeddings - Sentence-BERT (all-MiniLM-L6-v2) - 22M params, 384-D embeddings"
+  },
+  {
+    "objectID": "apps.html#repository-structure",
+    "href": "apps.html#repository-structure",
+    "title": "Interactive Apps",
+    "section": "Repository Structure",
+    "text": "Repository Structure\napps/\n├── image-clustering/              # ResNet18 image clustering\n│   ├── app.py                    # Main Streamlit app\n│   ├── requirements.txt          # Dependencies\n│   ├── sample_images/            # 45 sample images\n│   └── README.md                 # Documentation\n│\n├── simple-clustering/            # Progressive image clustering\n│   ├── app.py                    # Main Streamlit app\n│   ├── requirements.txt          # Dependencies\n│   ├── sample_images/            # 7 sample images\n│   ├── download_samples.py       # Sample downloader\n│   └── README.md                 # Documentation\n│\n├── document-clustering/          # Progressive document clustering\n│   ├── app.py                    # Main Streamlit app\n│   ├── requirements.txt          # Dependencies\n│   ├── sample_documents/         # 19 text files\n│   ├── create_samples.py         # Sample generator\n│   └── README.md                 # Documentation\n│\n└── README.md                     # Main apps documentation"
+  },
+  {
+    "objectID": "apps.html#quick-navigation",
+    "href": "apps.html#quick-navigation",
+    "title": "Interactive Apps",
+    "section": "Quick Navigation",
+    "text": "Quick Navigation\n\nCourse Homepage - Main course page\nLecture Slides - Theoretical foundations\nJupyter Notebooks - Code implementations\nTutorials - Practice problems\nGitHub Repository - Source code"
+  },
+  {
+    "objectID": "apps.html#contributing",
+    "href": "apps.html#contributing",
+    "title": "Interactive Apps",
+    "section": "Contributing",
+    "text": "Contributing\nWant to add a new app or improve existing ones?\n\nFollow the progressive complexity philosophy\nInclude sample data for immediate use\nAdd educational explanations in expandable sections\nUpdate this page and the main apps README\nSubmit a pull request\n\n\nFor questions or feedback, visit Prof. Nipun Batra’s homepage or create an issue"
+  },
+  {
     "objectID": "courses.html",
     "href": "courses.html",
     "title": "Courses Using These Materials",
