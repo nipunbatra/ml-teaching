@@ -163,26 +163,27 @@ def load_audio_features_from_files():
     """
     Load and extract features from real audio files in sample_audio/
 
-    Returns embeddings and metadata if files exist, otherwise None
+    Returns embeddings, metadata, and raw features if files exist, otherwise None
     """
     try:
         import librosa
     except ImportError:
         st.warning("⚠️ librosa not installed. Install with: pip install librosa")
         st.info("Using synthetic embeddings instead")
-        return None, None
+        return None, None, None
 
     audio_files = list(SAMPLE_AUDIO_DIR.glob("*.mp3")) + \
                   list(SAMPLE_AUDIO_DIR.glob("*.wav")) + \
                   list(SAMPLE_AUDIO_DIR.glob("*.flac"))
 
     if not audio_files:
-        return None, None
+        return None, None, None
 
     st.info(f"🎵 Found {len(audio_files)} audio files! Extracting features...")
 
     embeddings = []
     metadata = []
+    raw_features_list = []  # Store raw features for visualization
 
     progress_bar = st.progress(0)
     for idx, audio_file in enumerate(audio_files):
@@ -207,6 +208,17 @@ def load_audio_features_from_files():
             zero_crossing = librosa.feature.zero_crossing_rate(y)
             zero_crossing_mean = np.mean(zero_crossing)
 
+            # Store raw features for visualization
+            raw_features = {
+                'mfcc_mean': mfccs_mean,
+                'mfcc_std': mfccs_std,
+                'chroma_mean': chroma_mean,
+                'spectral_centroid': spectral_centroid_mean,
+                'spectral_rolloff': spectral_rolloff_mean,
+                'zero_crossing_rate': zero_crossing_mean
+            }
+            raw_features_list.append(raw_features)
+
             # Combine features
             feature_vector = np.concatenate([
                 mfccs_mean,
@@ -223,23 +235,30 @@ def load_audio_features_from_files():
 
             embeddings.append(feature_vector)
 
-            # Parse filename for metadata
+            # Parse filename for metadata (format: "Genre - Artist - Title")
             filename = audio_file.stem
             parts = filename.split(' - ')
-            if len(parts) >= 2:
+            if len(parts) >= 3:
+                genre, artist, title = parts[0], parts[1], parts[2]
+            elif len(parts) == 2:
                 artist, title = parts[0], parts[1]
+                genre = 'Unknown'
             else:
-                artist, title = "Unknown", filename
+                artist, title, genre = "Unknown", filename, "Unknown"
 
             # Estimate tempo
-            tempo, _ = librosa.beat.beat_track(y=y, sr=sr)
+            try:
+                tempo, _ = librosa.beat.beat_track(y=y, sr=sr)
+                tempo = int(tempo) if not np.isnan(tempo) else 120
+            except:
+                tempo = 120
 
             metadata.append({
                 'id': idx,
                 'title': title,
                 'artist': artist,
-                'genre': 'Unknown',  # Could add genre detection
-                'tempo': int(tempo),
+                'genre': genre,
+                'tempo': tempo,
                 'energy': float(np.std(y)),  # Rough energy estimate
                 'duration': len(y) / sr,
                 'filename': audio_file.name,
@@ -253,7 +272,7 @@ def load_audio_features_from_files():
         progress_bar.progress((idx + 1) / len(audio_files))
 
     if not embeddings:
-        return None, None
+        return None, None, None
 
     embeddings = np.array(embeddings)
 
@@ -265,7 +284,7 @@ def load_audio_features_from_files():
 
     st.success(f"✅ Extracted features from {len(embeddings)} songs!")
 
-    return embeddings, df
+    return embeddings, df, raw_features_list
 
 # Sidebar
 st.sidebar.header("⚙️ Settings")
@@ -279,9 +298,9 @@ use_real_audio = st.sidebar.checkbox(
     help="Extract features from MP3/WAV files in sample_audio/"
 )
 
-real_embeddings, real_df = None, None
+real_embeddings, real_df, raw_features = None, None, None
 if use_real_audio:
-    real_embeddings, real_df = load_audio_features_from_files()
+    real_embeddings, real_df, raw_features = load_audio_features_from_files()
 
 # ============= GENERATE DEMO DATASET =============
 @st.cache_data
@@ -370,7 +389,9 @@ else:
 def reduce_dimensions(embeddings, method='tsne', n_components=2):
     """Reduce embeddings to 2D for visualization"""
     if method == 'tsne':
-        reducer = TSNE(n_components=n_components, random_state=42, perplexity=min(30, len(embeddings)-1))
+        # Perplexity must be less than n_samples and at least 1
+        max_perplexity = max(1, min(30, len(embeddings) - 1))
+        reducer = TSNE(n_components=n_components, random_state=42, perplexity=max_perplexity)
     elif method == 'pca':
         reducer = PCA(n_components=n_components, random_state=42)
     else:
@@ -385,12 +406,22 @@ with st.spinner(f"Computing {viz_method.upper()} projection..."):
     coords_2d = reduce_dimensions(embeddings, viz_method)
 
 # ============= MAIN TABS =============
-tab1, tab2, tab3, tab4 = st.tabs([
-    "🗺️ Explore Library",
-    "🔍 Find Similar Songs",
-    "⚡ KNN Methods Comparison",
-    "📊 Embedding Analysis"
-])
+if raw_features is not None:
+    tab1, tab2, tab3, tab4, tab5 = st.tabs([
+        "🗺️ Explore Library",
+        "🔍 Find Similar Songs",
+        "⚡ KNN Methods Comparison",
+        "📊 Embedding Analysis",
+        "🎼 Audio Features"
+    ])
+else:
+    tab1, tab2, tab3, tab4 = st.tabs([
+        "🗺️ Explore Library",
+        "🔍 Find Similar Songs",
+        "⚡ KNN Methods Comparison",
+        "📊 Embedding Analysis"
+    ])
+    tab5 = None  # Not available without real audio
 
 # ============= TAB 1: EXPLORE LIBRARY =============
 with tab1:
@@ -747,18 +778,21 @@ with tab3:
     comparison_df = pd.DataFrame(comparison_data)
     st.dataframe(comparison_df, hide_index=True, use_container_width=True)
 
-    # Bar chart
-    fig_comparison = px.bar(
-        comparison_df,
-        x='Algorithm',
-        y=[float(t.replace(' ms', '').replace(',', '')) for t in comparison_df['Time (ms)']],
-        labels={'y': 'Time (ms)', 'x': 'Algorithm'},
-        title='Query Time Comparison (Lower is Better)',
-        color='Algorithm',
-        text='Time (ms)'
-    )
-    fig_comparison.update_traces(textposition='outside')
-    st.plotly_chart(fig_comparison, use_container_width=True)
+    # Bar chart - safely handle empty dataframe
+    if not comparison_df.empty and 'Time (ms)' in comparison_df.columns:
+        # Extract numeric times
+        times_numeric = [float(t.split()[0]) for t in comparison_df['Time (ms)']]
+
+        fig_comparison = px.bar(
+            x=comparison_df['Algorithm'],
+            y=times_numeric,
+            labels={'y': 'Time (ms)', 'x': 'Algorithm'},
+            title='Query Time Comparison (Lower is Better)',
+            color=comparison_df['Algorithm'],
+            text=[f"{t:.3f}" for t in times_numeric]
+        )
+        fig_comparison.update_traces(textposition='outside')
+        st.plotly_chart(fig_comparison, use_container_width=True)
 
     # Check if results match
     st.subheader("🎯 Accuracy Check")
@@ -877,6 +911,160 @@ with tab4:
     - **High variance**: Some songs are very unique (outliers)
     - In real music datasets, you'd see clusters of similar songs with outliers
     """)
+
+# ============= TAB 5: AUDIO FEATURES =============
+if tab5 is not None and raw_features is not None:
+    with tab5:
+        st.header("🎼 Audio Features Visualization")
+
+        st.markdown("""
+        These are the actual audio features extracted from your music files using **librosa**.
+        Understanding these features helps explain how the KNN algorithm finds similar songs!
+        """)
+
+        # Select a song to visualize
+        st.subheader("📊 Feature Analysis by Song")
+
+        song_options_feat = [f"{row['title']} - {row['artist']} ({row['genre']})"
+                           for _, row in songs_df.iterrows()]
+
+        selected_idx_feat = st.selectbox("Select song to analyze features",
+                                        range(len(song_options_feat)),
+                                        format_func=lambda x: song_options_feat[x],
+                                        key='feat_song_select')
+
+        selected_song = songs_df.iloc[selected_idx_feat]
+        selected_features = raw_features[selected_idx_feat]
+
+        st.markdown(f"**Analyzing**: {selected_song['title']} by {selected_song['artist']}")
+        st.markdown(f"**Genre**: {selected_song['genre']}")
+
+        # Display feature summary
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Spectral Centroid", f"{selected_features['spectral_centroid']:.0f} Hz",
+                   help="Center of mass of spectrum - brighter sounds have higher values")
+        col2.metric("Spectral Rolloff", f"{selected_features['spectral_rolloff']:.0f} Hz",
+                   help="Frequency below which 85% of energy is contained")
+        col3.metric("Zero Crossing Rate", f"{selected_features['zero_crossing_rate']:.4f}",
+                   help="Rate at which signal changes sign - higher for percussive sounds")
+
+        # MFCC visualization
+        st.markdown("---")
+        st.subheader("🎵 MFCCs (Mel-Frequency Cepstral Coefficients)")
+        st.markdown("**MFCCs** capture the timbral texture of sound - similar to how humans perceive pitch.")
+
+        fig_mfcc, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+
+        # MFCC mean
+        ax1.bar(range(len(selected_features['mfcc_mean'])), selected_features['mfcc_mean'],
+               color='steelblue', edgecolor='black')
+        ax1.set_xlabel('MFCC Coefficient', fontsize=11, weight='bold')
+        ax1.set_ylabel('Mean Value', fontsize=11, weight='bold')
+        ax1.set_title('MFCC Mean Values (Timbral Texture)', fontsize=12, weight='bold')
+        ax1.grid(True, alpha=0.3)
+
+        # MFCC std
+        ax2.bar(range(len(selected_features['mfcc_std'])), selected_features['mfcc_std'],
+               color='coral', edgecolor='black')
+        ax2.set_xlabel('MFCC Coefficient', fontsize=11, weight='bold')
+        ax2.set_ylabel('Std Deviation', fontsize=11, weight='bold')
+        ax2.set_title('MFCC Variation (Timbral Dynamics)', fontsize=12, weight='bold')
+        ax2.grid(True, alpha=0.3)
+
+        plt.tight_layout()
+        st.pyplot(fig_mfcc)
+        plt.close()
+
+        st.caption("💡 Lower MFCCs capture overall spectral shape, higher ones capture finer details")
+
+        # Chroma features
+        st.markdown("---")
+        st.subheader("🎹 Chroma Features (Pitch Class Distribution)")
+        st.markdown("**Chroma** represents the 12 pitch classes (C, C#, D, ..., B) - captures harmonic content.")
+
+        fig_chroma, ax = plt.subplots(figsize=(12, 5))
+
+        chroma_labels = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
+        colors_chroma = plt.cm.rainbow(np.linspace(0, 1, 12))
+
+        bars = ax.bar(chroma_labels, selected_features['chroma_mean'], color=colors_chroma,
+                     edgecolor='black', linewidth=1.5)
+        ax.set_xlabel('Pitch Class', fontsize=12, weight='bold')
+        ax.set_ylabel('Mean Energy', fontsize=12, weight='bold')
+        ax.set_title(f'Chroma Distribution - {selected_song["title"]}', fontsize=13, weight='bold')
+        ax.grid(True, alpha=0.3, axis='y')
+
+        # Highlight dominant pitch
+        dominant_pitch_idx = np.argmax(selected_features['chroma_mean'])
+        bars[dominant_pitch_idx].set_edgecolor('gold')
+        bars[dominant_pitch_idx].set_linewidth(4)
+
+        plt.tight_layout()
+        st.pyplot(fig_chroma)
+        plt.close()
+
+        st.caption(f"💡 Dominant pitch class: **{chroma_labels[dominant_pitch_idx]}** (highlighted in gold)")
+
+        # Feature comparison across genres
+        st.markdown("---")
+        st.subheader("📊 Feature Comparison Across Genres")
+
+        # Calculate average features per genre
+        genre_features = {}
+        for genre in songs_df['genre'].unique():
+            genre_mask = songs_df['genre'] == genre
+            genre_indices = songs_df[genre_mask].index.tolist()
+
+            # Average spectral features for this genre
+            avg_centroid = np.mean([raw_features[i]['spectral_centroid'] for i in genre_indices])
+            avg_rolloff = np.mean([raw_features[i]['spectral_rolloff'] for i in genre_indices])
+            avg_zcr = np.mean([raw_features[i]['zero_crossing_rate'] for i in genre_indices])
+
+            genre_features[genre] = {
+                'spectral_centroid': avg_centroid,
+                'spectral_rolloff': avg_rolloff,
+                'zero_crossing_rate': avg_zcr
+            }
+
+        # Plot comparison
+        fig_comparison, axes = plt.subplots(1, 3, figsize=(15, 5))
+
+        genres_list = list(genre_features.keys())
+        colors_genre = [COLORS['genre'].get(g, 'gray') for g in genres_list]
+
+        # Spectral Centroid
+        centroids = [genre_features[g]['spectral_centroid'] for g in genres_list]
+        axes[0].barh(genres_list, centroids, color=colors_genre, edgecolor='black')
+        axes[0].set_xlabel('Spectral Centroid (Hz)', fontsize=10, weight='bold')
+        axes[0].set_title('Brightness by Genre', fontsize=11, weight='bold')
+        axes[0].grid(True, alpha=0.3, axis='x')
+
+        # Spectral Rolloff
+        rolloffs = [genre_features[g]['spectral_rolloff'] for g in genres_list]
+        axes[1].barh(genres_list, rolloffs, color=colors_genre, edgecolor='black')
+        axes[1].set_xlabel('Spectral Rolloff (Hz)', fontsize=10, weight='bold')
+        axes[1].set_title('Energy Distribution by Genre', fontsize=11, weight='bold')
+        axes[1].grid(True, alpha=0.3, axis='x')
+
+        # Zero Crossing Rate
+        zcrs = [genre_features[g]['zero_crossing_rate'] for g in genres_list]
+        axes[2].barh(genres_list, zcrs, color=colors_genre, edgecolor='black')
+        axes[2].set_xlabel('Zero Crossing Rate', fontsize=10, weight='bold')
+        axes[2].set_title('Percussiveness by Genre', fontsize=11, weight='bold')
+        axes[2].grid(True, alpha=0.3, axis='x')
+
+        plt.tight_layout()
+        st.pyplot(fig_comparison)
+        plt.close()
+
+        st.info("""
+        **Key Insights:**
+        - **Spectral Centroid**: Higher values = brighter, sharper sounds (cymbals, vocals)
+        - **Spectral Rolloff**: Shows where most energy is concentrated
+        - **Zero Crossing Rate**: Higher for noisy/percussive sounds, lower for tonal sounds
+
+        These features help KNN distinguish between genres and find similar songs!
+        """)
 
 # Footer
 st.markdown("---")
