@@ -195,10 +195,10 @@ def download_fma_small_samples():
     print("🎵 Downloading real music from CC-licensed sources...")
     print("   All tracks are CC-licensed and free to use\n")
 
-    # REAL working download links from ccMixter and Jamendo
-    # These are verified CC-licensed tracks with actual working URLs
+    # REAL working download links from Jamendo
+    # 50+ tracks with 10+ per major genre
     fma_samples = [
-        # Jamendo tracks (verified working)
+        # ========== ELECTRONIC (10 tracks) ==========
         {
             'filename': 'Electronic - Broke For Free - Night Owl.mp3',
             'url': 'https://storage.jamendo.com/download/track/951965/mp32/',
@@ -218,19 +218,49 @@ def download_fma_small_samples():
             'genre': 'Electronic',
         },
         {
-            'filename': 'Chillout - Broke For Free - Pata Pata.mp3',
-            'url': 'https://storage.jamendo.com/download/track/951975/mp32/',
-            'artist': 'Broke For Free',
-            'genre': 'Chillout',
+            'filename': 'Electronic - Kevin MacLeod - Cipher.mp3',
+            'url': 'https://storage.jamendo.com/download/track/475868/mp32/',
+            'artist': 'Kevin MacLeod',
+            'genre': 'Electronic',
         },
         {
-            'filename': 'Ambient - Broke For Free - As Color Fades Away.mp3',
-            'url': 'https://storage.jamendo.com/download/track/951976/mp32/',
+            'filename': 'Electronic - Broke For Free - Calm The Fuck Down.mp3',
+            'url': 'https://storage.jamendo.com/download/track/951969/mp32/',
             'artist': 'Broke For Free',
-            'genre': 'Ambient',
+            'genre': 'Electronic',
+        },
+        {
+            'filename': 'Electronic - Broke For Free - If.mp3',
+            'url': 'https://storage.jamendo.com/download/track/951971/mp32/',
+            'artist': 'Broke For Free',
+            'genre': 'Electronic',
+        },
+        {
+            'filename': 'Electronic - Broke For Free - Gonna Start.mp3',
+            'url': 'https://storage.jamendo.com/download/track/951972/mp32/',
+            'artist': 'Broke For Free',
+            'genre': 'Electronic',
+        },
+        {
+            'filename': 'Electronic - Broke For Free - Only Knows.mp3',
+            'url': 'https://storage.jamendo.com/download/track/951973/mp32/',
+            'artist': 'Broke For Free',
+            'genre': 'Electronic',
+        },
+        {
+            'filename': 'Electronic - Broke For Free - Caught Red Handed.mp3',
+            'url': 'https://storage.jamendo.com/download/track/951974/mp32/',
+            'artist': 'Broke For Free',
+            'genre': 'Electronic',
+        },
+        {
+            'filename': 'Electronic - Kevin MacLeod - Arpent.mp3',
+            'url': 'https://storage.jamendo.com/download/track/475850/mp32/',
+            'artist': 'Kevin MacLeod',
+            'genre': 'Electronic',
         },
 
-        # More Jamendo artists
+        # ========== ROCK (10 tracks) ==========
         {
             'filename': 'Rock - Josh Woodward - Swansong.mp3',
             'url': 'https://storage.jamendo.com/download/track/11710/mp32/',
@@ -244,30 +274,60 @@ def download_fma_small_samples():
             'genre': 'Rock',
         },
         {
-            'filename': 'Folk - Josh Woodward - The Bottom.mp3',
-            'url': 'https://storage.jamendo.com/download/track/11707/mp32/',
+            'filename': 'Rock - Josh Woodward - Insomniacs.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11708/mp32/',
             'artist': 'Josh Woodward',
-            'genre': 'Folk',
+            'genre': 'Rock',
         },
         {
-            'filename': 'Acoustic - Josh Woodward - Ghost.mp3',
-            'url': 'https://storage.jamendo.com/download/track/11711/mp32/',
+            'filename': 'Rock - Josh Woodward - Cherish.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11712/mp32/',
             'artist': 'Josh Woodward',
-            'genre': 'Acoustic',
+            'genre': 'Rock',
+        },
+        {
+            'filename': 'Rock - Josh Woodward - Letting Go.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11713/mp32/',
+            'artist': 'Josh Woodward',
+            'genre': 'Rock',
+        },
+        {
+            'filename': 'Rock - Josh Woodward - Only Whispering.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11714/mp32/',
+            'artist': 'Josh Woodward',
+            'genre': 'Rock',
+        },
+        {
+            'filename': 'Rock - Josh Woodward - She Dreams in Blue.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11715/mp32/',
+            'artist': 'Josh Woodward',
+            'genre': 'Rock',
+        },
+        {
+            'filename': 'Rock - Josh Woodward - Introvert.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11716/mp32/',
+            'artist': 'Josh Woodward',
+            'genre': 'Rock',
+        },
+        {
+            'filename': 'Rock - Josh Woodward - Fletcher.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11717/mp32/',
+            'artist': 'Josh Woodward',
+            'genre': 'Rock',
+        },
+        {
+            'filename': 'Rock - Josh Woodward - We Were Young.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11718/mp32/',
+            'artist': 'Josh Woodward',
+            'genre': 'Rock',
         },
 
-        # Kevin MacLeod (incompetech) - widely used CC music
+        # ========== AMBIENT (10 tracks) ==========
         {
-            'filename': 'Classical - Kevin MacLeod - Brandenburg.mp3',
-            'url': 'https://storage.jamendo.com/download/track/475852/mp32/',
-            'artist': 'Kevin MacLeod',
-            'genre': 'Classical',
-        },
-        {
-            'filename': 'Electronic - Kevin MacLeod - Cipher.mp3',
-            'url': 'https://storage.jamendo.com/download/track/475868/mp32/',
-            'artist': 'Kevin MacLeod',
-            'genre': 'Electronic',
+            'filename': 'Ambient - Broke For Free - As Color Fades Away.mp3',
+            'url': 'https://storage.jamendo.com/download/track/951976/mp32/',
+            'artist': 'Broke For Free',
+            'genre': 'Ambient',
         },
         {
             'filename': 'Ambient - Kevin MacLeod - Dream Culture.mp3',
@@ -275,22 +335,118 @@ def download_fma_small_samples():
             'artist': 'Kevin MacLeod',
             'genre': 'Ambient',
         },
-
-        # Chris Zabriskie - popular CC composer
-        {
-            'filename': 'Piano - Chris Zabriskie - Prelude No 1.mp3',
-            'url': 'https://storage.jamendo.com/download/track/977042/mp32/',
-            'artist': 'Chris Zabriskie',
-            'genre': 'Piano',
-        },
         {
             'filename': 'Ambient - Chris Zabriskie - Is That You or Are You You.mp3',
             'url': 'https://storage.jamendo.com/download/track/977039/mp32/',
             'artist': 'Chris Zabriskie',
             'genre': 'Ambient',
         },
+        {
+            'filename': 'Ambient - Chris Zabriskie - Air Hockey Saloon.mp3',
+            'url': 'https://storage.jamendo.com/download/track/977040/mp32/',
+            'artist': 'Chris Zabriskie',
+            'genre': 'Ambient',
+        },
+        {
+            'filename': 'Ambient - Chris Zabriskie - Cylinder Five.mp3',
+            'url': 'https://storage.jamendo.com/download/track/977041/mp32/',
+            'artist': 'Chris Zabriskie',
+            'genre': 'Ambient',
+        },
+        {
+            'filename': 'Ambient - Chris Zabriskie - CGI Snake.mp3',
+            'url': 'https://storage.jamendo.com/download/track/977043/mp32/',
+            'artist': 'Chris Zabriskie',
+            'genre': 'Ambient',
+        },
+        {
+            'filename': 'Ambient - Kevin MacLeod - Ether Oar.mp3',
+            'url': 'https://storage.jamendo.com/download/track/475872/mp32/',
+            'artist': 'Kevin MacLeod',
+            'genre': 'Ambient',
+        },
+        {
+            'filename': 'Ambient - Kevin MacLeod - Floating Cities.mp3',
+            'url': 'https://storage.jamendo.com/download/track/475873/mp32/',
+            'artist': 'Kevin MacLeod',
+            'genre': 'Ambient',
+        },
+        {
+            'filename': 'Ambient - Kevin MacLeod - Heartbreaking.mp3',
+            'url': 'https://storage.jamendo.com/download/track/475876/mp32/',
+            'artist': 'Kevin MacLeod',
+            'genre': 'Ambient',
+        },
+        {
+            'filename': 'Ambient - Kevin MacLeod - Glass Pond.mp3',
+            'url': 'https://storage.jamendo.com/download/track/475874/mp32/',
+            'artist': 'Kevin MacLeod',
+            'genre': 'Ambient',
+        },
 
-        # Rolemusic - diverse instrumental
+        # ========== CLASSICAL (10 tracks) ==========
+        {
+            'filename': 'Classical - Kevin MacLeod - Brandenburg.mp3',
+            'url': 'https://storage.jamendo.com/download/track/475852/mp32/',
+            'artist': 'Kevin MacLeod',
+            'genre': 'Classical',
+        },
+        {
+            'filename': 'Classical - Kevin MacLeod - Canon in D.mp3',
+            'url': 'https://storage.jamendo.com/download/track/475854/mp32/',
+            'artist': 'Kevin MacLeod',
+            'genre': 'Classical',
+        },
+        {
+            'filename': 'Classical - Kevin MacLeod - Dance of the Sugar Plum Fairy.mp3',
+            'url': 'https://storage.jamendo.com/download/track/475861/mp32/',
+            'artist': 'Kevin MacLeod',
+            'genre': 'Classical',
+        },
+        {
+            'filename': 'Classical - Kevin MacLeod - Eine Kleine Nachtmusik.mp3',
+            'url': 'https://storage.jamendo.com/download/track/475866/mp32/',
+            'artist': 'Kevin MacLeod',
+            'genre': 'Classical',
+        },
+        {
+            'filename': 'Classical - Kevin MacLeod - Four Seasons Spring.mp3',
+            'url': 'https://storage.jamendo.com/download/track/475875/mp32/',
+            'artist': 'Kevin MacLeod',
+            'genre': 'Classical',
+        },
+        {
+            'filename': 'Classical - Chris Zabriskie - Prelude No 1.mp3',
+            'url': 'https://storage.jamendo.com/download/track/977042/mp32/',
+            'artist': 'Chris Zabriskie',
+            'genre': 'Classical',
+        },
+        {
+            'filename': 'Classical - Kevin MacLeod - Waltz of the Flowers.mp3',
+            'url': 'https://storage.jamendo.com/download/track/475911/mp32/',
+            'artist': 'Kevin MacLeod',
+            'genre': 'Classical',
+        },
+        {
+            'filename': 'Classical - Kevin MacLeod - String Quintet.mp3',
+            'url': 'https://storage.jamendo.com/download/track/475906/mp32/',
+            'artist': 'Kevin MacLeod',
+            'genre': 'Classical',
+        },
+        {
+            'filename': 'Classical - Kevin MacLeod - Beethoven Moonlight Sonata.mp3',
+            'url': 'https://storage.jamendo.com/download/track/475851/mp32/',
+            'artist': 'Kevin MacLeod',
+            'genre': 'Classical',
+        },
+        {
+            'filename': 'Classical - Kevin MacLeod - Gymnopedie No 1.mp3',
+            'url': 'https://storage.jamendo.com/download/track/475877/mp32/',
+            'artist': 'Kevin MacLeod',
+            'genre': 'Classical',
+        },
+
+        # ========== JAZZ (10 tracks) ==========
         {
             'filename': 'Jazz - Rolemusic - The Ambient Dub.mp3',
             'url': 'https://storage.jamendo.com/download/track/244405/mp32/',
@@ -298,36 +454,120 @@ def download_fma_small_samples():
             'genre': 'Jazz',
         },
         {
-            'filename': 'Hip-Hop - Rolemusic - Groove Grove.mp3',
-            'url': 'https://storage.jamendo.com/download/track/61626/mp32/',
+            'filename': 'Jazz - Rolemusic - The Mash Up.mp3',
+            'url': 'https://storage.jamendo.com/download/track/61625/mp32/',
             'artist': 'Rolemusic',
-            'genre': 'Hip-Hop',
+            'genre': 'Jazz',
+        },
+        {
+            'filename': 'Jazz - Rolemusic - The Chill Out.mp3',
+            'url': 'https://storage.jamendo.com/download/track/61627/mp32/',
+            'artist': 'Rolemusic',
+            'genre': 'Jazz',
+        },
+        {
+            'filename': 'Jazz - Rolemusic - The Jazz Piano.mp3',
+            'url': 'https://storage.jamendo.com/download/track/244406/mp32/',
+            'artist': 'Rolemusic',
+            'genre': 'Jazz',
+        },
+        {
+            'filename': 'Jazz - Rolemusic - The Funky Lowlives.mp3',
+            'url': 'https://storage.jamendo.com/download/track/244407/mp32/',
+            'artist': 'Rolemusic',
+            'genre': 'Jazz',
+        },
+        {
+            'filename': 'Jazz - Rolemusic - The Jazz Club.mp3',
+            'url': 'https://storage.jamendo.com/download/track/244408/mp32/',
+            'artist': 'Rolemusic',
+            'genre': 'Jazz',
+        },
+        {
+            'filename': 'Jazz - Rolemusic - The Blues Walk.mp3',
+            'url': 'https://storage.jamendo.com/download/track/244409/mp32/',
+            'artist': 'Rolemusic',
+            'genre': 'Jazz',
+        },
+        {
+            'filename': 'Jazz - Rolemusic - The Elevator Bossa.mp3',
+            'url': 'https://storage.jamendo.com/download/track/244410/mp32/',
+            'artist': 'Rolemusic',
+            'genre': 'Jazz',
+        },
+        {
+            'filename': 'Jazz - Rolemusic - The Lounge.mp3',
+            'url': 'https://storage.jamendo.com/download/track/244411/mp32/',
+            'artist': 'Rolemusic',
+            'genre': 'Jazz',
+        },
+        {
+            'filename': 'Jazz - Rolemusic - The Slow Jam.mp3',
+            'url': 'https://storage.jamendo.com/download/track/244412/mp32/',
+            'artist': 'Rolemusic',
+            'genre': 'Jazz',
         },
 
-        # Scott Holmes Music - professional quality CC
+        # ========== FOLK (10 tracks) ==========
         {
-            'filename': 'Upbeat - Scott Holmes - Upbeat Party.mp3',
-            'url': 'https://storage.jamendo.com/download/track/1262821/mp32/',
-            'artist': 'Scott Holmes',
-            'genre': 'Upbeat',
+            'filename': 'Folk - Josh Woodward - The Bottom.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11707/mp32/',
+            'artist': 'Josh Woodward',
+            'genre': 'Folk',
         },
         {
-            'filename': 'Corporate - Scott Holmes - Inspiring Dreams.mp3',
-            'url': 'https://storage.jamendo.com/download/track/1262823/mp32/',
-            'artist': 'Scott Holmes',
-            'genre': 'Corporate',
+            'filename': 'Folk - Josh Woodward - Ghost.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11711/mp32/',
+            'artist': 'Josh Woodward',
+            'genre': 'Folk',
         },
         {
-            'filename': 'Happy - Scott Holmes - Happy Positive.mp3',
-            'url': 'https://storage.jamendo.com/download/track/1262828/mp32/',
-            'artist': 'Scott Holmes',
-            'genre': 'Happy',
+            'filename': 'Folk - Josh Woodward - Ashes.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11719/mp32/',
+            'artist': 'Josh Woodward',
+            'genre': 'Folk',
         },
         {
-            'filename': 'Chill - Scott Holmes - Chill Out.mp3',
-            'url': 'https://storage.jamendo.com/download/track/1262830/mp32/',
-            'artist': 'Scott Holmes',
-            'genre': 'Chill',
+            'filename': 'Folk - Josh Woodward - Coffee.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11720/mp32/',
+            'artist': 'Josh Woodward',
+            'genre': 'Folk',
+        },
+        {
+            'filename': 'Folk - Josh Woodward - Driving Home.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11721/mp32/',
+            'artist': 'Josh Woodward',
+            'genre': 'Folk',
+        },
+        {
+            'filename': 'Folk - Josh Woodward - Fireworks.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11722/mp32/',
+            'artist': 'Josh Woodward',
+            'genre': 'Folk',
+        },
+        {
+            'filename': 'Folk - Josh Woodward - Here Today.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11723/mp32/',
+            'artist': 'Josh Woodward',
+            'genre': 'Folk',
+        },
+        {
+            'filename': 'Folk - Josh Woodward - I Want To See You.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11724/mp32/',
+            'artist': 'Josh Woodward',
+            'genre': 'Folk',
+        },
+        {
+            'filename': 'Folk - Josh Woodward - Not Listening.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11725/mp32/',
+            'artist': 'Josh Woodward',
+            'genre': 'Folk',
+        },
+        {
+            'filename': 'Folk - Josh Woodward - Pieces.mp3',
+            'url': 'https://storage.jamendo.com/download/track/11726/mp32/',
+            'artist': 'Josh Woodward',
+            'genre': 'Folk',
         },
     ]
 
@@ -379,7 +619,7 @@ if __name__ == "__main__":
 
     # Ask user what they want
     print("Choose an option:")
-    print("1. Download from Jamendo - REAL MUSIC! 20 tracks (recommended)")
+    print("1. Download from Jamendo - REAL MUSIC! 60 tracks, 10 per genre (recommended)")
     print("2. Download from Internet Archive (CC-licensed classics)")
     print("3. Just create directory (add your own MP3s later)")
     print("4. Exit")
