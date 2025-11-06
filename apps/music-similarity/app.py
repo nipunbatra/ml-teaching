@@ -797,18 +797,21 @@ with tab3:
     # Check if results match
     st.subheader("🎯 Accuracy Check")
 
-    brute_set = set(results['Brute Force']['indices'])
+    if results.get('Brute Force') and results['Brute Force'] is not None:
+        brute_set = set(results['Brute Force']['indices'])
 
-    for name, result in results.items():
-        if result and name != 'Brute Force':
-            result_set = set(result['indices'])
-            matches = len(brute_set & result_set)
-            accuracy = 100 * matches / k_test
+        for name, result in results.items():
+            if result and name != 'Brute Force':
+                result_set = set(result['indices'])
+                matches = len(brute_set & result_set)
+                accuracy = 100 * matches / k_test
 
-            if accuracy == 100:
-                st.success(f"✅ **{name}**: {accuracy:.1f}% match (exact!)")
-            else:
-                st.warning(f"⚠️ **{name}**: {accuracy:.1f}% match ({matches}/{k_test} same neighbors)")
+                if accuracy == 100:
+                    st.success(f"✅ **{name}**: {accuracy:.1f}% match (exact!)")
+                else:
+                    st.warning(f"⚠️ **{name}**: {accuracy:.1f}% match ({matches}/{k_test} same neighbors)")
+    else:
+        st.warning("Brute Force search failed - cannot compare accuracy")
 
     st.markdown("---")
     st.info("""
