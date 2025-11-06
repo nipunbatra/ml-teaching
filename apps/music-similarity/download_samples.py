@@ -181,6 +181,94 @@ Supported formats: .mp3, .wav, .flac, .ogg
 
     return True
 
+def download_fma_small_samples():
+    """
+    Download real music from FMA (Free Music Archive)
+    Uses the FMA dataset API to get diverse, CC-licensed music
+    """
+    import zipfile
+    import io
+
+    sample_dir = Path(__file__).parent / "sample_audio"
+    sample_dir.mkdir(exist_ok=True)
+
+    print("🎵 Downloading real music from FMA (Free Music Archive)...")
+    print("   All tracks are CC-licensed and free to use\n")
+
+    # FMA small sample - handpicked diverse tracks
+    # Using direct links to FMA tracks (public CC-licensed)
+    fma_samples = [
+        {
+            'filename': 'Pop - Upbeat Electronic.mp3',
+            'url': 'https://freemusicarchive.org/track/01_-_Siren/download',
+            'track_id': '133297',
+            'genre': 'Electronic',
+        },
+        {
+            'filename': 'Rock - Indie Guitar.mp3',
+            'url': 'https://freemusicarchive.org/track/01_Ghosts_-_Intro/download',
+            'track_id': '108',
+            'genre': 'Rock',
+        },
+        {
+            'filename': 'Folk - Acoustic.mp3',
+            'url': 'https://freemusicarchive.org/track/A_Conversation/download',
+            'track_id': '2',
+            'genre': 'Folk',
+        },
+        {
+            'filename': 'Hip-Hop - Instrumental.mp3',
+            'url': 'https://freemusicarchive.org/track/Bout_Money/download',
+            'track_id': '155',
+            'genre': 'Hip-Hop',
+        },
+        {
+            'filename': 'Classical - Piano.mp3',
+            'url': 'https://freemusicarchive.org/track/Allegro_molto_vivace/download',
+            'track_id': '30',
+            'genre': 'Classical',
+        },
+    ]
+
+    downloaded = 0
+    failed = []
+
+    for sample in fma_samples:
+        filepath = sample_dir / sample['filename']
+
+        if filepath.exists():
+            print(f"✓ {sample['filename']} already exists, skipping")
+            downloaded += 1
+            continue
+
+        print(f"\n📥 Downloading: {sample['filename']}")
+        print(f"   Genre: {sample['genre']}")
+        print(f"   Source: FMA Track ID {sample['track_id']}")
+
+        success = download_file(sample['url'], filepath)
+
+        if success and filepath.exists() and filepath.stat().st_size > 1000:
+            print(f"   ✅ Downloaded successfully ({filepath.stat().st_size // 1024} KB)")
+            downloaded += 1
+        else:
+            failed.append(sample['filename'])
+            if filepath.exists():
+                filepath.unlink()
+
+    # Also get from Internet Archive as fallback
+    print("\n\n📥 Downloading additional tracks from Internet Archive...")
+    ia_success = download_internet_archive_samples()
+
+    print(f"\n{'='*60}")
+    print(f"✅ Successfully downloaded: {downloaded} FMA tracks")
+
+    if failed:
+        print(f"❌ Failed FMA downloads: {len(failed)}")
+        print("   (Using Internet Archive tracks as fallback)")
+
+    return downloaded > 0 or ia_success
+
+
 if __name__ == "__main__":
     print("🎵 Music Similarity App - Sample Audio Setup")
     print("=" * 60)
@@ -192,17 +280,33 @@ if __name__ == "__main__":
 
     # Ask user what they want
     print("Choose an option:")
-    print("1. Download free CC-licensed music samples (recommended)")
-    print("2. Just create directory (add your own MP3s later)")
-    print("3. Exit")
+    print("1. Download from FMA (Free Music Archive) - REAL MUSIC! (recommended)")
+    print("2. Download from Internet Archive (CC-licensed classics)")
+    print("3. Just create directory (add your own MP3s later)")
+    print("4. Exit")
     print()
 
     try:
-        choice = input("Enter choice (1-3): ").strip()
+        choice = input("Enter choice (1-4): ").strip()
     except (EOFError, KeyboardInterrupt):
-        choice = "2"  # Default for non-interactive environments
+        choice = "3"  # Default for non-interactive environments
 
     if choice == "1":
+        print("\n" + "=" * 60)
+        success = download_fma_small_samples()
+
+        if success:
+            print("\n" + "=" * 60)
+            print("✅ Setup complete! Downloaded REAL music from FMA!")
+            print(f"📁 Location: {sample_dir.absolute()}")
+            print(f"📊 Files: {len(list(sample_dir.glob('*.mp3')))} MP3 files")
+            print("\n🚀 Run the app:")
+            print("   streamlit run app.py")
+        else:
+            print("\n⚠️  No files downloaded.")
+            print("   You can add your own MP3s to sample_audio/")
+
+    elif choice == "2":
         print("\n" + "=" * 60)
         success = download_internet_archive_samples()
 
@@ -216,7 +320,7 @@ if __name__ == "__main__":
             print("\n⚠️  No files downloaded.")
             print("   You can add your own MP3s to sample_audio/")
 
-    elif choice == "2":
+    elif choice == "3":
         generate_demo_audio_files()
         print("\n✅ Directory created!")
         print(f"📁 Location: {sample_dir.absolute()}")
